@@ -1,0 +1,11 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://8abumis3jg5g"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j25sm"]
+
+[sub_resource type="Sky" id="Sky_qhdmd"]
+sky_material = SubResource("ProceduralSkyMaterial_j25sm")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_qhdmd")
+sdfgi_enabled = true
