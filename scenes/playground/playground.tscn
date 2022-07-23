@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyd5eid6fsbg8"]
+[gd_scene load_steps=9 format=3 uid="uid://c8l4cxvl8jgk"]
 
 [ext_resource type="Material" uid="uid://b836v0fldqg70" path="res://scenes/playground/prototype.tres" id="1_abhm1"]
 [ext_resource type="Script" path="res://scenes/character/camera_controller.gd" id="1_g4oa1"]
 [ext_resource type="Texture2D" uid="uid://bhxf30yykrukk" path="res://assets/textures/logo_dark.png" id="2_agg1b"]
 [ext_resource type="PackedScene" uid="uid://6u321cwf1yct" path="res://scenes/character/character.tscn" id="2_i53jf"]
+[ext_resource type="Script" path="res://scripts/billboard.gd" id="5_5g01e"]
+[ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="6_jvjd4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21oih"]
 
@@ -138,3 +140,45 @@ shape = SubResource("BoxShape3D_21oih")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidDynamicBody3D"]
 mesh = SubResource("BoxMesh_8lvjm")
+
+[node name="Billboard" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("5_5g01e")
+
+[node name="Control" type="Control" parent="Billboard"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Logo" type="TextureRect" parent="Billboard/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.5
+offset_top = -172.0
+offset_right = 107.5
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_agg1b")
+ignore_texture_size = true
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="Label" type="Label" parent="Billboard/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.5
+offset_top = 33.0
+offset_right = 172.5
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_jvjd4")
+theme_override_font_sizes/font_size = 30
+text = "\"Playground\" Testing Map"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_layout_mode = 1
