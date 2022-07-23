@@ -146,6 +146,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("5_5g01e")
 
 [node name="Control" type="Control" parent="Billboard"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 

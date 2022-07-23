@@ -42,6 +42,9 @@ func _reparent_contents():
 	remove_child(contents)
 	_viewport.add_child(contents)
 
+	# Visible to false in editor to not clutter 2D view. Again a hack.
+	contents.visible = true
+
 
 # Gets the size of this billboarded Sprite3D in screen space.
 func _get_screen_size() -> Vector2:
