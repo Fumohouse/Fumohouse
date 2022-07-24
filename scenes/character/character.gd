@@ -96,7 +96,8 @@ func _check_grounding(delta: float, snap: bool, ctx: MotionContext):
 			# dot to account for any possible horiz. movement due to depenetration
 			var offset := Vector3.UP.dot(result.get_travel()) * Vector3.UP
 			if offset.length() > margin:
-				global_transform.origin += offset
+				global_transform.origin += \
+						offset.normalized() * (offset.length() - margin)
 
 	if found_ground:
 		_airborne_time = 0
@@ -164,14 +165,14 @@ func _process_movement(delta: float, ctx: MotionContext) -> Vector3:
 	var target_velocity := direction * movement_speed
 
 	# Handle transition between different ground (normals)
-	_movement_velocity = _movement_velocity.length() * direction
+	if direction: # Prevent instant stop on release
+		_movement_velocity = _movement_velocity.length() * direction
+
 	_movement_velocity = _movement_velocity.move_toward(target_velocity, delta * movement_acceleration)
 
 	# If we ran into a wall last frame, adjust velocity accordingly
 	if _walls.size() == 1:
 		_movement_velocity = _movement_velocity.slide(_walls[0])
-	elif _walls.size() > 1:
-		_movement_velocity = Vector3.ZERO
 
 	# Update state
 	if direction.length_squared() > 0:
