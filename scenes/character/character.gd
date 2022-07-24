@@ -1,3 +1,4 @@
+class_name Character
 extends RigidDynamicBody3D
 # Reference: Godot physics_body_3d.cpp (MIT)
 
@@ -135,7 +136,7 @@ func _move(delta: float, offset: Vector3):
 
 
 func _process_vertical(delta: float, ctx: MotionContext) -> Vector3:
-	if _is_grounded and not _is_state(CharacterState.JUMPING):
+	if _is_grounded and not is_state(CharacterState.JUMPING):
 		_vertical_velocity = Vector3.ZERO
 
 		if Input.is_action_pressed("move_jump"):
@@ -145,7 +146,7 @@ func _process_vertical(delta: float, ctx: MotionContext) -> Vector3:
 		_vertical_velocity += Vector3.DOWN * gravity * delta
 
 	# Persist jump state until touched ground
-	if _is_state(CharacterState.JUMPING) and _vertical_velocity.y > 0:
+	if is_state(CharacterState.JUMPING) and _vertical_velocity.y > 0:
 		ctx.new_state |= CharacterState.JUMPING
 
 	return _vertical_velocity * delta
@@ -197,7 +198,7 @@ func _physics_process(delta: float):
 	var ctx := MotionContext.new()
 	ctx.was_grounded = _is_grounded
 
-	_check_grounding(delta, not _is_state(CharacterState.JUMPING), ctx)
+	_check_grounding(delta, not is_state(CharacterState.JUMPING), ctx)
 
 	var target_offset := Vector3.ZERO
 	target_offset += _process_movement(delta, ctx)
@@ -225,7 +226,7 @@ func _update_camera():
 		_camera.focus_node = self
 
 
-func _is_state(check_state: CharacterState) -> bool:
+func is_state(check_state: CharacterState) -> bool:
 	return state & check_state == check_state
 
 

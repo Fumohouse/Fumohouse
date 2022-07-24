@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0efku5g76pie"]
+
+[ext_resource type="FontFile" uid="uid://4h6fuer52603" path="res://assets/fonts/mono/FiraMono-Regular.ttf" id="1_hfc6r"]
+[ext_resource type="FontFile" uid="uid://d1wwxago3btoh" path="res://assets/fonts/mono/FiraMono-Bold.ttf" id="2_bapt3"]
+[ext_resource type="Script" path="res://scripts/autosize_rich_text.gd" id="3_2j1gs"]
+
+[node name="DebugText" type="RichTextLabel"]
+clip_contents = false
+theme_override_fonts/normal_font = ExtResource("1_hfc6r")
+theme_override_fonts/bold_font = ExtResource("2_bapt3")
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+theme_override_font_sizes/italics_font_size = 12
+theme_override_font_sizes/bold_italics_font_size = 12
+theme_override_font_sizes/mono_font_size = 12
+bbcode_enabled = true
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+script = ExtResource("3_2j1gs")
