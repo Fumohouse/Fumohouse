@@ -52,7 +52,7 @@ func _get_screen_size() -> Vector2:
 
 	var world_size := _orig_size * target_pixel_size
 	var world_offset := offset * target_pixel_size
-	var world_origin := global_transform.origin \
+	var world_origin := global_position \
 			+ g_basis.x * world_offset.x \
 			+ g_basis.y * world_offset.y
 
@@ -75,8 +75,7 @@ func _process(_delta: float):
 	if not _camera:
 		return
 
-	var pos := global_transform.origin
-	if _camera.is_position_behind(pos):
+	if _camera.is_position_behind(global_position):
 		visible = false
 		_viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
 		return

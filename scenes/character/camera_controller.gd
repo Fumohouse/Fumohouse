@@ -52,7 +52,7 @@ var camera_mode: CameraMode
 
 func _process_first_person():
 	if focus_node:
-		global_transform.origin = focus_node.global_transform.origin + Vector3(0, camera_offset, 0)
+		global_position = focus_node.global_position + Vector3(0, camera_offset, 0)
 		global_transform.basis = focus_node.global_transform.basis.orthonormalized()
 
 	rotation.x = camera_rotation.x
@@ -60,7 +60,7 @@ func _process_first_person():
 
 
 func _process_third_person():
-	var focal_point := focus_node.global_transform.origin + Vector3(0, camera_offset, 0)
+	var focal_point := focus_node.global_position + Vector3(0, camera_offset, 0)
 	var cam_basis := (Basis.IDENTITY
 		.rotated(Vector3.RIGHT, camera_rotation.x)
 		.rotated(Vector3.UP, camera_rotation.y))

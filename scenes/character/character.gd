@@ -99,7 +99,7 @@ func _check_grounding(delta: float, snap: bool, ctx: MotionContext):
 			# dot to account for any possible horiz. movement due to depenetration
 			var offset := Vector3.UP.dot(result.get_travel()) * Vector3.UP
 			if offset.length() > margin:
-				global_transform.origin += \
+				global_position += \
 						offset.normalized() * (offset.length() - margin)
 
 	if found_ground:
@@ -124,7 +124,7 @@ func _check_grounding(delta: float, snap: bool, ctx: MotionContext):
 
 func _move(delta: float, offset: Vector3):
 	const MAX_SLIDES := 5
-	var orig_pos := global_transform.origin
+	var orig_pos := global_position
 	var slides := 0
 
 	var remaining := offset
@@ -145,7 +145,7 @@ func _move(delta: float, offset: Vector3):
 
 		slides += 1
 
-	_velocity = (global_transform.origin - orig_pos) / delta
+	_velocity = (global_position - orig_pos) / delta
 
 
 func _process_vertical(delta: float, ctx: MotionContext) -> Vector3:
