@@ -8,7 +8,8 @@ extends RigidDynamicBody3D
 @export_range(0, 1000) var gravity := 50.0
 @export_range(0, 50) var jump_height := 4.5
 
-@export_range(0, 1) var falling_time := 0.5
+@export_range(0, 1) var falling_time := 0.2
+@export_range(0, 10) var falling_altitude := 2
 
 @export_range(0, 5) var step_height := 0.8
 
@@ -35,6 +36,8 @@ enum CharacterState {
 }
 
 var state: CharacterState = CharacterState.IDLE
+
+@onready var _bottom_pos: Position3D = $Bottom
 
 var _is_grounded := false
 var _airborne_time := 0.0
@@ -104,7 +107,16 @@ func _check_grounding(delta: float, snap: bool, ctx: MotionContext):
 	else:
 		_airborne_time += delta
 		if _airborne_time > falling_time and _velocity.y < 0:
-			ctx.new_state |= CharacterState.FALLING
+			if is_state(CharacterState.FALLING):
+				ctx.new_state |= CharacterState.FALLING
+			else:
+				var fall_ray_params := PhysicsRayQueryParameters3D.new()
+				fall_ray_params.from = _bottom_pos.global_position
+				fall_ray_params.to = fall_ray_params.from + Vector3.DOWN * falling_altitude
+
+				var fall_ray_result = get_world_3d().direct_space_state.intersect_ray(fall_ray_params)
+				if not fall_ray_result.has("collider"):
+					ctx.new_state |= CharacterState.FALLING
 
 		_is_grounded = false
 		_ground_normal = Vector3.ZERO
