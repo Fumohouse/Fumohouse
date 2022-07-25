@@ -4,6 +4,9 @@ extends DebugMenu
 var _character: Character
 @export_node_path(RigidDynamicBody3D) var character: NodePath
 
+var _horizontal_motion: HorizontalMotion
+var _physical_motion: PhysicalMotion
+
 var _state: RichTextLabel
 
 
@@ -16,6 +19,8 @@ func _ready():
 	super._ready()
 
 	_update_character()
+	_horizontal_motion = _character.get_node_or_null("HorizontalMotion")
+	_physical_motion = _character.get_node_or_null("PhysicalMotion")
 
 	add_entry("state", "State")
 	_state = get_entry("state").contents
@@ -48,9 +53,18 @@ func _process(_delta: float):
 			_state.newline()
 
 	# Other
-	set_val("grounded", "Yes" if _character._is_grounded else "No")
-	set_val("airborne", "%.3f sec" % _character._airborne_time)
-	set_val("speed", "%.3f m/s" % _character._velocity.length())
+	set_val("grounded", "Yes" if _character.is_grounded else "No")
+	set_val("airborne", "%.3f sec" % _physical_motion._airborne_time if _physical_motion else "???")
+
+	var speed_str := """Total: %.3f m/s
+HorizontalMotion: %.3f m/s
+PhysicalMotion: %.3f m/s""" % [
+		_character.velocity.length(),
+		_horizontal_motion._velocity.length() if _horizontal_motion else 0.0,
+		_physical_motion._velocity.length() if _physical_motion else 0.0,
+	]
+
+	set_val("speed", speed_str)
 
 
 func _update_character():

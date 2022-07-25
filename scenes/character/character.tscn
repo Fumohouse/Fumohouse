@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://6u321cwf1yct"]
+[gd_scene load_steps=7 format=3 uid="uid://cyhgr2u8wgwd8"]
 
 [ext_resource type="Script" path="res://scenes/character/character.gd" id="1_esdqo"]
+[ext_resource type="Script" path="res://scenes/character/motion/horizontal_motion.gd" id="2_chbw4"]
+[ext_resource type="Script" path="res://scenes/character/motion/physical_motion.gd" id="3_hg7pc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5avuo"]
 height = 3.0
@@ -14,6 +16,12 @@ height = 3.0
 
 [node name="Character" type="RigidDynamicBody3D"]
 script = ExtResource("1_esdqo")
+
+[node name="HorizontalMotion" type="Node" parent="."]
+script = ExtResource("2_chbw4")
+
+[node name="PhysicalMotion" type="Node" parent="."]
+script = ExtResource("3_hg7pc")
 
 [node name="Bottom" type="Position3D" parent="."]
 

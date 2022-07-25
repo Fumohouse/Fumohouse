@@ -29,10 +29,30 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scenes/character/character.gd"
 }, {
+"base": "Node",
+"class": &"CharacterMotion",
+"language": &"GDScript",
+"path": "res://scenes/character/motion/character_motion.gd"
+}, {
 "base": "PanelContainer",
 "class": &"DebugMenu",
 "language": &"GDScript",
 "path": "res://scenes/debug_menu/debug_menu.gd"
+}, {
+"base": "CharacterMotion",
+"class": &"HorizontalMotion",
+"language": &"GDScript",
+"path": "res://scenes/character/motion/horizontal_motion.gd"
+}, {
+"base": "RefCounted",
+"class": &"MotionContext",
+"language": &"GDScript",
+"path": "res://scenes/character/motion/motion_context.gd"
+}, {
+"base": "CharacterMotion",
+"class": &"PhysicalMotion",
+"language": &"GDScript",
+"path": "res://scenes/character/motion/physical_motion.gd"
 }, {
 "base": "RefCounted",
 "class": &"Utils",
@@ -44,7 +64,11 @@ _global_script_class_icons={
 "Billboard": "",
 "CameraController": "",
 "Character": "",
+"CharacterMotion": "",
 "DebugMenu": "",
+"HorizontalMotion": "",
+"MotionContext": "",
+"PhysicalMotion": "",
 "Utils": ""
 }
 
