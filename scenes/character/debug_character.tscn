@@ -5,3 +5,4 @@
 
 [node name="DebugCharacter" instance=ExtResource("1_clh5e")]
 script = ExtResource("2_jos65")
+character = null

@@ -3,7 +3,6 @@ extends PanelContainer
 
 
 @onready var vbox: VBoxContainer = $MarginContainer/VBoxContainer
-@onready var _debug_text: PackedScene = preload("debug_text.tscn")
 
 var _entries := {}
 var menu_name: StringName = ""
@@ -26,11 +25,23 @@ func _exit_tree():
 		DebugMenus.deregister_menu(menu_name)
 
 
+func _create_label() -> AutosizeRichText:
+	var label := AutosizeRichText.new()
+	label.bbcode_enabled = true
+	label.scroll_active = false
+	label.autowrap_mode = TextServer.AUTOWRAP_OFF
+	label.shortcut_keys_enabled = false
+
+	label.clip_contents = false
+
+	return label
+
+
 func add_entry(id: StringName, label: String = ""):
 	var entry := DebugMenuEntry.new()
 
 	if label == "":
-		var debug_text: RichTextLabel = _debug_text.instantiate()
+		var debug_text := _create_label()
 		vbox.add_child(debug_text)
 
 		entry.contents = debug_text
@@ -38,11 +49,11 @@ func add_entry(id: StringName, label: String = ""):
 		var hbox := HBoxContainer.new()
 		hbox.add_theme_constant_override("separation", 12)
 
-		var label_text: RichTextLabel = _debug_text.instantiate()
-		label_text.text = "[b]" + label + "[/b]"
+		var label_text := _create_label()
+		label_text.text = "[b]%s[/b]" % label
 		hbox.add_child(label_text)
 
-		var debug_text: RichTextLabel = _debug_text.instantiate()
+		var debug_text := _create_label()
 		hbox.add_child(debug_text)
 
 		vbox.add_child(hbox)
