@@ -28,6 +28,7 @@ func _ready():
 	add_entry("grounded", "Is Grounded")
 	add_entry("airborne", "Airborne Time")
 	add_entry("speed", "Speed")
+	add_entry("walls", "Walls")
 
 
 func _process(_delta: float):
@@ -65,6 +66,7 @@ PhysicalMotion: %.3f m/s""" % [
 	]
 
 	set_val("speed", speed_str)
+	set_val("walls", str(_character.walls.size()))
 
 
 func _update_character():

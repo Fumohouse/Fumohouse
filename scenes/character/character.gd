@@ -98,14 +98,34 @@ func _check_grounding(snap: bool):
 		ground_normal = Vector3.ZERO
 
 
+func _update_walls():
+	walls.clear()
+
+	const WALL_MARGIN := 0.1
+
+	var wall_params := PhysicsTestMotionParameters3D.new()
+	wall_params.from = global_transform
+	wall_params.motion = Vector3.ZERO
+	wall_params.margin = WALL_MARGIN
+	wall_params.recovery_as_collision = true
+	wall_params.max_collisions = 4
+
+	var wall_result := PhysicsTestMotionResult3D.new()
+	PhysicsServer3D.body_test_motion(get_rid(), wall_params, wall_result)
+
+	for i in range(wall_result.get_collision_count()):
+		var normal := wall_result.get_collision_normal(i)
+		if not _is_stable_ground(normal) and not walls.has(normal):
+			walls.append(normal)
+
+
 func _move(delta: float, offset: Vector3):
 	const MAX_SLIDES := 5
+
 	var orig_pos := global_position
 	var slides := 0
 
 	var remaining := offset
-
-	walls = []
 
 	while slides < MAX_SLIDES and remaining.length_squared() > 1e-3:
 		var result := move_and_collide(remaining, false, margin)
@@ -113,9 +133,6 @@ func _move(delta: float, offset: Vector3):
 		if result:
 			var normal := result.get_normal()
 			remaining = result.get_remainder().slide(normal)
-
-			if not _is_stable_ground(normal) and not walls.has(normal):
-				walls.append(normal)
 		else:
 			break
 
@@ -139,6 +156,7 @@ func _physics_process(delta: float):
 			processor.process_motion(ctx, delta)
 
 	_move(delta, ctx.offset)
+	_update_walls()
 
 	if ctx.new_state == CharacterState.NONE:
 		state = CharacterState.IDLE
