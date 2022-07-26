@@ -25,6 +25,7 @@ var _drivers := {
 
 func _init():
 	menu_name = "debug_info"
+	menu_visible = true
 
 
 func _ready():
@@ -68,8 +69,6 @@ func _ready():
 
 	_set_other_visible(false)
 
-	DebugMenus.set_default_menu(self)
-
 
 func _add_other_entry(id: StringName, label: String = ""):
 	_other_entries.append(add_entry(id, label))
@@ -83,6 +82,8 @@ func _set_other_visible(vis: bool):
 
 
 func _unhandled_input(event: InputEvent):
+	super._unhandled_input(event)
+
 	if event.is_action_pressed("debug_1"):
 		_set_other_visible(not _other_visible)
 

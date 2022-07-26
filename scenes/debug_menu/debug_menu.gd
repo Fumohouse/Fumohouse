@@ -5,8 +5,10 @@ extends PanelContainer
 @onready var vbox: VBoxContainer = $MarginContainer/VBoxContainer
 
 var _entries := {}
+
 var menu_name: StringName = ""
 var action: StringName = ""
+var menu_visible := false
 
 
 class DebugMenuEntry:
@@ -19,18 +21,15 @@ class DebugMenuEntry:
 
 
 func _ready():
-	update_visibility(false)
+	update_visibility(menu_visible)
 
 	# Should process after anything being observed
 	process_priority = 100
 
-	if menu_name != "":
-		DebugMenus.register_menu(self)
 
-
-func _exit_tree():
-	if menu_name != "":
-		DebugMenus.deregister_menu(menu_name)
+func _unhandled_input(event: InputEvent):
+	if action != "" and event.is_action_pressed(action):
+		update_visibility(not menu_visible)
 
 
 func _create_label() -> AutosizeRichText:
@@ -82,3 +81,5 @@ func set_val(id: StringName, contents: String):
 func update_visibility(is_vis: bool):
 	visible = is_vis
 	set_process(is_vis)
+
+	menu_visible = is_vis

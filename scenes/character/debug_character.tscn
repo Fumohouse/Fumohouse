@@ -4,5 +4,10 @@
 [ext_resource type="Script" path="res://scenes/character/debug_character.gd" id="2_jos65"]
 
 [node name="DebugCharacter" instance=ExtResource("1_clh5e")]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+grow_horizontal = 0
 script = ExtResource("2_jos65")
 character = null
+metadata/_edit_use_custom_anchors = true
