@@ -6,6 +6,7 @@ var _character: Character
 
 var _horizontal_motion: HorizontalMotion
 var _physical_motion: PhysicalMotion
+var _stairs_motion: StairsMotion
 
 var _state: RichTextLabel
 
@@ -21,6 +22,7 @@ func _ready():
 	_update_character()
 	_horizontal_motion = _character.get_node_or_null("HorizontalMotion")
 	_physical_motion = _character.get_node_or_null("PhysicalMotion")
+	_stairs_motion = _character.get_node_or_null("StairsMotion")
 
 	add_entry("state", "State")
 	_state = get_entry("state").contents
@@ -57,6 +59,26 @@ func _debug_draw():
 		var top_speed := _horizontal_motion.movement_speed
 
 		DebugDraw.draw_line(pos, pos + _character.velocity / top_speed, Color.BLUE)
+
+	# Stairs
+	if _stairs_motion and _stairs_motion._found_stair:
+		const STAIRS_AXIS_LEN := 0.25
+		var target := _stairs_motion._end_position
+
+		DebugDraw.draw_marker(_stairs_motion._begin_position, Color.AQUA)
+		DebugDraw.draw_marker(target, Color.AQUA)
+
+		DebugDraw.draw_line(
+			target, target + _stairs_motion._wall_tangent * STAIRS_AXIS_LEN, Color.RED
+		)
+
+		DebugDraw.draw_line(
+			target, target + _stairs_motion._slope_normal * STAIRS_AXIS_LEN, Color.GREEN
+		)
+
+		DebugDraw.draw_line(
+			target, target + _stairs_motion._motion_vector * STAIRS_AXIS_LEN, Color.BLUE
+		)
 
 
 func _process(_delta: float):

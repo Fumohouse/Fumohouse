@@ -30,6 +30,7 @@ var state: CharacterState = CharacterState.IDLE
 
 var is_grounded := false
 var ground_normal: Vector3
+var ground_override := {}
 
 
 class WallInfo:
@@ -46,6 +47,8 @@ var velocity := Vector3.ZERO
 var bottom_pos: Vector3 :
 	get:
 		return _bottom_pos.global_position
+
+@onready var capsule: CapsuleShape3D = $Capsule.shape
 
 var _motion_processors: Array[CharacterMotion] = []
 
@@ -70,6 +73,13 @@ func _is_stable_ground(normal: Vector3) -> bool:
 
 func _check_grounding(snap: bool):
 	const GROUNDING_DISTANCE = 0.01
+
+	for key in ground_override.keys():
+		var normal: Vector3 = ground_override[key]
+		if normal:
+			is_grounded = true
+			ground_normal = normal
+			return
 
 	var bp := PhysicsTestMotionParameters3D.new()
 	bp.from = global_transform
