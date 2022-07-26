@@ -13,7 +13,7 @@ var _state: RichTextLabel
 
 func _init():
 	menu_name = "character_debug"
-	action = "debug_1"
+	action = "debug_2"
 
 
 func _ready():
@@ -24,8 +24,7 @@ func _ready():
 	_physical_motion = _character.get_node_or_null("PhysicalMotion")
 	_stairs_motion = _character.get_node_or_null("StairsMotion")
 
-	add_entry("state", "State")
-	_state = get_entry("state").contents
+	_state = add_entry("state", "State").contents
 
 	add_entry("grounded", "Is Grounded")
 	add_entry("airborne", "Airborne Time")

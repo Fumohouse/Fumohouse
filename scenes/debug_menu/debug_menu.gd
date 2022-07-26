@@ -10,8 +10,12 @@ var action: StringName = ""
 
 
 class DebugMenuEntry:
+	var root: Control
 	var label: RichTextLabel
 	var contents: RichTextLabel
+
+	func set_visible(is_visible: bool):
+		root.visible = is_visible
 
 
 func _ready():
@@ -41,13 +45,14 @@ func _create_label() -> AutosizeRichText:
 	return label
 
 
-func add_entry(id: StringName, label: String = ""):
+func add_entry(id: StringName, label: String = "") -> DebugMenuEntry:
 	var entry := DebugMenuEntry.new()
 
 	if label == "":
 		var debug_text := _create_label()
 		vbox.add_child(debug_text)
 
+		entry.root = debug_text
 		entry.contents = debug_text
 	else:
 		var hbox := HBoxContainer.new()
@@ -62,14 +67,12 @@ func add_entry(id: StringName, label: String = ""):
 
 		vbox.add_child(hbox)
 
+		entry.root = hbox
 		entry.label = label_text
 		entry.contents = debug_text
 
 	_entries[id] = entry
-
-
-func get_entry(id: StringName) -> DebugMenuEntry:
-	return _entries[id]
+	return entry
 
 
 func set_val(id: StringName, contents: String):
