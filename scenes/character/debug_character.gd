@@ -28,7 +28,35 @@ func _ready():
 	add_entry("grounded", "Is Grounded")
 	add_entry("airborne", "Airborne Time")
 	add_entry("speed", "Speed")
-	add_entry("walls", "Walls")
+	add_entry("walls", "Wall Contacts")
+
+
+func _debug_draw():
+	var pos := _character.global_position
+	var eye_pos := pos + Vector3.UP * _character.camera.camera_offset
+
+	# Forward direction
+	DebugDraw.draw_line(eye_pos, eye_pos - _character.global_transform.basis.z, Color.AQUA)
+
+	# Grounding status
+	if _character.is_grounded:
+		DebugDraw.draw_line(pos, pos + _character.ground_normal, Color.GREEN)
+	else:
+		DebugDraw.draw_marker(pos, Color.RED)
+
+	# Walls
+	for wall_info in _character.walls:
+		DebugDraw.draw_line(
+			wall_info.point,
+			wall_info.point + wall_info.normal,
+			Color.WHITE
+		)
+
+	# Velocities
+	if _horizontal_motion:
+		var top_speed := _horizontal_motion.movement_speed
+
+		DebugDraw.draw_line(pos, pos + _character.velocity / top_speed, Color.BLUE)
 
 
 func _process(_delta: float):
@@ -67,6 +95,8 @@ PhysicalMotion: %.3f m/s""" % [
 
 	set_val("speed", speed_str)
 	set_val("walls", str(_character.walls.size()))
+
+	_debug_draw()
 
 
 func _update_character():

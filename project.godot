@@ -80,8 +80,9 @@ config/icon="res://assets/textures/logo.png"
 
 [autoload]
 
-DebugMenus="*res://scenes/debug_menu/debug_menus.gd"
+DebugMenus="*res://singletons/debug_menus.gd"
 DebugInfo="*res://scenes/debug_menu/debug_info.tscn"
+DebugDraw="*res://singletons/debug_draw.gd"
 
 [display]
 

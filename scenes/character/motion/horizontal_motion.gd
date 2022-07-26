@@ -29,11 +29,19 @@ func process_motion(ctx: MotionContext, delta: float):
 			.move_toward(target_velocity, delta * movement_acceleration)
 
 	# If we ran into a wall last frame, adjust velocity accordingly
-	if character.walls.size() == 1:
-		var normal := character.walls[0]
+	if character.walls.size() > 0:
+		var normal := character.walls[0].normal
 
 		# Only slide if we are trying to move into the wall
-		if direction.dot(normal) < 0:
+		var should_slide := direction.dot(normal) < 0
+
+		if should_slide:
+			for i in range(1, character.walls.size()):
+				if not character.walls[i].normal.is_equal_approx(normal):
+					should_slide = false
+					break
+
+		if should_slide:
 			_velocity = _velocity.slide(normal)
 
 	# Update state

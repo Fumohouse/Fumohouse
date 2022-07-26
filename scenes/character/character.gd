@@ -31,8 +31,14 @@ var state: CharacterState = CharacterState.IDLE
 var is_grounded := false
 var ground_normal: Vector3
 
+
+class WallInfo:
+	var point: Vector3
+	var normal: Vector3
+
+
 # Wall normals the character ran into, updated at the end of the frame
-var walls: Array[Vector3]
+var walls: Array[WallInfo]
 
 var velocity := Vector3.ZERO
 
@@ -115,8 +121,12 @@ func _update_walls():
 
 	for i in range(wall_result.get_collision_count()):
 		var normal := wall_result.get_collision_normal(i)
-		if not _is_stable_ground(normal) and not walls.has(normal):
-			walls.append(normal)
+		if not _is_stable_ground(normal):
+			var wall_info := WallInfo.new()
+			wall_info.point = wall_result.get_collision_point(i)
+			wall_info.normal = wall_result.get_collision_normal(i)
+
+			walls.append(wall_info)
 
 
 func _move(delta: float, offset: Vector3):

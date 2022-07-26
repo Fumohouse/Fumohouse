@@ -44,10 +44,10 @@ func deregister_menu(m_name: StringName):
 
 func switch_menu(menu: DebugMenu):
 	if current_menu:
-		current_menu.set_visible(false)
+		current_menu.update_visibility(false)
 
 	current_menu = menu
-	current_menu.set_visible(true)
+	current_menu.update_visibility(true)
 
 
 func close_menu():
@@ -57,5 +57,5 @@ func close_menu():
 	if default_menu:
 		switch_menu(default_menu)
 	else:
-		current_menu.set_visible(false)
+		current_menu.update_visibility(false)
 		current_menu = null

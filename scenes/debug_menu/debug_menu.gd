@@ -15,7 +15,11 @@ class DebugMenuEntry:
 
 
 func _ready():
-	set_visible(false)
+	update_visibility(false)
+
+	# Should process after anything being observed
+	process_priority = 100
+
 	if menu_name != "":
 		DebugMenus.register_menu(self)
 
@@ -72,6 +76,6 @@ func set_val(id: StringName, contents: String):
 	_entries[id].contents.text = contents
 
 
-func set_visible(is_vis: bool):
+func update_visibility(is_vis: bool):
 	visible = is_vis
 	set_process(is_vis)
