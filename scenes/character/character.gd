@@ -66,10 +66,6 @@ func _ready():
 			_motion_processors.append(child)
 
 
-func set_mode(mode: PhysicsServer3D.BodyMode):
-	PhysicsServer3D.body_set_mode(get_rid(), mode)
-
-
 func is_stable_ground(normal: Vector3) -> bool:
 	const ANGLE_MARGIN := 0.01
 	return normal.angle_to(Vector3.UP) <= deg2rad(max_ground_angle) + ANGLE_MARGIN
@@ -85,15 +81,15 @@ func _check_grounding(snap: bool):
 			ground_normal = normal
 			return
 
-	var bp := PhysicsTestMotionParameters3D.new()
-	bp.from = global_transform
-	bp.motion = Vector3.DOWN * GROUNDING_DISTANCE
-	bp.recovery_as_collision = true
-	bp.margin = margin
-	bp.max_collisions = 4
+	var params := PhysicsTestMotionParameters3D.new()
+	params.from = global_transform
+	params.motion = Vector3.DOWN * GROUNDING_DISTANCE
+	params.recovery_as_collision = true
+	params.margin = margin
+	params.max_collisions = 4
 
 	var result := PhysicsTestMotionResult3D.new()
-	var did_collide := PhysicsServer3D.body_test_motion(get_rid(), bp, result)
+	var did_collide := test_motion(params, result)
 
 	var found_ground := false
 
@@ -131,7 +127,7 @@ func _update_walls():
 	wall_params.max_collisions = 4
 
 	var wall_result := PhysicsTestMotionResult3D.new()
-	PhysicsServer3D.body_test_motion(get_rid(), wall_params, wall_result)
+	test_motion(wall_params, wall_result)
 
 	for i in range(wall_result.get_collision_count()):
 		var normal := wall_result.get_collision_normal(i)
@@ -207,6 +203,14 @@ func _update_camera():
 	else:
 		camera = get_node(_camera_path_internal) as CameraController
 		camera.focus_node = self
+
+
+func test_motion(params: PhysicsTestMotionParameters3D, result: PhysicsTestMotionResult3D = null) -> bool:
+	return PhysicsServer3D.body_test_motion(get_rid(), params, result)
+
+
+func set_mode(mode: PhysicsServer3D.BodyMode):
+	PhysicsServer3D.body_set_mode(get_rid(), mode)
 
 
 func is_state(check_state: CharacterState) -> bool:

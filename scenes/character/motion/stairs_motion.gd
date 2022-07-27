@@ -53,7 +53,7 @@ func _handle_stairs(ctx: MotionContext) -> bool:
 	ground_check_params.from = character.global_transform
 	ground_check_params.motion = Vector3.DOWN * max_step_height
 
-	var found_ground := PhysicsServer3D.body_test_motion(character.get_rid(), ground_check_params)
+	var found_ground := character.test_motion(ground_check_params)
 
 	if not found_ground:
 		return false
@@ -73,7 +73,7 @@ func _handle_stairs(ctx: MotionContext) -> bool:
 	search_params.margin = character.margin
 
 	var search_result := PhysicsTestMotionResult3D.new()
-	var search_found := PhysicsServer3D.body_test_motion(character.get_rid(), search_params, search_result)
+	var search_found := character.test_motion(search_params, search_result)
 
 	if not search_found:
 		_reset(character)
