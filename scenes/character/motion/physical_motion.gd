@@ -14,6 +14,15 @@ var _velocity: Vector3
 var _airborne_time: float
 
 
+static func get_id() -> StringName:
+	return &"physical"
+
+
+func handle_cancel(_ctx: MotionContext):
+	_velocity = Vector3.ZERO
+	_airborne_time = 0
+
+
 func process_motion(ctx: MotionContext, delta: float):
 	var character := ctx.character
 

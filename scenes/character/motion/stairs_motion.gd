@@ -19,6 +19,10 @@ var _wall_tangent: Vector3
 var _slope_normal: Vector3
 
 
+static func get_id() -> StringName:
+	return &"stairs"
+
+
 func _reset(character):
 	_found_stair = false
 
@@ -30,6 +34,10 @@ func _reset(character):
 	_slope_normal = Vector3.ZERO
 
 	character.ground_override.erase(OVERRIDE_KEY)
+
+
+func handle_cancel(ctx: MotionContext):
+	_reset(ctx.character)
 
 
 func _handle_stairs(ctx: MotionContext) -> bool:

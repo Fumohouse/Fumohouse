@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://k5gocgurmhpj"]
+[gd_scene load_steps=11 format=3 uid="uid://k5gocgurmhpj"]
 
 [ext_resource type="Material" uid="uid://b836v0fldqg70" path="res://scenes/playground/prototype.tres" id="1_abhm1"]
 [ext_resource type="Script" path="res://scenes/character/camera_controller.gd" id="1_g4oa1"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://scripts/billboard.gd" id="5_5g01e"]
 [ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="6_jvjd4"]
 [ext_resource type="PackedScene" uid="uid://c1jqrlkxogo24" path="res://scenes/character/debug_character.tscn" id="7_rycs7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v2ei6"]
+size = Vector3(2, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21oih"]
 
@@ -195,6 +198,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 3.1, -0.5)
 use_collision = true
 size = Vector3(0.5, 0.2, 3)
 material = ExtResource("1_abhm1")
+
+[node name="Ladder" type="CSGCombiner3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 22)
+use_collision = true
+
+[node name="1" type="CSGBox3D" parent="Map/Ladder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.395124, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="2" type="CSGBox3D" parent="Map/Ladder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.895124, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="3" type="CSGBox3D" parent="Map/Ladder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39512, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="4" type="CSGBox3D" parent="Map/Ladder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89512, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="5" type="CSGBox3D" parent="Map/Ladder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39512, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="6" type="CSGBox3D" parent="Map/Ladder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.89512, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="7" type="CSGBox3D" parent="Map/Ladder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.39512, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="8" type="CSGBox3D" parent="Map/Ladder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.89512, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="9" type="CSGBox3D" parent="Map/Ladder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.39512, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="10" type="CSGBox3D" parent="Map/Ladder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.89512, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="Area" type="Area3D" parent="Map" groups=["ladder"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 2.5, 22)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Area"]
+shape = SubResource("BoxShape3D_v2ei6")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30624, 2.50434)

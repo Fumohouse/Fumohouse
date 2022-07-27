@@ -44,6 +44,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scenes/character/motion/horizontal_motion.gd"
 }, {
+"base": "CharacterMotion",
+"class": &"LadderMotion",
+"language": &"GDScript",
+"path": "res://scenes/character/motion/ladder_motion.gd"
+}, {
 "base": "RefCounted",
 "class": &"MotionContext",
 "language": &"GDScript",
@@ -72,6 +77,7 @@ _global_script_class_icons={
 "CharacterMotion": "",
 "DebugMenu": "",
 "HorizontalMotion": "",
+"LadderMotion": "",
 "MotionContext": "",
 "PhysicalMotion": "",
 "StairsMotion": "",

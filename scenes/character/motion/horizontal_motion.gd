@@ -8,13 +8,17 @@ extends CharacterMotion
 var _velocity: Vector3
 
 
+static func get_id() -> StringName:
+	return &"horizontal"
+
+
+func handle_cancel(_ctx: MotionContext):
+	_velocity = Vector3.ZERO
+
+
 func process_motion(ctx: MotionContext, delta: float):
 	var character := ctx.character
-
-	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-
-	var cam_basis := Basis.IDENTITY.rotated(Vector3.UP, character.camera.camera_rotation.y)
-	var direction_flat := (cam_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction_flat := ctx.cam_basis_flat * ctx.input_direction
 
 	var slope_transform := Basis(Quaternion(Vector3.UP, character.ground_normal))
 	var direction := slope_transform * direction_flat
@@ -51,7 +55,7 @@ func process_motion(ctx: MotionContext, delta: float):
 	# Update rotation
 	# The rigidbody should never be scaled, so scale is reset when setting basis.
 	if character.camera.camera_mode == CameraController.CameraMode.FIRST_PERSON:
-		character.transform.basis = cam_basis
+		character.transform.basis = ctx.cam_basis_flat
 	elif direction:
 		var movement_basis := Basis(Quaternion(Vector3.FORWARD, direction_flat))
 

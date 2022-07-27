@@ -23,6 +23,7 @@ enum CharacterState {
 	JUMPING = 1 << 1,
 	FALLING = 1 << 2,
 	WALKING = 1 << 3,
+	CLIMBING = 1 << 4,
 }
 
 
@@ -49,6 +50,9 @@ var bottom_pos: Vector3 :
 		return _bottom_pos.global_position
 
 @onready var capsule: CapsuleShape3D = $Capsule.shape
+var capsule_transform: Transform3D :
+	get:
+		return $Capsule.global_transform
 
 var _motion_processors: Array[CharacterMotion] = []
 
@@ -66,7 +70,7 @@ func set_mode(mode: PhysicsServer3D.BodyMode):
 	PhysicsServer3D.body_set_mode(get_rid(), mode)
 
 
-func _is_stable_ground(normal: Vector3) -> bool:
+func is_stable_ground(normal: Vector3) -> bool:
 	const ANGLE_MARGIN := 0.01
 	return normal.angle_to(Vector3.UP) <= deg2rad(max_ground_angle) + ANGLE_MARGIN
 
@@ -97,7 +101,7 @@ func _check_grounding(snap: bool):
 		for i in range(result.get_collision_count() - 1, -1, -1):
 			var normal := result.get_collision_normal(i)
 
-			if _is_stable_ground(normal):
+			if is_stable_ground(normal):
 				found_ground = true
 				is_grounded = true
 				ground_normal = normal
@@ -131,7 +135,7 @@ func _update_walls():
 
 	for i in range(wall_result.get_collision_count()):
 		var normal := wall_result.get_collision_normal(i)
-		if not _is_stable_ground(normal):
+		if not is_stable_ground(normal):
 			var wall_info := WallInfo.new()
 			wall_info.point = wall_result.get_collision_point(i)
 			wall_info.normal = wall_result.get_collision_normal(i)
@@ -169,11 +173,18 @@ func _physics_process(delta: float):
 	ctx.was_grounded = is_grounded
 	ctx.character = self
 
+	var input_direction2 := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+	ctx.input_direction = Vector3(input_direction2.x, 0, input_direction2.y)
+	ctx.cam_basis_flat = Basis.IDENTITY.rotated(Vector3.UP, camera.camera_rotation.y)
+
 	_check_grounding(not is_state(CharacterState.JUMPING))
 
 	for processor in _motion_processors:
 		if processor.enabled:
-			processor.process_motion(ctx, delta)
+			if ctx.cancelled_processors.has(processor.get_id()):
+				processor.handle_cancel(ctx)
+			else:
+				processor.process_motion(ctx, delta)
 
 	_move(delta, ctx.offset)
 	_update_walls()
@@ -181,7 +192,7 @@ func _physics_process(delta: float):
 	if ctx.new_state == CharacterState.NONE:
 		state = CharacterState.IDLE
 	else:
-		state = ctx.new_state as CharacterState
+		state = ctx.new_state & ~ctx.cancelled_states as CharacterState
 
 
 func _update_camera():

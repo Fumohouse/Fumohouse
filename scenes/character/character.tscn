@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyhgr2u8wgwd8"]
+[gd_scene load_steps=9 format=3 uid="uid://cyhgr2u8wgwd8"]
 
 [ext_resource type="Script" path="res://scenes/character/character.gd" id="1_esdqo"]
 [ext_resource type="Script" path="res://scenes/character/motion/horizontal_motion.gd" id="2_chbw4"]
+[ext_resource type="Script" path="res://scenes/character/motion/ladder_motion.gd" id="2_yfe7d"]
 [ext_resource type="Script" path="res://scenes/character/motion/physical_motion.gd" id="3_hg7pc"]
 [ext_resource type="Script" path="res://scenes/character/motion/stairs_motion.gd" id="4_a76vo"]
 
@@ -17,6 +18,9 @@ height = 3.0
 
 [node name="Character" type="RigidDynamicBody3D"]
 script = ExtResource("1_esdqo")
+
+[node name="LadderMotion" type="Node" parent="."]
+script = ExtResource("2_yfe7d")
 
 [node name="HorizontalMotion" type="Node" parent="."]
 script = ExtResource("2_chbw4")
