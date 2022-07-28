@@ -2,6 +2,7 @@ class_name HorizontalMotion
 extends CharacterMotion
 # Responsible for horizontal movement (i.e. WASD controls).
 
+@export_range(0, 5) var min_speed := 0.1
 @export_range(0, 30, 1) var movement_speed := 10.0
 @export_range(1, 100, 1) var movement_acceleration := 50.0
 
@@ -49,7 +50,7 @@ func process_motion(ctx: MotionContext, delta: float):
 			_velocity = _velocity.slide(normal)
 
 	# Update state
-	if direction.length_squared() > 0:
+	if _velocity.length_squared() > min_speed * min_speed and direction.length_squared() > 0:
 		ctx.new_state |= Character.CharacterState.WALKING
 
 	# Update rotation

@@ -1,20 +1,138 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyhgr2u8wgwd8"]
+[gd_scene load_steps=46 format=3 uid="uid://bogedwkbf18l2"]
 
 [ext_resource type="Script" path="res://scenes/character/character.gd" id="1_esdqo"]
 [ext_resource type="Script" path="res://scenes/character/motion/horizontal_motion.gd" id="2_chbw4"]
 [ext_resource type="Script" path="res://scenes/character/motion/ladder_motion.gd" id="2_yfe7d"]
 [ext_resource type="Script" path="res://scenes/character/motion/physical_motion.gd" id="3_hg7pc"]
 [ext_resource type="Script" path="res://scenes/character/motion/stairs_motion.gd" id="4_a76vo"]
+[ext_resource type="Script" path="res://scenes/character/character_animator.gd" id="6_5s0gs"]
+[ext_resource type="PackedScene" uid="uid://cccoh31mw8mn7" path="res://assets/models/rig/Rig.glb" id="6_s8jgh"]
+[ext_resource type="Animation" uid="uid://dil87a12bdo51" path="res://assets/models/rig/animations/base.tres" id="7_xw4fc"]
+[ext_resource type="Animation" uid="uid://bvrgnfyuy7ccg" path="res://assets/models/rig/animations/idle.tres" id="8_l8522"]
+[ext_resource type="Animation" uid="uid://cxqf8ebitk1qc" path="res://assets/models/rig/animations/jump.tres" id="9_j6ru4"]
+[ext_resource type="Animation" uid="uid://dov1ah8fuvvkl" path="res://assets/models/rig/animations/sit.tres" id="10_jftow"]
+[ext_resource type="Animation" uid="uid://dmmw2cet3wfh4" path="res://assets/models/rig/animations/walk.tres" id="11_wpe27"]
+[ext_resource type="Animation" uid="uid://w6kkcjrhhw5o" path="res://assets/models/rig/animations/climb.tres" id="13_1sw8o"]
+[ext_resource type="Animation" uid="uid://bthj7xkjro0cm" path="res://assets/models/rig/animations/fall.tres" id="14_ewtaw"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_5avuo"]
-height = 3.0
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pp1wc"]
+height = 3.4
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_7pt87"]
-radius = 0.2
-height = 1.0
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_raqf0"]
+_data = {
+"base": ExtResource("7_xw4fc"),
+"climb": ExtResource("13_1sw8o"),
+"fall": ExtResource("14_ewtaw"),
+"idle": ExtResource("8_l8522"),
+"jump": ExtResource("9_j6ru4"),
+"sit": ExtResource("10_jftow"),
+"walk": ExtResource("11_wpe27")
+}
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xpmer"]
-height = 3.0
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v4wmw"]
+animation = &"base"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dy30l"]
+animation = &"climb"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7hu31"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y83dm"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_04sft"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ud3ic"]
+animation = &"sit"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3ecu5"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_u8mk3"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jueig"]
+graph_offset = Vector2(-261.994, -19.72)
+nodes/walk/node = SubResource("AnimationNodeAnimation_3ecu5")
+nodes/walk/position = Vector2(-80, 160)
+nodes/walk_speed/node = SubResource("AnimationNodeTimeScale_u8mk3")
+nodes/walk_speed/position = Vector2(100, 160)
+node_connections = [&"output", 0, &"walk_speed", &"walk_speed", 0, &"walk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yn0ki"]
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tvrr7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o3fki"]
+xfade_time = 0.4
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4csbf"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cj810"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e37rp"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hn8d7"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8acbt"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sbk2t"]
+xfade_time = 0.2
+priority = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c56ng"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4bgv4"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w26fs"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7cidd"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kqaud"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7i582"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f4o6o"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n8ome"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oodwu"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_a53qm"]
+states/base/node = SubResource("AnimationNodeAnimation_v4wmw")
+states/base/position = Vector2(316, 100)
+states/climb/node = SubResource("AnimationNodeAnimation_dy30l")
+states/climb/position = Vector2(246, 244)
+states/fall/node = SubResource("AnimationNodeAnimation_7hu31")
+states/fall/position = Vector2(736, 395)
+states/idle/node = SubResource("AnimationNodeAnimation_y83dm")
+states/idle/position = Vector2(433, 100)
+states/jump/node = SubResource("AnimationNodeAnimation_04sft")
+states/jump/position = Vector2(736, 100)
+states/sit/node = SubResource("AnimationNodeAnimation_ud3ic")
+states/sit/position = Vector2(428, -131)
+states/walk/node = SubResource("AnimationNodeBlendTree_jueig")
+states/walk/position = Vector2(433, 395)
+transitions = ["Start", "base", SubResource("AnimationNodeStateMachineTransition_yn0ki"), "base", "idle", SubResource("AnimationNodeStateMachineTransition_tvrr7"), "idle", "sit", SubResource("AnimationNodeStateMachineTransition_o3fki"), "sit", "idle", SubResource("AnimationNodeStateMachineTransition_4csbf"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_cj810"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_e37rp"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_hn8d7"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_8acbt"), "climb", "idle", SubResource("AnimationNodeStateMachineTransition_sbk2t"), "sit", "jump", SubResource("AnimationNodeStateMachineTransition_c56ng"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_4bgv4"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_w26fs"), "walk", "climb", SubResource("AnimationNodeStateMachineTransition_7cidd"), "climb", "walk", SubResource("AnimationNodeStateMachineTransition_kqaud"), "walk", "jump", SubResource("AnimationNodeStateMachineTransition_7i582"), "fall", "jump", SubResource("AnimationNodeStateMachineTransition_f4o6o"), "walk", "fall", SubResource("AnimationNodeStateMachineTransition_n8ome"), "fall", "walk", SubResource("AnimationNodeStateMachineTransition_oodwu")]
+graph_offset = Vector2(-146, 88)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_h42xa"]
 
 [node name="Character" type="RigidDynamicBody3D"]
 script = ExtResource("1_esdqo")
@@ -31,18 +149,37 @@ script = ExtResource("3_hg7pc")
 [node name="StairsMotion" type="Node" parent="."]
 script = ExtResource("4_a76vo")
 
+[node name="CharacterAnimator" type="Node" parent="."]
+script = ExtResource("6_5s0gs")
+
 [node name="Bottom" type="Position3D" parent="."]
 
-[node name="Body" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-mesh = SubResource("CapsuleMesh_5avuo")
-skeleton = NodePath("")
-
-[node name="Eyes" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 2.33689, -0.504142)
-mesh = SubResource("CapsuleMesh_7pt87")
-skeleton = NodePath("")
-
 [node name="Capsule" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-shape = SubResource("CapsuleShape3D_xpmer")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+shape = SubResource("CapsuleShape3D_pp1wc")
+
+[node name="Rig" parent="." instance=ExtResource("6_s8jgh")]
+
+[node name="Skeleton3D" parent="Rig/Armature" index="0"]
+bones/0/position = Vector3(-4.38876e-08, 1.62778, 0.0280226)
+bones/0/rotation = Quaternion(-0.0210637, -9.61779e-09, -9.61779e-09, 0.999778)
+bones/1/rotation = Quaternion(0.818468, 0.374048, 0.390148, -0.194892)
+bones/3/rotation = Quaternion(0.818468, -0.374048, -0.390148, -0.194892)
+bones/5/rotation = Quaternion(0.0269512, -0.0422641, -0.00114049, 0.998742)
+bones/6/rotation = Quaternion(0.713487, 0.0393532, 0.695877, -0.0717236)
+bones/8/rotation = Quaternion(0.890198, -0.056306, -0.448716, -0.0550599)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rig/Armature" index="1"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_raqf0")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="Rig/Armature" index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_a53qm")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_h42xa")
+parameters/walk/walk_speed/scale = 1.0
+
+[editable path="Rig"]

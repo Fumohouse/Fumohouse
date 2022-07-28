@@ -6,8 +6,9 @@ extends CharacterMotion
 
 @export_range(0, 1000) var gravity := 50.0
 @export_range(0, 50) var jump_height := 4.5
+@export_range(0, 1) var jump_forgiveness := 0.2
 
-@export_range(0, 1) var falling_time := 0.2
+@export_range(0, 1) var falling_time := 0.3
 @export_range(0, 10) var falling_altitude := 2
 
 var _velocity: Vector3
@@ -25,18 +26,19 @@ func handle_cancel(_ctx: MotionContext):
 
 func process_motion(ctx: MotionContext, delta: float):
 	var character := ctx.character
+	var was_jumping := character.is_state(Character.CharacterState.JUMPING)
 
-	if character.is_grounded and not character.is_state(Character.CharacterState.JUMPING):
+	if character.is_grounded and not was_jumping:
 		_velocity = Vector3.ZERO
-
-		if Input.is_action_pressed("move_jump"):
-			_velocity = Vector3.UP * _get_jump_velocity()
-			ctx.new_state |= Character.CharacterState.JUMPING
 	else:
 		_velocity += Vector3.DOWN * gravity * delta
 
-	# Persist jump state until touched ground
-	if character.is_state(Character.CharacterState.JUMPING) and _velocity.y > 0:
+	if Input.is_action_pressed("move_jump") and _airborne_time < jump_forgiveness and not was_jumping:
+		_velocity = Vector3.UP * _get_jump_velocity()
+		ctx.new_state |= Character.CharacterState.JUMPING
+
+	# Persist jump state until falling
+	if character.is_state(Character.CharacterState.JUMPING) and _velocity.y >= 0:
 		ctx.new_state |= Character.CharacterState.JUMPING
 
 	ctx.offset += _velocity * delta
@@ -46,7 +48,7 @@ func process_motion(ctx: MotionContext, delta: float):
 		_airborne_time = 0
 	else:
 		_airborne_time += delta
-		if _airborne_time > falling_time and character.velocity.y < 0:
+		if _airborne_time > falling_time and _velocity.y < 0:
 			if character.is_state(Character.CharacterState.FALLING):
 				ctx.new_state |= Character.CharacterState.FALLING
 			else:
