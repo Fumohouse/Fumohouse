@@ -141,7 +141,7 @@ states/sit/position = Vector2(428, -131)
 states/walk/node = SubResource("AnimationNodeBlendTree_jueig")
 states/walk/position = Vector2(433, 395)
 transitions = ["Start", "base", SubResource("AnimationNodeStateMachineTransition_yn0ki"), "base", "idle", SubResource("AnimationNodeStateMachineTransition_tvrr7"), "idle", "sit", SubResource("AnimationNodeStateMachineTransition_o3fki"), "sit", "idle", SubResource("AnimationNodeStateMachineTransition_4csbf"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_cj810"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_e37rp"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_hn8d7"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_8acbt"), "sit", "jump", SubResource("AnimationNodeStateMachineTransition_c56ng"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_4bgv4"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_w26fs"), "walk", "jump", SubResource("AnimationNodeStateMachineTransition_7i582"), "fall", "jump", SubResource("AnimationNodeStateMachineTransition_f4o6o"), "walk", "fall", SubResource("AnimationNodeStateMachineTransition_n8ome"), "fall", "walk", SubResource("AnimationNodeStateMachineTransition_oodwu"), "climb", "idle", SubResource("AnimationNodeStateMachineTransition_ikqu1"), "walk", "climb", SubResource("AnimationNodeStateMachineTransition_v3a4n"), "climb", "walk", SubResource("AnimationNodeStateMachineTransition_fqc0a")]
-graph_offset = Vector2(-117, 91)
+graph_offset = Vector2(-143, 22)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_h42xa"]
 

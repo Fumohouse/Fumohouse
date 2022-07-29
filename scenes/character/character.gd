@@ -16,6 +16,8 @@ var _camera_path_internal: NodePath
 @export_range(0, 1) var margin := 0.001
 @export_range(0, 90, 1, "degrees") var max_ground_angle := 45.0
 
+@export_range(0, 100) var push_force := 70.0
+
 
 enum CharacterState {
 	NONE = 0,
@@ -116,6 +118,11 @@ func _check_grounding(snap: bool):
 		ground_normal = Vector3.ZERO
 
 
+static func _should_push(rid: RID):
+	var mode := PhysicsServer3D.body_get_mode(rid)
+	return mode == PhysicsServer3D.BODY_MODE_DYNAMIC or mode == PhysicsServer3D.BODY_MODE_DYNAMIC_LINEAR
+
+
 func _update_walls():
 	walls.clear()
 
@@ -133,7 +140,7 @@ func _update_walls():
 
 	for i in range(wall_result.get_collision_count()):
 		var normal := wall_result.get_collision_normal(i)
-		if not is_stable_ground(normal):
+		if not is_stable_ground(normal) and not _should_push(wall_result.get_collider_rid(i)):
 			var wall_info := WallInfo.new()
 			wall_info.point = wall_result.get_collision_point(i)
 			wall_info.normal = wall_result.get_collision_normal(i)
@@ -154,6 +161,17 @@ func _move(delta: float, offset: Vector3):
 
 		if result:
 			var normal := result.get_normal()
+
+			var rid := result.get_collider_rid()
+
+			if _should_push(rid):
+				var body_state := PhysicsServer3D.body_get_direct_state(rid)
+
+				body_state.apply_force(
+					remaining.normalized() * push_force,
+					result.get_position() - body_state.transform.origin
+				)
+
 			remaining = result.get_remainder().slide(normal)
 		else:
 			break
