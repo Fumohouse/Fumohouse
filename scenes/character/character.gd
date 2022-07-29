@@ -165,6 +165,10 @@ func _move(delta: float, offset: Vector3):
 			var rid := result.get_collider_rid()
 
 			if _should_push(rid):
+				# TODO: If moving faster than a certain velocity (i.e. related to movement velocity),
+				# apply traditional collision resolution (impulse, etc.)
+				# https://www.euclideanspace.com/physics/dynamics/collision/threed/index.htm
+
 				var body_state := PhysicsServer3D.body_get_direct_state(rid)
 
 				body_state.apply_force(

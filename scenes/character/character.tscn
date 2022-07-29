@@ -160,11 +160,11 @@ script = ExtResource("3_hg7pc")
 [node name="StairsMotion" type="Node" parent="."]
 script = ExtResource("4_a76vo")
 
-[node name="CharacterAnimator" type="Node" parent="."]
-script = ExtResource("6_5s0gs")
-
 [node name="PlatformMotion" type="Node" parent="."]
 script = ExtResource("7_ecy85")
+
+[node name="CharacterAnimator" type="Node" parent="."]
+script = ExtResource("6_5s0gs")
 
 [node name="Bottom" type="Position3D" parent="."]
 
