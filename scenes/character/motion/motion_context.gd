@@ -23,6 +23,7 @@ var cancelled_states: int = 0
 # Output
 var new_state: int = Character.CharacterState.NONE
 var offset: Vector3
+var angular_offset: float
 
 
 func cancel(processor_class):

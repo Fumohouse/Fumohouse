@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bogedwkbf18l2"]
+[gd_scene load_steps=49 format=3 uid="uid://bogedwkbf18l2"]
 
 [ext_resource type="Script" path="res://scenes/character/character.gd" id="1_esdqo"]
 [ext_resource type="Script" path="res://scenes/character/motion/horizontal_motion.gd" id="2_chbw4"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/character/motion/stairs_motion.gd" id="4_a76vo"]
 [ext_resource type="Script" path="res://scenes/character/character_animator.gd" id="6_5s0gs"]
 [ext_resource type="PackedScene" uid="uid://cccoh31mw8mn7" path="res://assets/models/rig/Rig.glb" id="6_s8jgh"]
+[ext_resource type="Script" path="res://scenes/character/motion/platform_motion.gd" id="7_ecy85"]
 [ext_resource type="Animation" uid="uid://dil87a12bdo51" path="res://assets/models/rig/animations/base.tres" id="7_xw4fc"]
 [ext_resource type="Animation" uid="uid://bvrgnfyuy7ccg" path="res://assets/models/rig/animations/idle.tres" id="8_l8522"]
 [ext_resource type="Animation" uid="uid://cxqf8ebitk1qc" path="res://assets/models/rig/animations/jump.tres" id="9_j6ru4"]
@@ -161,6 +162,9 @@ script = ExtResource("4_a76vo")
 
 [node name="CharacterAnimator" type="Node" parent="."]
 script = ExtResource("6_5s0gs")
+
+[node name="PlatformMotion" type="Node" parent="."]
+script = ExtResource("7_ecy85")
 
 [node name="Bottom" type="Position3D" parent="."]
 

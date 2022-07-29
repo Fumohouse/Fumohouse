@@ -30,6 +30,7 @@ enum CharacterState {
 var state: CharacterState = CharacterState.IDLE
 
 var is_grounded := false
+var ground_rid: RID
 var ground_normal: Vector3
 var ground_override := {}
 
@@ -100,6 +101,7 @@ func _check_grounding(snap: bool):
 			if is_stable_ground(normal):
 				found_ground = true
 				is_grounded = true
+				ground_rid = result.get_collider_rid(i)
 				ground_normal = normal
 
 		if is_grounded and snap:
@@ -183,6 +185,8 @@ func _physics_process(delta: float):
 				processor.process_motion(ctx, delta)
 
 	_move(delta, ctx.offset)
+	rotate_y(ctx.angular_offset)
+
 	_update_walls()
 
 	if ctx.new_state == CharacterState.NONE:

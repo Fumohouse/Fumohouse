@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://k5gocgurmhpj"]
+[gd_scene load_steps=13 format=3 uid="uid://k5gocgurmhpj"]
 
 [ext_resource type="Material" uid="uid://b836v0fldqg70" path="res://scenes/playground/prototype.tres" id="1_abhm1"]
 [ext_resource type="Script" path="res://scenes/character/camera_controller.gd" id="1_g4oa1"]
@@ -10,6 +10,15 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v2ei6"]
 size = Vector3(2, 5, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hwuon"]
+top_radius = 5.0
+bottom_radius = 5.0
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mrxia"]
+height = 1.0
+radius = 5.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21oih"]
 
@@ -249,6 +258,16 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 2.
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Area"]
 shape = SubResource("BoxShape3D_v2ei6")
 
+[node name="Platform1" type="StaticBody3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+constant_angular_velocity = Vector3(0, 3.14159, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Platform1"]
+mesh = SubResource("CylinderMesh_hwuon")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Platform1"]
+shape = SubResource("CylinderShape3D_mrxia")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30624, 2.50434)
 current = true
@@ -265,7 +284,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 camera_path = NodePath("../Camera3D")
 
 [node name="RigidDynamicBody3D" type="RigidDynamicBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -3.871)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -6.86587)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidDynamicBody3D"]
 shape = SubResource("BoxShape3D_21oih")
