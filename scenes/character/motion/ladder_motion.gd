@@ -9,6 +9,8 @@ extends CharacterMotion
 
 @export_range(0, 2) var break_height := 0.5
 
+var is_moving := false
+
 
 static func get_id() -> StringName:
 	return &"ladder"
@@ -66,12 +68,15 @@ func process_motion(ctx: MotionContext, delta: float):
 	var direction_flat := ctx.cam_basis_flat * ctx.input_direction
 	var movement_angle := direction_flat.angle_to(ladder_fwd)
 
+	is_moving = false
+
 	if direction_flat.length_squared() > 0:
 		var offset := ladder_basis.y * climb_velocity * delta
 
 		if movement_angle < deg2rad(max_angle):
 			# Add a forward velocity to make the exit (at the top) much smoother
 			ctx.offset += offset + ladder_fwd * forward_velocity * delta
+			is_moving = true
 		elif absf(PI - movement_angle) < deg2rad(max_angle):
 			ctx.offset -= offset
 
@@ -86,6 +91,8 @@ func process_motion(ctx: MotionContext, delta: float):
 
 			if not ground_result.has("normal") or not character.is_stable_ground(ground_result.normal):
 				ctx.cancel(HorizontalMotion)
+
+			is_moving = true
 
 	ctx.cancel(PhysicalMotion)
 	ctx.cancel(StairsMotion)

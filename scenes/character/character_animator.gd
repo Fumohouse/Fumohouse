@@ -3,11 +3,13 @@ extends Node
 
 
 const WALK_SPEED := "parameters/walk/walk_speed/scale"
+const CLIMB_SPEED := "parameters/climb/climb_speed/scale"
 
 @export_range(0, 1) var min_state_time := 0.02
 
 @onready var _character: Character = $".."
 @onready var _horizontal_motion: HorizontalMotion = $"../HorizontalMotion"
+@onready var _ladder_motion: LadderMotion = $"../LadderMotion"
 @onready var _animator: AnimationTree = $"../Rig/Armature/AnimationTree"
 @onready var _playback: AnimationNodeStateMachinePlayback = _animator.get("parameters/playback")
 
@@ -28,6 +30,7 @@ func _physics_process(delta: float):
 	velocity_flat.y = 0
 
 	_animator.set(WALK_SPEED, velocity_flat.length() / _horizontal_motion.movement_speed)
+	_animator.set(CLIMB_SPEED, 1.0 if _ladder_motion.is_moving else 0.0)
 
 	for state in _nodes.keys():
 		if not _character.is_state(state):
