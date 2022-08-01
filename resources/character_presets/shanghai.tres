@@ -7,7 +7,7 @@ script = ExtResource("1_nokr1")
 eyebrows = &"curved"
 eyes = &"curved_hooks"
 mouth = &"straight"
-eyes_color = Color(0.219608, 0.384314, 0.878431, 1)
+eyes_color = Color(0.129412, 0.352941, 0.647059, 1)
 size = &"doll"
 attached_parts = {
 "shanghai_bow": null,
