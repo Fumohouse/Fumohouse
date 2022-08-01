@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://dltssgmvw67v8"]
+
+[ext_resource type="PackedScene" uid="uid://cur1cpq181a3p" path="res://scenes/character/character.tscn" id="1_risis"]
+[ext_resource type="Theme" uid="uid://dknqom53w812u" path="res://scenes/debug_menu/debug_theme.tres" id="2_hqkhu"]
+[ext_resource type="PackedScene" uid="uid://dxbher3oyjg8p" path="res://assets/models/characters/momiji/momiji_hair.glb" id="3_rncs1"]
+[ext_resource type="PackedScene" uid="uid://c1mmo616qxheq" path="res://assets/models/characters/momiji/momiji_outfit_torso.tscn" id="4_7jd86"]
+[ext_resource type="PackedScene" uid="uid://dvn2saau2pfnh" path="res://assets/models/characters/momiji/momiji_hat.glb" id="4_rnm5c"]
+[ext_resource type="PackedScene" uid="uid://c1gyhxe212gkt" path="res://assets/models/characters/momiji/momiji_tail.glb" id="7_yl1du"]
+[ext_resource type="PackedScene" uid="uid://dsjporpouovy6" path="res://assets/models/characters/momiji/momiji_ears.glb" id="8_5ayte"]
+[ext_resource type="PackedScene" uid="uid://cejhtdg2ycrqa" path="res://assets/models/characters/momiji/momiji_sleeve.glb" id="9_dp8hd"]
+[ext_resource type="PackedScene" uid="uid://c40e7ipntnosa" path="res://assets/models/characters/generic/shoe_1.tscn" id="10_xidys"]
+[ext_resource type="PackedScene" uid="uid://buohjg3lvr682" path="res://assets/models/characters/generic/sock_1.tscn" id="11_y65r0"]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_en86v"]
+
+[node name="Character" instance=ExtResource("1_risis")]
+
+[node name="Notes" type="RichTextLabel" parent="." index="0"]
+anchor_bottom = 1.0
+offset_right = 331.0
+theme = ExtResource("2_hqkhu")
+bbcode_enabled = true
+text = "[b]Notes[/b]
+Shoes and socks have no material because they are intended to be usable in other characters."
+
+[node name="Torso" parent="Appearance" index="0"]
+transform = Transform3D(0.556322, 1.09242e-08, -1.04734e-08, -1.04734e-08, 0.555829, 0.0234312, 1.09242e-08, -0.0234312, 0.555829, -2.44156e-08, 0.837981, 0.0155896)
+
+[node name="momiji_tail" parent="Appearance/Torso" index="0" instance=ExtResource("7_yl1du")]
+transform = Transform3D(1.79752, -3.38404e-08, 3.5297e-08, 3.5297e-08, 1.79592, -0.075708, -3.38404e-08, 0.075708, 1.79592, -0.0179752, 1.3664, 1.13241)
+
+[node name="momiji_outfit_torso" parent="Appearance/Torso" index="1" instance=ExtResource("4_7jd86")]
+
+[node name="Head" parent="Appearance" index="1"]
+transform = Transform3D(0.554333, -4.16376e-09, -0.047, -0.000555836, 0.556283, -0.00655577, 0.0469967, 0.00657929, 0.554295, -3.21848e-09, 1.96059, -0.0317344)
+
+[node name="momiji_hair" parent="Appearance/Head" index="0" instance=ExtResource("3_rncs1")]
+transform = Transform3D(1.79109, -0.00179595, 0.15185, -1.43678e-08, 1.79739, 0.0212582, -0.15186, -0.0211822, 1.79097, 0.02145, 1.65323, 0.189158)
+
+[node name="momiji_hat" parent="Appearance/Head" index="1" instance=ExtResource("4_rnm5c")]
+transform = Transform3D(1.79109, -0.00179595, 0.15185, -1.43678e-08, 1.79739, 0.0212582, -0.15186, -0.0211822, 1.79097, 0.00304416, 1.01684, 0.0359037)
+
+[node name="momiji_ears" parent="Appearance/Head" index="2" instance=ExtResource("8_5ayte")]
+transform = Transform3D(1.79109, -0.00179595, 0.15185, -1.43678e-08, 1.79739, 0.0212582, -0.15186, -0.0211822, 1.79097, 0.0220559, 2.35695, 0.260134)
+
+[node name="RArm" parent="Appearance" index="2"]
+transform = Transform3D(0.231288, 0.425234, 0.274183, 0.274183, -0.358707, 0.325034, 0.425234, -3.1605e-07, -0.358707, 0.201908, 1.86605, 0.0109231)
+
+[node name="momiji_rsleeve" parent="Appearance/RArm" index="0" instance=ExtResource("9_dp8hd")]
+transform = Transform3D(1.15901, -0.00302243, 1.37396, -0.00468642, -1.79751, -9.51992e-07, 1.37396, -0.0035814, -1.15901, -0.000709891, 0.932536, -0.00105691)
+
+[node name="LArm" parent="Appearance" index="3"]
+transform = Transform3D(0.231288, -0.425234, -0.274183, -0.274183, -0.358707, 0.325034, -0.425234, -2.99471e-07, -0.358707, -0.201911, 1.86605, 0.010923)
+
+[node name="momiji_lsleeve" parent="Appearance/LArm" index="0" instance=ExtResource("9_dp8hd")]
+transform = Transform3D(1.15901, 0.00302249, -1.37396, 0.00468636, -1.79751, -9.0872e-07, -1.37396, -0.00358135, -1.15901, 0.00071156, 0.932532, -0.00105929)
+
+[node name="RHand" parent="Appearance" index="4"]
+transform = Transform3D(0.230573, 0.426168, 0.273335, 0.274786, -0.357597, 0.325748, 0.425234, -3.53873e-07, -0.358707, 0.896793, 1.27987, 0.0109225)
+
+[node name="LHand" parent="Appearance" index="5"]
+transform = Transform3D(0.230573, -0.426168, -0.273335, -0.274785, -0.357597, 0.325748, -0.425234, -3.6851e-07, -0.358707, -0.896795, 1.27987, 0.0109224)
+
+[node name="RLeg" parent="Appearance" index="6"]
+transform = Transform3D(0.0158077, 0.0867737, 0.549286, -0.000871168, -0.549503, 0.0868331, 0.5561, -0.00332747, -0.015478, 0.213903, 1.02528, 0.0236283)
+
+[node name="rshoe" parent="Appearance/RLeg" index="0" instance=ExtResource("10_xidys")]
+transform = Transform3D(0.0505013, -0.0081382, 1.79678, 0.0932476, -1.79507, -0.0107513, 1.79439, 0.0935118, -0.0500103, 0.00444679, 1.67644, 0.0337814)
+
+[node name="rsock" parent="Appearance/RLeg" index="1" instance=ExtResource("11_y65r0")]
+transform = Transform3D(0.0505013, -0.0081382, 1.79678, 0.0932476, -1.79507, -0.0107513, 1.79439, 0.0935118, -0.0500103, 0.00389504, 1.55197, 0.0407169)
+
+[node name="LLeg" parent="Appearance" index="7"]
+transform = Transform3D(0.328767, -0.0832589, -0.440992, -0.0471193, -0.550047, 0.0687198, -0.4463, -0.00325995, -0.332112, -0.213903, 1.02528, 0.0236283)
+
+[node name="lshoe" parent="Appearance/LLeg" index="0" instance=ExtResource("10_xidys")]
+transform = Transform3D(1.07237, -0.0403749, -1.44204, -0.0817695, -1.79563, -0.0105331, -1.44028, 0.0718824, -1.07308, -0.0292792, 1.67619, 0.0338179)
+
+[node name="lsock" parent="Appearance/LLeg" index="1" instance=ExtResource("11_y65r0")]
+transform = Transform3D(1.07237, -0.0403749, -1.44204, -0.0817695, -1.79563, -0.0105331, -1.44028, 0.0718824, -1.07308, -0.0323483, 1.55167, 0.0391645)
+
+[node name="RFoot" parent="Appearance" index="8"]
+transform = Transform3D(0.129686, 0.0581509, 0.537861, -0.540824, 1.78232e-07, 0.1304, 0.0136303, -0.553277, 0.0565313, 0.380817, -0.0317184, 0.0172277)
+
+[node name="LFoot" parent="Appearance" index="9"]
+transform = Transform3D(0.415108, -0.0581513, -0.365783, 0.367799, -2.07246e-07, 0.417395, -0.0436282, -0.553273, 0.0384435, -0.373897, -0.0317185, 0.0173638)
+
+[node name="Skeleton3D" parent="Rig/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.0210637, -9.61779e-09, -9.61779e-09, 0.999778)
+bones/1/rotation = Quaternion(0.818468, 0.374048, 0.390148, -0.194892)
+bones/3/rotation = Quaternion(0.818468, -0.374048, -0.390148, -0.194892)
+bones/5/rotation = Quaternion(0.0269512, -0.0422641, -0.00114049, 0.998742)
+bones/6/rotation = Quaternion(0.713487, 0.0393532, 0.695877, -0.0717236)
+bones/8/rotation = Quaternion(0.890198, -0.056306, -0.448716, -0.0550599)
+
+[node name="AnimationTree" parent="Rig/Armature" index="2"]
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_en86v")
+
+[editable path="Rig"]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dw50cdfk8iqem"]
+
+[ext_resource type="Script" path="res://scenes/character/appearance/parts/single_part.gd" id="1_hweoq"]
+
+[resource]
+script = ExtResource("1_hweoq")
+id = &"momiji_hair"
+_scope = 3
+scene_path = "momiji/momiji_hair.glb"
+transform = Transform3D(1.79109, -0.00179595, 0.15185, -1.43678e-08, 1.79739, 0.0212582, -0.15186, -0.0211822, 1.79097, 0.02145, 1.65323, 0.189158)
+_bone = 1

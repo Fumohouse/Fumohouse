@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c40e7ipntnosa"]
+
+[ext_resource type="PackedScene" uid="uid://cldho6jusdrca" path="res://assets/models/characters/generic/shoe_1.glb" id="1_01st6"]
+[ext_resource type="Script" path="res://scenes/character/appearance/parts/customization/single_color.gd" id="2_80cdm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wx8mu"]
+resource_local_to_scene = true
+
+[node name="shoe_1" instance=ExtResource("1_01st6")]
+script = ExtResource("2_80cdm")
+mesh = NodePath("Shoe")
+
+[node name="Shoe" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_wx8mu")

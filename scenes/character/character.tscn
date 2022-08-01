@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bogedwkbf18l2"]
+[gd_scene load_steps=51 format=3 uid="uid://cur1cpq181a3p"]
 
 [ext_resource type="Script" path="res://scenes/character/character.gd" id="1_esdqo"]
 [ext_resource type="Script" path="res://scenes/character/motion/horizontal_motion.gd" id="2_chbw4"]
@@ -6,10 +6,12 @@
 [ext_resource type="Script" path="res://scenes/character/motion/physical_motion.gd" id="3_hg7pc"]
 [ext_resource type="Script" path="res://scenes/character/motion/stairs_motion.gd" id="4_a76vo"]
 [ext_resource type="Script" path="res://scenes/character/character_animator.gd" id="6_5s0gs"]
-[ext_resource type="PackedScene" uid="uid://cccoh31mw8mn7" path="res://assets/models/rig/Rig.glb" id="6_s8jgh"]
+[ext_resource type="PackedScene" uid="uid://dp8vul3xmrdtv" path="res://assets/models/rig/Rig.glb" id="6_s8jgh"]
 [ext_resource type="Script" path="res://scenes/character/motion/platform_motion.gd" id="7_ecy85"]
 [ext_resource type="Animation" uid="uid://dil87a12bdo51" path="res://assets/models/rig/animations/base.tres" id="7_xw4fc"]
+[ext_resource type="Script" path="res://scenes/character/appearance/appearance_manager.gd" id="8_ip6d1"]
 [ext_resource type="Animation" uid="uid://bvrgnfyuy7ccg" path="res://assets/models/rig/animations/idle.tres" id="8_l8522"]
+[ext_resource type="Resource" uid="uid://d2erpcdyaexcj" path="res://resources/character_presets/momiji.tres" id="9_6jjgu"]
 [ext_resource type="Animation" uid="uid://cxqf8ebitk1qc" path="res://assets/models/rig/animations/jump.tres" id="9_j6ru4"]
 [ext_resource type="Animation" uid="uid://dov1ah8fuvvkl" path="res://assets/models/rig/animations/sit.tres" id="10_jftow"]
 [ext_resource type="Animation" uid="uid://dmmw2cet3wfh4" path="res://assets/models/rig/animations/walk.tres" id="11_wpe27"]
@@ -165,6 +167,80 @@ script = ExtResource("7_ecy85")
 
 [node name="CharacterAnimator" type="Node" parent="."]
 script = ExtResource("6_5s0gs")
+
+[node name="Appearance" type="Node" parent="."]
+script = ExtResource("8_ip6d1")
+appearance = ExtResource("9_6jjgu")
+
+[node name="Torso" type="BoneAttachment3D" parent="Appearance"]
+transform = Transform3D(0.556322, 1.09242e-08, -1.04734e-08, -1.04734e-08, 0.555829, 0.0234312, 1.09242e-08, -0.0234312, 0.555829, -2.44156e-08, 0.837981, 0.0155896)
+bone_name = "Torso"
+bone_idx = 0
+use_external_skeleton = true
+external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
+
+[node name="Head" type="BoneAttachment3D" parent="Appearance"]
+transform = Transform3D(0.554333, -4.16376e-09, -0.047, -0.000555836, 0.556283, -0.00655577, 0.0469967, 0.00657929, 0.554295, -3.21848e-09, 1.96059, -0.0317344)
+bone_name = "Head"
+bone_idx = 5
+use_external_skeleton = true
+external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
+
+[node name="RArm" type="BoneAttachment3D" parent="Appearance"]
+transform = Transform3D(0.231288, 0.425234, 0.274183, 0.274183, -0.358707, 0.325034, 0.425234, -3.1605e-07, -0.358707, 0.201908, 1.86605, 0.0109231)
+bone_name = "RArm"
+bone_idx = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
+
+[node name="LArm" type="BoneAttachment3D" parent="Appearance"]
+transform = Transform3D(0.231288, -0.425234, -0.274183, -0.274183, -0.358707, 0.325034, -0.425234, -2.99471e-07, -0.358707, -0.201911, 1.86605, 0.010923)
+bone_name = "LArm"
+bone_idx = 3
+use_external_skeleton = true
+external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
+
+[node name="RHand" type="BoneAttachment3D" parent="Appearance"]
+transform = Transform3D(0.230573, 0.426168, 0.273335, 0.274786, -0.357597, 0.325748, 0.425234, -3.53873e-07, -0.358707, 0.896793, 1.27987, 0.0109225)
+bone_name = "RHand"
+bone_idx = 2
+use_external_skeleton = true
+external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
+
+[node name="LHand" type="BoneAttachment3D" parent="Appearance"]
+transform = Transform3D(0.230573, -0.426168, -0.273335, -0.274785, -0.357597, 0.325748, -0.425234, -3.6851e-07, -0.358707, -0.896795, 1.27987, 0.0109224)
+bone_name = "LHand"
+bone_idx = 4
+use_external_skeleton = true
+external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
+
+[node name="RLeg" type="BoneAttachment3D" parent="Appearance"]
+transform = Transform3D(0.0158077, 0.0867737, 0.549286, -0.000871168, -0.549503, 0.0868331, 0.5561, -0.00332747, -0.015478, 0.213903, 1.02528, 0.0236283)
+bone_name = "RLeg"
+bone_idx = 6
+use_external_skeleton = true
+external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
+
+[node name="LLeg" type="BoneAttachment3D" parent="Appearance"]
+transform = Transform3D(0.328767, -0.0832589, -0.440992, -0.0471193, -0.550047, 0.0687198, -0.4463, -0.00325995, -0.332112, -0.213903, 1.02528, 0.0236283)
+bone_name = "LLeg"
+bone_idx = 8
+use_external_skeleton = true
+external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
+
+[node name="RFoot" type="BoneAttachment3D" parent="Appearance"]
+transform = Transform3D(0.129686, 0.0581509, 0.537861, -0.540824, 1.78232e-07, 0.1304, 0.0136303, -0.553277, 0.0565313, 0.380817, -0.0317184, 0.0172277)
+bone_name = "RFoot"
+bone_idx = 7
+use_external_skeleton = true
+external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
+
+[node name="LFoot" type="BoneAttachment3D" parent="Appearance"]
+transform = Transform3D(0.415108, -0.0581513, -0.365783, 0.367799, -2.07246e-07, 0.417395, -0.0436282, -0.553273, 0.0384435, -0.373897, -0.0317185, 0.0173638)
+bone_name = "LFoot"
+bone_idx = 9
+use_external_skeleton = true
+external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="Bottom" type="Position3D" parent="."]
 

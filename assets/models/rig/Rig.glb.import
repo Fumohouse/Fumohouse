@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cccoh31mw8mn7"
+uid="uid://dp8vul3xmrdtv"
 path="res://.godot/imported/Rig.glb-7f3ec4b355c40590ffc388fbceeed72c.scn"
 
 [deps]
@@ -26,6 +26,12 @@ animation/import=true
 animation/fps=30
 import_script/path=""
 _subresources={
+"materials": {
+"Face": {
+"use_external/enabled": false,
+"use_external/path": "res://scenes/character/appearance/face/face_material.tres"
+}
+},
 "meshes": {
 "Rig_Vert002": {
 "generate/lightmap_uv": 0,

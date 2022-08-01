@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dxjluc23kqj4r"]
+
+[ext_resource type="Script" path="res://scenes/character/appearance/parts/single_part.gd" id="1_d6gxl"]
+
+[resource]
+script = ExtResource("1_d6gxl")
+id = &"momiji_tail"
+_scope = 7
+scene_path = "momiji/momiji_tail.glb"
+transform = Transform3D(1.79752, -3.38404e-08, 3.5297e-08, 3.5297e-08, 1.79592, -0.075708, -3.38404e-08, 0.075708, 1.79592, -0.0179752, 1.3664, 1.13241)
+_bone = 0

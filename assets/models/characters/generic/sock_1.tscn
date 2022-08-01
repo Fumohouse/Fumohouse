@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://buohjg3lvr682"]
+
+[ext_resource type="PackedScene" uid="uid://8h7ooe4gus7k" path="res://assets/models/characters/generic/sock_1.glb" id="1_40vi0"]
+[ext_resource type="Script" path="res://scenes/character/appearance/parts/customization/single_color.gd" id="2_y4d08"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ngxh"]
+resource_local_to_scene = true
+
+[node name="sock_1" instance=ExtResource("1_40vi0")]
+script = ExtResource("2_y4d08")
+mesh = NodePath("Sock")
+
+[node name="Sock" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7ngxh")

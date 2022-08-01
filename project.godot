@@ -9,6 +9,11 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Resource",
+"class": &"Appearance",
+"language": &"GDScript",
+"path": "res://scenes/character/appearance/appearance.gd"
+}, {
 "base": "RichTextLabel",
 "class": &"AutosizeRichText",
 "language": &"GDScript",
@@ -44,6 +49,21 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scenes/debug_menu/debug_menu.gd"
 }, {
+"base": "Resource",
+"class": &"EyeStyle",
+"language": &"GDScript",
+"path": "res://scenes/character/appearance/face/eye_style.gd"
+}, {
+"base": "Resource",
+"class": &"FaceDatabase",
+"language": &"GDScript",
+"path": "res://scenes/character/appearance/face/face_database.gd"
+}, {
+"base": "Resource",
+"class": &"FacePartStyle",
+"language": &"GDScript",
+"path": "res://scenes/character/appearance/face/face_part_style.gd"
+}, {
 "base": "CharacterMotion",
 "class": &"HorizontalMotion",
 "language": &"GDScript",
@@ -59,6 +79,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scenes/character/motion/motion_context.gd"
 }, {
+"base": "PartData",
+"class": &"MultiPart",
+"language": &"GDScript",
+"path": "res://scenes/character/appearance/parts/multi_part.gd"
+}, {
+"base": "Resource",
+"class": &"PartData",
+"language": &"GDScript",
+"path": "res://scenes/character/appearance/parts/part_data.gd"
+}, {
 "base": "CharacterMotion",
 "class": &"PhysicalMotion",
 "language": &"GDScript",
@@ -68,6 +98,11 @@ _global_script_classes=[{
 "class": &"PlatformMotion",
 "language": &"GDScript",
 "path": "res://scenes/character/motion/platform_motion.gd"
+}, {
+"base": "PartData",
+"class": &"SinglePart",
+"language": &"GDScript",
+"path": "res://scenes/character/appearance/parts/single_part.gd"
 }, {
 "base": "CharacterMotion",
 "class": &"StairsMotion",
@@ -80,6 +115,7 @@ _global_script_classes=[{
 "path": "res://scripts/utils.gd"
 }]
 _global_script_class_icons={
+"Appearance": "",
 "AutosizeRichText": "",
 "Billboard": "",
 "CameraController": "",
@@ -87,11 +123,17 @@ _global_script_class_icons={
 "CharacterAnimator": "",
 "CharacterMotion": "",
 "DebugMenu": "",
+"EyeStyle": "",
+"FaceDatabase": "",
+"FacePartStyle": "",
 "HorizontalMotion": "",
 "LadderMotion": "",
 "MotionContext": "",
+"MultiPart": "",
+"PartData": "",
 "PhysicalMotion": "",
 "PlatformMotion": "",
+"SinglePart": "",
 "StairsMotion": "",
 "Utils": ""
 }
@@ -106,11 +148,16 @@ config/icon="res://assets/textures/logo.png"
 
 DebugInfo="*res://scenes/debug_menu/debug_info.tscn"
 DebugDraw="*res://singletons/debug_draw.gd"
+PartDatabase="*res://scenes/character/appearance/parts/part_database.gd"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/fumohouse/plugin.cfg")
 
 [input]
 

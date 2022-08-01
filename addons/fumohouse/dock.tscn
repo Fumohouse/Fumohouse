@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1qwnundnug1q"]
+
+[ext_resource type="Script" path="res://addons/fumohouse/dock.gd" id="1_d0xmb"]
+[ext_resource type="Script" path="res://addons/fumohouse/appearance_saver.gd" id="1_e74rc"]
+
+[node name="Fumohouse" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_d0xmb")
+
+[node name="AppearanceSaver" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_e74rc")
+
+[node name="Folder" type="LineEdit" parent="AppearanceSaver"]
+offset_right = 1024.0
+offset_bottom = 31.0
+placeholder_text = "Save Folder"
+
+[node name="Button" type="Button" parent="AppearanceSaver"]
+offset_top = 35.0
+offset_right = 1024.0
+offset_bottom = 66.0
+action_mode = 0
+text = "Save appearance data to .tres"
+
+[connection signal="pressed" from="AppearanceSaver/Button" to="AppearanceSaver" method="_on_button_pressed"]
