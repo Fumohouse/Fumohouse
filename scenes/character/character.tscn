@@ -19,6 +19,7 @@
 [ext_resource type="Animation" uid="uid://bthj7xkjro0cm" path="res://assets/models/rig/animations/fall.tres" id="14_ewtaw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pp1wc"]
+resource_local_to_scene = true
 height = 3.4
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_raqf0"]
@@ -242,8 +243,6 @@ bone_idx = 9
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
-[node name="Bottom" type="Position3D" parent="."]
-
 [node name="Capsule" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 shape = SubResource("CapsuleShape3D_pp1wc")
@@ -272,5 +271,7 @@ active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_h42xa")
 parameters/climb/climb_speed/scale = 1.0
 parameters/walk/walk_speed/scale = 1.0
+
+[connection signal="camera_updated" from="." to="Appearance" method="_on_character_camera_updated"]
 
 [editable path="Rig"]

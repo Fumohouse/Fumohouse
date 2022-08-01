@@ -84,7 +84,7 @@ func process_motion(ctx: MotionContext, delta: float):
 			# (and to avoid WALKING state)
 			# Check for the ground in case we are at a safe distance to break anyway
 			var ground_params := PhysicsRayQueryParameters3D.new()
-			ground_params.from = character.bottom_pos
+			ground_params.from = character.global_position
 			ground_params.to = ground_params.from + Vector3.DOWN * break_height
 
 			var ground_result := character.get_world_3d().direct_space_state.intersect_ray(ground_params)

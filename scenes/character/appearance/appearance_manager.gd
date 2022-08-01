@@ -14,8 +14,17 @@ const ATTACHMENTS := {
 	SinglePart.Bone.L_FOOT: "LFoot",
 }
 
+const SIZES := {
+	"doll": 0.5,
+	"shinmy": 0.75,
+	"base": 1.0,
+	"deka": 3.0,
+}
 
+@onready var _character: Character = get_parent()
+@onready var _rig: Node3D = $"../Rig"
 @onready var _skeleton: Skeleton3D = $"../Rig/Armature/Skeleton3D"
+@onready var _capsule: CollisionShape3D = $"../Capsule"
 
 @onready var _transparent_tex: Texture2D = preload("res://assets/textures/transparent.png")
 @onready var _face_material: ShaderMaterial = preload("face/face_material.tres").duplicate()
@@ -28,12 +37,19 @@ var _appearance: Appearance :
 
 var _attached_parts := {}
 
+var _base_camera_offset: float
+
 
 func _ready():
 	var face: MeshInstance3D = _skeleton.get_node("Face")
 	face.material_override = _face_material
 
 	load_appearance()
+
+
+func _on_character_camera_updated(camera):
+	_base_camera_offset = _character.camera.camera_offset
+	_load_scale()
 
 
 func _set_face_tex(uniform: StringName, texture: Texture2D):
@@ -147,6 +163,26 @@ func _load_parts():
 			detach(part_id)
 
 
+func _load_scale():
+	var size_id := _appearance.size
+	if not SIZES.has(size_id):
+		push_error("Unknown size: %s", size_id)
+		return
+
+	var scale: float = SIZES[size_id]
+	var scale_vec := Vector3.ONE * scale
+
+	_rig.scale = scale_vec
+	_rig.transform.origin = Vector3.ZERO
+
+	_capsule.scale = scale_vec
+	_capsule.transform.origin = Vector3.UP * _capsule.shape.height * scale / 2
+
+	if _character.camera:
+		_character.camera.camera_offset = _base_camera_offset * scale
+
+
 func load_appearance():
 	_load_face()
 	_load_parts()
+	_load_scale()

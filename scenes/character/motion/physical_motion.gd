@@ -53,7 +53,7 @@ func process_motion(ctx: MotionContext, delta: float):
 				ctx.new_state |= Character.CharacterState.FALLING
 			else:
 				var fall_ray_params := PhysicsRayQueryParameters3D.new()
-				fall_ray_params.from = character.bottom_pos
+				fall_ray_params.from = character.global_position
 				fall_ray_params.to = fall_ray_params.from + Vector3.DOWN * falling_altitude
 
 				var fall_ray_result = character.get_world_3d().direct_space_state.intersect_ray(fall_ray_params)

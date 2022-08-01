@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dqe38hccaibd1"]
+
+[ext_resource type="Script" path="res://scenes/character/appearance/parts/single_part.gd" id="1_25gmr"]
+
+[resource]
+script = ExtResource("1_25gmr")
+id = &"shanghai_hair"
+_scope = 3
+scene_path = "shanghai/shanghai_hair.glb"
+transform = Transform3D(1.79109, -0.00179595, 0.15185, -1.43678e-08, 1.79739, 0.0212582, -0.15186, -0.0211822, 1.79097, 0.0217178, 2.0824, 0.149763)
+_bone = 1

@@ -88,7 +88,7 @@ func _handle_stairs(ctx: MotionContext) -> bool:
 		var point := search_result.get_collision_point(i)
 
 		if point.y > highest_point.y:
-			var step_height := point.y - character.bottom_pos.y
+			var step_height := point.y - character.global_position.y
 
 			if step_height > max_step_height + MAX_STEP_MARGIN or \
 					step_height < MIN_STEP:

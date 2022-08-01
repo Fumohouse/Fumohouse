@@ -1,6 +1,7 @@
 class_name Character
 extends RigidDynamicBody3D
 # Reference: Godot physics_body_3d.cpp (MIT)
+# Assumes that the origin is at the bottom of the controller.
 
 
 var camera: CameraController
@@ -17,6 +18,8 @@ var _camera_path_internal: NodePath
 @export_range(0, 90, 1, "degrees") var max_ground_angle := 45.0
 
 @export_range(0, 100) var push_force := 70.0
+
+signal camera_updated(camera: CameraController)
 
 
 enum CharacterState {
@@ -46,11 +49,6 @@ class WallInfo:
 var walls: Array[WallInfo]
 
 var velocity := Vector3.ZERO
-
-@onready var _bottom_pos: Position3D = $Bottom
-var bottom_pos: Vector3 :
-	get:
-		return _bottom_pos.global_position
 
 @onready var capsule: CapsuleShape3D = $Capsule.shape
 var capsule_transform: Transform3D :
@@ -229,6 +227,7 @@ func _update_camera():
 	else:
 		camera = get_node(_camera_path_internal) as CameraController
 		camera.focus_node = self
+		camera_updated.emit(camera)
 
 
 func test_motion(params: PhysicsTestMotionParameters3D, result: PhysicsTestMotionResult3D = null) -> bool:

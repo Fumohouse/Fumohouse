@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bbe67ju26dhsp"]
+
+[ext_resource type="Script" path="res://scenes/character/appearance/appearance.gd" id="1_nokr1"]
+
+[resource]
+script = ExtResource("1_nokr1")
+eyebrows = &"curved"
+eyes = &"curved_hooks"
+mouth = &"straight"
+eyes_color = Color(0.219608, 0.384314, 0.878431, 1)
+size = &"doll"
+attached_parts = {
+"shanghai_bow": null,
+"shanghai_hair": null,
+"shanghai_outfit": null,
+"shoes_1": {
+"color": Color(0.109804, 0.109804, 0.109804, 1)
+}
+}

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://djc84f8m1abks"]
+
+[ext_resource type="Script" path="res://scenes/character/appearance/parts/single_part.gd" id="1_agsua"]
+
+[resource]
+script = ExtResource("1_agsua")
+id = &"shanghai_bow"
+_scope = 1
+scene_path = "shanghai/shanghai_bow.glb"
+transform = Transform3D(1.79109, 0.136517, 0.0665179, -1.43678e-08, 0.787349, -1.61591, -0.15186, 1.61013, 0.784535, 0.0800717, 2.65988, 0.944391)
+_bone = 1
