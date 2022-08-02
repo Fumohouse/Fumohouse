@@ -16,13 +16,14 @@ func _fh_initialize(config: Dictionary):
 		return
 
 	var material = _mesh.get_active_material(0)
-	if not (material is StandardMaterial3D):
-		return
+	var color = config.color if config.has("color") else default_color
 
-	(material as StandardMaterial3D).albedo_color = \
-			config.color \
-			if config.has("color") \
-			else default_color
+	if material is StandardMaterial3D:
+		(material as StandardMaterial3D).albedo_color = color
+	elif material is ShaderMaterial:
+		if material.get_shader_param("albedo") != null:
+			material.set_shader_param("albedo", color)
+
 
 
 func _update_mesh():

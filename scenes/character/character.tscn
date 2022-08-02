@@ -133,7 +133,7 @@ script = ExtResource("7_ecy85")
 [node name="CharacterAnimator" type="Node" parent="."]
 script = ExtResource("6_5s0gs")
 
-[node name="Appearance" type="Node" parent="."]
+[node name="Appearance" type="Node3D" parent="."]
 script = ExtResource("8_ip6d1")
 appearance = ExtResource("9_6jjgu")
 

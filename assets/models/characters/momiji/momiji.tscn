@@ -11,7 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://c40e7ipntnosa" path="res://assets/models/characters/generic/shoe_1.tscn" id="10_xidys"]
 [ext_resource type="PackedScene" uid="uid://buohjg3lvr682" path="res://assets/models/characters/generic/sock_1.tscn" id="11_y65r0"]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_en86v"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m5wdm"]
+resource_local_to_scene = true
+height = 3.4
 
 [node name="Character" instance=ExtResource("1_risis")]
 
@@ -85,6 +87,9 @@ transform = Transform3D(0.129686, 0.0581509, 0.537861, -0.540824, 1.78232e-07, 0
 [node name="LFoot" parent="Appearance" index="9"]
 transform = Transform3D(0.415108, -0.0581513, -0.365783, 0.367799, -2.07246e-07, 0.417395, -0.0436282, -0.553273, 0.0384435, -0.373897, -0.0317185, 0.0173638)
 
+[node name="Capsule" parent="." index="8"]
+shape = SubResource("CapsuleShape3D_m5wdm")
+
 [node name="Skeleton3D" parent="Rig/Armature" index="0"]
 bones/0/rotation = Quaternion(-0.0210637, -9.61779e-09, -9.61779e-09, 0.999778)
 bones/1/rotation = Quaternion(0.818468, 0.374048, 0.390148, -0.194892)
@@ -92,8 +97,5 @@ bones/3/rotation = Quaternion(0.818468, -0.374048, -0.390148, -0.194892)
 bones/5/rotation = Quaternion(0.0269512, -0.0422641, -0.00114049, 0.998742)
 bones/6/rotation = Quaternion(0.713487, 0.0393532, 0.695877, -0.0717236)
 bones/8/rotation = Quaternion(0.890198, -0.056306, -0.448716, -0.0550599)
-
-[node name="AnimationTree" parent="Rig/Armature" index="2"]
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_en86v")
 
 [editable path="Rig"]

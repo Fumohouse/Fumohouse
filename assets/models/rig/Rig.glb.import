@@ -24,7 +24,7 @@ meshes/lightmap_texel_size=0.2
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-import_script/path=""
+import_script/path="res://scripts/post_import_gltf.gd"
 _subresources={
 "materials": {
 "Face": {

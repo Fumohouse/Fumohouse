@@ -50,6 +50,10 @@ enum CameraMode {
 var camera_mode: CameraMode
 
 
+func get_focal_point() -> Vector3:
+	return focus_node.global_position + Vector3(0, camera_offset, 0)
+
+
 func _process_first_person():
 	if focus_node:
 		global_position = focus_node.global_position + Vector3(0, camera_offset, 0)
@@ -60,7 +64,7 @@ func _process_first_person():
 
 
 func _process_third_person():
-	var focal_point := focus_node.global_position + Vector3(0, camera_offset, 0)
+	var focal_point := get_focal_point()
 	var cam_basis := (Basis.IDENTITY
 		.rotated(Vector3.RIGHT, camera_rotation.x)
 		.rotated(Vector3.UP, camera_rotation.y))

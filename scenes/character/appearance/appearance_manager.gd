@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 
 
 const ATTACHMENTS := {
@@ -21,6 +21,15 @@ const SIZES := {
 	"deka": 3.0,
 }
 
+
+@export var appearance: Resource
+var _appearance: Appearance :
+	get:
+		return appearance as Appearance
+
+@export var camera_fade_begin := 1.5
+@export var camera_fade_end := 0.25
+
 @onready var _character: Character = get_parent()
 @onready var _rig: Node3D = $"../Rig"
 @onready var _skeleton: Skeleton3D = $"../Rig/Armature/Skeleton3D"
@@ -29,15 +38,20 @@ const SIZES := {
 @onready var _transparent_tex: Texture2D = preload("res://assets/textures/transparent.png")
 @onready var _face_material: ShaderMaterial = preload("face/face_material.tres").duplicate()
 @onready var _face_database: FaceDatabase = preload("res://resources/face_database.tres")
+@onready var _skin_material: ShaderMaterial = _skeleton.get_node("Head").get_active_material(0)
 
-@export var appearance: Resource
-var _appearance: Appearance :
-	get:
-		return appearance as Appearance
+
+class AttachedPartInfo:
+	var nodes: Array[Node3D]
+	var materials: Array[Material]
+
 
 var _attached_parts := {}
 
 var _base_camera_offset: float
+
+var _scale := 1.0
+var _alpha := 1.0
 
 
 func _ready():
@@ -45,6 +59,54 @@ func _ready():
 	face.material_override = _face_material
 
 	load_appearance()
+
+
+func _set_alpha(alpha: float):
+	const ALPHA_PARAM := &"alpha"
+
+	if _alpha == alpha:
+		return
+
+	_alpha = alpha
+
+	if _alpha == 0:
+		_rig.visible = false
+		visible = false
+		return
+
+	_rig.visible = true
+	visible = true
+
+	_face_material.set_shader_param(ALPHA_PARAM, alpha)
+	_skin_material.set_shader_param(ALPHA_PARAM, alpha)
+
+	for info in _attached_parts.values():
+		for material in info.materials:
+			if not (material is ShaderMaterial) or material.get_shader_param(ALPHA_PARAM) == null:
+				continue
+
+			material.set_shader_param(ALPHA_PARAM, alpha)
+
+
+func _physics_process(_delta: float):
+	if not _character.camera:
+		return
+
+	if _character.camera.camera_mode == CameraController.CameraMode.FIRST_PERSON:
+		_set_alpha(0.0)
+		return
+
+	var distance: float = (
+		_character.camera.global_position - _character.camera.get_focal_point()
+	).length()
+
+	var begin_scaled := camera_fade_begin * _scale
+	var end_scaled := camera_fade_end * _scale
+
+	var alpha := (distance - end_scaled) / (begin_scaled - end_scaled)
+	alpha = clampf(alpha, 0.0, 1.0)
+
+	_set_alpha(alpha)
 
 
 func _on_character_camera_updated(camera):
@@ -118,6 +180,21 @@ func _attach_single(part_info: SinglePart, config: Dictionary) -> Node3D:
 	return node
 
 
+func _search_materials(node: Node3D, list := []) -> Array[Material]:
+	if node is MeshInstance3D and node.mesh:
+		var mesh: Mesh = node.mesh
+
+		for i in mesh.get_surface_count():
+			var material: Material = node.get_active_material(i)
+			if material and material.resource_local_to_scene and not list.has(material):
+				list.append(material)
+
+	for child in node.get_children():
+		_search_materials(child, list)
+
+	return list
+
+
 func attach(id: StringName, config: Dictionary):
 	if _attached_parts.has(id):
 		return
@@ -128,21 +205,34 @@ func attach(id: StringName, config: Dictionary):
 		return
 
 	var attached_models: Array[Node3D] = []
+	var materials: Array[Material] = []
 
 	if info is SinglePart:
-		attached_models.append(_attach_single(info, config))
+		var node := _attach_single(info, config)
+		var found_mats := _search_materials(node)
+
+		attached_models.append(node)
+		materials.append_array(found_mats)
 	elif info is MultiPart:
 		for single_part_info in info.parts:
-			attached_models.append(_attach_single(single_part_info, config))
+			var node := _attach_single(single_part_info, config)
+			var found_mats := _search_materials(node)
 
-	_attached_parts[id] = attached_models
+			attached_models.append(node)
+			materials.append_array(found_mats)
+
+	var part_info := AttachedPartInfo.new()
+	part_info.nodes = attached_models
+	part_info.materials = materials
+
+	_attached_parts[id] = part_info
 
 
 func detach(id: StringName):
 	if not _attached_parts.has(id):
 		return
 
-	for model in _attached_parts[id]:
+	for model in _attached_parts[id].nodes:
 		model.queue_free()
 
 	_attached_parts.erase(id)
@@ -169,17 +259,17 @@ func _load_scale():
 		push_error("Unknown size: %s", size_id)
 		return
 
-	var scale: float = SIZES[size_id]
-	var scale_vec := Vector3.ONE * scale
+	_scale = SIZES[size_id]
+	var scale_vec := Vector3.ONE * _scale
 
 	_rig.scale = scale_vec
 	_rig.transform.origin = Vector3.ZERO
 
 	_capsule.scale = scale_vec
-	_capsule.transform.origin = Vector3.UP * _capsule.shape.height * scale / 2
+	_capsule.transform.origin = Vector3.UP * _capsule.shape.height * _scale / 2
 
 	if _character.camera:
-		_character.camera.camera_offset = _base_camera_offset * scale
+		_character.camera.camera_offset = _base_camera_offset * _scale
 
 
 func load_appearance():

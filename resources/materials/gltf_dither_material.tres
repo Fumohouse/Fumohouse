@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bm8js8u1sv0"]
+
+[ext_resource type="Shader" path="res://resources/materials/gltf_dither_material.gdshader" id="1_vpiuc"]
+[ext_resource type="Texture2D" uid="uid://j3p1obmff1ev" path="res://assets/textures/ordered_dither.png" id="2_2wd0j"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_vpiuc")
+shader_param/albedo = Color(1, 1, 1, 1)
+shader_param/alpha = 1.0
+shader_param/ao_light_affect = 0.0
+shader_param/ao_texture_channel = Plane(1, 0, 0, 0)
+shader_param/dither_texture = ExtResource("2_2wd0j")
+shader_param/emission = Color(0, 0, 0, 1)
+shader_param/emission_energy = 1.0
+shader_param/metallic = 0.0
+shader_param/metallic_texture_channel = Plane(1, 0, 0, 0)
+shader_param/normal_scale = 1.0
+shader_param/roughness = 1.0
+shader_param/specular = 0.5
+shader_param/uv1_offset = Vector3(0, 0, 0)
+shader_param/uv1_scale = Vector3(1, 1, 1)
