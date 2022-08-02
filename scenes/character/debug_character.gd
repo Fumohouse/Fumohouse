@@ -86,7 +86,7 @@ func _process(_delta: float):
 	# State
 	var states := Character.CharacterState.keys()
 
-	for idx in range(states.size()):
+	for idx in states.size():
 		if idx == 0: # NONE
 			continue
 

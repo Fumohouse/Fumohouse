@@ -136,7 +136,7 @@ func _update_walls():
 	var wall_result := PhysicsTestMotionResult3D.new()
 	test_motion(wall_params, wall_result)
 
-	for i in range(wall_result.get_collision_count()):
+	for i in wall_result.get_collision_count():
 		var normal := wall_result.get_collision_normal(i)
 		if not is_stable_ground(normal) and not _should_push(wall_result.get_collider_rid(i)):
 			var wall_info := WallInfo.new()

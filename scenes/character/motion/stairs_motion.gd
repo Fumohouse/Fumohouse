@@ -84,7 +84,7 @@ func _handle_stairs(ctx: MotionContext) -> bool:
 
 	const MIN_STEP := 0.01
 
-	for i in range(search_result.get_collision_count()):
+	for i in search_result.get_collision_count():
 		var point := search_result.get_collision_point(i)
 
 		if point.y > highest_point.y:
