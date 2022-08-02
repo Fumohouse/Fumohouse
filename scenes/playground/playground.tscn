@@ -1,10 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://k5gocgurmhpj"]
+[gd_scene load_steps=17 format=3 uid="uid://k5gocgurmhpj"]
 
 [ext_resource type="Material" uid="uid://b836v0fldqg70" path="res://scenes/playground/prototype.tres" id="1_abhm1"]
 [ext_resource type="Script" path="res://scenes/character/camera_controller.gd" id="1_g4oa1"]
 [ext_resource type="Texture2D" uid="uid://bhxf30yykrukk" path="res://assets/textures/logo_dark.png" id="2_agg1b"]
 [ext_resource type="PackedScene" uid="uid://cur1cpq181a3p" path="res://scenes/character/character.tscn" id="2_i53jf"]
-[ext_resource type="Resource" uid="uid://bbe67ju26dhsp" path="res://resources/character_presets/shanghai.tres" id="5_2oomr"]
 [ext_resource type="Script" path="res://scripts/billboard.gd" id="5_5g01e"]
 [ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="6_jvjd4"]
 [ext_resource type="PackedScene" uid="uid://c1jqrlkxogo24" path="res://scenes/character/debug_character.tscn" id="7_rycs7"]
@@ -38,12 +37,6 @@ height = 1.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mrxia"]
 height = 1.0
 radius = 5.0
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w6omv"]
-resource_local_to_scene = true
-height = 3.4
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_0fwi8"]
 
 [node name="Playground" type="Node3D"]
 
@@ -273,10 +266,10 @@ size = Vector3(0.5, 0.2, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.89512, 0)
 size = Vector3(0.5, 0.2, 2)
 
-[node name="Area" type="Area3D" parent="Map" groups=["ladder"]]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 2.5, 22)
+[node name="Area" type="Area3D" parent="Map/Ladder" groups=["ladder"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Area"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Ladder/Area"]
 shape = SubResource("BoxShape3D_v2ei6")
 
 [node name="Interactables" type="Node3D" parent="Map"]
@@ -328,45 +321,6 @@ shadow_blur = 2.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 camera_path = NodePath("../Camera3D")
 
-[node name="Appearance" parent="Character" index="6"]
-appearance = ExtResource("5_2oomr")
-
-[node name="Torso" parent="Character/Appearance" index="0"]
-transform = Transform3D(0.556322, 1.09242e-08, -1.04734e-08, -1.04734e-08, 0.555829, 0.0234312, 1.09242e-08, -0.0234312, 0.555829, -2.44156e-08, 5.83798, 0.0155896)
-
-[node name="Head" parent="Character/Appearance" index="1"]
-transform = Transform3D(0.554333, -4.16376e-09, -0.047, -0.000555836, 0.556283, -0.00655577, 0.0469967, 0.00657929, 0.554295, -3.21848e-09, 6.96059, -0.0317344)
-
-[node name="RArm" parent="Character/Appearance" index="2"]
-transform = Transform3D(0.231288, 0.425234, 0.274183, 0.274183, -0.358707, 0.325034, 0.425234, -3.1605e-07, -0.358707, 0.201908, 6.86604, 0.0109231)
-
-[node name="LArm" parent="Character/Appearance" index="3"]
-transform = Transform3D(0.231288, -0.425234, -0.274183, -0.274183, -0.358707, 0.325034, -0.425234, -2.99471e-07, -0.358707, -0.201911, 6.86604, 0.010923)
-
-[node name="RHand" parent="Character/Appearance" index="4"]
-transform = Transform3D(0.230573, 0.426168, 0.273335, 0.274786, -0.357597, 0.325748, 0.425234, -3.53873e-07, -0.358707, 0.896793, 6.27987, 0.0109225)
-
-[node name="LHand" parent="Character/Appearance" index="5"]
-transform = Transform3D(0.230573, -0.426168, -0.273335, -0.274785, -0.357597, 0.325748, -0.425234, -3.6851e-07, -0.358707, -0.896795, 6.27987, 0.0109224)
-
-[node name="RLeg" parent="Character/Appearance" index="6"]
-transform = Transform3D(0.0158077, 0.0867737, 0.549286, -0.000871168, -0.549503, 0.0868331, 0.5561, -0.00332747, -0.015478, 0.213903, 6.02528, 0.0236283)
-
-[node name="LLeg" parent="Character/Appearance" index="7"]
-transform = Transform3D(0.328767, -0.0832589, -0.440992, -0.0471193, -0.550047, 0.0687198, -0.4463, -0.00325995, -0.332112, -0.213903, 6.02528, 0.0236283)
-
-[node name="RFoot" parent="Character/Appearance" index="8"]
-transform = Transform3D(0.129686, 0.0581509, 0.537861, -0.540824, 1.78232e-07, 0.1304, 0.0136303, -0.553277, 0.0565313, 0.380817, 4.96828, 0.0172277)
-
-[node name="LFoot" parent="Character/Appearance" index="9"]
-transform = Transform3D(0.415108, -0.0581513, -0.365783, 0.367799, -2.07246e-07, 0.417395, -0.0436282, -0.553273, 0.0384435, -0.373897, 4.96828, 0.0173638)
-
-[node name="Capsule" parent="Character" index="7"]
-shape = SubResource("CapsuleShape3D_w6omv")
-
-[node name="AnimationTree" parent="Character/Rig/Armature" index="2"]
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_0fwi8")
-
 [node name="Billboard" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("5_5g01e")
@@ -412,6 +366,3 @@ metadata/_edit_layout_mode = 1
 
 [node name="DebugCharacter" parent="." instance=ExtResource("7_rycs7")]
 character = NodePath("../Character")
-
-[editable path="Character"]
-[editable path="Character/Rig"]
