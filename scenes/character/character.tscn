@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scenes/character/motion/physical_motion.gd" id="3_hg7pc"]
 [ext_resource type="Script" path="res://scenes/character/motion/stairs_motion.gd" id="4_a76vo"]
 [ext_resource type="Script" path="res://scenes/character/character_animator.gd" id="6_5s0gs"]
-[ext_resource type="PackedScene" uid="uid://dp8vul3xmrdtv" path="res://assets/models/rig/rig.glb" id="6_s8jgh"]
+[ext_resource type="PackedScene" uid="uid://drmlx8yx0kiqv" path="res://assets/models/rig/rig.glb" id="6_s8jgh"]
 [ext_resource type="Script" path="res://scenes/character/motion/platform_motion.gd" id="7_ecy85"]
 [ext_resource type="Animation" uid="uid://dil87a12bdo51" path="res://assets/models/rig/animations/base.tres" id="7_xw4fc"]
 [ext_resource type="Script" path="res://scenes/character/appearance/appearance_manager.gd" id="8_ip6d1"]

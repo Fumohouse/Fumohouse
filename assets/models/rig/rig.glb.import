@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dp8vul3xmrdtv"
+uid="uid://drmlx8yx0kiqv"
 path="res://.godot/imported/rig.glb-4e565b171bcf5a2fd034a54c391cc463.scn"
 
 [deps]
@@ -33,7 +33,7 @@ _subresources={
 }
 },
 "meshes": {
-"Rig_Vert002": {
+"rig_Vert002": {
 "generate/lightmap_uv": 0,
 "generate/lods": 2,
 "generate/shadow_meshes": 0,
