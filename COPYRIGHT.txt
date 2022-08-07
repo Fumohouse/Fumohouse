@@ -17,8 +17,8 @@ Source: https://github.com/Fumohouse/Fumohouse
 
 Files: *
 Comment: Fumohouse (source code)
-Copyright: 2021-2022, voided_etc
- 2021-2022, Fumohouse contributors
+Copyright: 2022, voided_etc
+ 2022, Fumohouse contributors
 License: Expat
 
 Files: *
@@ -51,7 +51,7 @@ License: CC-BY-NC-SA-4.0
 Files: assets/models/rig/animations/*.tres
 Comment: Fumo animations
 Copyright: 2021-2022, voided_etc
- 2021-2022, lefortune
+ 2022, lefortune
 License: CC-BY-NC-SA-4.0
 
 ########################
