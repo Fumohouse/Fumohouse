@@ -1,0 +1,7 @@
+[submodule "extensions/godot-cpp"]
+	path = extensions/godot-cpp
+	url = https://github.com/godotengine/godot-cpp
+[submodule "extensions/luau-script/extern/luau"]
+	path = extensions/luau-script/extern/luau
+	url = https://github.com/Roblox/luau
+	ignore = untracked

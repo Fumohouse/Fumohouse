@@ -8,6 +8,9 @@
 #
 # Information on the Godot Engine's copyright and external libraries is embedded into the editor
 # or present in Godot's COPYRIGHT.txt (https://github.com/godotengine/godot/blob/master/COPYRIGHT.txt)
+#
+# This file does not contain the licenses of internal components of included files.
+# For example, the licenses of libraries included within Godot are not listed.
 
 
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
@@ -53,6 +56,23 @@ Comment: Fumo animations
 Copyright: 2021-2022, voided_etc
  2022, lefortune
 License: CC-BY-NC-SA-4.0
+
+#####################
+# GDExtension Files #
+#####################
+
+Files: extensions/godot-cpp/*
+ extensions/luau-script/SConstruct
+ bin/*/Info.plist
+Comment: GDExtension C++ bindings and demo files
+Copyright: 2017-2022, Godot Engine contributors
+License: Expat
+
+Files: extensions/luau-script/extern/luau/*
+Comment: Luau language
+Copyright: 2019-2022, Roblox Corporation
+ 1994-2019, Lua.org, PUC-Rio.
+License: Expat
 
 ########################
 # Other External Files #
