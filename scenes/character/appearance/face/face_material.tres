@@ -1,11 +1,11 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c43emju5yjf18"]
 
+[ext_resource type="Texture2D" uid="uid://j3p1obmff1ev" path="res://assets/textures/ordered_dither.png" id="1_p4s0l"]
 [ext_resource type="Shader" path="res://scenes/character/appearance/face/face_material.gdshader" id="1_qu41v"]
-[ext_resource type="Texture2D" uid="uid://j3p1obmff1ev" path="res://assets/textures/ordered_dither.png" id="3_lhv31"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_qu41v")
-shader_param/alpha = 1.0
-shader_param/dither_texture = ExtResource("3_lhv31")
-shader_param/eye_tint = Color(1, 1, 1, 1)
+alpha = 1.0
+dither_texture = ExtResource("1_p4s0l")
+eye_tint = Color(1, 1, 1, 1)

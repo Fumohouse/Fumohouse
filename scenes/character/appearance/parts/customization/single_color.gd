@@ -21,8 +21,8 @@ func _fh_initialize(config: Dictionary):
 	if material is StandardMaterial3D:
 		(material as StandardMaterial3D).albedo_color = color
 	elif material is ShaderMaterial:
-		if material.get_shader_param("albedo") != null:
-			material.set_shader_param("albedo", color)
+		if material.get_shader_uniform("albedo") != null:
+			material.set_shader_uniform("albedo", color)
 
 
 

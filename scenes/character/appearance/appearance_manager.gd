@@ -77,15 +77,15 @@ func _set_alpha(alpha: float):
 	_rig.visible = true
 	visible = true
 
-	_face_material.set_shader_param(ALPHA_PARAM, alpha)
-	_skin_material.set_shader_param(ALPHA_PARAM, alpha)
+	_face_material.set_shader_uniform(ALPHA_PARAM, alpha)
+	_skin_material.set_shader_uniform(ALPHA_PARAM, alpha)
 
 	for info in _attached_parts.values():
 		for material in info.materials:
-			if not (material is ShaderMaterial) or material.get_shader_param(ALPHA_PARAM) == null:
+			if not (material is ShaderMaterial) or material.get_shader_uniform(ALPHA_PARAM) == null:
 				continue
 
-			material.set_shader_param(ALPHA_PARAM, alpha)
+			material.set_shader_uniform(ALPHA_PARAM, alpha)
 
 
 func _physics_process(_delta: float):
@@ -115,7 +115,7 @@ func _on_character_camera_updated(camera):
 
 
 func _set_face_tex(uniform: StringName, texture: Texture2D):
-	_face_material.set_shader_param(
+	_face_material.set_shader_uniform(
 		uniform, texture if texture != null else _transparent_tex
 	)
 
@@ -152,7 +152,7 @@ func _load_face():
 			shine_texture = style.shine
 			overlay_texture = style.overlay
 
-			_face_material.set_shader_param(
+			_face_material.set_shader_uniform(
 				"eye_tint",
 				_appearance.eyes_color if style.supports_recoloring else Color.WHITE
 			)

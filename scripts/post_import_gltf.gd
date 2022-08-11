@@ -50,10 +50,10 @@ func _convert_material(mat: StandardMaterial3D) -> ShaderMaterial:
 			.duplicate()
 
 	for key in _PROPERTY_MAP.keys():
-		new_mat.set_shader_param(_PROPERTY_MAP[key], mat.get(key))
+		new_mat.set_shader_uniform(_PROPERTY_MAP[key], mat.get(key))
 
-	new_mat.set_shader_param("ao_texture_channel", _get_texture_mask(mat.ao_texture_channel))
-	new_mat.set_shader_param("metallic_texture_channel", _get_texture_mask(mat.metallic_texture_channel))
+	new_mat.set_shader_uniform("ao_texture_channel", _get_texture_mask(mat.ao_texture_channel))
+	new_mat.set_shader_uniform("metallic_texture_channel", _get_texture_mask(mat.metallic_texture_channel))
 
 	new_mat.resource_local_to_scene = true
 

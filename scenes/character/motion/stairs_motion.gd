@@ -152,7 +152,7 @@ func _handle_stairs(ctx: MotionContext) -> bool:
 	var horiz_distance := (contact_position - _begin_position).dot(-wall_normal)
 	var total_distance := (_end_position - _begin_position).dot(-wall_normal)
 
-	var current_target := lerp(_begin_position.y, _end_position.y, horiz_distance / total_distance)
+	var current_target := lerpf(_begin_position.y, _end_position.y, horiz_distance / total_distance)
 
 	ctx.offset += Vector3.UP * (current_target - contact_position.y)
 
