@@ -62,7 +62,7 @@ func process_motion(ctx: MotionContext, delta: float):
 		return false
 
 	var char_fwd := -character.global_transform.basis.z
-	if char_fwd.angle_to(ladder_fwd) > deg2rad(max_angle):
+	if char_fwd.angle_to(ladder_fwd) > deg_to_rad(max_angle):
 		return
 
 	var direction_flat := ctx.cam_basis_flat * ctx.input_direction
@@ -73,11 +73,11 @@ func process_motion(ctx: MotionContext, delta: float):
 	if direction_flat.length_squared() > 0:
 		var offset := ladder_basis.y * climb_velocity * delta
 
-		if movement_angle < deg2rad(max_angle):
+		if movement_angle < deg_to_rad(max_angle):
 			# Add a forward velocity to make the exit (at the top) much smoother
 			ctx.offset += offset + ladder_fwd * forward_velocity * delta
 			is_moving = true
-		elif absf(PI - movement_angle) < deg2rad(max_angle):
+		elif absf(PI - movement_angle) < deg_to_rad(max_angle):
 			ctx.offset -= offset
 
 			# Since we are going backwards, cancel horiz. motion to avoid breaking.

@@ -29,7 +29,7 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scenes/character/camera_controller.gd"
 }, {
-"base": "RigidDynamicBody3D",
+"base": "RigidBody3D",
 "class": &"Character",
 "language": &"GDScript",
 "path": "res://scenes/character/character.gd"

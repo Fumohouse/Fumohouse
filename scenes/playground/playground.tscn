@@ -274,7 +274,7 @@ shape = SubResource("BoxShape3D_v2ei6")
 
 [node name="Interactables" type="Node3D" parent="Map"]
 
-[node name="Box" type="RigidDynamicBody3D" parent="Map/Interactables"]
+[node name="Box" type="RigidBody3D" parent="Map/Interactables"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, -5)
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_11hvr")
@@ -285,7 +285,7 @@ shape = SubResource("BoxShape3D_21oih")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/Box"]
 mesh = SubResource("BoxMesh_8lvjm")
 
-[node name="Ball" type="RigidDynamicBody3D" parent="Map/Interactables"]
+[node name="Ball" type="RigidBody3D" parent="Map/Interactables"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 0)
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_8d1mp")
@@ -327,10 +327,16 @@ script = ExtResource("5_5g01e")
 
 [node name="Control" type="Control" parent="Billboard"]
 visible = false
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Logo" type="TextureRect" parent="Billboard/Control"]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -347,6 +353,8 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
 
 [node name="Label" type="Label" parent="Billboard/Control"]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -365,4 +373,5 @@ vertical_alignment = 1
 metadata/_edit_layout_mode = 1
 
 [node name="DebugCharacter" parent="." instance=ExtResource("7_rycs7")]
+anchors_preset = 1
 character = NodePath("../Character")

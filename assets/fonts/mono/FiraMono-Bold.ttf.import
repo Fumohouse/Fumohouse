@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/FiraMono-Bold.ttf-7bb947607f4981d7de7a649f219
 [params]
 
 Rendering=null
-antialiased=true
+antialiasing=1
 generate_mipmaps=false
 multichannel_signed_distance_field=true
 msdf_pixel_range=8

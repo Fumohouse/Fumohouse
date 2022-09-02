@@ -1,5 +1,5 @@
 class_name Character
-extends RigidDynamicBody3D
+extends RigidBody3D
 # Reference: Godot physics_body_3d.cpp (MIT)
 # Assumes that the origin is at the bottom of the controller.
 
@@ -69,7 +69,7 @@ func _ready():
 
 func is_stable_ground(normal: Vector3) -> bool:
 	const ANGLE_MARGIN := 0.01
-	return normal.angle_to(Vector3.UP) <= deg2rad(max_ground_angle) + ANGLE_MARGIN
+	return normal.angle_to(Vector3.UP) <= deg_to_rad(max_ground_angle) + ANGLE_MARGIN
 
 
 func _check_grounding(snap: bool):
@@ -118,7 +118,7 @@ func _check_grounding(snap: bool):
 
 static func _should_push(rid: RID):
 	var mode := PhysicsServer3D.body_get_mode(rid)
-	return mode == PhysicsServer3D.BODY_MODE_DYNAMIC or mode == PhysicsServer3D.BODY_MODE_DYNAMIC_LINEAR
+	return mode == PhysicsServer3D.BODY_MODE_RIGID or mode == PhysicsServer3D.BODY_MODE_RIGID_LINEAR
 
 
 func _update_walls():

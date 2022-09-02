@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/IBMPlexSans-Regular.ttf-196fcb82807990841fe9b
 [params]
 
 Rendering=null
-antialiased=true
+antialiasing=1
 generate_mipmaps=false
 multichannel_signed_distance_field=true
 msdf_pixel_range=8

@@ -125,7 +125,7 @@ func _handle_stairs(ctx: MotionContext) -> bool:
 	var ray_result := character.get_world_3d().direct_space_state.intersect_ray(ray_params)
 
 	if not ray_result.has("normal") or \
-			ray_result.normal.angle_to(Vector3.UP) > deg2rad(max_step_angle):
+			ray_result.normal.angle_to(Vector3.UP) > deg_to_rad(max_step_angle):
 		return false
 
 	var target_point := Vector3(highest_point.x, ray_result.position.y, highest_point.z)
