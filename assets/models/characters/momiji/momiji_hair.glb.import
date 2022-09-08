@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/momiji_hair.glb-67175dc2a86d8ac451e58c31e4a0a
 
 nodes/root_type="Node3D"
 nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
 meshes/generate_lods=true

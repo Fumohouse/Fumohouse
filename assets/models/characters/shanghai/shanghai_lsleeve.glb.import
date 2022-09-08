@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/shanghai_lsleeve.glb-f02a32d32fb15ca2df23dd25
 
 nodes/root_type="Node3D"
 nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
 meshes/generate_lods=false

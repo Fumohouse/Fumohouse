@@ -1,6 +1,6 @@
 # Fumohouse
 
-[![Godot Badge](https://img.shields.io/badge/Godot-4.0.alpha15-orange)](https://godotengine.org/)
+[![Godot Badge](https://img.shields.io/badge/Godot-4.0.alpha16-orange)](https://godotengine.org/)
 
 A fumo-centric game-in-progress, inspired by [Become Fumo](https://www.roblox.com/games/6238705697/Become-Fumo)
 and powered by the Godot Engine.

@@ -58,7 +58,8 @@ func add_entry(id: StringName, label: String = "") -> DebugMenuEntry:
 		hbox.add_theme_constant_override("separation", 12)
 
 		var label_text := _create_label()
-		label_text.text = "[b]%s[/b]" % label
+		# TODO: This is probably an issue with theme propagation
+		(func(): label_text.text = "[b]%s[/b]" % label).call_deferred()
 		hbox.add_child(label_text)
 
 		var debug_text := _create_label()

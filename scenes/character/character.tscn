@@ -55,7 +55,7 @@ fadein_time = 0.1
 fadeout_time = 0.2
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_35qov"]
-input_count = 5
+enabled_inputs = 5
 xfade_time = 0.2
 input_0/name = "base"
 input_0/auto_advance = false
@@ -72,7 +72,7 @@ input_4/auto_advance = false
 animation = &"sit"
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_563ja"]
-input_count = 2
+enabled_inputs = 2
 input_0/name = "fall"
 input_0/auto_advance = false
 input_1/name = "climb"
@@ -112,7 +112,7 @@ nodes/walk_speed/node = SubResource("AnimationNodeTimeScale_gnl2h")
 nodes/walk_speed/position = Vector2(-320, 200)
 node_connections = [&"output", 0, &"main", &"climb_speed", 0, &"climb", &"jump_oneshot", 0, &"vertical", &"jump_oneshot", 1, &"jump", &"main", 0, &"base", &"main", 1, &"idle", &"main", 2, &"sit", &"main", 3, &"walk_speed", &"main", 4, &"jump_oneshot", &"vertical", 0, &"fall", &"vertical", 1, &"climb_speed", &"walk_speed", 0, &"walk"]
 
-[node name="Character" type="RigidDynamicBody3D"]
+[node name="Character" type="RigidBody3D"]
 script = ExtResource("1_esdqo")
 
 [node name="LadderMotion" type="Node" parent="."]
