@@ -82,6 +82,6 @@ func _on_button_pressed():
 			part_data._bone = bone
 
 			ResourceSaver.save(
-				folder_path + "%s_%s.tres" % [attachment.name, part.name],
-				part_data
+				part_data,
+				folder_path + "%s_%s.tres" % [attachment.name, part.name]
 			)
