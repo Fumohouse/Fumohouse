@@ -5,3 +5,7 @@
 	path = extensions/luau-script/extern/luau
 	url = https://github.com/Roblox/luau
 	ignore = untracked
+[submodule "extensions/luau-script/extern/Catch2"]
+	path = extensions/luau-script/extern/Catch2
+	url = https://github.com/catchorg/Catch2
+	ignore = untracked
