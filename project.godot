@@ -141,7 +141,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Fumohouse"
-config/features=PackedStringArray("4.0", "Vulkan Clustered")
+config/features=PackedStringArray("4.0")
 config/icon="res://assets/textures/logo.png"
 
 [autoload]

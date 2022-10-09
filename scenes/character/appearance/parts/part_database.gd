@@ -9,8 +9,8 @@ var _parts := {}
 func _scan_dir(path: String):
 	print("Scanning path: %s" % path)
 
-	var dir = Directory.new()
-	if dir.open(path) != OK:
+	var dir = DirAccess.open(path)
+	if dir == null:
 		push_error("Failed to open directory: %s" % path)
 		return
 

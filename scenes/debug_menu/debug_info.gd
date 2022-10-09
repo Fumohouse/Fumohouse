@@ -18,8 +18,9 @@ var _effects := [
 ]
 
 var _drivers := {
-	"vulkan": "Vulkan",
-	"opengl3": "OpenGL 3",
+	"forward_plus": "Vulkan",
+	"mobile": "Vulkan Mobile",
+	"gl_compatibility": "GLES 3",
 }
 
 
@@ -63,7 +64,7 @@ func _ready():
 
 	_add_other_entry("gpu_api", "API")
 	set_val("gpu_api", "%s %s" % [
-		_drivers[ProjectSettings.get_setting("rendering/driver/driver_name")],
+		_drivers[ProjectSettings.get_setting("rendering/renderer/rendering_method")],
 		RenderingServer.get_video_adapter_api_version(),
 	])
 
