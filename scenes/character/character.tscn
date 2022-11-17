@@ -138,70 +138,70 @@ script = ExtResource("8_ip6d1")
 appearance = ExtResource("9_6jjgu")
 
 [node name="Torso" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(1, 1.96365e-08, -1.88261e-08, -1.88261e-08, 0.999113, 0.0421181, 1.96365e-08, -0.0421181, 0.999113, -4.38876e-08, 1.62778, 0.0280226)
+transform = Transform3D(0.556322, 1.09242e-08, -1.04734e-08, -1.04734e-08, 0.555829, 0.0234312, 1.09242e-08, -0.0234312, 0.555829, -2.44156e-08, 0.837981, 0.0155896)
 bone_name = "Torso"
 bone_idx = 0
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="Head" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.996425, -7.01877e-09, -0.0844834, -0.000999127, 0.99993, -0.0117841, 0.0844775, 0.0118264, 0.996355, -5.78528e-09, 3.64569, -0.0570431)
+transform = Transform3D(0.554333, -4.16376e-09, -0.047, -0.000555837, 0.556283, -0.00655577, 0.0469967, 0.00657929, 0.554295, -3.21848e-09, 1.96059, -0.0317344)
 bone_name = "Head"
 bone_idx = 5
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="RArm" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.415745, 0.764366, 0.492849, 0.49285, -0.644782, 0.584255, 0.764366, -5.73695e-07, -0.644783, 0.362934, 3.47574, 0.0196344)
+transform = Transform3D(0.231288, 0.425234, 0.274183, 0.274183, -0.358707, 0.325034, 0.425234, -3.1605e-07, -0.358707, 0.201908, 1.86605, 0.0109231)
 bone_name = "RArm"
 bone_idx = 1
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="LArm" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.415745, -0.764366, -0.492849, -0.49285, -0.644782, 0.584255, -0.764365, -6.03497e-07, -0.644783, -0.362939, 3.47574, 0.0196343)
+transform = Transform3D(0.231288, -0.425234, -0.274183, -0.274183, -0.358707, 0.325034, -0.425234, -3.1605e-07, -0.358707, -0.201911, 1.86605, 0.010923)
 bone_name = "LArm"
 bone_idx = 3
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="RHand" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.414459, 0.766045, 0.491324, 0.493933, -0.642788, 0.585538, 0.764365, -6.41914e-07, -0.644783, 1.612, 2.42209, 0.0196334)
+transform = Transform3D(0.230573, 0.426168, 0.273335, 0.274786, -0.357597, 0.325748, 0.425234, -3.53873e-07, -0.358707, 0.896793, 1.27987, 0.0109225)
 bone_name = "RHand"
 bone_idx = 2
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="LHand" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.414459, -0.766044, -0.491324, -0.493932, -0.642787, 0.585538, -0.764365, -7.27712e-07, -0.644783, -1.61201, 2.42209, 0.0196332)
+transform = Transform3D(0.230573, -0.426168, -0.273335, -0.274785, -0.357597, 0.325748, -0.425234, -3.85089e-07, -0.358707, -0.896795, 1.27987, 0.0109224)
 bone_name = "LHand"
 bone_idx = 4
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="RLeg" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.0284131, 0.155978, 0.987353, -0.00156609, -0.987743, 0.156084, 0.9996, -0.0059811, -0.0278205, 0.384495, 1.96445, 0.0424723)
+transform = Transform3D(0.0158076, 0.0867737, 0.549286, -0.000871178, -0.549503, 0.0868331, 0.5561, -0.00332747, -0.0154779, 0.213903, 1.02528, 0.0236283)
 bone_name = "RLeg"
 bone_idx = 6
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="LLeg" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.590965, -0.149659, -0.792691, -0.0846979, -0.98872, 0.123525, -0.802233, -0.00585981, -0.596977, -0.384495, 1.96445, 0.0424723)
+transform = Transform3D(0.328767, -0.0832589, -0.440992, -0.0471193, -0.550047, 0.0687198, -0.4463, -0.00325995, -0.332112, -0.213903, 1.02528, 0.0236283)
 bone_name = "LLeg"
 bone_idx = 8
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="RFoot" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.233113, 0.104529, 0.966816, -0.972141, 4.80562e-07, 0.234397, 0.0245009, -0.994527, 0.101617, 0.684526, 0.0644782, 0.0309674)
+transform = Transform3D(0.129686, 0.058151, 0.537861, -0.540824, 1.8963e-07, 0.1304, 0.0136303, -0.553278, 0.0565314, 0.380817, -0.0317184, 0.0172277)
 bone_name = "RFoot"
 bone_idx = 7
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="LFoot" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.746165, -0.104528, -0.657502, 0.661125, -3.7998e-07, 0.750276, -0.0784225, -0.994519, 0.0691028, -0.672088, 0.0644776, 0.0312118)
+transform = Transform3D(0.415108, -0.0581513, -0.365783, 0.367799, -2.07246e-07, 0.417395, -0.0436282, -0.553273, 0.0384435, -0.373897, -0.0317185, 0.0173638)
 bone_name = "LFoot"
 bone_idx = 9
 use_external_skeleton = true

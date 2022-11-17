@@ -5,3 +5,9 @@
 
 [node name="DebugInfo" instance=ExtResource("1_xeqlr")]
 script = ExtResource("2_t7jmr")
+
+[node name="MarginContainer" parent="." index="0"]
+layout_mode = 3
+
+[node name="VBoxContainer" parent="MarginContainer" index="0"]
+layout_mode = 3
