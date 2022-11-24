@@ -13,6 +13,11 @@ Many characters are based on Touhou Project by Team Shanghai Alice.
 
 This game is not affiliated with source or inspiration works.
 
+## Development
+
+This project depends on [godot-luau-script](https://github.com/Fumohouse/godot-luau-script),
+which must be built separately and added to this project as a GDExtension (`bin/luau-script/`).
+
 ## License
 
 3rd party content (fonts, models, and external textures) are *not* covered under these licenses.
