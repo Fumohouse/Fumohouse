@@ -326,7 +326,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("5_5g01e")
 
 [node name="Control" type="Control" parent="Billboard"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -335,7 +334,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Logo" type="TextureRect" parent="Billboard/Control"]
-anchors_preset = 8
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -347,12 +346,12 @@ offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_agg1b")
-ignore_texture_size = true
+expand_mode = 1
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
 
 [node name="Label" type="Label" parent="Billboard/Control"]
-anchors_preset = 8
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

@@ -33,18 +33,16 @@ func _on_button_pressed():
 
 	var folder_path := part_info_path + folder + "/"
 
-	var directory := Directory.new()
-
-	if directory.dir_exists(folder_path):
+	if not DirAccess.dir_exists_absolute(folder_path):
+		DirAccess.make_dir_absolute(folder_path)
+	else:
 		push_error("The directory already exists.")
 		return
 
-	if directory.open(part_info_path) != OK:
-		push_error("Failed to open part info directory.")
-		return
+	var directory := DirAccess.open(folder_path)
 
-	if directory.make_dir(folder_path) != OK:
-		push_error("Failed to make directory.")
+	if directory == null:
+		push_error("Failed to open directory: %s" % folder_path)
 		return
 
 	# Save
