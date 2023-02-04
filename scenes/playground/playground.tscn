@@ -55,7 +55,7 @@ use_collision = true
 
 [node name="Decal" type="Decal" parent="Map/Platform"]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 8.5, 1.5, 4)
-extents = Vector3(1, 0.125, 1)
+size = Vector3(2, 0.25, 2)
 texture_albedo = ExtResource("2_agg1b")
 cull_mask = 1048574
 

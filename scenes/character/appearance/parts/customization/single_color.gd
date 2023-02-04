@@ -2,7 +2,7 @@ extends Node3D
 
 
 @export var default_color := Color.WHITE
-@export_node_path(MeshInstance3D) var mesh: NodePath
+@export_node_path("MeshInstance3D") var mesh: NodePath
 var _mesh: MeshInstance3D
 
 

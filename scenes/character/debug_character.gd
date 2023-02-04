@@ -2,7 +2,7 @@ extends DebugMenu
 
 
 var _character: Character
-@export_node_path(RigidDynamicBody3D) var character: NodePath
+@export_node_path("RigidDynamicBody3D") var character: NodePath
 
 var _horizontal_motion: HorizontalMotion
 var _physical_motion: PhysicalMotion

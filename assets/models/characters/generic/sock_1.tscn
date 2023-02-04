@@ -9,20 +9,20 @@
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_o1qm8")
-uv1_scale = Vector3(1, 1, 1)
-uv1_offset = Vector3(0, 0, 0)
-specular = 0.5
-roughness = 1.0
-normal_scale = 1.0
-metallic_texture_channel = Vector4(1, 0, 0, 0)
-metallic = 0.0
-emission_energy = 1.0
-emission = Color(0, 0, 0, 1)
-dither_texture = ExtResource("3_e2yiq")
-ao_texture_channel = Vector4(1, 0, 0, 0)
-ao_light_affect = 0.0
-alpha = 1.0
-albedo = Color(1, 1, 1, 1)
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 1.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/metallic = 0.0
+shader_parameter/emission_energy = 1.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/dither_texture = ExtResource("3_e2yiq")
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/alpha = 1.0
+shader_parameter/albedo = Color(1, 1, 1, 1)
 
 [node name="sock_1" instance=ExtResource("1_40vi0")]
 script = ExtResource("2_y4d08")

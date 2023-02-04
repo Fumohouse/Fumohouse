@@ -55,28 +55,33 @@ fadein_time = 0.1
 fadeout_time = 0.2
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_35qov"]
-enabled_inputs = 5
 xfade_time = 0.2
 input_0/name = "base"
 input_0/auto_advance = false
+input_0/reset = true
 input_1/name = "idle"
 input_1/auto_advance = false
+input_1/reset = true
 input_2/name = "sit"
 input_2/auto_advance = false
+input_2/reset = true
 input_3/name = "horizontal"
 input_3/auto_advance = false
+input_3/reset = true
 input_4/name = "vertical"
 input_4/auto_advance = false
+input_4/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2sdlj"]
 animation = &"sit"
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_563ja"]
-enabled_inputs = 2
 input_0/name = "fall"
 input_0/auto_advance = false
+input_0/reset = true
 input_1/name = "climb"
 input_1/auto_advance = false
+input_1/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x5u6q"]
 animation = &"walk"
@@ -84,7 +89,7 @@ animation = &"walk"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_gnl2h"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ycajw"]
-graph_offset = Vector2(-186.389, -35.2068)
+graph_offset = Vector2(-572.69, 132.836)
 nodes/base/node = SubResource("AnimationNodeAnimation_bcnwp")
 nodes/base/position = Vector2(-80, -120)
 nodes/climb/node = SubResource("AnimationNodeAnimation_hqkmq")
@@ -96,7 +101,7 @@ nodes/fall/position = Vector2(-620, 380)
 nodes/idle/node = SubResource("AnimationNodeAnimation_5pkdu")
 nodes/idle/position = Vector2(-80, 0)
 nodes/jump/node = SubResource("AnimationNodeAnimation_h8war")
-nodes/jump/position = Vector2(-280, 540)
+nodes/jump/position = Vector2(-280, 560)
 nodes/jump_oneshot/node = SubResource("AnimationNodeOneShot_x0slg")
 nodes/jump_oneshot/position = Vector2(-100, 340)
 nodes/main/node = SubResource("AnimationNodeTransition_35qov")
@@ -234,8 +239,13 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/climb_speed/scale = 1.0
 parameters/jump_oneshot/active = false
-parameters/main/current = 0
-parameters/vertical/current = 0
+parameters/jump_oneshot/request = 0
+parameters/main/current_state = "base"
+parameters/main/transition_request = ""
+parameters/main/current_index = 0
+parameters/vertical/current_state = ""
+parameters/vertical/transition_request = ""
+parameters/vertical/current_index = 0
 parameters/walk_speed/scale = 1.0
 
 [connection signal="camera_updated" from="." to="Appearance" method="_on_character_camera_updated"]

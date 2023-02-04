@@ -8,136 +8,6 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "Resource",
-"class": &"Appearance",
-"language": &"GDScript",
-"path": "res://scenes/character/appearance/appearance.gd"
-}, {
-"base": "RichTextLabel",
-"class": &"AutosizeRichText",
-"language": &"GDScript",
-"path": "res://scripts/autosize_rich_text.gd"
-}, {
-"base": "Sprite3D",
-"class": &"Billboard",
-"language": &"GDScript",
-"path": "res://scripts/billboard.gd"
-}, {
-"base": "Camera3D",
-"class": &"CameraController",
-"language": &"GDScript",
-"path": "res://scenes/character/camera_controller.gd"
-}, {
-"base": "RigidBody3D",
-"class": &"Character",
-"language": &"GDScript",
-"path": "res://scenes/character/character.gd"
-}, {
-"base": "Node",
-"class": &"CharacterAnimator",
-"language": &"GDScript",
-"path": "res://scenes/character/character_animator.gd"
-}, {
-"base": "Node",
-"class": &"CharacterMotion",
-"language": &"GDScript",
-"path": "res://scenes/character/motion/character_motion.gd"
-}, {
-"base": "PanelContainer",
-"class": &"DebugMenu",
-"language": &"GDScript",
-"path": "res://scenes/debug_menu/debug_menu.gd"
-}, {
-"base": "Resource",
-"class": &"EyeStyle",
-"language": &"GDScript",
-"path": "res://scenes/character/appearance/face/eye_style.gd"
-}, {
-"base": "Resource",
-"class": &"FaceDatabase",
-"language": &"GDScript",
-"path": "res://scenes/character/appearance/face/face_database.gd"
-}, {
-"base": "Resource",
-"class": &"FacePartStyle",
-"language": &"GDScript",
-"path": "res://scenes/character/appearance/face/face_part_style.gd"
-}, {
-"base": "CharacterMotion",
-"class": &"HorizontalMotion",
-"language": &"GDScript",
-"path": "res://scenes/character/motion/horizontal_motion.gd"
-}, {
-"base": "CharacterMotion",
-"class": &"LadderMotion",
-"language": &"GDScript",
-"path": "res://scenes/character/motion/ladder_motion.gd"
-}, {
-"base": "RefCounted",
-"class": &"MotionContext",
-"language": &"GDScript",
-"path": "res://scenes/character/motion/motion_context.gd"
-}, {
-"base": "PartData",
-"class": &"MultiPart",
-"language": &"GDScript",
-"path": "res://scenes/character/appearance/parts/multi_part.gd"
-}, {
-"base": "Resource",
-"class": &"PartData",
-"language": &"GDScript",
-"path": "res://scenes/character/appearance/parts/part_data.gd"
-}, {
-"base": "CharacterMotion",
-"class": &"PhysicalMotion",
-"language": &"GDScript",
-"path": "res://scenes/character/motion/physical_motion.gd"
-}, {
-"base": "CharacterMotion",
-"class": &"PlatformMotion",
-"language": &"GDScript",
-"path": "res://scenes/character/motion/platform_motion.gd"
-}, {
-"base": "PartData",
-"class": &"SinglePart",
-"language": &"GDScript",
-"path": "res://scenes/character/appearance/parts/single_part.gd"
-}, {
-"base": "CharacterMotion",
-"class": &"StairsMotion",
-"language": &"GDScript",
-"path": "res://scenes/character/motion/stairs_motion.gd"
-}, {
-"base": "RefCounted",
-"class": &"Utils",
-"language": &"GDScript",
-"path": "res://scripts/utils.gd"
-}]
-_global_script_class_icons={
-"Appearance": "",
-"AutosizeRichText": "",
-"Billboard": "",
-"CameraController": "",
-"Character": "",
-"CharacterAnimator": "",
-"CharacterMotion": "",
-"DebugMenu": "",
-"EyeStyle": "",
-"FaceDatabase": "",
-"FacePartStyle": "",
-"HorizontalMotion": "",
-"LadderMotion": "",
-"MotionContext": "",
-"MultiPart": "",
-"PartData": "",
-"PhysicalMotion": "",
-"PlatformMotion": "",
-"SinglePart": "",
-"StairsMotion": "",
-"Utils": ""
-}
-
 [application]
 
 config/name="Fumohouse"
@@ -163,27 +33,27 @@ enabled=PackedStringArray("res://addons/fumohouse/plugin.cfg")
 
 move_forward={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 move_backward={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 move_left={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 move_right={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 move_jump={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"unicode":32,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"echo":false,"script":null)
 ]
 }
 camera_rotate={
@@ -203,12 +73,12 @@ camera_zoom_out={
 }
 debug_1={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194332,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194332,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 debug_2={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194333,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194333,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 

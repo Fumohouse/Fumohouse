@@ -6,7 +6,7 @@ extends RigidBody3D
 
 var camera: CameraController
 var _camera_path_internal: NodePath
-@export_node_path(Camera3D) var camera_path: NodePath :
+@export_node_path("Camera3D") var camera_path: NodePath :
 	get:
 		return _camera_path_internal
 

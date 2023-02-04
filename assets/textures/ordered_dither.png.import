@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/ordered_dither.png-9b6ed4ae4eaaf0fc150e2c559d
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

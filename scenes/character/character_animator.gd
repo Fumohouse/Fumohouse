@@ -2,44 +2,44 @@ class_name CharacterAnimator
 extends Node
 
 
-enum MainTransition {
-	BASE,
-	IDLE,
-	SIT,
-	HORIZONTAL,
-	VERTICAL,
+const MainTransition := {
+	BASE = "base",
+	IDLE = "idle",
+	SIT = "sit",
+	HORIZONTAL = "horizontal",
+	VERTICAL = "vertical"
 }
 
 
-enum VerticalTransition {
-	FALL,
-	CLIMB,
+const VerticalTransition := {
+	FALL = "fall",
+	CLIMB = "climb"
 }
 
 
 const WALK_SPEED := "parameters/walk_speed/scale"
 const CLIMB_SPEED := "parameters/climb_speed/scale"
 
-const TRANSITION_MAIN := "parameters/main/current"
-const TRANSITION_VERTICAL := "parameters/vertical/current"
+const TRANSITION_MAIN := "parameters/main/transition_request"
+const TRANSITION_VERTICAL := "parameters/vertical/transition_request"
 
-const JUMP := "parameters/jump_oneshot/active"
+const JUMP := "parameters/jump_oneshot/request"
 
 var _states := {
 	Character.CharacterState.CLIMBING: {
 		TRANSITION_MAIN: MainTransition.VERTICAL,
 		TRANSITION_VERTICAL: VerticalTransition.CLIMB,
-		JUMP: false,
+		JUMP: AnimationNodeOneShot.ONE_SHOT_REQUEST_NONE,
 	},
 	Character.CharacterState.FALLING: {
 		TRANSITION_MAIN: MainTransition.VERTICAL,
 		TRANSITION_VERTICAL: VerticalTransition.FALL,
-		JUMP: false,
+		JUMP: AnimationNodeOneShot.ONE_SHOT_REQUEST_NONE,
 	},
 	Character.CharacterState.JUMPING: {
 		TRANSITION_MAIN: MainTransition.VERTICAL,
 		TRANSITION_VERTICAL: VerticalTransition.FALL,
-		JUMP: true,
+		JUMP: AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE,
 	},
 	Character.CharacterState.WALKING: {
 		TRANSITION_MAIN: MainTransition.HORIZONTAL,

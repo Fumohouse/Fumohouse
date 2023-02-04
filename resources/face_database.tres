@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=26 format=3 uid="uid://c2cxpgo2nnkv8"]
+[gd_resource type="Resource" script_class="FaceDatabase" load_steps=26 format=3 uid="uid://c2cxpgo2nnkv8"]
 
 [ext_resource type="Texture2D" uid="uid://bmtg2nw552alt" path="res://assets/textures/faces/eyes/straight/eyes.png" id="1_60vdp"]
 [ext_resource type="Script" path="res://scenes/character/appearance/face/eye_style.gd" id="2_5513h"]
@@ -78,6 +78,6 @@ texture = ExtResource("14_smim7")
 
 [resource]
 script = ExtResource("15_ng3rm")
-eyebrow_styles = [SubResource("Resource_d40u2"), SubResource("Resource_vjy54"), SubResource("Resource_i1ybu")]
-eye_styles = [SubResource("Resource_ejl5l"), SubResource("Resource_v8jeu"), SubResource("Resource_x1my0"), SubResource("Resource_a2xx7")]
-mouth_styles = [SubResource("Resource_ue2a2"), SubResource("Resource_sdsdo"), SubResource("Resource_42p2p")]
+eyebrow_styles = Array[Resource]([SubResource("Resource_d40u2"), SubResource("Resource_vjy54"), SubResource("Resource_i1ybu")])
+eye_styles = Array[Resource]([SubResource("Resource_ejl5l"), SubResource("Resource_v8jeu"), SubResource("Resource_x1my0"), SubResource("Resource_a2xx7")])
+mouth_styles = Array[Resource]([SubResource("Resource_ue2a2"), SubResource("Resource_sdsdo"), SubResource("Resource_42p2p")])

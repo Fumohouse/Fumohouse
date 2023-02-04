@@ -180,7 +180,7 @@ func _attach_single(part_info: SinglePart, config: Dictionary) -> Node3D:
 	return node
 
 
-func _search_materials(node: Node3D, list := []) -> Array[Material]:
+func _search_materials(node: Node3D, list: Array[Material] = []) -> Array[Material]:
 	if node is MeshInstance3D and node.mesh:
 		var mesh: Mesh = node.mesh
 
