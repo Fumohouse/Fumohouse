@@ -32,8 +32,11 @@ func _unhandled_input(event: InputEvent):
 		update_visibility(not menu_visible)
 
 
-func _create_label() -> AutosizeRichText:
-	var label := AutosizeRichText.new()
+func _create_label():
+	# var label := AutosizeRichText.new()
+	var label := RichTextLabel.new()
+	label.set_script(AutosizeRichText)
+
 	label.bbcode_enabled = true
 	label.scroll_active = false
 	label.autowrap_mode = TextServer.AUTOWRAP_OFF
@@ -48,7 +51,7 @@ func add_entry(id: StringName, label: String = "") -> DebugMenuEntry:
 	var entry := DebugMenuEntry.new()
 
 	if label == "":
-		var debug_text := _create_label()
+		var debug_text = _create_label()
 		vbox.add_child(debug_text)
 
 		entry.root = debug_text
@@ -57,12 +60,12 @@ func add_entry(id: StringName, label: String = "") -> DebugMenuEntry:
 		var hbox := HBoxContainer.new()
 		hbox.add_theme_constant_override("separation", 12)
 
-		var label_text := _create_label()
+		var label_text = _create_label()
 		# TODO: This is probably an issue with theme propagation
 		(func(): label_text.text = "[b]%s[/b]" % label).call_deferred()
 		hbox.add_child(label_text)
 
-		var debug_text := _create_label()
+		var debug_text = _create_label()
 		hbox.add_child(debug_text)
 
 		vbox.add_child(hbox)

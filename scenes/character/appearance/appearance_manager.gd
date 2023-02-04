@@ -181,7 +181,7 @@ func _load_face():
 
 
 func _attach_single(part_info: SinglePart, config: Dictionary) -> Node3D:
-	const INIT_METHOD := &"_fh_initialize"
+	const INIT_METHOD := &"_FHInitialize"
 
 	var node: Node3D = load(BASE_PATH + part_info.scenePath).instantiate()
 

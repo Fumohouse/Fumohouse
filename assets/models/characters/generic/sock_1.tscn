@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://buohjg3lvr682"]
 
 [ext_resource type="PackedScene" uid="uid://8h7ooe4gus7k" path="res://assets/models/characters/generic/sock_1.glb" id="1_40vi0"]
-[ext_resource type="Script" path="res://scenes/character/appearance/parts/customization/single_color.gd" id="2_y4d08"]
+[ext_resource type="Script" path="res://scenes/character/appearance/parts/customization/SingleColor.lua" id="2_y4d08"]
 [ext_resource type="Texture2D" uid="uid://j3p1obmff1ev" path="res://assets/textures/ordered_dither.png" id="3_e2yiq"]
 [ext_resource type="Shader" path="res://resources/materials/gltf_dither_material.gdshader" id="3_o1qm8"]
 
