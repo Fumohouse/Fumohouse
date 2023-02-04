@@ -1,17 +1,33 @@
 extends Node3D
 
+# TODO: From SinglePart
+enum Bone {
+	TORSO,
+	HEAD,
+	R_ARM,
+	L_ARM,
+	R_HAND,
+	L_HAND,
+	R_LEG,
+	L_LEG,
+	R_FOOT,
+	L_FOOT,
+}
+
+const BASE_PATH := "res://assets/models/characters/"
+#######################
 
 const ATTACHMENTS := {
-	SinglePart.Bone.TORSO: "Torso",
-	SinglePart.Bone.HEAD: "Head",
-	SinglePart.Bone.R_ARM: "RArm",
-	SinglePart.Bone.L_ARM: "LArm",
-	SinglePart.Bone.R_HAND: "RHand",
-	SinglePart.Bone.L_HAND: "LHand",
-	SinglePart.Bone.R_LEG: "RLeg",
-	SinglePart.Bone.L_LEG: "LLeg",
-	SinglePart.Bone.R_FOOT: "RFoot",
-	SinglePart.Bone.L_FOOT: "LFoot",
+	Bone.TORSO: "Torso",
+	Bone.HEAD: "Head",
+	Bone.R_ARM: "RArm",
+	Bone.L_ARM: "LArm",
+	Bone.R_HAND: "RHand",
+	Bone.L_HAND: "LHand",
+	Bone.R_LEG: "RLeg",
+	Bone.L_LEG: "LLeg",
+	Bone.R_FOOT: "RFoot",
+	Bone.L_FOOT: "LFoot",
 }
 
 const SIZES := {
@@ -120,7 +136,7 @@ func _set_face_tex(uniform: StringName, texture: Texture2D):
 	)
 
 
-func _load_face_part_style(method: StringName, style_name: StringName, uniform: StringName):
+func _load_face_part_style(method: StringName, style_name: String, uniform: StringName):
 	var texture: Texture2D
 
 	if style_name != "":
@@ -146,7 +162,7 @@ func _load_face():
 	var overlay_texture: Texture2D
 
 	if eye_name != "":
-		var style: EyeStyle = _face_database.get_eye(eye_name)
+		var style: EyeStyle = _face_database.get_eye(String(eye_name))
 		if style:
 			eye_texture = style.eyes
 			shine_texture = style.shine
@@ -154,7 +170,7 @@ func _load_face():
 
 			_face_material.set_shader_parameter(
 				"eye_tint",
-				_appearance.eyes_color if style.supports_recoloring else Color.WHITE
+				_appearance.eyes_color if style.supportsRecoloring else Color.WHITE
 			)
 		else:
 			push_error("Failed to load eye style: %s" % eye_name)
@@ -167,7 +183,7 @@ func _load_face():
 func _attach_single(part_info: SinglePart, config: Dictionary) -> Node3D:
 	const INIT_METHOD := &"_fh_initialize"
 
-	var node: Node3D = load(SinglePart.BASE_PATH + part_info.scene_path).instantiate()
+	var node: Node3D = load(BASE_PATH + part_info.scenePath).instantiate()
 
 	var target_att: BoneAttachment3D = get_node(ATTACHMENTS[part_info.bone])
 	target_att.add_child(node)
@@ -195,25 +211,27 @@ func _search_materials(node: Node3D, list: Array[Material] = []) -> Array[Materi
 	return list
 
 
-func attach(id: StringName, config: Dictionary):
+func attach(id: String, config: Dictionary):
 	if _attached_parts.has(id):
 		return
 
 	var info = PartDatabase.get_part(id)
 	if not info:
-		push_error("Part not found: %s", id)
+		push_error("Part not found: %s" % id)
 		return
 
 	var attached_models: Array[Node3D] = []
 	var materials: Array[Material] = []
 
-	if info is SinglePart:
+	# if info is SinglePart:
+	if info.get("parts") == null:
 		var node := _attach_single(info, config)
 		var found_mats := _search_materials(node)
 
 		attached_models.append(node)
 		materials.append_array(found_mats)
-	elif info is MultiPart:
+	# elif info is MultiPart:
+	else:
 		for single_part_info in info.parts:
 			var node := _attach_single(single_part_info, config)
 			var found_mats := _search_materials(node)

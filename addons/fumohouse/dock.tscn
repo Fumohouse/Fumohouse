@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1qwnundnug1q"]
 
-[ext_resource type="Script" path="res://addons/fumohouse/dock.gd" id="1_d0xmb"]
-[ext_resource type="Script" path="res://addons/fumohouse/appearance_saver.gd" id="1_e74rc"]
+[ext_resource type="Script" path="res://addons/fumohouse/Dock.lua" id="1_d0xmb"]
+[ext_resource type="Script" path="res://addons/fumohouse/AppearanceSaver.lua" id="1_e74rc"]
 
 [node name="Fumohouse" type="Control"]
 anchor_right = 1.0

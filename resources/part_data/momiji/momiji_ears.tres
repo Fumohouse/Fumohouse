@@ -1,11 +1,11 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://b7a18g4cebl7e"]
 
-[ext_resource type="Script" path="res://scenes/character/appearance/parts/single_part.gd" id="1_jyeb4"]
+[ext_resource type="Script" path="res://scenes/character/appearance/parts/SinglePart.lua" id="1_jyeb4"]
 
 [resource]
 script = ExtResource("1_jyeb4")
-id = &"momiji_ears"
-_scope = 6
-scene_path = "momiji/momiji_ears.glb"
+id ="momiji_ears"
+scope = 6
+scenePath = "momiji/momiji_ears.glb"
 transform = Transform3D(1.79109, -0.00179595, 0.15185, -1.43678e-08, 1.79739, 0.0212582, -0.15186, -0.0211822, 1.79097, 0.0220559, 2.35695, 0.260134)
-_bone = 1
+bone = 1

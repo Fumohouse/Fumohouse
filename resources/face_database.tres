@@ -1,83 +1,83 @@
-[gd_resource type="Resource" script_class="FaceDatabase" load_steps=26 format=3 uid="uid://c2cxpgo2nnkv8"]
+[gd_resource type="Resource" load_steps=26 format=3 uid="uid://c2cxpgo2nnkv8"]
 
 [ext_resource type="Texture2D" uid="uid://bmtg2nw552alt" path="res://assets/textures/faces/eyes/straight/eyes.png" id="1_60vdp"]
-[ext_resource type="Script" path="res://scenes/character/appearance/face/eye_style.gd" id="2_5513h"]
+[ext_resource type="Script" path="res://scenes/character/appearance/face/EyeStyle.lua" id="2_5513h"]
 [ext_resource type="Texture2D" uid="uid://cuaqx0274khhm" path="res://assets/textures/faces/eyes/straight/shine.png" id="3_vlwhc"]
 [ext_resource type="Texture2D" uid="uid://c0gchvpjgyo8j" path="res://assets/textures/faces/eyes/straight/hooks.png" id="4_oesau"]
 [ext_resource type="Texture2D" uid="uid://brhy8ym8hr1tm" path="res://assets/textures/faces/eyes/curved/eyes.png" id="5_qfugq"]
 [ext_resource type="Texture2D" uid="uid://cespmgb2hybwd" path="res://assets/textures/faces/eyes/curved/shine.png" id="6_wiexk"]
 [ext_resource type="Texture2D" uid="uid://dgpaqc85kjr25" path="res://assets/textures/faces/eyes/curved/hooks.png" id="7_7ikaa"]
-[ext_resource type="Script" path="res://scenes/character/appearance/face/face_part_style.gd" id="8_xghfh"]
+[ext_resource type="Script" path="res://scenes/character/appearance/face/FacePartStyle.lua" id="8_xghfh"]
 [ext_resource type="Texture2D" uid="uid://dikvqvwhc2wvi" path="res://assets/textures/faces/eyebrows/angled_down.png" id="9_i42d4"]
 [ext_resource type="Texture2D" uid="uid://vfqw33xirocv" path="res://assets/textures/faces/eyebrows/curved.png" id="10_s6sd1"]
 [ext_resource type="Texture2D" uid="uid://c7kws3x2b407x" path="res://assets/textures/faces/eyebrows/straight.png" id="11_knyho"]
 [ext_resource type="Texture2D" uid="uid://dh7hih34p1532" path="res://assets/textures/faces/mouths/straight.png" id="12_63vkg"]
 [ext_resource type="Texture2D" uid="uid://bes6rfi3jqnfx" path="res://assets/textures/faces/mouths/smile.png" id="13_kqvat"]
 [ext_resource type="Texture2D" uid="uid://brxv63dg3ajga" path="res://assets/textures/faces/mouths/3.png" id="14_smim7"]
-[ext_resource type="Script" path="res://scenes/character/appearance/face/face_database.gd" id="15_ng3rm"]
+[ext_resource type="Script" path="res://scenes/character/appearance/face/FaceDatabase.lua" id="15_ng3rm"]
 
 [sub_resource type="Resource" id="Resource_ejl5l"]
 script = ExtResource("2_5513h")
-name = &"straight"
+name = "straight"
 eyes = ExtResource("1_60vdp")
 shine = ExtResource("3_vlwhc")
-supports_recoloring = true
+supportsRecoloring = true
 
 [sub_resource type="Resource" id="Resource_v8jeu"]
 script = ExtResource("2_5513h")
-name = &"straight_hooks"
+name = "straight_hooks"
 eyes = ExtResource("1_60vdp")
 shine = ExtResource("3_vlwhc")
 overlay = ExtResource("4_oesau")
-supports_recoloring = true
+supportsRecoloring = true
 
 [sub_resource type="Resource" id="Resource_x1my0"]
 script = ExtResource("2_5513h")
-name = &"curved"
+name = "curved"
 eyes = ExtResource("5_qfugq")
 shine = ExtResource("6_wiexk")
-supports_recoloring = true
+supportsRecoloring = true
 
 [sub_resource type="Resource" id="Resource_a2xx7"]
 script = ExtResource("2_5513h")
-name = &"curved_hooks"
+name = "curved_hooks"
 eyes = ExtResource("5_qfugq")
 shine = ExtResource("6_wiexk")
 overlay = ExtResource("7_7ikaa")
-supports_recoloring = true
+supportsRecoloring = true
 
 [sub_resource type="Resource" id="Resource_d40u2"]
 script = ExtResource("8_xghfh")
-name = &"angled_down"
+name = "angled_down"
 texture = ExtResource("9_i42d4")
 
 [sub_resource type="Resource" id="Resource_vjy54"]
 script = ExtResource("8_xghfh")
-name = &"curved"
+name = "curved"
 texture = ExtResource("10_s6sd1")
 
 [sub_resource type="Resource" id="Resource_i1ybu"]
 script = ExtResource("8_xghfh")
-name = &"straight"
+name = "straight"
 texture = ExtResource("11_knyho")
 
 [sub_resource type="Resource" id="Resource_ue2a2"]
 script = ExtResource("8_xghfh")
-name = &"straight"
+name = "straight"
 texture = ExtResource("12_63vkg")
 
 [sub_resource type="Resource" id="Resource_sdsdo"]
 script = ExtResource("8_xghfh")
-name = &"smile"
+name = "smile"
 texture = ExtResource("13_kqvat")
 
 [sub_resource type="Resource" id="Resource_42p2p"]
 script = ExtResource("8_xghfh")
-name = &"3"
+name = "3"
 texture = ExtResource("14_smim7")
 
 [resource]
 script = ExtResource("15_ng3rm")
-eyebrow_styles = Array[Resource]([SubResource("Resource_d40u2"), SubResource("Resource_vjy54"), SubResource("Resource_i1ybu")])
-eye_styles = Array[Resource]([SubResource("Resource_ejl5l"), SubResource("Resource_v8jeu"), SubResource("Resource_x1my0"), SubResource("Resource_a2xx7")])
-mouth_styles = Array[Resource]([SubResource("Resource_ue2a2"), SubResource("Resource_sdsdo"), SubResource("Resource_42p2p")])
+eyebrowStyles = Array[Resource]([SubResource("Resource_d40u2"), SubResource("Resource_vjy54"), SubResource("Resource_i1ybu")])
+eyeStyles = Array[Resource]([SubResource("Resource_ejl5l"), SubResource("Resource_v8jeu"), SubResource("Resource_x1my0"), SubResource("Resource_a2xx7")])
+mouthStyles = Array[Resource]([SubResource("Resource_ue2a2"), SubResource("Resource_sdsdo"), SubResource("Resource_42p2p")])

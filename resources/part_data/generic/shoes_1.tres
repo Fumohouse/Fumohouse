@@ -1,26 +1,26 @@
 [gd_resource type="Resource" load_steps=5 format=3 uid="uid://di2akcqrrxbtj"]
 
-[ext_resource type="Script" path="res://scenes/character/appearance/parts/single_part.gd" id="1_8qnev"]
-[ext_resource type="Script" path="res://scenes/character/appearance/parts/multi_part.gd" id="1_otqqi"]
+[ext_resource type="Script" path="res://scenes/character/appearance/parts/SinglePart.lua" id="1_8qnev"]
+[ext_resource type="Script" path="res://scenes/character/appearance/parts/MultiPart.lua" id="1_otqqi"]
 
 [sub_resource type="Resource" id="Resource_68bep"]
 script = ExtResource("1_8qnev")
-scene_path = "generic/shoe_1.tscn"
+scenePath = "generic/shoe_1.tscn"
 transform = Transform3D(0.0505013, -0.0081382, 1.79678, 0.0932476, -1.79507, -0.0107513, 1.79439, 0.0935118, -0.0500103, 0.00444679, 1.67644, 0.0337814)
-_bone = 6
-id = &"shoes_1_r"
-_scope = 0
+bone = 6
+id ="shoes_1_r"
+scope = 0
 
 [sub_resource type="Resource" id="Resource_eav0e"]
 script = ExtResource("1_8qnev")
-scene_path = "generic/shoe_1.tscn"
+scenePath = "generic/shoe_1.tscn"
 transform = Transform3D(1.07237, -0.0403749, -1.44204, -0.0817695, -1.79563, -0.0105331, -1.44028, 0.0718824, -1.07308, -0.0292792, 1.67619, 0.0338179)
-_bone = 7
-id = &"shoes_1_l"
-_scope = 0
+bone = 7
+id ="shoes_1_l"
+scope = 0
 
 [resource]
 script = ExtResource("1_otqqi")
 parts = [SubResource("Resource_68bep"), SubResource("Resource_eav0e")]
-id = &"shoes_1"
-_scope = 4
+id ="shoes_1"
+scope = 4
