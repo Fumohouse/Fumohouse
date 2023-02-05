@@ -55,7 +55,8 @@ func process_motion(ctx: MotionContext, delta: float):
 
 	# Update rotation
 	# The rigidbody should never be scaled, so scale is reset when setting basis.
-	if character.camera.camera_mode == CameraController.CameraMode.FIRST_PERSON:
+	# if character.camera.camera_mode == CameraController.CameraMode.FIRST_PERSON:
+	if character.camera.cameraMode == 0:
 		character.transform.basis = ctx.cam_basis_flat
 	elif direction:
 		var movement_basis := Basis(Quaternion(Vector3.FORWARD, direction_flat))

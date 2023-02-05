@@ -1,15 +1,15 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://bbe67ju26dhsp"]
 
-[ext_resource type="Script" path="res://scenes/character/appearance/appearance.gd" id="1_nokr1"]
+[ext_resource type="Script" path="res://scenes/character/appearance/Appearance.lua" id="1_nokr1"]
 
 [resource]
 script = ExtResource("1_nokr1")
-eyebrows = &"curved"
-eyes = &"curved_hooks"
-mouth = &"straight"
-eyes_color = Color(0.129412, 0.352941, 0.647059, 1)
-size = &"doll"
-attached_parts = {
+eyebrows = "curved"
+eyes = "curved_hooks"
+mouth = "straight"
+eyesColor = Color(0.129412, 0.352941, 0.647059, 1)
+size = "doll"
+attachedParts = {
 "shanghai_bow": null,
 "shanghai_hair": null,
 "shanghai_outfit": null,

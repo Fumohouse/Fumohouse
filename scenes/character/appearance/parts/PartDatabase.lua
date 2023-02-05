@@ -19,7 +19,7 @@ function PartDatabaseImpl._Init(obj: Node, tbl: PartDatabaseT)
 	tbl.partCount = 0
 end
 
-function PartDatabaseImpl.ScanDir(self: PartDatabase, path: string)
+function PartDatabaseImpl.scanDir(self: PartDatabase, path: string)
 	print("Scanning path: ", path)
 
 	local dir = DirAccess.Open(path)
@@ -33,7 +33,7 @@ function PartDatabaseImpl.ScanDir(self: PartDatabase, path: string)
 
 	while fileName ~= "" do
 		if dir:CurrentIsDir() then
-			self:ScanDir(path..fileName.."/")
+			self:scanDir(path..fileName.."/")
 		elseif strext.endswith(fileName, ".tres") then
 			local partInfo: PartData.PartData = load(path..fileName)
 			local id = partInfo.id
@@ -53,7 +53,7 @@ end
 
 function PartDatabaseImpl._Ready(self: PartDatabase)
 	print("---- PartDatabase beginning load ----")
-	self:ScanDir(PartDatabase.PART_INFO_PATH)
+	self:scanDir(PartDatabase.PART_INFO_PATH)
 	print(string.format("---- Finished loading %d parts. ----", self.partCount))
 end
 

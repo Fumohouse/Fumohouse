@@ -1,15 +1,15 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://d2erpcdyaexcj"]
 
-[ext_resource type="Script" path="res://scenes/character/appearance/appearance.gd" id="1_mak5d"]
+[ext_resource type="Script" path="res://scenes/character/appearance/Appearance.lua" id="1_mak5d"]
 
 [resource]
 script = ExtResource("1_mak5d")
-eyebrows = &"curved"
-eyes = &"curved_hooks"
-mouth = &"smile"
-eyes_color = Color(0.905882, 0, 0.0196078, 1)
-size = &"base"
-attached_parts = {
+eyebrows = "curved"
+eyes = "curved_hooks"
+mouth = "smile"
+eyesColor = Color(0.905882, 0, 0.0196078, 1)
+size = "base"
+attachedParts = {
 "momiji_ears": null,
 "momiji_hair": null,
 "momiji_hat": null,

@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://k5gocgurmhpj"]
 
 [ext_resource type="Material" uid="uid://b836v0fldqg70" path="res://scenes/playground/prototype.tres" id="1_abhm1"]
-[ext_resource type="Script" path="res://scenes/character/camera_controller.gd" id="1_g4oa1"]
+[ext_resource type="Script" path="res://scenes/character/CameraController.lua" id="1_g4oa1"]
 [ext_resource type="Texture2D" uid="uid://bhxf30yykrukk" path="res://assets/textures/logo_dark.png" id="2_agg1b"]
 [ext_resource type="PackedScene" uid="uid://bdricnhkc377e" path="res://scenes/character/character.tscn" id="2_i53jf"]
 [ext_resource type="Script" path="res://scripts/Billboard.lua" id="5_5g01e"]

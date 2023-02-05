@@ -108,7 +108,8 @@ func _physics_process(_delta: float):
 	if not _character.camera:
 		return
 
-	if _character.camera.camera_mode == CameraController.CameraMode.FIRST_PERSON:
+	# if _character.camera.camera_mode == CameraController.CameraMode.FIRST_PERSON:
+	if _character.camera.cameraMode == 0:
 		_set_alpha(0.0)
 		return
 
@@ -126,7 +127,7 @@ func _physics_process(_delta: float):
 
 
 func _on_character_camera_updated(camera):
-	_base_camera_offset = _character.camera.camera_offset
+	_base_camera_offset = _character.camera.cameraOffset
 	_load_scale()
 
 
@@ -155,7 +156,7 @@ func _load_face():
 	_load_face_part_style("get_mouth", _appearance.mouth, "mouth_texture")
 
 	# Eyes
-	var eye_name := _appearance.eyes
+	var eye_name = _appearance.eyes
 
 	var eye_texture: Texture2D
 	var shine_texture: Texture2D
@@ -170,7 +171,7 @@ func _load_face():
 
 			_face_material.set_shader_parameter(
 				"eye_tint",
-				_appearance.eyes_color if style.supportsRecoloring else Color.WHITE
+				_appearance.eyesColor if style.supportsRecoloring else Color.WHITE
 			)
 		else:
 			push_error("Failed to load eye style: %s" % eye_name)
@@ -257,10 +258,10 @@ func detach(id: StringName):
 
 
 func _load_parts():
-	var part_ids = _appearance.attached_parts.keys()
+	var part_ids = _appearance.attachedParts.keys()
 
 	for part_id in part_ids:
-		var config = _appearance.attached_parts[part_id]
+		var config = _appearance.attachedParts[part_id]
 		if not (config is Dictionary):
 			config = {}
 
@@ -272,7 +273,7 @@ func _load_parts():
 
 
 func _load_scale():
-	var size_id := _appearance.size
+	var size_id = _appearance.size
 	if not SIZES.has(size_id):
 		push_error("Unknown size: %s", size_id)
 		return
@@ -287,7 +288,7 @@ func _load_scale():
 	_capsule.transform.origin = Vector3.UP * _capsule.shape.height * _scale / 2
 
 	if _character.camera:
-		_character.camera.camera_offset = _base_camera_offset * _scale
+		_character.camera.cameraOffset = _base_camera_offset * _scale
 
 
 func load_appearance():

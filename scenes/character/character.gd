@@ -193,7 +193,7 @@ func _physics_process(delta: float):
 
 	var input_direction2 := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	ctx.input_direction = Vector3(input_direction2.x, 0, input_direction2.y)
-	ctx.cam_basis_flat = Basis.IDENTITY.rotated(Vector3.UP, camera.camera_rotation.y)
+	ctx.cam_basis_flat = Basis.IDENTITY.rotated(Vector3.UP, camera.cameraRotation.y)
 
 	_check_grounding(not is_state(CharacterState.JUMPING))
 
@@ -220,13 +220,13 @@ func _update_camera():
 		return
 
 	if camera:
-		camera.focus_node = null
+		camera.focusNode = null
 
 	if _camera_path_internal.is_empty():
 		camera = null
 	else:
 		camera = get_node(_camera_path_internal) as CameraController
-		camera.focus_node = self
+		camera.focusNode = self
 		camera_updated.emit(camera)
 
 

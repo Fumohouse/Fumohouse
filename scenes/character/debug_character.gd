@@ -34,7 +34,7 @@ func _ready():
 
 func _debug_draw():
 	var pos := _character.global_position
-	var eye_pos := pos + Vector3.UP * _character.camera.camera_offset
+	var eye_pos = pos + Vector3.UP * _character.camera.cameraOffset
 
 	# Forward direction
 	DebugDraw.draw_line(eye_pos, eye_pos - _character.global_transform.basis.z, Color.AQUA)
