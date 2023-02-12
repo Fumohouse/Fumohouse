@@ -24,7 +24,7 @@ local EFFECTS = {
 
 local DRIVERS = {
     ["forward_plus"] = "Vulkan",
-    ["mobile"] = "Vulkan Mobille",
+    ["mobile"] = "Vulkan Mobile",
     ["gl_compatibility"] = "GLES 3",
 }
 
