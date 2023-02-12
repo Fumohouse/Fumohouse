@@ -4,9 +4,7 @@ local PartCustomizer = gdclass(nil, "Node3D")
 
 export type PartCustomizer = Node3D & typeof(PartCustomizerImpl)
 
-function PartCustomizerImpl._FHInitialize(self: PartCustomizer, config: Dictionary)
+function PartCustomizerImpl._FHInitialize(self: PartCustomizer, config: Dictionary?)
 end
-
-PartCustomizer:RegisterMethodAST("_FHInitialize")
 
 return PartCustomizer

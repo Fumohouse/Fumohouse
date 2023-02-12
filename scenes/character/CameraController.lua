@@ -34,12 +34,6 @@ CameraControllerImpl.CameraMode = {
 
 local CAMERA_MAX_X_ROT = math.pi / 2 - 1e-2
 
--- TODO: REMOVE REMOVE REMOVE
-CameraController:RegisterProperty("cameraRotation", Enum.VariantType.VECTOR2)
-CameraController:RegisterProperty("cameraMode", Enum.VariantType.INT)
-CameraController:RegisterProperty("focusNode", Enum.VariantType.OBJECT)
------------------------------
-
 CameraController:RegisterProperty("cameraOffset", Enum.VariantType.FLOAT)
 	:Range(0, 10)
 	:Default(2.5)
@@ -69,16 +63,12 @@ function CameraControllerImpl._Init(obj: Camera3D, tbl: CameraControllerT)
 end
 
 function CameraControllerImpl.GetFocalPoint(self: CameraController): Vector3
-	assert(self.focusNode ~= nil)
+	assert(self.focusNode)
 	return self.focusNode.globalPosition + Vector3.new(0, self.cameraOffset, 0)
 end
 
--- TODO: REMOVE REMOVE REMOVE
-CameraController:RegisterMethodAST("GetFocalPoint")
------------------------------
-
 function CameraControllerImpl.processFirstPerson(self: CameraController)
-	if self.focusNode ~= nil then
+	if self.focusNode then
 		self.globalTransform = Transform3D.new(
 			self.focusNode.globalTransform.basis:Orthonormalized(),
 			self:GetFocalPoint()
@@ -106,7 +96,7 @@ function CameraControllerImpl.processThirdPerson(self: CameraController)
 
 	local result = self:GetWorld3D().directSpaceState:IntersectRay(parameters)
 	if result:Has("position") then
-		pos = (result["position"] :: Vector3) * 0.99
+		pos = (result:Get("position") :: Vector3) * 0.99
 	end
 
 	self.globalTransform = Transform3D.new(Basis.IDENTITY, pos)
@@ -143,7 +133,7 @@ function CameraControllerImpl._Process(self: CameraController, delta: number)
 		end
 	end
 
-	if self.focusNode == nil then
+	if not self.focusNode then
 		self.cameraMode = CameraController.CameraMode.FLOATING
 	elseif self.focusDistanceTarget == 0 then
 		self.cameraMode = CameraController.CameraMode.FIRST_PERSON
@@ -156,7 +146,7 @@ function CameraControllerImpl._Process(self: CameraController, delta: number)
 		self.cameraMode = CameraController.CameraMode.THIRD_PERSON
 	end
 
-	if self.focusNode == nil or self.focusDistance == 0.0 then
+	if not self.focusNode or self.focusDistance == 0.0 then
 		self:processFirstPerson()
 	else
 		self:processThirdPerson()
@@ -167,7 +157,7 @@ CameraController:RegisterMethodAST("_Process")
 
 function CameraControllerImpl._UnhandledInput(self: CameraController, event: InputEvent)
 	-- Zoom
-	if self.focusNode ~= nil then
+	if self.focusNode then
 		if event:IsActionPressed("camera_zoom_in") then
 			self.focusDistanceTarget = math.max(self.focusDistanceTarget - self.cameraZoomSens, 0)
 		elseif event:IsActionPressed("camera_zoom_out") then

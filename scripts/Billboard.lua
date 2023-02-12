@@ -21,7 +21,7 @@ function BillboardImpl.ReparentContents(self: Billboard)
 	-- Hack: We cannot see the contents in editor otherwise.
 	-- https://github.com/godotengine/godot/issues/39387
 
-    local contents: Control? = nil
+    local contents: Control?
 
     for _, child: Node in self:GetChildren() do
         if child:IsClass("Control") then
@@ -30,7 +30,7 @@ function BillboardImpl.ReparentContents(self: Billboard)
         end
     end
 
-    if contents == nil then
+    if not contents then
         error("Billboard must have a Control child in order to function.")
     else
         self.origSize = contents.size
@@ -43,7 +43,7 @@ function BillboardImpl.ReparentContents(self: Billboard)
 end
 
 function BillboardImpl._Ready(self: Billboard)
-    self.camera = self:GetViewport():GetCamera3D()
+    self.camera = assert(self:GetViewport():GetCamera3D())
 
     local viewport = SubViewport.new()
     viewport.name = "Viewport"
@@ -85,10 +85,6 @@ function BillboardImpl.GetScreenSize(self: Billboard): Vector2
 end
 
 function BillboardImpl._Process(self: Billboard, delta: number)
-    if not is_instance_valid(self.camera) then
-        return
-    end
-
     if self.camera:IsPositionBehind(self.globalPosition) then
         self.visible = false
         self.viewport.renderTargetUpdateMode = SubViewport.UpdateMode.DISABLED
@@ -102,7 +98,7 @@ function BillboardImpl._Process(self: Billboard, delta: number)
     self.globalTransform = Transform3D.new(self.camera.basis, self.globalTransform.origin)
 
     local screenSize = self:GetScreenSize()
-    local maxSize = (self:GetViewport() :: Window).size * 4
+    local maxSize = self:GetWindow().size * 4
 
     local viewportSize: Vector2
     if screenSize.x > maxSize.x or screenSize.y > maxSize.y then

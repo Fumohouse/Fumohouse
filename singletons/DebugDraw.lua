@@ -35,12 +35,14 @@ function DebugDrawImpl._Init(obj: MeshInstance3D, tbl: DebugDrawT)
 end
 
 function DebugDrawImpl._Ready(self: DebugDraw)
-	self.camera = self:GetViewport():GetCamera3D()
+	self.camera = assert(self:GetViewport():GetCamera3D())
 end
 
 DebugDraw:RegisterMethod("_Ready")
 
-function DebugDrawImpl.DrawLine(self: DebugDraw, p1: Vector3, p2: Vector3, c1: Color, c2: Variant, lifetime: number)
+function DebugDrawImpl.DrawLine(self: DebugDraw, p1: Vector3, p2: Vector3, c1: Color, c2: Variant, lifetime: number?)
+	assert(lifetime)
+
 	local c2A = if c2 == nil then c1 else c2 :: Color
 
 	self.lines[#self.lines + 1] = {
@@ -56,7 +58,9 @@ end
 DebugDraw:RegisterMethodAST("DrawLine")
 	:DefaultArgs(nil, 0)
 
-function DebugDrawImpl.DrawMarker(self: DebugDraw, pos: Vector3, color: Color, lifetime: number, size: number)
+function DebugDrawImpl.DrawMarker(self: DebugDraw, pos: Vector3, color: Color, lifetime: number?, size: number?)
+	assert(size)
+
 	local camBasis = self.camera.globalTransform.basis
 	local camX = camBasis.x
 	local camY = camBasis.y

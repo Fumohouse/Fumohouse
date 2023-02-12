@@ -7,7 +7,7 @@ local SingleColor = gdclass(nil, "PartCustomizer.lua")
 type SingleColorT = {
     defaultColor: Color,
     mesh: string,
-    meshInstance: MeshInstance3D,
+    meshInstance: MeshInstance3D?,
 }
 
 type SingleColor = PartCustomizer.PartCustomizer & SingleColorT & typeof(SingleColorImpl)
@@ -25,26 +25,25 @@ end
 
 SingleColor:RegisterMethod("_Ready")
 
-function SingleColorImpl._FHInitialize(self: SingleColor, config: Dictionary)
-    if not is_instance_valid(self.meshInstance) then
-        push_warning("This single colored part has no linked mesh.")
-        return
-    end
+function SingleColorImpl._FHInitialize(self: SingleColor, config: Dictionary?)
+    if self.meshInstance then
+        local material = assert(self.meshInstance:GetActiveMaterial(0))
+        local color: Color = if config and config:Has("color") then
+            config:Get("color") :: Color
+        else
+            self.defaultColor
 
-    local material = self.meshInstance:GetActiveMaterial(0)
-    local color: Color = if config:Has("color") then
-        config:Get("color") :: Color
-    else
-        self.defaultColor
+        if material:IsClass("StandardMaterial3D") then
+            (material :: StandardMaterial3D).albedoColor = color
+        elseif material:IsClass("ShaderMaterial") then
+            local shaderMat = material :: ShaderMaterial
 
-    if material:IsClass("StandardMaterial3D") then
-        (material :: StandardMaterial3D).albedoColor = color
-    elseif material:IsClass("ShaderMaterial") then
-        local shaderMat = material :: ShaderMaterial
-
-        if shaderMat:GetShaderParameter("albedo") ~= nil then
-            shaderMat:SetShaderParameter("albedo", color)
+            if shaderMat:GetShaderParameter("albedo") ~= nil then
+                shaderMat:SetShaderParameter("albedo", color)
+            end
         end
+    else
+        push_warning("This single colored part has no linked mesh.")
     end
 end
 

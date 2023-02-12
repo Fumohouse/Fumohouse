@@ -36,18 +36,12 @@ function FaceDatabaseImpl.GetEyebrow(self: FaceDatabase, name: string)
     return findByName(self.eyebrowStyles, name)
 end
 
-FaceDatabase:RegisterMethodAST("GetEyebrow")
-
 function FaceDatabaseImpl.GetEye(self: FaceDatabase, name: string)
     return findByName(self.eyeStyles, name)
 end
 
-FaceDatabase:RegisterMethodAST("GetEye")
-
 function FaceDatabaseImpl.GetMouth(self: FaceDatabase, name: string)
     return findByName(self.mouthStyles, name)
 end
-
-FaceDatabase:RegisterMethodAST("GetMouth")
 
 return FaceDatabase

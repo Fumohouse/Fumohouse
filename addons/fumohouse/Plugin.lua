@@ -12,7 +12,7 @@ type PluginT = {
 type Plugin = EditorPlugin & PluginT & typeof(PluginImpl)
 
 function PluginImpl._EnterTree(self: Plugin)
-    self.dock = (load("dock.tscn") :: PackedScene):Instantiate() :: Dock.Dock
+    self.dock = (assert(load("dock.tscn")) :: PackedScene):Instantiate() :: Dock.Dock
     self.dock.plugin = self
     self:AddControlToDock(EditorPlugin.DockSlot.RIGHT_UL, self.dock)
 end

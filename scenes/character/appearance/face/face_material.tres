@@ -6,6 +6,6 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_qu41v")
-alpha = 1.0
-dither_texture = ExtResource("1_p4s0l")
-eye_tint = Color(1, 1, 1, 1)
+shader_parameter/eye_tint = Color(1, 1, 1, 1)
+shader_parameter/alpha = 1.0
+shader_parameter/dither_texture = ExtResource("1_p4s0l")
