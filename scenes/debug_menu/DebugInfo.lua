@@ -38,7 +38,7 @@ function DebugInfoImpl._Init(obj: PanelContainer, tbl: DebugMenu.DebugMenuT & De
 end
 
 function DebugInfoImpl.updateEgg(self: DebugInfo)
-    local ICON = "[img=32x32]res://assets/textures/logo_dark.png[/img]"
+    local ICON = "[img=32x32]res://assets/textures/logo_dark.svg[/img]"
 
     local effect = EFFECTS[self.egg]
     self:SetVal("build", `{ICON} [b]Fumohouse[/b] {effect[1]}[url=egg]{Utils.GetBuildString()}[/url]{effect[2]}`)
