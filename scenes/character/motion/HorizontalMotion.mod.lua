@@ -2,9 +2,9 @@
     Responsible for horizontal movement (i.e. WASD controls).
 ]]
 
-local Character = require("scenes/character/Character")
-local CameraController = require("scenes/character/CameraController")
-local Utils = require("scripts/Utils.mod")
+local Character = require("../Character")
+local CameraController = require("../CameraController")
+local Utils = require("../../../scripts/Utils.mod")
 
 local HorizontalMotion = setmetatable({
     ID = "horizontal",

@@ -1,13 +1,15 @@
-local Appearance = require("scenes/character/appearance/Appearance")
-local Character = require("scenes/character/Character")
-local CameraController = require("scenes/character/CameraController")
-local SinglePart = require("scenes/character/appearance/parts/SinglePart")
-local MultiPart = require("scenes/character/appearance/parts/MultiPart")
-local FaceDatabase = require("scenes/character/appearance/face/FaceDatabase")
-local FacePartStyle = require("scenes/character/appearance/face/FacePartStyle")
-local EyeStyle = require("scenes/character/appearance/face/EyeStyle")
-local PartCustomizer = require("scenes/character/appearance/parts/customization/PartCustomizer")
-local PartDatabase = require("scenes/character/appearance/parts/PartDatabase")
+local Appearance = require("Appearance")
+local Character = require("../Character")
+local CameraController = require("../CameraController")
+local SinglePart = require("parts/SinglePart")
+local MultiPart = require("parts/MultiPart")
+local FaceDatabase = require("face/FaceDatabase")
+local FacePartStyle = require("face/FacePartStyle")
+local EyeStyle = require("face/EyeStyle")
+local PartCustomizer = require("parts/customization/PartCustomizer")
+
+local PartDatabaseM = require("parts/PartDatabase")
+local PartDatabase = gdglobal("PartDatabase") :: PartDatabaseM.PartDatabase
 
 local AppearanceManagerImpl = {}
 local AppearanceManager = gdclass(nil, "Node3D")
@@ -260,7 +262,7 @@ function AppearanceManagerImpl.attach(self: AppearanceManager, id: string, confi
         return
     end
 
-    local info = (_G["PartDatabase"] :: PartDatabase.PartDatabase):GetPart(id)
+    local info = PartDatabase:GetPart(id)
     assert(info, `Part not found: {id}`)
 
     local attachedModels: {Node3D} = {}

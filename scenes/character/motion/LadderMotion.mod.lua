@@ -2,10 +2,10 @@
     Responsible for handling ladder climbing.
 ]]
 
-local Character = require("scenes/character/Character")
-local HorizontalMotion = require("scenes/character/motion/HorizontalMotion.mod")
-local PhysicalMotion = require("scenes/character/motion/PhysicalMotion.mod")
-local StairsMotion = require("scenes/character/motion/StairsMotion.mod")
+local Character = require("../Character")
+local HorizontalMotion = require("HorizontalMotion.mod")
+local PhysicalMotion = require("PhysicalMotion.mod")
+local StairsMotion = require("StairsMotion.mod")
 
 local LadderMotion = setmetatable({
     ID = "ladder",

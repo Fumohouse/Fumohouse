@@ -1,9 +1,11 @@
-local Character = require("scenes/character/Character")
-local HorizontalMotion = require("scenes/character/motion/HorizontalMotion.mod")
-local PhysicalMotion = require("scenes/character/motion/PhysicalMotion.mod")
-local StairsMotion = require("scenes/character/motion/StairsMotion.mod")
-local DebugMenu = require("scenes/debug_menu/DebugMenu")
-local DebugDraw = require("singletons/DebugDraw")
+local Character = require("Character")
+local HorizontalMotion = require("motion/HorizontalMotion.mod")
+local PhysicalMotion = require("motion/PhysicalMotion.mod")
+local StairsMotion = require("motion/StairsMotion.mod")
+local DebugMenu = require("../../scenes/debug_menu/DebugMenu")
+
+local DebugDrawM = require("../../singletons/DebugDraw")
+local DebugDraw = gdglobal("DebugDraw") :: DebugDrawM.DebugDraw
 
 local DebugCharacterImpl = {}
 local DebugCharacter = gdclass(nil, "../debug_menu/DebugMenu.lua")
@@ -55,8 +57,6 @@ function DebugCharacterImpl.debugDraw(self: DebugCharacter)
     assert(self.character)
     local pos = self.character.globalPosition
     local eyePos = pos + Vector3.UP * assert(self.character.camera).cameraOffset
-
-    local DebugDraw = _G["DebugDraw"] :: DebugDraw.DebugDraw
 
     -- Forward direction
     DebugDraw:DrawLine(eyePos, eyePos - self.character.globalTransform.basis.z, Color.AQUA)

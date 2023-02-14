@@ -1,6 +1,6 @@
-local Character = require("scenes/character/Character")
-local HorizontalMotion = require("scenes/character/motion/HorizontalMotion.mod")
-local LadderMotion = require("scenes/character/motion/LadderMotion.mod")
+local Character = require("Character")
+local HorizontalMotion = require("motion/HorizontalMotion.mod")
+local LadderMotion = require("motion/LadderMotion.mod")
 
 local CharacterAnimatorImpl = {}
 local CharacterAnimator = gdclass(nil, "Node")

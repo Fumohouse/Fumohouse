@@ -1,5 +1,5 @@
-local FacePartStyle = require("scenes/character/appearance/face/FacePartStyle")
-local EyeStyle = require("scenes/character/appearance/face/EyeStyle")
+local FacePartStyle = require("FacePartStyle")
+local EyeStyle = require("EyeStyle")
 
 local FaceDatabaseImpl = {}
 local FaceDatabase = gdclass("FaceDatabase", "Resource")

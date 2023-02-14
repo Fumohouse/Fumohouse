@@ -2,7 +2,7 @@
     Responsible for allowing the character to navigate stairs/steps.
 ]]
 
-local Character = require("scenes/character/Character")
+local Character = require("../Character")
 
 local StairsMotion = setmetatable({
     ID = "stairs",

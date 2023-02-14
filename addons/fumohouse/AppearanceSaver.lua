@@ -1,7 +1,7 @@
-local Dock = require("addons/fumohouse/Dock")
-local PartDatabase = require("scenes/character/appearance/parts/PartDatabase")
-local AppearanceManager = require("scenes/character/appearance/AppearanceManager")
-local SinglePart = require("scenes/character/appearance/parts/SinglePart")
+local Dock = require("Dock")
+local PartDatabase = require("../../scenes/character/appearance/parts/PartDatabase")
+local AppearanceManager = require("../../scenes/character/appearance/AppearanceManager")
+local SinglePart = require("../../scenes/character/appearance/parts/SinglePart")
 
 local AppearanceSaverImpl = {}
 local AppearanceSaver = gdclass(nil, "Control")

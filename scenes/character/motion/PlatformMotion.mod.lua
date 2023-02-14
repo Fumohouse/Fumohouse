@@ -2,7 +2,7 @@
     Responsible for moving the character when it is standing on a moving platform.
 ]]
 
-local Character = require("scenes/character/Character")
+local Character = require("../Character")
 
 local PlatformMotion = setmetatable({
     ID = "platform",

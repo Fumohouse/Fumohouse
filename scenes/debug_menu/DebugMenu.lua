@@ -1,4 +1,4 @@
-local AutosizeRichText = require("scripts/AutosizeRichText")
+local AutosizeRichText = require("../../scripts/AutosizeRichText")
 
 local DebugMenuImpl = {}
 local DebugMenu = gdclass("DebugMenu", "PanelContainer")

@@ -1,5 +1,5 @@
-local DebugMenu = require("scenes/debug_menu/DebugMenu")
-local Utils = require("scripts/Utils.mod")
+local DebugMenu = require("DebugMenu")
+local Utils = require("../../scripts/Utils.mod")
 
 local DebugInfoImpl = {}
 local DebugInfo = gdclass(nil, "DebugMenu.lua")

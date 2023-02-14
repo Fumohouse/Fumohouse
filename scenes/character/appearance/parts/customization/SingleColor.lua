@@ -1,4 +1,4 @@
-local PartCustomizer = require("scenes/character/appearance/parts/customization/PartCustomizer")
+local PartCustomizer = require("PartCustomizer")
 
 local SingleColorImpl = {}
 local SingleColor = gdclass(nil, "PartCustomizer.lua")

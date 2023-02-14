@@ -1,4 +1,4 @@
-local Utils = require("scripts/Utils.mod")
+local Utils = require("../../scripts/Utils.mod")
 
 local CameraControllerImpl = {}
 local CameraController = gdclass("CameraController", "Camera3D")

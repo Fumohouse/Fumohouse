@@ -3,7 +3,7 @@
     (falling, jumping, etc.)
 ]]
 
-local Character = require("scenes/character/Character")
+local Character = require("../Character")
 
 local PhysicalMotion = setmetatable({
     ID = "physical",

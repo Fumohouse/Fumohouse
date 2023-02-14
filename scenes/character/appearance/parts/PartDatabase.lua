@@ -1,4 +1,4 @@
-local PartData = require("scenes/character/appearance/parts/PartData")
+local PartData = require("PartData")
 
 local PartDatabaseImpl = {}
 local PartDatabase = gdclass(nil, "Node")

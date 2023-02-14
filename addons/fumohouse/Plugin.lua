@@ -1,4 +1,4 @@
-local Dock = require("addons/fumohouse/Dock")
+local Dock = require("Dock")
 
 local PluginImpl = {}
 local Plugin = gdclass(nil, "EditorPlugin")

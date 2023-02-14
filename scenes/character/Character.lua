@@ -1,4 +1,4 @@
-local CameraController = require("scenes/character/CameraController")
+local CameraController = require("CameraController")
 
 local CharacterImpl = {}
 local Character = gdclass("Character", "RigidBody3D")
@@ -166,7 +166,7 @@ function CharacterImpl._Init(obj: RigidBody3D, tbl: CharacterT)
     local function addProcessor(file)
         table.insert(
             tbl.motionProcessors,
-            (require(`scenes/character/motion/{file}.mod`) :: any).new()
+            (require(`motion/{file}.mod`) :: any).new()
         )
     end
 
