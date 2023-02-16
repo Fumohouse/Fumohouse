@@ -27,6 +27,6 @@ animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
-import_script/path="res://scripts/PostImportGltf.lua"
+import_script/path="res://assets/models/PostImportGltf.lua"
 _subresources={}
 gltf/embedded_image_handling=1

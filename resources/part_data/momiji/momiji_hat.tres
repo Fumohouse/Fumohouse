@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://dmpq7eyq2dlqu"]
 
-[ext_resource type="Script" path="res://scenes/character/appearance/parts/SinglePart.lua" id="1_2j27s"]
+[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_2j27s"]
 
 [resource]
 script = ExtResource("1_2j27s")

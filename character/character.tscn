@@ -1,10 +1,10 @@
 [gd_scene load_steps=28 format=3 uid="uid://bdricnhkc377e"]
 
-[ext_resource type="Script" path="res://scenes/character/Character.lua" id="1_esdqo"]
-[ext_resource type="Script" path="res://scenes/character/CharacterAnimator.lua" id="6_5s0gs"]
+[ext_resource type="Script" path="res://character/Character.lua" id="1_esdqo"]
+[ext_resource type="Script" path="res://character/CharacterAnimator.lua" id="6_5s0gs"]
 [ext_resource type="PackedScene" uid="uid://dp4hh5fn4ecp4" path="res://assets/models/rig/rig.glb" id="6_s8jgh"]
 [ext_resource type="Animation" uid="uid://dil87a12bdo51" path="res://assets/models/rig/animations/base.tres" id="7_xw4fc"]
-[ext_resource type="Script" path="res://scenes/character/appearance/AppearanceManager.lua" id="8_ip6d1"]
+[ext_resource type="Script" path="res://character/appearance/AppearanceManager.lua" id="8_ip6d1"]
 [ext_resource type="Animation" uid="uid://bvrgnfyuy7ccg" path="res://assets/models/rig/animations/idle.tres" id="8_l8522"]
 [ext_resource type="Resource" uid="uid://d2erpcdyaexcj" path="res://resources/character_presets/momiji.tres" id="9_6jjgu"]
 [ext_resource type="Animation" uid="uid://cxqf8ebitk1qc" path="res://assets/models/rig/animations/jump.tres" id="9_j6ru4"]

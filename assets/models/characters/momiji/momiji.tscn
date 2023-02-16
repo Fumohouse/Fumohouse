@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dltssgmvw67v8"]
 
-[ext_resource type="PackedScene" uid="uid://bdricnhkc377e" path="res://scenes/character/character.tscn" id="1_risis"]
-[ext_resource type="Theme" uid="uid://dknqom53w812u" path="res://scenes/debug_menu/debug_theme.tres" id="2_hqkhu"]
+[ext_resource type="PackedScene" uid="uid://bdricnhkc377e" path="res://character/character.tscn" id="1_risis"]
+[ext_resource type="Theme" uid="uid://dknqom53w812u" path="res://debug/menu/debug_theme.tres" id="2_hqkhu"]
 [ext_resource type="PackedScene" uid="uid://dxbher3oyjg8p" path="res://assets/models/characters/momiji/momiji_hair.glb" id="3_rncs1"]
 [ext_resource type="PackedScene" uid="uid://c1mmo616qxheq" path="res://assets/models/characters/momiji/momiji_outfit_torso.tscn" id="4_7jd86"]
 [ext_resource type="PackedScene" uid="uid://dvn2saau2pfnh" path="res://assets/models/characters/momiji/momiji_hat.glb" id="4_rnm5c"]

@@ -4,7 +4,7 @@
 
 local Character = require("../Character")
 local CameraController = require("../CameraController")
-local Utils = require("../../../scripts/Utils.mod")
+local Utils = require("../../utils/Utils.mod")
 
 local HorizontalMotion = setmetatable({
     ID = "horizontal",

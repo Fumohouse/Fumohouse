@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwmy6jfc4pgh"]
 
-[ext_resource type="Theme" uid="uid://dknqom53w812u" path="res://scenes/debug_menu/debug_theme.tres" id="1_fodj5"]
-[ext_resource type="Script" path="res://scenes/debug_menu/DebugMenu.lua" id="1_qkca6"]
+[ext_resource type="Theme" uid="uid://dknqom53w812u" path="res://debug/menu/debug_theme.tres" id="1_fodj5"]
+[ext_resource type="Script" path="res://debug/menu/DebugMenu.lua" id="1_qkca6"]
 
 [node name="DebugMenu" type="PanelContainer"]
 offset_bottom = 22.0

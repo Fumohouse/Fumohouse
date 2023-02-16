@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dyx2v6hmqc3k3"]
 
-[ext_resource type="PackedScene" uid="uid://cur1cpq181a3p" path="res://scenes/character/character.tscn" id="1_qtqo1"]
+[ext_resource type="PackedScene" uid="uid://cur1cpq181a3p" path="res://character/character.tscn" id="1_qtqo1"]
 [ext_resource type="PackedScene" uid="uid://uy2o657uvqm1" path="res://assets/models/characters/shanghai/shanghai_outfit_torso.tscn" id="2_y5j4c"]
 [ext_resource type="PackedScene" uid="uid://dr47xqhxc7l3w" path="res://assets/models/characters/shanghai/shanghai_hair.glb" id="3_f38ad"]
 [ext_resource type="PackedScene" uid="uid://d1ulyv677w24t" path="res://assets/models/characters/shanghai/shanghai_bow.glb" id="4_q5s56"]

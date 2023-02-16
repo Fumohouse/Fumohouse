@@ -1,7 +1,7 @@
 local Dock = require("Dock")
-local PartDatabase = require("../../scenes/character/appearance/parts/PartDatabase")
-local AppearanceManager = require("../../scenes/character/appearance/AppearanceManager")
-local SinglePart = require("../../scenes/character/appearance/parts/SinglePart")
+local PartDatabase = require("../../character/appearance/parts/PartDatabase")
+local AppearanceManager = require("../../character/appearance/AppearanceManager")
+local SinglePart = require("../../character/appearance/parts/SinglePart")
 
 local AppearanceSaverImpl = {}
 local AppearanceSaver = gdclass(nil, "Control")

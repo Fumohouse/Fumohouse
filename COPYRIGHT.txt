@@ -70,7 +70,7 @@ License: Expat
 # Other External Files #
 ########################
 
-Files: scenes/playground/prototype.png
+Files: maps/playground/prototype.png
 Comment: Prototyping texture, by Kenney
 Copyright: 2020, Kenney
 License: CC0-1.0

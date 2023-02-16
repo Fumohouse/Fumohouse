@@ -1,20 +1,20 @@
 [gd_resource type="Resource" load_steps=26 format=3 uid="uid://c2cxpgo2nnkv8"]
 
 [ext_resource type="Texture2D" uid="uid://bmtg2nw552alt" path="res://assets/textures/faces/eyes/straight/eyes.png" id="1_60vdp"]
-[ext_resource type="Script" path="res://scenes/character/appearance/face/EyeStyle.lua" id="2_5513h"]
+[ext_resource type="Script" path="res://character/appearance/face/EyeStyle.lua" id="2_5513h"]
 [ext_resource type="Texture2D" uid="uid://cuaqx0274khhm" path="res://assets/textures/faces/eyes/straight/shine.png" id="3_vlwhc"]
 [ext_resource type="Texture2D" uid="uid://c0gchvpjgyo8j" path="res://assets/textures/faces/eyes/straight/hooks.png" id="4_oesau"]
 [ext_resource type="Texture2D" uid="uid://brhy8ym8hr1tm" path="res://assets/textures/faces/eyes/curved/eyes.png" id="5_qfugq"]
 [ext_resource type="Texture2D" uid="uid://cespmgb2hybwd" path="res://assets/textures/faces/eyes/curved/shine.png" id="6_wiexk"]
 [ext_resource type="Texture2D" uid="uid://dgpaqc85kjr25" path="res://assets/textures/faces/eyes/curved/hooks.png" id="7_7ikaa"]
-[ext_resource type="Script" path="res://scenes/character/appearance/face/FacePartStyle.lua" id="8_xghfh"]
+[ext_resource type="Script" path="res://character/appearance/face/FacePartStyle.lua" id="8_xghfh"]
 [ext_resource type="Texture2D" uid="uid://dikvqvwhc2wvi" path="res://assets/textures/faces/eyebrows/angled_down.png" id="9_i42d4"]
 [ext_resource type="Texture2D" uid="uid://vfqw33xirocv" path="res://assets/textures/faces/eyebrows/curved.png" id="10_s6sd1"]
 [ext_resource type="Texture2D" uid="uid://c7kws3x2b407x" path="res://assets/textures/faces/eyebrows/straight.png" id="11_knyho"]
 [ext_resource type="Texture2D" uid="uid://dh7hih34p1532" path="res://assets/textures/faces/mouths/straight.png" id="12_63vkg"]
 [ext_resource type="Texture2D" uid="uid://bes6rfi3jqnfx" path="res://assets/textures/faces/mouths/smile.png" id="13_kqvat"]
 [ext_resource type="Texture2D" uid="uid://brxv63dg3ajga" path="res://assets/textures/faces/mouths/3.png" id="14_smim7"]
-[ext_resource type="Script" path="res://scenes/character/appearance/face/FaceDatabase.lua" id="15_ng3rm"]
+[ext_resource type="Script" path="res://character/appearance/face/FaceDatabase.lua" id="15_ng3rm"]
 
 [sub_resource type="Resource" id="Resource_ejl5l"]
 script = ExtResource("2_5513h")

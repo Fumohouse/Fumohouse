@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c1jqrlkxogo24"]
 
-[ext_resource type="PackedScene" uid="uid://dwmy6jfc4pgh" path="res://scenes/debug_menu/debug_menu.tscn" id="1_clh5e"]
-[ext_resource type="Script" path="res://scenes/character/DebugCharacter.lua" id="2_jos65"]
+[ext_resource type="PackedScene" uid="uid://dwmy6jfc4pgh" path="res://debug/menu/debug_menu.tscn" id="1_clh5e"]
+[ext_resource type="Script" path="res://debug/menu/DebugCharacter.lua" id="2_jos65"]
 
 [node name="DebugCharacter" instance=ExtResource("1_clh5e")]
 anchor_left = 1.0

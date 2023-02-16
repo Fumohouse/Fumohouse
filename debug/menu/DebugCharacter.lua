@@ -1,14 +1,14 @@
-local Character = require("Character")
-local HorizontalMotion = require("motion/HorizontalMotion.mod")
-local PhysicalMotion = require("motion/PhysicalMotion.mod")
-local StairsMotion = require("motion/StairsMotion.mod")
-local DebugMenu = require("../../scenes/debug_menu/DebugMenu")
+local Character = require("../../character/Character")
+local HorizontalMotion = require("../../character/motion/HorizontalMotion.mod")
+local PhysicalMotion = require("../../character/motion/PhysicalMotion.mod")
+local StairsMotion = require("../../character/motion/StairsMotion.mod")
+local DebugMenu = require("DebugMenu")
 
-local DebugDrawM = require("../../singletons/DebugDraw")
+local DebugDrawM = require("../DebugDraw")
 local DebugDraw = gdglobal("DebugDraw") :: DebugDrawM.DebugDraw
 
 local DebugCharacterImpl = {}
-local DebugCharacter = gdclass(nil, "../debug_menu/DebugMenu.lua")
+local DebugCharacter = gdclass(nil, "DebugMenu.lua")
     :RegisterImpl(DebugCharacterImpl)
 
 type DebugCharacterT = {

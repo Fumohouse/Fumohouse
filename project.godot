@@ -16,9 +16,9 @@ config/icon="res://assets/textures/logo.svg"
 
 [autoload]
 
-DebugInfo="*res://scenes/debug_menu/debug_info.tscn"
-DebugDraw="*res://singletons/DebugDraw.lua"
-PartDatabase="*res://scenes/character/appearance/parts/PartDatabase.lua"
+DebugInfo="*res://debug/menu/debug_info.tscn"
+DebugDraw="*res://debug/DebugDraw.lua"
+PartDatabase="*res://character/appearance/parts/PartDatabase.lua"
 
 [display]
 

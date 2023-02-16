@@ -1,5 +1,5 @@
 local DebugMenu = require("DebugMenu")
-local Utils = require("../../scripts/Utils.mod")
+local Utils = require("../../utils/Utils.mod")
 
 local DebugInfoImpl = {}
 local DebugInfo = gdclass(nil, "DebugMenu.lua")

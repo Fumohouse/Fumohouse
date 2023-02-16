@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=5 format=3 uid="uid://bd4wn106x8vnl"]
 
-[ext_resource type="Script" path="res://scenes/character/appearance/parts/SinglePart.lua" id="1_5y6qu"]
-[ext_resource type="Script" path="res://scenes/character/appearance/parts/MultiPart.lua" id="1_858pj"]
+[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_5y6qu"]
+[ext_resource type="Script" path="res://character/appearance/parts/MultiPart.lua" id="1_858pj"]
 
 [sub_resource type="Resource" id="Resource_g8dbp"]
 script = ExtResource("1_5y6qu")

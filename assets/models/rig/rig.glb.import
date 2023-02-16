@@ -27,12 +27,12 @@ animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
-import_script/path="res://scripts/PostImportGltf.lua"
+import_script/path="res://assets/models/PostImportGltf.lua"
 _subresources={
 "materials": {
 "Face": {
 "use_external/enabled": false,
-"use_external/path": "res://scenes/character/appearance/face/face_material.tres"
+"use_external/path": "res://character/appearance/face/face_material.tres"
 }
 },
 "meshes": {
