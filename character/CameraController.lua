@@ -1,7 +1,7 @@
 local Utils = require("../utils/Utils.mod")
 
 local CameraControllerImpl = {}
-local CameraController = gdclass("CameraController", "Camera3D")
+local CameraController = gdclass("CameraController", Camera3D)
 	:RegisterImpl(CameraControllerImpl)
 
 type CameraControllerT = {

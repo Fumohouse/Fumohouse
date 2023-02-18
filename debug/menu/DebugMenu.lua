@@ -1,7 +1,7 @@
 local AutosizeRichText = require("../../nodes/AutosizeRichText")
 
 local DebugMenuImpl = {}
-local DebugMenu = gdclass("DebugMenu", "PanelContainer")
+local DebugMenu = gdclass("DebugMenu", PanelContainer)
     :RegisterImpl(DebugMenuImpl)
 
 export type DebugMenuEntry = {

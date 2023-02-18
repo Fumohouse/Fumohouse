@@ -78,6 +78,6 @@ texture = ExtResource("14_smim7")
 
 [resource]
 script = ExtResource("15_ng3rm")
-eyebrowStyles = Array[Resource]([SubResource("Resource_d40u2"), SubResource("Resource_vjy54"), SubResource("Resource_i1ybu")])
-eyeStyles = Array[Resource]([SubResource("Resource_ejl5l"), SubResource("Resource_v8jeu"), SubResource("Resource_x1my0"), SubResource("Resource_a2xx7")])
-mouthStyles = Array[Resource]([SubResource("Resource_ue2a2"), SubResource("Resource_sdsdo"), SubResource("Resource_42p2p")])
+eyebrowStyles = [SubResource("Resource_d40u2"), SubResource("Resource_vjy54"), SubResource("Resource_i1ybu")]
+eyeStyles = [SubResource("Resource_ejl5l"), SubResource("Resource_v8jeu"), SubResource("Resource_x1my0"), SubResource("Resource_a2xx7")]
+mouthStyles = [SubResource("Resource_ue2a2"), SubResource("Resource_sdsdo"), SubResource("Resource_42p2p")]

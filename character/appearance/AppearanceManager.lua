@@ -12,7 +12,7 @@ local PartDatabaseM = require("parts/PartDatabase")
 local PartDatabase = gdglobal("PartDatabase") :: PartDatabaseM.PartDatabase
 
 local AppearanceManagerImpl = {}
-local AppearanceManager = gdclass(nil, "Node3D")
+local AppearanceManager = gdclass(nil, Node3D)
     :RegisterImpl(AppearanceManagerImpl)
 
 type AttachedPartInfo = {

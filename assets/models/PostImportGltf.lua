@@ -1,5 +1,5 @@
 local PostImportGltfImpl = {}
-local PostImportGltf = gdclass(nil, "EditorScenePostImport")
+local PostImportGltf = gdclass(nil, EditorScenePostImport)
     :Tool(true)
     :Permissions(Enum.Permissions.INTERNAL)
     :RegisterImpl(PostImportGltfImpl)

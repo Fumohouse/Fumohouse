@@ -1,7 +1,7 @@
 local PartData = require("PartData")
 
 local PartDatabaseImpl = {}
-local PartDatabase = gdclass(nil, "Node")
+local PartDatabase = gdclass(nil, Node)
 	:Permissions(Enum.Permissions.FILE)
 	:RegisterImpl(PartDatabaseImpl)
 

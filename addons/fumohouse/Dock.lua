@@ -1,4 +1,4 @@
-local Dock = gdclass(nil, "Control")
+local Dock = gdclass(nil, Control)
 	:Tool(true)
 
 export type Dock = Control & {

@@ -1,4 +1,4 @@
-local Appearance = gdclass("Appearance", "Resource")
+local Appearance = gdclass("Appearance", Resource)
 
 export type Appearance = Resource & {
     eyebrows: string,

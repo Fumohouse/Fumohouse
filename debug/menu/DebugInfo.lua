@@ -2,7 +2,7 @@ local DebugMenu = require("DebugMenu")
 local Utils = require("../../utils/Utils.mod")
 
 local DebugInfoImpl = {}
-local DebugInfo = gdclass(nil, "DebugMenu.lua")
+local DebugInfo = gdclass(nil, DebugMenu)
     :Permissions(bit32.bor(Enum.Permissions.INTERNAL, Enum.Permissions.OS))
     :RegisterImpl(DebugInfoImpl)
 

@@ -1,5 +1,5 @@
 local PartDataImpl = {}
-local PartData = gdclass("PartData", "Resource")
+local PartData = gdclass("PartData", Resource)
     :RegisterImpl(PartDataImpl)
 
 PartDataImpl.Scope = {

@@ -1,5 +1,5 @@
 local PartCustomizerImpl = {}
-local PartCustomizer = gdclass(nil, "Node3D")
+local PartCustomizer = gdclass(nil, Node3D)
     :RegisterImpl(PartCustomizerImpl)
 
 export type PartCustomizer = Node3D & typeof(PartCustomizerImpl)

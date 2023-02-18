@@ -1,7 +1,7 @@
 local Dock = require("Dock")
 
 local PluginImpl = {}
-local Plugin = gdclass(nil, "EditorPlugin")
+local Plugin = gdclass(nil, EditorPlugin)
     :Tool(true)
     :RegisterImpl(PluginImpl)
 

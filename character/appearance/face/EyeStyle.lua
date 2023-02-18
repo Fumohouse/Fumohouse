@@ -1,4 +1,4 @@
-local EyeStyle = gdclass("EyeStyle", "Resource")
+local EyeStyle = gdclass("EyeStyle", Resource)
 
 export type EyeStyle = Resource & {
     name: string,

@@ -1,6 +1,6 @@
 local PartData = require("PartData")
 
-local MultiPart = gdclass("MultiPart", "PartData.lua")
+local MultiPart = gdclass("MultiPart", PartData)
 
 export type MultiPart = PartData.PartData & {
     parts: TypedArray<Resource>,

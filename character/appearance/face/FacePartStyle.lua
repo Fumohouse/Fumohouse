@@ -1,4 +1,4 @@
-local FacePartStyle = gdclass("FacePartStyle", "Resource")
+local FacePartStyle = gdclass("FacePartStyle", Resource)
 
 export type FacePartStyle = Resource & {
     name: string,

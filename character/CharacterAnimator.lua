@@ -3,7 +3,7 @@ local HorizontalMotion = require("motion/HorizontalMotion.mod")
 local LadderMotion = require("motion/LadderMotion.mod")
 
 local CharacterAnimatorImpl = {}
-local CharacterAnimator = gdclass(nil, "Node")
+local CharacterAnimator = gdclass(nil, Node)
     :RegisterImpl(CharacterAnimatorImpl)
 
 type CharacterAnimatorT = {

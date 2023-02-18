@@ -1,5 +1,5 @@
 local AutosizeRichTextImpl = {}
-local AutosizeRichText = gdclass("AutosizeRichText", "RichTextLabel")
+local AutosizeRichText = gdclass("AutosizeRichText", RichTextLabel)
     :RegisterImpl(AutosizeRichTextImpl)
 
 export type AutosizeRichText = RichTextLabel

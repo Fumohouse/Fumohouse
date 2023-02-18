@@ -1,7 +1,7 @@
 local PartData = require("PartData")
 
 local SinglePartImpl = {}
-local SinglePart = gdclass("SinglePart", "PartData.lua")
+local SinglePart = gdclass("SinglePart", PartData)
     :Tool(true) -- must be instantiable in the editor
     :RegisterImpl(SinglePartImpl)
 

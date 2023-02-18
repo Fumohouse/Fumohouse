@@ -1,7 +1,7 @@
 local PartCustomizer = require("PartCustomizer")
 
 local SingleColorImpl = {}
-local SingleColor = gdclass(nil, "PartCustomizer.lua")
+local SingleColor = gdclass(nil, PartCustomizer)
     :RegisterImpl(SingleColorImpl)
 
 type SingleColorT = {

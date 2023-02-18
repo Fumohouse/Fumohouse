@@ -1,5 +1,5 @@
 local DebugDrawImpl = {}
-local DebugDraw = gdclass(nil, "MeshInstance3D")
+local DebugDraw = gdclass(nil, MeshInstance3D)
 	:RegisterImpl(DebugDrawImpl)
 
 type LineInfo = {

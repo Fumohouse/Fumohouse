@@ -1,7 +1,7 @@
 local CameraController = require("CameraController")
 
 local CharacterImpl = {}
-local Character = gdclass("Character", "RigidBody3D")
+local Character = gdclass("Character", RigidBody3D)
     :RegisterImpl(CharacterImpl)
 
 type WallInfo = {

@@ -1,5 +1,5 @@
 local BillboardImpl = {}
-local Billboard = gdclass("Billboard", "Sprite3D")
+local Billboard = gdclass("Billboard", Sprite3D)
     :RegisterImpl(BillboardImpl)
 
 type BillboardT = {

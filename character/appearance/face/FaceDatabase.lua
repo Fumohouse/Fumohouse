@@ -2,7 +2,7 @@ local FacePartStyle = require("FacePartStyle")
 local EyeStyle = require("EyeStyle")
 
 local FaceDatabaseImpl = {}
-local FaceDatabase = gdclass("FaceDatabase", "Resource")
+local FaceDatabase = gdclass("FaceDatabase", Resource)
     :RegisterImpl(FaceDatabaseImpl)
 
 type FaceDatabaseT = {

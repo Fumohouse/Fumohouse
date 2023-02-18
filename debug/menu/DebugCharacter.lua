@@ -8,7 +8,7 @@ local DebugDrawM = require("../DebugDraw")
 local DebugDraw = gdglobal("DebugDraw") :: DebugDrawM.DebugDraw
 
 local DebugCharacterImpl = {}
-local DebugCharacter = gdclass(nil, "DebugMenu.lua")
+local DebugCharacter = gdclass(nil, DebugMenu)
     :RegisterImpl(DebugCharacterImpl)
 
 type DebugCharacterT = {

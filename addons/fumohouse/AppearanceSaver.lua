@@ -4,7 +4,7 @@ local AppearanceManager = require("../../character/appearance/AppearanceManager"
 local SinglePart = require("../../character/appearance/parts/SinglePart")
 
 local AppearanceSaverImpl = {}
-local AppearanceSaver = gdclass(nil, "Control")
+local AppearanceSaver = gdclass(nil, Control)
 	:Permissions(Enum.Permissions.FILE)
 	:Tool(true)
 	:RegisterImpl(AppearanceSaverImpl)
