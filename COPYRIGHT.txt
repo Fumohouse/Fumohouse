@@ -24,12 +24,6 @@ Copyright: 2022-present, voided_etc
  2022-present, Fumohouse contributors
 License: Expat
 
-Files: *
-Comment: Project made using the Godot Engine.
-Copyright: 2014-present Godot Engine contributors
- 2007-2014 Juan Linietsky, Ariel Manzur
-License: Expat
-
 Files: assets/*
 Comment: Fumohouse (assets)
 Copyright: 2021-present, voided_etc
