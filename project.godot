@@ -19,6 +19,7 @@ config/icon="res://assets/textures/logo.svg"
 DebugInfo="*res://debug/menu/debug_info.tscn"
 DebugDraw="*res://debug/DebugDraw.lua"
 PartDatabase="*res://character/appearance/parts/PartDatabase.lua"
+MapManager="*res://map_system/MapManager.lua"
 
 [display]
 

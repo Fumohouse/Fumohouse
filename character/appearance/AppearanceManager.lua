@@ -66,7 +66,7 @@ local faceMaterial: ShaderMaterial = assert(load("face/face_material.tres"))
 local faceDatabase: FaceDatabase.FaceDatabase = assert(load("res://resources/face_database.tres"))
 
 AppearanceManager:RegisterProperty("appearance", Enum.VariantType.OBJECT)
-    :Resource("Resource")
+    :Resource("Appearance")
 
 AppearanceManager:RegisterProperty("cameraFadeBegin", Enum.VariantType.FLOAT)
     :Default(1.5)

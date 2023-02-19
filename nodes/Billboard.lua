@@ -6,7 +6,6 @@ type BillboardT = {
     targetPixelSize: number,
 
     viewport: SubViewport,
-    camera: Camera3D,
     origSize: Vector2,
 }
 
@@ -43,8 +42,6 @@ function BillboardImpl.ReparentContents(self: Billboard)
 end
 
 function BillboardImpl._Ready(self: Billboard)
-    self.camera = assert(self:GetViewport():GetCamera3D())
-
     local viewport = SubViewport.new()
     viewport.name = "Viewport"
     viewport.disable3D = true
@@ -60,7 +57,7 @@ end
 
 Billboard:RegisterMethod("_Ready")
 
-function BillboardImpl.GetScreenSize(self: Billboard): Vector2
+function BillboardImpl.GetScreenSize(self: Billboard, camera: Camera3D): Vector2
     local gBasis = self.globalTransform.basis
 
     local worldSize = self.origSize * self.targetPixelSize
@@ -77,48 +74,52 @@ function BillboardImpl.GetScreenSize(self: Billboard): Vector2
         + gBasis.x * worldSize.x / 2
         - gBasis.y * worldSize.y / 2
 
-    local screenTL = self.camera:UnprojectPosition(topLeft)
-    local screenBR = self.camera:UnprojectPosition(bottomRight)
+    local screenTL = camera:UnprojectPosition(topLeft)
+    local screenBR = camera:UnprojectPosition(bottomRight)
     local screenSize = screenBR - screenTL
 
     return screenSize
 end
 
 function BillboardImpl._Process(self: Billboard, delta: number)
-    if self.camera:IsPositionBehind(self.globalPosition) then
-        self.visible = false
-        self.viewport.renderTargetUpdateMode = SubViewport.UpdateMode.DISABLED
-        return
+    local camera = self:GetViewport():GetCamera3D()
+
+    if camera then
+        if camera:IsPositionBehind(self.globalPosition) then
+            self.visible = false
+            self.viewport.renderTargetUpdateMode = SubViewport.UpdateMode.DISABLED
+            return
+        end
+
+        self.visible = true
+        self.viewport.renderTargetUpdateMode = SubViewport.UpdateMode.ALWAYS
+
+        -- Manual billboard helps with math
+        self.globalTransform = Transform3D.new(camera.basis, self.globalTransform.origin)
+
+        local screenSize = self:GetScreenSize(camera)
+        local maxSize = self:GetWindow().size * 4
+
+        local viewportSize: Vector2
+        if screenSize.x > maxSize.x or screenSize.y > maxSize.y then
+            local width = maxSize.x
+            local height = maxSize.x * self.origSize.y / self.origSize.x
+
+            viewportSize = Vector2.new(width, height)
+        else
+            viewportSize = screenSize
+        end
+
+        -- I don't really know how this works.
+        -- This basically replicates Godot's canvas_items scaling mode.
+        -- Reference: window.cpp
+        self.viewport.size = Vector2i.new(viewportSize)
+        self.viewport.size2DOverride = Vector2i.new(self.origSize)
+        self.viewport.canvasTransform = Transform2D.IDENTITY:Scaled(viewportSize / self.origSize)
+
+        -- Must adjust the pixel size in order to update texture size, etc.
+        self.pixelSize = self.targetPixelSize * self.origSize.x / screenSize.x
     end
-
-    self.visible = true
-    self.viewport.renderTargetUpdateMode = SubViewport.UpdateMode.ALWAYS
-
-    -- Manual billboard helps with math
-    self.globalTransform = Transform3D.new(self.camera.basis, self.globalTransform.origin)
-
-    local screenSize = self:GetScreenSize()
-    local maxSize = self:GetWindow().size * 4
-
-    local viewportSize: Vector2
-    if screenSize.x > maxSize.x or screenSize.y > maxSize.y then
-        local width = maxSize.x
-        local height = maxSize.x * self.origSize.y / self.origSize.x
-
-        viewportSize = Vector2.new(width, height)
-    else
-        viewportSize = screenSize
-    end
-
-	-- I don't really know how this works.
-	-- This basically replicates Godot's canvas_items scaling mode.
-	-- Reference: window.cpp
-    self.viewport.size = Vector2i.new(viewportSize)
-    self.viewport.size2DOverride = Vector2i.new(self.origSize)
-    self.viewport.canvasTransform = Transform2D.IDENTITY:Scaled(viewportSize / self.origSize)
-
-	-- Must adjust the pixel size in order to update texture size, etc.
-    self.pixelSize = self.targetPixelSize * self.origSize.x / screenSize.x
 end
 
 Billboard:RegisterMethodAST("_Process")

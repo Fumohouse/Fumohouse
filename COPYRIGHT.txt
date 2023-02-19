@@ -64,7 +64,7 @@ License: Expat
 # Playground Map #
 ##################
 
-Files: maps/playground/prototype.png
+Files: maps/playground/assets/prototype.png
 Comment: Prototyping texture, by Kenney
 Copyright: 2020, Kenney
 License: CC0-1.0

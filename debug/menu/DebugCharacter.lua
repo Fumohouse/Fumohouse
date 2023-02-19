@@ -12,6 +12,7 @@ local DebugCharacter = gdclass(nil, DebugMenu)
     :RegisterImpl(DebugCharacterImpl)
 
 type DebugCharacterT = {
+    characterPathInternal: string,
     characterPath: string,
 
     character: Character.Character?,
@@ -26,16 +27,15 @@ export type DebugCharacter = DebugMenu.DebugMenu & DebugCharacterT & typeof(Debu
 
 DebugCharacter:RegisterProperty("characterPath", Enum.VariantType.NODE_PATH)
     :NodePath("RigidBody3D")
+    :SetGet("setCharacterPath", "getCharacterPath")
 
 function DebugCharacterImpl._Init(obj: PanelContainer, tbl: DebugMenu.DebugMenuT & DebugCharacterT)
     tbl.menuName = "character_debug"
     tbl.action = "debug_2"
 end
 
-function DebugCharacterImpl._Ready(self: DebugCharacter)
-    DebugMenu._Ready(self)
-
-    if self.characterPath ~= "" then
+function DebugCharacterImpl.updateCharacter(self: DebugCharacter)
+    if self:IsInsideTree() and self.characterPathInternal ~= "" then
         local character = self:GetNode(self.characterPath) :: Character.Character
 
         self.horizontalMotion = character:GetMotionProcessor(HorizontalMotion.ID)
@@ -44,6 +44,25 @@ function DebugCharacterImpl._Ready(self: DebugCharacter)
 
         self.character = character
     end
+end
+
+function DebugCharacterImpl.setCharacterPath(self: DebugCharacter, path: string)
+    self.characterPathInternal = path
+    self:updateCharacter()
+end
+
+DebugCharacter:RegisterMethod("setCharacterPath")
+    :Args({ name = "path", type = Enum.VariantType.NODE_PATH })
+
+function DebugCharacterImpl.getCharacterPath(self: DebugCharacter): string
+    return self.characterPathInternal
+end
+
+DebugCharacter:RegisterMethod("getCharacterPath")
+    :ReturnVal({ type = Enum.VariantType.NODE_PATH })
+
+function DebugCharacterImpl._Ready(self: DebugCharacter)
+    DebugMenu._Ready(self)
 
     self.state = self:AddEntry("state", "State").contents
 
@@ -51,54 +70,57 @@ function DebugCharacterImpl._Ready(self: DebugCharacter)
     self:AddEntry("airborne", "Airborne Time")
     self:AddEntry("speed", "Speed")
     self:AddEntry("walls", "Wall Contacts")
+
+    self:updateCharacter()
 end
 
 function DebugCharacterImpl.debugDraw(self: DebugCharacter)
-    assert(self.character)
-    local pos = self.character.globalPosition
-    local eyePos = pos + Vector3.UP * assert(self.character.camera).cameraOffset
+    if self.character then
+        local pos = self.character.globalPosition
+        local eyePos = pos + Vector3.UP * assert(self.character.camera).cameraOffset
 
-    -- Forward direction
-    DebugDraw:DrawLine(eyePos, eyePos - self.character.globalTransform.basis.z, Color.AQUA)
+        -- Forward direction
+        DebugDraw:DrawLine(eyePos, eyePos - self.character.globalTransform.basis.z, Color.AQUA)
 
-    -- Grounding status
-    if self.character.isGrounded then
-        DebugDraw:DrawLine(pos, pos + self.character.groundNormal, Color.GREEN)
-    else
-        DebugDraw:DrawMarker(pos, Color.RED)
-    end
+        -- Grounding status
+        if self.character.isGrounded then
+            DebugDraw:DrawLine(pos, pos + self.character.groundNormal, Color.GREEN)
+        else
+            DebugDraw:DrawMarker(pos, Color.RED)
+        end
 
-    -- Walls
-    for _, wallInfo in self.character.walls do
-        DebugDraw:DrawLine(wallInfo.point, wallInfo.point + wallInfo.normal, Color.WHITE)
-    end
+        -- Walls
+        for _, wallInfo in self.character.walls do
+            DebugDraw:DrawLine(wallInfo.point, wallInfo.point + wallInfo.normal, Color.WHITE)
+        end
 
-    -- Velocities
-    if self.horizontalMotion then
-        local topSpeed = self.horizontalMotion.options.movementSpeed
-        DebugDraw:DrawLine(pos, pos + self.character.velocity / topSpeed, Color.BLUE)
-    end
+        -- Velocities
+        if self.horizontalMotion then
+            local topSpeed = self.horizontalMotion.options.movementSpeed
+            DebugDraw:DrawLine(pos, pos + self.character.velocity / topSpeed, Color.BLUE)
+        end
 
-    -- Stairs
-    if self.stairsMotion and self.stairsMotion.foundStair then
-        local STAIRS_AXIS_LEN = 0.25
+        -- Stairs
+        if self.stairsMotion and self.stairsMotion.foundStair then
+            local STAIRS_AXIS_LEN = 0.25
 
-        local target = self.stairsMotion.endPosition
+            local target = self.stairsMotion.endPosition
 
-        DebugDraw:DrawMarker(self.stairsMotion.beginPosition, Color.AQUA)
-        DebugDraw:DrawMarker(target, Color.AQUA)
+            DebugDraw:DrawMarker(self.stairsMotion.beginPosition, Color.AQUA)
+            DebugDraw:DrawMarker(target, Color.AQUA)
 
-        DebugDraw:DrawLine(
-            target, target + self.stairsMotion.wallTangent * STAIRS_AXIS_LEN, Color.RED
-        )
+            DebugDraw:DrawLine(
+                target, target + self.stairsMotion.wallTangent * STAIRS_AXIS_LEN, Color.RED
+            )
 
-        DebugDraw:DrawLine(
-            target, target + self.stairsMotion.slopeNormal * STAIRS_AXIS_LEN, Color.GREEN
-        )
+            DebugDraw:DrawLine(
+                target, target + self.stairsMotion.slopeNormal * STAIRS_AXIS_LEN, Color.GREEN
+            )
 
-        DebugDraw:DrawLine(
-            target, target + self.stairsMotion.motionVector * STAIRS_AXIS_LEN, Color.BLUE
-        )
+            DebugDraw:DrawLine(
+                target, target + self.stairsMotion.motionVector * STAIRS_AXIS_LEN, Color.BLUE
+            )
+        end
     end
 end
 

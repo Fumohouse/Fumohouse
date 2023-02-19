@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://qlt6sjswr14s"]
+
+[ext_resource type="Script" path="res://map_system/MapRuntime.lua" id="1_ry2y1"]
+[ext_resource type="Script" path="res://character/CameraController.lua" id="1_uy88u"]
+[ext_resource type="PackedScene" uid="uid://c1jqrlkxogo24" path="res://debug/menu/debug_character.tscn" id="3_l5mc6"]
+
+[node name="FumohouseRuntime" type="Node3D"]
+script = ExtResource("1_ry2y1")
+
+[node name="CameraController" type="Camera3D" parent="."]
+current = true
+script = ExtResource("1_uy88u")
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="DebugCharacter" parent="." instance=ExtResource("3_l5mc6")]
+anchors_preset = 1
+characterPath = NodePath("")

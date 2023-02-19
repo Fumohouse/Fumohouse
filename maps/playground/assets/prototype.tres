@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" uid="uid://encfl84bm6s2" path="res://maps/playground/assets/prototype.png" id="1_ib3wg"]
+
+[resource]
+albedo_texture = ExtResource("1_ib3wg")
+metallic_specular = 0.1
+uv1_triplanar = true
+uv1_world_triplanar = true
