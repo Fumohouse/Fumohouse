@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0mo4s2hqyov3"]
+
+[ext_resource type="Theme" uid="uid://c7tdpcfevijlu" path="res://resources/main_theme/main_theme.tres" id="1_av17h"]
+[ext_resource type="Script" path="res://music/MusicController.lua" id="2_6ce3v"]
+[ext_resource type="PackedScene" uid="uid://c52wxemyiy7p3" path="res://nodes/marquee.tscn" id="2_ae0ga"]
+[ext_resource type="Texture2D" uid="uid://2uhtxecd4bhf" path="res://assets/textures/ui/icons/skip-start-fill.svg" id="2_tcc43"]
+[ext_resource type="Texture2D" uid="uid://g44io1cjsslr" path="res://assets/textures/ui/icons/play-fill.svg" id="3_eqsd2"]
+[ext_resource type="Script" path="res://music/MusicVisualizer.lua" id="3_ry3dh"]
+[ext_resource type="Texture2D" uid="uid://bsu3a5ka8lxr8" path="res://assets/textures/ui/icons/skip-end-fill.svg" id="4_b0lp2"]
+[ext_resource type="Script" path="res://nodes/IconButton.lua" id="4_jc5lg"]
+
+[node name="MusicController" type="PanelContainer"]
+clip_children = 2
+clip_contents = true
+custom_minimum_size = Vector2(300, 80)
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_av17h")
+script = ExtResource("2_6ce3v")
+
+[node name="Layout" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Visualizer" type="Control" parent="Layout"]
+modulate = Color(0, 0.151667, 0.35, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_ry3dh")
+
+[node name="Marquee" parent="Layout" instance=ExtResource("2_ae0ga")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 32.0
+grow_horizontal = 2
+
+[node name="SeekBar" type="HSlider" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -44.0
+offset_right = -12.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+step = 0.001
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Layout"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Previous" type="TextureButton" parent="Layout/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("2_tcc43")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("4_jc5lg")
+
+[node name="PlayPause" type="TextureButton" parent="Layout/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("3_eqsd2")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("4_jc5lg")
+
+[node name="Next" type="TextureButton" parent="Layout/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("4_b0lp2")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("4_jc5lg")

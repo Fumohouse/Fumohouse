@@ -1,0 +1,105 @@
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://c7tdpcfevijlu"]
+
+[ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="1_6i6al"]
+[ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="1_g00ea"]
+[ext_resource type="Texture2D" uid="uid://d2di3e2hn5sp4" path="res://assets/textures/ui/slider_grabber.svg" id="1_ocllp"]
+[ext_resource type="Texture2D" uid="uid://lr3nwl1fjw7n" path="res://assets/textures/ui/slider_grabber_highlight.svg" id="2_0t65a"]
+[ext_resource type="Texture2D" uid="uid://bdlsb2cwc5gki" path="res://assets/textures/ui/slider_grabber_disabled.svg" id="2_rxfc8"]
+[ext_resource type="FontFile" uid="uid://d4aoxe8g40t4v" path="res://assets/fonts/IBMPlexSans-BoldItalic.ttf" id="2_tltyu"]
+[ext_resource type="FontFile" uid="uid://cl1t2pm0rvomw" path="res://assets/fonts/IBMPlexSans-Italic.ttf" id="3_o0kyl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vm3jt"]
+bg_color = Color(0.125, 0.179167, 0.25, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdkjk"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.36, 0.456, 0.6, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xyays"]
+bg_color = Color(0.176471, 0.25098, 0.360784, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jaxq"]
+bg_color = Color(0.2, 0.286275, 0.4, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hl0kt"]
+bg_color = Color(0.16, 0.229333, 0.32, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_or67s"]
+bg_color = Color(0.24, 0.396, 0.6, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bc0rt"]
+bg_color = Color(0.2, 0.325, 0.5, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25hb7"]
+bg_color = Color(0, 0.0862745, 0.2, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjmuj"]
+bg_color = Color(0, 0.152941, 0.34902, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+default_font = ExtResource("1_6i6al")
+default_font_size = 16
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.55, 0.55, 0.55, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_vm3jt")
+Button/styles/focus = SubResource("StyleBoxFlat_hdkjk")
+Button/styles/hover = SubResource("StyleBoxFlat_xyays")
+Button/styles/normal = SubResource("StyleBoxFlat_5jaxq")
+Button/styles/pressed = SubResource("StyleBoxFlat_hl0kt")
+HSlider/icons/grabber = ExtResource("1_ocllp")
+HSlider/icons/grabber_disabled = ExtResource("2_rxfc8")
+HSlider/icons/grabber_highlight = ExtResource("2_0t65a")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_or67s")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_or67s")
+HSlider/styles/slider = SubResource("StyleBoxFlat_bc0rt")
+Panel/styles/panel = SubResource("StyleBoxFlat_25hb7")
+Panel1/base_type = &"Panel"
+Panel1/styles/panel = SubResource("StyleBoxFlat_tjmuj")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_25hb7")
+RichTextLabel/fonts/bold_font = ExtResource("1_g00ea")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_tltyu")
+RichTextLabel/fonts/italics_font = ExtResource("3_o0kyl")

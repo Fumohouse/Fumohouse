@@ -7,7 +7,7 @@ local Song = gdclass("Song", MusicResBase)
 export type Song = MusicResBase.MusicResBase & {
     id: string,
 
-    artist: SongArtist.SongArtist?,
+    artist: SongArtist.SongArtist,
     label: SongLabel.SongLabel?,
 
     path: string,

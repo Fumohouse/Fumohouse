@@ -1,6 +1,8 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cgtshr0dparf"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://cgtshr0dparf"]
 
+[ext_resource type="Resource" uid="uid://ccv4nc6fammte" path="res://maps/playground/assets/music/playlists/main.tres" id="1_4lptv"]
 [ext_resource type="Script" path="res://map_system/MapManifest.lua" id="1_7gxr0"]
+[ext_resource type="Resource" uid="uid://8i30uyc51bje" path="res://maps/playground/assets/music/playlists/special.tres" id="2_3tpvn"]
 
 [resource]
 script = ExtResource("1_7gxr0")
@@ -9,4 +11,6 @@ name = "Playground"
 author = "Fumohouse"
 description = "Fumohouse's testing map."
 mainScenePath = "res://maps/playground/playground.tscn"
-playlists = []
+playlists = [ExtResource("1_4lptv"), ExtResource("2_3tpvn")]
+titlePlaylist = "main"
+defaultPlaylist = "main"

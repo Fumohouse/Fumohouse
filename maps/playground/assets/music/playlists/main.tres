@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ccv4nc6fammte"]
+
+[ext_resource type="Script" path="res://music/Playlist.lua" id="1_klof4"]
+[ext_resource type="Resource" uid="uid://cbrvbcr704jr1" path="res://maps/playground/assets/music/songs/Gymnopedie No 1.tres" id="2_rqlje"]
+
+[resource]
+script = ExtResource("1_klof4")
+id = "main"
+songs = [ExtResource("2_rqlje")]

@@ -4,24 +4,24 @@
 [ext_resource type="Script" path="res://addons/fumohouse/AppearanceSaver.lua" id="1_e74rc"]
 
 [node name="Fumohouse" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1_d0xmb")
 
 [node name="AppearanceSaver" type="VBoxContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1_e74rc")
 
 [node name="Folder" type="LineEdit" parent="AppearanceSaver"]
-offset_right = 1024.0
-offset_bottom = 31.0
+layout_mode = 2
 placeholder_text = "Save Folder"
 
 [node name="Button" type="Button" parent="AppearanceSaver"]
-offset_top = 35.0
-offset_right = 1024.0
-offset_bottom = 66.0
+layout_mode = 2
 action_mode = 0
 text = "Save appearance data to .tres"
 

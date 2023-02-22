@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cs0gtcp4i8oc8"
+path="res://.godot/imported/flowerhead - The Only One At The Party.ogg-f32d8e2238e097ab88b80e472e9f8fce.oggvorbisstr"
+
+[deps]
+
+source_file="res://maps/playground/assets/music/songs/flowerhead - The Only One At The Party.ogg"
+dest_files=["res://.godot/imported/flowerhead - The Only One At The Party.ogg-f32d8e2238e097ab88b80e472e9f8fce.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

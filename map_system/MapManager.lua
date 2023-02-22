@@ -1,6 +1,9 @@
 local MapManifest = require("MapManifest")
 local MapRuntime = require("MapRuntime")
 
+local MusicPlayerM = require("../music/MusicPlayer")
+local MusicPlayer = gdglobal("MusicPlayer") :: MusicPlayerM.MusicPlayer
+
 local MapManagerImpl = {}
 local MapManager = gdclass(nil, Node)
     :Permissions(bit32.bor(Enum.Permissions.FILE, Enum.Permissions.INTERNAL))
@@ -8,6 +11,7 @@ local MapManager = gdclass(nil, Node)
 
 type MapManagerT = {
     maps: {MapManifest.MapManifest},
+    currentMap: MapManifest.MapManifest?,
 }
 
 export type MapManager = Node & MapManagerT & typeof(MapManagerImpl)
@@ -50,6 +54,8 @@ MapManager:RegisterMethod("_Ready")
 function MapManagerImpl.loadInternal(self: MapManager, manifest: MapManifest.MapManifest)
     local scene = load(manifest.mainScenePath) :: Resource?
     if scene and scene:IsClass("PackedScene") then
+        MusicPlayer:LoadPlaylists(manifest.playlists)
+
         -- Switch scenes manually (otherwise switch is deferred to next frame)
         local newScene = (scene :: PackedScene):Instantiate()
         self:GetTree():GetRoot():AddChild(newScene)
@@ -64,6 +70,7 @@ function MapManagerImpl.loadInternal(self: MapManager, manifest: MapManifest.Map
         end
 
         self:GetTree():SetCurrentScene(newScene)
+        self.currentMap = manifest
     else
         error(`Failed to load main scene at {manifest.mainScenePath}.`)
     end

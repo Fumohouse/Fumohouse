@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://irnuh6m6abqj"]
+
+[ext_resource type="Script" path="res://music/SongArtist.lua" id="1_igafn"]
+
+[resource]
+script = ExtResource("1_igafn")
+nameUnicode = ""
+nameRomanized = "Kevin MacLeod"
+url = "https://incompetech.com/"

@@ -136,7 +136,7 @@ table.sort(STATES, function(a, b)
     return a.value < b.value
 end)
 
-function DebugCharacterImpl._Process(self: DebugCharacter, _delta: number)
+function DebugCharacterImpl._Process(self: DebugCharacter, delta: number)
     assert(self.character)
     assert(self.state)
     self.state:Clear()

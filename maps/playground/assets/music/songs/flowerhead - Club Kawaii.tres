@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bta8mwhe37hm4"]
+
+[ext_resource type="Resource" uid="uid://8ynf857ppgdc" path="res://maps/playground/assets/music/artists/flowerhead.tres" id="1_c2x7l"]
+[ext_resource type="Script" path="res://music/Song.lua" id="1_c7lxu"]
+
+[resource]
+script = ExtResource("1_c7lxu")
+nameUnicode = ""
+nameRomanized = "Club Kawaii"
+url = "https://somewhatgoodroyaltyfreemusic.bandcamp.com/track/club-kawaii"
+id = "clubkawaii"
+artist = ExtResource("1_c2x7l")
+path = "res://maps/playground/assets/music/songs/flowerhead - Club Kawaii.ogg"

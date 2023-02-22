@@ -11,6 +11,9 @@ export type MapManifest = Resource & {
 
     mainScenePath: string,
     playlists: TypedArray<Playlist.Playlist>,
+
+    titlePlaylist: string,
+    defaultPlaylist: string,
 }
 
 MapManifest:RegisterProperty("id", Enum.VariantType.STRING)
@@ -26,5 +29,8 @@ MapManifest:RegisterProperty("mainScenePath", Enum.VariantType.STRING)
 
 MapManifest:RegisterProperty("playlists", Enum.VariantType.ARRAY)
     :TypedArray("Playlist", true)
+
+MapManifest:RegisterProperty("titlePlaylist", Enum.VariantType.STRING)
+MapManifest:RegisterProperty("defaultPlaylist", Enum.VariantType.STRING)
 
 return MapManifest

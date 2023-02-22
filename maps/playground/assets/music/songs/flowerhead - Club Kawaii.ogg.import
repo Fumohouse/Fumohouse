@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://by72jrwiw6oun"
+path="res://.godot/imported/flowerhead - Club Kawaii.ogg-2bc55c739da9c0ac4a56f474fc647c93.oggvorbisstr"
+
+[deps]
+
+source_file="res://maps/playground/assets/music/songs/flowerhead - Club Kawaii.ogg"
+dest_files=["res://.godot/imported/flowerhead - Club Kawaii.ogg-2bc55c739da9c0ac4a56f474fc647c93.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

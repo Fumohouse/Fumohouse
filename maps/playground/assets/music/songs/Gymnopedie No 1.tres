@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cbrvbcr704jr1"]
+
+[ext_resource type="Resource" uid="uid://irnuh6m6abqj" path="res://maps/playground/assets/music/artists/Kevin MacLeod.tres" id="1_aqe5n"]
+[ext_resource type="Script" path="res://music/Song.lua" id="1_o3s8p"]
+
+[resource]
+script = ExtResource("1_o3s8p")
+nameUnicode = ""
+nameRomanized = "Gymnopedie No 1"
+url = "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100787"
+id = "gymnopedie1"
+artist = ExtResource("1_aqe5n")
+path = "res://maps/playground/assets/music/songs/Gymnopedie No 1.ogg"

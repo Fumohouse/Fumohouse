@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cul3saepsy5mo"]
+[gd_scene load_steps=21 format=3 uid="uid://cul3saepsy5mo"]
 
 [ext_resource type="Script" path="res://map_system/BasicSpawner.lua" id="1_be2v8"]
 [ext_resource type="PackedScene" uid="uid://cfn8xb4oi4ne3" path="res://maps/playground/spawnpoint.tscn" id="2_6ocf1"]
@@ -6,6 +6,8 @@
 [ext_resource type="Material" path="res://maps/playground/assets/prototype.tres" id="3_0827c"]
 [ext_resource type="Script" path="res://nodes/Billboard.lua" id="5_5g01e"]
 [ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="6_jvjd4"]
+[ext_resource type="FontFile" uid="uid://cl1t2pm0rvomw" path="res://assets/fonts/IBMPlexSans-Italic.ttf" id="7_4fan8"]
+[ext_resource type="PackedScene" uid="uid://d0mo4s2hqyov3" path="res://music/music_controller.tscn" id="7_ct7js"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v2ei6"]
 size = Vector3(2, 5, 1)
@@ -36,6 +38,16 @@ height = 1.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mrxia"]
 height = 1.0
 radius = 5.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f5pfk"]
+size = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7plwa"]
+size = Vector3(5, 5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p618o"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.0980392)
 
 [node name="Playground" type="Node3D"]
 
@@ -373,6 +385,41 @@ text = "\"Playground\" Testing Map"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_layout_mode = 1
+
+[node name="SpecialZone" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -15)
+
+[node name="Label3D" type="Label3D" parent="SpecialZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+pixel_size = 0.01
+billboard = 1
+text = "special zone"
+font = ExtResource("7_4fan8")
+
+[node name="Area3D" type="Area3D" parent="SpecialZone"]
+metadata/playlist = "special"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpecialZone/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_f5pfk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpecialZone/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("BoxMesh_7plwa")
+surface_material_override/0 = SubResource("StandardMaterial3D_p618o")
+
+[node name="MusicController" parent="." instance=ExtResource("7_ct7js")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -316.0
+offset_top = -96.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [editable path="CharacterSpawner/Spawnpoint"]
 [editable path="CharacterSpawner/Spawnpoint2"]

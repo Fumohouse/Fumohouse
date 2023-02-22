@@ -138,7 +138,7 @@ function AppearanceManagerImpl.loadScale(self: AppearanceManager)
     end
 end
 
-function AppearanceManagerImpl._PhysicsProcess(self: AppearanceManager, _delta: number)
+function AppearanceManagerImpl._PhysicsProcess(self: AppearanceManager, delta: number)
     if self.character.camera then
         if self.character.camera.cameraMode == CameraController.CameraMode.FIRST_PERSON then
             self:setAlpha(0)

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dhjo77mak036y"
+path="res://.godot/imported/Gymnopedie No 1.ogg-f2a74b83183c10940d6d61fbe473c6d2.oggvorbisstr"
+
+[deps]
+
+source_file="res://maps/playground/assets/music/songs/Gymnopedie No 1.ogg"
+dest_files=["res://.godot/imported/Gymnopedie No 1.ogg-f2a74b83183c10940d6d61fbe473c6d2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

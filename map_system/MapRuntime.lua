@@ -11,16 +11,19 @@ type MapRuntimeT = {
     camera: CameraController.CameraController,
     players: Node3D,
     debugCharacter: DebugCharacter.DebugCharacter,
+
+    characterScene: PackedScene,
 }
 
 export type MapRuntime = Node3D & MapRuntimeT & typeof(MapRuntimeImpl)
-
-local characterScene = assert(load("res://character/character.tscn")) :: PackedScene
 
 function MapRuntimeImpl._Ready(self: MapRuntime)
     self.camera = self:GetNode("CameraController") :: CameraController.CameraController
     self.players = self:GetNode("Players") :: Node3D
     self.debugCharacter = self:GetNode("DebugCharacter") :: DebugCharacter.DebugCharacter
+
+    -- Cannot do at load-time due to cyclic dependency :( (character.tscn -> AreaHandler -> MapRuntime -> character.tscn)
+    self.characterScene = assert(load("res://character/character.tscn")) :: PackedScene
 end
 
 MapRuntime:RegisterMethod("_Ready")
@@ -28,7 +31,7 @@ MapRuntime:RegisterMethod("_Ready")
 function MapRuntimeImpl.SpawnLocalCharacter(self: MapRuntime, scene: Node)
     local spawner = scene:GetNodeOrNull("CharacterSpawner")
     if spawner and spawner:IsScript(CharacterSpawner) then
-        local character = (spawner :: CharacterSpawner.CharacterSpawner):SpawnCharacter(characterScene, self.camera)
+        local character = (spawner :: CharacterSpawner.CharacterSpawner):SpawnCharacter(self.characterScene, self.camera)
 
         if character then
             self.players:AddChild(character)
@@ -39,7 +42,7 @@ function MapRuntimeImpl.SpawnLocalCharacter(self: MapRuntime, scene: Node)
         end
     else
         -- Fallback: Spawn at Vector3.ZERO
-        local character = characterScene:Instantiate() :: Character.Character
+        local character = self.characterScene:Instantiate() :: Character.Character
         character.cameraPath = self.camera:GetPath()
 
         self.players:AddChild(character)
