@@ -1,8 +1,8 @@
 local Dock = gdclass(nil, Control)
-	:Tool(true)
+    :Tool(true)
 
 export type Dock = Control & {
-	plugin: EditorPlugin,
+    plugin: EditorPlugin,
 }
 
 return Dock

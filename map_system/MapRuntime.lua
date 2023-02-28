@@ -30,13 +30,13 @@ MapRuntime:RegisterMethod("_Ready")
 
 function MapRuntimeImpl.SpawnLocalCharacter(self: MapRuntime, scene: Node)
     local spawner = scene:GetNodeOrNull("CharacterSpawner")
-    if spawner and spawner:IsScript(CharacterSpawner) then
+    if spawner and spawner:IsA(CharacterSpawner) then
         local character = (spawner :: CharacterSpawner.CharacterSpawner):SpawnCharacter(self.characterScene, self.camera)
 
         if character then
             self.players:AddChild(character)
 
-            if character:IsScript(Character) then
+            if character:IsA(Character) then
                 self.debugCharacter.characterPath = character:GetPath()
             end
         end

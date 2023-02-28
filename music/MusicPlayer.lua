@@ -75,6 +75,11 @@ function MusicPlayerImpl.playImmediate(self: MusicPlayer, song: Song.Song, seek:
 end
 
 function MusicPlayerImpl.play(self: MusicPlayer, song: Song.Song, transitionOut: boolean, transitionIn: boolean, seek: number)
+    if self.currentSong and song.id == self.currentSong.id then
+        self:Play(seek)
+        return
+    end
+
     if not transitionOut then
         self:playImmediate(song, seek)
         return
@@ -127,13 +132,13 @@ function MusicPlayerImpl.continuePlaylist(self: MusicPlayer, playlistId: string)
         self.playlistPosition = position.position
 
         coroutine.wrap(function()
-            MusicPlayer.play(self, playlist.songs:Get(self.playlistPosition) :: Song.Song, true, true, position.time)
+            self:play(playlist.songs:Get(self.playlistPosition) :: Song.Song, true, true, position.time)
         end)()
     else
         self.playlistPosition = 1
 
         coroutine.wrap(function()
-            MusicPlayer.play(self, playlist.songs:Get(1) :: Song.Song, true, false, 0)
+            self:play(playlist.songs:Get(1) :: Song.Song, true, false, 0)
         end)()
     end
 
@@ -173,9 +178,7 @@ function MusicPlayerImpl.AdvancePlaylist(self: MusicPlayer, steps: number)
         self.playlistPosition += playlist.songs:Size()
     end
 
-    coroutine.wrap(function()
-        MusicPlayer.play(self, playlist.songs:Get(self.playlistPosition) :: Song.Song, false, false, 0)
-    end)()
+    self:play(playlist.songs:Get(self.playlistPosition) :: Song.Song, false, false, 0)
 end
 
 function MusicPlayerImpl.LoadPlaylists(self: MusicPlayer, playlists: TypedArray<Playlist.Playlist>)

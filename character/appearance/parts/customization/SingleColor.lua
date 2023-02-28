@@ -33,9 +33,9 @@ function SingleColorImpl._FHInitialize(self: SingleColor, config: Dictionary?)
         else
             self.defaultColor
 
-        if material:IsClass("StandardMaterial3D") then
+        if material:IsA(StandardMaterial3D) then
             (material :: StandardMaterial3D).albedoColor = color
-        elseif material:IsClass("ShaderMaterial") then
+        elseif material:IsA(ShaderMaterial) then
             local shaderMat = material :: ShaderMaterial
 
             if shaderMat:GetShaderParameter("albedo") ~= nil then

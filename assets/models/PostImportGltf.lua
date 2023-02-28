@@ -69,13 +69,13 @@ function PostImportGltfImpl.convertMaterial(self: PostImportGltf, mat: StandardM
 end
 
 function PostImportGltfImpl.iterate(self: PostImportGltf, node: Node)
-    if node:IsClass("MeshInstance3D") then
+    if node:IsA(MeshInstance3D) then
         local meshInst = node :: MeshInstance3D
         local mesh = assert(meshInst.mesh)
 
         for i = 0, mesh:GetSurfaceCount() - 1 do
             local material = assert(mesh:SurfaceGetMaterial(i))
-            if material:IsClass("StandardMaterial3D") then
+            if material:IsA(StandardMaterial3D) then
                 mesh:SurfaceSetMaterial(i, self:convertMaterial(material :: StandardMaterial3D))
             end
         end

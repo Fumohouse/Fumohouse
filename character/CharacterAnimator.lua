@@ -19,16 +19,16 @@ type CharacterAnimatorT = {
 export type CharacterAnimator = Node & CharacterAnimatorT & typeof(CharacterAnimatorImpl)
 
 local MainTransition = {
-	BASE = "base",
-	IDLE = "idle",
-	SIT = "sit",
-	HORIZONTAL = "horizontal",
-	VERTICAL = "vertical",
+    BASE = "base",
+    IDLE = "idle",
+    SIT = "sit",
+    HORIZONTAL = "horizontal",
+    VERTICAL = "vertical",
 }
 
 local VerticalTransition = {
-	FALL = "fall",
-	CLIMB = "climb",
+    FALL = "fall",
+    CLIMB = "climb",
 }
 
 local WALK_SPEED = "parameters/walk_speed/scale"

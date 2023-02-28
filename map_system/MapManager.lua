@@ -38,7 +38,7 @@ function MapManagerImpl._Ready(self: MapManager)
 
             local manifest = load(manifestPath) :: Resource?
 
-            if manifest and manifest:IsScript(MapManifest) then
+            if manifest and manifest:IsA(MapManifest) then
                 table.insert(self.maps, manifest :: MapManifest.MapManifest)
             else
                 push_warning(`Manifest at {manifestPath} is invalid or doesn't exist.`)
@@ -53,7 +53,7 @@ MapManager:RegisterMethod("_Ready")
 
 function MapManagerImpl.loadInternal(self: MapManager, manifest: MapManifest.MapManifest)
     local scene = load(manifest.mainScenePath) :: Resource?
-    if scene and scene:IsClass("PackedScene") then
+    if scene and scene:IsA(PackedScene) then
         MusicPlayer:LoadPlaylists(manifest.playlists)
 
         -- Switch scenes manually (otherwise switch is deferred to next frame)

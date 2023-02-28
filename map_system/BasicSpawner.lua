@@ -16,7 +16,7 @@ function BasicSpawnerImpl.SpawnCharacter(self: BasicSpawner, defaultScene: Packe
     local children = self:GetChildren()
     local spawnpoint = children:Get(math.random(1, children:Size())) :: Node
 
-    if spawnpoint:IsScript(Spawnpoint) then
+    if spawnpoint:IsA(Spawnpoint) then
         character.transform = (spawnpoint :: Spawnpoint.Spawnpoint):GetSpawnPoint()
     end
 

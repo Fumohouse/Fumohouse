@@ -1,7 +1,7 @@
 local Utils = {}
 
 function Utils.GetBuildString()
-	return "Prototype Stage"
+    return "Prototype Stage"
 end
 
 -- https://www.construct.net/en/blogs/ashleys-blog-2/using-lerp-delta-time-924

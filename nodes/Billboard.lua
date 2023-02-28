@@ -23,7 +23,7 @@ function BillboardImpl.ReparentContents(self: Billboard)
     local contents: Control?
 
     for _, child: Node in self:GetChildren() do
-        if child:IsClass("Control") then
+        if child:IsA(Control) then
             contents = child :: Control
             break
         end

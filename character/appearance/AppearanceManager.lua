@@ -105,7 +105,7 @@ function AppearanceManagerImpl.setAlpha(self: AppearanceManager, alpha: number)
 
     for _, info in self.attachedParts do
         for _, material in info.materials do
-            if not material:IsClass("ShaderMaterial") then
+            if not material:IsA(ShaderMaterial) then
                 continue
             end
 
@@ -228,7 +228,7 @@ function AppearanceManagerImpl.attachSingle(self: AppearanceManager, partInfo: S
     node.transform = partInfo.transform
 
     -- Call AFTER _Ready
-    if node:IsScript(PartCustomizer) then
+    if node:IsA(PartCustomizer) then
         (node :: PartCustomizer.PartCustomizer):_FHInitialize(config)
     end
 
@@ -236,7 +236,7 @@ function AppearanceManagerImpl.attachSingle(self: AppearanceManager, partInfo: S
 end
 
 local function searchMaterials(node: Node3D, list: {[Material]: true}): {[Material]: true}
-    if node:IsClass("MeshInstance3D") then
+    if node:IsA(MeshInstance3D) then
         local meshInst = node :: MeshInstance3D
         local mesh = assert(meshInst.mesh)
 
@@ -249,7 +249,7 @@ local function searchMaterials(node: Node3D, list: {[Material]: true}): {[Materi
     end
 
     for _, child: Node in node:GetChildren() do
-        if child:IsClass("Node3D") then
+        if child:IsA(Node3D) then
             searchMaterials(child :: Node3D, list)
         end
     end
@@ -268,7 +268,7 @@ function AppearanceManagerImpl.attach(self: AppearanceManager, id: string, confi
     local attachedModels: {Node3D} = {}
     local materials: {Material} = {}
 
-    if info:IsScript(SinglePart) then
+    if info:IsA(SinglePart) then
         local node = self:attachSingle(info, config)
 
         local list = {}
@@ -279,7 +279,7 @@ function AppearanceManagerImpl.attach(self: AppearanceManager, id: string, confi
         for mat in foundMats do
             table.insert(materials, mat)
         end
-    elseif info:IsScript(MultiPart) then
+    elseif info:IsA(MultiPart) then
         for _, singlePartInfo: SinglePart.SinglePart in (info :: MultiPart.MultiPart).parts do
             local node = self:attachSingle(singlePartInfo, config)
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=26 format=3 uid="uid://c2cxpgo2nnkv8"]
+[gd_resource type="Resource" script_class="FaceDatabase" load_steps=26 format=3 uid="uid://c2cxpgo2nnkv8"]
 
 [ext_resource type="Texture2D" uid="uid://bmtg2nw552alt" path="res://assets/textures/faces/eyes/straight/eyes.png" id="1_60vdp"]
 [ext_resource type="Script" path="res://character/appearance/face/EyeStyle.lua" id="2_5513h"]
