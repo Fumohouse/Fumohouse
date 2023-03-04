@@ -1,4 +1,4 @@
-local MusicPlayerM = require("MusicPlayer")
+local MusicPlayerM = require("../../music/MusicPlayer")
 local MusicPlayer = gdglobal("MusicPlayer") :: MusicPlayerM.MusicPlayer
 
 local MusicVisualizerImpl = {}

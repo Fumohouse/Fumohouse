@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://drkq414nse0uk"]
+
+[ext_resource type="Texture2D" uid="uid://dxmlsmkbpfd54" path="res://assets/textures/ui/icons/heart-fill.svg" id="1_ogeub"]
+[ext_resource type="Script" path="res://nodes/LinkButton.lua" id="1_r8dl3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nuqqn"]
+content_margin_left = 48.0
+bg_color = Color(0, 0.333333, 0.647059, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgo4u"]
+bg_color = Color(0, 0.284167, 0.55, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0.333333, 0.647059, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0wdb"]
+bg_color = Color(0, 0.258333, 0.5, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0.333333, 0.647059, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3cft"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.16, 0.490667, 0.8, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(48, 48)
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nuqqn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cgo4u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y0wdb")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a3cft")
+script = ExtResource("1_r8dl3")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ogeub")
+expand_mode = 1

@@ -1,7 +1,12 @@
-local Utils = {}
+local Utils = {
+    stageColor = Color.FromHsv(203 / 360, 1, 0.7),
+    stageName = "Prototype",
+    stageAbbrev = "PRO",
+    version = "2023/03/01",
+}
 
 function Utils.GetBuildString()
-    return "Prototype Stage"
+    return `{Utils.stageName} {Utils.version}`
 end
 
 -- https://www.construct.net/en/blogs/ashleys-blog-2/using-lerp-delta-time-924

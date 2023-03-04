@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://nodes/Billboard.lua" id="5_5g01e"]
 [ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="6_jvjd4"]
 [ext_resource type="FontFile" uid="uid://cl1t2pm0rvomw" path="res://assets/fonts/IBMPlexSans-Italic.ttf" id="7_4fan8"]
-[ext_resource type="PackedScene" uid="uid://d0mo4s2hqyov3" path="res://music/music_controller.tscn" id="7_ct7js"]
+[ext_resource type="PackedScene" uid="uid://d0mo4s2hqyov3" path="res://ui/music_controller/music_controller.tscn" id="7_ct7js"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v2ei6"]
 size = Vector3(2, 5, 1)

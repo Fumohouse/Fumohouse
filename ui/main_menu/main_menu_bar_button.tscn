@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuwda013sf3b5"]
+
+[ext_resource type="Texture2D" uid="uid://dxmlsmkbpfd54" path="res://assets/textures/ui/icons/heart-fill.svg" id="1_we2m6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lkqqu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljl1k"]
+bg_color = Color(0, 0.282353, 0.54902, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhw8d"]
+bg_color = Color(0, 0.258824, 0.501961, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yttt1"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.16, 0.490667, 0.8, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(30, 30)
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lkqqu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ljl1k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qhw8d")
+theme_override_styles/focus = SubResource("StyleBoxFlat_yttt1")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_we2m6")
+expand_mode = 1

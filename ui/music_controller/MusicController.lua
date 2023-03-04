@@ -1,7 +1,7 @@
-local Marquee = require("../nodes/Marquee")
-local Song = require("Song")
+local Marquee = require("../../nodes/Marquee")
+local Song = require("../../music/Song")
 
-local MusicPlayerM = require("MusicPlayer")
+local MusicPlayerM = require("../../music/MusicPlayer")
 local MusicPlayer = gdglobal("MusicPlayer") :: MusicPlayerM.MusicPlayer
 
 local MusicControllerImpl = {}
