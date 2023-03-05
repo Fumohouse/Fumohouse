@@ -1,10 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://cul3saepsy5mo"]
+[gd_scene load_steps=30 format=3 uid="uid://dyiqyy1oqg18g"]
 
 [ext_resource type="Script" path="res://map_system/BasicSpawner.lua" id="1_be2v8"]
 [ext_resource type="PackedScene" uid="uid://cfn8xb4oi4ne3" path="res://maps/playground/spawnpoint.tscn" id="2_6ocf1"]
 [ext_resource type="Texture2D" uid="uid://cs26kmefu5xmq" path="res://assets/textures/logo_dark.svg" id="2_agg1b"]
 [ext_resource type="Material" path="res://maps/playground/assets/prototype.tres" id="3_0827c"]
 [ext_resource type="Script" path="res://nodes/Billboard.lua" id="5_5g01e"]
+[ext_resource type="Script" path="res://maps/playground/PathFollower.lua" id="5_v2edg"]
+[ext_resource type="Script" path="res://maps/playground/RotatingBody.lua" id="6_78pbp"]
 [ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="6_jvjd4"]
 [ext_resource type="FontFile" uid="uid://cl1t2pm0rvomw" path="res://assets/fonts/IBMPlexSans-Italic.ttf" id="7_4fan8"]
 [ext_resource type="PackedScene" uid="uid://d0mo4s2hqyov3" path="res://ui/music_controller/music_controller.tscn" id="7_ct7js"]
@@ -38,6 +40,34 @@ height = 1.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mrxia"]
 height = 1.0
 radius = 5.0
+
+[sub_resource type="Curve3D" id="Curve3D_4rve1"]
+_data = {
+"points": PackedVector3Array(-2.83202, -0.711052, 0.225063, 2.83202, 0.711052, -0.225063, 0, 0, 0, -5.43688, -2.32515, 0.0647888, 5.43688, 2.32515, -0.0647888, 10.4209, 4.95458, 2.12074, 1.52684, 2.43147, -2.84496, -1.52684, -2.43147, 2.84496, 17.7466, 5.45275, 8.89641, 3.33001, 0.321223, 2.31129, -3.33001, -0.321223, -2.31129, -0.672131, -0.173187, 7.42957, -2.832, -0.711, 0.225, 2.909, 0.774, 0.569, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="BoxMesh" id="BoxMesh_oeah1"]
+size = Vector3(4, 0.25, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tqflt"]
+size = Vector3(4, 0.25, 4)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4nnre"]
+top_radius = 2.0
+bottom_radius = 1.75
+height = 0.25
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l80tr"]
+height = 0.25
+radius = 2.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0otld"]
+size = Vector3(0.5, 4, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ubukq"]
+size = Vector3(0.5, 4, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f5pfk"]
 size = Vector3(5, 5, 5)
@@ -330,6 +360,55 @@ mesh = SubResource("CylinderMesh_hwuon")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/Platform1"]
 shape = SubResource("CylinderShape3D_mrxia")
+
+[node name="Path3D" type="Path3D" parent="Map/Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2, -24)
+curve = SubResource("Curve3D_4rve1")
+
+[node name="Rot" type="PathFollow3D" parent="Map/Interactables/Path3D"]
+transform = Transform3D(-0.07922, -0.242031, 0.967015, 0, 0.970064, 0.242794, -0.996843, 0.0192344, -0.0768496, 0, 0, 0)
+rotation_mode = 2
+script = ExtResource("5_v2edg")
+speed = 4.0
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Map/Interactables/Path3D/Rot"]
+sync_to_physics = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/Path3D/Rot/AnimatableBody3D"]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_oeah1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/Path3D/Rot/AnimatableBody3D"]
+shape = SubResource("BoxShape3D_tqflt")
+
+[node name="NoRot" type="PathFollow3D" parent="Map/Interactables/Path3D"]
+transform = Transform3D(0.99999, 0, 0, 0, 0.99999, 0, 0, 0, 0.999989, 15.8026, 4.07598, 10.007)
+progress = 26.9997
+rotation_mode = 0
+script = ExtResource("5_v2edg")
+speed = 4.0
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Map/Interactables/Path3D/NoRot"]
+sync_to_physics = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/Path3D/NoRot/AnimatableBody3D"]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_4nnre")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/Path3D/NoRot/AnimatableBody3D"]
+shape = SubResource("CylinderShape3D_l80tr")
+
+[node name="RotatingWall" type="AnimatableBody3D" parent="Map/Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -24)
+script = ExtResource("6_78pbp")
+rotationSpeed = 45.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/RotatingWall"]
+shape = SubResource("BoxShape3D_0otld")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/RotatingWall"]
+mesh = SubResource("BoxMesh_ubukq")
+skeleton = NodePath("")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, 0.286788, 0.409576, 0, -0.819152, 0.573577, 0.5, -0.496732, -0.709406, 0, 7.2908, -10)
