@@ -88,5 +88,9 @@ function PhysicalMotion.ProcessMotion(self: PhysicalMotion, ctx: Character.Motio
     end
 end
 
+function PhysicalMotion.GetVelocity(self: PhysicalMotion): Vector3?
+    return self.velocity
+end
+
 export type PhysicalMotion = typeof(PhysicalMotion.new())
 return PhysicalMotion

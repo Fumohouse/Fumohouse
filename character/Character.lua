@@ -7,6 +7,7 @@ local Character = gdclass("Character", RigidBody3D)
 type WallInfo = {
     point: Vector3,
     normal: Vector3,
+    collider: Object,
 }
 
 type CharacterT = {
@@ -116,6 +117,10 @@ function CharacterMotion:HandleCancel(ctx: MotionContext)
 end
 
 function CharacterMotion:ProcessMotion(ctx: MotionContext, delta: number)
+end
+
+function CharacterMotion:GetVelocity(): Vector3?
+    return nil
 end
 
 export type CharacterMotion = typeof(CharacterMotion.new())
@@ -237,7 +242,7 @@ function CharacterImpl.TestMotion(self: Character, params: PhysicsTestMotionPara
 end
 
 function CharacterImpl.checkGrounding(self: Character, snap: boolean)
-    local GROUNDING_DISTANCE = 0.01
+    local GROUNDING_DISTANCE = 0.1
 
     for key, normal in self.groundOverride do
         if normal:LengthSquared() > 0 then
@@ -311,7 +316,8 @@ function CharacterImpl.updateWalls(self: Character)
         if not self:IsStableGround(normal) and not shouldPush(wallResult:GetColliderRid(i)) then
             table.insert(self.walls, {
                 point = wallResult:GetCollisionPoint(i),
-                normal = wallResult:GetCollisionNormal(i)
+                normal = wallResult:GetCollisionNormal(i),
+                collider = assert(wallResult:GetCollider(i))
             })
         end
     end

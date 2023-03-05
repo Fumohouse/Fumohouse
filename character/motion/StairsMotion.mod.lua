@@ -22,7 +22,10 @@ function StairsMotion.new(): StairsMotion
 
     self.motionVector = Vector3.ZERO
     self.wallTangent = Vector3.ZERO
+    self.wallNormal = Vector3.ZERO
     self.slopeNormal = Vector3.ZERO
+
+    self.velocity = Vector3.ZERO
 
     self.options = {
         maxStepAngle = 3,
@@ -41,7 +44,10 @@ function StairsMotion:reset(character: Character.Character)
 
     self.motionVector = Vector3.ZERO
     self.wallTangent = Vector3.ZERO
+    self.wallNormal = Vector3.ZERO
     self.slopeNormal = Vector3.ZERO
+
+    self.velocity = Vector3.ZERO
 
     character.groundOverride[OVERRIDE_KEY] = nil
 end
@@ -50,12 +56,17 @@ function StairsMotion.HandleCancel(self: StairsMotion, ctx: Character.MotionCont
     self:reset(ctx.character)
 end
 
-function StairsMotion:handleStairs(ctx: Character.MotionContext): boolean
+function StairsMotion:handleStairs(ctx: Character.MotionContext, delta: number): boolean
     -- TODO: Luau 562: Type hacks in this method
 
     local MAX_STEP_MARGIN = 0.01
 
     local character = ctx.character
+
+    -- Don't look for new stair unless player is moving
+    if not self.foundStair and ctx.inputDirection:LengthSquared() == 0 then
+        return false
+    end
 
     -- Cancel if we are falling or can't find the ground
     if character:IsState(Character.CharacterState.FALLING) then
@@ -147,23 +158,34 @@ function StairsMotion:handleStairs(ctx: Character.MotionContext): boolean
 
     local targetPoint = Vector3.new(highestPoint.x, (rayResult:Get("position") :: Vector3).y, highestPoint.z)
 
-    if not self.foundStair or not is_equal_approx(targetPoint.y, self.endPosition.y)  then
-        self.foundStair = true
+    self.foundStair = true
+
+    if not self.foundStair or not is_equal_approx(targetPoint.y, self.endPosition.y) then
         self.beginPosition = character.globalPosition
-        self.endPosition = targetPoint
+    else
+        -- Recompute beginning position to avoid issues with, e.g. spinning platforms regarded as stairs
+        local previousMotion = self.endPosition - self.beginPosition
+        local verticalTravel = previousMotion.y
+        local forwardTravel = previousMotion:Dot(self.wallNormal)
 
-        -- As a vector, points "AWAY"
-        local totalMotion = self.endPosition - self.beginPosition
-        -- TODO: WTF is this
-        self.motionVector = (-wallNormal * totalMotion:Dot(-wallNormal)
-            + Vector3.DOWN * totalMotion:Dot(Vector3.DOWN)):Normalized()
-
-        -- Points "RIGHT"
-        self.wallTangent = Vector3.UP:Cross(wallNormal)
-        self.slopeNormal = self.wallTangent:Cross(self.motionVector):Normalized()
-
-        character.groundOverride[OVERRIDE_KEY] = self.slopeNormal
+        self.beginPosition = targetPoint + Vector3.DOWN * verticalTravel - self.wallNormal * forwardTravel
     end
+
+    self.endPosition = targetPoint
+
+    -- As a vector, points "AWAY"
+    local totalMotion = self.endPosition - self.beginPosition
+
+    -- totalMotion as components of DOWN and wallNormal (ignore side to side)
+    self.motionVector = (-wallNormal * totalMotion:Dot(-wallNormal)
+        + Vector3.DOWN * totalMotion:Dot(Vector3.DOWN)):Normalized()
+
+    -- Points "RIGHT"
+    self.wallTangent = Vector3.UP:Cross(wallNormal)
+    self.wallNormal = wallNormal
+    self.slopeNormal = self.wallTangent:Cross(self.motionVector):Normalized()
+
+    character.groundOverride[OVERRIDE_KEY] = self.slopeNormal
 
     -- Position on the capsule which should contact the virtual slope
     local contactPosition = character.globalPosition
@@ -174,15 +196,21 @@ function StairsMotion:handleStairs(ctx: Character.MotionContext): boolean
     local totalDistance = (self.endPosition - self.beginPosition):Dot(-wallNormal)
 
     local currentTarget = lerp(self.beginPosition.y, self.endPosition.y, horizDistance / totalDistance)
-    ctx.offset += Vector3.UP * (currentTarget - contactPosition.y)
+    local offset = Vector3.UP * (currentTarget - contactPosition.y)
+    ctx.offset += offset
+    self.velocity = offset / delta
 
     return true
 end
 
 function StairsMotion.ProcessMotion(self: StairsMotion, ctx: Character.MotionContext, delta: number)
-    if not self:handleStairs(ctx) then
+    if not self:handleStairs(ctx, delta) then
         self:reset(ctx.character)
     end
+end
+
+function StairsMotion.GetVelocity(self: StairsMotion): Vector3?
+    return self.velocity
 end
 
 export type StairsMotion = typeof(StairsMotion.new())

@@ -277,54 +277,54 @@ use_collision = true
 size = Vector3(0.5, 0.2, 3)
 material = ExtResource("3_0827c")
 
-[node name="Ladder" type="CSGCombiner3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 22)
+[node name="Ladder" type="Area3D" parent="Map" groups=["ladder"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 2.5, 22)
+
+[node name="Rungs" type="CSGCombiner3D" parent="Map/Ladder"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -2.5, 0)
 use_collision = true
 
-[node name="1" type="CSGBox3D" parent="Map/Ladder"]
+[node name="1" type="CSGBox3D" parent="Map/Ladder/Rungs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.395124, 0)
 size = Vector3(0.5, 0.2, 2)
 
-[node name="2" type="CSGBox3D" parent="Map/Ladder"]
+[node name="2" type="CSGBox3D" parent="Map/Ladder/Rungs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.895124, 0)
 size = Vector3(0.5, 0.2, 2)
 
-[node name="3" type="CSGBox3D" parent="Map/Ladder"]
+[node name="3" type="CSGBox3D" parent="Map/Ladder/Rungs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39512, 0)
 size = Vector3(0.5, 0.2, 2)
 
-[node name="4" type="CSGBox3D" parent="Map/Ladder"]
+[node name="4" type="CSGBox3D" parent="Map/Ladder/Rungs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89512, 0)
 size = Vector3(0.5, 0.2, 2)
 
-[node name="5" type="CSGBox3D" parent="Map/Ladder"]
+[node name="5" type="CSGBox3D" parent="Map/Ladder/Rungs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39512, 0)
 size = Vector3(0.5, 0.2, 2)
 
-[node name="6" type="CSGBox3D" parent="Map/Ladder"]
+[node name="6" type="CSGBox3D" parent="Map/Ladder/Rungs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.89512, 0)
 size = Vector3(0.5, 0.2, 2)
 
-[node name="7" type="CSGBox3D" parent="Map/Ladder"]
+[node name="7" type="CSGBox3D" parent="Map/Ladder/Rungs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.39512, 0)
 size = Vector3(0.5, 0.2, 2)
 
-[node name="8" type="CSGBox3D" parent="Map/Ladder"]
+[node name="8" type="CSGBox3D" parent="Map/Ladder/Rungs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.89512, 0)
 size = Vector3(0.5, 0.2, 2)
 
-[node name="9" type="CSGBox3D" parent="Map/Ladder"]
+[node name="9" type="CSGBox3D" parent="Map/Ladder/Rungs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.39512, 0)
 size = Vector3(0.5, 0.2, 2)
 
-[node name="10" type="CSGBox3D" parent="Map/Ladder"]
+[node name="10" type="CSGBox3D" parent="Map/Ladder/Rungs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.89512, 0)
 size = Vector3(0.5, 0.2, 2)
 
-[node name="Area" type="Area3D" parent="Map/Ladder" groups=["ladder"]]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.5, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Ladder/Area"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Ladder"]
 shape = SubResource("BoxShape3D_v2ei6")
 
 [node name="Interactables" type="Node3D" parent="Map"]

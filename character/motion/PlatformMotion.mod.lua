@@ -43,5 +43,9 @@ function PlatformMotion.ProcessMotion(self: PlatformMotion, ctx: Character.Motio
     ctx.angularOffset += self.angularVelocity * delta
 end
 
+function PlatformMotion.GetVelocity(self: PlatformMotion): Vector3?
+    return self.linearVelocity
+end
+
 export type PlatformMotion = typeof(PlatformMotion.new())
 return PlatformMotion

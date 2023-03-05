@@ -17,10 +17,12 @@ function LadderMotion.new(): LadderMotion
     local self = {}
 
     self.isMoving = false
+    self.velocity = Vector3.ZERO
+
     self.options = {
         forwardVelocity = 8,
         climbVelocity = 8,
-        maxAngle = 30,
+        maxAngle = 45,
         breakHeight = 0.5,
     }
 
@@ -57,16 +59,20 @@ function LadderMotion.ProcessMotion(self: LadderMotion, ctx: Character.MotionCon
         local ladderBasis = ladder.globalTransform.basis
         local ladderFwd = -ladderBasis.z
 
-        -- Check if the ladder forward direction matches any walls
+        local charFwd = -character.globalTransform.basis.z
+        if charFwd:AngleTo(ladderFwd) > math.rad(self.options.maxAngle) then
+            return
+        end
+
+        -- Check if any walls match the ladder (descendant and normal alignment)
         local wallFound = false
 
         for _, wall in character.walls do
-            local ANGLE_MARGIN = 0.1
+            local ANGLE_MARGIN = 0.01
 
-            -- Compare to flat vector
             local compareNormal = Vector3.new(-wall.normal.x, 0, -wall.normal.z):Normalized()
 
-            if compareNormal:AngleTo(ladderFwd) < ANGLE_MARGIN then
+            if wall.collider:IsA(Node3D) and ladder:IsAncestorOf(wall.collider :: Node3D) and compareNormal:AngleTo(ladderFwd) < ANGLE_MARGIN then
                 wallFound = true
                 break
             end
@@ -76,25 +82,21 @@ function LadderMotion.ProcessMotion(self: LadderMotion, ctx: Character.MotionCon
             return
         end
 
-        local charFwd = -character.globalTransform.basis.z
-        if charFwd:AngleTo(ladderFwd) > math.rad(self.options.maxAngle) then
-            return
-        end
-
         local directionFlat = ctx.camBasisFlat * ctx.inputDirection
         local movementAngle = directionFlat:AngleTo(ladderFwd)
 
         self.isMoving = false
+        self.velocity = Vector3.ZERO
 
         if directionFlat:LengthSquared() > 0 then
-            local offset = ladderBasis.y * self.options.climbVelocity * delta
+            self.velocity = ladderBasis.y * self.options.climbVelocity
 
             if movementAngle < math.rad(self.options.maxAngle) then
                 -- Add a forward velocity to make the exit (at the top) much smoother
-                ctx.offset += offset + ladderFwd * self.options.forwardVelocity * delta
+                self.velocity += ladderFwd * self.options.forwardVelocity
                 self.isMoving = true
             elseif math.abs(math.pi - movementAngle) < math.rad(self.options.maxAngle) then
-                ctx.offset -= offset
+                self.velocity *= -1
 
                 -- Since we are going backwards, cancel horiz. motion to avoid breaking.
                 -- (and to avoid WALKING state)
@@ -113,6 +115,8 @@ function LadderMotion.ProcessMotion(self: LadderMotion, ctx: Character.MotionCon
             end
         end
 
+        ctx.offset += self.velocity * delta
+
         ctx:CancelProcessor(PhysicalMotion.ID)
         ctx:CancelProcessor(StairsMotion.ID)
 
@@ -121,6 +125,10 @@ function LadderMotion.ProcessMotion(self: LadderMotion, ctx: Character.MotionCon
 
         ctx:SetState(Character.CharacterState.CLIMBING)
     end
+end
+
+function LadderMotion.GetVelocity(self: LadderMotion): Vector3?
+    return self.velocity
 end
 
 export type LadderMotion = typeof(LadderMotion.new())

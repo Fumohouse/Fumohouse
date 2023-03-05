@@ -1,3 +1,4 @@
+local Utils = require("../../utils/Utils.mod")
 local Character = require("../../character/Character")
 local HorizontalMotion = require("../../character/motion/HorizontalMotion.mod")
 local PhysicalMotion = require("../../character/motion/PhysicalMotion.mod")
@@ -160,12 +161,15 @@ function DebugCharacterImpl._Process(self: DebugCharacter, delta: number)
     self:SetVal("grounded", if self.character.isGrounded then "Yes" else "No")
     self:SetVal("airborne", if self.physicalMotion then string.format("%.3f sec", self.physicalMotion.airborneTime) else "???")
 
-    local speedStr = string.format([[Total: %.3f m/s
-HorizontalMotion: %.3f m/s
-PhysicalMotion: %.3f m/s]],
-        self.character.velocity:Length(),
-        if self.horizontalMotion then self.horizontalMotion.velocity:Length() else 0,
-        if self.physicalMotion then self.physicalMotion.velocity:Length() else 0)
+    local speedStr = `Total: {Utils.FormatVector3(self.character.velocity)} m/s`
+
+    for _, processor in self.character.motionProcessors do
+        local velocity = processor:GetVelocity()
+
+        if velocity then
+            speedStr ..= `\n{processor.ID}: {Utils.FormatVector3(velocity)} m/s`
+        end
+    end
 
     self:SetVal("speed", speedStr)
     self:SetVal("walls", tostring(#self.character.walls))

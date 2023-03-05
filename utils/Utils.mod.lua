@@ -15,4 +15,8 @@ function Utils.LerpWeight(delta: number, factor: number?)
     return 1 - factorA ^ delta
 end
 
+function Utils.FormatVector3(vec: Vector3)
+    return string.format("(%.2f %.2f %.2f)", vec.x, vec.y, vec.z)
+end
+
 return Utils

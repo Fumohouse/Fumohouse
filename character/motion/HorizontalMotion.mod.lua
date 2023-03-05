@@ -40,38 +40,15 @@ function HorizontalMotion.ProcessMotion(self: HorizontalMotion, ctx: Character.M
 
     local targetVelocity = direction * self.options.movementSpeed
 
-    -- Handle transition between different ground (normals)
     if direction:LengthSquared() > 0 then
+        -- Handle transition between different ground (normals)
         self.velocity = self.velocity:Length() * direction
+
+        -- Update state
+        ctx:SetState(Character.CharacterState.WALKING)
     end
 
     self.velocity = self.velocity:MoveToward(targetVelocity, delta * self.options.movementAcceleration)
-
-    -- If we ran into a wall last frame, adjust velocity accordingly
-    if #character.walls > 0 then
-        local normal = character.walls[1].normal
-
-        -- Only slide if we are trying to move into the wall
-        local shouldSlide = direction:Dot(normal) < 0
-
-        if shouldSlide then
-            for i = 2, #character.walls do
-                if not character.walls[i].normal:IsEqualApprox(normal) then
-                    shouldSlide = false
-                    break
-                end
-            end
-        end
-
-        if shouldSlide then
-            self.velocity = self.velocity:Slide(normal)
-        end
-    end
-
-    -- Update state
-    if self.velocity:LengthSquared() > self.options.minSpeed * self.options.minSpeed and direction:LengthSquared() > 0 then
-        ctx:SetState(Character.CharacterState.WALKING)
-    end
 
     -- Update rotation
 	-- The rigidbody should never be scaled, so scale is reset when setting basis.
@@ -91,6 +68,10 @@ function HorizontalMotion.ProcessMotion(self: HorizontalMotion, ctx: Character.M
     end
 
     ctx.offset += self.velocity * delta
+end
+
+function HorizontalMotion.GetVelocity(self: HorizontalMotion): Vector3?
+    return self.velocity
 end
 
 export type HorizontalMotion = typeof(HorizontalMotion.new())
