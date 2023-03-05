@@ -54,12 +54,14 @@ function MusicPlayerImpl.resetClip(self: MusicPlayer)
 end
 
 function MusicPlayerImpl.playImmediate(self: MusicPlayer, song: Song.Song, seek: number)
+    local wasPaused = self.streamPaused
+
     if self.currentSong and song.id == self.currentSong.id then
         self:Play(seek)
+        self.streamPaused = wasPaused
         return
     end
 
-    local wasPaused = self.streamPaused
     self:resetClip()
 
     local stream = load(song.path) :: AudioStream?
@@ -75,11 +77,6 @@ function MusicPlayerImpl.playImmediate(self: MusicPlayer, song: Song.Song, seek:
 end
 
 function MusicPlayerImpl.play(self: MusicPlayer, song: Song.Song, transitionOut: boolean, transitionIn: boolean, seek: number)
-    if self.currentSong and song.id == self.currentSong.id then
-        self:Play(seek)
-        return
-    end
-
     if not transitionOut then
         self:playImmediate(song, seek)
         return
@@ -97,7 +94,9 @@ function MusicPlayerImpl.play(self: MusicPlayer, song: Song.Song, transitionOut:
 
     self.tween = tween1
 
-    wait_signal(tween1.finished)
+    if not wait_signal(tween1.finished) then
+        return
+    end
 
     if transitionIn then
         if self.tween and tween1 ~= self.tween then
