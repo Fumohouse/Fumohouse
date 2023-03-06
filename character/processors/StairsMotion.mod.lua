@@ -2,17 +2,15 @@
     Responsible for allowing the character to navigate stairs/steps.
 ]]
 
-local Character = require("../Character")
+local MotionState = require("../MotionState.mod")
 
 local StairsMotion = setmetatable({
     ID = "stairs",
-}, Character.CharacterMotion)
+}, MotionState.MotionProcessor)
 
 StairsMotion.__index = StairsMotion
 
-local OVERRIDE_KEY = "step_slope"
-
-function StairsMotion.new(): StairsMotion
+function StairsMotion.new()
     local self = {}
 
     self.foundStair = false
@@ -36,7 +34,7 @@ function StairsMotion.new(): StairsMotion
     return setmetatable(self, StairsMotion)
 end
 
-function StairsMotion:reset(character: Character.Character)
+function StairsMotion.reset(self: StairsMotion, state: MotionState.MotionState)
     self.foundStair = false
 
     self.beginPosition = Vector3.ZERO
@@ -49,56 +47,40 @@ function StairsMotion:reset(character: Character.Character)
 
     self.velocity = Vector3.ZERO
 
-    character.groundOverride[OVERRIDE_KEY] = nil
+    state.groundOverride[StairsMotion.ID] = nil
 end
 
-function StairsMotion.HandleCancel(self: StairsMotion, ctx: Character.MotionContext)
-    self:reset(ctx.character)
+function StairsMotion.HandleCancel(self: StairsMotion, state: MotionState.MotionState)
+    self:reset(state)
 end
 
-function StairsMotion:handleStairs(ctx: Character.MotionContext, delta: number): boolean
-    -- TODO: Luau 562: Type hacks in this method
-
+function StairsMotion.handleStairs(self: StairsMotion, state: MotionState.MotionState, delta: number): boolean
     local MAX_STEP_MARGIN = 0.01
 
-    local character = ctx.character
+    local ctx = state.ctx
+    local characterTransform = state.GetTransform()
 
-    -- Don't look for new stair unless player is moving
-    if not self.foundStair and ctx.inputDirection:LengthSquared() == 0 then
-        return false
-    end
-
-    -- Cancel if we are falling or can't find the ground
-    if character:IsState(Character.CharacterState.FALLING) then
-        return false
-    end
-
-    -- Separate ground check with `maxStepHeight` instead of grounding distance
-    local groundCheckParams = PhysicsTestMotionParameters3D.new()
-    groundCheckParams.from = character.globalTransform
-    groundCheckParams.motion = Vector3.DOWN * (self.options.maxStepHeight :: number)
-
-    local foundGround = character:TestMotion(groundCheckParams)
-    if not foundGround then
+    -- Don't look for new stair unless player is moving and on the ground
+    if not self.foundStair and (ctx.inputDirection:LengthSquared() == 0 or state:IsState(MotionState.CharacterState.FALLING)) then
         return false
     end
 
     -- Search for the stair
-    local capsuleRadius = character.capsule.radius
-    local forward = -character.globalTransform.basis.z
+    local capsuleRadius = state.mainCollisionShape.radius
+    local forward = -characterTransform.basis.z
 
     -- 2x in case we are facing a bit diagonal compared to the step wall normal
-    local checkDistance = (self.options.slopeDistance :: number - capsuleRadius) * 2
+    local checkDistance = (self.options.slopeDistance - capsuleRadius) * 2
 
     local searchParams = PhysicsTestMotionParameters3D.new()
-    searchParams.from = character.globalTransform
+    searchParams.from = characterTransform
     searchParams.motion = forward * checkDistance
     searchParams.maxCollisions = 4
     searchParams.recoveryAsCollision = true
-    searchParams.margin = character.margin
+    searchParams.margin = state.options.margin
 
     local searchResult = PhysicsTestMotionResult3D.new()
-    local searchFound = character:TestMotion(searchParams, searchResult)
+    local searchFound = state:TestMotion(searchParams, searchResult)
 
     if not searchFound then
         return false
@@ -113,8 +95,8 @@ function StairsMotion:handleStairs(ctx: Character.MotionContext, delta: number):
         local point = searchResult:GetCollisionPoint(i)
 
         if point.y > highestPoint.y then
-            local stepHeight = point.y - character.globalPosition.y
-            if stepHeight > self.options.maxStepHeight :: number + MAX_STEP_MARGIN or
+            local stepHeight = point.y - characterTransform.origin.y
+            if stepHeight > self.options.maxStepHeight + MAX_STEP_MARGIN or
                     stepHeight < MIN_STEP_HEIGHT then
                 return false
             end
@@ -150,28 +132,29 @@ function StairsMotion:handleStairs(ctx: Character.MotionContext, delta: number):
 
     rayParams.to = rayParams.from + Vector3.DOWN * (RAY_DISTANCE + RAY_MARGIN)
 
-    local rayResult = character:GetWorld3D().directSpaceState:IntersectRay(rayParams)
+    local rayResult = state.GetWorld3D().directSpaceState:IntersectRay(rayParams)
     if not rayResult:Has("normal") or
-            (rayResult:Get("normal") :: Vector3):AngleTo(Vector3.UP) > math.rad(self.options.maxStepAngle :: number) then
+            (rayResult:Get("normal") :: Vector3):AngleTo(Vector3.UP) > math.rad(self.options.maxStepAngle) then
         return false
     end
 
     local targetPoint = Vector3.new(highestPoint.x, (rayResult:Get("position") :: Vector3).y, highestPoint.z)
 
-    self.foundStair = true
-
-    if not self.foundStair or not is_equal_approx(targetPoint.y, self.endPosition.y) then
-        self.beginPosition = character.globalPosition
+    -- Constantly recompute positions to avoid issues with, e.g. spinning platforms regarded as stairs
+    local isNewStair = not self.foundStair or not is_equal_approx(targetPoint.y, self.endPosition.y)
+    local prevMotion = if isNewStair then
+        targetPoint - characterTransform.origin
     else
-        -- Recompute beginning position to avoid issues with, e.g. spinning platforms regarded as stairs
-        local previousMotion = self.endPosition - self.beginPosition
-        local verticalTravel = previousMotion.y
-        local forwardTravel = previousMotion:Dot(self.wallNormal)
+        -- Maintain previous height and distance if stair matches
+        self.endPosition - self.beginPosition
 
-        self.beginPosition = targetPoint + Vector3.DOWN * verticalTravel - self.wallNormal * forwardTravel
-    end
+    local prevNormal = if isNewStair then wallNormal else self.wallNormal
 
+    self.beginPosition = targetPoint
+        + Vector3.DOWN * prevMotion.y
+        - wallNormal * prevMotion:Dot(prevNormal)
     self.endPosition = targetPoint
+    self.foundStair = true
 
     -- As a vector, points "AWAY"
     local totalMotion = self.endPosition - self.beginPosition
@@ -185,10 +168,10 @@ function StairsMotion:handleStairs(ctx: Character.MotionContext, delta: number):
     self.wallNormal = wallNormal
     self.slopeNormal = self.wallTangent:Cross(self.motionVector):Normalized()
 
-    character.groundOverride[OVERRIDE_KEY] = self.slopeNormal
+    state.groundOverride[StairsMotion.ID] = self.slopeNormal
 
     -- Position on the capsule which should contact the virtual slope
-    local contactPosition = character.globalPosition
+    local contactPosition = characterTransform.origin
         + Vector3.UP * capsuleRadius
         - self.slopeNormal * capsuleRadius
 
@@ -203,9 +186,9 @@ function StairsMotion:handleStairs(ctx: Character.MotionContext, delta: number):
     return true
 end
 
-function StairsMotion.ProcessMotion(self: StairsMotion, ctx: Character.MotionContext, delta: number)
-    if not self:handleStairs(ctx, delta) then
-        self:reset(ctx.character)
+function StairsMotion.Process(self: StairsMotion, state: MotionState.MotionState, delta: number)
+    if not self:handleStairs(state, delta) then
+        self:reset(state)
     end
 end
 

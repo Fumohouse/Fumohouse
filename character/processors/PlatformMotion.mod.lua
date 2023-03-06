@@ -2,15 +2,15 @@
     Responsible for moving the character when it is standing on a moving platform.
 ]]
 
-local Character = require("../Character")
+local MotionState = require("../MotionState.mod")
 
 local PlatformMotion = setmetatable({
     ID = "platform",
-}, Character.CharacterMotion)
+}, MotionState.MotionProcessor)
 
 PlatformMotion.__index = PlatformMotion
 
-function PlatformMotion.new(): PlatformMotion
+function PlatformMotion.new()
     local self = {}
 
     self.linearVelocity = Vector3.ZERO
@@ -22,14 +22,14 @@ function PlatformMotion.new(): PlatformMotion
     return setmetatable(self, PlatformMotion)
 end
 
-function PlatformMotion.ProcessMotion(self: PlatformMotion, ctx: Character.MotionContext, delta: number)
-    local character = ctx.character
+function PlatformMotion.Process(self: PlatformMotion, state: MotionState.MotionState, delta: number)
+    local ctx = state.ctx
 
-    if character.isGrounded then
-        local bodyState = assert(PhysicsServer3D.GetSingleton():BodyGetDirectState(character.groundRid))
+    if state.isGrounded then
+        local bodyState = assert(PhysicsServer3D.GetSingleton():BodyGetDirectState(state.groundRid))
 
         self.linearVelocity = bodyState:GetVelocityAtLocalPosition(
-            character.globalPosition - bodyState.transform.origin
+            state.GetTransform().origin - bodyState.transform.origin
         )
 
         self.angularVelocity = bodyState.angularVelocity.y
@@ -40,7 +40,7 @@ function PlatformMotion.ProcessMotion(self: PlatformMotion, ctx: Character.Motio
     end
 
     ctx.offset += self.linearVelocity * delta
-    ctx.angularOffset += self.angularVelocity * delta
+    ctx.newBasis = ctx.newBasis:Rotated(Vector3.UP, self.angularVelocity * delta)
 end
 
 function PlatformMotion.GetVelocity(self: PlatformMotion): Vector3?

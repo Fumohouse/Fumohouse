@@ -2,17 +2,17 @@
     Responsible for horizontal movement (i.e. WASD controls).
 ]]
 
-local Character = require("../Character")
+local MotionState = require("../MotionState.mod")
 local CameraController = require("../CameraController")
 local Utils = require("../../utils/Utils.mod")
 
 local HorizontalMotion = setmetatable({
     ID = "horizontal",
-}, Character.CharacterMotion)
+}, MotionState.MotionProcessor)
 
 HorizontalMotion.__index = HorizontalMotion
 
-function HorizontalMotion.new(): HorizontalMotion
+function HorizontalMotion.new()
     local self = {}
 
     self.velocity = Vector3.ZERO
@@ -25,17 +25,15 @@ function HorizontalMotion.new(): HorizontalMotion
     return setmetatable(self, HorizontalMotion)
 end
 
-function HorizontalMotion.HandleCancel(self: HorizontalMotion, ctx: Character.MotionContext)
+function HorizontalMotion.HandleCancel(self: HorizontalMotion, state: MotionState.MotionState)
     self.velocity = Vector3.ZERO
 end
 
-function HorizontalMotion.ProcessMotion(self: HorizontalMotion, ctx: Character.MotionContext, delta: number)
-    local character = ctx.character
+function HorizontalMotion.Process(self: HorizontalMotion, state: MotionState.MotionState, delta: number)
+    local ctx = state.ctx
     local directionFlat = ctx.camBasisFlat * ctx.inputDirection
 
-    local slopeTransform = Basis.new(
-        Quaternion.new(Vector3.UP, character.groundNormal)
-    )
+    local slopeTransform = Quaternion.new(Vector3.UP, state.groundNormal):Normalized()
     local direction = slopeTransform * directionFlat
 
     local targetVelocity = direction * self.options.movementSpeed
@@ -45,26 +43,18 @@ function HorizontalMotion.ProcessMotion(self: HorizontalMotion, ctx: Character.M
         self.velocity = self.velocity:Length() * direction
 
         -- Update state
-        ctx:SetState(Character.CharacterState.WALKING)
+        ctx:SetState(MotionState.CharacterState.WALKING)
     end
 
     self.velocity = self.velocity:MoveToward(targetVelocity, delta * self.options.movementAcceleration)
 
     -- Update rotation
 	-- The rigidbody should never be scaled, so scale is reset when setting basis.
-    if character.camera and character.camera.cameraMode == CameraController.CameraMode.FIRST_PERSON then
-        character.transform = Transform3D.new(
-            ctx.camBasisFlat,
-            character.globalPosition
-        )
+    if state.camera and state.camera.cameraMode == CameraController.CameraMode.FIRST_PERSON then
+        ctx.newBasis = ctx.camBasisFlat
     elseif direction:LengthSquared() > 0 then
         local movementBasis = Basis.new(Quaternion.new(Vector3.FORWARD, directionFlat))
-
-        -- Orthonormalize for floating point precision errors
-        character.transform = Transform3D.new(
-            character.transform.basis:Orthonormalized():Slerp(movementBasis, Utils.LerpWeight(delta)),
-            character.globalPosition
-        )
+        ctx.newBasis = ctx.newBasis:Slerp(movementBasis, Utils.LerpWeight(delta))
     end
 
     ctx.offset += self.velocity * delta

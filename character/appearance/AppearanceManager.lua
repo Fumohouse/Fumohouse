@@ -130,23 +130,24 @@ function AppearanceManagerImpl.loadScale(self: AppearanceManager)
     self.rig.scale = scaleVec
     self.rig.position = Vector3.ZERO
 
-    self.character.collider.scale = scaleVec
-    self.character.collider.position = Vector3.UP * self.character.capsule.height * self.currScale / 2
+    local mainCollider = self.character.state.mainCollider
+    mainCollider.scale = scaleVec
+    mainCollider.position = Vector3.UP * self.character.state.mainCollisionShape.height * self.currScale / 2
 
-    if self.character.camera then
-        self.character.camera.cameraOffset = self.baseCameraOffset * self.currScale
+    if self.character.state.camera then
+        self.character.state.camera.cameraOffset = self.baseCameraOffset * self.currScale
     end
 end
 
 function AppearanceManagerImpl._PhysicsProcess(self: AppearanceManager, delta: number)
-    if self.character.camera then
-        if self.character.camera.cameraMode == CameraController.CameraMode.FIRST_PERSON then
+    if self.character.state.camera then
+        if self.character.state.camera.cameraMode == CameraController.CameraMode.FIRST_PERSON then
             self:setAlpha(0)
             return
         end
 
         local distance = (
-            self.character.camera.globalPosition - self.character.camera:GetFocalPoint()
+            self.character.state.camera.globalPosition - self.character.state.camera:GetFocalPoint()
         ):Length()
 
         local beginScaled = self.cameraFadeBegin * self.currScale

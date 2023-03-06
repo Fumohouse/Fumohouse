@@ -3,15 +3,15 @@
     (falling, jumping, etc.)
 ]]
 
-local Character = require("../Character")
+local MotionState = require("../MotionState.mod")
 
 local PhysicalMotion = setmetatable({
     ID = "physical",
-}, Character.CharacterMotion)
+}, MotionState.MotionProcessor)
 
 PhysicalMotion.__index = PhysicalMotion
 
-function PhysicalMotion.new(): PhysicalMotion
+function PhysicalMotion.new()
     local self = {}
 
     self.velocity = Vector3.ZERO
@@ -29,23 +29,21 @@ function PhysicalMotion.new(): PhysicalMotion
     return setmetatable(self, PhysicalMotion)
 end
 
--- TODO: Luau 562: Cannot use . operator since it will cause a type error
--- This is also done elsewhere. Check please
-function PhysicalMotion:getJumpVelocity(): number
+function PhysicalMotion.getJumpVelocity(self: PhysicalMotion): number
     -- Kinematics
     return math.sqrt(2 * self.options.gravity * self.options.jumpHeight)
 end
 
-function PhysicalMotion.HandleCancel(self: PhysicalMotion, ctx: Character.MotionContext)
+function PhysicalMotion.HandleCancel(self: PhysicalMotion, state: MotionState.MotionState)
     self.velocity = Vector3.ZERO
     self.airborneTime = 0
 end
 
-function PhysicalMotion.ProcessMotion(self: PhysicalMotion, ctx: Character.MotionContext, delta: number)
-    local character = ctx.character
-    local wasJumping = character:IsState(Character.CharacterState.JUMPING)
+function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionState, delta: number)
+    local ctx = state.ctx
+    local wasJumping = state:IsState(MotionState.CharacterState.JUMPING)
 
-    if character.isGrounded and not wasJumping then
+    if state.isGrounded and not wasJumping then
         self.velocity = Vector3.ZERO
     else
         self.velocity += Vector3.DOWN * self.options.gravity * delta
@@ -55,33 +53,33 @@ function PhysicalMotion.ProcessMotion(self: PhysicalMotion, ctx: Character.Motio
             self.airborneTime < self.options.jumpForgiveness and
             not wasJumping then
         self.velocity = Vector3.UP * self:getJumpVelocity()
-        ctx:SetState(Character.CharacterState.JUMPING)
+        ctx:SetState(MotionState.CharacterState.JUMPING)
     end
 
     -- Persist jump state until falling
     if wasJumping and self.velocity.y >= 0 then
-        ctx:SetState(Character.CharacterState.JUMPING)
+        ctx:SetState(MotionState.CharacterState.JUMPING)
     end
 
     ctx.offset += self.velocity * delta
 
     -- Decide whether character is falling
-    if character.isGrounded then
+    if state.isGrounded then
         self.airborneTime = 0
     else
         self.airborneTime += delta
 
         if self.airborneTime > self.options.fallingTime and self.velocity.y < 0 then
-            if character:IsState(Character.CharacterState.FALLING) then
-                ctx:SetState(Character.CharacterState.FALLING)
+            if state:IsState(MotionState.CharacterState.FALLING) then
+                ctx:SetState(MotionState.CharacterState.FALLING)
             else
                 local fallRayParams = PhysicsRayQueryParameters3D.new()
-                fallRayParams.from = character.globalPosition
+                fallRayParams.from = state.GetTransform().origin
                 fallRayParams.to = fallRayParams.from + Vector3.DOWN * self.options.fallingAltitude
 
-                local fallRayResult = character:GetWorld3D().directSpaceState:IntersectRay(fallRayParams)
+                local fallRayResult = state.GetWorld3D().directSpaceState:IntersectRay(fallRayParams)
                 if not fallRayResult:Has("collider") then
-                    ctx:SetState(Character.CharacterState.FALLING)
+                    ctx:SetState(MotionState.CharacterState.FALLING)
                 end
             end
         end

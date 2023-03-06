@@ -1,35 +1,30 @@
-local Character = require("Character")
+local MotionState = require("../MotionState.mod")
 
-local MusicPlayerM = require("../music/MusicPlayer")
+local MusicPlayerM = require("../../music/MusicPlayer")
 local MusicPlayer = gdglobal("MusicPlayer") :: MusicPlayerM.MusicPlayer
 
-local MapManagerM = require("../map_system/MapManager")
+local MapManagerM = require("../../map_system/MapManager")
 local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
 
-local AreaHandlerImpl = {}
-local AreaHandler = gdclass(nil, Node)
-    :RegisterImpl(AreaHandlerImpl)
+local AreaHandler = setmetatable({
+    ID = "areaHandler",
+}, MotionState.MotionProcessor)
 
-type AreaHandlerT = {
-    character: Character.Character,
-}
+AreaHandler.__index = AreaHandler
 
-export type AreaHandler = Node & AreaHandlerT & typeof(AreaHandlerImpl)
-
-function AreaHandlerImpl._Ready(self: AreaHandler)
-    self.character = assert(self:GetParent()) :: Character.Character
+function AreaHandler.new()
+    local self = {}
+    return setmetatable(self, AreaHandler)
 end
 
-AreaHandler:RegisterMethod("_Ready")
-
-function AreaHandlerImpl._Process(self: AreaHandler, delta: number)
+function AreaHandler.Process(self: AreaHandler, state: MotionState.MotionState, delta: number)
     local collideParams = PhysicsShapeQueryParameters3D.new()
-    collideParams.shape = self.character.capsule
-    collideParams.transform = self.character.collider.globalTransform
+    collideParams.shape = state.mainCollisionShape
+    collideParams.transform = state.mainCollider.globalTransform
     collideParams.collideWithAreas = true
     collideParams.collideWithBodies = false
 
-    local result = self.character:GetWorld3D().directSpaceState:IntersectShape(collideParams)
+    local result = state.GetWorld3D().directSpaceState:IntersectShape(collideParams)
     local currentMap = assert(MapManager.currentMap)
 
     for _, data: Dictionary in result do
@@ -53,6 +48,5 @@ function AreaHandlerImpl._Process(self: AreaHandler, delta: number)
     MusicPlayer:SwitchPlaylist(currentMap.defaultPlaylist)
 end
 
-AreaHandler:RegisterMethodAST("_Process")
-
+export type AreaHandler = typeof(AreaHandler.new())
 return AreaHandler

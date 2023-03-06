@@ -2,18 +2,18 @@
     Responsible for handling ladder climbing.
 ]]
 
-local Character = require("../Character")
+local MotionState = require("../MotionState.mod")
 local HorizontalMotion = require("HorizontalMotion.mod")
 local PhysicalMotion = require("PhysicalMotion.mod")
 local StairsMotion = require("StairsMotion.mod")
 
 local LadderMotion = setmetatable({
     ID = "ladder",
-}, Character.CharacterMotion)
+}, MotionState.MotionProcessor)
 
 LadderMotion.__index = LadderMotion
 
-function LadderMotion.new(): LadderMotion
+function LadderMotion.new()
     local self = {}
 
     self.isMoving = false
@@ -29,19 +29,22 @@ function LadderMotion.new(): LadderMotion
     return setmetatable(self, LadderMotion)
 end
 
-function LadderMotion.ProcessMotion(self: LadderMotion, ctx: Character.MotionContext, delta: number)
-    local character = ctx.character
-    if #character.walls == 0 then
+function LadderMotion.Process(self: LadderMotion, state: MotionState.MotionState, delta: number)
+    self.velocity = Vector3.ZERO
+
+    if #state.walls == 0 then
         return
     end
 
+    local ctx = state.ctx
+
     local collideParams = PhysicsShapeQueryParameters3D.new()
-    collideParams.shape = character.capsule
-    collideParams.transform = character.collider.globalTransform
+    collideParams.shape = state.mainCollisionShape
+    collideParams.transform = state.mainCollider.globalTransform
     collideParams.collideWithAreas = true
     collideParams.collideWithBodies = false
 
-    local directSpaceState = character:GetWorld3D().directSpaceState
+    local directSpaceState = state.GetWorld3D().directSpaceState
     local result = directSpaceState:IntersectShape(collideParams)
 
     local ladder: Area3D?
@@ -59,7 +62,9 @@ function LadderMotion.ProcessMotion(self: LadderMotion, ctx: Character.MotionCon
         local ladderBasis = ladder.globalTransform.basis
         local ladderFwd = -ladderBasis.z
 
-        local charFwd = -character.globalTransform.basis.z
+        local characterTransform = state.GetTransform()
+
+        local charFwd = -characterTransform.basis.z
         if charFwd:AngleTo(ladderFwd) > math.rad(self.options.maxAngle) then
             return
         end
@@ -67,7 +72,7 @@ function LadderMotion.ProcessMotion(self: LadderMotion, ctx: Character.MotionCon
         -- Check if any walls match the ladder (descendant and normal alignment)
         local wallFound = false
 
-        for _, wall in character.walls do
+        for _, wall in state.walls do
             local ANGLE_MARGIN = 0.01
 
             local compareNormal = Vector3.new(-wall.normal.x, 0, -wall.normal.z):Normalized()
@@ -94,36 +99,33 @@ function LadderMotion.ProcessMotion(self: LadderMotion, ctx: Character.MotionCon
             if movementAngle < math.rad(self.options.maxAngle) then
                 -- Add a forward velocity to make the exit (at the top) much smoother
                 self.velocity += ladderFwd * self.options.forwardVelocity
-                self.isMoving = true
             elseif math.abs(math.pi - movementAngle) < math.rad(self.options.maxAngle) then
                 self.velocity *= -1
 
                 -- Since we are going backwards, cancel horiz. motion to avoid breaking.
-                -- (and to avoid WALKING state)
                 -- Check for the ground in case we are at a safe distance to break anyway
                 local groundParams = PhysicsRayQueryParameters3D.new()
-                groundParams.from = character.globalPosition
+                groundParams.from = characterTransform.origin
                 groundParams.to = groundParams.from + Vector3.DOWN * self.options.breakHeight
 
                 local groundResult = directSpaceState:IntersectRay(groundParams)
 
-                if not groundResult:Has("normal") or not character:IsStableGround(groundResult:Get("normal") :: Vector3) then
+                if not groundResult:Has("normal") or not state:IsStableGround(groundResult:Get("normal") :: Vector3) then
                     ctx:CancelProcessor(HorizontalMotion.ID)
                 end
-
-                self.isMoving = true
             end
-        end
 
-        ctx.offset += self.velocity * delta
+            self.isMoving = true
+            ctx.offset += self.velocity * delta
+        end
 
         ctx:CancelProcessor(PhysicalMotion.ID)
         ctx:CancelProcessor(StairsMotion.ID)
 
         -- WALKING doesn't make sense here, but its processor is still run under some circumstances
-        ctx:CancelState(Character.CharacterState.WALKING)
+        ctx:CancelState(MotionState.CharacterState.WALKING)
 
-        ctx:SetState(Character.CharacterState.CLIMBING)
+        ctx:SetState(MotionState.CharacterState.CLIMBING)
     end
 end
 

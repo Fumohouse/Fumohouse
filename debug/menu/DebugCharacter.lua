@@ -1,8 +1,9 @@
 local Utils = require("../../utils/Utils.mod")
 local Character = require("../../character/Character")
-local HorizontalMotion = require("../../character/motion/HorizontalMotion.mod")
-local PhysicalMotion = require("../../character/motion/PhysicalMotion.mod")
-local StairsMotion = require("../../character/motion/StairsMotion.mod")
+local MotionState = require("../../character/MotionState.mod")
+local HorizontalMotion = require("../../character/processors/HorizontalMotion.mod")
+local PhysicalMotion = require("../../character/processors/PhysicalMotion.mod")
+local StairsMotion = require("../../character/processors/StairsMotion.mod")
 local DebugMenu = require("DebugMenu")
 
 local DebugDrawM = require("../DebugDraw")
@@ -39,9 +40,9 @@ function DebugCharacterImpl.updateCharacter(self: DebugCharacter)
     if self:IsInsideTree() and self.characterPathInternal ~= "" then
         local character = self:GetNode(self.characterPath) :: Character.Character
 
-        self.horizontalMotion = character:GetMotionProcessor(HorizontalMotion.ID)
-        self.physicalMotion = character:GetMotionProcessor(PhysicalMotion.ID)
-        self.stairsMotion = character:GetMotionProcessor(StairsMotion.ID)
+        self.horizontalMotion = character.state:GetMotionProcessor(HorizontalMotion.ID)
+        self.physicalMotion = character.state:GetMotionProcessor(PhysicalMotion.ID)
+        self.stairsMotion = character.state:GetMotionProcessor(StairsMotion.ID)
 
         self.character = character
     end
@@ -78,27 +79,27 @@ end
 function DebugCharacterImpl.debugDraw(self: DebugCharacter)
     if self.character then
         local pos = self.character.globalPosition
-        local eyePos = pos + Vector3.UP * assert(self.character.camera).cameraOffset
+        local eyePos = pos + Vector3.UP * assert(self.character.state.camera).cameraOffset
 
         -- Forward direction
         DebugDraw:DrawLine(eyePos, eyePos - self.character.globalTransform.basis.z, Color.AQUA)
 
         -- Grounding status
-        if self.character.isGrounded then
-            DebugDraw:DrawLine(pos, pos + self.character.groundNormal, Color.GREEN)
+        if self.character.state.isGrounded then
+            DebugDraw:DrawLine(pos, pos + self.character.state.groundNormal, Color.GREEN)
         else
             DebugDraw:DrawMarker(pos, Color.RED)
         end
 
         -- Walls
-        for _, wallInfo in self.character.walls do
+        for _, wallInfo in self.character.state.walls do
             DebugDraw:DrawLine(wallInfo.point, wallInfo.point + wallInfo.normal, Color.WHITE)
         end
 
         -- Velocities
         if self.horizontalMotion then
             local topSpeed = self.horizontalMotion.options.movementSpeed
-            DebugDraw:DrawLine(pos, pos + self.character.velocity / topSpeed, Color.BLUE)
+            DebugDraw:DrawLine(pos, pos + self.character.state.velocity / topSpeed, Color.BLUE)
         end
 
         -- Stairs
@@ -126,7 +127,7 @@ function DebugCharacterImpl.debugDraw(self: DebugCharacter)
 end
 
 local STATES = {}
-for name: string, value: number in pairs(Character.CharacterState) do
+for name: string, value: number in pairs(MotionState.CharacterState) do
     table.insert(STATES, {
         name = name,
         value = value
@@ -144,11 +145,11 @@ function DebugCharacterImpl._Process(self: DebugCharacter, delta: number)
 
     -- State
     for i, enumVal in STATES do
-        if enumVal.value == Character.CharacterState.NONE then
+        if enumVal.value == MotionState.CharacterState.NONE then
             continue
         end
 
-        self.state:PushColor(if self.character:IsState(enumVal.value) then Color.GREEN else Color.RED)
+        self.state:PushColor(if self.character.state:IsState(enumVal.value) then Color.GREEN else Color.RED)
         self.state:AppendText(enumVal.name)
         self.state:Pop()
 
@@ -158,12 +159,12 @@ function DebugCharacterImpl._Process(self: DebugCharacter, delta: number)
     end
 
     -- Other
-    self:SetVal("grounded", if self.character.isGrounded then "Yes" else "No")
+    self:SetVal("grounded", if self.character.state.isGrounded then "Yes" else "No")
     self:SetVal("airborne", if self.physicalMotion then string.format("%.3f sec", self.physicalMotion.airborneTime) else "???")
 
-    local speedStr = `Total: {Utils.FormatVector3(self.character.velocity)} m/s`
+    local speedStr = `Total: {Utils.FormatVector3(self.character.state.velocity)} m/s`
 
-    for _, processor in self.character.motionProcessors do
+    for _, processor in self.character.state.motionProcessors do
         local velocity = processor:GetVelocity()
 
         if velocity then
@@ -172,7 +173,7 @@ function DebugCharacterImpl._Process(self: DebugCharacter, delta: number)
     end
 
     self:SetVal("speed", speedStr)
-    self:SetVal("walls", tostring(#self.character.walls))
+    self:SetVal("walls", tostring(#self.character.state.walls))
 
     self:debugDraw()
 end

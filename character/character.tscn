@@ -1,8 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://bdricnhkc377e"]
+[gd_scene load_steps=27 format=3 uid="uid://bdricnhkc377e"]
 
 [ext_resource type="Script" path="res://character/Character.lua" id="1_esdqo"]
-[ext_resource type="Script" path="res://character/AreaHandler.lua" id="2_qqgoe"]
-[ext_resource type="Script" path="res://character/CharacterAnimator.lua" id="6_5s0gs"]
 [ext_resource type="PackedScene" uid="uid://dp4hh5fn4ecp4" path="res://assets/models/rig/rig.glb" id="6_s8jgh"]
 [ext_resource type="Animation" uid="uid://dil87a12bdo51" path="res://assets/models/rig/animations/base.tres" id="7_xw4fc"]
 [ext_resource type="Script" path="res://character/appearance/AppearanceManager.lua" id="8_ip6d1"]
@@ -115,12 +113,6 @@ node_connections = [&"output", 0, &"main", &"climb_speed", 0, &"climb", &"jump_o
 
 [node name="Character" type="RigidBody3D"]
 script = ExtResource("1_esdqo")
-
-[node name="AreaHandler" type="Node" parent="."]
-script = ExtResource("2_qqgoe")
-
-[node name="CharacterAnimator" type="Node" parent="."]
-script = ExtResource("6_5s0gs")
 
 [node name="Appearance" type="Node3D" parent="."]
 script = ExtResource("8_ip6d1")
