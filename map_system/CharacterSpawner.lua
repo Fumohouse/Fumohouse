@@ -1,5 +1,4 @@
 local CameraController = require("../character/CameraController")
-local Character = require("../character/Character")
 
 local CharacterSpawnerImpl = {}
 local CharacterSpawner = gdclass(nil, Node3D)

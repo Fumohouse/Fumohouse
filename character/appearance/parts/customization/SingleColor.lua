@@ -28,7 +28,7 @@ SingleColor:RegisterMethod("_Ready")
 function SingleColorImpl._FHInitialize(self: SingleColor, config: Dictionary?)
     if self.meshInstance then
         local material = assert(self.meshInstance:GetActiveMaterial(0))
-        local color: Color = if config and config:Has("color") then
+        local color = if config and config:Has("color") then
             config:Get("color") :: Color
         else
             self.defaultColor

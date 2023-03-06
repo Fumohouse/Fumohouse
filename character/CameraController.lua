@@ -62,7 +62,7 @@ function CameraControllerImpl._Init(obj: Camera3D, tbl: CameraControllerT)
     tbl.cameraMode = CameraController.CameraMode.FLOATING
 end
 
-function CameraControllerImpl.GetFocalPoint(self: CameraController): Vector3
+function CameraControllerImpl.GetFocalPoint(self: CameraController)
     assert(self.focusNode)
     return self.focusNode.globalPosition + Vector3.new(0, self.cameraOffset, 0)
 end

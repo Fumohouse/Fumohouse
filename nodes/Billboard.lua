@@ -57,7 +57,7 @@ end
 
 Billboard:RegisterMethod("_Ready")
 
-function BillboardImpl.GetScreenSize(self: Billboard, camera: Camera3D): Vector2
+function BillboardImpl.GetScreenSize(self: Billboard, camera: Camera3D)
     local gBasis = self.globalTransform.basis
 
     local worldSize = self.origSize * self.targetPixelSize

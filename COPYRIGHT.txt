@@ -95,7 +95,7 @@ Comment: Fira Mono font
 Copyright: 2012-2015, The Mozilla Foundation and Telefonica S.A.
 License: OFL-1.1
 
-Files: assets/ui/icons/*
+Files: assets/textures/ui/icons/*
 Comment: Bootstrap icons
 Copyright: 2019-2021, The Bootstrap Authors
 License: Expat

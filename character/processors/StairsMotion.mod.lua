@@ -54,7 +54,7 @@ function StairsMotion.HandleCancel(self: StairsMotion, state: MotionState.Motion
     self:reset(state)
 end
 
-function StairsMotion.handleStairs(self: StairsMotion, state: MotionState.MotionState, delta: number): boolean
+function StairsMotion.handleStairs(self: StairsMotion, state: MotionState.MotionState, delta: number)
     local MAX_STEP_MARGIN = 0.01
 
     local ctx = state.ctx

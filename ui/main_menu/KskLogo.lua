@@ -22,7 +22,7 @@ end
 
 KskLogo:RegisterMethod("_Ready")
 
-function KskLogoImpl.beginTween(self: KskLogo): Tween
+function KskLogoImpl.beginTween(self: KskLogo)
     return self:CreateTween()
         :SetEase(Tween.EaseType.OUT)
         :SetTrans(Tween.TransitionType.QUAD)

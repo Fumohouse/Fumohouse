@@ -56,7 +56,7 @@ end
 Character:RegisterMethod("setCameraPath")
     :Args({ name = "path", type = Enum.VariantType.NODE_PATH })
 
-function CharacterImpl.getCameraPath(self: Character): string
+function CharacterImpl.getCameraPath(self: Character)
     return self.cameraPathInternal
 end
 

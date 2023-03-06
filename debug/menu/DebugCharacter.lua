@@ -56,7 +56,7 @@ end
 DebugCharacter:RegisterMethod("setCharacterPath")
     :Args({ name = "path", type = Enum.VariantType.NODE_PATH })
 
-function DebugCharacterImpl.getCharacterPath(self: DebugCharacter): string
+function DebugCharacterImpl.getCharacterPath(self: DebugCharacter)
     return self.characterPathInternal
 end
 

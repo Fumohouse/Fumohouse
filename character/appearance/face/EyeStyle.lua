@@ -9,7 +9,6 @@ export type EyeStyle = Resource & {
 }
 
 EyeStyle:RegisterProperty("name", Enum.VariantType.STRING)
-    :Default("MyStyle")
 
 EyeStyle:RegisterProperty("eyes", Enum.VariantType.OBJECT)
     :Resource("Texture2D")

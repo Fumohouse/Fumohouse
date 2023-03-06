@@ -46,7 +46,7 @@ local function getTextureMask(channel: ClassEnumBaseMaterial3D_TextureChannel)
 	return TEXTURE_MASKS[(channel :: any) :: number + 1] -- :)
 end
 
-function PostImportGltfImpl.convertMaterial(self: PostImportGltf, mat: StandardMaterial3D): ShaderMaterial
+function PostImportGltfImpl.convertMaterial(self: PostImportGltf, mat: StandardMaterial3D)
     local id = mat:GetInstanceId()
 
     if self.convertedMaterials[id] then

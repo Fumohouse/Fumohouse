@@ -22,7 +22,7 @@ export type MainMenu = Control & MainMenuT & typeof(MainMenuImpl)
 
 -- Placeholder screen --
 
-function MainMenuImpl.placeholderScreenTargetPos(self: MainMenu, vis: boolean): Vector2
+function MainMenuImpl.placeholderScreenTargetPos(self: MainMenu, vis: boolean)
     if vis then
         return self.placeholderScreenOrigPos
     else
@@ -87,7 +87,7 @@ MainMenu:RegisterMethodAST("_OnBackButtonPress")
 
 -- Dim --
 
-function MainMenuImpl.Dim(self: MainMenu, vis: boolean): Tween
+function MainMenuImpl.Dim(self: MainMenu, vis: boolean)
     self.dim.visible = true
 
     local duration = if vis then 1.5 * MainMenuConstants.TRANSITION_DURATION else 0.5 * MainMenuConstants.TRANSITION_DURATION

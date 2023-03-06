@@ -29,7 +29,7 @@ function PhysicalMotion.new()
     return setmetatable(self, PhysicalMotion)
 end
 
-function PhysicalMotion.getJumpVelocity(self: PhysicalMotion): number
+function PhysicalMotion.getJumpVelocity(self: PhysicalMotion)
     -- Kinematics
     return math.sqrt(2 * self.options.gravity * self.options.jumpHeight)
 end

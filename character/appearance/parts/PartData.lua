@@ -21,8 +21,6 @@ type PartDataT = {
 export type PartData = Resource & PartDataT
 
 PartData:RegisterProperty("id", Enum.VariantType.STRING)
-    :Default("MyPart")
-
 PartData:RegisterProperty("scope", Enum.VariantType.INT)
     :Enum(
         "None",

@@ -27,7 +27,8 @@ local MAX_DB = 50
 function MusicVisualizerImpl._Ready(self: MusicVisualizer)
     self.curve = Curve2D.new()
 
-    local bus = assert(AudioServer.GetSingleton():GetBusIndex(MusicPlayerM.BUS))
+    local bus = AudioServer.GetSingleton():GetBusIndex(MusicPlayerM.BUS)
+    assert(bus >= 0)
     self.spectrum = assert(AudioServer.GetSingleton():GetBusEffectInstance(bus, 0)) :: AudioEffectSpectrumAnalyzerInstance
 
     self.histogram = {}
@@ -40,7 +41,7 @@ MusicVisualizer:RegisterMethod("_Ready")
 
 function MusicVisualizerImpl._Process(self: MusicVisualizer, delta: number)
     for i = 1, POINTS do
-        local factor: number = 0
+        local factor = 0
 
         if MusicPlayer.playing then
             local freqLow = FREQ_LOW + RANGE_LEN * (i - 1)
@@ -61,7 +62,7 @@ end
 
 MusicVisualizer:RegisterMethodAST("_Process")
 
-function MusicVisualizerImpl.getPoint(self: MusicVisualizer, i: number): Vector2
+function MusicVisualizerImpl.getPoint(self: MusicVisualizer, i: number)
     local factor = math.max(self.histogram[i], 0.01)
     return Vector2.new((i - 1) / POINTS * self.size.x, self.size.y - factor * self.size.y)
 end

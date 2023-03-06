@@ -60,7 +60,7 @@ MainScreen:RegisterMethod("_OnMusicButtonPressed")
 
 -- Main Transition --
 
-function MainScreenImpl.buttonTargetPos(self: MainScreen, button: MainMenuButton.MainMenuButton, vis: boolean): Vector2
+function MainScreenImpl.buttonTargetPos(self: MainScreen, button: MainMenuButton.MainMenuButton, vis: boolean)
     if vis then
         return Vector2.new(0, button.position.y)
     else
@@ -68,7 +68,7 @@ function MainScreenImpl.buttonTargetPos(self: MainScreen, button: MainMenuButton
     end
 end
 
-function MainScreenImpl.topBarTargetPos(self: MainScreen, vis: boolean): Vector2
+function MainScreenImpl.topBarTargetPos(self: MainScreen, vis: boolean)
     if vis then
         return self.topBarOrigPos
     else
@@ -76,7 +76,7 @@ function MainScreenImpl.topBarTargetPos(self: MainScreen, vis: boolean): Vector2
     end
 end
 
-function MainScreenImpl.versionLabelTargetPos(self: MainScreen, vis: boolean): Vector2
+function MainScreenImpl.versionLabelTargetPos(self: MainScreen, vis: boolean)
     if vis then
         return self.versionLabelOrigPos
     else

@@ -221,7 +221,7 @@ function AppearanceManagerImpl.loadFace(self: AppearanceManager)
     self:setFaceTex("overlay_texture", overlayTexture)
 end
 
-function AppearanceManagerImpl.attachSingle(self: AppearanceManager, partInfo: SinglePart.SinglePart, config: Dictionary?): Node3D
+function AppearanceManagerImpl.attachSingle(self: AppearanceManager, partInfo: SinglePart.SinglePart, config: Dictionary?)
     local node = (assert(load(SinglePart.BASE_PATH .. partInfo.scenePath)) :: PackedScene):Instantiate() :: Node3D
 
     local targetAtt = self:GetNode(AppearanceManager.ATTACHMENTS[partInfo.bone]) :: BoneAttachment3D
@@ -236,7 +236,7 @@ function AppearanceManagerImpl.attachSingle(self: AppearanceManager, partInfo: S
     return node
 end
 
-local function searchMaterials(node: Node3D, list: {[Material]: true}): {[Material]: true}
+local function searchMaterials(node: Node3D, list: {[Material]: true})
     if node:IsA(MeshInstance3D) then
         local meshInst = node :: MeshInstance3D
         local mesh = assert(meshInst.mesh)
