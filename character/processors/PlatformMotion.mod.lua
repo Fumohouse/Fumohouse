@@ -45,7 +45,7 @@ function PlatformMotion.Process(self: PlatformMotion, state: MotionState.MotionS
         self.angularVelocity = move_toward(self.angularVelocity, 0, self.options.dragCoeff * self.angularVelocity)
     end
 
-    ctx.offset += self.linearVelocity * delta
+    ctx:AddOffset(self.linearVelocity * delta)
     ctx.newBasis = ctx.newBasis:Rotated(Vector3.UP, self.angularVelocity * delta)
 end
 

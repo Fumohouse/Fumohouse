@@ -120,7 +120,7 @@ function LadderMotion.Process(self: LadderMotion, state: MotionState.MotionState
             end
 
             self.isMoving = true
-            ctx.offset += self.velocity * delta
+            ctx:AddOffset(self.velocity * delta)
         end
 
         ctx:CancelProcessor(PhysicalMotion.ID)

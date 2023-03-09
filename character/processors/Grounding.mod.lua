@@ -59,7 +59,7 @@ function Grounding.Process(self: Grounding, state: MotionState.MotionState, delt
             -- dot to account for any possible horiz. movement due to depenetration
             local offset = Vector3.UP * Vector3.UP:Dot(result:GetTravel())
             if offset:LengthSquared() > state.options.margin ^ 2 then
-                state.ctx.offset += offset * (1 - state.options.margin)
+                state.ctx:AddOffset(offset * (1 - state.options.margin))
             end
         end
     end

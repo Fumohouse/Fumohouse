@@ -88,7 +88,7 @@ function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionS
         end
     end
 
-    ctx.offset += self.velocity * delta
+    ctx:AddOffset(self.velocity * delta)
 
     -- Decide whether character is falling
     if state.isGrounded or state.isRagdoll then

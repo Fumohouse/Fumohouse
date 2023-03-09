@@ -62,7 +62,7 @@ function HorizontalMotion.Process(self: HorizontalMotion, state: MotionState.Mot
         ctx.newBasis = ctx.newBasis:Slerp(movementBasis, Utils.LerpWeight(delta))
     end
 
-    ctx.offset += self.velocity * delta
+    ctx:AddOffset(self.velocity * delta)
 end
 
 function HorizontalMotion.GetVelocity(self: HorizontalMotion): Vector3?

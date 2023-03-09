@@ -77,7 +77,7 @@ function MotionContext.new()
 
     -- Output
     self.newState = MotionState.CharacterState.NONE
-    self.offset = Vector3.ZERO
+    self.offset = {} :: {Vector3}
     self.newBasis = Basis.IDENTITY
 
     return setmetatable(self, MotionContext)
@@ -87,7 +87,11 @@ function MotionContext.Reset(self: MotionContext)
     table.clear(self.cancelledProcessors)
     self.cancelledStates = 0
     self.newState = 0
-    self.offset = Vector3.ZERO
+    table.clear(self.offset)
+end
+
+function MotionContext.AddOffset(self: MotionContext, offset: Vector3)
+    table.insert(self.offset, offset)
 end
 
 function MotionContext.SetState(self: MotionContext, state: number)

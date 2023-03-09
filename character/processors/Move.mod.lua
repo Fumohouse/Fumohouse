@@ -27,25 +27,22 @@ function Move.HandleCancel(self: Move, state: MotionState.MotionState)
     state.velocity = Vector3.ZERO
 end
 
-function Move.Process(self: Move, state: MotionState.MotionState, delta: number)
-    local MAX_SLIDES = 5
-
-    local ctx = state.ctx
-    local origTransform = state.GetTransform()
-
+function Move.move(self: Move, state: MotionState.MotionState, motion: Vector3, from: Vector3, basis: Basis, delta: number)
     local params = PhysicsTestMotionParameters3D.new()
     params.margin = state.options.margin
 
     local result = PhysicsTestMotionResult3D.new()
 
     local slides = 0
-    local remaining = state.ctx.offset
-    local newPos = origTransform.origin
+    local remaining = motion
+    local newPos = from
+
+    local MAX_SLIDES = 5
 
     while (slides < MAX_SLIDES and remaining:LengthSquared() > 1e-3) or
             -- Add an extra slide when not ragdolling for recovery
             (not state.isRagdoll and slides == 0) do
-        params.from = Transform3D.new(origTransform.basis, newPos)
+        params.from = Transform3D.new(basis, newPos)
         params.motion = remaining
 
         local didCollide = state:TestMotion(params, result)
@@ -78,12 +75,36 @@ function Move.Process(self: Move, state: MotionState.MotionState, delta: number)
             -- Terrain/in-world objects don't need to test for the character (the should exert forces on them).
             local actualTravel = projectedMotion + recovery * Utils.LerpWeight(delta, 1e-10)
             newPos += actualTravel
-            remaining = (remaining - actualTravel):Slide(normal)
+
+            remaining = remaining - actualTravel
+            -- Sometimes normal is in the same direction as the motion (e.g. moving in the same direction as a platform touching the character).
+            -- Don't bother sliding then, otherwise motion will be almost completely eliminated for no reason.
+            local normalAng = normal:Dot(motionNormal)
+            if normalAng < 0 and not is_equal_approx(normalAng, 0) then
+                remaining = remaining:Slide(normal)
+            end
+
             slides += 1
         else
             newPos += remaining
             break
         end
+    end
+
+    return newPos
+end
+
+function Move.Process(self: Move, state: MotionState.MotionState, delta: number)
+    local ctx = state.ctx
+    local origTransform = state.GetTransform()
+
+    local newPos = origTransform.origin
+
+    -- Perform motion for each processor separately.
+    -- Avoids issues such as one offset causing repeated sliding and other offsets to get discarded
+    -- (e.g. horizontal motion causing vertical motion to be cancelled).
+    for _, offset in ctx.offset do
+        newPos = self:move(state, offset, newPos, origTransform.basis, delta)
     end
 
     state.velocity = (newPos - origTransform.origin) / delta
