@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dyiqyy1oqg18g"]
+[gd_scene load_steps=31 format=3 uid="uid://dyiqyy1oqg18g"]
 
 [ext_resource type="Script" path="res://map_system/BasicSpawner.lua" id="1_be2v8"]
 [ext_resource type="PackedScene" uid="uid://cfn8xb4oi4ne3" path="res://maps/playground/spawnpoint.tscn" id="2_6ocf1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://maps/playground/RotatingBody.lua" id="6_78pbp"]
 [ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="6_jvjd4"]
 [ext_resource type="FontFile" uid="uid://cl1t2pm0rvomw" path="res://assets/fonts/IBMPlexSans-Italic.ttf" id="7_4fan8"]
+[ext_resource type="PackedScene" uid="uid://dp2ki7ld3mbja" path="res://nodes/seat.tscn" id="7_6c7as"]
 [ext_resource type="PackedScene" uid="uid://d0mo4s2hqyov3" path="res://ui/music_controller/music_controller.tscn" id="7_ct7js"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v2ei6"]
@@ -139,6 +140,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 19)
 use_collision = true
 polygon = PackedVector2Array(2.5, 0, 5, 0, 5, 5)
 depth = 5.0
+material = ExtResource("3_0827c")
+
+[node name="Roof" type="CSGBox3D" parent="Map/Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 4.75, 2.5)
+size = Vector3(3, 0.5, 3)
 material = ExtResource("3_0827c")
 
 [node name="Jump" type="CSGCombiner3D" parent="Map/Platform"]
@@ -409,6 +415,15 @@ shape = SubResource("BoxShape3D_0otld")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/RotatingWall"]
 mesh = SubResource("BoxMesh_ubukq")
 skeleton = NodePath("")
+
+[node name="Seat" parent="Map" instance=ExtResource("7_6c7as")]
+
+[node name="Label3D" type="Label3D" parent="Map/Seat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+billboard = 1
+text = "seat"
+font = ExtResource("6_jvjd4")
+font_size = 40
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, 0.286788, 0.409576, 0, -0.819152, 0.573577, 0.5, -0.496732, -0.709406, 0, 7.2908, -10)

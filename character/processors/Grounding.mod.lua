@@ -33,7 +33,6 @@ function Grounding.Process(self: Grounding, state: MotionState.MotionState, delt
     local params = PhysicsTestMotionParameters3D.new()
     params.from = transform
     params.motion = Vector3.DOWN * self.options.groundingDistance
-    params.recoveryAsCollision = true
     params.margin = state.options.margin
     params.maxCollisions = 4
 
@@ -54,7 +53,7 @@ function Grounding.Process(self: Grounding, state: MotionState.MotionState, delt
             end
         end
 
-        local shouldSnap = state:IsState(MotionState.CharacterState.JUMPING)
+        local shouldSnap = not state.isRagdoll and state:IsState(MotionState.CharacterState.JUMPING)
 
         if foundGround and shouldSnap then
             -- dot to account for any possible horiz. movement due to depenetration

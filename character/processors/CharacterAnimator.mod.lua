@@ -39,6 +39,12 @@ local STATES: { {
     properties: {[string]: any},
 } } = {
     {
+        state = MotionState.CharacterState.SITTING,
+        properties = {
+            [TRANSITION_MAIN] = MainTransition.SIT,
+        }
+    },
+    {
         state = MotionState.CharacterState.CLIMBING,
         properties = {
             [TRANSITION_MAIN] = MainTransition.VERTICAL,
@@ -73,7 +79,7 @@ local STATES: { {
         properties = {
             [TRANSITION_MAIN] = MainTransition.IDLE,
         }
-    }
+    },
 }
 
 function CharacterAnimator.new()
@@ -116,7 +122,7 @@ function CharacterAnimator.Process(self: CharacterAnimator, state: MotionState.M
             end
 
             if self.state == stateInfo.state then
-                break
+                return
             end
 
             self.state = stateInfo.state
@@ -125,8 +131,10 @@ function CharacterAnimator.Process(self: CharacterAnimator, state: MotionState.M
                 self.animator:Set(key, value)
             end
 
-            break
+            return
         end
+
+        self.animator:Set(TRANSITION_MAIN, MainTransition.BASE)
     end
 end
 

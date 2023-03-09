@@ -30,6 +30,11 @@ function HorizontalMotion.HandleCancel(self: HorizontalMotion, state: MotionStat
 end
 
 function HorizontalMotion.Process(self: HorizontalMotion, state: MotionState.MotionState, delta: number)
+    if state.isRagdoll then
+        self.velocity = Vector3.ZERO
+        return
+    end
+
     local ctx = state.ctx
     local directionFlat = ctx.camBasisFlat * ctx.inputDirection
 

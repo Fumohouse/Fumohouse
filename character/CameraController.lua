@@ -64,7 +64,7 @@ end
 
 function CameraControllerImpl.GetFocalPoint(self: CameraController)
     assert(self.focusNode)
-    return self.focusNode.globalPosition + Vector3.new(0, self.cameraOffset, 0)
+    return self.focusNode.globalPosition + self.focusNode.globalTransform.basis.y * self.cameraOffset
 end
 
 function CameraControllerImpl.processFirstPerson(self: CameraController)

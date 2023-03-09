@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bdricnhkc377e"]
+[gd_scene load_steps=29 format=3 uid="uid://bdricnhkc377e"]
 
 [ext_resource type="Script" path="res://character/Character.lua" id="1_esdqo"]
 [ext_resource type="PackedScene" uid="uid://dp4hh5fn4ecp4" path="res://assets/models/rig/rig.glb" id="6_s8jgh"]
@@ -12,9 +12,8 @@
 [ext_resource type="Animation" uid="uid://w6kkcjrhhw5o" path="res://assets/models/rig/animations/climb.tres" id="13_1sw8o"]
 [ext_resource type="Animation" uid="uid://bthj7xkjro0cm" path="res://assets/models/rig/animations/fall.tres" id="14_ewtaw"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pp1wc"]
-resource_local_to_scene = true
-height = 3.4
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vx15d"]
+bounce = 0.2
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_raqf0"]
 _data = {
@@ -111,7 +110,18 @@ nodes/walk_speed/node = SubResource("AnimationNodeTimeScale_gnl2h")
 nodes/walk_speed/position = Vector2(-320, 200)
 node_connections = [&"output", 0, &"main", &"climb_speed", 0, &"climb", &"jump_oneshot", 0, &"vertical", &"jump_oneshot", 1, &"jump", &"main", 0, &"base", &"main", 1, &"idle", &"main", 2, &"sit", &"main", 3, &"walk_speed", &"main", 4, &"jump_oneshot", &"vertical", 0, &"fall", &"vertical", 1, &"climb_speed", &"walk_speed", 0, &"walk"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pp1wc"]
+resource_local_to_scene = true
+height = 3.4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_laqa3"]
+size = Vector3(0.7, 1, 0.45)
+
 [node name="Character" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 3
+mass = 60.0
+physics_material_override = SubResource("PhysicsMaterial_vx15d")
 script = ExtResource("1_esdqo")
 
 [node name="Appearance" type="Node3D" parent="."]
@@ -188,10 +198,6 @@ bone_idx = 9
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
-[node name="Capsule" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
-shape = SubResource("CapsuleShape3D_pp1wc")
-
 [node name="Rig" parent="." instance=ExtResource("6_s8jgh")]
 
 [node name="Skeleton3D" parent="Rig/Armature" index="0"]
@@ -223,5 +229,14 @@ parameters/vertical/current_state = ""
 parameters/vertical/transition_request = ""
 parameters/vertical/current_index = 0
 parameters/walk_speed/scale = 1.0
+
+[node name="MainCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+shape = SubResource("CapsuleShape3D_pp1wc")
+
+[node name="RagdollCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4028, 0)
+shape = SubResource("BoxShape3D_laqa3")
+disabled = true
 
 [editable path="Rig"]

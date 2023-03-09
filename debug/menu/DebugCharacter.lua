@@ -68,6 +68,7 @@ function DebugCharacterImpl._Ready(self: DebugCharacter)
 
     self.state = self:AddEntry("state", "State").contents
 
+    self:AddEntry("ragdoll", "Is Ragdoll")
     self:AddEntry("grounded", "Is Grounded")
     self:AddEntry("airborne", "Airborne Time")
     self:AddEntry("speed", "Speed")
@@ -78,28 +79,32 @@ end
 
 function DebugCharacterImpl.debugDraw(self: DebugCharacter)
     if self.character then
+        local characterState = self.character.state
         local pos = self.character.globalPosition
         local eyePos = pos + Vector3.UP * assert(self.character.state.camera).cameraOffset
+
+        -- Bottom point
+        DebugDraw:DrawMarker(characterState:GetBottomPosition(), Color.WHITE)
 
         -- Forward direction
         DebugDraw:DrawLine(eyePos, eyePos - self.character.globalTransform.basis.z, Color.AQUA)
 
         -- Grounding status
         if self.character.state.isGrounded then
-            DebugDraw:DrawLine(pos, pos + self.character.state.groundNormal, Color.GREEN)
+            DebugDraw:DrawLine(pos, pos + characterState.groundNormal, Color.GREEN)
         else
             DebugDraw:DrawMarker(pos, Color.RED)
         end
 
         -- Walls
-        for _, wallInfo in self.character.state.walls do
+        for _, wallInfo in characterState.walls do
             DebugDraw:DrawLine(wallInfo.point, wallInfo.point + wallInfo.normal, Color.WHITE)
         end
 
         -- Velocities
         if self.horizontalMotion then
             local topSpeed = self.horizontalMotion.options.movementSpeed
-            DebugDraw:DrawLine(pos, pos + self.character.state.velocity / topSpeed, Color.BLUE)
+            DebugDraw:DrawLine(pos, pos + characterState.velocity / topSpeed, Color.BLUE)
         end
 
         -- Stairs
@@ -141,6 +146,9 @@ end)
 function DebugCharacterImpl._Process(self: DebugCharacter, delta: number)
     assert(self.character)
     assert(self.state)
+
+    local characterState = self.character.state
+
     self.state:Clear()
 
     -- State
@@ -149,7 +157,7 @@ function DebugCharacterImpl._Process(self: DebugCharacter, delta: number)
             continue
         end
 
-        self.state:PushColor(if self.character.state:IsState(enumVal.value) then Color.GREEN else Color.RED)
+        self.state:PushColor(if characterState:IsState(enumVal.value) then Color.GREEN else Color.RED)
         self.state:AppendText(enumVal.name)
         self.state:Pop()
 
@@ -159,12 +167,13 @@ function DebugCharacterImpl._Process(self: DebugCharacter, delta: number)
     end
 
     -- Other
-    self:SetVal("grounded", if self.character.state.isGrounded then "Yes" else "No")
+    self:SetVal("ragdoll", if characterState.isRagdoll then "Yes" else "No")
+    self:SetVal("grounded", if characterState.isGrounded then "Yes" else "No")
     self:SetVal("airborne", if self.physicalMotion then string.format("%.3f sec", self.physicalMotion.airborneTime) else "???")
 
-    local speedStr = `Total: {Utils.FormatVector3(self.character.state.velocity)} m/s`
+    local speedStr = `Total: {Utils.FormatVector3(characterState.velocity)} m/s`
 
-    for _, processor in self.character.state.motionProcessors do
+    for _, processor in characterState.motionProcessors do
         local velocity = processor:GetVelocity()
 
         if velocity then
@@ -173,7 +182,7 @@ function DebugCharacterImpl._Process(self: DebugCharacter, delta: number)
     end
 
     self:SetVal("speed", speedStr)
-    self:SetVal("walls", tostring(#self.character.state.walls))
+    self:SetVal("walls", tostring(#characterState.walls))
 
     self:debugDraw()
 end

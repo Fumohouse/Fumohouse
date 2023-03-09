@@ -8,6 +8,7 @@ local MotionState = {
         FALLING = 4,
         WALKING = 8,
         CLIMBING = 16,
+        SITTING = 32,
     },
 }
 
@@ -120,6 +121,9 @@ function MotionState.new()
     self.mainCollider = (nil :: any) :: CollisionShape3D
     self.mainCollisionShape = (nil :: any) :: CapsuleShape3D
 
+    self.ragdollCollider = (nil :: any) :: CollisionShape3D
+    self.ragdollCollisionShape = (nil :: any) :: BoxShape3D
+
     -- Callbacks
     self.GetTransform = function() return Transform3D.IDENTITY end
     self.SetTransform = function(transform: Transform3D) end
@@ -146,6 +150,8 @@ function MotionState.new()
     self.groundNormal = Vector3.ZERO
     self.groundOverride = {} :: {[string]: Vector3}
 
+    self.isRagdoll = false
+
     -- Processors
     self.ctx = MotionContext.new()
     self.motionProcessors = {} :: {MotionProcessor}
@@ -156,6 +162,8 @@ function MotionState.new()
             (require(`processors/{file}.mod`) :: any).new()
         )
     end
+
+    addProcessor("Ragdoll")
 
     addProcessor("LadderMotion")
     addProcessor("HorizontalMotion")
@@ -185,15 +193,29 @@ function MotionState.Initialize(self: MotionState, config)
     self.mainCollider = config.mainCollider
     self.mainCollisionShape = config.mainCollisionShape
 
+    self.ragdollCollider = config.ragdollCollider
+    self.ragdollCollisionShape = config.ragdollCollisionShape
+
     self.GetTransform = config.GetTransform
     self.SetTransform = config.SetTransform
     self.GetWorld3D = config.GetWorld3D
     self.MoveAndCollide = config.MoveAndCollide
 
-    self:SetBodyMode(PhysicsServer3D.BodyMode.KINEMATIC)
+    self:SetRagdoll(false)
 
     for _, processor in self.motionProcessors do
         processor:Initialize(self)
+    end
+end
+
+function MotionState.GetBottomPosition(self: MotionState)
+    if self.isRagdoll then
+        local colliderTransform = self.ragdollCollider.globalTransform
+        local colliderScale = colliderTransform.basis:GetScale().y
+
+        return colliderTransform.origin - 0.5 * self.ragdollCollisionShape.size.y * colliderScale * colliderTransform.basis.y
+    else
+        return self.GetTransform().origin
     end
 end
 
@@ -206,8 +228,16 @@ function MotionState.TestMotion(self: MotionState, params: PhysicsTestMotionPara
     return PhysicsServer3D.GetSingleton():BodyTestMotion(self.rid, params, result)
 end
 
-function MotionState.SetBodyMode(self: MotionState, mode: ClassEnumPhysicsServer3D_BodyMode)
+function MotionState.setBodyMode(self: MotionState, mode: ClassEnumPhysicsServer3D_BodyMode)
     PhysicsServer3D.GetSingleton():BodySetMode(self.rid, mode)
+end
+
+function MotionState.SetRagdoll(self: MotionState, ragdoll: boolean)
+    self:setBodyMode(if ragdoll then PhysicsServer3D.BodyMode.RIGID else PhysicsServer3D.BodyMode.KINEMATIC)
+    self.mainCollider.disabled = ragdoll
+    self.ragdollCollider.disabled = not ragdoll
+
+    self.isRagdoll = ragdoll
 end
 
 function MotionState.GetMotionProcessor(self: MotionState, id: string): any

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp2ki7ld3mbja"]
+
+[ext_resource type="Script" path="res://nodes/Seat.lua" id="1_75iiq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k4dqv"]
+
+[node name="Seat" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 5, 6)
+script = ExtResource("1_75iiq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_k4dqv")
+
+[node name="Joint" type="Generic6DOFJoint3D" parent="."]
+node_a = NodePath("..")
+angular_limit_x/softness = 2.0
+angular_limit_y/softness = 2.0
+angular_limit_z/softness = 2.0
+
+[node name="Position" type="Marker3D" parent="."]
+
+[node name="DismountPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)

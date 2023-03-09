@@ -32,6 +32,10 @@ end
 function LadderMotion.Process(self: LadderMotion, state: MotionState.MotionState, delta: number)
     self.velocity = Vector3.ZERO
 
+    if state.isRagdoll then
+        return
+    end
+
     if #state.walls == 0 then
         return
     end

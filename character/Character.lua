@@ -64,7 +64,8 @@ Character:RegisterMethod("getCameraPath")
     :ReturnVal({ type = Enum.VariantType.NODE_PATH })
 
 function CharacterImpl._Ready(self: Character)
-    local mainCollider = self:GetNode("Capsule") :: CollisionShape3D
+    local mainCollider = self:GetNode("MainCollider") :: CollisionShape3D
+    local ragdollCollider = self:GetNode("RagdollCollider") :: CollisionShape3D
 
     self.state:Initialize({
         node = self,
@@ -72,6 +73,9 @@ function CharacterImpl._Ready(self: Character)
 
         mainCollider = mainCollider,
         mainCollisionShape = assert(mainCollider.shape) :: CapsuleShape3D,
+
+        ragdollCollider = ragdollCollider,
+        ragdollCollisionShape = assert(ragdollCollider.shape) :: BoxShape3D,
 
         GetTransform = function() return self.globalTransform end,
         SetTransform = function(transform) self.globalTransform = transform end,

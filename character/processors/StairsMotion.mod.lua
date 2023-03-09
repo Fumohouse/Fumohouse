@@ -64,7 +64,6 @@ function StairsMotion.normalTest(self: StairsMotion, state: MotionState.MotionSt
     searchParams.from = from
     searchParams.motion = motion
     searchParams.maxCollisions = 4
-    searchParams.recoveryAsCollision = true
     searchParams.margin = state.options.margin
 
     local searchResult = PhysicsTestMotionResult3D.new()
@@ -85,6 +84,10 @@ function StairsMotion.normalTest(self: StairsMotion, state: MotionState.MotionSt
 end
 
 function StairsMotion.findStepUp(self: StairsMotion, state: MotionState.MotionState): (Vector3?, Vector3?)
+    if state.isRagdoll then
+        return
+    end
+
     local characterTransform = state.GetTransform()
     local forward = -characterTransform.basis.z
 

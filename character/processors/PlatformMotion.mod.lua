@@ -23,6 +23,12 @@ function PlatformMotion.new()
 end
 
 function PlatformMotion.Process(self: PlatformMotion, state: MotionState.MotionState, delta: number)
+    if state.isRagdoll then
+        self.linearVelocity = Vector3.ZERO
+        self.angularVelocity = 0
+        return
+    end
+
     local ctx = state.ctx
 
     if state.isGrounded then
