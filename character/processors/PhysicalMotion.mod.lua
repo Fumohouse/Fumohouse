@@ -16,10 +16,13 @@ function PhysicalMotion.new()
 
     self.velocity = Vector3.ZERO
     self.airborneTime = 0
+    self.cancelJump = false -- until grounded
+
     self.options = {
         gravity = 50,
         jumpHeight = 4.5,
         jumpForgiveness = 0.2, -- seconds
+        jumpBounceFactor = 0.7,
 
         -- FALLING state options
         fallingTime = 0.3,
@@ -51,22 +54,38 @@ function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionS
 
     if state.isGrounded and not wasJumping or state.isRagdoll then
         self.velocity = Vector3.ZERO
+        self.cancelJump = false
     else
         self.velocity += Vector3.DOWN * self.options.gravity * delta
     end
 
     if Input.GetSingleton():IsActionPressed("move_jump") and
             self.airborneTime < self.options.jumpForgiveness and
+            not self.cancelJump and
             not wasJumping then
         self.velocity = Vector3.UP * self:getJumpVelocity()
         ctx:SetState(MotionState.CharacterState.JUMPING)
 
         state:SetRagdoll(false)
-    end
-
-    -- Persist jump state until falling
-    if wasJumping and self.velocity.y >= 0 and not state.isRagdoll then
+    elseif wasJumping and self.velocity.y >= 0 and not state.isRagdoll then
+        -- Persist jump state until falling
         ctx:SetState(MotionState.CharacterState.JUMPING)
+
+        -- Hit detection
+        local roofParams = PhysicsTestMotionParameters3D.new()
+        roofParams.from = state.GetTransform()
+        roofParams.motion = Vector3.UP * self.velocity.y * delta
+        roofParams.margin = state.options.margin
+
+        local roofResult = PhysicsTestMotionResult3D.new()
+        local didCollide = state:TestMotion(roofParams, roofResult)
+
+        if didCollide then
+            self.velocity = self.velocity:Bounce(roofResult:GetCollisionNormal()) * self.options.jumpBounceFactor
+
+            -- Prevent re-jumping midair
+            self.cancelJump = true
+        end
     end
 
     ctx.offset += self.velocity * delta

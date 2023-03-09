@@ -105,6 +105,34 @@ use_collision = true
 size = Vector3(100, 0.5, 100)
 material = ExtResource("3_0827c")
 
+[node name="Rooves" type="CSGCombiner3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 4.75, -6.5)
+use_collision = true
+
+[node name="Roof1" type="CSGBox3D" parent="Map/Rooves"]
+size = Vector3(3, 0.5, 3)
+material = ExtResource("3_0827c")
+
+[node name="Roof2" type="CSGBox3D" parent="Map/Rooves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+size = Vector3(3, 0.5, 3)
+material = ExtResource("3_0827c")
+
+[node name="Roof3" type="CSGBox3D" parent="Map/Rooves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -3)
+size = Vector3(3, 0.5, 3)
+material = ExtResource("3_0827c")
+
+[node name="Roof4" type="CSGBox3D" parent="Map/Rooves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 0)
+size = Vector3(3, 0.5, 3)
+material = ExtResource("3_0827c")
+
+[node name="Roof5" type="CSGBox3D" parent="Map/Rooves"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 6, 2, -3)
+size = Vector3(3, 0.5, 3)
+material = ExtResource("3_0827c")
+
 [node name="Platform" type="CSGCombiner3D" parent="Map"]
 layers = 3
 use_collision = true
@@ -140,11 +168,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 19)
 use_collision = true
 polygon = PackedVector2Array(2.5, 0, 5, 0, 5, 5)
 depth = 5.0
-material = ExtResource("3_0827c")
-
-[node name="Roof" type="CSGBox3D" parent="Map/Platform"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 4.75, 2.5)
-size = Vector3(3, 0.5, 3)
 material = ExtResource("3_0827c")
 
 [node name="Jump" type="CSGCombiner3D" parent="Map/Platform"]

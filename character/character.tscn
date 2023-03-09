@@ -82,33 +82,33 @@ animation = &"walk"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_gnl2h"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ycajw"]
-graph_offset = Vector2(-572.69, 132.836)
+graph_offset = Vector2(-445, -104)
 nodes/base/node = SubResource("AnimationNodeAnimation_bcnwp")
 nodes/base/position = Vector2(-80, -120)
 nodes/climb/node = SubResource("AnimationNodeAnimation_hqkmq")
-nodes/climb/position = Vector2(-620, 500)
+nodes/climb/position = Vector2(-420, 460)
 nodes/climb_speed/node = SubResource("AnimationNodeTimeScale_umk0u")
-nodes/climb_speed/position = Vector2(-460, 500)
+nodes/climb_speed/position = Vector2(-260, 460)
 nodes/fall/node = SubResource("AnimationNodeAnimation_8dmp5")
-nodes/fall/position = Vector2(-620, 380)
+nodes/fall/position = Vector2(-420, 340)
 nodes/idle/node = SubResource("AnimationNodeAnimation_5pkdu")
 nodes/idle/position = Vector2(-80, 0)
 nodes/jump/node = SubResource("AnimationNodeAnimation_h8war")
-nodes/jump/position = Vector2(-280, 560)
+nodes/jump/position = Vector2(160, 440)
 nodes/jump_oneshot/node = SubResource("AnimationNodeOneShot_x0slg")
-nodes/jump_oneshot/position = Vector2(-100, 340)
+nodes/jump_oneshot/position = Vector2(340, 380)
 nodes/main/node = SubResource("AnimationNodeTransition_35qov")
 nodes/main/position = Vector2(160, 140)
-nodes/output/position = Vector2(360, 140)
+nodes/output/position = Vector2(580, 240)
 nodes/sit/node = SubResource("AnimationNodeAnimation_2sdlj")
 nodes/sit/position = Vector2(-80, 120)
 nodes/vertical/node = SubResource("AnimationNodeTransition_563ja")
-nodes/vertical/position = Vector2(-280, 380)
+nodes/vertical/position = Vector2(-80, 340)
 nodes/walk/node = SubResource("AnimationNodeAnimation_x5u6q")
 nodes/walk/position = Vector2(-460, 200)
 nodes/walk_speed/node = SubResource("AnimationNodeTimeScale_gnl2h")
 nodes/walk_speed/position = Vector2(-320, 200)
-node_connections = [&"output", 0, &"main", &"climb_speed", 0, &"climb", &"jump_oneshot", 0, &"vertical", &"jump_oneshot", 1, &"jump", &"main", 0, &"base", &"main", 1, &"idle", &"main", 2, &"sit", &"main", 3, &"walk_speed", &"main", 4, &"jump_oneshot", &"vertical", 0, &"fall", &"vertical", 1, &"climb_speed", &"walk_speed", 0, &"walk"]
+node_connections = [&"output", 0, &"jump_oneshot", &"climb_speed", 0, &"climb", &"jump_oneshot", 0, &"main", &"jump_oneshot", 1, &"jump", &"main", 0, &"base", &"main", 1, &"idle", &"main", 2, &"sit", &"main", 3, &"walk_speed", &"main", 4, &"vertical", &"vertical", 0, &"fall", &"vertical", 1, &"climb_speed", &"walk_speed", 0, &"walk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pp1wc"]
 resource_local_to_scene = true
