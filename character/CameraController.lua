@@ -11,6 +11,8 @@ type CameraControllerT = {
     maxFocusDistance: number,
     focusDistanceTarget: number,
 
+    modeChanged: Signal,
+
     focusNode: Node3D?,
     cameraRotation: Vector2,
     focusDistance: number,
@@ -33,6 +35,9 @@ CameraControllerImpl.CameraMode = {
 }
 
 local CAMERA_MAX_X_ROT = math.pi / 2 - 1e-2
+
+CameraController:RegisterSignal("modeChanged")
+    :Args({ name = "mode", type = Enum.VariantType.INT })
 
 CameraController:RegisterProperty("cameraOffset", Enum.VariantType.FLOAT)
     :Range(0, 10)
@@ -59,7 +64,7 @@ function CameraControllerImpl._Init(obj: Camera3D, tbl: CameraControllerT)
     tbl.focusDistance = tbl.focusDistanceTarget
     tbl.lastMousePos = Vector2.ZERO
     tbl.cameraRotating = false
-    tbl.cameraMode = CameraController.CameraMode.FLOATING
+    tbl.cameraMode = -1
 end
 
 function CameraControllerImpl.GetFocalPoint(self: CameraController)
@@ -133,6 +138,8 @@ function CameraControllerImpl._Process(self: CameraController, delta: number)
         end
     end
 
+    local oldMode = self.cameraMode
+
     if not self.focusNode then
         self.cameraMode = CameraController.CameraMode.FLOATING
     elseif self.focusDistanceTarget == 0 then
@@ -144,6 +151,10 @@ function CameraControllerImpl._Process(self: CameraController, delta: number)
         end
 
         self.cameraMode = CameraController.CameraMode.THIRD_PERSON
+    end
+
+    if oldMode ~= self.cameraMode then
+        self.modeChanged:Emit(self.cameraMode)
     end
 
     if not self.focusNode or self.focusDistance == 0.0 then

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgnrbj5aeace"]
+
+[ext_resource type="Shader" path="res://ui/crosshair/crosshair.gdshader" id="1_q5f6e"]
+[ext_resource type="Texture2D" uid="uid://c4hf8x4q0ol6i" path="res://assets/textures/ui/crosshair.svg" id="2_7oxfp"]
+[ext_resource type="Script" path="res://ui/crosshair/Crosshair.lua" id="3_486cf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5bihr"]
+shader = ExtResource("1_q5f6e")
+shader_parameter/crosshair_texture = ExtResource("2_7oxfp")
+
+[node name="Crosshair" type="ColorRect"]
+material = SubResource("ShaderMaterial_5bihr")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_486cf")
