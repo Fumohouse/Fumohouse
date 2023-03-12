@@ -16,7 +16,7 @@ type SeatT = {
 export type Seat = StaticBody3D & SeatT & typeof(SeatImpl)
 
 Seat:RegisterProperty("occupant", Enum.VariantType.NODE_PATH)
-    :NodePath("RigidBody3D")
+    :NodePath(RigidBody3D)
     :SetGet("SetOccupant", "GetOccupant")
 
 function SeatImpl._Init(obj: StaticBody3D, tbl: SeatT)

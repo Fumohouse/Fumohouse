@@ -11,13 +11,13 @@ export type EyeStyle = Resource & {
 EyeStyle:RegisterProperty("name", Enum.VariantType.STRING)
 
 EyeStyle:RegisterProperty("eyes", Enum.VariantType.OBJECT)
-    :Resource("Texture2D")
+    :Resource(Texture2D)
 
 EyeStyle:RegisterProperty("shine", Enum.VariantType.OBJECT)
-    :Resource("Texture2D")
+    :Resource(Texture2D)
 
 EyeStyle:RegisterProperty("overlay", Enum.VariantType.OBJECT)
-    :Resource("Texture2D")
+    :Resource(Texture2D)
 
 EyeStyle:RegisterProperty("supportsRecoloring", Enum.VariantType.BOOL)
     :Default(true)

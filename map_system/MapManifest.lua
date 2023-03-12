@@ -28,7 +28,7 @@ MapManifest:RegisterProperty("mainScenePath", Enum.VariantType.STRING)
     :File(false, "*.tscn")
 
 MapManifest:RegisterProperty("playlists", Enum.VariantType.ARRAY)
-    :TypedArray("Playlist", true)
+    :TypedArray(Playlist)
 
 MapManifest:RegisterProperty("titlePlaylist", Enum.VariantType.STRING)
 MapManifest:RegisterProperty("defaultPlaylist", Enum.VariantType.STRING)

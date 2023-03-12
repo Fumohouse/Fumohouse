@@ -10,6 +10,6 @@ export type Playlist = Resource & {
 Playlist:RegisterProperty("id", Enum.VariantType.STRING)
 
 Playlist:RegisterProperty("songs", Enum.VariantType.ARRAY)
-    :TypedArray("Song", true)
+    :TypedArray(Song)
 
 return Playlist

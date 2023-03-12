@@ -14,13 +14,13 @@ type FaceDatabaseT = {
 export type FaceDatabase = Resource & FaceDatabaseT & typeof(FaceDatabaseImpl)
 
 FaceDatabase:RegisterProperty("eyebrowStyles", Enum.VariantType.ARRAY)
-    :TypedArray("Resource", true)
+    :TypedArray(FacePartStyle)
 
 FaceDatabase:RegisterProperty("eyeStyles", Enum.VariantType.ARRAY)
-    :TypedArray("Resource", true)
+    :TypedArray(EyeStyle)
 
 FaceDatabase:RegisterProperty("mouthStyles", Enum.VariantType.ARRAY)
-    :TypedArray("Resource", true)
+    :TypedArray(FacePartStyle)
 
 local function findByName<T>(list: TypedArray<T>, name: string): T?
     for i, item in list do

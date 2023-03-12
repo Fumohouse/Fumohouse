@@ -15,7 +15,7 @@ type SingleColor = PartCustomizer.PartCustomizer & SingleColorT & typeof(SingleC
 SingleColor:RegisterProperty("defaultColor", Enum.VariantType.COLOR)
 
 SingleColor:RegisterProperty("mesh", Enum.VariantType.NODE_PATH)
-    :NodePath("MeshInstance3D")
+    :NodePath(MeshInstance3D)
 
 function SingleColorImpl._Ready(self: SingleColor)
     if self.mesh ~= "" then

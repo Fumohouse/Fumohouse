@@ -16,7 +16,7 @@ type CharacterT = {
 export type Character = RigidBody3D & CharacterT & typeof(CharacterImpl)
 
 Character:RegisterProperty("cameraPath", Enum.VariantType.NODE_PATH)
-    :NodePath("Camera3D")
+    :NodePath(CameraController)
     :SetGet("setCameraPath", "getCameraPath")
 
 Character:RegisterSignal("cameraUpdated")

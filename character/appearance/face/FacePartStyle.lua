@@ -7,6 +7,6 @@ export type FacePartStyle = Resource & {
 
 FacePartStyle:RegisterProperty("name", Enum.VariantType.STRING)
 FacePartStyle:RegisterProperty("texture", Enum.VariantType.OBJECT)
-    :Resource("Texture2D")
+    :Resource(Texture2D)
 
 return FacePartStyle

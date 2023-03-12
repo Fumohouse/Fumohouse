@@ -16,10 +16,10 @@ export type Song = MusicResBase.MusicResBase & {
 Song:RegisterProperty("id", Enum.VariantType.STRING)
 
 Song:RegisterProperty("artist", Enum.VariantType.OBJECT)
-    :Resource("SongArtist")
+    :Resource(SongArtist)
 
 Song:RegisterProperty("label", Enum.VariantType.OBJECT)
-    :Resource("SongLabel")
+    :Resource(SongLabel)
 
 Song:RegisterProperty("path", Enum.VariantType.STRING)
     :File(false, "*.ogg", "*.mp3", "*.wav")

@@ -28,7 +28,7 @@ type DebugCharacterT = {
 export type DebugCharacter = DebugMenu.DebugMenu & DebugCharacterT & typeof(DebugCharacterImpl)
 
 DebugCharacter:RegisterProperty("characterPath", Enum.VariantType.NODE_PATH)
-    :NodePath("RigidBody3D")
+    :NodePath(RigidBody3D)
     :SetGet("setCharacterPath", "getCharacterPath")
 
 function DebugCharacterImpl._Init(obj: PanelContainer, tbl: DebugMenu.DebugMenuT & DebugCharacterT)
