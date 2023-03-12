@@ -16,7 +16,6 @@ Marquee:RegisterProperty("scrollSpeed", Enum.VariantType.FLOAT)
 
 function MarqueeImpl.SetText(self: Marquee, text: string)
     self.text.text = text
-    self.text.size = assert(self.text:GetThemeFont("font")):GetStringSize(text)
 end
 
 function MarqueeImpl._Ready(self: Marquee)
@@ -26,6 +25,8 @@ end
 Marquee:RegisterMethod("_Ready")
 
 function MarqueeImpl._Process(self: Marquee, delta: number)
+    self.text.size = self.text.customMinimumSize
+
     local oldPos = self.text.position
     local sizeX = self.text.size.x
 

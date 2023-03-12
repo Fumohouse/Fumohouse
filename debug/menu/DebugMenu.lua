@@ -1,5 +1,3 @@
-local AutosizeRichText = require("../../nodes/AutosizeRichText")
-
 local DebugMenuImpl = {}
 local DebugMenu = gdclass("DebugMenu", PanelContainer)
     :RegisterImpl(DebugMenuImpl)
@@ -55,8 +53,9 @@ end
 DebugMenu:RegisterMethodAST("_UnhandledInput")
 
 local function createLabel(): RichTextLabel
-    local label = AutosizeRichText.new() :: AutosizeRichText.AutosizeRichText
+    local label = RichTextLabel.new()
 
+    label.fitContent = true
     label.bbcodeEnabled = true
     label.scrollActive = false
     label.autowrapMode = TextServer.AutowrapMode.OFF
