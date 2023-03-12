@@ -36,6 +36,7 @@ function Move.move(self: Move, state: MotionState.MotionState, motion: Vector3, 
     local slides = 0
     local remaining = motion
     local newPos = from
+    local recovery: Vector3?
 
     local MAX_SLIDES = 5
 
@@ -55,7 +56,18 @@ function Move.move(self: Move, state: MotionState.MotionState, motion: Vector3, 
             local travel = result:GetTravel()
             local motionNormal = remaining:Normalized()
             local projectedMotion = motionNormal * travel:Dot(motionNormal)
-            local recovery = travel - projectedMotion
+
+            local actualMotion = projectedMotion
+            local thisRecovery = travel - projectedMotion
+
+            if not (remaining - projectedMotion):IsZeroApprox() then
+                -- If we are trying to move, passing recovery on to the slow, interpolated handler is a bad idea.
+                -- It may cause important motion (e.g. gravity) to get stuck. So, perform full recovery immediately.
+                actualMotion += thisRecovery
+                recovery = Vector3.ZERO
+            else
+                recovery = thisRecovery
+            end
 
             if not state.isRagdoll and not (state.isGrounded and rid == state.groundRid) and MotionState.ShouldPush(rid) then
                 -- TODO: If moving faster than a certain velocity (i.e. related to movement velocity),
@@ -70,13 +82,8 @@ function Move.move(self: Move, state: MotionState.MotionState, motion: Vector3, 
                 )
             end
 
-            -- Apply motion with smooth recovery
-            -- For recovery to work and not cause issues, terrain/in-world objects and the character should be on different physics layers.
-            -- Terrain/in-world objects don't need to test for the character (the should exert forces on them).
-            local actualTravel = projectedMotion + recovery * Utils.LerpWeight(delta, 1e-10)
-            newPos += actualTravel
-
-            remaining = remaining - actualTravel
+            newPos += actualMotion
+            remaining -= actualMotion
             -- Sometimes normal is in the same direction as the motion (e.g. moving in the same direction as a platform touching the character).
             -- Don't bother sliding then, otherwise motion will be almost completely eliminated for no reason.
             local normalAng = normal:Dot(motionNormal)
@@ -91,20 +98,20 @@ function Move.move(self: Move, state: MotionState.MotionState, motion: Vector3, 
         end
     end
 
-    return newPos
+    return newPos, recovery
 end
 
 function Move.Process(self: Move, state: MotionState.MotionState, delta: number)
     local ctx = state.ctx
     local origTransform = state.GetTransform()
 
-    local newPos = origTransform.origin
+    local newPos, recovery = self:move(state, ctx.offset, origTransform.origin, origTransform.basis, delta)
 
-    -- Perform motion for each processor separately.
-    -- Avoids issues such as one offset causing repeated sliding and other offsets to get discarded
-    -- (e.g. horizontal motion causing vertical motion to be cancelled).
-    for _, offset in ctx.offset do
-        newPos = self:move(state, offset, newPos, origTransform.basis, delta)
+    -- Apply smooth recovery if move didn't need to apply it already.
+    -- For recovery to work and not cause issues, terrain/in-world objects and the character should be on different physics layers.
+    -- Terrain/in-world objects don't need to test for the character (the should exert forces on them).
+    if recovery then
+        newPos += recovery * Utils.LerpWeight(delta, 1e-10)
     end
 
     state.velocity = (newPos - origTransform.origin) / delta
