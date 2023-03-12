@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0gchvpjgyo8j"
-path="res://.godot/imported/hooks.png-a34a60386e411f655e6240119d085441.ctex"
+uid="uid://dmdh3aum5baqn"
+path="res://.godot/imported/eyes.svg-9999e06c586d2fcbe7be93033c85755b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/faces/eyes/straight/hooks.png"
-dest_files=["res://.godot/imported/hooks.png-a34a60386e411f655e6240119d085441.ctex"]
+source_file="res://assets/textures/faces/eyes/straight/eyes.svg"
+dest_files=["res://.godot/imported/eyes.svg-9999e06c586d2fcbe7be93033c85755b.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

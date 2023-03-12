@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgpaqc85kjr25"
-path.s3tc="res://.godot/imported/hooks.png-56e95c704bd9f4b2b2562291f76693ab.s3tc.ctex"
+uid="uid://chmxhx5v1bryr"
+path="res://.godot/imported/curved.svg-cd60a8fc83f9bbaacbc7d2213630d877.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/faces/eyes/curved/hooks.png"
-dest_files=["res://.godot/imported/hooks.png-56e95c704bd9f4b2b2562291f76693ab.s3tc.ctex"]
+source_file="res://assets/textures/faces/eyebrows/curved.svg"
+dest_files=["res://.godot/imported/curved.svg-cd60a8fc83f9bbaacbc7d2213630d877.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,7 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brxv63dg3ajga"
-path="res://.godot/imported/3.png-172e923c279729d17988dd39364605b8.ctex"
+uid="uid://b5yfdfj5aib5d"
+path="res://.godot/imported/3.svg-66a1764063bbabce24eaccab1e31f309.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/faces/mouths/3.png"
-dest_files=["res://.godot/imported/3.png-172e923c279729d17988dd39364605b8.ctex"]
+source_file="res://assets/textures/faces/mouths/3.svg"
+dest_files=["res://.godot/imported/3.svg-66a1764063bbabce24eaccab1e31f309.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

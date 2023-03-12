@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuaqx0274khhm"
-path="res://.godot/imported/shine.png-15fbf7eaaf943668e60198ebd7d2c117.ctex"
+uid="uid://cvny6u1iuyh6f"
+path="res://.godot/imported/smile.svg-3ac0045f1f757d12c2d5accb99851b5a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/faces/eyes/straight/shine.png"
-dest_files=["res://.godot/imported/shine.png-15fbf7eaaf943668e60198ebd7d2c117.ctex"]
+source_file="res://assets/textures/faces/mouths/smile.svg"
+dest_files=["res://.godot/imported/smile.svg-3ac0045f1f757d12c2d5accb99851b5a.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

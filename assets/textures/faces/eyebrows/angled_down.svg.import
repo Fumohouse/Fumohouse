@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmtg2nw552alt"
-path="res://.godot/imported/eyes.png-479cfa32f043bc4b50695fc83860d5b1.ctex"
+uid="uid://cy7j3snkewtm8"
+path="res://.godot/imported/angled_down.svg-1596accf4e72e4fb4b377f85b59fd348.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/faces/eyes/straight/eyes.png"
-dest_files=["res://.godot/imported/eyes.png-479cfa32f043bc4b50695fc83860d5b1.ctex"]
+source_file="res://assets/textures/faces/eyebrows/angled_down.svg"
+dest_files=["res://.godot/imported/angled_down.svg-1596accf4e72e4fb4b377f85b59fd348.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

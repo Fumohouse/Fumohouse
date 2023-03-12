@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7kws3x2b407x"
-path="res://.godot/imported/straight.png-408b0c3300cb864bff0e7af19cc87e9d.ctex"
+uid="uid://dfl8hnovh2ty"
+path="res://.godot/imported/shine.svg-5c69a5b3b5281aa67a13f1118bc43547.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/faces/eyebrows/straight.png"
-dest_files=["res://.godot/imported/straight.png-408b0c3300cb864bff0e7af19cc87e9d.ctex"]
+source_file="res://assets/textures/faces/eyes/curved/shine.svg"
+dest_files=["res://.godot/imported/shine.svg-5c69a5b3b5281aa67a13f1118bc43547.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
