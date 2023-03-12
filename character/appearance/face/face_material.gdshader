@@ -1,10 +1,10 @@
 shader_type spatial;
 
-uniform sampler2D brow_texture : source_color;
-uniform sampler2D eye_texture : source_color;
-uniform sampler2D overlay_texture : source_color;
-uniform sampler2D shine_texture : source_color;
-uniform sampler2D mouth_texture : source_color;
+uniform sampler2D brow_texture : hint_default_transparent;
+uniform sampler2D eye_texture : hint_default_transparent;
+uniform sampler2D overlay_texture : hint_default_transparent;
+uniform sampler2D shine_texture : hint_default_transparent;
+uniform sampler2D mouth_texture : hint_default_transparent;
 
 uniform vec4 eye_tint : source_color = vec4(1.0);
 

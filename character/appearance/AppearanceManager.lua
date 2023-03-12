@@ -61,7 +61,6 @@ AppearanceManagerImpl.SIZES = {
     deka = 3.0,
 }
 
-local transparentTex: Texture2D = assert(load("res://assets/textures/transparent.png"))
 local faceMaterial: ShaderMaterial = assert(load("face/face_material.tres"))
 local faceDatabase: FaceDatabase.FaceDatabase = assert(load("res://resources/face_database.tres"))
 
@@ -170,13 +169,6 @@ end
 AppearanceManager:RegisterMethod("_OnCharacterCameraUpdated")
     :Args({ name = "camera", type = Enum.VariantType.OBJECT })
 
-function AppearanceManagerImpl.setFaceTex(self: AppearanceManager, uniform: string, texture: Texture2D?)
-    self.faceMaterial:SetShaderParameter(
-        uniform,
-        if texture then texture else transparentTex
-    )
-end
-
 function AppearanceManagerImpl.loadFacePartStyle(self: AppearanceManager, getCb, styleName: string, uniform: string)
     local texture: Texture2D?
 
@@ -187,7 +179,7 @@ function AppearanceManagerImpl.loadFacePartStyle(self: AppearanceManager, getCb,
         texture = style.texture
     end
 
-    self:setFaceTex(uniform, texture)
+    self.faceMaterial:SetShaderParameter(uniform, texture)
 end
 
 function AppearanceManagerImpl.loadFace(self: AppearanceManager)
@@ -216,9 +208,9 @@ function AppearanceManagerImpl.loadFace(self: AppearanceManager)
         )
     end
 
-    self:setFaceTex("eye_texture", eyeTexture)
-    self:setFaceTex("shine_texture", shineTexture)
-    self:setFaceTex("overlay_texture", overlayTexture)
+    self.faceMaterial:SetShaderParameter("eye_texture", eyeTexture)
+    self.faceMaterial:SetShaderParameter("shine_texture", shineTexture)
+    self.faceMaterial:SetShaderParameter("overlay_texture", overlayTexture)
 end
 
 function AppearanceManagerImpl.attachSingle(self: AppearanceManager, partInfo: SinglePart.SinglePart, config: Dictionary?)
