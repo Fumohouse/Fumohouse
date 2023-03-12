@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dyiqyy1oqg18g"]
+[gd_scene load_steps=43 format=3 uid="uid://dyiqyy1oqg18g"]
 
 [ext_resource type="Script" path="res://map_system/BasicSpawner.lua" id="1_be2v8"]
 [ext_resource type="PackedScene" uid="uid://cfn8xb4oi4ne3" path="res://maps/playground/spawnpoint.tscn" id="2_6ocf1"]
@@ -11,6 +11,8 @@
 [ext_resource type="FontFile" uid="uid://cl1t2pm0rvomw" path="res://assets/fonts/IBMPlexSans-Italic.ttf" id="7_4fan8"]
 [ext_resource type="PackedScene" uid="uid://dp2ki7ld3mbja" path="res://nodes/seat.tscn" id="7_6c7as"]
 [ext_resource type="PackedScene" uid="uid://d0mo4s2hqyov3" path="res://ui/music_controller/music_controller.tscn" id="7_ct7js"]
+[ext_resource type="PackedScene" uid="uid://bl7y215xsajnc" path="res://maps/playground/assets/models/arc.glb" id="9_i0s7i"]
+[ext_resource type="Shader" path="res://resources/materials/water.gdshader" id="10_0crbr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v2ei6"]
 size = Vector3(2, 5, 1)
@@ -69,6 +71,87 @@ size = Vector3(0.5, 4, 8)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ubukq"]
 size = Vector3(0.5, 4, 8)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o8aik"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jcj4b"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_o8aik")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lmx6k"]
+seed = 1
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kbdh7"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_lmx6k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l2vbe"]
+render_priority = 0
+shader = ExtResource("10_0crbr")
+shader_parameter/fog_color = Color(0.00784314, 0.317647, 0.415686, 1)
+shader_parameter/fog_density = 0.5
+shader_parameter/foam_color = Color(1, 1, 1, 1)
+shader_parameter/foam_distance = 0.1
+shader_parameter/fresnel_color = Color(0.380392, 0.752941, 1, 1)
+shader_parameter/fresnel_settings = Vector3(-0.3, 0.6, 2.5)
+shader_parameter/albedo = Color(0.0896, 0.355627, 0.64, 0.392157)
+shader_parameter/metallic = 0.2
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.2
+shader_parameter/normal_factor = 0.5
+shader_parameter/normal_map_1_movement = Vector2(-0.05, 0)
+shader_parameter/normal_map_2_movement = Vector2(0.05, 0)
+shader_parameter/refraction_strength = 0.005
+shader_parameter/normal_map_1 = SubResource("NoiseTexture2D_jcj4b")
+shader_parameter/normal_map_2 = SubResource("NoiseTexture2D_kbdh7")
+shader_parameter/wave_1 = Vector4(0, 1, 0.1, 3)
+shader_parameter/wave_2 = Vector4(-0.3, -0.2, 0.1, 2)
+shader_parameter/wave_3 = Vector4(1, 0.3, 0.1, 2)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4cayh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ksqra"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_o8aik")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a30qt"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_lmx6k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y4drw"]
+render_priority = 0
+shader = ExtResource("10_0crbr")
+shader_parameter/fog_color = Color(0.00784314, 0.317647, 0.415686, 1)
+shader_parameter/fog_density = 0.5
+shader_parameter/foam_color = Color(1, 1, 1, 1)
+shader_parameter/foam_distance = 0.1
+shader_parameter/fresnel_color = Color(0.380392, 0.752941, 1, 1)
+shader_parameter/fresnel_settings = Vector3(-0.3, 0.6, 2.5)
+shader_parameter/albedo = Color(0.0896, 0.355627, 0.64, 0.392157)
+shader_parameter/metallic = 0.2
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.2
+shader_parameter/normal_factor = 0.5
+shader_parameter/normal_map_1_movement = Vector2(-0.05, 0)
+shader_parameter/normal_map_2_movement = Vector2(0.05, 0)
+shader_parameter/refraction_strength = 0.005
+shader_parameter/normal_map_1 = SubResource("NoiseTexture2D_ksqra")
+shader_parameter/normal_map_2 = SubResource("NoiseTexture2D_a30qt")
+shader_parameter/wave_1 = Vector4(1, 0, 0.1, 5)
+shader_parameter/wave_2 = Vector4(0.3, 0.5, 0.25, 3.5)
+shader_parameter/wave_3 = Vector4(-0.7, 0.2, 0.2, 2.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_u77m6"]
+material = SubResource("ShaderMaterial_y4drw")
+size = Vector2(10, 10)
+subdivide_width = 24
+subdivide_depth = 24
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f5pfk"]
 size = Vector3(5, 5, 5)
@@ -448,6 +531,24 @@ text = "seat"
 font = ExtResource("6_jvjd4")
 font_size = 40
 
+[node name="WaterTest" type="Node3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.25, 7)
+
+[node name="Arc" parent="Map/WaterTest" instance=ExtResource("9_i0s7i")]
+
+[node name="Circle" parent="Map/WaterTest/Arc" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, -16)
+material_override = SubResource("ShaderMaterial_l2vbe")
+
+[node name="Cylinder" type="MeshInstance3D" parent="Map/WaterTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.363707, 0)
+mesh = SubResource("CylinderMesh_4cayh")
+skeleton = NodePath("../Water")
+
+[node name="Water" type="MeshInstance3D" parent="Map/WaterTest"]
+mesh = SubResource("PlaneMesh_u77m6")
+skeleton = NodePath("../..")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, 0.286788, 0.409576, 0, -0.819152, 0.573577, 0.5, -0.496732, -0.709406, 0, 7.2908, -10)
 shadow_enabled = true
@@ -540,3 +641,4 @@ grow_vertical = 0
 
 [editable path="CharacterSpawner/Spawnpoint"]
 [editable path="CharacterSpawner/Spawnpoint2"]
+[editable path="Map/WaterTest/Arc"]
