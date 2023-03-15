@@ -10,10 +10,8 @@ type MainScreenT = {
     mainButtons: Control,
 
     topBar: Control,
-    topBarOrigPos: Vector2,
 
     versionLabel: Control,
-    versionLabelOrigPos: Vector2,
 
     musicController: Control,
     musicControllerTween: Tween?,
@@ -70,17 +68,17 @@ end
 
 function MainScreenImpl.topBarTargetPos(self: MainScreen, vis: boolean)
     if vis then
-        return self.topBarOrigPos
+        return Vector2.new(self.topBar.position.x, 0)
     else
-        return Vector2.new(self.topBarOrigPos.x, -self.topBar.size.y - MainMenuConstants.MARGIN)
+        return Vector2.new(self.topBar.position.x, -self.topBar.size.y - MainMenuConstants.MARGIN)
     end
 end
 
 function MainScreenImpl.versionLabelTargetPos(self: MainScreen, vis: boolean)
     if vis then
-        return self.versionLabelOrigPos
+        return Vector2.new(self.nonNavigation.size.x - self.versionLabel.size.x, self.versionLabel.position.y)
     else
-        return Vector2.new(self.versionLabelOrigPos.x + self.versionLabel.size.x + MainMenuConstants.MARGIN, self.versionLabelOrigPos.y)
+        return Vector2.new(self.nonNavigation.size.x + MainMenuConstants.MARGIN, self.versionLabel.position.y)
     end
 end
 
@@ -141,12 +139,8 @@ end
 function MainScreenImpl._Ready(self: MainScreen)
     self.nonNavigation = self:GetNode("NonNavigation") :: Control
     self.mainButtons = self:GetNode("MainButtons") :: Control
-
     self.topBar = self:GetNode("NonNavigation/TopBar") :: Control
-    self.topBarOrigPos = self.topBar.position
-
     self.versionLabel = self:GetNode("NonNavigation/VersionLabel") :: Control
-    self.versionLabelOrigPos = self.versionLabel.position
 
     -- MusicController
     self.musicController = self:GetNode("MusicController") :: Control

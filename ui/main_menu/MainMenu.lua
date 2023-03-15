@@ -8,14 +8,9 @@ local MainMenu = gdclass(nil, Control)
 
 type MainMenuT = {
     mainScreen: MainScreen.MainScreen,
-
     backButton: Button,
-    backButtonOrigPos: Vector2,
-
     dim: ColorRect,
-
     placeholderScreen: Control,
-    placeholderScreenOrigPos: Vector2,
 }
 
 export type MainMenu = Control & MainMenuT & typeof(MainMenuImpl)
@@ -23,10 +18,12 @@ export type MainMenu = Control & MainMenuT & typeof(MainMenuImpl)
 -- Placeholder screen --
 
 function MainMenuImpl.placeholderScreenTargetPos(self: MainMenu, vis: boolean)
+    local defaultPos = (self.size - self.placeholderScreen.size) / 2 -- Center
+
     if vis then
-        return self.placeholderScreenOrigPos
+        return defaultPos
     else
-        return Vector2.new(self.placeholderScreenOrigPos.x, self.placeholderScreenOrigPos.y + 100)
+        return defaultPos + Vector2.DOWN * 100
     end
 end
 
@@ -56,9 +53,9 @@ end
 
 function MainMenuImpl.backButtonTargetPos(self: MainMenu, vis: boolean)
     if vis then
-        return self.backButtonOrigPos
+        return Vector2.new(0, self.backButton.position.y)
     else
-        return Vector2.new(-self.backButton.size.x - MainMenuConstants.MARGIN, self.backButtonOrigPos.y)
+        return Vector2.new(-self.backButton.size.x - MainMenuConstants.MARGIN, self.backButton.position.y)
     end
 end
 
@@ -132,7 +129,6 @@ function MainMenuImpl._Ready(self: MainMenu)
 
     -- Back
     self.backButton = self:GetNode("BackButton") :: Button
-    self.backButtonOrigPos = self.backButton.position
     self.backButton.visible = true -- Hidden in editor
     self:HideBackButton()
 
@@ -152,7 +148,6 @@ function MainMenuImpl._Ready(self: MainMenu)
 
     -- Placeholder screen
     self.placeholderScreen = self:GetNode("PlaceholderScreen") :: Control
-    self.placeholderScreenOrigPos = self.placeholderScreen.position
     self:HidePlaceholderScreen()
 
     -- Setup
