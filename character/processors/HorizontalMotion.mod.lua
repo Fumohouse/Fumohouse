@@ -18,7 +18,8 @@ function HorizontalMotion.new()
     self.velocity = Vector3.ZERO
     self.options = {
         minSpeed = 0.1,
-        movementSpeed = 10,
+        walkSpeed = 8,
+        runSpeed = 12,
         movementAcceleration = 50,
     }
 
@@ -41,7 +42,8 @@ function HorizontalMotion.Process(self: HorizontalMotion, state: MotionState.Mot
     local slopeTransform = Quaternion.new(Vector3.UP, state.groundNormal):Normalized()
     local direction = slopeTransform * directionFlat
 
-    local targetVelocity = direction * self.options.movementSpeed
+    local targetSpeed = if Input.GetSingleton():IsActionPressed("run") then self.options.runSpeed else self.options.walkSpeed
+    local targetVelocity = direction * targetSpeed
 
     if direction:LengthSquared() > 0 then
         -- Handle transition between different ground (normals)

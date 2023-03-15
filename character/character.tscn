@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bdricnhkc377e"]
+[gd_scene load_steps=36 format=3 uid="uid://bdricnhkc377e"]
 
 [ext_resource type="Script" path="res://character/Character.lua" id="1_esdqo"]
 [ext_resource type="PackedScene" uid="uid://dp4hh5fn4ecp4" path="res://assets/models/rig/rig.glb" id="6_s8jgh"]
@@ -30,6 +30,15 @@ animation = &"climb"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8dmp5"]
 animation = &"fall"
 
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_33p1k"]
+xfade_time = 0.2
+input_0/name = "walk"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "run"
+input_1/auto_advance = false
+input_1/reset = true
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5pkdu"]
 animation = &"idle"
 
@@ -58,6 +67,11 @@ input_4/name = "vertical"
 input_4/auto_advance = false
 input_4/reset = true
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7v4ot"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_lmh46"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2sdlj"]
 animation = &"sit"
 
@@ -75,17 +89,19 @@ animation = &"walk"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_gnl2h"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ycajw"]
-graph_offset = Vector2(-378, 274)
+graph_offset = Vector2(-588.262, -321.603)
 nodes/base/node = SubResource("AnimationNodeAnimation_bcnwp")
-nodes/base/position = Vector2(-80, -120)
+nodes/base/position = Vector2(-80, -200)
 nodes/climb/node = SubResource("AnimationNodeAnimation_hqkmq")
 nodes/climb/position = Vector2(-420, 460)
 nodes/climb_speed/node = SubResource("AnimationNodeTimeScale_umk0u")
 nodes/climb_speed/position = Vector2(-260, 460)
 nodes/fall/node = SubResource("AnimationNodeAnimation_8dmp5")
 nodes/fall/position = Vector2(-420, 340)
+nodes/horizontal/node = SubResource("AnimationNodeTransition_33p1k")
+nodes/horizontal/position = Vector2(-80, 160)
 nodes/idle/node = SubResource("AnimationNodeAnimation_5pkdu")
-nodes/idle/position = Vector2(-80, 0)
+nodes/idle/position = Vector2(-80, -80)
 nodes/jump/node = SubResource("AnimationNodeAnimation_h8war")
 nodes/jump/position = Vector2(160, 440)
 nodes/jump_oneshot/node = SubResource("AnimationNodeOneShot_x0slg")
@@ -93,15 +109,19 @@ nodes/jump_oneshot/position = Vector2(340, 380)
 nodes/main/node = SubResource("AnimationNodeTransition_35qov")
 nodes/main/position = Vector2(160, 140)
 nodes/output/position = Vector2(580, 240)
+nodes/run/node = SubResource("AnimationNodeAnimation_7v4ot")
+nodes/run/position = Vector2(-420, 220)
+nodes/run_speed/node = SubResource("AnimationNodeTimeScale_lmh46")
+nodes/run_speed/position = Vector2(-260, 240)
 nodes/sit/node = SubResource("AnimationNodeAnimation_2sdlj")
-nodes/sit/position = Vector2(-80, 120)
+nodes/sit/position = Vector2(-80, 40)
 nodes/vertical/node = SubResource("AnimationNodeTransition_563ja")
 nodes/vertical/position = Vector2(-80, 340)
 nodes/walk/node = SubResource("AnimationNodeAnimation_x5u6q")
-nodes/walk/position = Vector2(-460, 200)
+nodes/walk/position = Vector2(-420, 100)
 nodes/walk_speed/node = SubResource("AnimationNodeTimeScale_gnl2h")
-nodes/walk_speed/position = Vector2(-320, 200)
-node_connections = [&"output", 0, &"jump_oneshot", &"climb_speed", 0, &"climb", &"jump_oneshot", 0, &"main", &"jump_oneshot", 1, &"jump", &"main", 0, &"base", &"main", 1, &"idle", &"main", 2, &"sit", &"main", 3, &"walk_speed", &"main", 4, &"vertical", &"vertical", 0, &"fall", &"vertical", 1, &"climb_speed", &"walk_speed", 0, &"walk"]
+nodes/walk_speed/position = Vector2(-260, 100)
+node_connections = [&"output", 0, &"jump_oneshot", &"climb_speed", 0, &"climb", &"horizontal", 0, &"walk_speed", &"horizontal", 1, &"run_speed", &"jump_oneshot", 0, &"main", &"jump_oneshot", 1, &"jump", &"main", 0, &"base", &"main", 1, &"idle", &"main", 2, &"sit", &"main", 3, &"horizontal", &"main", 4, &"vertical", &"run_speed", 0, &"run", &"vertical", 0, &"fall", &"vertical", 1, &"climb_speed", &"walk_speed", 0, &"walk"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_raqf0"]
 _data = {
@@ -137,70 +157,70 @@ script = ExtResource("8_ip6d1")
 appearance = ExtResource("9_6jjgu")
 
 [node name="Torso" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(1, 1.96365e-08, -1.88261e-08, -1.88261e-08, 0.999113, 0.042118, 1.96365e-08, -0.042118, 0.999113, -2.44157e-08, 0.83798, 0.0155896)
+transform = Transform3D(1, 1.96365e-08, -1.88261e-08, -1.88261e-08, 0.999113, 0.0421181, 1.96365e-08, -0.0421181, 0.999113, -2.44157e-08, 0.83798, 0.0155896)
 bone_name = "Torso"
 bone_idx = 0
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="Head" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(1, -4.63312e-10, 4.68823e-10, 4.68823e-10, 0.99993, -0.0118265, -4.63306e-10, 0.0118265, 0.99993, -2.35206e-09, 1.96059, -0.0317343)
+transform = Transform3D(1, -4.63302e-10, 4.68821e-10, 4.68814e-10, 0.99993, -0.0118264, -4.63308e-10, 0.0118264, 0.99993, -2.35208e-09, 1.96059, -0.0317344)
 bone_name = "Head"
 bone_idx = 5
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="RArm" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.415745, 0.764366, 0.49285, 0.49285, -0.644783, 0.584255, 0.764366, -3.1665e-08, -0.644783, 0.201908, 1.86604, 0.0109231)
+transform = Transform3D(0.415745, 0.764366, 0.492849, 0.49285, -0.644782, 0.584255, 0.764365, -5.71832e-07, -0.644783, 0.201908, 1.86605, 0.0109229)
 bone_name = "RArm"
 bone_idx = 1
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="LArm" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.415745, -0.764366, -0.49285, -0.49285, -0.644783, 0.584255, -0.764366, -3.72529e-09, -0.644782, -0.201911, 1.86604, 0.0109231)
+transform = Transform3D(0.415745, -0.764366, -0.492849, -0.49285, -0.644782, 0.584255, -0.764365, -6.03497e-07, -0.644783, -0.201911, 1.86605, 0.0109229)
 bone_name = "LArm"
 bone_idx = 3
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="RHand" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.413176, 0.766044, 0.492404, 0.492404, -0.642788, 0.586824, 0.766044, 1.32713e-08, -0.642787, 0.896792, 1.27987, 0.0109231)
+transform = Transform3D(0.413177, 0.766044, 0.492403, 0.492404, -0.642787, 0.586824, 0.766044, -5.39934e-07, -0.642788, 0.896792, 1.27987, 0.0109225)
 bone_name = "RHand"
 bone_idx = 2
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="LHand" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.413176, -0.766044, -0.492404, -0.492404, -0.642788, 0.586824, -0.766044, -8.84756e-09, -0.642787, -0.896795, 1.27987, 0.0109229)
+transform = Transform3D(0.413177, -0.766044, -0.492403, -0.492404, -0.642788, 0.586824, -0.766044, -5.99422e-07, -0.642788, -0.896795, 1.27987, 0.0109223)
 bone_name = "LHand"
 bone_idx = 4
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="RLeg" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.975812, 0.155977, 0.153151, 0.153148, -0.987742, 0.0301662, 0.155978, -0.00598184, -0.987742, 0.213903, 1.02528, 0.0236283)
+transform = Transform3D(0.975812, 0.155977, 0.153151, 0.153148, -0.987742, 0.0301662, 0.155978, -0.00598181, -0.987742, 0.213903, 1.02528, 0.0236284)
 bone_name = "RLeg"
 bone_idx = 6
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="LLeg" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.977738, -0.14966, -0.147107, -0.147111, -0.98872, 0.0281266, -0.149658, -0.00585935, -0.988721, -0.213903, 1.02528, 0.0236283)
+transform = Transform3D(0.977738, -0.14966, -0.147107, -0.147111, -0.98872, 0.0281265, -0.149658, -0.00585926, -0.988721, -0.213903, 1.02528, 0.0236284)
 bone_name = "LLeg"
 bone_idx = 8
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="RFoot" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.994518, 0.104528, -3.9814e-07, -5.90226e-07, -2.68221e-07, 1, 0.104527, -0.994521, -3.22238e-07, 0.380816, -0.0317198, 0.017227)
+transform = Transform3D(0.994518, 0.10453, 8.19564e-08, -1.09011e-06, 1.19209e-07, 1, 0.104529, -0.994521, 7.45058e-08, 0.380816, -0.0317194, 0.0172271)
 bone_name = "RFoot"
 bone_idx = 7
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="LFoot" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.994527, -0.10453, -5.47618e-07, -9.61823e-07, 4.37722e-07, 1, -0.104531, -0.994523, 5.12227e-07, -0.373898, -0.0317199, 0.0173643)
+transform = Transform3D(0.994527, -0.104526, -1.82074e-07, -1.33889e-06, -3.68804e-07, 1, -0.104527, -0.994523, -2.90573e-07, -0.373898, -0.0317199, 0.0173645)
 bone_name = "LFoot"
 bone_idx = 9
 use_external_skeleton = true
@@ -209,20 +229,31 @@ external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 [node name="Rig" parent="." instance=ExtResource("6_s8jgh")]
 
 [node name="Skeleton3D" parent="Rig/Armature" index="0"]
+bones/0/position = Vector3(-2.44157e-08, 0.905569, 0.0155896)
+bones/0/rotation = Quaternion(-0.0210637, -9.61779e-09, -9.61779e-09, 0.999778)
+bones/1/position = Vector3(0.201908, 1.02735, 0.0386376)
 bones/1/rotation = Quaternion(0.818468, 0.374048, 0.390148, -0.194892)
+bones/3/position = Vector3(-0.201911, 1.02735, 0.0386376)
 bones/3/rotation = Quaternion(0.818468, -0.374048, -0.390148, -0.194892)
+bones/5/rotation = Quaternion(0.0269753, 9.90257e-09, 9.79864e-09, 0.999636)
+bones/6/position = Vector3(0.213903, 0.186792, 0.0159202)
 bones/6/rotation = Quaternion(0.993482, 0.0761011, 0.0793777, -0.0300256)
+bones/8/position = Vector3(-0.213903, 0.186792, 0.0159202)
 bones/8/rotation = Quaternion(0.99398, -0.0730236, -0.0761655, -0.0294879)
 
 [node name="AnimationTree" type="AnimationTree" parent="Rig/Armature" index="1"]
 tree_root = SubResource("AnimationNodeBlendTree_ycajw")
 anim_player = NodePath("../AnimationPlayer")
 parameters/climb_speed/scale = 1.0
+parameters/horizontal/current_state = ""
+parameters/horizontal/transition_request = ""
+parameters/horizontal/current_index = -1
 parameters/jump_oneshot/active = false
 parameters/jump_oneshot/request = 0
 parameters/main/current_state = "base"
 parameters/main/transition_request = ""
 parameters/main/current_index = 0
+parameters/run_speed/scale = 1.0
 parameters/vertical/current_state = ""
 parameters/vertical/transition_request = "fall"
 parameters/vertical/current_index = 0

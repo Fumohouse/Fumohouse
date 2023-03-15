@@ -26,18 +26,28 @@ local VerticalTransition = {
     CLIMB = "climb",
 }
 
+local HorizontalTransition = {
+    WALK = "walk",
+    RUN = "run",
+}
+
 local WALK_SPEED = "parameters/walk_speed/scale"
+local RUN_SPEED = "parameters/run_speed/scale"
 local CLIMB_SPEED = "parameters/climb_speed/scale"
 
 local TRANSITION_MAIN = "parameters/main/transition_request"
 local TRANSITION_VERTICAL = "parameters/vertical/transition_request"
+local TRANSITION_HORIZONTAL = "parameters/horizontal/transition_request"
 
 local JUMP = "parameters/jump_oneshot/request"
 
-local STATES: { {
+type StateInfo = {
     state: number,
     properties: {[string]: any},
-} } = {
+    update: (self: CharacterAnimator, state: MotionState.MotionState, animator: AnimationTree) -> ()?,
+}
+
+local STATES: {StateInfo} = {
     {
         state = MotionState.CharacterState.SITTING,
         properties = {
@@ -50,7 +60,11 @@ local STATES: { {
             [TRANSITION_MAIN] = MainTransition.VERTICAL,
             [TRANSITION_VERTICAL] = VerticalTransition.CLIMB,
             [JUMP] = AnimationNodeOneShot.OneShotRequest.NONE,
-        }
+        },
+        update = function(self, state, animator)
+            assert(self.ladderMotion)
+            animator:Set(CLIMB_SPEED, if self.ladderMotion.isMoving then 1.0 else 0.0)
+        end
     },
     {
         state = MotionState.CharacterState.FALLING,
@@ -72,7 +86,25 @@ local STATES: { {
         state = MotionState.CharacterState.WALKING,
         properties = {
             [TRANSITION_MAIN] = MainTransition.HORIZONTAL,
-        }
+        },
+        update = function(self, state, animator)
+            assert(self.horizontalMotion)
+
+            local velocityFlat = state.velocity
+            velocityFlat = Vector3.new(velocityFlat.x, 0, velocityFlat.z)
+            local horizSpeed = velocityFlat:Length()
+
+            local SPEED_THRESHOLD = 0.2
+
+            -- TODO: Luau 567: type hack below
+            if horizSpeed > self.horizontalMotion.options.walkSpeed :: number + SPEED_THRESHOLD then
+                animator:Set(TRANSITION_HORIZONTAL, HorizontalTransition.RUN)
+                animator:Set(RUN_SPEED, horizSpeed / self.horizontalMotion.options.runSpeed)
+            else
+                animator:Set(TRANSITION_HORIZONTAL, HorizontalTransition.WALK)
+                animator:Set(WALK_SPEED, horizSpeed / self.horizontalMotion.options.walkSpeed)
+            end
+        end
     },
     {
         state = MotionState.CharacterState.IDLE,
@@ -90,7 +122,7 @@ function CharacterAnimator.new()
     self.horizontalMotion = nil :: HorizontalMotion.HorizontalMotion?
     self.ladderMotion = nil :: LadderMotion.LadderMotion?
 
-    self.state = MotionState.CharacterState.NONE
+    self.state = nil :: StateInfo?
 
     return setmetatable(self, CharacterAnimator)
 end
@@ -111,34 +143,27 @@ end
 
 function CharacterAnimator.Process(self: CharacterAnimator, state: MotionState.MotionState, delta: number)
     if self.character and self.animator then
-        assert(self.horizontalMotion)
-        assert(self.ladderMotion)
-
-        local velocityFlat = state.velocity
-        velocityFlat = Vector3.new(velocityFlat.x, 0, velocityFlat.z)
-
-        self.animator:Set(WALK_SPEED, velocityFlat:Length() / self.horizontalMotion.options.movementSpeed)
-        self.animator:Set(CLIMB_SPEED, if self.ladderMotion.isMoving then 1.0 else 0.0)
-
         for _, stateInfo in STATES do
             if not state:IsState(stateInfo.state) then
                 continue
             end
 
-            if self.state == stateInfo.state then
-                return
+            if self.state == stateInfo then
+                break
             end
 
-            self.state = stateInfo.state
+            self.state = stateInfo
 
             for key, value in stateInfo.properties do
                 self.animator:Set(key, value)
             end
 
-            return
+            break
         end
 
-        self.animator:Set(TRANSITION_MAIN, MainTransition.BASE)
+        if self.state and self.state.update then
+            self.state.update(self, state, self.animator)
+        end
     end
 end
 

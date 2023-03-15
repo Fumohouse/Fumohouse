@@ -103,8 +103,8 @@ function DebugCharacterImpl.debugDraw(self: DebugCharacter)
 
         -- Velocities
         if self.horizontalMotion then
-            local topSpeed = self.horizontalMotion.options.movementSpeed
-            DebugDraw:DrawLine(pos, pos + characterState.velocity / topSpeed, Color.BLUE)
+            local velocityScale = self.horizontalMotion.options.walkSpeed
+            DebugDraw:DrawLine(pos, pos + characterState.velocity / velocityScale, Color.BLUE)
         end
 
         -- Stairs
