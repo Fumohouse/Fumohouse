@@ -1,5 +1,7 @@
 shader_type spatial;
 
+uniform vec4 skin_color : source_color = vec4(1.0);
+
 uniform sampler2D brow_texture : hint_default_transparent;
 uniform sampler2D eye_texture : hint_default_transparent;
 uniform sampler2D overlay_texture : hint_default_transparent;
@@ -14,9 +16,9 @@ uniform sampler2D dither_texture : filter_nearest, hint_default_white;
 uniform float alpha : hint_range(0.0, 1.0) = 1.0;
 /// END DITHER
 
-void blend(vec4 brow, vec4 eye, vec4 overlay, vec4 shine, vec4 mouth, out vec3 albedo, out float out_alpha) {
+void blend(vec4 brow, vec4 eye, vec4 overlay, vec4 shine, vec4 mouth, out vec3 albedo) {
 	// list is from the highest "layer" to the lowest one
-	vec4 order[5] = { shine, mouth, brow, overlay, eye };
+	vec4 order[6] = { shine, mouth, brow, overlay, eye, skin_color };
 	vec3 output = vec3(0.0);
 
 	float max_mult = 1.0;
@@ -38,7 +40,6 @@ void blend(vec4 brow, vec4 eye, vec4 overlay, vec4 shine, vec4 mouth, out vec3 a
 	}
 
 	albedo = output;
-	out_alpha = min(tot_alpha, 1.0);
 }
 
 void fragment() {
@@ -62,5 +63,5 @@ void fragment() {
 
 	vec4 eye_color = eye * eye_tint;
 
-	blend(brow, eye_color, overlay, shine, mouth, ALBEDO, ALPHA);
+	blend(brow, eye_color, overlay, shine, mouth, ALBEDO);
 }

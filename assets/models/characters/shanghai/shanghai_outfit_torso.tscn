@@ -9,20 +9,20 @@
 
 [node name="shanghai_outfit_torso" type="Node3D"]
 
-[node name="shanghai_collar" parent="." instance=ExtResource("1_jww4l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007, 1.611, -0.065)
-
-[node name="shanghai_bowtie" parent="." instance=ExtResource("2_q81wk")]
-transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 1.807, -0.223)
-
-[node name="shanghai_dress_inner" parent="." instance=ExtResource("3_vcpsy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.686, -0.019)
-
-[node name="shanghai_dress_outer" parent="." instance=ExtResource("4_5ucj0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.487, -0.02)
-
 [node name="shanghai_apron" parent="." instance=ExtResource("5_3hok4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.056, -0.37)
 
 [node name="shanghai_back_bow" parent="." instance=ExtResource("6_q7fch")]
 transform = Transform3D(1, 0, 0, 0, 0.0941083, -0.995562, 0, 0.995562, 0.0941083, 0, 1.112, 0.36)
+
+[node name="shanghai_bowtie" parent="." instance=ExtResource("2_q81wk")]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 1.807, -0.223)
+
+[node name="shanghai_collar" parent="." instance=ExtResource("1_jww4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007, 1.612, -0.065)
+
+[node name="shanghai_dress_inner" parent="." instance=ExtResource("3_vcpsy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.686, 0.019)
+
+[node name="shanghai_dress_outer" parent="." instance=ExtResource("4_5ucj0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.487, -0.02)

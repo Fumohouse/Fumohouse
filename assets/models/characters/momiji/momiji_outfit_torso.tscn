@@ -6,7 +6,7 @@
 [node name="momiji_outfit_torso" type="Node3D"]
 
 [node name="momiji_shirt" parent="." instance=ExtResource("1_b8ia2")]
-transform = Transform3D(1.79752, -3.38404e-08, 3.5297e-08, 3.5297e-08, 1.79592, -0.075708, -3.38404e-08, 0.075708, 1.79592, 1.3231e-08, 1.36346, -0.206254)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.591, -0.131)
 
 [node name="momiji_skirt" parent="." instance=ExtResource("2_3ccyg")]
-transform = Transform3D(1.79752, -3.38404e-08, 3.5297e-08, 3.5297e-08, 1.79592, -0.075708, -3.38404e-08, 0.075708, 1.79592, 4.21981e-08, 0.0346762, -0.0535724)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.856, 0.015)

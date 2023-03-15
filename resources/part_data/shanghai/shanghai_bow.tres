@@ -1,11 +1,11 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://djc84f8m1abks"]
+[gd_resource type="Resource" script_class="SinglePart" load_steps=2 format=3 uid="uid://cgthtqkpwfbv5"]
 
-[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_agsua"]
+[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_xxlmw"]
 
 [resource]
-script = ExtResource("1_agsua")
-id ="shanghai_bow"
+script = ExtResource("1_xxlmw")
+id = "shanghai_bow"
 scope = 1
 scenePath = "shanghai/shanghai_bow.glb"
-transform = Transform3D(1.79109, 0.136517, 0.0665179, -1.43678e-08, 0.787349, -1.61591, -0.15186, 1.61013, 0.784535, 0.0800717, 2.65988, 0.944391)
+transform = Transform3D(1, -2.18519e-10, -6.21855e-10, -4.63309e-10, 0.438019, -0.898966, 4.6882e-10, 0.898966, 0.438019, 2.79045e-09, 1.47975, 0.527271)
 bone = 1

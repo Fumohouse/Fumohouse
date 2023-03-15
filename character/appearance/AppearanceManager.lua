@@ -338,8 +338,8 @@ function AppearanceManagerImpl._Ready(self: AppearanceManager)
     self.faceMaterial = faceMaterial:Duplicate()
     self.skinMaterial = (self.skeleton:GetNode("Head") :: MeshInstance3D):GetActiveMaterial(0) :: ShaderMaterial
 
-    local face = self.skeleton:GetNode("Face") :: MeshInstance3D
-    face.materialOverride = self.faceMaterial
+    local head = self.skeleton:GetNode("Head") :: MeshInstance3D
+    head.materialOverride = self.faceMaterial
 
     self.character.cameraUpdated:Connect(Callable.new(self, "_OnCharacterCameraUpdated"))
     Callable.new(self, "LoadAppearance"):CallDeferred()

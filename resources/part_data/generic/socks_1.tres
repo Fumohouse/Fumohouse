@@ -1,26 +1,26 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://bd4wn106x8vnl"]
+[gd_resource type="Resource" script_class="MultiPart" load_steps=5 format=3 uid="uid://c85ih0rgamuev"]
 
-[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_5y6qu"]
-[ext_resource type="Script" path="res://character/appearance/parts/MultiPart.lua" id="1_858pj"]
+[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_ubiph"]
+[ext_resource type="Script" path="res://character/appearance/parts/MultiPart.lua" id="2_wfqau"]
 
-[sub_resource type="Resource" id="Resource_g8dbp"]
-script = ExtResource("1_5y6qu")
-id ="socks_1_r"
+[sub_resource type="Resource" id="Resource_l1h1u"]
+script = ExtResource("1_ubiph")
+id = "sock_1_r"
 scope = 0
 scenePath = "generic/sock_1.tscn"
-transform = Transform3D(0.0505013, -0.0081382, 1.79678, 0.0932476, -1.79507, -0.0107513, 1.79439, 0.0935118, -0.0500103, 0.00389504, 1.55197, 0.0407169)
-bone = 6
+transform = Transform3D(0.989077, -0.103955, 0.104532, 0.103959, -0.0109258, -0.994522, 0.104528, 0.994522, 6.42805e-07, -0.00947258, -0.00378392, 0.20772)
+bone = 8
 
-[sub_resource type="Resource" id="Resource_tvb3l"]
-script = ExtResource("1_5y6qu")
-id ="socks_1_l"
+[sub_resource type="Resource" id="Resource_e8r3l"]
+script = ExtResource("1_ubiph")
+id = "sock_1_l"
 scope = 0
 scenePath = "generic/sock_1.tscn"
-transform = Transform3D(1.07237, -0.0403749, -1.44204, -0.0817695, -1.79563, -0.0105331, -1.44028, 0.0718824, -1.07308, -0.0323483, 1.55167, 0.0391645)
-bone = 7
+transform = Transform3D(0.989069, 0.103957, -0.104525, -0.103953, -0.0109263, -0.994521, -0.104528, 0.994522, -3.95721e-07, 0.00260678, -0.00292403, 0.20772)
+bone = 9
 
 [resource]
-script = ExtResource("1_858pj")
-id ="socks_1"
+script = ExtResource("2_wfqau")
+id = "socks_1"
 scope = 1
-parts = [SubResource("Resource_g8dbp"), SubResource("Resource_tvb3l")]
+parts = [SubResource("Resource_l1h1u"), SubResource("Resource_e8r3l")]

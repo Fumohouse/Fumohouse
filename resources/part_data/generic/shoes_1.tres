@@ -1,26 +1,26 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://di2akcqrrxbtj"]
+[gd_resource type="Resource" script_class="MultiPart" load_steps=5 format=3 uid="uid://dwjnyr1tm6p25"]
 
-[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_8qnev"]
-[ext_resource type="Script" path="res://character/appearance/parts/MultiPart.lua" id="1_otqqi"]
+[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_nklxv"]
+[ext_resource type="Script" path="res://character/appearance/parts/MultiPart.lua" id="2_oyqbv"]
 
-[sub_resource type="Resource" id="Resource_68bep"]
-script = ExtResource("1_8qnev")
-scenePath = "generic/shoe_1.tscn"
-transform = Transform3D(0.0505013, -0.0081382, 1.79678, 0.0932476, -1.79507, -0.0107513, 1.79439, 0.0935118, -0.0500103, 0.00444679, 1.67644, 0.0337814)
-bone = 6
-id ="shoes_1_r"
+[sub_resource type="Resource" id="Resource_2kw0b"]
+script = ExtResource("1_nklxv")
+id = "shoe_1_r"
 scope = 0
-
-[sub_resource type="Resource" id="Resource_eav0e"]
-script = ExtResource("1_8qnev")
 scenePath = "generic/shoe_1.tscn"
-transform = Transform3D(1.07237, -0.0403749, -1.44204, -0.0817695, -1.79563, -0.0105331, -1.44028, 0.0718824, -1.07308, -0.0292792, 1.67619, 0.0338179)
-bone = 7
-id ="shoes_1_l"
+transform = Transform3D(0.989077, -0.103955, 0.104532, 0.103959, -0.0109258, -0.994522, 0.104528, 0.994522, 6.42805e-07, -0.00251091, -0.00305221, 0.13872)
+bone = 8
+
+[sub_resource type="Resource" id="Resource_sj20y"]
+script = ExtResource("1_nklxv")
+id = "shoe_1_l"
 scope = 0
+scenePath = "generic/shoe_1.tscn"
+transform = Transform3D(0.989069, 0.103957, -0.104525, -0.103953, -0.0109263, -0.994521, -0.104528, 0.994522, -3.95721e-07, -0.00435489, -0.00219235, 0.13872)
+bone = 9
 
 [resource]
-script = ExtResource("1_otqqi")
-parts = [SubResource("Resource_68bep"), SubResource("Resource_eav0e")]
-id ="shoes_1"
+script = ExtResource("2_oyqbv")
+id = "shoes_1"
 scope = 4
+parts = [SubResource("Resource_2kw0b"), SubResource("Resource_sj20y")]

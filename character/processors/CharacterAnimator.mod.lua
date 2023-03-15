@@ -100,6 +100,10 @@ function CharacterAnimator.Initialize(self: CharacterAnimator, state: MotionStat
         self.character = state.node :: Character.Character
         self.animator = state.node:GetNodeOrNull("Rig/Armature/AnimationTree") :: AnimationTree?
 
+        if self.animator then
+            self.animator.active = true
+        end
+
         self.horizontalMotion = state:GetMotionProcessor(HorizontalMotion.ID)
         self.ladderMotion = state:GetMotionProcessor(LadderMotion.ID)
     end

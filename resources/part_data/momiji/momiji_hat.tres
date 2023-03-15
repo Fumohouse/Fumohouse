@@ -1,11 +1,11 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dmpq7eyq2dlqu"]
+[gd_resource type="Resource" script_class="SinglePart" load_steps=2 format=3 uid="uid://r7f1f8epwfm6"]
 
-[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_2j27s"]
+[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_gyprp"]
 
 [resource]
-script = ExtResource("1_2j27s")
-id ="momiji_hat"
+script = ExtResource("1_gyprp")
+id = "momiji_hat"
 scope = 5
 scenePath = "momiji/momiji_hat.glb"
-transform = Transform3D(1.79109, -0.00179595, 0.15185, -1.43678e-08, 1.79739, 0.0212582, -0.15186, -0.0211822, 1.79097, 0.00304416, 1.01684, 0.0359037)
+transform = Transform3D(1, 7.99368e-09, -5.44009e-15, -7.99312e-09, 0.99993, 0.0118264, 9.4537e-11, -0.0118264, 0.99993, 2.60476e-09, 0.565691, 0.0200456)
 bone = 1

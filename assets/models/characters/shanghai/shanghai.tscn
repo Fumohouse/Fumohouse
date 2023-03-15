@@ -1,70 +1,68 @@
 [gd_scene load_steps=8 format=3 uid="uid://dyx2v6hmqc3k3"]
 
-[ext_resource type="PackedScene" uid="uid://cur1cpq181a3p" path="res://character/character.tscn" id="1_qtqo1"]
+[ext_resource type="PackedScene" uid="uid://bdricnhkc377e" path="res://character/character.tscn" id="1_qtqo1"]
 [ext_resource type="PackedScene" uid="uid://uy2o657uvqm1" path="res://assets/models/characters/shanghai/shanghai_outfit_torso.tscn" id="2_y5j4c"]
 [ext_resource type="PackedScene" uid="uid://dr47xqhxc7l3w" path="res://assets/models/characters/shanghai/shanghai_hair.glb" id="3_f38ad"]
 [ext_resource type="PackedScene" uid="uid://d1ulyv677w24t" path="res://assets/models/characters/shanghai/shanghai_bow.glb" id="4_q5s56"]
-[ext_resource type="PackedScene" uid="uid://barbh34tiywi1" path="res://assets/models/characters/shanghai/shanghai_lsleeve.glb" id="5_8j3e6"]
-[ext_resource type="PackedScene" uid="uid://c27qgcs4t80lu" path="res://assets/models/characters/shanghai/shanghai_rsleeve.glb" id="6_0grqr"]
+[ext_resource type="PackedScene" uid="uid://ccxci0wdkm1qb" path="res://assets/models/characters/shanghai/shanghai_lsleeve.glb" id="5_8j3e6"]
+[ext_resource type="PackedScene" uid="uid://cfgtn3q0qm14i" path="res://assets/models/characters/shanghai/shanghai_rsleeve.glb" id="6_0grqr"]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_gom3w"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ulthu"]
+resource_local_to_scene = true
+height = 3.4
 
 [node name="Character" instance=ExtResource("1_qtqo1")]
 
 [node name="Torso" parent="Appearance" index="0"]
-transform = Transform3D(0.556322, 1.09242e-08, -1.04734e-08, -1.04734e-08, 0.555829, 0.0234312, 1.09242e-08, -0.0234312, 0.555829, -2.44156e-08, 0.837981, 0.0155896)
+transform = Transform3D(1, 1.96365e-08, -1.88261e-08, -1.88261e-08, 0.999113, 0.042118, 1.96365e-08, -0.042118, 0.999113, -2.44157e-08, 0.83798, 0.0155896)
 
 [node name="shanghai_outfit_torso" parent="Appearance/Torso" index="0" instance=ExtResource("2_y5j4c")]
-transform = Transform3D(1.79752, -3.38404e-08, 3.5297e-08, 3.5297e-08, 1.79592, -0.075708, -3.38404e-08, 0.075708, 1.79592, 7.16949e-08, -1.50377, -0.0914397)
+transform = Transform3D(1, -1.88261e-08, 1.96365e-08, 1.96365e-08, 0.999113, -0.042118, -1.88261e-08, 0.042118, 0.999113, 3.98855e-08, -0.83658, -0.0508698)
 
 [node name="Head" parent="Appearance" index="1"]
-transform = Transform3D(0.554333, -4.16376e-09, -0.047, -0.000555836, 0.556283, -0.00655577, 0.0469967, 0.00657929, 0.554295, -3.21848e-09, 1.96059, -0.0317344)
+transform = Transform3D(1, -4.63312e-10, 4.68827e-10, 4.68823e-10, 0.99993, -0.0118265, -4.63309e-10, 0.0118265, 0.99993, -2.35206e-09, 1.96059, -0.0317343)
 
 [node name="shanghai_hair" parent="Appearance/Head" index="0" instance=ExtResource("3_f38ad")]
-transform = Transform3D(1.79109, -0.00179595, 0.15185, -1.43678e-08, 1.79739, 0.0212582, -0.15186, -0.0211822, 1.79097, 0.0217178, 2.0824, 0.149763)
+transform = Transform3D(1, 4.68823e-10, -4.63313e-10, -4.63309e-10, 0.99993, 0.0118265, 4.6882e-10, -0.0118265, 0.99993, 0.005, 1.15849, 0.0840393)
 
 [node name="shanghai_bow" parent="Appearance/Head" index="1" instance=ExtResource("4_q5s56")]
-transform = Transform3D(1.79109, 0.136517, 0.0665179, -1.43678e-08, 0.787349, -1.61591, -0.15186, 1.61013, 0.784535, 0.0800717, 2.65988, 0.944391)
+transform = Transform3D(1, -2.18519e-10, -6.21855e-10, -4.63309e-10, 0.438019, -0.898966, 4.6882e-10, 0.898966, 0.438019, 2.79045e-09, 1.47975, 0.527271)
 
 [node name="RArm" parent="Appearance" index="2"]
-transform = Transform3D(0.231288, 0.425234, 0.274183, 0.274183, -0.358707, 0.325034, 0.425234, -3.1605e-07, -0.358707, 0.201908, 1.86605, 0.0109231)
+transform = Transform3D(0.415745, 0.764366, 0.492849, 0.49285, -0.644782, 0.584255, 0.764365, -6.09085e-07, -0.644783, 0.201908, 1.86604, 0.0109231)
 
 [node name="shanghai_rsleeve" parent="Appearance/RArm" index="0" instance=ExtResource("6_0grqr")]
-transform = Transform3D(0.74731, 0.885907, 1.37396, 1.37396, -1.15901, -9.51992e-07, 0.885906, 1.05021, -1.15901, 0.00138032, 0.744021, 0.00142097)
+transform = Transform3D(0.415746, 0.49285, 0.764366, 0.764366, -0.644783, -6.79055e-07, 0.49285, 0.584255, -0.644783, 0.000768781, 0.413914, 0.00079143)
 
 [node name="LArm" parent="Appearance" index="3"]
-transform = Transform3D(0.231288, -0.425234, -0.274183, -0.274183, -0.358707, 0.325034, -0.425234, -2.99471e-07, -0.358707, -0.201911, 1.86605, 0.010923)
+transform = Transform3D(0.415745, -0.764366, -0.492849, -0.49285, -0.644782, 0.584255, -0.764365, -6.38887e-07, -0.644783, -0.201911, 1.86604, 0.0109231)
 
 [node name="shanghai_lsleeve" parent="Appearance/LArm" index="0" instance=ExtResource("5_8j3e6")]
-transform = Transform3D(0.74731, -0.885907, -1.37396, -1.37396, -1.15901, -9.0872e-07, -0.885906, 1.05021, -1.15901, -0.00137854, 0.744017, 0.00141859)
+transform = Transform3D(0.415746, -0.49285, -0.764366, -0.764366, -0.644783, -6.52258e-07, -0.49285, 0.584255, -0.644783, -0.000767589, 0.413912, 0.000790238)
 
 [node name="RHand" parent="Appearance" index="4"]
-transform = Transform3D(0.230573, 0.426168, 0.273335, 0.274786, -0.357597, 0.325748, 0.425234, -3.53873e-07, -0.358707, 0.896793, 1.27987, 0.0109225)
+transform = Transform3D(0.413177, 0.766044, 0.492403, 0.492404, -0.642787, 0.586824, 0.766044, -5.76954e-07, -0.642788, 0.896792, 1.27987, 0.0109226)
 
 [node name="LHand" parent="Appearance" index="5"]
-transform = Transform3D(0.230573, -0.426168, -0.273335, -0.274785, -0.357597, 0.325748, -0.425234, -3.6851e-07, -0.358707, -0.896795, 1.27987, 0.0109224)
+transform = Transform3D(0.413177, -0.766044, -0.492403, -0.492404, -0.642788, 0.586824, -0.766044, -6.34696e-07, -0.642788, -0.896795, 1.27987, 0.0109224)
 
 [node name="RLeg" parent="Appearance" index="6"]
-transform = Transform3D(0.0158077, 0.0867737, 0.549286, -0.000871168, -0.549503, 0.0868331, 0.5561, -0.00332747, -0.015478, 0.213903, 1.02528, 0.0236283)
+transform = Transform3D(0.975812, 0.155978, 0.153151, 0.153149, -0.987742, 0.0301659, 0.155978, -0.0059814, -0.987742, 0.213903, 1.02528, 0.0236283)
 
 [node name="LLeg" parent="Appearance" index="7"]
-transform = Transform3D(0.328767, -0.0832589, -0.440992, -0.0471193, -0.550047, 0.0687198, -0.4463, -0.00325995, -0.332112, -0.213903, 1.02528, 0.0236283)
+transform = Transform3D(0.977738, -0.14966, -0.147108, -0.14711, -0.988721, 0.0281272, -0.149659, -0.0058599, -0.988721, -0.213903, 1.02528, 0.0236283)
 
 [node name="RFoot" parent="Appearance" index="8"]
-transform = Transform3D(0.129686, 0.0581509, 0.537861, -0.540824, 1.78232e-07, 0.1304, 0.0136303, -0.553277, 0.0565313, 0.380817, -0.0317184, 0.0172277)
+transform = Transform3D(0.994518, 0.10453, -6.86385e-07, -3.13623e-07, -1.8999e-07, 1, 0.10453, -0.994521, -3.14787e-07, 0.380817, -0.0317196, 0.0172275)
 
 [node name="LFoot" parent="Appearance" index="9"]
-transform = Transform3D(0.415108, -0.0581513, -0.365783, 0.367799, -2.07246e-07, 0.417395, -0.0436282, -0.553273, 0.0384435, -0.373897, -0.0317185, 0.0173638)
+transform = Transform3D(0.994527, -0.104526, -7.255e-07, -7.11996e-07, 3.25963e-07, 1, -0.104527, -0.994523, 4.74975e-07, -0.373897, -0.0317202, 0.0173637)
 
 [node name="Skeleton3D" parent="Rig/Armature" index="0"]
-bones/0/rotation = Quaternion(-0.0210637, -9.61779e-09, -9.61779e-09, 0.999778)
-bones/1/rotation = Quaternion(0.818468, 0.374048, 0.390148, -0.194892)
-bones/3/rotation = Quaternion(0.818468, -0.374048, -0.390148, -0.194892)
-bones/5/rotation = Quaternion(0.0269512, -0.0422641, -0.00114049, 0.998742)
-bones/6/rotation = Quaternion(0.713487, 0.0393532, 0.695877, -0.0717236)
-bones/8/rotation = Quaternion(0.890198, -0.056306, -0.448716, -0.0550599)
+bones/6/rotation = Quaternion(0.993482, 0.0761015, 0.0793778, -0.0300254)
+bones/8/rotation = Quaternion(0.99398, -0.0730233, -0.0761659, -0.0294882)
 
-[node name="AnimationTree" parent="Rig/Armature" index="2"]
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_gom3w")
+[node name="MainCollider" parent="." index="2"]
+shape = SubResource("CapsuleShape3D_ulthu")
 
 [editable path="Rig"]

@@ -1,11 +1,11 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dqe38hccaibd1"]
+[gd_resource type="Resource" script_class="SinglePart" load_steps=2 format=3 uid="uid://cpcpx3tbv0232"]
 
-[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_25gmr"]
+[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_75va8"]
 
 [resource]
-script = ExtResource("1_25gmr")
-id ="shanghai_hair"
+script = ExtResource("1_75va8")
+id = "shanghai_hair"
 scope = 3
 scenePath = "shanghai/shanghai_hair.glb"
-transform = Transform3D(1.79109, -0.00179595, 0.15185, -1.43678e-08, 1.79739, 0.0212582, -0.15186, -0.0211822, 1.79097, 0.0217178, 2.0824, 0.149763)
+transform = Transform3D(1, 4.68823e-10, -4.63313e-10, -4.63309e-10, 0.99993, 0.0118265, 4.6882e-10, -0.0118265, 0.99993, 0.005, 1.15849, 0.0840393)
 bone = 1
