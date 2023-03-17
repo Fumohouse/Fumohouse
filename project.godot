@@ -20,8 +20,7 @@ buses/default_bus_layout="res://resources/default_bus_layout.tres"
 
 [autoload]
 
-DebugInfo="*res://debug/menu/debug_info.tscn"
-DebugDraw="*res://debug/DebugDraw.lua"
+DebugDraw="*res://utils/DebugDraw.lua"
 PartDatabase="*res://character/appearance/parts/PartDatabase.lua"
 MusicPlayer="*res://music/MusicPlayer.lua"
 MapManager="*res://map_system/MapManager.lua"
@@ -95,6 +94,11 @@ debug_1={
 debug_2={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194333,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+debug_3={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194334,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 

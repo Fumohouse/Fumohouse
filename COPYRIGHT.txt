@@ -100,6 +100,11 @@ Comment: Bootstrap icons
 Copyright: 2019-2021, The Bootstrap Authors
 License: Expat
 
+Files: assets/textures/godot_logo.svg
+Comment: Godot Engine logo
+Copyright: 2017 Andrea Calabró
+License: CC-BY-4.0
+
 ######################
 # Expat License Text #
 ######################

@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dknqom53w812u"]
+
+[ext_resource type="FontFile" uid="uid://d1wwxago3btoh" path="res://assets/fonts/mono/FiraMono-Bold.ttf" id="1_a1r8d"]
+[ext_resource type="FontFile" uid="uid://4h6fuer52603" path="res://assets/fonts/mono/FiraMono-Regular.ttf" id="2_7mg88"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1sxr"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 0.580392)
+
+[resource]
+default_font = ExtResource("2_7mg88")
+default_font_size = 12
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_q1sxr")
+RichTextLabel/fonts/bold_font = ExtResource("1_a1r8d")

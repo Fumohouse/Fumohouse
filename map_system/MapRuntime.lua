@@ -1,6 +1,6 @@
 local Character = require("../character/Character")
 local CameraController = require("../character/CameraController")
-local DebugCharacter = require("../debug/menu/DebugCharacter")
+local DebugCharacter = require("../ui/debug/DebugCharacter")
 local CharacterSpawner = require("CharacterSpawner")
 
 local MapRuntimeImpl = {}

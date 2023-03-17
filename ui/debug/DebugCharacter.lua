@@ -4,16 +4,17 @@ local MotionState = require("../../character/MotionState.mod")
 local HorizontalMotion = require("../../character/processors/HorizontalMotion.mod")
 local PhysicalMotion = require("../../character/processors/PhysicalMotion.mod")
 local StairsMotion = require("../../character/processors/StairsMotion.mod")
-local DebugMenu = require("DebugMenu")
+local DebugWindow = require("DebugWindow")
+local InfoTable = require("InfoTable")
 
-local DebugDrawM = require("../DebugDraw")
+local DebugDrawM = require("../../utils/DebugDraw")
 local DebugDraw = gdglobal("DebugDraw") :: DebugDrawM.DebugDraw
 
 local DebugCharacterImpl = {}
-local DebugCharacter = gdclass(nil, DebugMenu)
+local DebugCharacter = gdclass(nil, DebugWindow)
     :RegisterImpl(DebugCharacterImpl)
 
-type DebugCharacterT = {
+type DebugCharacterT = DebugWindow.DebugWindowT & {
     characterPathInternal: string,
     characterPath: string,
 
@@ -22,17 +23,17 @@ type DebugCharacterT = {
     physicalMotion: PhysicalMotion.PhysicalMotion?,
     stairsMotion: StairsMotion.StairsMotion?,
 
-    state: RichTextLabel?,
+    infoTbl: InfoTable.InfoTable,
+    state: RichTextLabel,
 }
 
-export type DebugCharacter = DebugMenu.DebugMenu & DebugCharacterT & typeof(DebugCharacterImpl)
+export type DebugCharacter = DebugWindow.DebugWindow & DebugCharacterT & typeof(DebugCharacterImpl)
 
 DebugCharacter:RegisterProperty("characterPath", Enum.VariantType.NODE_PATH)
     :NodePath(RigidBody3D)
     :SetGet("setCharacterPath", "getCharacterPath")
 
-function DebugCharacterImpl._Init(obj: PanelContainer, tbl: DebugMenu.DebugMenuT & DebugCharacterT)
-    tbl.menuName = "character_debug"
+function DebugCharacterImpl._Init(obj: PanelContainer, tbl: DebugCharacterT)
     tbl.action = "debug_2"
 end
 
@@ -64,15 +65,19 @@ DebugCharacter:RegisterMethod("getCharacterPath")
     :ReturnVal({ type = Enum.VariantType.NODE_PATH })
 
 function DebugCharacterImpl._Ready(self: DebugCharacter)
-    DebugMenu._Ready(self)
+    DebugWindow._Ready(self)
+    self:SetWindowVisible(false)
 
-    self.state = self:AddEntry("state", "State").contents
+    local infoTbl = self:GetNode("%InfoTable") :: InfoTable.InfoTable
+    self.infoTbl = infoTbl
 
-    self:AddEntry("ragdoll", "Is Ragdoll")
-    self:AddEntry("grounded", "Is Grounded")
-    self:AddEntry("airborne", "Airborne Time")
-    self:AddEntry("speed", "Speed")
-    self:AddEntry("walls", "Wall Contacts")
+    self.state = infoTbl:AddEntry("state", "State").contents
+
+    infoTbl:AddEntry("ragdoll", "Is Ragdoll")
+    infoTbl:AddEntry("grounded", "Is Grounded")
+    infoTbl:AddEntry("airborne", "Airborne Time")
+    infoTbl:AddEntry("speed", "Speed")
+    infoTbl:AddEntry("walls", "Wall Contacts")
 
     self:updateCharacter()
 end
@@ -145,7 +150,6 @@ end)
 
 function DebugCharacterImpl._Process(self: DebugCharacter, delta: number)
     assert(self.character)
-    assert(self.state)
 
     local characterState = self.character.state
 
@@ -167,9 +171,11 @@ function DebugCharacterImpl._Process(self: DebugCharacter, delta: number)
     end
 
     -- Other
-    self:SetVal("ragdoll", if characterState.isRagdoll then "Yes" else "No")
-    self:SetVal("grounded", if characterState.isGrounded then "Yes" else "No")
-    self:SetVal("airborne", if self.physicalMotion then string.format("%.3f sec", self.physicalMotion.airborneTime) else "???")
+    local infoTbl = self.infoTbl
+
+    infoTbl:SetVal("ragdoll", if characterState.isRagdoll then "Yes" else "No")
+    infoTbl:SetVal("grounded", if characterState.isGrounded then "Yes" else "No")
+    infoTbl:SetVal("airborne", if self.physicalMotion then string.format("%.3f sec", self.physicalMotion.airborneTime) else "???")
 
     local speedStr = `Total: {Utils.FormatVector3(characterState.velocity)} m/s`
 
@@ -181,8 +187,8 @@ function DebugCharacterImpl._Process(self: DebugCharacter, delta: number)
         end
     end
 
-    self:SetVal("speed", speedStr)
-    self:SetVal("walls", tostring(#characterState.walls))
+    infoTbl:SetVal("speed", speedStr)
+    infoTbl:SetVal("walls", tostring(#characterState.walls))
 
     self:debugDraw()
 end

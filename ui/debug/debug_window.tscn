@@ -1,0 +1,143 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Shader" path="res://resources/materials/ui_blur.gdshader" id="1_3nb2l"]
+[ext_resource type="Theme" uid="uid://dknqom53w812u" path="res://ui/debug/debug_theme.tres" id="1_j2ja4"]
+[ext_resource type="Script" path="res://ui/debug/DebugWindow.lua" id="2_rw5sj"]
+[ext_resource type="Texture2D" uid="uid://cu18o88insfv6" path="res://assets/textures/ui/icons/x.svg" id="3_n1fwc"]
+[ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="3_vsk1c"]
+[ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="4_fxkdj"]
+[ext_resource type="FontFile" uid="uid://cl1t2pm0rvomw" path="res://assets/fonts/IBMPlexSans-Italic.ttf" id="5_p182n"]
+[ext_resource type="FontFile" uid="uid://d4aoxe8g40t4v" path="res://assets/fonts/IBMPlexSans-BoldItalic.ttf" id="6_s25js"]
+[ext_resource type="FontFile" uid="uid://4h6fuer52603" path="res://assets/fonts/mono/FiraMono-Regular.ttf" id="7_qpou4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gtl2f"]
+shader = ExtResource("1_3nb2l")
+shader_parameter/blur = 1.0
+shader_parameter/dim = 0.3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ax21e"]
+
+[node name="DebugWindow" type="MarginContainer"]
+top_level = true
+theme = ExtResource("1_j2ja4")
+script = ExtResource("2_rw5sj")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_gtl2f")
+layout_mode = 2
+
+[node name="Foreground" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TopBar" type="HBoxContainer" parent="Foreground/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="Foreground/VBoxContainer/TopBar"]
+visible = false
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="RichTextLabel" parent="Foreground/VBoxContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_vsk1c")
+theme_override_fonts/bold_font = ExtResource("4_fxkdj")
+theme_override_fonts/italics_font = ExtResource("5_p182n")
+theme_override_fonts/bold_italics_font = ExtResource("6_s25js")
+theme_override_fonts/mono_font = ExtResource("7_qpou4")
+bbcode_enabled = true
+text = "Title"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+
+[node name="Spacer" type="Control" parent="Foreground/VBoxContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="CloseButton" type="Button" parent="Foreground/VBoxContainer/TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ax21e")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ax21e")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ax21e")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ax21e")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ax21e")
+
+[node name="TextureRect" type="TextureRect" parent="Foreground/VBoxContainer/TopBar/CloseButton"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_n1fwc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Spacer" type="ColorRect" parent="Foreground/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+
+[node name="Contents" type="MarginContainer" parent="Foreground/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_top = 4
+
+[node name="Overlay" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ResizeHandle" type="Control" parent="Overlay"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="HandleIcon" type="ColorRect" parent="Overlay/ResizeHandle"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+grow_horizontal = 0
+grow_vertical = 0

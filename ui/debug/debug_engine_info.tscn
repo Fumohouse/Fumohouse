@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://ui/debug/debug_window.tscn" id="1_fpknp"]
+[ext_resource type="Script" path="res://ui/debug/DebugEngineInfo.lua" id="2_t2fn1"]
+[ext_resource type="Texture2D" uid="uid://c7wam6e17u5ne" path="res://assets/textures/godot_logo.svg" id="2_ym6nr"]
+[ext_resource type="Script" path="res://ui/debug/InfoTable.lua" id="4_d3uth"]
+
+[node name="DebugEngineInfo" instance=ExtResource("1_fpknp")]
+script = ExtResource("2_t2fn1")
+
+[node name="Icon" parent="Foreground/VBoxContainer/TopBar" index="0"]
+visible = true
+texture = ExtResource("2_ym6nr")
+
+[node name="Title" parent="Foreground/VBoxContainer/TopBar" index="1"]
+text = "Engine Info"
+
+[node name="InfoTable" type="VBoxContainer" parent="Foreground/VBoxContainer/Contents" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("4_d3uth")

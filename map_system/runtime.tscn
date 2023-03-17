@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b26181prl0b8u"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://map_system/MapRuntime.lua" id="1_ry2y1"]
 [ext_resource type="Script" path="res://character/CameraController.lua" id="1_uy88u"]
-[ext_resource type="PackedScene" uid="uid://c1jqrlkxogo24" path="res://debug/menu/debug_character.tscn" id="3_l5mc6"]
+[ext_resource type="PackedScene" path="res://ui/debug/debug_platform_info.tscn" id="3_ddrpn"]
+[ext_resource type="PackedScene" path="res://ui/debug/debug_character.tscn" id="3_l5mc6"]
+[ext_resource type="PackedScene" path="res://ui/debug/debug_engine_info.tscn" id="4_q5r36"]
 [ext_resource type="PackedScene" uid="uid://bgnrbj5aeace" path="res://ui/crosshair/crosshair.tscn" id="4_uh2uu"]
 
 [node name="FumohouseRuntime" type="Node3D"]
@@ -23,10 +25,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="DebugPlatformInfo" parent="HUD" instance=ExtResource("3_ddrpn")]
+layout_mode = 0
+
+[node name="DebugEngineInfo" parent="HUD" instance=ExtResource("4_q5r36")]
+layout_mode = 0
+
 [node name="DebugCharacter" parent="HUD" instance=ExtResource("3_l5mc6")]
 layout_mode = 1
 anchors_preset = 1
-characterPath = NodePath("")
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
 
 [node name="Crosshair" parent="HUD" instance=ExtResource("4_uh2uu")]
 layout_mode = 1

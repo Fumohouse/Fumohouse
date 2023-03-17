@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dltssgmvw67v8"]
+[gd_scene load_steps=11 format=3 uid="uid://b2jpbal2vfegk"]
 
 [ext_resource type="PackedScene" uid="uid://bdricnhkc377e" path="res://character/character.tscn" id="1_risis"]
-[ext_resource type="Theme" uid="uid://dknqom53w812u" path="res://debug/menu/debug_theme.tres" id="2_hqkhu"]
 [ext_resource type="PackedScene" uid="uid://dxbher3oyjg8p" path="res://assets/models/characters/momiji/momiji_hair.glb" id="3_rncs1"]
 [ext_resource type="PackedScene" uid="uid://c1mmo616qxheq" path="res://assets/models/characters/momiji/momiji_outfit_torso.tscn" id="4_7jd86"]
 [ext_resource type="PackedScene" uid="uid://dvn2saau2pfnh" path="res://assets/models/characters/momiji/momiji_hat.glb" id="4_rnm5c"]
@@ -16,18 +15,11 @@ resource_local_to_scene = true
 height = 3.4
 
 [node name="Character" instance=ExtResource("1_risis")]
-
-[node name="Notes" type="RichTextLabel" parent="." index="0"]
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 331.0
-theme = ExtResource("2_hqkhu")
-bbcode_enabled = true
-text = "[b]Notes[/b]
+editor_description = "Notes:
 Shoes and socks have no material because they are intended to be usable in other characters."
 
 [node name="Torso" parent="Appearance" index="0"]
-transform = Transform3D(1, 1.96365e-08, -1.88261e-08, -1.88261e-08, 0.999113, 0.042118, 1.96365e-08, -0.042118, 0.999113, -2.44157e-08, 0.83798, 0.0155896)
+transform = Transform3D(1, 1.96365e-08, -1.88261e-08, -1.88261e-08, 0.999113, 0.0421181, 1.96365e-08, -0.0421181, 0.999113, -2.44157e-08, 0.83798, 0.0155896)
 
 [node name="momiji_tail" parent="Appearance/Torso" index="0" instance=ExtResource("7_yl1du")]
 transform = Transform3D(1, -1.88261e-08, 1.96365e-08, 1.96365e-08, 0.999113, -0.0421182, -1.88262e-08, 0.0421182, 0.999113, -0.00999998, 0.760161, 0.629986)
@@ -36,7 +28,7 @@ transform = Transform3D(1, -1.88261e-08, 1.96365e-08, 1.96365e-08, 0.999113, -0.
 transform = Transform3D(1, -1.88261e-08, 1.96365e-08, 1.96365e-08, 0.999113, -0.042118, -1.88261e-08, 0.042118, 0.999113, 3.98855e-08, -0.83658, -0.0508698)
 
 [node name="Head" parent="Appearance" index="1"]
-transform = Transform3D(1, -4.63312e-10, 4.68823e-10, 4.68823e-10, 0.99993, -0.0118265, -4.63306e-10, 0.0118265, 0.99993, -2.35206e-09, 1.96059, -0.0317343)
+transform = Transform3D(1, -4.63302e-10, 4.68821e-10, 4.68814e-10, 0.99993, -0.0118264, -4.63308e-10, 0.0118264, 0.99993, -2.35208e-09, 1.96059, -0.0317344)
 
 [node name="momiji_hair" parent="Appearance/Head" index="0" instance=ExtResource("3_rncs1")]
 transform = Transform3D(1, 4.68824e-10, -4.63311e-10, -4.63311e-10, 0.99993, 0.0118265, 4.68818e-10, -0.0118265, 0.99993, 0.003, 0.91973, 0.105865)
@@ -48,31 +40,31 @@ transform = Transform3D(1, 7.99368e-09, -5.44009e-15, -7.99312e-09, 0.99993, 0.0
 transform = Transform3D(1, 7.99368e-09, -5.44009e-15, -7.99312e-09, 0.99993, 0.0118264, 9.4537e-11, -0.0118264, 0.99993, 2.89148e-09, 1.31122, 0.145237)
 
 [node name="RArm" parent="Appearance" index="2"]
-transform = Transform3D(0.415745, 0.764366, 0.492849, 0.49285, -0.644782, 0.584255, 0.764365, -6.09085e-07, -0.644783, 0.201908, 1.86604, 0.0109231)
+transform = Transform3D(0.415745, 0.764366, 0.492849, 0.49285, -0.644782, 0.584255, 0.764365, -5.71832e-07, -0.644783, 0.201908, 1.86605, 0.0109229)
 
 [node name="momiji_rsleeve" parent="Appearance/RArm" index="0" instance=ExtResource("9_dp8hd")]
 transform = Transform3D(0.644782, -0.00168135, 0.764365, -0.00260717, -0.999997, -5.64963e-07, 0.764363, -0.00199234, -0.644784, -0.000393987, 0.518789, -0.000587106)
 
 [node name="LArm" parent="Appearance" index="3"]
-transform = Transform3D(0.415745, -0.764366, -0.492849, -0.49285, -0.644782, 0.584255, -0.764365, -6.38887e-07, -0.644783, -0.201911, 1.86604, 0.0109231)
+transform = Transform3D(0.415745, -0.764366, -0.492849, -0.49285, -0.644782, 0.584255, -0.764365, -6.03497e-07, -0.644783, -0.201911, 1.86605, 0.0109229)
 
 [node name="momiji_lsleeve" parent="Appearance/LArm" index="0" instance=ExtResource("9_dp8hd")]
 transform = Transform3D(0.644782, 0.00168145, -0.764365, 0.00260708, -0.999997, -5.63835e-07, -0.764363, -0.00199231, -0.644784, 0.000395179, 0.518787, -0.000588298)
 
 [node name="RHand" parent="Appearance" index="4"]
-transform = Transform3D(0.413177, 0.766044, 0.492403, 0.492404, -0.642787, 0.586824, 0.766044, -5.65196e-07, -0.642788, 0.896792, 1.27987, 0.0109226)
+transform = Transform3D(0.413177, 0.766044, 0.492403, 0.492404, -0.642787, 0.586824, 0.766044, -5.39934e-07, -0.642788, 0.896792, 1.27987, 0.0109225)
 
 [node name="LHand" parent="Appearance" index="5"]
-transform = Transform3D(0.413177, -0.766044, -0.492403, -0.492404, -0.642788, 0.586824, -0.766044, -6.45756e-07, -0.642788, -0.896795, 1.27987, 0.0109224)
+transform = Transform3D(0.413177, -0.766044, -0.492403, -0.492404, -0.642788, 0.586824, -0.766044, -5.99422e-07, -0.642788, -0.896795, 1.27987, 0.0109223)
 
 [node name="RLeg" parent="Appearance" index="6"]
-transform = Transform3D(0.975812, 0.155977, 0.153151, 0.153148, -0.987742, 0.0301662, 0.155978, -0.00598187, -0.987742, 0.213903, 1.02528, 0.0236283)
+transform = Transform3D(0.975812, 0.155977, 0.153148, 0.153148, -0.987742, 0.0301658, 0.155975, -0.00598182, -0.987742, 0.213903, 1.02528, 0.0236284)
 
 [node name="LLeg" parent="Appearance" index="7"]
-transform = Transform3D(0.977738, -0.14966, -0.147107, -0.147111, -0.98872, 0.0281266, -0.149658, -0.00585932, -0.988721, -0.213903, 1.02528, 0.0236283)
+transform = Transform3D(0.977737, -0.14966, -0.147111, -0.147111, -0.98872, 0.0281272, -0.149662, -0.00585936, -0.98872, -0.213903, 1.02528, 0.0236284)
 
 [node name="RFoot" parent="Appearance" index="8"]
-transform = Transform3D(0.994518, 0.104527, -3.39933e-07, -6.48783e-07, -2.42144e-07, 1, 0.104527, -0.994521, -2.96161e-07, 0.380816, -0.0317198, 0.017227)
+transform = Transform3D(0.994518, 0.104527, -8.89413e-08, -9.3109e-07, -2.98023e-07, 1, 0.104527, -0.994522, -3.61353e-07, 0.380816, -0.0317198, 0.0172271)
 
 [node name="rshoe" parent="Appearance/RFoot" index="0" instance=ExtResource("10_xidys")]
 transform = Transform3D(0.989077, -0.103955, 0.104532, 0.103959, -0.0109258, -0.994522, 0.104528, 0.994522, 6.42805e-07, -0.00251091, -0.00305221, 0.13872)
@@ -81,7 +73,7 @@ transform = Transform3D(0.989077, -0.103955, 0.104532, 0.103959, -0.0109258, -0.
 transform = Transform3D(0.989077, -0.103955, 0.104532, 0.103959, -0.0109258, -0.994522, 0.104528, 0.994522, 6.42805e-07, -0.00947258, -0.00378392, 0.20772)
 
 [node name="LFoot" parent="Appearance" index="9"]
-transform = Transform3D(0.994527, -0.10453, -5.93252e-07, -9.15956e-07, 4.07919e-07, 1, -0.104531, -0.994523, 4.8615e-07, -0.373898, -0.0317198, 0.0173644)
+transform = Transform3D(0.994527, -0.10453, -1.1269e-07, -1.35368e-06, 3.25963e-07, 1, -0.104531, -0.994522, 4.07919e-07, -0.373898, -0.0317198, 0.0173644)
 
 [node name="lshoe" parent="Appearance/LFoot" index="0" instance=ExtResource("10_xidys")]
 transform = Transform3D(0.989069, 0.103957, -0.104525, -0.103953, -0.0109263, -0.994521, -0.104528, 0.994522, -3.95721e-07, -0.00435489, -0.00219235, 0.13872)
@@ -95,7 +87,7 @@ bones/3/rotation = Quaternion(-0.818468, 0.374048, 0.390148, 0.194892)
 bones/6/rotation = Quaternion(-0.993482, -0.0761012, -0.0793763, 0.0300255)
 bones/8/rotation = Quaternion(-0.99398, 0.0730236, 0.0761675, 0.0294881)
 
-[node name="MainCollider" parent="." index="3"]
+[node name="MainCollider" parent="." index="2"]
 shape = SubResource("CapsuleShape3D_x4vdw")
 
 [editable path="Rig"]
