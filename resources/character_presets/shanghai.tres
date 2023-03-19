@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bbe67ju26dhsp"]
+[gd_resource type="Resource" script_class="Appearance" load_steps=2 format=3 uid="uid://bbe67ju26dhsp"]
 
 [ext_resource type="Script" path="res://character/appearance/Appearance.lua" id="1_nokr1"]
 
@@ -8,7 +8,7 @@ eyebrows = "curved"
 eyes = "curved_hooks"
 mouth = "straight"
 eyesColor = Color(0.129412, 0.352941, 0.647059, 1)
-size = "doll"
+scale = 1
 attachedParts = {
 "shanghai_bow": null,
 "shanghai_hair": null,

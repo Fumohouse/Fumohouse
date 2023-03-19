@@ -1,0 +1,161 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7vxi3ty4n7xs"]
+
+[ext_resource type="PackedScene" uid="uid://cvs2fpne8acnb" path="res://assets/models/characters/doremy/doremy_dress_inner.glb" id="1_0l0wt"]
+[ext_resource type="PackedScene" uid="uid://dne1wifyki6v" path="res://assets/models/characters/doremy/doremy_dress_lower.glb" id="2_0w5mw"]
+[ext_resource type="PackedScene" uid="uid://tk7pf4mhdjrg" path="res://assets/models/characters/doremy/doremy_dress_under.glb" id="3_qswru"]
+[ext_resource type="PackedScene" uid="uid://br4iu7m0rloxv" path="res://assets/models/characters/doremy/doremy_dress_upper.glb" id="4_0nkhe"]
+[ext_resource type="PackedScene" uid="uid://d3xfe13jpjsoi" path="res://assets/models/characters/doremy/doremy_pom_black.glb" id="5_0er7t"]
+[ext_resource type="PackedScene" uid="uid://b8so4rh7bin86" path="res://assets/models/characters/doremy/doremy_pom_white.glb" id="6_hx4jg"]
+
+[node name="doremy_outfit_torso" type="Node3D"]
+transform = Transform3D(1, -1.88261e-08, 1.96365e-08, 1.96365e-08, 0.999113, -0.0421181, -1.88261e-08, 0.0421181, 0.999113, 1.16463e-08, 0.662089, 0.0123072)
+
+[node name="doremy_dress_inner" parent="." instance=ExtResource("1_0l0wt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.85957e-09, 0.00930476, -0.00961729)
+
+[node name="doremy_dress_lower" parent="." instance=ExtResource("2_0w5mw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95414e-07, -0.626315, -0.0144397)
+
+[node name="doremy_dress_under" parent="." instance=ExtResource("3_qswru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.67933e-08, -0.480629, 0.00486675)
+
+[node name="doremy_dress_upper" parent="." instance=ExtResource("4_0nkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9587e-08, 0.302295, -0.0336262)
+
+[node name="doremy_inner_pom_1" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(-0.103706, 0, -0.0194538, 0, 0.105515, 0, 0.0194538, 0, -0.103706, 0.177533, -0.524953, 0.46526)
+
+[node name="doremy_inner_pom_2" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(-0.103466, 0, 0.0206914, 0, 0.105515, 0, -0.0206914, 0, -0.103466, -0.191561, -0.524953, 0.462633)
+
+[node name="doremy_inner_pom_3" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(-0.0847771, 0, 0.0628184, 0, 0.105515, 0, -0.0628184, 0, -0.0847771, -0.505169, -0.524953, 0.328352)
+
+[node name="doremy_inner_pom_4" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(-0.035532, 0, 0.0993519, 0, 0.105515, 0, -0.0993519, 0, -0.035532, -0.679288, -0.524953, 0.103695)
+
+[node name="doremy_inner_pom_5" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(0.0388326, 0, 0.0981088, 0, 0.105515, 0, -0.0981088, 0, 0.0388326, -0.671946, -0.524953, -0.150677)
+
+[node name="doremy_inner_pom_6" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(0.0867509, 0, 0.0600632, 0, 0.105515, 0, -0.0600632, 0, 0.0867509, -0.486433, -0.524953, -0.370669)
+
+[node name="doremy_inner_pom_7" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(0.103915, 0, 0.0183011, 0, 0.105515, 0, -0.0183011, 0, 0.103915, -0.165431, -0.524953, -0.496232)
+
+[node name="doremy_inner_pom_8" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(0.103227, 0, -0.021851, 0, 0.105515, 0, 0.021851, 0, 0.103227, 0.203558, -0.524953, -0.488975)
+
+[node name="doremy_inner_pom_9" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(0.0841143, 0, -0.0637031, 0, 0.105515, 0, 0.0637031, 0, 0.0841143, 0.514556, -0.524953, -0.351721)
+
+[node name="doremy_inner_pom_10" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(0.0329215, 0, -0.100247, 0, 0.105515, 0, 0.100247, 0, 0.0329215, 0.681677, -0.524953, -0.124793)
+
+[node name="doremy_inner_pom_11" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(-0.0416904, 0, -0.096929, 0, 0.105515, 0, 0.096929, 0, -0.0416904, 0.668938, -0.524953, 0.129445)
+
+[node name="doremy_inner_pom_12" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(-0.0874393, 0, -0.0590566, 0, 0.105515, 0, 0.0590566, 0, -0.0874393, 0.477831, -0.524953, 0.347359)
+
+[node name="doremy_inner_pom_13" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(-0.0831088, 0, -0.0147735, 0, 0.0844116, 0, 0.0147735, 0, -0.0831088, 0.125768, -0.217827, 0.308182)
+
+[node name="doremy_inner_pom_14" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(-0.0830547, 0, 0.0150744, 0, 0.0844116, 0, -0.0150744, 0, -0.0830547, -0.12965, -0.217827, 0.307493)
+
+[node name="doremy_inner_pom_15" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(-0.0700923, 0, 0.047036, 0, 0.0844116, 0, -0.047036, 0, -0.0700923, -0.349053, -0.217827, 0.222141)
+
+[node name="doremy_inner_pom_16" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(-0.0333096, 0, 0.0775615, 0, 0.0844116, 0, -0.0775615, 0, -0.0333096, -0.476243, -0.217827, 0.0774271)
+
+[node name="doremy_inner_pom_17" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(0.0286431, 0, 0.0794033, 0, 0.0844116, 0, -0.0794033, 0, 0.0286431, -0.482348, -0.217827, -0.0891904)
+
+[node name="doremy_inner_pom_18" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(0.0685498, 0, 0.0492569, 0, 0.0844116, 0, -0.0492569, 0, 0.0685498, -0.366453, -0.217827, -0.237908)
+
+[node name="doremy_inner_pom_19" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(0.0826705, 0, 0.0170559, 0, 0.0844116, 0, -0.0170559, 0, 0.0826705, -0.153585, -0.217827, -0.330306)
+
+[node name="doremy_inner_pom_20" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(0.0834269, 0, -0.012856, 0, 0.0844116, 0, 0.012856, 0, 0.0834269, 0.101738, -0.217827, -0.339651)
+
+[node name="doremy_inner_pom_21" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(0.0719475, 0, -0.044146, 0, 0.0844116, 0, 0.044146, 0, 0.0719475, 0.329445, -0.217827, -0.263404)
+
+[node name="doremy_inner_pom_22" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(0.0358995, 0, -0.0763973, 0, 0.0844116, 0, 0.0763973, 0, 0.0358995, 0.469211, -0.217827, -0.123499)
+
+[node name="doremy_inner_pom_23" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(-0.0239624, 0, -0.080939, 0, 0.0844116, 0, 0.080939, 0, -0.0239624, 0.490284, -0.217827, 0.0434058)
+
+[node name="doremy_inner_pom_24" parent="." instance=ExtResource("5_0er7t")]
+transform = Transform3D(-0.0651731, 0, -0.053645, 0, 0.0844116, 0, 0.053645, 0, -0.0651731, 0.385752, -0.217827, 0.196488)
+
+[node name="doremy_upper_pom_1" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(0.0487055, 0.0065818, 0.0678313, -0.0134302, 0.0826658, 0.00162218, -0.0668134, -0.0118187, 0.0491214, -0.427216, 0.148873, -0.221945)
+
+[node name="doremy_upper_pom_2" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(0.0742289, 0.00267284, 0.038724, -0.00343356, 0.0836911, 0.000805089, -0.038664, -0.00230074, 0.0742727, -0.240997, 0.101467, -0.383764)
+
+[node name="doremy_upper_pom_3" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(0.0837627, -3.55953e-05, -0.000664164, 4.15075e-05, 0.083762, 0.000745676, 0.00066382, -0.000745982, 0.0837594, 0.00400746, 0.089978, -0.443193)
+
+[node name="doremy_upper_pom_4" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(0.0735359, -0.002812, -0.040015, 0.0036412, 0.0836822, 0.000810808, 0.0399481, -0.0024512, 0.0735851, 0.247933, 0.102307, -0.379859)
+
+[node name="doremy_upper_pom_5" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(0.0483506, -0.00661155, -0.0680818, 0.0136235, 0.0826336, 0.00165048, 0.0670317, -0.0120254, 0.0487727, 0.43222, 0.150757, -0.215841)
+
+[node name="doremy_upper_pom_6" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(-0.0681971, -0.0120045, -0.0471346, -0.0134302, 0.0826658, -0.00162218, 0.0467484, 0.00623645, -0.0692266, -0.427216, 0.148873, 0.154692)
+
+[node name="doremy_upper_pom_7" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(-0.0579452, -0.0029585, -0.0604171, -0.00343356, 0.0836911, -0.000805089, 0.060392, 0.00191959, -0.0580151, -0.240997, 0.101467, 0.316512)
+
+[node name="doremy_upper_pom_8" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(-0.0185543, -0.000717964, -0.0816814, 4.15068e-05, 0.083762, -0.00074568, 0.0816846, -0.000205645, -0.0185532, 0.00400747, 0.089978, 0.375941)
+
+[node name="doremy_upper_pom_9" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(0.0205116, -0.00167924, -0.0811978, 0.0036412, 0.0836822, -0.000810808, 0.0811335, -0.00333105, 0.0205642, 0.247933, 0.102307, 0.312606)
+
+[node name="doremy_upper_pom_10" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(0.0580839, -0.0107623, -0.0593891, 0.0136235, 0.0826336, -0.00165048, 0.0587988, -0.00851451, 0.0590495, 0.43222, 0.150757, 0.148589)
+
+[node name="doremy_lower_pom_1" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(-0.115715, -2.88738e-16, -0.0241829, -1.28469e-16, 0.118214, -2.68484e-17, 0.0241829, 5.12901e-31, -0.115715, 0.214235, -0.811441, 0.592815)
+
+[node name="doremy_lower_pom_2" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(-0.11503, -2.88738e-16, 0.0272546, -1.27709e-16, 0.118214, 3.02587e-17, -0.0272546, 5.12901e-31, -0.11503, -0.241134, -0.811441, 0.586911)
+
+[node name="doremy_lower_pom_3" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(-0.0911623, -2.88738e-16, 0.0752602, -1.01211e-16, 0.118214, 8.35556e-17, -0.0752602, 5.12901e-31, -0.0911623, -0.616496, -0.811441, 0.407)
+
+[node name="doremy_lower_pom_4" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(-0.0342651, -2.88738e-16, 0.11314, -3.80419e-17, 0.118214, 1.2561e-16, -0.11314, 5.12901e-31, -0.0342651, -0.815072, -0.811441, 0.123763)
+
+[node name="doremy_lower_pom_5" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(0.0413834, -2.88738e-16, 0.110734, 4.59448e-17, 0.118214, 1.2294e-16, -0.110734, 5.12901e-31, 0.0413834, -0.803384, -0.811441, -0.190686)
+
+[node name="doremy_lower_pom_6" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(0.0935914, -2.88738e-16, 0.0722172, 1.03907e-16, 0.118214, 8.01772e-17, -0.0722172, 5.12901e-31, 0.0935914, -0.589057, -0.811441, -0.468988)
+
+[node name="doremy_lower_pom_7" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(0.116032, -2.88738e-16, 0.0226081, 1.28822e-16, 0.118214, 2.51001e-17, -0.0226081, 5.12901e-31, 0.116032, -0.202669, -0.811441, -0.636623)
+
+[node name="doremy_lower_pom_8" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(0.114795, -2.88738e-16, -0.028227, 1.27448e-16, 0.118214, -3.13382e-17, 0.028227, 5.12901e-31, 0.114795, 0.252907, -0.811441, -0.625672)
+
+[node name="doremy_lower_pom_9" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(0.0893816, -2.88738e-16, -0.0773667, 9.92335e-17, 0.118214, -8.58942e-17, 0.0773667, 5.12901e-31, 0.0893816, 0.623092, -0.811441, -0.441421)
+
+[node name="doremy_lower_pom_10" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(0.0338084, -2.88738e-16, -0.113277, 3.75349e-17, 0.118214, -1.25763e-16, 0.113277, 5.12901e-31, 0.0338084, 0.815325, -0.811441, -0.155556)
+
+[node name="doremy_lower_pom_11" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(-0.0424262, -2.88738e-16, -0.110339, -4.71026e-17, 0.118214, -1.22501e-16, 0.110339, 5.12901e-31, -0.0424262, 0.803157, -0.811441, 0.158849)
+
+[node name="doremy_lower_pom_12" parent="." instance=ExtResource("6_hx4jg")]
+transform = Transform3D(-0.0951309, -2.88738e-16, -0.0701768, -1.05616e-16, 0.118214, -7.79119e-17, 0.0701768, 5.12901e-31, -0.0951309, 0.581819, -0.811441, 0.434211)

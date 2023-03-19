@@ -1,5 +1,7 @@
 local PartCustomizer = require("PartCustomizer")
 
+local Appearance = require("../../Appearance")
+
 local SingleColorImpl = {}
 local SingleColor = gdclass(nil, PartCustomizer)
     :RegisterImpl(SingleColorImpl)
@@ -25,7 +27,7 @@ end
 
 SingleColor:RegisterMethod("_Ready")
 
-function SingleColorImpl._FHInitialize(self: SingleColor, config: Dictionary?)
+function SingleColorImpl.Update(self: SingleColor, appearance: Appearance.Appearance, config: Dictionary?)
     if self.meshInstance then
         local material = assert(self.meshInstance:GetActiveMaterial(0))
         local color = if config and config:Has("color") then

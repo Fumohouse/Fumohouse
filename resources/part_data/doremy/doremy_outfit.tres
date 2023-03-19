@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="MultiPart" load_steps=8 format=3 uid="uid://dsew2q83y874"]
+
+[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_ibqda"]
+[ext_resource type="Script" path="res://character/appearance/parts/MultiPart.lua" id="1_w0i5r"]
+
+[sub_resource type="Resource" id="Resource_bxrkr"]
+script = ExtResource("1_ibqda")
+id = "doremy_rsleeve"
+scope = 0
+scenePath = "doremy/doremy_sleeve.glb"
+transform = Transform3D(0.644781, -0.00168151, 0.764366, -0.00260735, -0.999997, -5.96047e-07, 0.764363, -0.00199246, -0.644783, 0.000586867, 0.177797, 0.000695348)
+bone = 2
+
+[sub_resource type="Resource" id="Resource_aquyj"]
+script = ExtResource("1_ibqda")
+id = "doremy_rsleeve_pom"
+scope = 0
+scenePath = "doremy/doremy_pom_white.glb"
+transform = Transform3D(0.0541616, -0.000141252, 0.0642067, -0.000219025, -0.0839997, -5.00679e-08, 0.0642065, -0.000167374, -0.0541618, 0.0945828, 0.364302, 0.111773)
+bone = 2
+
+[sub_resource type="Resource" id="Resource_xvvqe"]
+script = ExtResource("1_ibqda")
+id = "doremy_lsleeve"
+scope = 0
+scenePath = "doremy/doremy_sleeve.glb"
+transform = Transform3D(0.644781, 0.0016816, -0.764366, 0.00260738, -0.999997, -5.81146e-07, -0.764363, -0.00199255, -0.644783, -0.000585556, 0.177795, 0.000693798)
+bone = 3
+
+[sub_resource type="Resource" id="Resource_adgi8"]
+script = ExtResource("1_ibqda")
+id = "doremy_lsleeve_pom"
+scope = 0
+scenePath = "doremy/doremy_pom_white.glb"
+transform = Transform3D(0.0166907, -0.0775196, -0.0277151, 0.0557119, -0.0101841, 0.062036, -0.0606103, -0.0307082, 0.0493903, -0.0945815, 0.3643, 0.111772)
+bone = 3
+
+[sub_resource type="Resource" id="Resource_8tnui"]
+script = ExtResource("1_ibqda")
+id = "doremy_outfit_torso"
+scope = 0
+scenePath = "doremy/doremy_outfit_torso.tscn"
+transform = Transform3D(1, -1.88261e-08, 1.96365e-08, 1.96365e-08, 0.999113, -0.0421181, -1.88261e-08, 0.0421181, 0.999113, 1.16463e-08, 0.662089, 0.0123072)
+bone = 0
+
+[resource]
+script = ExtResource("1_w0i5r")
+id = "doremy_outfit"
+scope = 2
+parts = [SubResource("Resource_bxrkr"), SubResource("Resource_aquyj"), SubResource("Resource_xvvqe"), SubResource("Resource_adgi8"), SubResource("Resource_8tnui")]

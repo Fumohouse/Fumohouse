@@ -35,7 +35,6 @@ type AppearanceManagerT = {
     attachedParts: {[string]: AttachedPartInfo},
     baseCameraOffset: number,
 
-    currScale: number,
     alpha: number,
 }
 
@@ -54,13 +53,6 @@ AppearanceManagerImpl.ATTACHMENTS = {
     [SinglePart.Bone.L_FOOT] = "LFoot",
 }
 
-AppearanceManagerImpl.SIZES = {
-    doll = 0.5,
-    shinmy = 0.75,
-    base = 1.0,
-    deka = 3.0,
-}
-
 local faceMaterial: ShaderMaterial = assert(load("face/face_material.tres"))
 local faceDatabase: FaceDatabase.FaceDatabase = assert(load("res://resources/face_database.tres"))
 
@@ -77,7 +69,6 @@ function AppearanceManagerImpl._Init(obj: Node3D, tbl: AppearanceManagerT)
     tbl.attachedParts = {}
     tbl.baseCameraOffset = 0
 
-    tbl.currScale = 1
     tbl.alpha = 1
 end
 
@@ -119,22 +110,17 @@ function AppearanceManagerImpl.setAlpha(self: AppearanceManager, alpha: number)
 end
 
 function AppearanceManagerImpl.loadScale(self: AppearanceManager)
-    local sizeId = self.appearance.size
-    assert(AppearanceManager.SIZES[sizeId], `Unknown size: {sizeId}`)
-
-    self.currScale = AppearanceManager.SIZES[sizeId]
-
-    local scaleVec = Vector3.ONE * self.currScale
+    local scaleVec = Vector3.ONE * self.appearance.scale
 
     self.rig.scale = scaleVec
     self.rig.position = Vector3.ZERO
 
     local mainCollider = self.character.state.mainCollider
     mainCollider.scale = scaleVec
-    mainCollider.position = Vector3.UP * self.character.state.mainCollisionShape.height * self.currScale / 2
+    mainCollider.position = Vector3.UP * self.character.state.mainCollisionShape.height * self.appearance.scale / 2
 
     if self.character.state.camera then
-        self.character.state.camera.cameraOffset = self.baseCameraOffset * self.currScale
+        self.character.state.camera.cameraOffset = self.baseCameraOffset * self.appearance.scale
     end
 end
 
@@ -149,8 +135,8 @@ function AppearanceManagerImpl._PhysicsProcess(self: AppearanceManager, delta: n
             self.character.state.camera.globalPosition - self.character.state.camera:GetFocalPoint()
         ):Length()
 
-        local beginScaled = self.cameraFadeBegin * self.currScale
-        local endScaled = self.cameraFadeEnd * self.currScale
+        local beginScaled = self.cameraFadeBegin * self.appearance.scale
+        local endScaled = self.cameraFadeEnd * self.appearance.scale
 
         local alpha = (distance - endScaled) / (beginScaled - endScaled)
         alpha = math.clamp(alpha, 0, 1)
@@ -213,17 +199,12 @@ function AppearanceManagerImpl.loadFace(self: AppearanceManager)
     self.faceMaterial:SetShaderParameter("overlay_texture", overlayTexture)
 end
 
-function AppearanceManagerImpl.attachSingle(self: AppearanceManager, partInfo: SinglePart.SinglePart, config: Dictionary?)
+function AppearanceManagerImpl.attachSingle(self: AppearanceManager, partInfo: SinglePart.SinglePart)
     local node = (assert(load(SinglePart.BASE_PATH .. partInfo.scenePath)) :: PackedScene):Instantiate() :: Node3D
 
     local targetAtt = self:GetNode(AppearanceManager.ATTACHMENTS[partInfo.bone]) :: BoneAttachment3D
     targetAtt:AddChild(node)
     node.transform = partInfo.transform
-
-    -- Call AFTER _Ready
-    if node:IsA(PartCustomizer) then
-        (node :: PartCustomizer.PartCustomizer):_FHInitialize(config)
-    end
 
     return node
 end
@@ -250,7 +231,7 @@ local function searchMaterials(node: Node3D, list: {[Material]: true})
     return list
 end
 
-function AppearanceManagerImpl.attach(self: AppearanceManager, id: string, config: Dictionary?)
+function AppearanceManagerImpl.attach(self: AppearanceManager, id: string)
     if self.attachedParts[id] then
         return
     end
@@ -262,7 +243,7 @@ function AppearanceManagerImpl.attach(self: AppearanceManager, id: string, confi
     local materials: {Material} = {}
 
     if info:IsA(SinglePart) then
-        local node = self:attachSingle(info, config)
+        local node = self:attachSingle(info)
 
         local list = {}
         local foundMats = searchMaterials(node, list)
@@ -274,7 +255,7 @@ function AppearanceManagerImpl.attach(self: AppearanceManager, id: string, confi
         end
     elseif info:IsA(MultiPart) then
         for _, singlePartInfo: SinglePart.SinglePart in (info :: MultiPart.MultiPart).parts do
-            local node = self:attachSingle(singlePartInfo, config)
+            local node = self:attachSingle(singlePartInfo)
 
             local list = {}
             local foundMats = searchMaterials(node, list)
@@ -305,18 +286,20 @@ end
 
 function AppearanceManagerImpl.loadParts(self: AppearanceManager)
     for partId: string in self.appearance.attachedParts do
-        local config = self.appearance.attachedParts:Get(partId)
-
-        if not config then
-            self:attach(partId)
-        else
-            assert(typeof(config) == "Dictionary")
-            self:attach(partId, config)
-        end
+        self:attach(partId)
     end
 
-    for partId in self.attachedParts do
-        if not self.appearance.attachedParts:Has(partId) then
+    for partId, attInfo in self.attachedParts do
+        if self.appearance.attachedParts:Has(partId) then
+            local config = self.appearance.attachedParts:Get(partId)
+            assert(typeof(config) == "nil" or typeof(config) == "Dictionary")
+
+            for _, node in attInfo.nodes do
+                if node:IsA(PartCustomizer) then
+                    (node :: PartCustomizer.PartCustomizer):Update(self.appearance, config)
+                end
+            end
+        else
             self:detach(partId)
         end
     end

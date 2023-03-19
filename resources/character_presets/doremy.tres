@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Appearance" load_steps=2 format=3 uid="uid://ceb7j2d1rjf7i"]
+
+[ext_resource type="Script" path="res://character/appearance/Appearance.lua" id="1_ktcf5"]
+
+[resource]
+script = ExtResource("1_ktcf5")
+eyebrows = "straight"
+eyes = "straight"
+mouth = "3"
+eyesColor = Color(0.172549, 0.352941, 0.764706, 1)
+scale = 1
+attachedParts = {
+"doremy_hair": null,
+"doremy_hat": null,
+"doremy_outfit": null,
+"doremy_shoes": null,
+"doremy_tail": null
+}

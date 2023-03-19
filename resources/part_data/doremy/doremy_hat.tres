@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SinglePart" load_steps=2 format=3 uid="uid://bbd8bjiks8vr7"]
+
+[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_x4c2e"]
+
+[resource]
+script = ExtResource("1_x4c2e")
+id = "doremy_hat"
+scope = 5
+scenePath = "doremy/doremy_hat.glb"
+transform = Transform3D(1, 4.68814e-10, -4.6331e-10, -4.63303e-10, 0.99993, 0.0118264, 4.6882e-10, -0.0118264, 0.99993, 2.75933e-09, 0.764063, -0.113605)
+bone = 1

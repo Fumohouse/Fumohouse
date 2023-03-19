@@ -19,7 +19,7 @@ export type AppearanceSaver = Control & AppearanceSaverT
 function AppearanceSaverImpl._Ready(self: AppearanceSaver)
     self.folderField = self:GetNode("Folder") :: LineEdit
 
-    local plugin = (self:GetParent() :: Dock.Dock).plugin
+    local plugin = (self:GetNode("../..") :: Dock.Dock).plugin
     self.selection = plugin:GetEditorInterface():GetSelection()
 end
 
