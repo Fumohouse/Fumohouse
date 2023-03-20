@@ -7,15 +7,13 @@ local MapRuntimeImpl = {}
 local MapRuntime = gdclass(nil, Node3D)
     :RegisterImpl(MapRuntimeImpl)
 
-type MapRuntimeT = {
+export type MapRuntime = Node3D & typeof(MapRuntimeImpl) & {
     camera: CameraController.CameraController,
     players: Node3D,
     debugCharacter: DebugCharacter.DebugCharacter,
 
     characterScene: PackedScene,
 }
-
-export type MapRuntime = Node3D & MapRuntimeT & typeof(MapRuntimeImpl)
 
 function MapRuntimeImpl._Ready(self: MapRuntime)
     self.camera = self:GetNode("CameraController") :: CameraController.CameraController

@@ -3,11 +3,9 @@ local LinkButton = gdclass(nil, Button)
     :Permissions(Enum.Permissions.OS)
     :RegisterImpl(LinkButtonImpl)
 
-type LinkButtonT = {
+export type LinkButton = Button & typeof(LinkButtonImpl) & {
     link: string,
 }
-
-export type LinkButton = Button & LinkButtonT & typeof(LinkButtonImpl)
 
 LinkButton:RegisterProperty("link", Enum.VariantType.STRING)
 
@@ -18,7 +16,7 @@ function LinkButtonImpl._OnPressed(self: LinkButton)
 
     -- TODO: Link whitelist?
     assert(strext.startswith(self.link, "https://"), "invalid link")
-    OS.GetSingleton():ShellOpen(self.link)
+    OS.singleton:ShellOpen(self.link)
 end
 
 LinkButton:RegisterMethod("_OnPressed")

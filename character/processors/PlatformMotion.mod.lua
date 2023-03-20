@@ -32,7 +32,7 @@ function PlatformMotion.Process(self: PlatformMotion, state: MotionState.MotionS
     local ctx = state.ctx
 
     if state.isGrounded then
-        local bodyState = assert(PhysicsServer3D.GetSingleton():BodyGetDirectState(state.groundRid))
+        local bodyState = assert(PhysicsServer3D.singleton:BodyGetDirectState(state.groundRid))
 
         self.linearVelocity = bodyState:GetVelocityAtLocalPosition(
             state.GetTransform().origin - bodyState.transform.origin

@@ -42,7 +42,7 @@ function HorizontalMotion.Process(self: HorizontalMotion, state: MotionState.Mot
     local slopeTransform = Quaternion.new(Vector3.UP, state.groundNormal):Normalized()
     local direction = slopeTransform * directionFlat
 
-    local targetSpeed = if Input.GetSingleton():IsActionPressed("run") then self.options.runSpeed else self.options.walkSpeed
+    local targetSpeed = if Input.singleton:IsActionPressed("run") then self.options.runSpeed else self.options.walkSpeed
     local targetVelocity = direction * targetSpeed
 
     if direction:LengthSquared() > 0 then

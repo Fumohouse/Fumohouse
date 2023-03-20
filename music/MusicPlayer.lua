@@ -10,7 +10,7 @@ type PlaylistPosition = {
     time: number,
 }
 
-type MusicPlayerT = {
+export type MusicPlayer = AudioStreamPlayer & typeof(MusicPlayerImpl) & {
     songChanged: Signal,
 
     playlists: {[string]: Playlist.Playlist},
@@ -24,17 +24,15 @@ type MusicPlayerT = {
     tween: Tween?,
 }
 
-export type MusicPlayer = AudioStreamPlayer & MusicPlayerT & typeof(MusicPlayerImpl)
-
 MusicPlayer:RegisterSignal("songChanged")
     :Args({ name = "song", type = Enum.VariantType.OBJECT, hint = Enum.PropertyHint.RESOURCE_TYPE, hintString = "Song" })
 
 MusicPlayerImpl.BUS = "Music"
 
-function MusicPlayerImpl._Init(obj: AudioStreamPlayer, tbl: MusicPlayerT)
-    tbl.playlists = {}
-    tbl.currentPlaylist = ""
-    tbl.savedPositions = {}
+function MusicPlayerImpl._Init(self: MusicPlayer)
+    self.playlists = {}
+    self.currentPlaylist = ""
+    self.savedPositions = {}
 end
 
 function MusicPlayerImpl._Ready(self: MusicPlayer)

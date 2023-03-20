@@ -5,11 +5,9 @@ local Plugin = gdclass(nil, EditorPlugin)
     :Tool(true)
     :RegisterImpl(PluginImpl)
 
-type PluginT = {
+export type Plugin = EditorPlugin & typeof(PluginImpl) & {
     dock: Dock.Dock,
 }
-
-type Plugin = EditorPlugin & PluginT & typeof(PluginImpl)
 
 function PluginImpl._EnterTree(self: Plugin)
     self.dock = (assert(load("dock.tscn")) :: PackedScene):Instantiate() :: Dock.Dock

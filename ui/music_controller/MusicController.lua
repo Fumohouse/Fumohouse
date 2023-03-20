@@ -8,7 +8,7 @@ local MusicControllerImpl = {}
 local MusicController = gdclass(nil, Control)
     :RegisterImpl(MusicControllerImpl)
 
-type MusicControllerT = {
+export type MusicController = Control & typeof(MusicControllerImpl) & {
     marquee: Marquee.Marquee,
     playButton: TextureButton,
     seekBar: HSlider,
@@ -16,8 +16,6 @@ type MusicControllerT = {
     wasPaused: boolean,
     isSeeking: boolean,
 }
-
-export type MusicController = Control & MusicControllerT & typeof(MusicControllerImpl)
 
 local playIcon = assert(load("res://assets/textures/ui/icons/play-fill.svg")) :: Texture2D
 local pauseIcon = assert(load("res://assets/textures/ui/icons/pause-fill.svg")) :: Texture2D

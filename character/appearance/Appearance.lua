@@ -5,7 +5,7 @@ local AppearanceImpl = {}
 local Appearance = gdclass("Appearance", Resource)
     :RegisterImpl(AppearanceImpl)
 
-type AppearanceT = {
+export type Appearance = Resource & typeof(AppearanceImpl) & {
     eyebrows: string,
     eyes: string,
     mouth: string,
@@ -15,8 +15,6 @@ type AppearanceT = {
 
     attachedParts: Dictionary,
 }
-
-export type Appearance = Resource & AppearanceT & typeof(AppearanceImpl)
 
 Appearance:RegisterProperty("eyebrows", Enum.VariantType.STRING)
 Appearance:RegisterProperty("eyes", Enum.VariantType.STRING)

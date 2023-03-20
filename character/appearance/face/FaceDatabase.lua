@@ -5,13 +5,11 @@ local FaceDatabaseImpl = {}
 local FaceDatabase = gdclass("FaceDatabase", Resource)
     :RegisterImpl(FaceDatabaseImpl)
 
-type FaceDatabaseT = {
+export type FaceDatabase = Resource & typeof(FaceDatabaseImpl) & {
     eyebrowStyles: TypedArray<FacePartStyle.FacePartStyle>,
     eyeStyles: TypedArray<EyeStyle.EyeStyle>,
     mouthStyles: TypedArray<FacePartStyle.FacePartStyle>,
 }
-
-export type FaceDatabase = Resource & FaceDatabaseT & typeof(FaceDatabaseImpl)
 
 FaceDatabase:RegisterProperty("eyebrowStyles", Enum.VariantType.ARRAY)
     :TypedArray(FacePartStyle)

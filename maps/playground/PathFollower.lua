@@ -2,11 +2,9 @@ local PathFollowerImpl = {}
 local PathFollower = gdclass(nil, PathFollow3D)
     :RegisterImpl(PathFollowerImpl)
 
-type PathFollowerT = {
+export type PathFollower = PathFollow3D & typeof(PathFollowerImpl) & {
     speed: number,
 }
-
-export type PathFollower = PathFollow3D & PathFollowerT & typeof(PathFollowerImpl)
 
 PathFollower:RegisterProperty("speed", Enum.VariantType.FLOAT)
     :Range(0, 10)

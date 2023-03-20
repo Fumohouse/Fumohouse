@@ -5,15 +5,13 @@ local CharacterImpl = {}
 local Character = gdclass("Character", RigidBody3D)
     :RegisterImpl(CharacterImpl)
 
-type CharacterT = {
+export type Character = RigidBody3D & typeof(CharacterImpl) & {
     cameraPath: string,
     cameraUpdated: Signal,
 
     cameraPathInternal: string,
     state: MotionState.MotionState,
 }
-
-export type Character = RigidBody3D & CharacterT & typeof(CharacterImpl)
 
 Character:RegisterProperty("cameraPath", Enum.VariantType.NODE_PATH)
     :NodePath(CameraController)
@@ -22,10 +20,9 @@ Character:RegisterProperty("cameraPath", Enum.VariantType.NODE_PATH)
 Character:RegisterSignal("cameraUpdated")
     :Args({ name = "camera", type = Enum.VariantType.OBJECT, className = "Camera3D" })
 
-function CharacterImpl._Init(obj: RigidBody3D, tbl: CharacterT)
-    tbl.state = MotionState.new()
-
-    tbl.cameraPathInternal = ""
+function CharacterImpl._Init(self: Character)
+    self.state = MotionState.new()
+    self.cameraPathInternal = ""
 end
 
 function CharacterImpl.updateCamera(self: Character)

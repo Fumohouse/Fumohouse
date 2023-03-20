@@ -186,7 +186,7 @@ function MotionState.new()
 end
 
 function MotionState.ShouldPush(rid: RID): boolean
-    local mode = PhysicsServer3D.GetSingleton():BodyGetMode(rid)
+    local mode = PhysicsServer3D.singleton:BodyGetMode(rid)
     return mode == PhysicsServer3D.BodyMode.RIGID or mode == PhysicsServer3D.BodyMode.RIGID_LINEAR
 end
 
@@ -229,11 +229,11 @@ function MotionState.IsStableGround(self: MotionState, normal: Vector3): boolean
 end
 
 function MotionState.TestMotion(self: MotionState, params: PhysicsTestMotionParameters3D, result: PhysicsTestMotionResult3D?): boolean
-    return PhysicsServer3D.GetSingleton():BodyTestMotion(self.rid, params, result)
+    return PhysicsServer3D.singleton:BodyTestMotion(self.rid, params, result)
 end
 
 function MotionState.setBodyMode(self: MotionState, mode: ClassEnumPhysicsServer3D_BodyMode)
-    PhysicsServer3D.GetSingleton():BodySetMode(self.rid, mode)
+    PhysicsServer3D.singleton:BodySetMode(self.rid, mode)
 end
 
 function MotionState.SetRagdoll(self: MotionState, ragdoll: boolean)
@@ -266,7 +266,7 @@ function MotionState.Update(self: MotionState, delta: number)
     -- Update context
     self.ctx:Reset()
 
-    local inputDirection2 = Input.GetSingleton():GetVector("move_left", "move_right", "move_forward", "move_backward")
+    local inputDirection2 = Input.singleton:GetVector("move_left", "move_right", "move_forward", "move_backward")
     self.ctx.inputDirection = Vector3.new(inputDirection2.x, 0, inputDirection2.y)
     self.ctx.camBasisFlat = Basis.IDENTITY:Rotated(Vector3.UP, self.camera.cameraRotation.y)
     self.ctx.newBasis = origTransform.basis

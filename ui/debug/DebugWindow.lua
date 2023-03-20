@@ -2,7 +2,7 @@ local DebugWindowImpl = {}
 local DebugWindow = gdclass(nil, Control)
     :RegisterImpl(DebugWindowImpl)
 
-export type DebugWindowT = {
+export type DebugWindow = Control & typeof(DebugWindowImpl) & {
     topBar: Control,
     contents: Control,
     resizeHandle: Control,
@@ -15,12 +15,10 @@ export type DebugWindowT = {
     customSize: Vector2,
 }
 
-export type DebugWindow = Control & DebugWindowT & typeof(DebugWindowImpl)
-
-function DebugWindowImpl._Init(obj: Control, tbl: DebugWindowT)
-    tbl.action = ""
-    tbl.isDragging = false
-    tbl.isResizing = false
+function DebugWindowImpl._Init(self: DebugWindow)
+    self.action = ""
+    self.isDragging = false
+    self.isResizing = false
 end
 
 function DebugWindowImpl._Ready(self: DebugWindow)

@@ -2,11 +2,9 @@ local RotatingBodyImpl = {}
 local RotatingBody = gdclass(nil, AnimatableBody3D)
     :RegisterImpl(RotatingBodyImpl)
 
-type RotatingBodyT = {
+export type RotatingBody = AnimatableBody3D & typeof(RotatingBodyImpl) & {
     rotationSpeed: number,
 }
-
-export type RotatingBody = AnimatableBody3D & RotatingBodyT & typeof(RotatingBodyImpl)
 
 RotatingBody:RegisterProperty("rotationSpeed", {
     type = Enum.VariantType.FLOAT,

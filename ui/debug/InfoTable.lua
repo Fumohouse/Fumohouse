@@ -8,14 +8,12 @@ export type InfoTableEntry = {
     contents: RichTextLabel,
 }
 
-type InfoTableT = {
+export type InfoTable = VBoxContainer & typeof(InfoTableImpl) & {
     entries: {[string]: InfoTableEntry},
 }
 
-export type InfoTable = VBoxContainer & InfoTableT & typeof(InfoTableImpl)
-
-function InfoTableImpl._Init(obj: VBoxContainer, tbl: InfoTableT)
-    tbl.entries = {}
+function InfoTableImpl._Init(self: InfoTable)
+    self.entries = {}
 end
 
 local function createLabel()

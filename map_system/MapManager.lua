@@ -9,18 +9,16 @@ local MapManager = gdclass(nil, Node)
     :Permissions(bit32.bor(Enum.Permissions.FILE, Enum.Permissions.INTERNAL))
     :RegisterImpl(MapManagerImpl)
 
-type MapManagerT = {
+export type MapManager = Node & typeof(MapManagerImpl) & {
     maps: {MapManifest.MapManifest},
     currentMap: MapManifest.MapManifest?,
 }
 
-export type MapManager = Node & MapManagerT & typeof(MapManagerImpl)
-
 local BASE_DIR = "res://maps/"
 local runtimeScene = assert(load("res://map_system/runtime.tscn")) :: PackedScene
 
-function MapManagerImpl._Init(obj: Node, tbl: MapManagerT)
-    tbl.maps = {}
+function MapManagerImpl._Init(self: MapManager)
+    self.maps = {}
 end
 
 function MapManagerImpl._Ready(self: MapManager)

@@ -20,7 +20,7 @@ type AttachedPartInfo = {
     materials: {Material},
 }
 
-type AppearanceManagerT = {
+export type AppearanceManager = Node3D & typeof(AppearanceManagerImpl) & {
     appearance: Appearance.Appearance,
     cameraFadeBegin: number,
     cameraFadeEnd: number,
@@ -37,8 +37,6 @@ type AppearanceManagerT = {
 
     alpha: number,
 }
-
-export type AppearanceManager = Node3D & AppearanceManagerT & typeof(AppearanceManagerImpl)
 
 AppearanceManagerImpl.ATTACHMENTS = {
     [SinglePart.Bone.TORSO] = "Torso",
@@ -65,11 +63,11 @@ AppearanceManager:RegisterProperty("cameraFadeBegin", Enum.VariantType.FLOAT)
 AppearanceManager:RegisterProperty("cameraFadeEnd", Enum.VariantType.FLOAT)
     :Default(0.25)
 
-function AppearanceManagerImpl._Init(obj: Node3D, tbl: AppearanceManagerT)
-    tbl.attachedParts = {}
-    tbl.baseCameraOffset = 0
+function AppearanceManagerImpl._Init(self: AppearanceManager)
+    self.attachedParts = {}
+    self.baseCameraOffset = 0
 
-    tbl.alpha = 1
+    self.alpha = 1
 end
 
 function AppearanceManagerImpl.setAlpha(self: AppearanceManager, alpha: number)

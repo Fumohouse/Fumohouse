@@ -13,12 +13,10 @@ PartDataImpl.Scope = {
 	TAIL = 7,
 }
 
-type PartDataT = {
+export type PartData = Resource & {
     id: string,
     scope: number,
 }
-
-export type PartData = Resource & PartDataT
 
 PartData:RegisterProperty("id", Enum.VariantType.STRING)
 PartData:RegisterProperty("scope", Enum.VariantType.INT)

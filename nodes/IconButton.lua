@@ -2,15 +2,13 @@ local IconButtonImpl = {}
 local IconButton = gdclass(nil, TextureButton)
     :RegisterImpl(IconButtonImpl)
 
-type IconButtonT = {
+export type IconButton = TextureButton & typeof(IconButtonImpl) & {
     transitionDuration: number,
     hoverColor: Color,
     pressColor: Color,
 
     baseColor: Color,
 }
-
-export type IconButton = TextureButton & IconButtonT & typeof(IconButtonImpl)
 
 IconButton:RegisterProperty("transitionDuration", Enum.VariantType.FLOAT)
     :Default(0.15)

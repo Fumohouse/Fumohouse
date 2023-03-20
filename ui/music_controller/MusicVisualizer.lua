@@ -6,13 +6,11 @@ local MusicVisualizer = gdclass(nil, Control)
     :Permissions(Enum.Permissions.INTERNAL)
     :RegisterImpl(MusicVisualizerImpl)
 
-type MusicVisualizerT = {
+export type MusicVisualizer = Control & typeof(MusicVisualizerImpl) & {
     curve: Curve2D,
     spectrum: AudioEffectSpectrumAnalyzerInstance,
     histogram: {number},
 }
-
-export type MusicVisualizer = Control & MusicVisualizerT & typeof(MusicVisualizerImpl)
 
 local POINTS = 25
 
@@ -27,9 +25,9 @@ local MAX_DB = 50
 function MusicVisualizerImpl._Ready(self: MusicVisualizer)
     self.curve = Curve2D.new()
 
-    local bus = AudioServer.GetSingleton():GetBusIndex(MusicPlayerM.BUS)
+    local bus = AudioServer.singleton:GetBusIndex(MusicPlayerM.BUS)
     assert(bus >= 0)
-    self.spectrum = assert(AudioServer.GetSingleton():GetBusEffectInstance(bus, 0)) :: AudioEffectSpectrumAnalyzerInstance
+    self.spectrum = assert(AudioServer.singleton:GetBusEffectInstance(bus, 0)) :: AudioEffectSpectrumAnalyzerInstance
 
     self.histogram = {}
     for i = 1, POINTS do

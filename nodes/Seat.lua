@@ -4,7 +4,7 @@ local SeatImpl = {}
 local Seat = gdclass(nil, StaticBody3D)
     :RegisterImpl(SeatImpl)
 
-type SeatT = {
+export type Seat = StaticBody3D & typeof(SeatImpl) & {
     occupant: string,
     occupantInternal: string,
 
@@ -13,14 +13,12 @@ type SeatT = {
     dismountMarker: Marker3D,
 }
 
-export type Seat = StaticBody3D & SeatT & typeof(SeatImpl)
-
 Seat:RegisterProperty("occupant", Enum.VariantType.NODE_PATH)
     :NodePath(RigidBody3D)
     :SetGet("SetOccupant", "GetOccupant")
 
-function SeatImpl._Init(obj: StaticBody3D, tbl: SeatT)
-    tbl.occupantInternal = ""
+function SeatImpl._Init(self: Seat)
+    self.occupantInternal = ""
 end
 
 function SeatImpl._Ready(self: Seat)

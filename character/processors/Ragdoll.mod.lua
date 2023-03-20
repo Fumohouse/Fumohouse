@@ -29,7 +29,7 @@ end
 local function handleState(state: MotionState.MotionState, action: string, characterState: number)
     local ctx = state.ctx
 
-    if Input.GetSingleton():IsActionJustPressed(action) then
+    if Input.singleton:IsActionJustPressed(action) then
         if state:IsState(characterState) then
             state:SetRagdoll(false)
         elseif not state.isRagdoll then

@@ -2,12 +2,10 @@ local KskLogoImpl = {}
 local KskLogo = gdclass(nil, Control)
     :RegisterImpl(KskLogoImpl)
 
-type KskLogoT = {
+export type KskLogo = Control & typeof(KskLogoImpl) & {
     logoMat: ShaderMaterial,
     tween: Tween?,
 }
-
-export type KskLogo = Control & KskLogoT & typeof(KskLogoImpl)
 
 local PROGRESS_PARAM = "shader_parameter/progress"
 local TRANSITION_DURATION = 0.3

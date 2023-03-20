@@ -6,11 +6,9 @@ local BlenderTransform = gdclass(nil, Button)
     :Tool(true)
     :RegisterImpl(BlenderTransformImpl)
 
-type BlenderTransformT = {
+export type BlenderTransform = Button & typeof(BlenderTransformImpl) & {
     selection: EditorSelection,
 }
-
-export type BlenderTransform = Button & BlenderTransformT & typeof(BlenderTransformImpl)
 
 function BlenderTransformImpl._Ready(self: BlenderTransform)
     local plugin = (self:GetNode("../..") :: Dock.Dock).plugin
@@ -103,7 +101,7 @@ function BlenderTransformImpl._OnPressed(self: BlenderTransform)
         return
     end
 
-    local clipboard = DisplayServer.GetSingleton():ClipboardGet()
+    local clipboard = DisplayServer.singleton:ClipboardGet()
 
     local transforms = parseTransforms(clipboard)
 

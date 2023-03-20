@@ -74,7 +74,7 @@ function Move.move(self: Move, state: MotionState.MotionState, motion: Vector3, 
                 -- apply traditional collision resolution (impulse, etc.)
                 -- https://www.euclideanspace.com/physics/dynamics/collision/threed/index.htm
 
-                local bodyState = assert(PhysicsServer3D.GetSingleton():BodyGetDirectState(rid))
+                local bodyState = assert(PhysicsServer3D.singleton:BodyGetDirectState(rid))
 
                 bodyState:ApplyForce(
                     motionNormal * self.options.pushForce,

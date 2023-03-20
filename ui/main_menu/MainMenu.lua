@@ -6,14 +6,12 @@ local MainMenu = gdclass(nil, Control)
     :Permissions(Enum.Permissions.INTERNAL)
     :RegisterImpl(MainMenuImpl)
 
-type MainMenuT = {
+export type MainMenu = Control & typeof(MainMenuImpl) & {
     mainScreen: MainScreen.MainScreen,
     backButton: Button,
     dim: ColorRect,
     placeholderScreen: Control,
 }
-
-export type MainMenu = Control & MainMenuT & typeof(MainMenuImpl)
 
 -- Placeholder screen --
 

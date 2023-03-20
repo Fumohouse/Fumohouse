@@ -9,12 +9,10 @@ local AppearanceSaver = gdclass(nil, Control)
     :Tool(true)
     :RegisterImpl(AppearanceSaverImpl)
 
-type AppearanceSaverT = {
+export type AppearanceSaver = Control & {
     folderField: LineEdit,
     selection: EditorSelection,
 }
-
-export type AppearanceSaver = Control & AppearanceSaverT
 
 function AppearanceSaverImpl._Ready(self: AppearanceSaver)
     self.folderField = self:GetNode("Folder") :: LineEdit
@@ -80,7 +78,7 @@ function AppearanceSaverImpl._OnButtonPressed(self: AppearanceSaver)
             partData.transform = part.transform
             partData.bone = bone
 
-            ResourceSaver.GetSingleton():Save(
+            ResourceSaver.singleton:Save(
                 partData,
                 `{folderPath}{attachment.name}_{part.name}.tres`
             )

@@ -5,18 +5,16 @@ local PartDatabase = gdclass(nil, Node)
     :Permissions(Enum.Permissions.FILE)
     :RegisterImpl(PartDatabaseImpl)
 
-type PartDatabaseT = {
+export type PartDatabase = Node & typeof(PartDatabaseImpl) & {
     parts: {[string]: PartData.PartData},
     partCount: number
 }
 
-export type PartDatabase = Node & PartDatabaseT & typeof(PartDatabaseImpl)
-
 PartDatabaseImpl.PART_INFO_PATH = "res://resources/part_data/"
 
-function PartDatabaseImpl._Init(obj: Node, tbl: PartDatabaseT)
-    tbl.parts = {}
-    tbl.partCount = 0
+function PartDatabaseImpl._Init(self: PartDatabase)
+    self.parts = {}
+    self.partCount = 0
 end
 
 function PartDatabaseImpl.scanDir(self: PartDatabase, path: string)

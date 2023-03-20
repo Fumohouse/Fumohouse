@@ -6,13 +6,11 @@ local SingleColorImpl = {}
 local SingleColor = gdclass(nil, PartCustomizer)
     :RegisterImpl(SingleColorImpl)
 
-type SingleColorT = {
+type SingleColor = PartCustomizer.PartCustomizer & typeof(SingleColorImpl) & {
     defaultColor: Color,
     mesh: string,
     meshInstance: MeshInstance3D?,
 }
-
-type SingleColor = PartCustomizer.PartCustomizer & SingleColorT & typeof(SingleColorImpl)
 
 SingleColor:RegisterProperty("defaultColor", Enum.VariantType.COLOR)
 

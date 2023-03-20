@@ -2,14 +2,12 @@ local BillboardImpl = {}
 local Billboard = gdclass("Billboard", Sprite3D)
     :RegisterImpl(BillboardImpl)
 
-type BillboardT = {
+export type Billboard = Sprite3D & typeof(BillboardImpl) & {
     targetPixelSize: number,
 
     viewport: SubViewport,
     origSize: Vector2,
 }
-
-export type Billboard = Sprite3D & BillboardT & typeof(BillboardImpl)
 
 -- In world units
 Billboard:RegisterProperty("targetPixelSize", Enum.VariantType.FLOAT)

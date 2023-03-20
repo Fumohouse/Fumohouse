@@ -34,7 +34,7 @@ end
 
 function PhysicalMotion.Initialize(self: PhysicalMotion, state: MotionState.MotionState)
     if state.node:IsA(RigidBody3D) then
-        (state.node :: RigidBody3D).gravityScale = self.options.gravity / (ProjectSettings.GetSingleton():GetSetting("physics/3d/default_gravity") :: number)
+        (state.node :: RigidBody3D).gravityScale = self.options.gravity / (ProjectSettings.singleton:GetSetting("physics/3d/default_gravity") :: number)
     end
 end
 
@@ -59,7 +59,7 @@ function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionS
         self.velocity += Vector3.DOWN * self.options.gravity * delta
     end
 
-    if Input.GetSingleton():IsActionPressed("move_jump") and
+    if Input.singleton:IsActionPressed("move_jump") and
             self.airborneTime < self.options.jumpForgiveness and
             not self.cancelJump and
             not wasJumping then

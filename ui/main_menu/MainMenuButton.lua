@@ -2,13 +2,11 @@ local MainMenuButtonImpl = {}
 local MainMenuButton = gdclass(nil, Button)
     :RegisterImpl(MainMenuButtonImpl)
 
-type MainMenuButtonT = {
+export type MainMenuButton = Button & typeof(MainMenuButtonImpl) & {
     origWidth: number,
 
     tween: Tween?,
 }
-
-export type MainMenuButton = Button & MainMenuButtonT & typeof(MainMenuButtonImpl)
 
 local EXPAND = 20
 

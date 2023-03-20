@@ -11,26 +11,24 @@ type LineInfo = {
     c2: Color,
 }
 
-type DebugDrawT = {
+export type DebugDraw = MeshInstance3D & typeof(DebugDrawImpl) & {
     mesh: ImmediateMesh,
 
     lines: {LineInfo},
 }
 
-export type DebugDraw = MeshInstance3D & DebugDrawT & typeof(DebugDrawImpl)
-
-function DebugDrawImpl._Init(obj: MeshInstance3D, tbl: DebugDrawT)
-    obj.mesh = ImmediateMesh.new()
-    tbl.lines = {}
+function DebugDrawImpl._Init(self: DebugDraw)
+    self.mesh = ImmediateMesh.new()
+    self.lines = {}
 
     local mat = StandardMaterial3D.new()
     mat.noDepthTest = true
     mat.shadingMode = BaseMaterial3D.ShadingMode.UNSHADED
     mat.vertexColorUseAsAlbedo = true
-    obj.materialOverride = mat
+    self.materialOverride = mat
 
     -- Should process after everything
-    obj.processPriority = 500
+    self.processPriority = 500
 end
 
 function DebugDrawImpl.DrawLine(self: DebugDraw, p1: Vector3, p2: Vector3, c1: Color, c2: Variant, lifetime: number?)

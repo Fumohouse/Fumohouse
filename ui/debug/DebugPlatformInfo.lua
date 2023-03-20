@@ -7,12 +7,10 @@ local DebugPlatformInfo = gdclass(nil, DebugWindow)
     :Permissions(bit32.bor(Enum.Permissions.INTERNAL, Enum.Permissions.OS))
     :RegisterImpl(DebugPlatformInfoImpl)
 
-type DebugPlatformInfoT = DebugWindow.DebugWindowT & {
+export type DebugPlatformInfo = DebugWindow.DebugWindow & typeof(DebugPlatformInfoImpl) & {
     infoTbl: InfoTable.InfoTable,
     egg: number,
 }
-
-export type DebugPlatformInfo = DebugWindow.DebugWindow & DebugPlatformInfoT & typeof(DebugPlatformInfoImpl)
 
 local EFFECTS = {
     { "", "" },
@@ -28,9 +26,9 @@ local DRIVERS = {
     ["gl_compatibility"] = "GLES 3",
 }
 
-function DebugPlatformInfoImpl._Init(obj: Control, tbl: DebugPlatformInfoT)
-    tbl.action = "debug_1"
-    tbl.egg = 1
+function DebugPlatformInfoImpl._Init(self: DebugPlatformInfo)
+    self.action = "debug_1"
+    self.egg = 1
 end
 
 function DebugPlatformInfoImpl.updateEgg(self: DebugPlatformInfo)
@@ -47,7 +45,7 @@ function DebugPlatformInfoImpl._OnMetaClicked(self: DebugPlatformInfo, meta: Var
 
         self:updateEgg()
     elseif meta == "panku" then
-        OS.GetSingleton():ShellOpen("https://github.com/Ark2000/PankuConsole")
+        OS.singleton:ShellOpen("https://github.com/Ark2000/PankuConsole")
     end
 end
 
@@ -66,7 +64,7 @@ function DebugPlatformInfoImpl._Ready(self: DebugPlatformInfo)
     contents.metaClicked:Connect(metaCb)
     contents.metaUnderlined = false
 
-    local verInfo = Engine.GetSingleton():GetVersionInfo()
+    local verInfo = Engine.singleton:GetVersionInfo()
     local major, minor, patch, status, build, hash =
         verInfo:Get("major") :: number, verInfo:Get("minor") :: number, verInfo:Get("patch") :: number,
         verInfo:Get("status") :: string, verInfo:Get("build") :: string, string.sub(verInfo:Get("hash") :: string, 0, 8)
@@ -75,26 +73,26 @@ function DebugPlatformInfoImpl._Ready(self: DebugPlatformInfo)
     infoTbl:SetVal("godotVer", `[b]Godot[/b] {major}.{minor}.{patch}.{status}.{build} [{hash}]`)
 
     infoTbl:AddEntry("osName", "OS")
-    infoTbl:SetVal("osName", `{OS.GetSingleton():GetName()} ({Engine.GetSingleton():GetArchitectureName()})`)
+    infoTbl:SetVal("osName", `{OS.singleton:GetName()} ({Engine.singleton:GetArchitectureName()})`)
 
     local processorName, processorCount =
-        OS.GetSingleton():GetProcessorName(),
-        OS.GetSingleton():GetProcessorCount()
+        OS.singleton:GetProcessorName(),
+        OS.singleton:GetProcessorCount()
 
     infoTbl:AddEntry("cpu", "CPU")
     infoTbl:SetVal("cpu", `{processorName} ({processorCount} logical cores)`)
 
     local gpuVendor, gpuName, gpuType =
-        RenderingServer.GetSingleton():GetVideoAdapterVendor(),
-        RenderingServer.GetSingleton():GetVideoAdapterName(),
-        RenderingServer.GetSingleton():GetVideoAdapterType()
+        RenderingServer.singleton:GetVideoAdapterVendor(),
+        RenderingServer.singleton:GetVideoAdapterName(),
+        RenderingServer.singleton:GetVideoAdapterType()
 
     infoTbl:AddEntry("gpu", "GPU")
     infoTbl:SetVal("gpu", `{gpuVendor} - {gpuName} - DeviceType: {gpuType}`)
 
     local gpuDriver, gpuDriverVersion =
-        DRIVERS[ProjectSettings.GetSingleton():GetSetting("rendering/renderer/rendering_method")],
-        RenderingServer.GetSingleton():GetVideoAdapterApiVersion()
+        DRIVERS[ProjectSettings.singleton:GetSetting("rendering/renderer/rendering_method")],
+        RenderingServer.singleton:GetVideoAdapterApiVersion()
 
     infoTbl:AddEntry("gpuApi", "API")
     infoTbl:SetVal("gpuApi", `{gpuDriver} {gpuDriverVersion}`)

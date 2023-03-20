@@ -6,11 +6,9 @@ local DoremyHairImpl = {}
 local DoremyHair = gdclass(nil, PartCustomizer)
     :RegisterImpl(DoremyHairImpl)
 
-type DoremyHairT = {
+export type DoremyHair = PartCustomizer.PartCustomizer & typeof(DoremyHairImpl) & {
     ponytail: Node3D,
 }
-
-export type DoremyHair = PartCustomizer.PartCustomizer & DoremyHairT & typeof(DoremyHairImpl)
 
 function DoremyHairImpl._Ready(self: DoremyHair)
     self.ponytail = self:GetNode("doremy_ponytail") :: Node3D

@@ -4,7 +4,7 @@ local CameraControllerImpl = {}
 local CameraController = gdclass("CameraController", Camera3D)
     :RegisterImpl(CameraControllerImpl)
 
-type CameraControllerT = {
+export type CameraController = Camera3D & typeof(CameraControllerImpl) & {
     cameraOffset: number,
     cameraZoomSens: number,
     cameraRotateSens: number,
@@ -20,8 +20,6 @@ type CameraControllerT = {
     cameraRotating: boolean,
     cameraMode: number
 }
-
-export type CameraController = Camera3D & CameraControllerT & typeof(CameraControllerImpl)
 
 CameraControllerImpl.CameraMode = {
     -- Focused, no zoom
@@ -59,12 +57,12 @@ CameraController:RegisterProperty("focusDistanceTarget", Enum.VariantType.FLOAT)
     :Range(0, 200)
     :Default(5)
 
-function CameraControllerImpl._Init(obj: Camera3D, tbl: CameraControllerT)
-    tbl.cameraRotation = Vector2.ZERO
-    tbl.focusDistance = tbl.focusDistanceTarget
-    tbl.lastMousePos = Vector2.ZERO
-    tbl.cameraRotating = false
-    tbl.cameraMode = -1
+function CameraControllerImpl._Init(self: CameraController)
+    self.cameraRotation = Vector2.ZERO
+    self.focusDistance = self.focusDistanceTarget
+    self.lastMousePos = Vector2.ZERO
+    self.cameraRotating = false
+    self.cameraMode = -1
 end
 
 function CameraControllerImpl.GetFocalPoint(self: CameraController)
@@ -115,9 +113,9 @@ function CameraControllerImpl.setCameraRotating(self: CameraController, rotating
 
     if rotating then
         self.lastMousePos = self:GetViewport():GetMousePosition()
-        Input.GetSingleton().mouseMode = Input.MouseMode.CAPTURED
+        Input.singleton.mouseMode = Input.MouseMode.CAPTURED
     else
-        Input.GetSingleton().mouseMode = Input.MouseMode.VISIBLE
+        Input.singleton.mouseMode = Input.MouseMode.VISIBLE
         self:GetViewport():WarpMouse(self.lastMousePos)
     end
 

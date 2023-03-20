@@ -1,7 +1,7 @@
 # Fumohouse
 
-[![Godot Badge](https://img.shields.io/badge/Godot-4.0.stable-orange)](https://godotengine.org/)
-[![godot-luau-script Badge](https://img.shields.io/badge/godot--luau--script-b9d1440e-blue)](https://github.com/Fumohouse/godot-luau-script)
+[![Godot Badge](https://img.shields.io/badge/Godot-4.0.1.stable-orange)](https://godotengine.org/)
+[![godot-luau-script Badge](https://img.shields.io/badge/godot--luau--script-b974d9c6-blue)](https://github.com/Fumohouse/godot-luau-script)
 
 A fumo-centric game-in-progress, inspired by [Become Fumo](https://www.roblox.com/games/6238705697/Become-Fumo)
 and powered by the Godot Engine.

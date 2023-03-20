@@ -2,13 +2,11 @@ local MarqueeImpl = {}
 local Marquee = gdclass(nil, Control)
     :RegisterImpl(MarqueeImpl)
 
-type MarqueeT = {
+export type Marquee = Control & typeof(MarqueeImpl) & {
     scrollSpeed: number,
 
     text: Label,
 }
-
-export type Marquee = Control & MarqueeT & typeof(MarqueeImpl)
 
 Marquee:RegisterProperty("scrollSpeed", Enum.VariantType.FLOAT)
     :Range(0, 120)

@@ -4,11 +4,9 @@ local PostImportGltf = gdclass(nil, EditorScenePostImport)
     :Permissions(Enum.Permissions.INTERNAL)
     :RegisterImpl(PostImportGltfImpl)
 
-type PostImportGltfT = {
+export type PostImportGltf = EditorScenePostImport & typeof(PostImportGltfImpl) & {
     convertedMaterials: {[number]: ShaderMaterial}
 }
-
-export type PostImportGltf = EditorScenePostImport & PostImportGltfT & typeof(PostImportGltfImpl)
 
 local PROPERTY_MAP = {
 	["albedo_color"] = "albedo",
@@ -38,8 +36,8 @@ local TEXTURE_MASKS = {
     Plane.new(0.3333333, 0.3333333, 0.3333333, 0),
 }
 
-function PostImportGltfImpl._Init(obj: EditorScenePostImport, tbl: PostImportGltfT)
-    tbl.convertedMaterials = {}
+function PostImportGltfImpl._Init(self: PostImportGltf)
+    self.convertedMaterials = {}
 end
 
 local function getTextureMask(channel: ClassEnumBaseMaterial3D_TextureChannel)

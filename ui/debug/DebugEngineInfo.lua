@@ -6,11 +6,9 @@ local DebugEngineInfo = gdclass(nil, DebugWindow)
     :Permissions(bit32.bor(Enum.Permissions.INTERNAL, Enum.Permissions.OS))
     :RegisterImpl(DebugEngineInfoImpl)
 
-type DebugEngineInfoT = DebugWindow.DebugWindowT & {
+export type DebugEngineInfo = DebugWindow.DebugWindow & typeof(DebugEngineInfoImpl) & {
     infoTbl: InfoTable.InfoTable,
 }
-
-export type DebugEngineInfo = DebugWindow.DebugWindow & DebugEngineInfoT & typeof(DebugEngineInfoImpl)
 
 local VSYNC_MODES = {
     [DisplayServer.VSyncMode.DISABLED] = "Disabled",
@@ -19,8 +17,8 @@ local VSYNC_MODES = {
     [DisplayServer.VSyncMode.MAILBOX] = "Mailbox",
 }
 
-function DebugEngineInfoImpl._Init(obj: Control, tbl: DebugEngineInfoT)
-    tbl.action = "debug_3"
+function DebugEngineInfoImpl._Init(self: DebugEngineInfo)
+    self.action = "debug_3"
 end
 
 function DebugEngineInfoImpl._Ready(self: DebugEngineInfo)
@@ -39,7 +37,7 @@ function DebugEngineInfoImpl._Ready(self: DebugEngineInfo)
     infoTbl:AddEntry("audio", "Audio")
     infoTbl:AddEntry("navigation", "Navigation")
 
-    if OS.GetSingleton():IsDebugBuild() then
+    if OS.singleton:IsDebugBuild() then
         infoTbl:AddEntry("staticMemory", "Static Memory Usage")
     end
 end
@@ -48,13 +46,13 @@ DebugEngineInfo:RegisterMethod("_Ready")
 
 function DebugEngineInfoImpl._Process(self: DebugEngineInfo, delta: number)
     local infoTbl = self.infoTbl
-    local perf = Performance.GetSingleton()
+    local perf = Performance.singleton
 
-    local vsyncMode = ProjectSettings.GetSingleton():GetSetting("display/window/vsync/vsync_mode") :: ClassEnumDisplayServer_VSyncMode
+    local vsyncMode = ProjectSettings.singleton:GetSetting("display/window/vsync/vsync_mode") :: ClassEnumDisplayServer_VSyncMode
     infoTbl:SetVal("fps", string.format(
         "%d / %d (VSync: %s)",
         perf:GetMonitor(Performance.Monitor.TIME_FPS),
-        Engine.GetSingleton().maxFps,
+        Engine.singleton.maxFps,
         VSYNC_MODES[vsyncMode]
     ))
 
@@ -114,7 +112,7 @@ function DebugEngineInfoImpl._Process(self: DebugEngineInfo, delta: number)
         perf:GetMonitor(Performance.Monitor.NAVIGATION_EDGE_FREE_COUNT)
     ))
 
-    if OS.GetSingleton():IsDebugBuild() then
+    if OS.singleton:IsDebugBuild() then
         infoTbl:SetVal("staticMemory", string.format(
             "%.2f / %.2f MB",
             perf:GetMonitor(Performance.Monitor.MEMORY_STATIC) / 1e6,

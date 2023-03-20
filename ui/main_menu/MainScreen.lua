@@ -5,7 +5,7 @@ local MainScreenImpl = {}
 local MainScreen = gdclass(nil, Control)
     :RegisterImpl(MainScreenImpl)
 
-type MainScreenT = {
+export type MainScreen = Control & typeof(MainScreenImpl) & {
     nonNavigation: Control,
     mainButtons: Control,
 
@@ -17,8 +17,6 @@ type MainScreenT = {
     musicControllerTween: Tween?,
     musicControllerVisible: boolean,
 }
-
-export type MainScreen = Control & MainScreenT & typeof(MainScreenImpl)
 
 -- MusicController --
 

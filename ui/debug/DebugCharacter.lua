@@ -14,7 +14,7 @@ local DebugCharacterImpl = {}
 local DebugCharacter = gdclass(nil, DebugWindow)
     :RegisterImpl(DebugCharacterImpl)
 
-type DebugCharacterT = DebugWindow.DebugWindowT & {
+export type DebugCharacter = DebugWindow.DebugWindow & typeof(DebugCharacterImpl) & {
     characterPathInternal: string,
     characterPath: string,
 
@@ -27,14 +27,12 @@ type DebugCharacterT = DebugWindow.DebugWindowT & {
     state: RichTextLabel,
 }
 
-export type DebugCharacter = DebugWindow.DebugWindow & DebugCharacterT & typeof(DebugCharacterImpl)
-
 DebugCharacter:RegisterProperty("characterPath", Enum.VariantType.NODE_PATH)
     :NodePath(RigidBody3D)
     :SetGet("setCharacterPath", "getCharacterPath")
 
-function DebugCharacterImpl._Init(obj: PanelContainer, tbl: DebugCharacterT)
-    tbl.action = "debug_2"
+function DebugCharacterImpl._Init(self: DebugCharacter)
+    self.action = "debug_2"
 end
 
 function DebugCharacterImpl.updateCharacter(self: DebugCharacter)
