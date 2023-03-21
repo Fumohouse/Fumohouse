@@ -81,43 +81,44 @@ end
 
 function BillboardImpl._Process(self: Billboard, delta: number)
     local camera = self:GetViewport():GetCamera3D()
-
-    if camera then
-        if camera:IsPositionBehind(self.globalPosition) then
-            self.visible = false
-            self.viewport.renderTargetUpdateMode = SubViewport.UpdateMode.DISABLED
-            return
-        end
-
-        self.visible = true
-        self.viewport.renderTargetUpdateMode = SubViewport.UpdateMode.ALWAYS
-
-        -- Manual billboard helps with math
-        self.globalTransform = Transform3D.new(camera.basis, self.globalTransform.origin)
-
-        local screenSize = self:GetScreenSize(camera)
-        local maxSize = self:GetWindow().size * 4
-
-        local viewportSize: Vector2
-        if screenSize.x > maxSize.x or screenSize.y > maxSize.y then
-            local width = maxSize.x
-            local height = maxSize.x * self.origSize.y / self.origSize.x
-
-            viewportSize = Vector2.new(width, height)
-        else
-            viewportSize = screenSize
-        end
-
-        -- I don't really know how this works.
-        -- This basically replicates Godot's canvas_items scaling mode.
-        -- Reference: window.cpp
-        self.viewport.size = Vector2i.new(viewportSize)
-        self.viewport.size2DOverride = Vector2i.new(self.origSize)
-        self.viewport.canvasTransform = Transform2D.IDENTITY:Scaled(viewportSize / self.origSize)
-
-        -- Must adjust the pixel size in order to update texture size, etc.
-        self.pixelSize = self.targetPixelSize * self.origSize.x / screenSize.x
+    if not camera then
+        return
     end
+
+    if camera:IsPositionBehind(self.globalPosition) then
+        self.visible = false
+        self.viewport.renderTargetUpdateMode = SubViewport.UpdateMode.DISABLED
+        return
+    end
+
+    self.visible = true
+    self.viewport.renderTargetUpdateMode = SubViewport.UpdateMode.ALWAYS
+
+    -- Manual billboard helps with math
+    self.globalTransform = Transform3D.new(camera.basis, self.globalTransform.origin)
+
+    local screenSize = self:GetScreenSize(camera)
+    local maxSize = self:GetWindow().size * 4
+
+    local viewportSize: Vector2
+    if screenSize.x > maxSize.x or screenSize.y > maxSize.y then
+        local width = maxSize.x
+        local height = maxSize.x * self.origSize.y / self.origSize.x
+
+        viewportSize = Vector2.new(width, height)
+    else
+        viewportSize = screenSize
+    end
+
+    -- I don't really know how this works.
+    -- This basically replicates Godot's canvas_items scaling mode.
+    -- Reference: window.cpp
+    self.viewport.size = Vector2i.new(viewportSize)
+    self.viewport.size2DOverride = Vector2i.new(self.origSize)
+    self.viewport.canvasTransform = Transform2D.IDENTITY:Scaled(viewportSize / self.origSize)
+
+    -- Must adjust the pixel size in order to update texture size, etc.
+    self.pixelSize = self.targetPixelSize * self.origSize.x / screenSize.x
 end
 
 Billboard:RegisterMethodAST("_Process")

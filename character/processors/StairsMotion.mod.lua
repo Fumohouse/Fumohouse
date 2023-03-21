@@ -94,58 +94,58 @@ function StairsMotion.findStepUp(self: StairsMotion, state: MotionState.MotionSt
     -- 2x in case we are facing a bit diagonal compared to the step wall normal
     local checkDistance = self.options.slopeDistance * 2 - state.mainCollisionShape.radius
     local searchResult, wallNormal = self:normalTest(state, characterTransform, forward * checkDistance)
-    if searchResult and wallNormal then
-        -- Distance to step
-        local distance = -wallNormal:Dot(searchResult:GetTravel()) + state.mainCollisionShape.radius
-        if distance > self.options.slopeDistance then
-            return
-        end
-
-        local highestPoint = Vector3.ZERO
-
-        for i = 0, searchResult:GetCollisionCount() - 1 do
-            local point = searchResult:GetCollisionPoint(i)
-
-            if point.y > highestPoint.y then
-                local stepHeight = point.y - characterTransform.origin.y
-                if stepHeight > self.options.maxStepHeight + MAX_STEP_MARGIN or
-                        stepHeight < self.options.minStepHeight then
-                    return
-                end
-
-                highestPoint = point
-            end
-        end
-
-        -- Use ray to find true position of target point
-        -- and to check the step's top normal
-        local RAY_MARGIN = 0.01
-        local RAY_DISTANCE = 0.1
-
-        local rayParams = PhysicsRayQueryParameters3D.new()
-        rayParams.from = highestPoint
-            - wallNormal * RAY_MARGIN
-            + Vector3.UP * RAY_DISTANCE
-
-        rayParams.to = rayParams.from + Vector3.DOWN * (RAY_DISTANCE + RAY_MARGIN)
-
-        local rayResult = state.GetWorld3D().directSpaceState:IntersectRay(rayParams)
-        if not rayResult:Has("normal") or not self:isValidStair(rayResult:Get("normal") :: Vector3) then
-            return
-        end
-
-        local targetPoint = Vector3.new(highestPoint.x, (rayResult:Get("position") :: Vector3).y, highestPoint.z)
-
-        -- "Straighten" to wall normal
-        local motion = targetPoint - characterTransform.origin
-        targetPoint = characterTransform.origin
-            + wallNormal * motion:Dot(wallNormal)
-            + Vector3.UP * motion.y
-
-        return targetPoint, -wallNormal
+    if not searchResult or not wallNormal then
+        return
     end
 
-    return
+    -- Distance to step
+    local distance = -wallNormal:Dot(searchResult:GetTravel()) + state.mainCollisionShape.radius
+    if distance > self.options.slopeDistance then
+        return
+    end
+
+    local highestPoint = Vector3.ZERO
+
+    for i = 0, searchResult:GetCollisionCount() - 1 do
+        local point = searchResult:GetCollisionPoint(i)
+
+        if point.y > highestPoint.y then
+            local stepHeight = point.y - characterTransform.origin.y
+            if stepHeight > self.options.maxStepHeight + MAX_STEP_MARGIN or
+                    stepHeight < self.options.minStepHeight then
+                return
+            end
+
+            highestPoint = point
+        end
+    end
+
+    -- Use ray to find true position of target point
+    -- and to check the step's top normal
+    local RAY_MARGIN = 0.01
+    local RAY_DISTANCE = 0.1
+
+    local rayParams = PhysicsRayQueryParameters3D.new()
+    rayParams.from = highestPoint
+        - wallNormal * RAY_MARGIN
+        + Vector3.UP * RAY_DISTANCE
+
+    rayParams.to = rayParams.from + Vector3.DOWN * (RAY_DISTANCE + RAY_MARGIN)
+
+    local rayResult = state.GetWorld3D().directSpaceState:IntersectRay(rayParams)
+    if not rayResult:Has("normal") or not self:isValidStair(rayResult:Get("normal") :: Vector3) then
+        return
+    end
+
+    local targetPoint = Vector3.new(highestPoint.x, (rayResult:Get("position") :: Vector3).y, highestPoint.z)
+
+    -- "Straighten" to wall normal
+    local motion = targetPoint - characterTransform.origin
+    targetPoint = characterTransform.origin
+        + wallNormal * motion:Dot(wallNormal)
+        + Vector3.UP * motion.y
+
+    return targetPoint, -wallNormal
 end
 
 function StairsMotion.findStepDown(self: StairsMotion, state: MotionState.MotionState): (Vector3?, Vector3?)

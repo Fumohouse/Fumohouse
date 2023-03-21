@@ -50,8 +50,7 @@ DebugDraw:RegisterMethodAST("DrawLine")
 function DebugDrawImpl.DrawMarker(self: DebugDraw, pos: Vector3, color: Color, lifetime: number?, size: number?)
     local sizeA = size or 0.05
 
-    local camera = self:GetViewport():GetCamera3D()
-    assert(camera)
+    local camera = assert(self:GetViewport():GetCamera3D())
 
     local camBasis = camera.globalTransform.basis
     local camX = camBasis.x

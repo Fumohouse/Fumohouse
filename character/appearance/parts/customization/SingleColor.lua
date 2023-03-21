@@ -26,24 +26,25 @@ end
 SingleColor:RegisterMethod("_Ready")
 
 function SingleColorImpl.Update(self: SingleColor, appearance: Appearance.Appearance, config: Dictionary?)
-    if self.meshInstance then
-        local material = assert(self.meshInstance:GetActiveMaterial(0))
-        local color = if config and config:Has("color") then
-            config:Get("color") :: Color
-        else
-            self.defaultColor
-
-        if material:IsA(StandardMaterial3D) then
-            (material :: StandardMaterial3D).albedoColor = color
-        elseif material:IsA(ShaderMaterial) then
-            local shaderMat = material :: ShaderMaterial
-
-            if shaderMat:GetShaderParameter("albedo") ~= nil then
-                shaderMat:SetShaderParameter("albedo", color)
-            end
-        end
-    else
+    if not self.meshInstance then
         push_warning("This single colored part has no linked mesh.")
+        return
+    end
+
+    local material = assert(self.meshInstance:GetActiveMaterial(0))
+    local color = if config and config:Has("color") then
+        config:Get("color") :: Color
+    else
+        self.defaultColor
+
+    if material:IsA(StandardMaterial3D) then
+        (material :: StandardMaterial3D).albedoColor = color
+    elseif material:IsA(ShaderMaterial) then
+        local shaderMat = material :: ShaderMaterial
+
+        if shaderMat:GetShaderParameter("albedo") ~= nil then
+            shaderMat:SetShaderParameter("albedo", color)
+        end
     end
 end
 

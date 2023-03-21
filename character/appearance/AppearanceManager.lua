@@ -123,24 +123,26 @@ function AppearanceManagerImpl.loadScale(self: AppearanceManager)
 end
 
 function AppearanceManagerImpl._PhysicsProcess(self: AppearanceManager, delta: number)
-    if self.character.state.camera then
-        if self.character.state.camera.cameraMode == CameraController.CameraMode.FIRST_PERSON then
-            self:setAlpha(0)
-            return
-        end
-
-        local distance = (
-            self.character.state.camera.globalPosition - self.character.state.camera:GetFocalPoint()
-        ):Length()
-
-        local beginScaled = self.cameraFadeBegin * self.appearance.scale
-        local endScaled = self.cameraFadeEnd * self.appearance.scale
-
-        local alpha = (distance - endScaled) / (beginScaled - endScaled)
-        alpha = math.clamp(alpha, 0, 1)
-
-        self:setAlpha(alpha)
+    if not self.character.state.camera then
+        return
     end
+
+    if self.character.state.camera.cameraMode == CameraController.CameraMode.FIRST_PERSON then
+        self:setAlpha(0)
+        return
+    end
+
+    local distance = (
+        self.character.state.camera.globalPosition - self.character.state.camera:GetFocalPoint()
+    ):Length()
+
+    local beginScaled = self.cameraFadeBegin * self.appearance.scale
+    local endScaled = self.cameraFadeEnd * self.appearance.scale
+
+    local alpha = (distance - endScaled) / (beginScaled - endScaled)
+    alpha = math.clamp(alpha, 0, 1)
+
+    self:setAlpha(alpha)
 end
 
 AppearanceManager:RegisterMethodAST("_PhysicsProcess")
@@ -273,13 +275,15 @@ function AppearanceManagerImpl.attach(self: AppearanceManager, id: string)
 end
 
 function AppearanceManagerImpl.detach(self: AppearanceManager, id: string)
-    if self.attachedParts[id] then
-        for _, model in self.attachedParts[id].nodes do
-            model:QueueFree()
-        end
-
-        self.attachedParts[id] = nil
+    if not self.attachedParts[id] then
+        return
     end
+
+    for _, model in self.attachedParts[id].nodes do
+        model:QueueFree()
+    end
+
+    self.attachedParts[id] = nil
 end
 
 function AppearanceManagerImpl.loadParts(self: AppearanceManager)

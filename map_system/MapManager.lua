@@ -51,27 +51,27 @@ MapManager:RegisterMethod("_Ready")
 
 function MapManagerImpl.loadInternal(self: MapManager, manifest: MapManifest.MapManifest)
     local scene = load(manifest.mainScenePath) :: Resource?
-    if scene and scene:IsA(PackedScene) then
-        MusicPlayer:LoadPlaylists(manifest.playlists)
-
-        -- Switch scenes manually (otherwise switch is deferred to next frame)
-        local newScene = (scene :: PackedScene):Instantiate()
-        self:GetTree():GetRoot():AddChild(newScene)
-
-        local runtime = runtimeScene:Instantiate() :: MapRuntime.MapRuntime
-        newScene:AddChild(runtime)
-        runtime:SpawnLocalCharacter(newScene)
-
-        local currentScene = self:GetTree():GetCurrentScene()
-        if currentScene then
-            currentScene:QueueFree()
-        end
-
-        self:GetTree():SetCurrentScene(newScene)
-        self.currentMap = manifest
-    else
+    if not scene or not scene:IsA(PackedScene) then
         error(`Failed to load main scene at {manifest.mainScenePath}.`)
     end
+
+    MusicPlayer:LoadPlaylists(manifest.playlists)
+
+    -- Switch scenes manually (otherwise switch is deferred to next frame)
+    local newScene = (scene :: PackedScene):Instantiate()
+    self:GetTree():GetRoot():AddChild(newScene)
+
+    local runtime = runtimeScene:Instantiate() :: MapRuntime.MapRuntime
+    newScene:AddChild(runtime)
+    runtime:SpawnLocalCharacter(newScene)
+
+    local currentScene = self:GetTree():GetCurrentScene()
+    if currentScene then
+        currentScene:QueueFree()
+    end
+
+    self:GetTree():SetCurrentScene(newScene)
+    self.currentMap = manifest
 end
 
 function MapManagerImpl.Load(self: MapManager, id: string)

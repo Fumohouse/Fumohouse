@@ -128,42 +128,46 @@ function CharacterAnimator.new()
 end
 
 function CharacterAnimator.Initialize(self: CharacterAnimator, state: MotionState.MotionState)
-    if state.node:IsA(Character) then
-        self.character = state.node :: Character.Character
-        self.animator = state.node:GetNodeOrNull("Rig/Armature/AnimationTree") :: AnimationTree?
-
-        if self.animator then
-            self.animator.active = true
-        end
-
-        self.horizontalMotion = state:GetMotionProcessor(HorizontalMotion.ID)
-        self.ladderMotion = state:GetMotionProcessor(LadderMotion.ID)
+    if not state.node:IsA(Character) then
+        return
     end
+
+    self.character = state.node :: Character.Character
+    self.animator = state.node:GetNodeOrNull("Rig/Armature/AnimationTree") :: AnimationTree?
+
+    if self.animator then
+        self.animator.active = true
+    end
+
+    self.horizontalMotion = state:GetMotionProcessor(HorizontalMotion.ID)
+    self.ladderMotion = state:GetMotionProcessor(LadderMotion.ID)
 end
 
 function CharacterAnimator.Process(self: CharacterAnimator, state: MotionState.MotionState, delta: number)
-    if self.character and self.animator then
-        for _, stateInfo in STATES do
-            if not state:IsState(stateInfo.state) then
-                continue
-            end
+    if not self.character or not self.animator then
+        return
+    end
 
-            if self.state == stateInfo then
-                break
-            end
+    for _, stateInfo in STATES do
+        if not state:IsState(stateInfo.state) then
+            continue
+        end
 
-            self.state = stateInfo
-
-            for key, value in stateInfo.properties do
-                self.animator:Set(key, value)
-            end
-
+        if self.state == stateInfo then
             break
         end
 
-        if self.state and self.state.update then
-            self.state.update(self, state, self.animator)
+        self.state = stateInfo
+
+        for key, value in stateInfo.properties do
+            self.animator:Set(key, value)
         end
+
+        break
+    end
+
+    if self.state and self.state.update then
+        self.state.update(self, state, self.animator)
     end
 end
 

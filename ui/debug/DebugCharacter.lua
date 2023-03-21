@@ -81,56 +81,56 @@ function DebugCharacterImpl._Ready(self: DebugCharacter)
 end
 
 function DebugCharacterImpl.debugDraw(self: DebugCharacter)
-    if self.character then
-        local characterState = self.character.state
-        local pos = self.character.globalPosition
-        local eyePos = pos + Vector3.UP * assert(self.character.state.camera).cameraOffset
+    assert(self.character)
 
-        -- Bottom point
-        DebugDraw:DrawMarker(characterState:GetBottomPosition(), Color.WHITE)
+    local characterState = self.character.state
+    local pos = self.character.globalPosition
+    local eyePos = pos + Vector3.UP * assert(self.character.state.camera).cameraOffset
 
-        -- Forward direction
-        DebugDraw:DrawLine(eyePos, eyePos - self.character.globalTransform.basis.z, Color.AQUA)
+    -- Bottom point
+    DebugDraw:DrawMarker(characterState:GetBottomPosition(), Color.WHITE)
 
-        -- Grounding status
-        if self.character.state.isGrounded then
-            DebugDraw:DrawLine(pos, pos + characterState.groundNormal, Color.GREEN)
-        else
-            DebugDraw:DrawMarker(pos, Color.RED)
-        end
+    -- Forward direction
+    DebugDraw:DrawLine(eyePos, eyePos - self.character.globalTransform.basis.z, Color.AQUA)
 
-        -- Walls
-        for _, wallInfo in characterState.walls do
-            DebugDraw:DrawLine(wallInfo.point, wallInfo.point + wallInfo.normal, Color.WHITE)
-        end
+    -- Grounding status
+    if self.character.state.isGrounded then
+        DebugDraw:DrawLine(pos, pos + characterState.groundNormal, Color.GREEN)
+    else
+        DebugDraw:DrawMarker(pos, Color.RED)
+    end
 
-        -- Velocities
-        if self.horizontalMotion then
-            local velocityScale = self.horizontalMotion.options.walkSpeed
-            DebugDraw:DrawLine(pos, pos + characterState.velocity / velocityScale, Color.BLUE)
-        end
+    -- Walls
+    for _, wallInfo in characterState.walls do
+        DebugDraw:DrawLine(wallInfo.point, wallInfo.point + wallInfo.normal, Color.WHITE)
+    end
 
-        -- Stairs
-        if self.stairsMotion and self.stairsMotion.foundStair then
-            local STAIRS_AXIS_LEN = 0.25
+    -- Velocities
+    if self.horizontalMotion then
+        local velocityScale = self.horizontalMotion.options.walkSpeed
+        DebugDraw:DrawLine(pos, pos + characterState.velocity / velocityScale, Color.BLUE)
+    end
 
-            local target = self.stairsMotion.endPosition
+    -- Stairs
+    if self.stairsMotion and self.stairsMotion.foundStair then
+        local STAIRS_AXIS_LEN = 0.25
 
-            DebugDraw:DrawMarker(self.stairsMotion.beginPosition, Color.AQUA)
-            DebugDraw:DrawMarker(target, Color.AQUA)
+        local target = self.stairsMotion.endPosition
 
-            DebugDraw:DrawLine(
-                target, target + self.stairsMotion.wallTangent * STAIRS_AXIS_LEN, Color.RED
-            )
+        DebugDraw:DrawMarker(self.stairsMotion.beginPosition, Color.AQUA)
+        DebugDraw:DrawMarker(target, Color.AQUA)
 
-            DebugDraw:DrawLine(
-                target, target + self.stairsMotion.slopeNormal * STAIRS_AXIS_LEN, Color.GREEN
-            )
+        DebugDraw:DrawLine(
+            target, target + self.stairsMotion.wallTangent * STAIRS_AXIS_LEN, Color.RED
+        )
 
-            DebugDraw:DrawLine(
-                target, target + self.stairsMotion.motionVector * STAIRS_AXIS_LEN, Color.BLUE
-            )
-        end
+        DebugDraw:DrawLine(
+            target, target + self.stairsMotion.slopeNormal * STAIRS_AXIS_LEN, Color.GREEN
+        )
+
+        DebugDraw:DrawLine(
+            target, target + self.stairsMotion.motionVector * STAIRS_AXIS_LEN, Color.BLUE
+        )
     end
 end
 
@@ -147,7 +147,9 @@ table.sort(STATES, function(a, b)
 end)
 
 function DebugCharacterImpl._Process(self: DebugCharacter, delta: number)
-    assert(self.character)
+    if not self.character then
+        return
+    end
 
     local characterState = self.character.state
 
