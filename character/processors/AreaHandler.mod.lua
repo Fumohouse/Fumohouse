@@ -18,17 +18,9 @@ function AreaHandler.new()
 end
 
 function AreaHandler.Process(self: AreaHandler, state: MotionState.MotionState, delta: number)
-    local collideParams = PhysicsShapeQueryParameters3D.new()
-    collideParams.shape = state.mainCollisionShape
-    collideParams.transform = state.mainCollider.globalTransform
-    collideParams.collideWithAreas = true
-    collideParams.collideWithBodies = false
-
-    local result = state.GetWorld3D().directSpaceState:IntersectShape(collideParams)
     local currentMap = assert(MapManager.currentMap)
 
-    for _, data: Dictionary in result do
-        local area = data:Get("collider") :: Area3D
+    for _, area in state.intersections.areas do
         if not area:HasMeta("playlist") then
             continue
         end

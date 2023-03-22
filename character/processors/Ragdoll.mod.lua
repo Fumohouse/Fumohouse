@@ -69,23 +69,13 @@ function Ragdoll.Process(self: Ragdoll, state: MotionState.MotionState, delta: n
 
         -- Find seat
         if not state.isRagdoll then
-            local SEAT_MARGIN = 0.1
-
-            local seatParams = PhysicsShapeQueryParameters3D.new()
-            seatParams.shape = state.mainCollisionShape
-            seatParams.transform = state.mainCollider.globalTransform
-            seatParams.margin = SEAT_MARGIN
-
-            local result = state.GetWorld3D().directSpaceState:IntersectShape(seatParams)
-
-            for _, dictionary: Dictionary in result do
-                local node = dictionary:Get("collider") :: Node3D
-                if (not self.lastSeat or node:GetInstanceId() ~= self.lastSeat:GetInstanceId()) and node:IsA(Seat) then
+            for _, body in state.intersections.bodies do
+                if (not self.lastSeat or body:GetInstanceId() ~= self.lastSeat:GetInstanceId()) and body:IsA(Seat) then
                     state:SetRagdoll(true)
                     ctx:SetState(MotionState.CharacterState.SITTING)
                     ctx:CancelProcessor(Move.ID)
 
-                    local seat = node :: Seat.Seat
+                    local seat = body :: Seat.Seat
                     seat.occupant = state.node:GetPath()
                     self.currentSeat = seat
                 end

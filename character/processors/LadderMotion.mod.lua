@@ -32,32 +32,16 @@ end
 function LadderMotion.Process(self: LadderMotion, state: MotionState.MotionState, delta: number)
     self.velocity = Vector3.ZERO
 
-    if state.isRagdoll then
-        return
-    end
-
-    if #state.walls == 0 then
+    if state.isRagdoll or #state.walls == 0 then
         return
     end
 
     local ctx = state.ctx
 
-    local collideParams = PhysicsShapeQueryParameters3D.new()
-    collideParams.shape = state.mainCollisionShape
-    collideParams.transform = state.mainCollider.globalTransform
-    collideParams.collideWithAreas = true
-    collideParams.collideWithBodies = false
-
-    local directSpaceState = state.GetWorld3D().directSpaceState
-    local result = directSpaceState:IntersectShape(collideParams)
-
     local ladder: Area3D?
-
-    for _, data: Dictionary in result do
-        local collider = data:Get("collider") :: Area3D
-
-        if collider:IsInGroup("ladder") then
-            ladder = collider
+    for _, area in state.intersections.areas do
+        if area:IsInGroup("ladder") then
+            ladder = area
             break
         end
     end
@@ -112,7 +96,7 @@ function LadderMotion.Process(self: LadderMotion, state: MotionState.MotionState
                 groundParams.from = characterTransform.origin
                 groundParams.to = groundParams.from + Vector3.DOWN * self.options.breakHeight
 
-                local groundResult = directSpaceState:IntersectRay(groundParams)
+                local groundResult = state.GetWorld3D().directSpaceState:IntersectRay(groundParams)
 
                 if not groundResult:Has("normal") or not state:IsStableGround(groundResult:Get("normal") :: Vector3) then
                     ctx:CancelProcessor(HorizontalMotion.ID)

@@ -142,6 +142,11 @@ function MotionState.new()
 
     -- State
     self.walls = {} :: {WallInfo}
+    self.intersections = {
+        bodies = {} :: {CollisionObject3D},
+        areas = {} :: {Area3D},
+    }
+
     self.velocity = Vector3.ZERO
 
     -- Managed locally --
@@ -177,7 +182,7 @@ function MotionState.new()
 
     addProcessor("Move")
     addProcessor("Grounding")
-    addProcessor("Walls")
+    addProcessor("Intersections")
 
     addProcessor("AreaHandler")
     addProcessor("CharacterAnimator")
