@@ -98,7 +98,7 @@ function LadderMotion.Process(self: LadderMotion, state: MotionState.MotionState
 
                 local groundResult = state.GetWorld3D().directSpaceState:IntersectRay(groundParams)
 
-                if not groundResult:Has("normal") or not state:IsStableGround(groundResult:Get("normal") :: Vector3) then
+                if groundResult:IsEmpty() or not state:IsStableGround(groundResult:Get("normal") :: Vector3) then
                     ctx:CancelProcessor(HorizontalMotion.ID)
                 end
             end

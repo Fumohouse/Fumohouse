@@ -133,7 +133,7 @@ function StairsMotion.findStepUp(self: StairsMotion, state: MotionState.MotionSt
     rayParams.to = rayParams.from + Vector3.DOWN * (RAY_DISTANCE + RAY_MARGIN)
 
     local rayResult = state.GetWorld3D().directSpaceState:IntersectRay(rayParams)
-    if not rayResult:Has("normal") or not self:isValidStair(rayResult:Get("normal") :: Vector3) then
+    if rayResult:IsEmpty() or not self:isValidStair(rayResult:Get("normal") :: Vector3) then
         return
     end
 
@@ -168,7 +168,7 @@ function StairsMotion.findStepDown(self: StairsMotion, state: MotionState.Motion
         checkRayParams.to = checkRayParams.from + rayMotion
 
         local checkRayResult = directSpaceState:IntersectRay(checkRayParams)
-        if not checkRayResult:Has("normal") or not self:isValidStair(checkRayResult:Get("normal") :: Vector3) then
+        if checkRayResult:IsEmpty() or not self:isValidStair(checkRayResult:Get("normal") :: Vector3) then
             break
         end
 

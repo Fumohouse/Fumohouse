@@ -77,7 +77,6 @@ function CharacterImpl._Ready(self: Character)
         GetTransform = function() return self.globalTransform end,
         SetTransform = function(transform) self.globalTransform = transform end,
         GetWorld3D = function() return self:GetWorld3D() end,
-        MoveAndCollide = function(motion, margin) return self:MoveAndCollide(motion, false, margin) end,
     })
 
     self:updateCamera()

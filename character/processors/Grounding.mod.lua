@@ -37,11 +37,10 @@ function Grounding.Process(self: Grounding, state: MotionState.MotionState, delt
     params.maxCollisions = 4
 
     local result = PhysicsTestMotionResult3D.new()
-    local didCollide = state:TestMotion(params, result)
 
     local foundGround = false
 
-    if didCollide then
+    if state:TestMotion(params, result) then
         for i = result:GetCollisionCount() - 1, 0, -1 do
             local normal = result:GetCollisionNormal(i)
 

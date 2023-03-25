@@ -188,6 +188,13 @@ use_collision = true
 size = Vector3(100, 0.5, 100)
 material = ExtResource("3_0827c")
 
+[node name="Slope" type="CSGPolygon3D" parent="Map"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 27, 5, 11)
+use_collision = true
+polygon = PackedVector2Array(-3, 0, 3, 0, 3, 6)
+depth = 5.0
+material = ExtResource("3_0827c")
+
 [node name="Rooves" type="CSGCombiner3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 4.75, -6.5)
 use_collision = true

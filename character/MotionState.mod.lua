@@ -132,7 +132,6 @@ function MotionState.new()
     self.GetTransform = function() return Transform3D.IDENTITY end
     self.SetTransform = function(transform: Transform3D) end
     self.GetWorld3D = (function() return assert(nil) end) :: () -> World3D
-    self.MoveAndCollide = (function() return nil end) :: (motion: Vector3, margin: number) -> KinematicCollision3D?
 
     -- Options
     self.options = {
@@ -208,7 +207,6 @@ function MotionState.Initialize(self: MotionState, config)
     self.GetTransform = config.GetTransform
     self.SetTransform = config.SetTransform
     self.GetWorld3D = config.GetWorld3D
-    self.MoveAndCollide = config.MoveAndCollide
 
     self:SetRagdoll(false)
 

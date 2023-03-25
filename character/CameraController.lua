@@ -98,7 +98,7 @@ function CameraControllerImpl.processThirdPerson(self: CameraController)
     parameters.to = pos
 
     local result = self:GetWorld3D().directSpaceState:IntersectRay(parameters)
-    if result:Has("position") then
+    if not result:IsEmpty() then
         pos = (result:Get("position") :: Vector3) * 0.99
     end
 

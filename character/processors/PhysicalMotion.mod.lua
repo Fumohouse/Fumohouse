@@ -78,9 +78,8 @@ function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionS
         roofParams.margin = state.options.margin
 
         local roofResult = PhysicsTestMotionResult3D.new()
-        local didCollide = state:TestMotion(roofParams, roofResult)
 
-        if didCollide then
+        if state:TestMotion(roofParams, roofResult) then
             self.velocity = self.velocity:Bounce(roofResult:GetCollisionNormal()) * self.options.jumpBounceFactor
 
             -- Prevent re-jumping midair
@@ -105,7 +104,7 @@ function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionS
                 fallRayParams.to = fallRayParams.from + Vector3.DOWN * self.options.fallingAltitude
 
                 local fallRayResult = state.GetWorld3D().directSpaceState:IntersectRay(fallRayParams)
-                if not fallRayResult:Has("collider") then
+                if fallRayResult:IsEmpty() then
                     ctx:SetState(MotionState.CharacterState.FALLING)
                 end
             end
