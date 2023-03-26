@@ -90,7 +90,7 @@ function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionS
     ctx:AddOffset(self.velocity * delta)
 
     -- Decide whether character is falling
-    if state.isGrounded or state.isRagdoll then
+    if state.isGrounded then
         self.airborneTime = 0
     else
         self.airborneTime += delta
