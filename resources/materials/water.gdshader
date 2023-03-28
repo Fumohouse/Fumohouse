@@ -6,7 +6,7 @@
 //   https://catlikecoding.com/unity/tutorials/flow/waves/ (Catlike Coding/Jasper Flick, MIT-0)
 
 shader_type spatial;
-render_mode shadows_disabled;
+render_mode shadows_disabled, cull_disabled, depth_draw_always;
 
 #include "common.gdshaderinc"
 
@@ -26,6 +26,7 @@ uniform vec3 fresnel_settings = vec3(-0.3, 0.6, 2.5); // bias, scale, power
 group_uniforms Depth;
 uniform vec3 fog_color : source_color = vec3(0.0);
 uniform float fog_density : hint_range(0.0, 2.0) = 0.5;
+uniform float background_fog_factor : hint_range(0.0, 1.0) = 0.75;
 
 uniform vec3 foam_color : source_color = vec3(1.0);
 uniform float foam_distance : hint_range(0.0, 2.0) = 0.1;
@@ -130,6 +131,13 @@ void fragment() {
     ROUGHNESS = roughness;
 
     // Exponential height fog model
-    float fog_factor = exp2(-fog_density * depth_difference);
+    const float fog_distance_thresh = 100.0;
+    float fog_factor;
+    if (background_depth > fog_distance_thresh) {
+        fog_factor = background_fog_factor;
+    } else {
+        fog_factor = exp2(-fog_density * depth_difference);
+    }
+
     EMISSION = mix(fog_color, texture(screen_texture, screen_uv).rgb, fog_factor) * (1.0 - albedo.a);
 }
