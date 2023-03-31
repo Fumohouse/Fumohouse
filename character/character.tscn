@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bdricnhkc377e"]
+[gd_scene load_steps=40 format=3 uid="uid://bdricnhkc377e"]
 
 [ext_resource type="Script" path="res://character/Character.lua" id="1_esdqo"]
 [ext_resource type="PackedScene" uid="uid://dp4hh5fn4ecp4" path="res://assets/models/rig/rig.glb" id="6_s8jgh"]
@@ -66,6 +66,9 @@ input_3/reset = true
 input_4/name = "vertical"
 input_4/auto_advance = false
 input_4/reset = true
+input_5/name = "swim"
+input_5/auto_advance = false
+input_5/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7v4ot"]
 animation = &"run"
@@ -74,6 +77,23 @@ animation = &"run"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2sdlj"]
 animation = &"sit"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h1uw5"]
+animation = &"swim"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6umnt"]
+animation = &"swim_idle"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_13rmt"]
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_c2q7r"]
+xfade_time = 0.2
+input_0/name = "idle"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "swim"
+input_1/auto_advance = false
+input_1/reset = true
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_563ja"]
 input_0/name = "fall"
@@ -89,7 +109,7 @@ animation = &"walk"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_gnl2h"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ycajw"]
-graph_offset = Vector2(-588.262, -321.603)
+graph_offset = Vector2(-828.389, -7.86783)
 nodes/base/node = SubResource("AnimationNodeAnimation_bcnwp")
 nodes/base/position = Vector2(-80, -200)
 nodes/climb/node = SubResource("AnimationNodeAnimation_hqkmq")
@@ -115,13 +135,21 @@ nodes/run_speed/node = SubResource("AnimationNodeTimeScale_lmh46")
 nodes/run_speed/position = Vector2(-260, 240)
 nodes/sit/node = SubResource("AnimationNodeAnimation_2sdlj")
 nodes/sit/position = Vector2(-80, 40)
+nodes/swim/node = SubResource("AnimationNodeAnimation_h1uw5")
+nodes/swim/position = Vector2(-400, 720)
+nodes/swim_idle/node = SubResource("AnimationNodeAnimation_6umnt")
+nodes/swim_idle/position = Vector2(-260, 600)
+nodes/swim_speed/node = SubResource("AnimationNodeTimeScale_13rmt")
+nodes/swim_speed/position = Vector2(-260, 720)
+nodes/swimming/node = SubResource("AnimationNodeTransition_c2q7r")
+nodes/swimming/position = Vector2(-80, 540)
 nodes/vertical/node = SubResource("AnimationNodeTransition_563ja")
 nodes/vertical/position = Vector2(-80, 340)
 nodes/walk/node = SubResource("AnimationNodeAnimation_x5u6q")
 nodes/walk/position = Vector2(-420, 100)
 nodes/walk_speed/node = SubResource("AnimationNodeTimeScale_gnl2h")
 nodes/walk_speed/position = Vector2(-260, 100)
-node_connections = [&"output", 0, &"jump_oneshot", &"climb_speed", 0, &"climb", &"horizontal", 0, &"walk_speed", &"horizontal", 1, &"run_speed", &"jump_oneshot", 0, &"main", &"jump_oneshot", 1, &"jump", &"main", 0, &"base", &"main", 1, &"idle", &"main", 2, &"sit", &"main", 3, &"horizontal", &"main", 4, &"vertical", &"run_speed", 0, &"run", &"vertical", 0, &"fall", &"vertical", 1, &"climb_speed", &"walk_speed", 0, &"walk"]
+node_connections = [&"output", 0, &"jump_oneshot", &"climb_speed", 0, &"climb", &"horizontal", 0, &"walk_speed", &"horizontal", 1, &"run_speed", &"jump_oneshot", 0, &"main", &"jump_oneshot", 1, &"jump", &"main", 0, &"base", &"main", 1, &"idle", &"main", 2, &"sit", &"main", 3, &"horizontal", &"main", 4, &"vertical", &"main", 5, &"swimming", &"run_speed", 0, &"run", &"vertical", 0, &"fall", &"vertical", 1, &"climb_speed", &"walk_speed", 0, &"walk", &"swimming", 0, &"swim_idle", &"swimming", 1, &"swim_speed", &"swim_speed", 0, &"swim"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_raqf0"]
 _data = {
@@ -254,6 +282,10 @@ parameters/main/current_state = "base"
 parameters/main/transition_request = ""
 parameters/main/current_index = 0
 parameters/run_speed/scale = 1.0
+parameters/swim_speed/scale = 1.0
+parameters/swimming/current_state = ""
+parameters/swimming/transition_request = ""
+parameters/swimming/current_index = -1
 parameters/vertical/current_state = ""
 parameters/vertical/transition_request = "fall"
 parameters/vertical/current_index = 0

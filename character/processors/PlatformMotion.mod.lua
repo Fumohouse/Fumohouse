@@ -3,6 +3,7 @@
 ]]
 
 local MotionState = require("../MotionState.mod")
+local Utils = require("../../utils/Utils.mod")
 
 local PlatformMotion = setmetatable({
     ID = "platform",
@@ -16,7 +17,7 @@ function PlatformMotion.new()
     self.linearVelocity = Vector3.ZERO
     self.angularVelocity = 0
     self.options = {
-        dragCoeff = 0.005
+        dragCoeff = 0.01
     }
 
     return setmetatable(self, PlatformMotion)
@@ -41,7 +42,7 @@ function PlatformMotion.Process(self: PlatformMotion, state: MotionState.MotionS
         self.angularVelocity = bodyState.angularVelocity.y
     else
         -- Physically imprecise but probably good enough (and better than nothing)
-        self.linearVelocity = self.linearVelocity:MoveToward(Vector3.ZERO, self.options.dragCoeff * self.linearVelocity:Length())
+        self.linearVelocity = Utils.ApplyDrag(self.linearVelocity, self.options.dragCoeff, delta)
         self.angularVelocity = move_toward(self.angularVelocity, 0, self.options.dragCoeff * self.angularVelocity)
     end
 

@@ -53,7 +53,9 @@ function LadderMotion.Process(self: LadderMotion, state: MotionState.MotionState
         local characterTransform = state.GetTransform()
 
         local charFwd = -characterTransform.basis.z
-        if charFwd:AngleTo(ladderFwd) > math.rad(self.options.maxAngle) then
+        local charFwdAlt = characterTransform.basis.y -- e.g. swimming
+        local maxAngleRad = math.rad(self.options.maxAngle)
+        if charFwd:AngleTo(ladderFwd) > maxAngleRad and charFwdAlt:AngleTo(ladderFwd) > maxAngleRad then
             return
         end
 

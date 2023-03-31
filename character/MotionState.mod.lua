@@ -9,6 +9,7 @@ local MotionState = {
         WALKING = 8,
         CLIMBING = 16,
         SITTING = 32,
+        SWIMMING = 64,
     },
 }
 
@@ -75,6 +76,8 @@ function MotionContext.new()
     -- (i.e. WALKING when CLIMBING)
     self.cancelledStates = 0
 
+    self.messages = {} :: {[string]: any}
+
     -- Output
     self.newState = MotionState.CharacterState.NONE
     self.offset = Vector3.ZERO
@@ -86,6 +89,7 @@ end
 function MotionContext.Reset(self: MotionContext)
     table.clear(self.cancelledProcessors)
     self.cancelledStates = 0
+    table.clear(self.messages)
     self.newState = 0
     self.offset = Vector3.ZERO
 end
@@ -156,7 +160,6 @@ function MotionState.new()
     self.isGrounded = false
     self.groundRid = RID.new()
     self.groundNormal = Vector3.ZERO
-    self.groundOverride = {} :: {[string]: Vector3}
 
     self.isRagdoll = false
 
@@ -174,6 +177,7 @@ function MotionState.new()
     addProcessor("Ragdoll")
 
     addProcessor("LadderMotion")
+    addProcessor("SwimMotion")
     addProcessor("HorizontalMotion")
     addProcessor("PhysicalMotion")
     addProcessor("StairsMotion")
@@ -258,7 +262,7 @@ function MotionState.GetMotionProcessor(self: MotionState, id: string): any
 end
 
 function MotionState.IsState(self: MotionState, state: number): boolean
-    return bit32.band(self.state, state) ~= 0
+    return bit32.band(self.state, state) == state
 end
 
 function MotionState.Update(self: MotionState, delta: number)

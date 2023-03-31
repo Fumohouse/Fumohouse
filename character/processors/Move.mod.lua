@@ -9,6 +9,7 @@ local MotionState = require("../MotionState.mod")
 
 local Move = setmetatable({
     ID = "move",
+    CANCEL_UPRIGHTING = "cancelUprighting",
 }, MotionState.MotionProcessor)
 
 Move.__index = Move
@@ -230,12 +231,10 @@ function Move.Process(self: Move, state: MotionState.MotionState, delta: number)
 
     local targetBasis: Basis
 
-    if state.isRagdoll then
+    if state.isRagdoll or ctx.messages[Move.CANCEL_UPRIGHTING] then
         targetBasis = ctx.newBasis
     else
-        -- Y rotation last to have correct orientation when standing up
-        local basisUpright = Basis.FromEuler(Vector3.new(0, ctx.newBasis:GetEuler(Enum.EulerOrder.ZXY).y, 0))
-        targetBasis = ctx.newBasis:Slerp(basisUpright, Utils.LerpWeight(delta, 1e-10))
+        targetBasis = ctx.newBasis:Slerp(Utils.BasisUpright(ctx.newBasis), Utils.LerpWeight(delta, 1e-8))
     end
 
     state.SetTransform(Transform3D.new(targetBasis, origTransform.origin + offset))

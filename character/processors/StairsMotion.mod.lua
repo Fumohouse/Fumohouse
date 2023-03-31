@@ -3,6 +3,7 @@
 ]]
 
 local MotionState = require("../MotionState.mod")
+local Grounding = require("Grounding.mod")
 
 local StairsMotion = setmetatable({
     ID = "stairs",
@@ -47,8 +48,6 @@ function StairsMotion.reset(self: StairsMotion, state: MotionState.MotionState)
     self.wallTangent = Vector3.ZERO
     self.stairNormal = Vector3.ZERO
     self.slopeNormal = Vector3.ZERO
-
-    state.groundOverride[StairsMotion.ID] = nil
 end
 
 function StairsMotion.HandleCancel(self: StairsMotion, state: MotionState.MotionState)
@@ -231,7 +230,7 @@ function StairsMotion.applyMotion(self: StairsMotion, state: MotionState.MotionS
     self.slopeNormal = self.wallTangent:Cross(self.motionVector):Normalized()
 
     -- Rely on HorizontalMotion to walk up the slope using just the normal
-    state.groundOverride[StairsMotion.ID] = self.slopeNormal
+    state.ctx.messages[Grounding.GROUND_OVERRIDE] = self.slopeNormal
 end
 
 function StairsMotion.handleStairs(self: StairsMotion, state: MotionState.MotionState, delta: number)

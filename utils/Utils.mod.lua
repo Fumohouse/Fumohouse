@@ -19,4 +19,13 @@ function Utils.FormatVector3(vec: Vector3)
     return string.format("(%.2f %.2f %.2f)", vec.x, vec.y, vec.z)
 end
 
+function Utils.BasisUpright(basis: Basis)
+    -- Y rotation last to have correct orientation when standing up
+    return Basis.FromEuler(Vector3.new(0, basis:GetEuler(Enum.EulerOrder.ZXY).y, 0))
+end
+
+function Utils.ApplyDrag(vec: Vector3, coeff: number, delta: number)
+    return vec:MoveToward(Vector3.ZERO, coeff * vec:Length() * delta)
+end
+
 return Utils

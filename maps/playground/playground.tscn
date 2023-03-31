@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cs26kmefu5xmq" path="res://assets/textures/logo_dark.svg" id="2_agg1b"]
 [ext_resource type="Material" path="res://maps/playground/assets/prototype.tres" id="3_0827c"]
 [ext_resource type="Script" path="res://nodes/Billboard.lua" id="5_5g01e"]
+[ext_resource type="PackedScene" uid="uid://lero4iw0i34c" path="res://maps/playground/ladder.tscn" id="5_a2h7v"]
 [ext_resource type="Script" path="res://maps/playground/PathFollower.lua" id="5_v2edg"]
 [ext_resource type="Script" path="res://maps/playground/RotatingBody.lua" id="6_78pbp"]
 [ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="6_jvjd4"]
@@ -13,9 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://d0mo4s2hqyov3" path="res://ui/music_controller/music_controller.tscn" id="7_ct7js"]
 [ext_resource type="PackedScene" uid="uid://bl7y215xsajnc" path="res://maps/playground/assets/models/arc.glb" id="9_i0s7i"]
 [ext_resource type="Shader" path="res://resources/materials/water.gdshader" id="10_0crbr"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_v2ei6"]
-size = Vector3(2, 5, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_11hvr"]
 friction = 0.5
@@ -114,7 +112,7 @@ shader_parameter/wave_2 = Vector4(-0.3, -0.2, 0.1, 2)
 shader_parameter/wave_3 = Vector4(1, 0.3, 0.1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dylo3"]
-size = Vector3(15, 4, 15)
+size = Vector3(15, 3.8, 15)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ksqra"]
 seamless = true
@@ -399,55 +397,8 @@ use_collision = true
 size = Vector3(0.5, 0.2, 3)
 material = ExtResource("3_0827c")
 
-[node name="Ladder" type="Area3D" parent="Map" groups=["ladder"]]
+[node name="Ladder" parent="Map" instance=ExtResource("5_a2h7v")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 2.5, 22)
-
-[node name="Rungs" type="CSGCombiner3D" parent="Map/Ladder"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -2.5, 0)
-use_collision = true
-
-[node name="1" type="CSGBox3D" parent="Map/Ladder/Rungs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.395124, 0)
-size = Vector3(0.5, 0.2, 2)
-
-[node name="2" type="CSGBox3D" parent="Map/Ladder/Rungs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.895124, 0)
-size = Vector3(0.5, 0.2, 2)
-
-[node name="3" type="CSGBox3D" parent="Map/Ladder/Rungs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39512, 0)
-size = Vector3(0.5, 0.2, 2)
-
-[node name="4" type="CSGBox3D" parent="Map/Ladder/Rungs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89512, 0)
-size = Vector3(0.5, 0.2, 2)
-
-[node name="5" type="CSGBox3D" parent="Map/Ladder/Rungs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39512, 0)
-size = Vector3(0.5, 0.2, 2)
-
-[node name="6" type="CSGBox3D" parent="Map/Ladder/Rungs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.89512, 0)
-size = Vector3(0.5, 0.2, 2)
-
-[node name="7" type="CSGBox3D" parent="Map/Ladder/Rungs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.39512, 0)
-size = Vector3(0.5, 0.2, 2)
-
-[node name="8" type="CSGBox3D" parent="Map/Ladder/Rungs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.89512, 0)
-size = Vector3(0.5, 0.2, 2)
-
-[node name="9" type="CSGBox3D" parent="Map/Ladder/Rungs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.39512, 0)
-size = Vector3(0.5, 0.2, 2)
-
-[node name="10" type="CSGBox3D" parent="Map/Ladder/Rungs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.89512, 0)
-size = Vector3(0.5, 0.2, 2)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Ladder"]
-shape = SubResource("BoxShape3D_v2ei6")
 
 [node name="Interactables" type="Node3D" parent="Map"]
 
@@ -554,10 +505,13 @@ material_override = SubResource("ShaderMaterial_l2vbe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 20)
 use_collision = true
 
+[node name="Ladder" parent="Map/Pool" instance=ExtResource("5_a2h7v")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5, 1.5, 0)
+
 [node name="Water" type="Area3D" parent="Map/Pool" groups=["water"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Pool/Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 shape = SubResource("BoxShape3D_dylo3")
 
 [node name="Surface" type="MeshInstance3D" parent="Map/Pool"]
@@ -574,6 +528,13 @@ material = ExtResource("3_0827c")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 operation = 2
 size = Vector3(15, 4, 15)
+
+[node name="Slope" type="CSGPolygon3D" parent="Map/Pool"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 7.5)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 5, 0, 5, 4)
+depth = 5.0
+material = ExtResource("3_0827c")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, 0.286788, 0.409576, 0, -0.819152, 0.573577, 0.5, -0.496732, -0.709406, 0, 7.2908, -10)

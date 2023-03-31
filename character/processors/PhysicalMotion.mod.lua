@@ -4,9 +4,12 @@
 ]]
 
 local MotionState = require("../MotionState.mod")
+local Utils = require("../../utils/Utils.mod")
 
 local PhysicalMotion = setmetatable({
     ID = "physical",
+    DRAG = "drag",
+    JUMP = "jump",
 }, MotionState.MotionProcessor)
 
 PhysicalMotion.__index = PhysicalMotion
@@ -52,18 +55,28 @@ function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionS
     local ctx = state.ctx
     local wasJumping = state:IsState(MotionState.CharacterState.JUMPING)
 
+    -- true: force jump, false: block jump
+    local jumpMsg = ctx.messages[PhysicalMotion.JUMP] :: boolean?
+
     if state.isGrounded and not wasJumping or state.isRagdoll then
         self.velocity = Vector3.ZERO
-        self.cancelJump = false
+        self.cancelJump = jumpMsg == false
     else
         self.velocity += Vector3.DOWN * self.options.gravity * delta
     end
 
-    if Input.singleton:IsActionPressed("move_jump") and
+    local drag = ctx.messages[PhysicalMotion.DRAG] :: number?
+    if drag then
+        self.velocity = Utils.ApplyDrag(self.velocity, drag, delta)
+    end
+
+    if jumpMsg == true or
+            (Input.singleton:IsActionPressed("move_jump") and
             self.airborneTime < self.options.jumpForgiveness and
             not self.cancelJump and
-            not wasJumping then
+            not wasJumping) then
         self.velocity = Vector3.UP * self:getJumpVelocity()
+        self.cancelJump = true
         ctx:SetState(MotionState.CharacterState.JUMPING)
 
         state:SetRagdoll(false)
@@ -81,9 +94,6 @@ function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionS
 
         if state:TestMotion(roofParams, roofResult) then
             self.velocity = self.velocity:Bounce(roofResult:GetCollisionNormal()) * self.options.jumpBounceFactor
-
-            -- Prevent re-jumping midair
-            self.cancelJump = true
         end
     end
 

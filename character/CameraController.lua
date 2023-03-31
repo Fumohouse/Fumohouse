@@ -73,7 +73,7 @@ end
 function CameraControllerImpl.processFirstPerson(self: CameraController)
     if self.focusNode then
         self.globalTransform = Transform3D.new(
-            self.focusNode.globalTransform.basis:Orthonormalized(),
+            Basis.IDENTITY,
             self:GetFocalPoint()
         )
     end

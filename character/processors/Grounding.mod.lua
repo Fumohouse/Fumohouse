@@ -6,6 +6,7 @@ local MotionState = require("../MotionState.mod")
 
 local Grounding = setmetatable({
     ID = "grounding",
+    GROUND_OVERRIDE = "groundOverride",
 }, MotionState.MotionProcessor)
 
 Grounding.__index = Grounding
@@ -21,8 +22,8 @@ function Grounding.new()
 end
 
 function Grounding.Process(self: Grounding, state: MotionState.MotionState, delta: number)
-    local overrideKey, overrideNormal = next(state.groundOverride)
-    if overrideKey then
+    local overrideNormal = state.ctx.messages[Grounding.GROUND_OVERRIDE] :: Vector3?
+    if overrideNormal then
         state.isGrounded = true
         state.groundNormal = overrideNormal
         return
@@ -52,7 +53,7 @@ function Grounding.Process(self: Grounding, state: MotionState.MotionState, delt
             end
         end
 
-        local shouldSnap = not state.isRagdoll and state:IsState(MotionState.CharacterState.JUMPING)
+        local shouldSnap = not state.isRagdoll and is_equal_approx(state.ctx.offset.y, 0)
 
         if foundGround and shouldSnap then
             -- dot to account for any possible horiz. movement due to depenetration
