@@ -25,6 +25,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="BackButton" parent="." instance=ExtResource("2_ykoyo")]
+visible = false
 layout_mode = 0
 offset_top = 30.0
 offset_bottom = 78.0

@@ -36,7 +36,6 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 
 [node name="BackButton" type="Button"]
-visible = false
 custom_minimum_size = Vector2(128, 48)
 offset_right = 128.0
 offset_bottom = 48.0
@@ -62,6 +61,7 @@ alignment = 1
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 2
 texture = ExtResource("2_xnbrg")
 expand_mode = 1
 
