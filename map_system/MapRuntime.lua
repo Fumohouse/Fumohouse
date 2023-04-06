@@ -18,7 +18,7 @@ export type MapRuntime = Node3D & typeof(MapRuntimeImpl) & {
 function MapRuntimeImpl._Ready(self: MapRuntime)
     self.camera = self:GetNode("CameraController") :: CameraController.CameraController
     self.players = self:GetNode("Players") :: Node3D
-    self.debugCharacter = self:GetNode("HUD/DebugCharacter") :: DebugCharacter.DebugCharacter
+    self.debugCharacter = self:GetNode("HUD/DebugMenus/DebugCharacter") :: DebugCharacter.DebugCharacter
 
     -- Cannot do at load-time due to cyclic dependency :( (character.tscn -> AreaHandler -> MapRuntime -> character.tscn)
     self.characterScene = assert(load("res://character/character.tscn")) :: PackedScene

@@ -52,7 +52,7 @@ function HorizontalMotion.Process(self: HorizontalMotion, state: MotionState.Mot
     -- TODO: Luau 568: type hack
     assert(direction)
 
-    local targetSpeed = if Input.singleton:IsActionPressed("run") then self.options.runSpeed else self.options.walkSpeed
+    local targetSpeed = if Utils.DoGameInput(state.node) and Input.singleton:IsActionPressed("move_run") then self.options.runSpeed else self.options.walkSpeed
     local targetVelocity = direction * targetSpeed
 
     if direction:LengthSquared() > 0 then

@@ -122,6 +122,14 @@ function CameraControllerImpl.setCameraRotating(self: CameraController, rotating
     self.cameraRotating = rotating
 end
 
+function CameraControllerImpl.HandlePopup(self: CameraController)
+    if self.cameraMode == CameraController.CameraMode.THIRD_PERSON then
+        self:setCameraRotating(false)
+    end
+end
+
+CameraController:RegisterMethod("HandlePopup")
+
 function CameraControllerImpl._Process(self: CameraController, delta: number)
     if not self.current then
         return
@@ -165,6 +173,10 @@ end
 CameraController:RegisterMethodAST("_Process")
 
 function CameraControllerImpl._UnhandledInput(self: CameraController, event: InputEvent)
+    if not Utils.DoGameInput(self) then
+        return
+    end
+
     -- Zoom
     if self.focusNode then
         if event:IsActionPressed("camera_zoom_in") then

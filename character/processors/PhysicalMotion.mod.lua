@@ -71,7 +71,8 @@ function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionS
     end
 
     if jumpMsg == true or
-            (Input.singleton:IsActionPressed("move_jump") and
+            (Utils.DoGameInput(state.node) and
+            Input.singleton:IsActionPressed("move_jump") and
             self.airborneTime < self.options.jumpForgiveness and
             not self.cancelJump and
             not wasJumping) then

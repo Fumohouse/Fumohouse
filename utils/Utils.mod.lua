@@ -28,4 +28,8 @@ function Utils.ApplyDrag(vec: Vector3, coeff: number, delta: number)
     return vec:MoveToward(Vector3.ZERO, coeff * vec:Length() * delta)
 end
 
+function Utils.DoGameInput(self: Node)
+    return self:GetViewport():GuiGetFocusOwner() == nil
+end
+
 return Utils

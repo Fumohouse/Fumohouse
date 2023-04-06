@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://nrh6mhdp4grr"]
+
+[ext_resource type="Theme" uid="uid://c7tdpcfevijlu" path="res://resources/main_theme/main_theme.tres" id="1_1320e"]
+[ext_resource type="Script" path="res://ui/navigation/NavMenu.lua" id="1_x1jme"]
+[ext_resource type="PackedScene" uid="uid://ebykaiwveqe7" path="res://ui/navigation/back_button.tscn" id="2_ykoyo"]
+
+[node name="NavMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_1320e")
+script = ExtResource("1_x1jme")
+
+[node name="Screens" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BackButton" parent="." instance=ExtResource("2_ykoyo")]
+layout_mode = 0
+offset_top = 30.0
+offset_bottom = 78.0

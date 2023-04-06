@@ -1,0 +1,380 @@
+[gd_scene load_steps=24 format=3 uid="uid://bi4nul2t2fnl8"]
+
+[ext_resource type="PackedScene" uid="uid://nrh6mhdp4grr" path="res://ui/navigation/nav_menu.tscn" id="1_67448"]
+[ext_resource type="Texture2D" uid="uid://cewbassnie0qr" path="res://assets/textures/ui/faces_bg.svg" id="1_efpvf"]
+[ext_resource type="Script" path="res://ui/navigation/main_menu/MainMenu.lua" id="2_kqbd2"]
+[ext_resource type="Script" path="res://ui/navigation/main_menu/MainScreen.lua" id="3_gaw40"]
+[ext_resource type="Texture2D" uid="uid://cs26kmefu5xmq" path="res://assets/textures/logo_dark.svg" id="3_w1vre"]
+[ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="4_0v5t1"]
+[ext_resource type="Script" path="res://ui/navigation/main_menu/VersionLabel.lua" id="4_5s06d"]
+[ext_resource type="Script" path="res://ui/navigation/TransitionElement.lua" id="4_ubl7r"]
+[ext_resource type="Shader" path="res://ui/navigation/main_menu/ksk_logo.gdshader" id="5_ka0he"]
+[ext_resource type="Script" path="res://ui/navigation/main_menu/KskLogo.lua" id="5_sft8o"]
+[ext_resource type="Texture2D" uid="uid://l068kvg3crfl" path="res://assets/textures/ksk.svg" id="6_p1kjr"]
+[ext_resource type="Texture2D" uid="uid://bk46ldudbxtal" path="res://assets/textures/ksk_anim.svg" id="6_w867p"]
+[ext_resource type="PackedScene" uid="uid://b3vcp7kq81ujl" path="res://ui/navigation/nav_button.tscn" id="10_16bi3"]
+[ext_resource type="PackedScene" uid="uid://drkq414nse0uk" path="res://ui/navigation/main_menu/main_menu_icon_button.tscn" id="11_adj8w"]
+[ext_resource type="Texture2D" uid="uid://ds6ygslc2b6h" path="res://assets/textures/ui/icons/github.svg" id="12_hk2nd"]
+[ext_resource type="Texture2D" uid="uid://c0lj3tfjrr3r6" path="res://assets/textures/ui/icons/globe-americas.svg" id="13_3cdnb"]
+[ext_resource type="PackedScene" uid="uid://cuwda013sf3b5" path="res://ui/navigation/main_menu/main_menu_bar_button.tscn" id="14_xeyyn"]
+[ext_resource type="Texture2D" uid="uid://cyk66qm4jf7x2" path="res://assets/textures/ui/icons/music-note.svg" id="15_bpb7b"]
+[ext_resource type="Texture2D" uid="uid://bwqgvr4b7aq6j" path="res://assets/textures/ui/icons/bell-fill.svg" id="16_aw72i"]
+[ext_resource type="PackedScene" uid="uid://chehkmfpoevq6" path="res://ui/navigation/nav_button_container.tscn" id="18_wsqm6"]
+[ext_resource type="PackedScene" uid="uid://d0mo4s2hqyov3" path="res://ui/music_controller/music_controller.tscn" id="19_cmuwc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_262lo"]
+shader = ExtResource("5_ka0he")
+shader_parameter/progress = 0.0
+shader_parameter/begin_scale = 0.9
+shader_parameter/end_scale = 1.0
+shader_parameter/default_color = Color(1, 1, 1, 1)
+shader_parameter/base = ExtResource("6_p1kjr")
+shader_parameter/anim = ExtResource("6_w867p")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3x4tp"]
+bg_color = Color(0, 0.333333, 0.647059, 1)
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="MainMenu" instance=ExtResource("1_67448")]
+script = ExtResource("2_kqbd2")
+
+[node name="Background" type="Control" parent="." index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 4.0
+anchor_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_efpvf")
+expand_mode = 1
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Dim" type="ColorRect" parent="Background" index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="PlaceholderScreen" type="PanelContainer" parent="Screens" index="0"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -210.0
+offset_right = 320.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_ubl7r")
+
+[node name="MarginContainer" type="MarginContainer" parent="Screens/PlaceholderScreen" index="0"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Screens/PlaceholderScreen/MarginContainer" index="0"]
+layout_mode = 2
+text = "This is a placeholder screen."
+
+[node name="MainScreen" type="Control" parent="Screens" index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_gaw40")
+
+[node name="NonNavigation" type="Control" parent="Screens/MainScreen" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation" index="0"]
+layout_mode = 1
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 267.0
+offset_bottom = 128.0
+theme_override_constants/separation = 12
+
+[node name="LogoImage" type="TextureRect" parent="Screens/MainScreen/NonNavigation/Logo" index="0"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("3_w1vre")
+expand_mode = 1
+
+[node name="Fumohouse" type="Label" parent="Screens/MainScreen/NonNavigation/Logo" index="1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Fumohouse"
+
+[node name="VersionLabel" type="Control" parent="Screens/MainScreen/NonNavigation" index="1"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -84.0
+offset_bottom = -60.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("4_5s06d")
+
+[node name="Background" type="ColorRect" parent="Screens/MainScreen/NonNavigation/VersionLabel" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="Stage" type="Control" parent="Screens/MainScreen/NonNavigation/VersionLabel" index="1"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 50.0
+offset_bottom = 12.0
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Screens/MainScreen/NonNavigation/VersionLabel/Stage" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16, 0.16, 0.16, 1)
+
+[node name="Text" type="Label" parent="Screens/MainScreen/NonNavigation/VersionLabel/Stage" index="1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.0
+offset_right = 20.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_0v5t1")
+theme_override_font_sizes/font_size = 14
+text = "PLA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Version" type="Label" parent="Screens/MainScreen/NonNavigation/VersionLabel" index="2"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -11.0
+offset_right = 142.0
+offset_bottom = 11.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "2023/02/27"
+vertical_alignment = 1
+
+[node name="LowerLeft" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation" index="2"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -100.0
+offset_right = 293.0
+offset_bottom = -48.0
+grow_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="ksk" type="Control" parent="Screens/MainScreen/NonNavigation/LowerLeft" index="0"]
+custom_minimum_size = Vector2(56, 37)
+layout_mode = 2
+mouse_filter = 1
+script = ExtResource("5_sft8o")
+
+[node name="Logo" type="ColorRect" parent="Screens/MainScreen/NonNavigation/LowerLeft/ksk" index="0"]
+material = SubResource("ShaderMaterial_262lo")
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -20.0
+offset_right = 30.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 20)
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+
+[node name="Separator" type="ColorRect" parent="Screens/MainScreen/NonNavigation/LowerLeft" index="1"]
+custom_minimum_size = Vector2(2, 52)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Screens/MainScreen/NonNavigation/LowerLeft" index="2"]
+custom_minimum_size = Vector2(155, 36)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "voided_etc & co. // 2023
+Made w/ [img=12x12 color=d973b2]res://assets/textures/ui/icons/heart-fill.svg[/img]"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="BottomButtons" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation" index="3"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 325.0
+offset_top = -104.0
+offset_right = 437.0
+offset_bottom = -56.0
+grow_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="Github" parent="Screens/MainScreen/NonNavigation/BottomButtons" index="0" instance=ExtResource("11_adj8w")]
+layout_mode = 2
+link = "https://github.com/Fumohouse/Fumohouse"
+
+[node name="Icon" parent="Screens/MainScreen/NonNavigation/BottomButtons/Github" index="0"]
+texture = ExtResource("12_hk2nd")
+
+[node name="Website" parent="Screens/MainScreen/NonNavigation/BottomButtons" index="1" instance=ExtResource("11_adj8w")]
+layout_mode = 2
+
+[node name="Icon" parent="Screens/MainScreen/NonNavigation/BottomButtons/Website" index="0"]
+texture = ExtResource("13_3cdnb")
+
+[node name="TopBar" type="PanelContainer" parent="Screens/MainScreen/NonNavigation" index="4"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -148.0
+offset_right = -48.0
+offset_bottom = 48.0
+grow_horizontal = 0
+pivot_offset = Vector2(100, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_3x4tp")
+
+[node name="MarginContainer" type="MarginContainer" parent="Screens/MainScreen/NonNavigation/TopBar" index="0"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation/TopBar/MarginContainer" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="MusicButton" parent="Screens/MainScreen/NonNavigation/TopBar/MarginContainer/HBoxContainer" index="0" instance=ExtResource("14_xeyyn")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Icon" parent="Screens/MainScreen/NonNavigation/TopBar/MarginContainer/HBoxContainer/MusicButton" index="0"]
+texture = ExtResource("15_bpb7b")
+
+[node name="NotificationButton" parent="Screens/MainScreen/NonNavigation/TopBar/MarginContainer/HBoxContainer" index="1" instance=ExtResource("14_xeyyn")]
+layout_mode = 2
+
+[node name="Icon" parent="Screens/MainScreen/NonNavigation/TopBar/MarginContainer/HBoxContainer/NotificationButton" index="0"]
+texture = ExtResource("16_aw72i")
+
+[node name="MainButtons" parent="Screens/MainScreen" index="1" instance=ExtResource("18_wsqm6")]
+layout_mode = 1
+offset_top = -152.0
+offset_right = 450.0
+offset_bottom = 152.0
+alignment = 1
+
+[node name="PlayButton" parent="Screens/MainScreen/MainButtons" index="0" instance=ExtResource("10_16bi3")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="InfoButton" parent="Screens/MainScreen/MainButtons" index="1" instance=ExtResource("10_16bi3")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Credits/Info"
+
+[node name="ChangelogButton" parent="Screens/MainScreen/MainButtons" index="2" instance=ExtResource("10_16bi3")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Changelog"
+
+[node name="OptionsButton" parent="Screens/MainScreen/MainButtons" index="3" instance=ExtResource("10_16bi3")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Options"
+
+[node name="ExitButton" parent="Screens/MainScreen/MainButtons" index="4" instance=ExtResource("10_16bi3")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(225, 48)
+layout_mode = 2
+text = "Exit"
+
+[node name="MusicController" parent="Screens/MainScreen" index="2" instance=ExtResource("19_cmuwc")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -348.0
+offset_top = 64.0
+offset_right = -48.0
+offset_bottom = 144.0
+grow_horizontal = 0
+pivot_offset = Vector2(300, 40)
+
+[node name="Dim" type="ColorRect" parent="." index="3"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
+[editable path="Screens/MainScreen/NonNavigation/BottomButtons/Github"]
+[editable path="Screens/MainScreen/NonNavigation/BottomButtons/Website"]
+[editable path="Screens/MainScreen/NonNavigation/TopBar/MarginContainer/HBoxContainer/MusicButton"]
+[editable path="Screens/MainScreen/NonNavigation/TopBar/MarginContainer/HBoxContainer/NotificationButton"]

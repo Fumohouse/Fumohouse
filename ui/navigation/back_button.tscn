@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://ebykaiwveqe7"]
+
+[ext_resource type="Script" path="res://ui/navigation/BackButton.lua" id="1_vu15t"]
+[ext_resource type="Texture2D" uid="uid://bbgpquxbk2c1m" path="res://assets/textures/ui/icons/arrow-left-short.svg" id="2_xnbrg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26wrj"]
+bg_color = Color(0.7, 0.35, 0.571667, 1)
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ecgc8"]
+bg_color = Color(0.6, 0.3, 0.495, 1)
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.7, 0.35, 0.571667, 1)
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8xjk"]
+bg_color = Color(0.55, 0.275, 0.444583, 1)
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.7, 0.35, 0.571667, 1)
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7y0k1"]
+bg_color = Color(0, 0, 0, 0)
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.9, 0.54, 0.768, 1)
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+
+[node name="BackButton" type="Button"]
+visible = false
+custom_minimum_size = Vector2(128, 48)
+offset_right = 128.0
+offset_bottom = 48.0
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_26wrj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ecgc8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c8xjk")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7y0k1")
+alignment = 0
+script = ExtResource("1_vu15t")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_xnbrg")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Back"
+vertical_alignment = 1

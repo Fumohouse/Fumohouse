@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://pdcvkku00vva"]
+[gd_scene load_steps=6 format=3 uid="uid://b3vcp7kq81ujl"]
 
-[ext_resource type="Script" path="res://ui/main_menu/MainMenuButton.lua" id="1_la8sa"]
+[ext_resource type="Script" path="res://ui/navigation/NavButton.lua" id="1_la8sa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tk7y"]
 content_margin_left = 48.0
@@ -37,7 +37,7 @@ border_color = Color(0.16, 0.490667, 0.8, 1)
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 
-[node name="MainMenuButton" type="Button"]
+[node name="NavButton" type="Button"]
 custom_minimum_size = Vector2(450, 48)
 size_flags_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_0tk7y")

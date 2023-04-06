@@ -96,7 +96,7 @@ function SwimMotion.Process(self: SwimMotion, state: MotionState.MotionState, de
     end
 
     local MIN_JUMP_DIST_ABOVE = 0.2 -- min distAbove to jump
-    if distAbove > MIN_JUMP_DIST_ABOVE and Input.singleton:IsActionPressed("move_jump") then
+    if distAbove > MIN_JUMP_DIST_ABOVE and Utils.DoGameInput(state.node) and Input.singleton:IsActionPressed("move_jump") then
         -- Jump with the intent of exiting the water
         ctx.messages[PhysicalMotion.JUMP] = true
         return

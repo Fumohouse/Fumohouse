@@ -12,13 +12,17 @@ local MapManager = gdclass(nil, Node)
 export type MapManager = Node & typeof(MapManagerImpl) & {
     maps: {MapManifest.MapManifest},
     currentMap: MapManifest.MapManifest?,
+    currentRuntime: MapRuntime.MapRuntime?,
+    runtimeScene: PackedScene,
 }
 
 local BASE_DIR = "res://maps/"
-local runtimeScene = assert(load("res://map_system/runtime.tscn")) :: PackedScene
 
 function MapManagerImpl._Init(self: MapManager)
     self.maps = {}
+
+    -- Done in _Init to avoid cyclic dependency
+    self.runtimeScene = assert(load("res://map_system/runtime.tscn")) :: PackedScene
 end
 
 function MapManagerImpl._Ready(self: MapManager)
@@ -61,8 +65,12 @@ function MapManagerImpl.loadInternal(self: MapManager, manifest: MapManifest.Map
     local newScene = (scene :: PackedScene):Instantiate()
     self:GetTree():GetRoot():AddChild(newScene)
 
-    local runtime = runtimeScene:Instantiate() :: MapRuntime.MapRuntime
+    local runtime = self.runtimeScene:Instantiate() :: MapRuntime.MapRuntime
+    self.currentMap = manifest
+    self.currentRuntime = runtime
+
     newScene:AddChild(runtime)
+    newScene:MoveChild(runtime, 0)
     runtime:SpawnLocalCharacter(newScene)
 
     local currentScene = self:GetTree():GetCurrentScene()
@@ -71,7 +79,6 @@ function MapManagerImpl.loadInternal(self: MapManager, manifest: MapManifest.Map
     end
 
     self:GetTree():SetCurrentScene(newScene)
-    self.currentMap = manifest
 end
 
 function MapManagerImpl.Load(self: MapManager, id: string)

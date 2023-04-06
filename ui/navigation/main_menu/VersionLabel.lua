@@ -1,4 +1,4 @@
-local Utils = require("../../utils/Utils.mod")
+local Utils = require("../../../utils/Utils.mod")
 
 local VersionLabelImpl = {}
 local VersionLabel = gdclass(nil, Control)

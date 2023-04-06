@@ -1,4 +1,5 @@
 local CameraController = require("CameraController")
+local Utils = require("../utils/Utils.mod")
 
 local MotionState = {
     CharacterState = {
@@ -273,7 +274,12 @@ function MotionState.Update(self: MotionState, delta: number)
     -- Update context
     self.ctx:Reset()
 
-    local inputDirection2 = Input.singleton:GetVector("move_left", "move_right", "move_forward", "move_backward")
+
+    local inputDirection2 = if Utils.DoGameInput(self.node) then
+        Input.singleton:GetVector("move_left", "move_right", "move_forward", "move_backward")
+    else
+        Vector2.ZERO
+
     self.ctx.inputDirection = Vector3.new(inputDirection2.x, 0, inputDirection2.y)
     self.ctx.camBasisFlat = Basis.IDENTITY:Rotated(Vector3.UP, self.camera.cameraRotation.y)
     self.ctx.newBasis = origTransform.basis

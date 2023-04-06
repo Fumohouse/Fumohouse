@@ -5,6 +5,7 @@
 local Move = require("Move.mod")
 local Seat = require("../../nodes/Seat")
 local MotionState = require("../MotionState.mod")
+local Utils = require("../../utils/Utils.mod")
 
 local Ragdoll = setmetatable({
     ID = "ragdoll",
@@ -29,7 +30,7 @@ end
 local function handleState(state: MotionState.MotionState, action: string, characterState: number)
     local ctx = state.ctx
 
-    if Input.singleton:IsActionJustPressed(action) then
+    if Utils.DoGameInput(state.node) and Input.singleton:IsActionJustPressed(action) then
         if state:IsState(characterState) then
             state:SetRagdoll(false)
         elseif not state.isRagdoll then
@@ -43,7 +44,7 @@ local function handleState(state: MotionState.MotionState, action: string, chara
 end
 
 function Ragdoll.Process(self: Ragdoll, state: MotionState.MotionState, delta: number)
-    handleState(state, "sit", MotionState.CharacterState.SITTING)
+    handleState(state, "move_sit", MotionState.CharacterState.SITTING)
 
     local ctx = state.ctx
 
@@ -70,6 +71,7 @@ function Ragdoll.Process(self: Ragdoll, state: MotionState.MotionState, delta: n
         -- Find seat
         if not state.isRagdoll then
             for _, body in state.intersections.bodies do
+                -- TODO: Luau 570
                 if (not self.lastSeat or body:GetInstanceId() ~= self.lastSeat:GetInstanceId()) and body:IsA(Seat) then
                     state:SetRagdoll(true)
                     ctx:SetState(MotionState.CharacterState.SITTING)

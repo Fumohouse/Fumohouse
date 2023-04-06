@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dyiqyy1oqg18g"]
+[gd_scene load_steps=42 format=3 uid="uid://dyiqyy1oqg18g"]
 
 [ext_resource type="Script" path="res://map_system/BasicSpawner.lua" id="1_be2v8"]
 [ext_resource type="PackedScene" uid="uid://cfn8xb4oi4ne3" path="res://maps/playground/spawnpoint.tscn" id="2_6ocf1"]
@@ -11,7 +11,6 @@
 [ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="6_jvjd4"]
 [ext_resource type="FontFile" uid="uid://cl1t2pm0rvomw" path="res://assets/fonts/IBMPlexSans-Italic.ttf" id="7_4fan8"]
 [ext_resource type="PackedScene" uid="uid://dp2ki7ld3mbja" path="res://nodes/seat.tscn" id="7_6c7as"]
-[ext_resource type="PackedScene" uid="uid://d0mo4s2hqyov3" path="res://ui/music_controller/music_controller.tscn" id="7_ct7js"]
 [ext_resource type="PackedScene" uid="uid://bl7y215xsajnc" path="res://maps/playground/assets/models/arc.glb" id="9_i0s7i"]
 [ext_resource type="Shader" path="res://resources/materials/water.gdshader" id="10_0crbr"]
 
@@ -612,19 +611,6 @@ shape = SubResource("BoxShape3D_f5pfk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 mesh = SubResource("BoxMesh_7plwa")
 surface_material_override/0 = SubResource("StandardMaterial3D_p618o")
-
-[node name="MusicController" parent="." instance=ExtResource("7_ct7js")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -316.0
-offset_top = -96.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 0
-grow_vertical = 0
 
 [editable path="CharacterSpawner/Spawnpoint"]
 [editable path="CharacterSpawner/Spawnpoint2"]

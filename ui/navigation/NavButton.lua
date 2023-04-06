@@ -1,8 +1,8 @@
-local MainMenuButtonImpl = {}
-local MainMenuButton = gdclass(nil, Button)
-    :RegisterImpl(MainMenuButtonImpl)
+local NavButtonImpl = {}
+local NavButton = gdclass(nil, Button)
+    :RegisterImpl(NavButtonImpl)
 
-export type MainMenuButton = Button & typeof(MainMenuButtonImpl) & {
+export type NavButton = Button & typeof(NavButtonImpl) & {
     origWidth: number,
 
     tween: Tween?,
@@ -10,16 +10,23 @@ export type MainMenuButton = Button & typeof(MainMenuButtonImpl) & {
 
 local EXPAND = 20
 
-function MainMenuButtonImpl._Ready(self: MainMenuButton)
+function NavButtonImpl.TransitionArgs(self: NavButton)
+    return {
+        inArgs = {},
+        outArgs = { self:GetIndex() + 1 }
+    }
+end
+
+function NavButtonImpl._Ready(self: NavButton)
     self.origWidth = self.size.x
 
     self.mouseEntered:Connect(Callable.new(self, "_OnMouseEntered"))
     self.mouseExited:Connect(Callable.new(self, "_OnMouseExited"))
 end
 
-MainMenuButton:RegisterMethod("_Ready")
+NavButton:RegisterMethod("_Ready")
 
-function MainMenuButtonImpl._OnMouseEntered(self: MainMenuButton)
+function NavButtonImpl._OnMouseEntered(self: NavButton)
     if self.tween then
         self.tween:Kill()
     end
@@ -30,9 +37,9 @@ function MainMenuButtonImpl._OnMouseEntered(self: MainMenuButton)
         :TweenProperty(self, "size", Vector2.new(self.origWidth + EXPAND, self.size.y), 0.2)
 end
 
-MainMenuButton:RegisterMethod("_OnMouseEntered")
+NavButton:RegisterMethod("_OnMouseEntered")
 
-function MainMenuButtonImpl._OnMouseExited(self: MainMenuButton)
+function NavButtonImpl._OnMouseExited(self: NavButton)
     if self.tween then
         self.tween:Kill()
     end
@@ -43,6 +50,6 @@ function MainMenuButtonImpl._OnMouseExited(self: MainMenuButton)
         :TweenProperty(self, "size", Vector2.new(self.origWidth, self.size.y), 0.25)
 end
 
-MainMenuButton:RegisterMethod("_OnMouseExited")
+NavButton:RegisterMethod("_OnMouseExited")
 
-return MainMenuButton
+return NavButton

@@ -1,5 +1,6 @@
 local Marquee = require("../../nodes/Marquee")
 local Song = require("../../music/Song")
+local MenuUtils = require("../navigation/MenuUtils.mod")
 
 local MusicPlayerM = require("../../music/MusicPlayer")
 local MusicPlayer = gdglobal("MusicPlayer") :: MusicPlayerM.MusicPlayer
@@ -15,6 +16,8 @@ export type MusicController = Control & typeof(MusicControllerImpl) & {
 
     wasPaused: boolean,
     isSeeking: boolean,
+
+    tween: Tween?,
 }
 
 local playIcon = assert(load("res://assets/textures/ui/icons/play-fill.svg")) :: Texture2D
@@ -119,5 +122,33 @@ function MusicControllerImpl._Process(self: MusicController, delta: number)
 end
 
 MusicController:RegisterMethodAST("_Process")
+
+function MusicControllerImpl.Hide(self: MusicController)
+    self.scale = Vector2.new(0, 1)
+    self.visible = false
+end
+
+function MusicControllerImpl.Transition(self: MusicController, vis: boolean)
+    if self.tween then
+        self.tween:Kill()
+    end
+
+    self.visible = true
+
+    local tween = self:CreateTween()
+        :SetEase(Tween.EaseType.OUT)
+        :SetTrans(Tween.TransitionType.QUAD)
+
+    tween:TweenProperty(self, "scale", if vis then Vector2.ONE else Vector2.new(0, 1), MenuUtils.TRANSITION_DURATION)
+    tween:Parallel():TweenProperty(self, "modulate", if vis then Color.WHITE else Color.TRANSPARENT, MenuUtils.TRANSITION_DURATION)
+
+    self.tween = tween
+
+    coroutine.wrap(function()
+        if not vis and wait_signal(tween.finished) then
+            self.visible = false
+        end
+    end)()
+end
 
 return MusicController
