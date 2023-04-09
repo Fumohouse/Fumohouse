@@ -56,7 +56,7 @@ function NavMenuImpl.SwitchScreen(self: NavMenu, screen: TransitionElement.Trans
 
     if self.screenOut and self.tweenOut and self.tweenIn then
         -- Prevent hiding due to wait_signal when switching too quickly
-        self.screenOut:Hide()
+        NavMenu.HideScreen(self.screenOut)
         self.tweenOut:Kill()
         self.tweenIn:Kill()
     end
@@ -70,7 +70,14 @@ function NavMenuImpl.SwitchScreen(self: NavMenu, screen: TransitionElement.Trans
         end
     end
 
+    -- TODO: Luau 570
+    local notMainScreen = screen ~= nil and self.mainScreen ~= nil and screen :: Control ~= self.mainScreen :: Control
+
     if screen then
+        if notMainScreen then
+            self.backButton:GrabFocus()
+        end
+
         if args then
             self.tweenIn = NavMenu.transitionScreen(screen, true, table.unpack(args.inArgs))
         else
@@ -78,8 +85,7 @@ function NavMenuImpl.SwitchScreen(self: NavMenu, screen: TransitionElement.Trans
         end
     end
 
-    -- TODO: Luau 570: WTF
-    self.backButton:Transition(screen ~= nil and self.mainScreen ~= nil and screen:GetInstanceId() ~= self.mainScreen:GetInstanceId())
+    self.backButton:Transition(notMainScreen)
 
     self.currentScreen = screen
 end

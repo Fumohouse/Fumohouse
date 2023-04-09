@@ -47,16 +47,17 @@ function GameMenuImpl.Transition(self: GameMenu, vis: boolean, args: NavMenu.Swi
             self.oldMouseMode = Input.singleton.mouseMode
         end
         Input.singleton.mouseMode = Input.MouseMode.VISIBLE
-
-        -- Input systems (e.g. character input) will check focus to avoid unwanted behavior
-        self:GrabFocus()
     else
         if self.oldMouseMode then
             Input.singleton.mouseMode = self.oldMouseMode
             self.oldMouseMode = nil
         end
 
-        self:ReleaseFocus()
+        local focusOwner = self:GetViewport():GuiGetFocusOwner()
+        -- TODO: Luau 570
+        if focusOwner and (self :: Control == focusOwner or self:IsAncestorOf(focusOwner)) then
+            focusOwner:ReleaseFocus()
+        end
     end
 
     if self.tween then
@@ -96,6 +97,15 @@ function GameMenuImpl._UnhandledInput(self: GameMenu, event: InputEvent)
     NavMenu._UnhandledInput(self, event)
 end
 
+function GameMenuImpl._OnMainScreenTransition(self: GameMenu, vis: boolean)
+    if vis then
+        -- Input systems (e.g. character input) will check focus to avoid unwanted behavior
+        self:GrabFocus()
+    end
+end
+
+GameMenu:RegisterMethodAST("_OnMainScreenTransition")
+
 function GameMenuImpl._OnContinueButtonPressed(self: GameMenu, button: Button)
     self:Transition(false, (button :: NavButton.NavButton):TransitionArgs())
 end
@@ -104,6 +114,7 @@ GameMenu:RegisterMethodAST("_OnContinueButtonPressed")
 
 function GameMenuImpl._Ready(self: GameMenu)
     self.mainScreen = self:GetNode("Screens/MenuScreen") :: MenuScreen.MenuScreen
+    self.mainScreen.transition:Connect(Callable.new(self, "_OnMainScreenTransition"))
     NavMenu._Ready(self)
 
     self.blurBackground = self:GetNode("Blur") :: Control

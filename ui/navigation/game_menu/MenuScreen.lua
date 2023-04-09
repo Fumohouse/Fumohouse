@@ -11,12 +11,17 @@ local MenuScreen = gdclass(nil, TransitionElement)
     :RegisterImpl(MenuScreenImpl)
 
 export type MenuScreen = TransitionElement.TransitionElement & typeof(MenuScreenImpl) & {
+    transition: Signal,
+
     gradientBackground: Control,
     title: Control,
     navButtons: NavButtonContainer.NavButtonContainer,
     bottomBar: Control,
     musicController: MusicController.MusicController,
 }
+
+MenuScreen:RegisterSignal("transition")
+    :Args({ name = "vis", type = Enum.VariantType.BOOL })
 
 function MenuScreenImpl.bottomBarTargetPos(self: MenuScreen, vis: boolean)
     if vis then
@@ -46,6 +51,8 @@ function MenuScreenImpl.Transition(self: MenuScreen, vis: boolean, buttonIdx: nu
 
     self.navButtons:Transition(vis, buttonIdx)
     self.musicController:Transition(vis)
+
+    self.transition:Emit(vis)
 
     return tween
 end
