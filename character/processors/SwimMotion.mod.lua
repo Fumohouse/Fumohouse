@@ -158,24 +158,32 @@ function SwimMotion.Process(self: SwimMotion, state: MotionState.MotionState, de
             else
                 -- Any other direction
                 targetBasis = movementBasis * Basis.new(Vector3.RIGHT, -math.pi / 2)
+            end
 
-                -- Do a separate ray-based ground check which is more lenient and accounts for capsule shape causing undesired normal output
-                local capsuleTransform = state.mainCollider.globalTransform
-                local capsuleShape = state.mainCollisionShape
-                local headPos = capsuleTransform.origin + capsuleTransform.basis.y * (capsuleShape.height / 2 - capsuleShape.radius)
+            -- Do a separate ray-based ground check which is more lenient and accounts for capsule shape causing undesired normal output
+            local capsuleTransform = state.mainCollider.globalTransform
+            local capsuleShape = state.mainCollisionShape
+            local headPos = capsuleTransform.origin + capsuleTransform.basis.y * (capsuleShape.height / 2 - capsuleShape.radius)
 
-                local checkDist = capsuleShape.radius + 0.5
-                local groundRayParams = PhysicsRayQueryParameters3D.new()
-                groundRayParams.from = headPos
-                groundRayParams.to = headPos + Vector3.DOWN * checkDist
+            local checkDist = capsuleShape.radius * 3
+            local groundRayParams = PhysicsRayQueryParameters3D.new()
+            groundRayParams.from = headPos
+            groundRayParams.to = headPos + Vector3.DOWN * checkDist
 
-                local groundResult = state.GetWorld3D().directSpaceState:IntersectRay(groundRayParams)
+            local groundResult = state.GetWorld3D().directSpaceState:IntersectRay(groundRayParams)
 
-                if not groundResult:IsEmpty() then
-                    local actualNormal = groundResult:Get("normal") :: Vector3
-                    local groundTransform = Basis.new(Quaternion.new(Vector3.UP, actualNormal):Normalized())
-                    -- TODO: Luau 568: type hack
-                    targetBasis = groundTransform * targetBasis :: Basis
+            if not groundResult:IsEmpty() then
+                local actualNormal = groundResult:Get("normal") :: Vector3
+                local groundTransform = Basis.new(Quaternion.new(Vector3.UP, actualNormal):Normalized())
+                -- TODO: Luau 568: type hack
+                targetBasis = groundTransform * targetBasis :: Basis
+
+                -- Add naive downward velocity to minimize intermittent detection
+                local travel = (groundRayParams.from - groundResult:Get("position") :: Vector3).y
+                local MIN_SINK_TRAVEL = 0.5
+                local SINK_VELOCITY = 0.25
+                if travel > MIN_SINK_TRAVEL then
+                    ctx:AddOffset(Vector3.DOWN * SINK_VELOCITY * delta)
                 end
             end
         end
