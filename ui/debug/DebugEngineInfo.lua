@@ -48,7 +48,7 @@ function DebugEngineInfoImpl._Process(self: DebugEngineInfo, delta: number)
     local infoTbl = self.infoTbl
     local perf = Performance.singleton
 
-    local vsyncMode = ProjectSettings.singleton:GetSetting("display/window/vsync/vsync_mode") :: ClassEnumDisplayServer_VSyncMode
+    local vsyncMode = DisplayServer.singleton:WindowGetVsyncMode() :: ClassEnumDisplayServer_VSyncMode
     infoTbl:SetVal("fps", string.format(
         "%d / %d (VSync: %s)",
         perf:GetMonitor(Performance.Monitor.TIME_FPS),

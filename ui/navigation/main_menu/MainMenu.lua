@@ -11,6 +11,7 @@ local MainMenu = gdclass(nil, NavMenu)
 
 export type MainMenu = NavMenu.NavMenu & typeof(MainMenuImpl) & {
     mainScreen: MainScreen.MainScreen,
+    optionsScreen: TransitionElement.TransitionElement,
     placeholderScreen: TransitionElement.TransitionElement,
     dim: ColorRect,
 }
@@ -32,13 +33,7 @@ function MainMenuImpl.Dim(self: MainMenu, vis: boolean)
     return tween
 end
 
-function MainMenuImpl._OnNavButtonPress(self: MainMenu, button: Button)
-    self:SwitchScreen(self.placeholderScreen, (button :: NavButton.NavButton):TransitionArgs())
-end
-
-MainMenu:RegisterMethodAST("_OnNavButtonPress")
-
-function MainMenuImpl._OnExitButtonPress(self: MainMenu, button: Button)
+function MainMenuImpl._OnExitButtonPressed(self: MainMenu, button: Button)
     self:SwitchScreen(nil, (button :: NavButton.NavButton):TransitionArgs())
 
     local dimTween = self:Dim(true)
@@ -48,23 +43,27 @@ function MainMenuImpl._OnExitButtonPress(self: MainMenu, button: Button)
     self:GetTree():Quit()
 end
 
-MainMenu:RegisterMethodAST("_OnExitButtonPress")
+MainMenu:RegisterMethodAST("_OnExitButtonPressed")
 
 function MainMenuImpl._Ready(self: MainMenu)
     self.mainScreen = self:GetNode("Screens/MainScreen") :: MainScreen.MainScreen
+    self.optionsScreen = self:GetNode("Screens/OptionsScreen") :: TransitionElement.TransitionElement
     self.placeholderScreen = self:GetNode("Screens/PlaceholderScreen") :: TransitionElement.TransitionElement
 
     NavMenu._Ready(self)
 
     self.dim = self:GetNode("Dim") :: ColorRect
 
+    local optionsButton = self:GetNode("%OptionsButton") :: NavButton.NavButton
+    optionsButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(optionsButton, self.optionsScreen))
+
     local exitButton = self:GetNode("%ExitButton") :: NavButton.NavButton
-    exitButton.pressed:Connect(Callable.new(self, "_OnExitButtonPress"):Bind(exitButton))
+    exitButton.pressed:Connect(Callable.new(self, "_OnExitButtonPressed"):Bind(exitButton))
 
     for _, button: NavButton.NavButton in self.mainScreen.mainButtons:GetChildren() do
         -- TODO: this is very temporary
-        if button.name ~= "ExitButton" then
-            button.pressed:Connect(Callable.new(self, "_OnNavButtonPress"):Bind(button))
+        if button.name ~= "OptionsButton" and button.name ~= "ExitButton" then
+            button.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(button, self.placeholderScreen))
         end
     end
 

@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdg6ll858bf3f"]
+[gd_scene load_steps=12 format=3 uid="uid://cdg6ll858bf3f"]
 
 [ext_resource type="Script" path="res://map_system/MapRuntime.lua" id="1_ry2y1"]
 [ext_resource type="Script" path="res://character/CameraController.lua" id="1_uy88u"]
+[ext_resource type="Environment" uid="uid://ce4pqtesx7c2e" path="res://resources/default_environment.tres" id="2_wrnpf"]
 [ext_resource type="PackedScene" path="res://ui/debug/debug_platform_info.tscn" id="3_ddrpn"]
+[ext_resource type="Script" path="res://config/ConfigWorldEnvironment.lua" id="3_j3r1m"]
 [ext_resource type="Script" path="res://map_system/WaterOverlay.lua" id="3_jtsf3"]
 [ext_resource type="PackedScene" path="res://ui/debug/debug_character.tscn" id="3_l5mc6"]
 [ext_resource type="PackedScene" path="res://ui/debug/debug_engine_info.tscn" id="4_q5r36"]
@@ -13,6 +15,10 @@
 
 [node name="FumohouseRuntime" type="Node3D"]
 script = ExtResource("1_ry2y1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_wrnpf")
+script = ExtResource("3_j3r1m")
 
 [node name="CameraController" type="Camera3D" parent="."]
 current = true

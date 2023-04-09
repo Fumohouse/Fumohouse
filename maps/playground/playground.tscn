@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dyiqyy1oqg18g"]
+[gd_scene load_steps=43 format=3 uid="uid://dyiqyy1oqg18g"]
 
 [ext_resource type="Script" path="res://map_system/BasicSpawner.lua" id="1_be2v8"]
 [ext_resource type="PackedScene" uid="uid://cfn8xb4oi4ne3" path="res://maps/playground/spawnpoint.tscn" id="2_6ocf1"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dp2ki7ld3mbja" path="res://nodes/seat.tscn" id="7_6c7as"]
 [ext_resource type="PackedScene" uid="uid://bl7y215xsajnc" path="res://maps/playground/assets/models/arc.glb" id="9_i0s7i"]
 [ext_resource type="Shader" path="res://resources/materials/water.gdshader" id="10_0crbr"]
+[ext_resource type="Script" path="res://config/ConfigDirectionalLight3D.lua" id="12_j30tf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_11hvr"]
 friction = 0.5
@@ -540,6 +541,7 @@ transform = Transform3D(0.866025, 0.286788, 0.409576, 0, -0.819152, 0.573577, 0.
 shadow_enabled = true
 shadow_normal_bias = 5.0
 shadow_blur = 2.5
+script = ExtResource("12_j30tf")
 
 [node name="Billboard" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

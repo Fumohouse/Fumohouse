@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8bvcctmkdmbk"]
+
+[ext_resource type="PackedScene" uid="uid://ds5lxlewc7pkx" path="res://ui/navigation/options_screen/labeled_input.tscn" id="1_e7i17"]
+[ext_resource type="Script" path="res://config/ConfigActionBind.lua" id="2_736xi"]
+
+[node name="LabeledActionInput" instance=ExtResource("1_e7i17")]
+script = ExtResource("2_736xi")
+inputPath = NodePath("Button")
+
+[node name="Button" type="Button" parent="." index="2"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+toggle_mode = true

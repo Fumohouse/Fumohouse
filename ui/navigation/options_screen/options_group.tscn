@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7fll818kt82t"]
+
+[ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="1_ahsxh"]
+
+[node name="OptionsGroup" type="VBoxContainer"]
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ahsxh")
+theme_override_font_sizes/font_size = 20
+text = "General"
+vertical_alignment = 1
+
+[node name="Separator" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+
+[node name="Options" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8

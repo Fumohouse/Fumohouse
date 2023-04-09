@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dao560qb1sydi"]
+[gd_scene load_steps=12 format=3 uid="uid://dao560qb1sydi"]
 
 [ext_resource type="PackedScene" uid="uid://nrh6mhdp4grr" path="res://ui/navigation/nav_menu.tscn" id="1_73yqu"]
 [ext_resource type="Shader" path="res://resources/materials/ui_blur.gdshader" id="1_jwx5c"]
 [ext_resource type="Script" path="res://ui/navigation/game_menu/GameMenu.lua" id="1_ljh4l"]
 [ext_resource type="Script" path="res://ui/navigation/game_menu/MenuScreen.lua" id="4_dxl2y"]
+[ext_resource type="PackedScene" uid="uid://cdwau5ohe3wxa" path="res://ui/navigation/options_screen/options_screen.tscn" id="4_kt6w7"]
 [ext_resource type="PackedScene" uid="uid://chehkmfpoevq6" path="res://ui/navigation/nav_button_container.tscn" id="4_u7s4l"]
 [ext_resource type="PackedScene" uid="uid://c4dvtrx886y3v" path="res://ui/navigation/game_menu/game_menu_button.tscn" id="5_4nii6"]
 [ext_resource type="PackedScene" uid="uid://d0mo4s2hqyov3" path="res://ui/music_controller/music_controller.tscn" id="7_iy5xf"]
@@ -34,7 +35,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="MenuScreen" type="Control" parent="Screens" index="0"]
+[node name="OptionsScreen" parent="Screens" index="0" instance=ExtResource("4_kt6w7")]
+visible = false
+layout_mode = 1
+
+[node name="MenuScreen" type="Control" parent="Screens" index="1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

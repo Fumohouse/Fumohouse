@@ -1,17 +1,22 @@
 local Utils = require("../utils/Utils.mod")
 
+local ConfigManagerM = require("../config/ConfigManager")
+local ConfigManager = gdglobal("ConfigManager") :: ConfigManagerM.ConfigManager
+
 local CameraControllerImpl = {}
 local CameraController = gdclass("CameraController", Camera3D)
     :RegisterImpl(CameraControllerImpl)
 
 export type CameraController = Camera3D & typeof(CameraControllerImpl) & {
     cameraOffset: number,
-    cameraZoomSens: number,
-    cameraRotateSens: number,
     maxFocusDistance: number,
     focusDistanceTarget: number,
 
     modeChanged: Signal,
+
+    cameraZoomSens: number,
+    cameraLookSensFirstPerson: number,
+    cameraLookSensThirdPerson: number,
 
     focusNode: Node3D?,
     cameraRotation: Vector2,
@@ -40,14 +45,6 @@ CameraController:RegisterSignal("modeChanged")
 CameraController:RegisterProperty("cameraOffset", Enum.VariantType.FLOAT)
     :Range(0, 10)
     :Default(2.5)
-
-CameraController:RegisterProperty("cameraZoomSens", Enum.VariantType.FLOAT)
-    :Range(0, 5)
-    :Default(1)
-
-CameraController:RegisterProperty("cameraRotateSens", Enum.VariantType.FLOAT)
-    :Range(0, 3)
-    :Default(math.pi / 200)
 
 CameraController:RegisterProperty("maxFocusDistance", Enum.VariantType.FLOAT)
     :Range(0, 200)
@@ -130,6 +127,46 @@ end
 
 CameraController:RegisterMethod("HandlePopup")
 
+function CameraControllerImpl.applyFov(self: CameraController)
+    self.fov = ConfigManager:Get("graphics/fov") :: number
+end
+
+function CameraControllerImpl.applySensFirstPerson(self: CameraController)
+    self.cameraLookSensFirstPerson = math.rad(ConfigManager:Get("input/sens/camera/firstPerson") :: number)
+end
+
+function CameraControllerImpl.applySensThirdPerson(self: CameraController)
+    self.cameraLookSensThirdPerson = math.rad(ConfigManager:Get("input/sens/camera/thirdPerson") :: number)
+end
+
+function CameraControllerImpl.applyZoomSens(self: CameraController)
+    self.cameraZoomSens = ConfigManager:Get("input/sens/cameraZoom") :: number
+end
+
+function CameraControllerImpl._OnConfigValueChanged(self: CameraController, key: string)
+    if key == "graphics/fov" then
+        self:applyFov()
+    elseif key == "input/sens/camera/firstPerson" then
+        self:applySensFirstPerson()
+    elseif key == "input/sens/camera/thirdPerson" then
+        self:applySensThirdPerson()
+    elseif key == "input/sens/cameraZoom" then
+        self:applyZoomSens()
+    end
+end
+
+CameraController:RegisterMethodAST("_OnConfigValueChanged")
+
+function CameraControllerImpl._Ready(self: CameraController)
+    self:applyFov()
+    self:applySensFirstPerson()
+    self:applySensThirdPerson()
+    self:applyZoomSens()
+    ConfigManager.valueChanged:Connect(Callable.new(self, "_OnConfigValueChanged"))
+end
+
+CameraController:RegisterMethod("_Ready")
+
 function CameraControllerImpl._Process(self: CameraController, delta: number)
     if not self.current then
         return
@@ -189,10 +226,10 @@ function CameraControllerImpl._UnhandledInput(self: CameraController, event: Inp
     -- Rotate
     if typeof(event) == "InputEventMouseMotion" and self.cameraRotating then
         local relative = (event :: InputEventMouseMotion).relative
-        local rotDelta = relative * self.cameraRotateSens
-        if self.cameraMode ~= CameraController.CameraMode.THIRD_PERSON then
-            rotDelta *= 0.25
-        end
+        local rotDelta = relative * if self.cameraMode == CameraController.CameraMode.FIRST_PERSON then
+            self.cameraLookSensFirstPerson
+        else
+            self.cameraLookSensThirdPerson
 
         self.cameraRotation = Vector2.new(
             math.clamp(self.cameraRotation.x - rotDelta.y, -CAMERA_MAX_X_ROT, CAMERA_MAX_X_ROT),

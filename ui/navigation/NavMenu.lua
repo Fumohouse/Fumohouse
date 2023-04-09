@@ -1,5 +1,6 @@
 local BackButton = require("BackButton")
 local TransitionElement = require("TransitionElement")
+local NavButton = require("NavButton")
 
 local NavMenuImpl = {}
 local NavMenu = gdclass(nil, Control)
@@ -111,6 +112,12 @@ function NavMenuImpl._UnhandledInput(self: NavMenu, event: InputEvent)
 end
 
 NavMenu:RegisterMethodAST("_UnhandledInput")
+
+function NavMenuImpl._OnScreenNavButtonPressed(self: NavMenu, button: Button, screen: Control)
+    self:SwitchScreen(screen :: TransitionElement.TransitionElement, (button :: NavButton.NavButton):TransitionArgs())
+end
+
+NavMenu:RegisterMethodAST("_OnScreenNavButtonPressed")
 
 function NavMenuImpl._Ready(self: NavMenu)
     -- Inheriters shoulld set this before calling super _Ready

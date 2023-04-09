@@ -1,0 +1,1065 @@
+[gd_scene load_steps=22 format=3 uid="uid://cdwau5ohe3wxa"]
+
+[ext_resource type="Theme" uid="uid://c7tdpcfevijlu" path="res://resources/main_theme/main_theme.tres" id="1_eexot"]
+[ext_resource type="Script" path="res://ui/navigation/options_screen/OptionsScreen.lua" id="2_kifl8"]
+[ext_resource type="Script" path="res://nodes/ButtonTabContainer.lua" id="3_fmdtd"]
+[ext_resource type="Script" path="res://nodes/OptionButtonTransparent.lua" id="4_3vyqi"]
+[ext_resource type="PackedScene" uid="uid://ds5lxlewc7pkx" path="res://ui/navigation/options_screen/labeled_input.tscn" id="4_t4igy"]
+[ext_resource type="PackedScene" uid="uid://c7fll818kt82t" path="res://ui/navigation/options_screen/options_group.tscn" id="4_yentm"]
+[ext_resource type="PackedScene" uid="uid://c0elv0kapd2bm" path="res://ui/navigation/options_screen/options_tab.tscn" id="4_yx3s2"]
+[ext_resource type="Script" path="res://config/ConfigOptionButton.lua" id="5_ek72r"]
+[ext_resource type="PackedScene" uid="uid://cvvpk0bu2xjai" path="res://ui/navigation/options_screen/labeled_range_input.tscn" id="9_3jj1h"]
+[ext_resource type="Script" path="res://config/ConfigButton.lua" id="9_y5hc6"]
+[ext_resource type="Script" path="res://config/ConfigAudioOutputDevices.lua" id="12_jdutg"]
+[ext_resource type="PackedScene" uid="uid://c8bvcctmkdmbk" path="res://ui/navigation/options_screen/labeled_action_input.tscn" id="13_b7px7"]
+[ext_resource type="FontFile" uid="uid://cl1t2pm0rvomw" path="res://assets/fonts/IBMPlexSans-Italic.ttf" id="13_be2mu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hev0"]
+bg_color = Color(0, 0.180392, 0.34902, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bc6o"]
+content_margin_left = 18.0
+content_margin_top = 3.0
+content_margin_right = 18.0
+content_margin_bottom = 3.0
+bg_color = Color(0.223529, 0.341176, 0.45098, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dp5k"]
+content_margin_left = 18.0
+content_margin_top = 3.0
+content_margin_right = 18.0
+content_margin_bottom = 3.0
+bg_color = Color(0.2, 0.301961, 0.4, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4jvx"]
+content_margin_left = 18.0
+content_margin_top = 3.0
+content_margin_right = 18.0
+content_margin_bottom = 3.0
+bg_color = Color(0.160784, 0.243137, 0.321569, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csybf"]
+content_margin_left = 18.0
+content_margin_top = 3.0
+content_margin_right = 18.0
+content_margin_bottom = 3.0
+bg_color = Color(0.701961, 0.34902, 0.572549, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8325y"]
+content_margin_left = 18.0
+content_margin_top = 3.0
+content_margin_right = 18.0
+content_margin_bottom = 3.0
+bg_color = Color(0.6, 0.301961, 0.494118, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4ver"]
+content_margin_left = 18.0
+content_margin_top = 3.0
+content_margin_right = 18.0
+content_margin_bottom = 3.0
+bg_color = Color(0.54902, 0.27451, 0.443137, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpjfg"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.901961, 0.541176, 0.768627, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="OptionsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_eexot")
+script = ExtResource("2_kifl8")
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 184.0
+offset_top = 35.0
+offset_right = 753.0
+offset_bottom = 78.0
+theme_override_constants/separation = 48
+
+[node name="Title" type="Label" parent="TopBar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Options"
+vertical_alignment = 1
+
+[node name="ButtonTabContainer" type="HBoxContainer" parent="TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 16
+script = ExtResource("3_fmdtd")
+
+[node name="Graphics" type="Button" parent="TopBar/ButtonTabContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Graphics"
+
+[node name="Audio" type="Button" parent="TopBar/ButtonTabContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Audio"
+
+[node name="Input" type="Button" parent="TopBar/ButtonTabContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Input"
+
+[node name="Contents" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.109375
+anchor_top = 0.154321
+anchor_right = 0.890625
+anchor_bottom = 0.95679
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Contents"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Tabs" type="Control" parent="Contents/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Graphics" parent="Contents/MarginContainer/Tabs" instance=ExtResource("4_yx3s2")]
+layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 24
+
+[node name="General" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+layout_mode = 2
+
+[node name="RenderingMethod" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options" index="0" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("5_ek72r")
+inputPath = NodePath("OptionButtonTransparent")
+key = "graphics/renderingMethod"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/RenderingMethod" index="0"]
+text = "Rendering Method"
+
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/RenderingMethod"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Forward+"
+popup/item_0/id = 0
+popup/item_1/text = "Mobile"
+popup/item_1/id = 1
+popup/item_2/text = "Compatibility"
+popup/item_2/id = 2
+script = ExtResource("4_3vyqi")
+
+[node name="WindowMode" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options" index="1" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("5_ek72r")
+inputPath = NodePath("OptionButtonTransparent")
+key = "graphics/windowMode"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/WindowMode" index="0"]
+text = "Window Mode"
+
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/WindowMode"]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Maximized"
+popup/item_1/id = 1
+popup/item_2/text = "Fullscreen"
+popup/item_2/id = 2
+popup/item_3/text = "Exclusive Fullscreen"
+popup/item_3/id = 3
+script = ExtResource("4_3vyqi")
+
+[node name="VSync" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options" index="2" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("5_ek72r")
+inputPath = NodePath("OptionButtonTransparent")
+key = "graphics/vsyncMode"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/VSync" index="0"]
+text = "VSync Mode"
+
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/VSync"]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Enabled"
+popup/item_1/id = 1
+popup/item_2/text = "Adaptive"
+popup/item_2/id = 2
+popup/item_3/text = "Mailbox"
+popup/item_3/id = 3
+script = ExtResource("4_3vyqi")
+
+[node name="FOV" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options" index="3" instance=ExtResource("9_3jj1h")]
+layout_mode = 2
+key = "graphics/fov"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/FOV" index="0"]
+text = "FOV"
+
+[node name="LabeledSlider" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/FOV" index="2"]
+formatString = "%d°"
+
+[node name="HSlider" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/FOV/LabeledSlider" index="0"]
+min_value = 50.0
+max_value = 120.0
+step = 5.0
+value = 50.0
+
+[node name="UIScale" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options" index="4" instance=ExtResource("9_3jj1h")]
+layout_mode = 2
+key = "graphics/uiScale"
+onRelease = true
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/UIScale" index="0"]
+text = "UI Scale"
+
+[node name="HSlider" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/UIScale/LabeledSlider" index="0"]
+min_value = 0.9
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="3DScaling" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+layout_mode = 2
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling" index="0"]
+text = "3D Scaling"
+
+[node name="Scaling3DMode" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options" index="0" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("5_ek72r")
+inputPath = NodePath("OptionButtonTransparent")
+key = "graphics/scaling3d/mode"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options/Scaling3DMode" index="0"]
+text = "3D Scale Mode"
+
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options/Scaling3DMode"]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "Bilinear"
+popup/item_0/id = 0
+popup/item_1/text = "AMD FSR"
+popup/item_1/id = 1
+script = ExtResource("4_3vyqi")
+
+[node name="Scaling3DScale" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options" index="1" instance=ExtResource("9_3jj1h")]
+layout_mode = 2
+key = "graphics/scaling3d/scale"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options/Scaling3DScale" index="0"]
+text = "3D Scale"
+
+[node name="HSlider" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options/Scaling3DScale/LabeledSlider" index="0"]
+min_value = 0.5
+max_value = 1.5
+step = 0.1
+value = 0.5
+
+[node name="Scaling3DFSRSharpness" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options" index="2" instance=ExtResource("9_3jj1h")]
+layout_mode = 2
+key = "graphics/scaling3d/fsrSharpness"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options/Scaling3DFSRSharpness" index="0"]
+text = "FSR Sharpness"
+
+[node name="HSlider" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options/Scaling3DFSRSharpness/LabeledSlider" index="0"]
+max_value = 2.0
+step = 0.1
+
+[node name="AntiAliasing" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+layout_mode = 2
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing" index="0"]
+text = "Anti Aliasing"
+
+[node name="MSAA3D" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options" index="0" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("5_ek72r")
+inputPath = NodePath("OptionButtonTransparent")
+key = "graphics/msaa3d"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/MSAA3D" index="0"]
+text = "MSAA 3D"
+
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/MSAA3D"]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "2x"
+popup/item_1/id = 1
+popup/item_2/text = "4x"
+popup/item_2/id = 2
+popup/item_3/text = "8x"
+popup/item_3/id = 3
+script = ExtResource("4_3vyqi")
+
+[node name="TAA" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options" index="1" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("9_y5hc6")
+inputPath = NodePath("CheckButton")
+key = "graphics/taa"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/TAA" index="0"]
+text = "TAA"
+
+[node name="CheckButton" type="CheckButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/TAA"]
+layout_mode = 2
+
+[node name="ScreenSpaceAa" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options" index="2" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("5_ek72r")
+inputPath = NodePath("OptionButtonTransparent")
+key = "graphics/screenSpaceAa"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/ScreenSpaceAa" index="0"]
+text = "Screen Space AA"
+
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/ScreenSpaceAa"]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "FXAA"
+popup/item_1/id = 1
+script = ExtResource("4_3vyqi")
+
+[node name="Quality" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+layout_mode = 2
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality" index="0"]
+text = "Quality"
+
+[node name="ShadowQuality" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options" index="0" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("5_ek72r")
+inputPath = NodePath("OptionButtonTransparent")
+key = "graphics/shadows/quality"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/ShadowQuality" index="0"]
+text = "Shadow Quality"
+
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/ShadowQuality"]
+layout_mode = 2
+item_count = 6
+popup/item_0/text = "Minimal"
+popup/item_0/id = 0
+popup/item_1/text = "Very Low"
+popup/item_1/id = 1
+popup/item_2/text = "Low"
+popup/item_2/id = 2
+popup/item_3/text = "Medium"
+popup/item_3/id = 3
+popup/item_4/text = "High"
+popup/item_4/id = 4
+popup/item_5/text = "Ultra"
+popup/item_5/id = 5
+script = ExtResource("4_3vyqi")
+
+[node name="ShadowFilter" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options" index="1" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("5_ek72r")
+inputPath = NodePath("OptionButtonTransparent")
+key = "graphics/shadows/filter"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/ShadowFilter" index="0"]
+text = "Soft Shadow Filter"
+
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/ShadowFilter"]
+layout_mode = 2
+item_count = 6
+popup/item_0/text = "Hard (No filter)"
+popup/item_0/id = 0
+popup/item_1/text = "Very Low"
+popup/item_1/id = 1
+popup/item_2/text = "Low"
+popup/item_2/id = 2
+popup/item_3/text = "Medium"
+popup/item_3/id = 3
+popup/item_4/text = "High"
+popup/item_4/id = 4
+popup/item_5/text = "Very High"
+popup/item_5/id = 5
+script = ExtResource("4_3vyqi")
+
+[node name="LodThreshold" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options" index="2" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("5_ek72r")
+inputPath = NodePath("OptionButtonTransparent")
+key = "graphics/lodThreshold"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/LodThreshold" index="0"]
+text = "Mesh Level of Detail"
+
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/LodThreshold"]
+layout_mode = 2
+item_count = 5
+popup/item_0/text = "Very Low"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "High"
+popup/item_3/id = 3
+popup/item_4/text = "Ultra (LODs off)"
+popup/item_4/id = 4
+script = ExtResource("4_3vyqi")
+
+[node name="Environment" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+layout_mode = 2
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment" index="0"]
+text = "Environment"
+
+[node name="SSR" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="0" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("5_ek72r")
+inputPath = NodePath("OptionButtonTransparent")
+key = "graphics/ssr"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSR" index="0"]
+text = "SSR"
+
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSR"]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "High"
+popup/item_3/id = 3
+script = ExtResource("4_3vyqi")
+
+[node name="SSAO" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="1" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("5_ek72r")
+inputPath = NodePath("OptionButtonTransparent")
+key = "graphics/ssao"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSAO" index="0"]
+text = "SSAO"
+
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSAO"]
+layout_mode = 2
+item_count = 5
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Very Low"
+popup/item_1/id = 1
+popup/item_2/text = "Low"
+popup/item_2/id = 2
+popup/item_3/text = "Medium"
+popup/item_3/id = 3
+popup/item_4/text = "High"
+popup/item_4/id = 4
+script = ExtResource("4_3vyqi")
+
+[node name="SSIL" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="2" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("5_ek72r")
+inputPath = NodePath("OptionButtonTransparent")
+key = "graphics/ssil"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSIL" index="0"]
+text = "SSIL"
+
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSIL"]
+layout_mode = 2
+item_count = 5
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Very Low"
+popup/item_1/id = 1
+popup/item_2/text = "Low"
+popup/item_2/id = 2
+popup/item_3/text = "Medium"
+popup/item_3/id = 3
+popup/item_4/text = "High"
+popup/item_4/id = 4
+script = ExtResource("4_3vyqi")
+
+[node name="SDFGI" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="3" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("5_ek72r")
+inputPath = NodePath("OptionButtonTransparent")
+key = "graphics/sdfgi"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SDFGI" index="0"]
+text = "SDFGI"
+
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SDFGI"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "High"
+popup/item_2/id = 2
+script = ExtResource("4_3vyqi")
+
+[node name="Glow" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="4" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("5_ek72r")
+inputPath = NodePath("OptionButtonTransparent")
+key = "graphics/glow"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/Glow" index="0"]
+text = "Glow"
+
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/Glow"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "High"
+popup/item_2/id = 2
+script = ExtResource("4_3vyqi")
+
+[node name="VolumetricFog" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="5" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("5_ek72r")
+inputPath = NodePath("OptionButtonTransparent")
+key = "graphics/volumetricFog"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/VolumetricFog" index="0"]
+text = "Volumetric Fog"
+
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/VolumetricFog"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "High"
+popup/item_2/id = 2
+script = ExtResource("4_3vyqi")
+
+[node name="Adjustment" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+layout_mode = 2
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment" index="0"]
+text = "Adjustment"
+
+[node name="Brightness" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options" index="0" instance=ExtResource("9_3jj1h")]
+layout_mode = 2
+key = "graphics/brightness"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options/Brightness" index="0"]
+text = "Brightness"
+
+[node name="HSlider" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options/Brightness/LabeledSlider" index="0"]
+min_value = 0.5
+max_value = 4.0
+step = 0.1
+value = 0.5
+
+[node name="Contrast" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options" index="1" instance=ExtResource("9_3jj1h")]
+layout_mode = 2
+key = "graphics/contrast"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options/Contrast" index="0"]
+text = "Contrast"
+
+[node name="HSlider" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options/Contrast/LabeledSlider" index="0"]
+min_value = 0.5
+max_value = 4.0
+step = 0.1
+value = 0.5
+
+[node name="Saturation" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options" index="2" instance=ExtResource("9_3jj1h")]
+layout_mode = 2
+key = "graphics/saturation"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options/Saturation" index="0"]
+text = "Saturation"
+
+[node name="HSlider" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options/Saturation/LabeledSlider" index="0"]
+min_value = 0.5
+max_value = 10.0
+step = 0.1
+value = 0.5
+
+[node name="Audio" parent="Contents/MarginContainer/Tabs" instance=ExtResource("4_yx3s2")]
+visible = false
+layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Devices" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+layout_mode = 2
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Devices" index="0"]
+text = "Device Selection"
+
+[node name="OutputDevice" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Devices/Options" index="0" instance=ExtResource("4_t4igy")]
+layout_mode = 2
+script = ExtResource("12_jdutg")
+inputPath = NodePath("OptionButtonTransparent")
+key = "audio/outputDevice"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Devices/Options/OutputDevice" index="0"]
+text = "Output Device"
+
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Devices/Options/OutputDevice"]
+layout_mode = 2
+script = ExtResource("4_3vyqi")
+
+[node name="Buses" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+layout_mode = 2
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Buses" index="0"]
+text = "Buses"
+
+[node name="MasterVolume" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Buses/Options" index="0" instance=ExtResource("9_3jj1h")]
+layout_mode = 2
+key = "audio/bus/Master/volume"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Buses/Options/MasterVolume" index="0"]
+text = "Master Volume"
+
+[node name="LabeledSlider" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Buses/Options/MasterVolume" index="2"]
+formatString = "%d%%"
+
+[node name="MusicVolume" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Buses/Options" index="1" instance=ExtResource("9_3jj1h")]
+layout_mode = 2
+key = "audio/bus/Music/volume"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Buses/Options/MusicVolume" index="0"]
+text = "Master Volume"
+
+[node name="LabeledSlider" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Buses/Options/MusicVolume" index="2"]
+formatString = "%d%%"
+
+[node name="Input" parent="Contents/MarginContainer/Tabs" instance=ExtResource("4_yx3s2")]
+visible = false
+layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Camera" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+layout_mode = 2
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera" index="0"]
+text = "Camera"
+
+[node name="Camera1st" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options" index="0" instance=ExtResource("9_3jj1h")]
+layout_mode = 2
+key = "input/sens/camera/firstPerson"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/Camera1st" index="0"]
+text = "Look Sensitivity (1st Person)"
+
+[node name="LabeledSlider" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/Camera1st" index="2"]
+custom_minimum_size = Vector2(250, 0)
+formatString = "%.1f°/px"
+
+[node name="HSlider" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/Camera1st/LabeledSlider" index="0"]
+min_value = 0.1
+max_value = 20.0
+step = 0.1
+value = 0.1
+
+[node name="Camera3rd" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options" index="1" instance=ExtResource("9_3jj1h")]
+layout_mode = 2
+key = "input/sens/camera/thirdPerson"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/Camera3rd" index="0"]
+text = "Look Sensitivity (3rd Person)"
+
+[node name="LabeledSlider" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/Camera3rd" index="2"]
+custom_minimum_size = Vector2(250, 0)
+formatString = "%.1f°/px"
+
+[node name="HSlider" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/Camera3rd/LabeledSlider" index="0"]
+min_value = 0.1
+max_value = 20.0
+step = 0.1
+value = 0.1
+
+[node name="CameraZoom" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options" index="2" instance=ExtResource("9_3jj1h")]
+layout_mode = 2
+key = "input/sens/cameraZoom"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/CameraZoom" index="0"]
+text = "Zoom Sensitivity"
+
+[node name="LabeledSlider" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/CameraZoom" index="2"]
+custom_minimum_size = Vector2(250, 0)
+formatString = "%.1fm/tickkj"
+
+[node name="HSlider" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/CameraZoom/LabeledSlider" index="0"]
+min_value = 0.1
+max_value = 20.0
+step = 0.1
+value = 0.1
+
+[node name="Keybinds" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+layout_mode = 2
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds" index="0"]
+text = "Keybinds"
+
+[node name="Label" type="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="0"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_be2mu")
+theme_override_font_sizes/font_size = 14
+text = "Note: All keys are bound as if you are using a QWERTY layout."
+vertical_alignment = 1
+
+[node name="MoveForward" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="1" instance=ExtResource("13_b7px7")]
+layout_mode = 2
+key = "input/action/move_forward/bind"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveForward" index="0"]
+custom_minimum_size = Vector2(400, 0)
+text = "Move Forward"
+
+[node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveForward" index="1"]
+custom_minimum_size = Vector2(100, 0)
+
+[node name="MoveBackward" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="2" instance=ExtResource("13_b7px7")]
+layout_mode = 2
+key = "input/action/move_backward/bind"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveBackward" index="0"]
+custom_minimum_size = Vector2(400, 0)
+text = "Move Backward"
+
+[node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveBackward" index="1"]
+custom_minimum_size = Vector2(100, 0)
+
+[node name="MoveLeft" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="3" instance=ExtResource("13_b7px7")]
+layout_mode = 2
+key = "input/action/move_left/bind"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveLeft" index="0"]
+custom_minimum_size = Vector2(400, 0)
+text = "Move Left"
+
+[node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveLeft" index="1"]
+custom_minimum_size = Vector2(100, 0)
+
+[node name="MoveRight" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="4" instance=ExtResource("13_b7px7")]
+layout_mode = 2
+key = "input/action/move_right/bind"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveRight" index="0"]
+custom_minimum_size = Vector2(400, 0)
+text = "Move Right"
+
+[node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveRight" index="1"]
+custom_minimum_size = Vector2(100, 0)
+
+[node name="MoveJump" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="5" instance=ExtResource("13_b7px7")]
+layout_mode = 2
+key = "input/action/move_jump/bind"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveJump" index="0"]
+custom_minimum_size = Vector2(400, 0)
+text = "Jump"
+
+[node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveJump" index="1"]
+custom_minimum_size = Vector2(100, 0)
+
+[node name="MoveSit" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="6" instance=ExtResource("13_b7px7")]
+layout_mode = 2
+key = "input/action/move_sit/bind"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveSit" index="0"]
+custom_minimum_size = Vector2(400, 0)
+text = "Sit"
+
+[node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveSit" index="1"]
+custom_minimum_size = Vector2(100, 0)
+
+[node name="MoveRun" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="7" instance=ExtResource("13_b7px7")]
+layout_mode = 2
+key = "input/action/move_run/bind"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveRun" index="0"]
+custom_minimum_size = Vector2(400, 0)
+text = "Run"
+
+[node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveRun" index="1"]
+custom_minimum_size = Vector2(100, 0)
+
+[node name="CameraRotate" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="8" instance=ExtResource("13_b7px7")]
+layout_mode = 2
+key = "input/action/camera_rotate/bind"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/CameraRotate" index="0"]
+custom_minimum_size = Vector2(400, 0)
+text = "Camera Rotate (3rd Person)"
+
+[node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/CameraRotate" index="1"]
+custom_minimum_size = Vector2(100, 0)
+
+[node name="CameraZoomIn" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="9" instance=ExtResource("13_b7px7")]
+layout_mode = 2
+key = "input/action/camera_zoom_in/bind"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/CameraZoomIn" index="0"]
+custom_minimum_size = Vector2(400, 0)
+text = "Camera Zoom In"
+
+[node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/CameraZoomIn" index="1"]
+custom_minimum_size = Vector2(100, 0)
+
+[node name="CameraZoomOut" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="10" instance=ExtResource("13_b7px7")]
+layout_mode = 2
+key = "input/action/camera_zoom_out/bind"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/CameraZoomOut" index="0"]
+custom_minimum_size = Vector2(400, 0)
+text = "Camera Zoom Out"
+
+[node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/CameraZoomOut" index="1"]
+custom_minimum_size = Vector2(100, 0)
+
+[node name="GameMenu" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="11" instance=ExtResource("13_b7px7")]
+layout_mode = 2
+key = "input/action/game_menu/bind"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/GameMenu" index="0"]
+custom_minimum_size = Vector2(400, 0)
+text = "Game Menu"
+
+[node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/GameMenu" index="1"]
+custom_minimum_size = Vector2(100, 0)
+
+[node name="MenuBack" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="12" instance=ExtResource("13_b7px7")]
+layout_mode = 2
+key = "input/action/menu_back/bind"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MenuBack" index="0"]
+custom_minimum_size = Vector2(400, 0)
+text = "Menu Back"
+
+[node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MenuBack" index="1"]
+custom_minimum_size = Vector2(100, 0)
+
+[node name="Debug1" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="13" instance=ExtResource("13_b7px7")]
+layout_mode = 2
+key = "input/action/debug_1/bind"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug1" index="0"]
+custom_minimum_size = Vector2(400, 0)
+text = "Debug 1"
+
+[node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug1" index="1"]
+custom_minimum_size = Vector2(100, 0)
+
+[node name="Debug2" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="14" instance=ExtResource("13_b7px7")]
+layout_mode = 2
+key = "input/action/debug_2/bind"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug2" index="0"]
+custom_minimum_size = Vector2(400, 0)
+text = "Debug 2"
+
+[node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug2" index="1"]
+custom_minimum_size = Vector2(100, 0)
+
+[node name="Debug3" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="15" instance=ExtResource("13_b7px7")]
+layout_mode = 2
+key = "input/action/debug_3/bind"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug3" index="0"]
+custom_minimum_size = Vector2(400, 0)
+text = "Debug 3"
+
+[node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug3" index="1"]
+custom_minimum_size = Vector2(100, 0)
+
+[node name="RestartPrompt" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -475.0
+offset_top = -47.9999
+offset_right = 475.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0hev0")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="RestartPrompt"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RestartPrompt/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="RestartPrompt/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Some changes require a game restart to take effect. Restart?"
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="RestartPrompt/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="RestartCancelButton" type="Button" parent="RestartPrompt/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_3bc6o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3dp5k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d4jvx")
+text = "Not now"
+
+[node name="RestartRestartButton" type="Button" parent="RestartPrompt/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_csybf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8325y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_e4ver")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kpjfg")
+text = "Restart"
+
+[editable path="Contents/MarginContainer/Tabs/Graphics"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/RenderingMethod"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/WindowMode"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/VSync"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/FOV"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/FOV/LabeledSlider"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/UIScale"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/UIScale/LabeledSlider"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options/Scaling3DMode"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options/Scaling3DScale"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options/Scaling3DScale/LabeledSlider"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options/Scaling3DFSRSharpness"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options/Scaling3DFSRSharpness/LabeledSlider"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/MSAA3D"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/TAA"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/ScreenSpaceAa"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/ShadowQuality"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/ShadowFilter"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/LodThreshold"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSR"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSAO"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSIL"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SDFGI"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/Glow"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/VolumetricFog"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options/Brightness"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options/Brightness/LabeledSlider"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options/Contrast"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options/Contrast/LabeledSlider"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options/Saturation"]
+[editable path="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options/Saturation/LabeledSlider"]
+[editable path="Contents/MarginContainer/Tabs/Audio"]
+[editable path="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Devices"]
+[editable path="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Devices/Options/OutputDevice"]
+[editable path="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Buses"]
+[editable path="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Buses/Options/MasterVolume"]
+[editable path="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Buses/Options/MasterVolume/LabeledSlider"]
+[editable path="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Buses/Options/MusicVolume"]
+[editable path="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Buses/Options/MusicVolume/LabeledSlider"]
+[editable path="Contents/MarginContainer/Tabs/Input"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/Camera1st"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/Camera1st/LabeledSlider"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/Camera3rd"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/Camera3rd/LabeledSlider"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/CameraZoom"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/CameraZoom/LabeledSlider"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveForward"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveBackward"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveLeft"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveRight"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveJump"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveSit"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveRun"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/CameraRotate"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/CameraZoomIn"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/CameraZoomOut"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/GameMenu"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MenuBack"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug1"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug2"]
+[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug3"]

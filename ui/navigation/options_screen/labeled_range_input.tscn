@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvvpk0bu2xjai"]
+
+[ext_resource type="PackedScene" uid="uid://ds5lxlewc7pkx" path="res://ui/navigation/options_screen/labeled_input.tscn" id="1_bqupk"]
+[ext_resource type="Script" path="res://config/ConfigRange.lua" id="2_sevt0"]
+[ext_resource type="PackedScene" uid="uid://q66b6blbtmsk" path="res://nodes/labeled_slider.tscn" id="3_04ss1"]
+
+[node name="LabeledRangeInput" instance=ExtResource("1_bqupk")]
+script = ExtResource("2_sevt0")
+inputPath = NodePath("LabeledSlider/HSlider")
+
+[node name="LabeledSlider" parent="." index="2" instance=ExtResource("3_04ss1")]
+layout_mode = 2
+
+[editable path="LabeledSlider"]

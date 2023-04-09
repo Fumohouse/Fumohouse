@@ -6,6 +6,8 @@
 sky_material = SubResource("ProceduralSkyMaterial_j25sm")
 
 [resource]
+resource_local_to_scene = true
 background_mode = 2
 sky = SubResource("Sky_qhdmd")
 sdfgi_enabled = true
+adjustment_enabled = true

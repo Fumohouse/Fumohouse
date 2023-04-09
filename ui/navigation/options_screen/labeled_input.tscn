@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ds5lxlewc7pkx"]
+
+[node name="LabeledInput" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 36)
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Text"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
