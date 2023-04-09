@@ -10,6 +10,8 @@ local MotionState = require("../MotionState.mod")
 local Move = setmetatable({
     ID = "move",
     CANCEL_UPRIGHTING = "cancelUprighting",
+
+    UPRIGHTING_FACTOR = 5e-6,
 }, MotionState.MotionProcessor)
 
 Move.__index = Move
@@ -234,7 +236,7 @@ function Move.Process(self: Move, state: MotionState.MotionState, delta: number)
     if state.isRagdoll or ctx.messages[Move.CANCEL_UPRIGHTING] then
         targetBasis = ctx.newBasis
     else
-        targetBasis = ctx.newBasis:Slerp(Utils.BasisUpright(ctx.newBasis), Utils.LerpWeight(delta, 1e-8))
+        targetBasis = ctx.newBasis:Slerp(Utils.BasisUpright(ctx.newBasis), Utils.LerpWeight(delta, Move.UPRIGHTING_FACTOR))
     end
 
     state.SetTransform(Transform3D.new(targetBasis, origTransform.origin + offset))

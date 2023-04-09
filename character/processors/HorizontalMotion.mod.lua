@@ -6,6 +6,7 @@ local MotionState = require("../MotionState.mod")
 local CameraController = require("../CameraController")
 local Utils = require("../../utils/Utils.mod")
 local PhysicalMotion = require("PhysicalMotion.mod")
+local Move = require("Move.mod")
 
 local HorizontalMotion = setmetatable({
     ID = "horizontal",
@@ -77,7 +78,9 @@ function HorizontalMotion.Process(self: HorizontalMotion, state: MotionState.Mot
             ctx.newBasis = ctx.camBasisFlat
         elseif direction:LengthSquared() > 0 then
             local movementBasis = Basis.new(Quaternion.new(Vector3.FORWARD, directionFlat))
-            ctx.newBasis = ctx.newBasis:Slerp(movementBasis, Utils.LerpWeight(delta))
+            ctx.newBasis = ctx.newBasis:Slerp(movementBasis, Utils.LerpWeight(delta, Move.UPRIGHTING_FACTOR))
+            -- Uprighting is implied in the above code. Avoid double uprighting, which would be too quick.
+            ctx.messages[Move.CANCEL_UPRIGHTING] = true
         end
     end
 
