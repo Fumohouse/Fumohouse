@@ -30,7 +30,7 @@ function PartDatabaseImpl.scanDir(self: PartDatabase, path: string)
     while fileName ~= "" do
         if dir:CurrentIsDir() then
             self:scanDir(path..fileName.."/")
-        elseif strext.endswith(fileName, ".tres") then
+        elseif String.EndsWith(fileName, ".tres") then
             local partInfo: PartData.PartData = assert(load(path..fileName))
             local id = partInfo.id
 

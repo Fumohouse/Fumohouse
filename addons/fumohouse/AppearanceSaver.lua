@@ -66,7 +66,7 @@ function AppearanceSaverImpl._OnButtonPressed(self: AppearanceSaver)
                 continue
             end
 
-            if not strext.startswith(scenePath, SinglePart.BASE_PATH) then
+            if not String.BeginsWith(scenePath, SinglePart.BASE_PATH) then
                 push_warning(`Part {part.name} is instantiated from a scene not under {SinglePart.BASE_PATH}.`)
             end
 

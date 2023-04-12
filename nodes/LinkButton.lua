@@ -15,7 +15,7 @@ function LinkButtonImpl._OnPressed(self: LinkButton)
     end
 
     -- TODO: Link whitelist?
-    assert(strext.startswith(self.link, "https://"), "invalid link")
+    assert(String.BeginsWith(self.link, "https://"), "invalid link")
     OS.singleton:ShellOpen(self.link)
 end
 
