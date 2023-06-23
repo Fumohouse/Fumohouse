@@ -1,17 +1,20 @@
 local Song = require("Song")
 local Playlist = require("Playlist")
 
-local MusicPlayerImpl = {}
-local MusicPlayer = gdclass(nil, AudioStreamPlayer)
-    :RegisterImpl(MusicPlayerImpl)
+--- @class
+--- @extends AudioStreamPlayer
+local MusicPlayer  = {}
+local MusicPlayerC = gdclass(MusicPlayer)
 
 type PlaylistPosition = {
     position: number,
     time: number,
 }
 
-export type MusicPlayer = AudioStreamPlayer & typeof(MusicPlayerImpl) & {
-    songChanged: Signal,
+--- @classType MusicPlayer
+export type MusicPlayer = AudioStreamPlayer & typeof(MusicPlayer) & {
+    --- @signal
+    songChanged: SignalWithArgs<(song: Song.Song) -> ()>,
 
     playlists: {[string]: Playlist.Playlist},
     currentSong: Song.Song?,
@@ -24,26 +27,22 @@ export type MusicPlayer = AudioStreamPlayer & typeof(MusicPlayerImpl) & {
     tween: Tween?,
 }
 
-MusicPlayer:RegisterSignal("songChanged")
-    :Args({ name = "song", type = Enum.VariantType.OBJECT, hint = Enum.PropertyHint.RESOURCE_TYPE, hintString = "Song" })
+MusicPlayer.BUS = "Music"
 
-MusicPlayerImpl.BUS = "Music"
-
-function MusicPlayerImpl._Init(self: MusicPlayer)
+function MusicPlayer._Init(self: MusicPlayer)
     self.playlists = {}
     self.currentPlaylist = ""
     self.savedPositions = {}
 end
 
-function MusicPlayerImpl._Ready(self: MusicPlayer)
+--- @registerMethod
+function MusicPlayer._Ready(self: MusicPlayer)
     self.bus = MusicPlayer.BUS
     self.finished:Connect(Callable.new(self, "_OnFinished"))
     self.volume = self.volumeDb
 end
 
-MusicPlayer:RegisterMethod("_Ready")
-
-function MusicPlayerImpl.resetClip(self: MusicPlayer)
+function MusicPlayer.resetClip(self: MusicPlayer)
     self:Stop()
     self.stream = nil
 
@@ -51,7 +50,7 @@ function MusicPlayerImpl.resetClip(self: MusicPlayer)
     self.songChanged:Emit(nil)
 end
 
-function MusicPlayerImpl.playImmediate(self: MusicPlayer, song: Song.Song, seek: number)
+function MusicPlayer.playImmediate(self: MusicPlayer, song: Song.Song, seek: number)
     local wasPaused = self.streamPaused
 
     if self.currentSong and song.id == self.currentSong.id then
@@ -74,7 +73,7 @@ function MusicPlayerImpl.playImmediate(self: MusicPlayer, song: Song.Song, seek:
     self.songChanged:Emit(song)
 end
 
-function MusicPlayerImpl.play(self: MusicPlayer, song: Song.Song, transitionOut: boolean, transitionIn: boolean, seek: number)
+function MusicPlayer.play(self: MusicPlayer, song: Song.Song, transitionOut: boolean, transitionIn: boolean, seek: number)
     if not transitionOut then
         self:playImmediate(song, seek)
         return
@@ -112,7 +111,7 @@ function MusicPlayerImpl.play(self: MusicPlayer, song: Song.Song, transitionOut:
     self:playImmediate(song, seek)
 end
 
-function MusicPlayerImpl.savePlaylistState(self: MusicPlayer)
+function MusicPlayer.savePlaylistState(self: MusicPlayer)
     if self.currentPlaylist ~= "" then
         self.savedPositions[self.currentPlaylist] = {
             position = self.playlistPosition,
@@ -121,7 +120,7 @@ function MusicPlayerImpl.savePlaylistState(self: MusicPlayer)
     end
 end
 
-function MusicPlayerImpl.continuePlaylist(self: MusicPlayer, playlistId: string)
+function MusicPlayer.continuePlaylist(self: MusicPlayer, playlistId: string)
     local position = self.savedPositions[playlistId]
     local playlist = self.playlists[playlistId]
 
@@ -142,7 +141,7 @@ function MusicPlayerImpl.continuePlaylist(self: MusicPlayer, playlistId: string)
     self.currentPlaylist = playlistId
 end
 
-function MusicPlayerImpl.SwitchPlaylist(self: MusicPlayer, playlistId: string)
+function MusicPlayer.SwitchPlaylist(self: MusicPlayer, playlistId: string)
     if self.currentPlaylist == playlistId then
         return
     end
@@ -160,7 +159,7 @@ function MusicPlayerImpl.SwitchPlaylist(self: MusicPlayer, playlistId: string)
     self:continuePlaylist(playlistId)
 end
 
-function MusicPlayerImpl.AdvancePlaylist(self: MusicPlayer, steps: number)
+function MusicPlayer.AdvancePlaylist(self: MusicPlayer, steps: number)
     if steps == 0 then
         return
     end
@@ -178,7 +177,7 @@ function MusicPlayerImpl.AdvancePlaylist(self: MusicPlayer, steps: number)
     self:play(playlist.songs:Get(self.playlistPosition) :: Song.Song, false, false, 0)
 end
 
-function MusicPlayerImpl.LoadPlaylists(self: MusicPlayer, playlists: TypedArray<Playlist.Playlist>)
+function MusicPlayer.LoadPlaylists(self: MusicPlayer, playlists: TypedArray<Playlist.Playlist>)
     self:SwitchPlaylist("")
 
     table.clear(self.playlists)
@@ -190,10 +189,9 @@ function MusicPlayerImpl.LoadPlaylists(self: MusicPlayer, playlists: TypedArray<
     end
 end
 
-function MusicPlayerImpl._OnFinished(self: MusicPlayer)
+--- @registerMethod
+function MusicPlayer._OnFinished(self: MusicPlayer)
     self:AdvancePlaylist(1)
 end
 
-MusicPlayer:RegisterMethod("_OnFinished")
-
-return MusicPlayer
+return MusicPlayerC

@@ -1,8 +1,10 @@
-local KskLogoImpl = {}
-local KskLogo = gdclass(nil, Control)
-    :RegisterImpl(KskLogoImpl)
+--- @class
+--- @extends Control
+local KskLogo = {}
+local KskLogoC = gdclass(KskLogo)
 
-export type KskLogo = Control & typeof(KskLogoImpl) & {
+--- @classType KskLogo
+export type KskLogo = Control & typeof(KskLogo) & {
     logoMat: ShaderMaterial,
     tween: Tween?,
 }
@@ -10,7 +12,8 @@ export type KskLogo = Control & typeof(KskLogoImpl) & {
 local PROGRESS_PARAM = "shader_parameter/progress"
 local TRANSITION_DURATION = 0.3
 
-function KskLogoImpl._Ready(self: KskLogo)
+--- @registerMethod
+function KskLogo._Ready(self: KskLogo)
     local logo = self:GetNode("Logo") :: ColorRect
     self.logoMat = assert(logo.material) :: ShaderMaterial
 
@@ -18,15 +21,14 @@ function KskLogoImpl._Ready(self: KskLogo)
     logo.mouseExited:Connect(Callable.new(self, "_OnMouseExited"))
 end
 
-KskLogo:RegisterMethod("_Ready")
-
-function KskLogoImpl.beginTween(self: KskLogo)
+function KskLogo.beginTween(self: KskLogo)
     return self:CreateTween()
         :SetEase(Tween.EaseType.OUT)
         :SetTrans(Tween.TransitionType.QUAD)
 end
 
-function KskLogoImpl._OnMouseEntered(self: KskLogo)
+--- @registerMethod
+function KskLogo._OnMouseEntered(self: KskLogo)
     if self.tween then
         self.tween:Kill()
     end
@@ -36,9 +38,8 @@ function KskLogoImpl._OnMouseEntered(self: KskLogo)
     self.tween = tween
 end
 
-KskLogo:RegisterMethod("_OnMouseEntered")
-
-function KskLogoImpl._OnMouseExited(self: KskLogo)
+--- @registerMethod
+function KskLogo._OnMouseExited(self: KskLogo)
     if self.tween then
         self.tween:Kill()
     end
@@ -48,6 +49,4 @@ function KskLogoImpl._OnMouseExited(self: KskLogo)
     self.tween = tween
 end
 
-KskLogo:RegisterMethod("_OnMouseExited")
-
-return KskLogo
+return KskLogoC

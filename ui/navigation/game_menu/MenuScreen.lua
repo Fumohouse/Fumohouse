@@ -6,12 +6,15 @@ local MusicController = require("../../music_controller/MusicController")
 local MapManagerM = require("../../../map_system/MapManager")
 local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
 
-local MenuScreenImpl = {}
-local MenuScreen = gdclass(nil, TransitionElement)
-    :RegisterImpl(MenuScreenImpl)
+--- @class
+--- @extends TransitionElement
+local MenuScreen = {}
+local MenuScreenC = gdclass(MenuScreen)
 
-export type MenuScreen = TransitionElement.TransitionElement & typeof(MenuScreenImpl) & {
-    transition: Signal,
+--- @classType MenuScreen
+export type MenuScreen = TransitionElement.TransitionElement & typeof(MenuScreen) & {
+    --- @signal
+    transition: SignalWithArgs<(vis: boolean) -> ()>,
 
     gradientBackground: Control,
     title: Control,
@@ -20,10 +23,7 @@ export type MenuScreen = TransitionElement.TransitionElement & typeof(MenuScreen
     musicController: MusicController.MusicController,
 }
 
-MenuScreen:RegisterSignal("transition")
-    :Args({ name = "vis", type = Enum.VariantType.BOOL })
-
-function MenuScreenImpl.bottomBarTargetPos(self: MenuScreen, vis: boolean)
+function MenuScreen.bottomBarTargetPos(self: MenuScreen, vis: boolean)
     if vis then
         return Vector2.new(self.bottomBar.position.x, self.size.y - self.bottomBar.size.y)
     else
@@ -31,7 +31,7 @@ function MenuScreenImpl.bottomBarTargetPos(self: MenuScreen, vis: boolean)
     end
 end
 
-function MenuScreenImpl.Hide(self: MenuScreen)
+function MenuScreen.Hide(self: MenuScreen)
     self.gradientBackground.modulate = Color.TRANSPARENT
     self.title.modulate = Color.TRANSPARENT
     self.navButtons:Hide()
@@ -40,7 +40,7 @@ function MenuScreenImpl.Hide(self: MenuScreen)
     self.musicController:Hide()
 end
 
-function MenuScreenImpl.Transition(self: MenuScreen, vis: boolean, buttonIdx: number?): Tween?
+function MenuScreen.Transition(self: MenuScreen, vis: boolean, buttonIdx: number?): Tween?
     local tween = MenuUtils.CommonTween(self, vis)
     local targetModulate = if vis then Color.WHITE else Color.TRANSPARENT
 
@@ -57,7 +57,8 @@ function MenuScreenImpl.Transition(self: MenuScreen, vis: boolean, buttonIdx: nu
     return tween
 end
 
-function MenuScreenImpl._Ready(self: MenuScreen)
+--- @registerMethod
+function MenuScreen._Ready(self: MenuScreen)
     self.gradientBackground = self:GetNode("GradientBackground") :: Control
     self.title = self:GetNode("%Title") :: Control
     self.navButtons = self:GetNode("%NavButtonContainer") :: NavButtonContainer.NavButtonContainer
@@ -71,6 +72,4 @@ function MenuScreenImpl._Ready(self: MenuScreen)
     mapName.text = string.format("%s • %s", name, author)
 end
 
-MenuScreen:RegisterMethod("_Ready")
-
-return MenuScreen
+return MenuScreenC

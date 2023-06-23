@@ -4,12 +4,14 @@ local MapRuntime = require("MapRuntime")
 local MusicPlayerM = require("../music/MusicPlayer")
 local MusicPlayer = gdglobal("MusicPlayer") :: MusicPlayerM.MusicPlayer
 
-local MapManagerImpl = {}
-local MapManager = gdclass(nil, Node)
-    :Permissions(bit32.bor(Enum.Permissions.FILE, Enum.Permissions.INTERNAL))
-    :RegisterImpl(MapManagerImpl)
+--- @class
+--- @extends Node
+--- @permissions FILE
+local MapManager = {}
+local MapManagerC = gdclass(MapManager)
 
-export type MapManager = Node & typeof(MapManagerImpl) & {
+--- @classType MapManager
+export type MapManager = Node & typeof(MapManager) & {
     maps: {MapManifest.MapManifest},
     currentMap: MapManifest.MapManifest?,
     currentRuntime: MapRuntime.MapRuntime?,
@@ -18,14 +20,15 @@ export type MapManager = Node & typeof(MapManagerImpl) & {
 
 local BASE_DIR = "res://maps/"
 
-function MapManagerImpl._Init(self: MapManager)
+function MapManager._Init(self: MapManager)
     self.maps = {}
 
     -- Done in _Init to avoid cyclic dependency
     self.runtimeScene = assert(load("res://map_system/runtime.tscn")) :: PackedScene
 end
 
-function MapManagerImpl._Ready(self: MapManager)
+--- @registerMethod
+function MapManager._Ready(self: MapManager)
     local dir = DirAccess.Open(BASE_DIR)
     assert(dir, "Failed to open maps directory")
 
@@ -51,9 +54,8 @@ function MapManagerImpl._Ready(self: MapManager)
     end
 end
 
-MapManager:RegisterMethod("_Ready")
-
-function MapManagerImpl.loadInternal(self: MapManager, manifest: MapManifest.MapManifest)
+--- Requires INTERNAL
+function MapManager.loadInternal(self: MapManager, manifest: MapManifest.MapManifest)
     local scene = load(manifest.mainScenePath) :: Resource?
     if not scene or not scene:IsA(PackedScene) then
         error(`Failed to load main scene at {manifest.mainScenePath}.`)
@@ -81,7 +83,7 @@ function MapManagerImpl.loadInternal(self: MapManager, manifest: MapManifest.Map
     self:GetTree():SetCurrentScene(newScene)
 end
 
-function MapManagerImpl.Load(self: MapManager, id: string)
+function MapManager.Load(self: MapManager, id: string)
     for _, map in self.maps do
         if map.id == id then
             self:loadInternal(map)
@@ -90,4 +92,4 @@ function MapManagerImpl.Load(self: MapManager, id: string)
     end
 end
 
-return MapManager
+return MapManagerC

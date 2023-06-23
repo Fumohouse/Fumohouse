@@ -1,36 +1,33 @@
 local Playlist = require("../music/Playlist")
 
-local MapManifest = gdclass("MapManifest", Resource)
+--- @class MapManifest
+--- @extends Resource
+local MapManifest = {}
+local MapManifestC = gdclass(MapManifest)
 
-export type MapManifest = Resource & {
+--- @classType MapManifest
+export type MapManifest = Resource & typeof(MapManifest) & {
+    --- @property
     id: string,
-
+    --- @property
     name: string,
+    --- @property
     author: string,
+
+    --- @property
+    --- @multiline
     description: string,
 
+    --- @property
+    --- @file *.tscn
     mainScenePath: string,
-    playlists: TypedArray<Playlist.Playlist>,
 
+    --- @property
+    playlists: TypedArray<Playlist.Playlist>,
+    --- @property
     titlePlaylist: string,
+    --- @property
     defaultPlaylist: string,
 }
 
-MapManifest:RegisterProperty("id", Enum.VariantType.STRING)
-MapManifest:RegisterProperty("name", Enum.VariantType.STRING)
-
-MapManifest:RegisterProperty("author", Enum.VariantType.STRING)
-
-MapManifest:RegisterProperty("description", Enum.VariantType.STRING)
-    :Multiline()
-
-MapManifest:RegisterProperty("mainScenePath", Enum.VariantType.STRING)
-    :File(false, "*.tscn")
-
-MapManifest:RegisterProperty("playlists", Enum.VariantType.ARRAY)
-    :TypedArray(Playlist)
-
-MapManifest:RegisterProperty("titlePlaylist", Enum.VariantType.STRING)
-MapManifest:RegisterProperty("defaultPlaylist", Enum.VariantType.STRING)
-
-return MapManifest
+return MapManifestC

@@ -1,23 +1,26 @@
 local ConfigBoundControl = require("ConfigBoundControl")
 
-local ConfigActionBindImpl = {}
-local ConfigActionBind = gdclass(nil, ConfigBoundControl)
-    :RegisterImpl(ConfigActionBindImpl)
+--- @class
+--- @extends ConfigBoundControl
+local ConfigActionBind = {}
+local ConfigActionBindC = gdclass(ConfigActionBind)
 
-export type ConfigActionBind = ConfigBoundControl.ConfigBoundControl & typeof(ConfigActionBindImpl) & {
+--- @classType ConfigActionBind
+export type ConfigActionBind = ConfigBoundControl.ConfigBoundControl & typeof(ConfigActionBind) & {
     input: Button,
     event: InputEvent,
 }
 
-function ConfigActionBindImpl._SetValue(self: ConfigActionBind, value: InputEvent)
+function ConfigActionBind._SetValue(self: ConfigActionBind, value: InputEvent)
     self.event = value
 end
 
-function ConfigActionBindImpl._GetValue(self: ConfigActionBind): Variant
+function ConfigActionBind._GetValue(self: ConfigActionBind): Variant
     return self.event
 end
 
-function ConfigActionBindImpl._Input(self: ConfigActionBind, event: InputEvent)
+--- @registerMethod
+function ConfigActionBind._Input(self: ConfigActionBind, event: InputEvent)
     if not self.input.buttonPressed or event:IsPressed() then
         return
     end
@@ -44,8 +47,6 @@ function ConfigActionBindImpl._Input(self: ConfigActionBind, event: InputEvent)
     end
 end
 
-ConfigActionBind:RegisterMethodAST("_Input")
-
 local function displayEvent(event: InputEvent)
     if event:IsA(InputEventKey) then
         local ek = event :: InputEventKey
@@ -58,7 +59,8 @@ local function displayEvent(event: InputEvent)
     return "???"
 end
 
-function ConfigActionBindImpl._OnToggled(self: ConfigActionBind, isPressed: boolean)
+--- @registerMethod
+function ConfigActionBind._OnToggled(self: ConfigActionBind, isPressed: boolean)
     if isPressed then
         self.input.text = "Waiting for input..."
     else
@@ -66,13 +68,11 @@ function ConfigActionBindImpl._OnToggled(self: ConfigActionBind, isPressed: bool
     end
 end
 
-ConfigActionBind:RegisterMethodAST("_OnToggled")
-
-function ConfigActionBindImpl._Ready(self: ConfigActionBind)
+function ConfigActionBind._Ready(self: ConfigActionBind)
     ConfigBoundControl._Ready(self)
 
     self:_OnToggled(self.input.buttonPressed)
     self.input.toggled:Connect(Callable.new(self, "_OnToggled"))
 end
 
-return ConfigActionBind
+return ConfigActionBindC

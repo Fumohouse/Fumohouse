@@ -1,23 +1,24 @@
 local Dock = require("Dock")
 
-local BlenderTransformImpl = {}
-local BlenderTransform = gdclass(nil, Button)
-    :Permissions(Enum.Permissions.INTERNAL)
-    :Tool(true)
-    :RegisterImpl(BlenderTransformImpl)
+--- @class
+--- @extends Button
+--- @tool
+--- @permissions INTERNAL
+local BlenderTransform = {}
+local BlenderTransformC = gdclass(BlenderTransform)
 
-export type BlenderTransform = Button & typeof(BlenderTransformImpl) & {
+--- @classType BlenderTransform
+export type BlenderTransform = Button & typeof(BlenderTransform) & {
     selection: EditorSelection,
 }
 
-function BlenderTransformImpl._Ready(self: BlenderTransform)
+--- @registerMethod
+function BlenderTransform._Ready(self: BlenderTransform)
     local plugin = (self:GetNode("../..") :: Dock.Dock).plugin
     self.selection = plugin:GetEditorInterface():GetSelection()
 
     self.pressed:Connect(Callable.new(self, "_OnPressed"))
 end
-
-BlenderTransform:RegisterMethod("_Ready")
 
 local function parseTransforms(str: string)
     local transforms = {}
@@ -95,7 +96,8 @@ local function parseTransforms(str: string)
     return transforms
 end
 
-function BlenderTransformImpl._OnPressed(self: BlenderTransform)
+--- @registerMethod
+function BlenderTransform._OnPressed(self: BlenderTransform)
     local selected = self.selection:GetSelectedNodes()
     if selected:IsEmpty() then
         return
@@ -118,6 +120,4 @@ function BlenderTransformImpl._OnPressed(self: BlenderTransform)
     end
 end
 
-BlenderTransform:RegisterMethod("_OnPressed")
-
-return BlenderTransform
+return BlenderTransformC

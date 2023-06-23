@@ -1,20 +1,20 @@
-local BillboardImpl = {}
-local Billboard = gdclass("Billboard", Sprite3D)
-    :RegisterImpl(BillboardImpl)
+--- @class Billboard
+--- @extends Sprite3D
+local Billboard = {}
+local BillboardC = gdclass(Billboard)
 
-export type Billboard = Sprite3D & typeof(BillboardImpl) & {
+--- @classType Billboard
+export type Billboard = Sprite3D & typeof(Billboard) & {
+    --- @property
+    --- @range 0 0.1 suffix:m
+    --- @default 0.01
     targetPixelSize: number,
 
     viewport: SubViewport,
     origSize: Vector2,
 }
 
--- In world units
-Billboard:RegisterProperty("targetPixelSize", Enum.VariantType.FLOAT)
-    :Range(0, 0.1)
-    :Default(0.01)
-
-function BillboardImpl.ReparentContents(self: Billboard)
+function Billboard.ReparentContents(self: Billboard)
 	-- Hack: We cannot see the contents in editor otherwise.
 	-- https://github.com/godotengine/godot/issues/39387
 
@@ -39,7 +39,8 @@ function BillboardImpl.ReparentContents(self: Billboard)
     end
 end
 
-function BillboardImpl._Ready(self: Billboard)
+--- @registerMethod
+function Billboard._Ready(self: Billboard)
     local viewport = SubViewport.new()
     viewport.name = "Viewport"
     viewport.disable3D = true
@@ -53,9 +54,7 @@ function BillboardImpl._Ready(self: Billboard)
     self:ReparentContents()
 end
 
-Billboard:RegisterMethod("_Ready")
-
-function BillboardImpl.GetScreenSize(self: Billboard, camera: Camera3D)
+function Billboard.GetScreenSize(self: Billboard, camera: Camera3D)
     local gBasis = self.globalTransform.basis
 
     local worldSize = self.origSize * self.targetPixelSize
@@ -79,7 +78,8 @@ function BillboardImpl.GetScreenSize(self: Billboard, camera: Camera3D)
     return screenSize
 end
 
-function BillboardImpl._Process(self: Billboard, delta: number)
+--- @registerMethod
+function Billboard._Process(self: Billboard, delta: number)
     local camera = self:GetViewport():GetCamera3D()
     if not camera then
         return
@@ -121,6 +121,4 @@ function BillboardImpl._Process(self: Billboard, delta: number)
     self.pixelSize = self.targetPixelSize * self.origSize.x / screenSize.x
 end
 
-Billboard:RegisterMethodAST("_Process")
-
-return Billboard
+return BillboardC

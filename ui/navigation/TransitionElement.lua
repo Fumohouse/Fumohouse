@@ -1,16 +1,18 @@
 local MenuUtils = require("MenuUtils.mod")
 
-local TransitionElementImpl = {}
-local TransitionElement = gdclass(nil, Control)
-    :RegisterImpl(TransitionElementImpl)
+--- @class
+--- @extends Control
+local TransitionElement = {}
+local TransitionElementC = gdclass(TransitionElement)
 
-export type TransitionElement = Control & typeof(TransitionElementImpl)
+--- @classType TransitionElement
+export type TransitionElement = Control & typeof(TransitionElement)
 
-function TransitionElementImpl.Hide(self: TransitionElement)
+function TransitionElement.Hide(self: TransitionElement)
     self.modulate = Color.TRANSPARENT
 end
 
-function TransitionElementImpl.Transition(self: TransitionElement, vis: boolean, ...: any): Tween?
+function TransitionElement.Transition(self: TransitionElement, vis: boolean, ...: any): Tween?
     local tween = self:CreateTween()
         :SetEase(Tween.EaseType.OUT)
         :SetTrans(Tween.TransitionType.QUAD)
@@ -20,4 +22,4 @@ function TransitionElementImpl.Transition(self: TransitionElement, vis: boolean,
     return tween
 end
 
-return TransitionElement
+return TransitionElementC

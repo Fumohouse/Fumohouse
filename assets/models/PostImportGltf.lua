@@ -1,10 +1,12 @@
-local PostImportGltfImpl = {}
-local PostImportGltf = gdclass(nil, EditorScenePostImport)
-    :Tool(true)
-    :Permissions(Enum.Permissions.INTERNAL)
-    :RegisterImpl(PostImportGltfImpl)
+--- @class
+--- @extends EditorScenePostImport
+--- @tool
+--- @permissions INTERNAL
+local PostImportGltf = {}
+local PostImportGltfC = gdclass(PostImportGltf)
 
-export type PostImportGltf = EditorScenePostImport & typeof(PostImportGltfImpl) & {
+--- @classType PostImportGltf
+export type PostImportGltf = EditorScenePostImport & typeof(PostImportGltf) & {
     convertedMaterials: {[number]: ShaderMaterial}
 }
 
@@ -29,22 +31,22 @@ local PROPERTY_MAP = {
 }
 
 local TEXTURE_MASKS = {
-    Plane.new(1, 0, 0, 0),
-    Plane.new(0, 1, 0, 0),
-    Plane.new(0, 0, 1, 0),
-    Plane.new(0, 0, 0, 1),
-    Plane.new(0.3333333, 0.3333333, 0.3333333, 0),
+    Vector4.new(1, 0, 0, 0),
+    Vector4.new(0, 1, 0, 0),
+    Vector4.new(0, 0, 1, 0),
+    Vector4.new(0, 0, 0, 1),
+    Vector4.new(0.3333333, 0.3333333, 0.3333333, 0),
 }
 
-function PostImportGltfImpl._Init(self: PostImportGltf)
+function PostImportGltf._Init(self: PostImportGltf)
     self.convertedMaterials = {}
 end
 
 local function getTextureMask(channel: ClassEnumBaseMaterial3D_TextureChannel)
-	return TEXTURE_MASKS[(channel :: any) :: number + 1] -- :)
+	return TEXTURE_MASKS[channel + 1]
 end
 
-function PostImportGltfImpl.convertMaterial(self: PostImportGltf, mat: StandardMaterial3D)
+function PostImportGltf.convertMaterial(self: PostImportGltf, mat: StandardMaterial3D)
     local id = mat:GetInstanceId()
 
     if self.convertedMaterials[id] then
@@ -66,7 +68,7 @@ function PostImportGltfImpl.convertMaterial(self: PostImportGltf, mat: StandardM
     return newMat
 end
 
-function PostImportGltfImpl.iterate(self: PostImportGltf, node: Node)
+function PostImportGltf.iterate(self: PostImportGltf, node: Node)
     if node:IsA(MeshInstance3D) then
         local meshInst = node :: MeshInstance3D
         local mesh = assert(meshInst.mesh)
@@ -84,11 +86,10 @@ function PostImportGltfImpl.iterate(self: PostImportGltf, node: Node)
     end
 end
 
-function PostImportGltfImpl._PostImport(self: PostImportGltf, scene: Node): Object
+--- @registerMethod
+function PostImportGltf._PostImport(self: PostImportGltf, scene: Node): Object
     self:iterate(scene)
     return scene
 end
 
-PostImportGltf:RegisterMethodAST("_PostImport")
-
-return PostImportGltf
+return PostImportGltfC

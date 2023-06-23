@@ -1,21 +1,18 @@
-local RotatingBodyImpl = {}
-local RotatingBody = gdclass(nil, AnimatableBody3D)
-    :RegisterImpl(RotatingBodyImpl)
+--- @class
+--- @extends AnimatableBody3D
+local RotatingBody  = {}
+local RotatingBodyC = gdclass(RotatingBody)
 
-export type RotatingBody = AnimatableBody3D & typeof(RotatingBodyImpl) & {
+--- @classType RotatingBody
+export type RotatingBody = AnimatableBody3D & typeof(RotatingBody) & {
+    --- @property
+    --- @range 0 60 1 degrees
     rotationSpeed: number,
 }
 
-RotatingBody:RegisterProperty("rotationSpeed", {
-    type = Enum.VariantType.FLOAT,
-    hint = Enum.PropertyHint.RANGE,
-    hintString = "0,60,1,degrees"
-})
-
-function RotatingBodyImpl._PhysicsProcess(self: RotatingBody, delta: number)
+--- @registerMethod
+function RotatingBody._PhysicsProcess(self: RotatingBody, delta: number)
     self:RotateY(math.rad(self.rotationSpeed) * delta)
 end
 
-RotatingBody:RegisterMethodAST("_PhysicsProcess")
-
-return RotatingBody
+return RotatingBodyC

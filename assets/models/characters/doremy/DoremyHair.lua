@@ -2,22 +2,23 @@ local PartCustomizer = require("../../../../character/appearance/parts/customiza
 local PartData = require("../../../../character/appearance/parts/PartData")
 local Appearance = require("../../../../character/appearance/Appearance")
 
-local DoremyHairImpl = {}
-local DoremyHair = gdclass(nil, PartCustomizer)
-    :RegisterImpl(DoremyHairImpl)
+--- @class
+--- @extends PartCustomizer
+local DoremyHair = {}
+local DoremyHairC = gdclass(DoremyHair)
 
-export type DoremyHair = PartCustomizer.PartCustomizer & typeof(DoremyHairImpl) & {
+--- @classType DoremyHair
+export type DoremyHair = PartCustomizer.PartCustomizer & typeof(DoremyHair) & {
     ponytail: Node3D,
 }
 
-function DoremyHairImpl._Ready(self: DoremyHair)
+--- @registerMethod
+function DoremyHair._Ready(self: DoremyHair)
     self.ponytail = self:GetNode("doremy_ponytail") :: Node3D
 end
 
-DoremyHair:RegisterMethod("_Ready")
-
-function DoremyHairImpl.Update(self: DoremyHair, appearance: Appearance.Appearance, config: Dictionary?)
+function DoremyHair.Update(self: DoremyHair, appearance: Appearance.Appearance, config: Dictionary?)
     self.ponytail.visible = appearance:GetPartOfScope(PartData.Scope.HAT) == nil
 end
 
-return DoremyHair
+return DoremyHairC

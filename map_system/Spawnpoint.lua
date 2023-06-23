@@ -1,13 +1,14 @@
-local SpawnpointImpl = {}
-local Spawnpoint = gdclass("Spawnpoint", Node3D)
-    :RegisterImpl(SpawnpointImpl)
+--- @class Spawnpoint
+--- @extends Node3D
+local Spawnpoint = {}
+local SpawnpointC = gdclass(Spawnpoint)
 
-export type Spawnpoint = Node3D & typeof(SpawnpointImpl)
+--- @classType Spawnpoint
+export type Spawnpoint = Node3D & typeof(Spawnpoint)
 
-function SpawnpointImpl.GetSpawnPoint(self: Spawnpoint): Transform3D
+--- @registerMethod
+function Spawnpoint.GetSpawnPoint(self: Spawnpoint): Transform3D
     return (self:GetNode("Position") :: Marker3D).globalTransform
 end
 
-Spawnpoint:RegisterMethodAST("GetSpawnPoint")
-
-return Spawnpoint
+return SpawnpointC

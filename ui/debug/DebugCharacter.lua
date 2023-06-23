@@ -10,13 +10,18 @@ local InfoTable = require("InfoTable")
 local DebugDrawM = require("../../utils/DebugDraw")
 local DebugDraw = gdglobal("DebugDraw") :: DebugDrawM.DebugDraw
 
-local DebugCharacterImpl = {}
-local DebugCharacter = gdclass(nil, DebugWindow)
-    :RegisterImpl(DebugCharacterImpl)
+--- @class
+--- @extends DebugWindow
+local DebugCharacter = {}
+local DebugCharacterC = gdclass(DebugCharacter)
 
-export type DebugCharacter = DebugWindow.DebugWindow & typeof(DebugCharacterImpl) & {
+--- @classType DebugCharacter
+export type DebugCharacter = DebugWindow.DebugWindow & typeof(DebugCharacter) & {
+    --- @property
+    --- @set setCharacterPath
+    --- @get getCharacterPath
+    characterPath: NodePathConstrained<RigidBody3D>,
     characterPathInternal: string,
-    characterPath: string,
 
     character: Character.Character?,
     horizontalMotion: HorizontalMotion.HorizontalMotion?,
@@ -27,15 +32,11 @@ export type DebugCharacter = DebugWindow.DebugWindow & typeof(DebugCharacterImpl
     state: RichTextLabel,
 }
 
-DebugCharacter:RegisterProperty("characterPath", Enum.VariantType.NODE_PATH)
-    :NodePath(RigidBody3D)
-    :SetGet("setCharacterPath", "getCharacterPath")
-
-function DebugCharacterImpl._Init(self: DebugCharacter)
+function DebugCharacter._Init(self: DebugCharacter)
     self.action = "debug_2"
 end
 
-function DebugCharacterImpl.updateCharacter(self: DebugCharacter)
+function DebugCharacter.updateCharacter(self: DebugCharacter)
     if self:IsInsideTree() and self.characterPathInternal ~= "" then
         local character = self:GetNode(self.characterPath) :: Character.Character
 
@@ -47,22 +48,18 @@ function DebugCharacterImpl.updateCharacter(self: DebugCharacter)
     end
 end
 
-function DebugCharacterImpl.setCharacterPath(self: DebugCharacter, path: string)
+--- @registerMethod
+function DebugCharacter.setCharacterPath(self: DebugCharacter, path: NodePath)
     self.characterPathInternal = path
     self:updateCharacter()
 end
 
-DebugCharacter:RegisterMethod("setCharacterPath")
-    :Args({ name = "path", type = Enum.VariantType.NODE_PATH })
-
-function DebugCharacterImpl.getCharacterPath(self: DebugCharacter)
+--- @registerMethod
+function DebugCharacter.getCharacterPath(self: DebugCharacter): NodePath
     return self.characterPathInternal
 end
 
-DebugCharacter:RegisterMethod("getCharacterPath")
-    :ReturnVal({ type = Enum.VariantType.NODE_PATH })
-
-function DebugCharacterImpl._Ready(self: DebugCharacter)
+function DebugCharacter._Ready(self: DebugCharacter)
     DebugWindow._Ready(self)
     self:SetWindowVisible(false)
 
@@ -80,7 +77,7 @@ function DebugCharacterImpl._Ready(self: DebugCharacter)
     self:updateCharacter()
 end
 
-function DebugCharacterImpl.debugDraw(self: DebugCharacter)
+function DebugCharacter.debugDraw(self: DebugCharacter)
     assert(self.character)
 
     local characterState = self.character.state
@@ -146,7 +143,8 @@ table.sort(STATES, function(a, b)
     return a.value < b.value
 end)
 
-function DebugCharacterImpl._Process(self: DebugCharacter, delta: number)
+--- @registerMethod
+function DebugCharacter._Process(self: DebugCharacter, delta: number)
     if not self.character then
         return
     end
@@ -193,6 +191,4 @@ function DebugCharacterImpl._Process(self: DebugCharacter, delta: number)
     self:debugDraw()
 end
 
-DebugCharacter:RegisterMethodAST("_Process")
-
-return DebugCharacter
+return DebugCharacterC

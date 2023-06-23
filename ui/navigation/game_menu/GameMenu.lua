@@ -4,11 +4,14 @@ local MenuScreen = require("MenuScreen")
 local NavButton = require("../NavButton")
 local TransitionElement = require("../TransitionElement")
 
-local GameMenuImpl = {}
-local GameMenu = gdclass(nil, NavMenu)
-    :RegisterImpl(GameMenuImpl)
+--- @class
+--- @extends NavMenu
+local GameMenu = {}
+local GameMenuC = gdclass(GameMenu)
 
-export type GameMenu = NavMenu.NavMenu & typeof(GameMenuImpl) & {
+--- @classType GameMenu
+export type GameMenu = NavMenu.NavMenu & typeof(GameMenu) & {
+    --- @signal
     opened: Signal,
 
     mainScreen: MenuScreen.MenuScreen,
@@ -21,12 +24,10 @@ export type GameMenu = NavMenu.NavMenu & typeof(GameMenuImpl) & {
     tween: Tween?,
 }
 
-GameMenu:RegisterSignal("opened")
-
 local BLUR_PARAM = "shader_parameter/blur"
 local DIM_PARAM = "shader_parameter/dim"
 
-function GameMenuImpl.Hide(self: GameMenu)
+function GameMenu.Hide(self: GameMenu)
     NavMenu.Hide(self)
 
     self.mouseFilter = Control.MouseFilter.IGNORE
@@ -39,7 +40,7 @@ function GameMenuImpl.Hide(self: GameMenu)
     self.isVisible = false
 end
 
-function GameMenuImpl.Transition(self: GameMenu, vis: boolean, args: NavMenu.SwitchArgs?)
+function GameMenu.Transition(self: GameMenu, vis: boolean, args: NavMenu.SwitchArgs?)
     if vis then
         -- Allow connected nodes to adjust accordingly when menu is opened.
         -- Happens before input mode update due to things like CameraController (hold right click to move camera).
@@ -86,11 +87,11 @@ function GameMenuImpl.Transition(self: GameMenu, vis: boolean, args: NavMenu.Swi
     self.isVisible = vis
 end
 
-function GameMenuImpl.Dismiss(self: GameMenu)
+function GameMenu.Dismiss(self: GameMenu)
     self:Transition(false)
 end
 
-function GameMenuImpl._UnhandledInput(self: GameMenu, event: InputEvent)
+function GameMenu._UnhandledInput(self: GameMenu, event: InputEvent)
     if Input.singleton:IsActionJustPressed("game_menu") and not self.isVisible then
         self:Transition(true)
         return
@@ -99,22 +100,20 @@ function GameMenuImpl._UnhandledInput(self: GameMenu, event: InputEvent)
     NavMenu._UnhandledInput(self, event)
 end
 
-function GameMenuImpl._OnMainScreenTransition(self: GameMenu, vis: boolean)
+--- @registerMethod
+function GameMenu._OnMainScreenTransition(self: GameMenu, vis: boolean)
     if vis then
         -- Input systems (e.g. character input) will check focus to avoid unwanted behavior
         self:GrabFocus()
     end
 end
 
-GameMenu:RegisterMethodAST("_OnMainScreenTransition")
-
-function GameMenuImpl._OnContinueButtonPressed(self: GameMenu, button: Button)
+--- @registerMethod
+function GameMenu._OnContinueButtonPressed(self: GameMenu, button: Button)
     self:Transition(false, (button :: NavButton.NavButton):TransitionArgs())
 end
 
-GameMenu:RegisterMethodAST("_OnContinueButtonPressed")
-
-function GameMenuImpl._Ready(self: GameMenu)
+function GameMenu._Ready(self: GameMenu)
     self.mainScreen = self:GetNode("Screens/MenuScreen") :: MenuScreen.MenuScreen
     self.mainScreen.transition:Connect(Callable.new(self, "_OnMainScreenTransition"))
     self.optionsScreen = self:GetNode("Screens/OptionsScreen") :: TransitionElement.TransitionElement
@@ -132,6 +131,4 @@ function GameMenuImpl._Ready(self: GameMenu)
     self:Hide()
 end
 
-GameMenu:RegisterMethod("_Ready")
-
-return GameMenu
+return GameMenuC

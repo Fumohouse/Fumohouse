@@ -1,25 +1,25 @@
-local EyeStyle = gdclass("EyeStyle", Resource)
+--- @class EyeStyle
+--- @extends Resource
+local EyeStyle = {}
+local EyeStyleC = gdclass(EyeStyle)
 
-export type EyeStyle = Resource & {
+--- @classType EyeStyle
+export type EyeStyle = Resource & typeof(EyeStyle) & {
+    --- @property
     name: string,
+
+    --- @property
     eyes: Texture2D,
+
+    --- @property
     shine: Texture2D,
+
+    --- @property
     overlay: Texture2D,
+
+    --- @property
+    --- @default true
     supportsRecoloring: boolean,
 }
 
-EyeStyle:RegisterProperty("name", Enum.VariantType.STRING)
-
-EyeStyle:RegisterProperty("eyes", Enum.VariantType.OBJECT)
-    :Resource(Texture2D)
-
-EyeStyle:RegisterProperty("shine", Enum.VariantType.OBJECT)
-    :Resource(Texture2D)
-
-EyeStyle:RegisterProperty("overlay", Enum.VariantType.OBJECT)
-    :Resource(Texture2D)
-
-EyeStyle:RegisterProperty("supportsRecoloring", Enum.VariantType.BOOL)
-    :Default(true)
-
-return EyeStyle
+return EyeStyleC

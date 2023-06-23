@@ -1,7 +1,8 @@
-local ConfigManagerImpl = {}
-local ConfigManager = gdclass(nil, Node)
-    :Permissions(Enum.Permissions.INTERNAL)
-    :RegisterImpl(ConfigManagerImpl)
+--- @class
+--- @extends Node
+--- @permissions INTERNAL
+local ConfigManager = {}
+local ConfigManagerC = gdclass(ConfigManager)
 
 type ConfigSetHandler = (value: any) -> ()
 
@@ -13,8 +14,12 @@ type ConfigKey = {
     restartRequired: boolean,
 }
 
-export type ConfigManager = Node & typeof(ConfigManagerImpl) & {
-    valueChanged: Signal,
+--- @classType ConfigManager
+export type ConfigManager = Node & typeof(ConfigManager) & {
+    --- @signal
+    valueChanged: SignalWithArgs<(key: string) -> ()>,
+
+    --- @signal
     restartRequired: Signal,
 
     config: ConfigFile,
@@ -31,11 +36,6 @@ local viewportStartSize = Vector2i.new(
     ProjectSettings.singleton:Get("display/window/size/viewport_height") :: number
 )
 
-ConfigManager:RegisterSignal("valueChanged")
-    :Args({ name = "key", type = Enum.VariantType.STRING })
-
-ConfigManager:RegisterSignal("restartRequired")
-
 -- I/O --
 
 local function splitKey(key: string)
@@ -43,15 +43,15 @@ local function splitKey(key: string)
     return string.sub(key, 1, idx - 1), string.sub(key, idx + 1)
 end
 
-function ConfigManagerImpl.Has(self: ConfigManager, key: string)
+function ConfigManager.Has(self: ConfigManager, key: string)
     return self.config:HasSectionKey(splitKey(key))
 end
 
-function ConfigManagerImpl.Get(self: ConfigManager, key: string)
+function ConfigManager.Get(self: ConfigManager, key: string)
     return self.config:GetValue(splitKey(key))
 end
 
-function ConfigManagerImpl.Set(self: ConfigManager, key: string, value: Variant, isInit: boolean?)
+function ConfigManager.Set(self: ConfigManager, key: string, value: Variant, isInit: boolean?)
     if self:Has(key) and self:Get(key) == value then
         return
     end
@@ -85,7 +85,7 @@ function ConfigManagerImpl.Set(self: ConfigManager, key: string, value: Variant,
     self.autosaveTimeout = AUTOSAVE_TIMEOUT
 end
 
-function ConfigManagerImpl.Load(self: ConfigManager)
+function ConfigManager.Load(self: ConfigManager)
     local err = self.config:Load(CONFIG_LOCATION)
 
     if err ~= Enum.Error.OK and err ~= Enum.Error.ERR_FILE_NOT_FOUND then
@@ -112,7 +112,7 @@ function ConfigManagerImpl.Load(self: ConfigManager)
     end
 end
 
-function ConfigManagerImpl.Save(self: ConfigManager)
+function ConfigManager.Save(self: ConfigManager)
     local err = self.config:Save(CONFIG_LOCATION)
 
     if err == Enum.Error.OK then
@@ -134,7 +134,8 @@ end
 
 -- Autosave --
 
-function ConfigManagerImpl._Process(self: ConfigManager, delta: number)
+--- @registerMethod
+function ConfigManager._Process(self: ConfigManager, delta: number)
     if self.autosaveTimeout > 0 then
         self.autosaveTimeout = math.max(0, self.autosaveTimeout - delta)
 
@@ -144,20 +145,17 @@ function ConfigManagerImpl._Process(self: ConfigManager, delta: number)
     end
 end
 
-ConfigManager:RegisterMethodAST("_Process")
-
-function ConfigManagerImpl._ExitTree(self: ConfigManager)
+--- @registerMethod
+function ConfigManager._ExitTree(self: ConfigManager)
     if self.autosaveTimeout > 0 then
         self:Save()
     end
 end
 
-ConfigManager:RegisterMethodAST("_ExitTree")
-
 -- Options --
 
 -- Graphics options and settings from https://github.com/godotengine/godot-demo-projects/blob/master/3d/graphics_settings/settings.gd
-ConfigManagerImpl.ShadowQualityOptions = {
+ConfigManager.ShadowQualityOptions = {
     {
         directionalSize = 512,
         directionalBias = 0.06,
@@ -190,14 +188,14 @@ ConfigManagerImpl.ShadowQualityOptions = {
     }
 }
 
-ConfigManagerImpl.SSROptions = {
+ConfigManager.SSROptions = {
     {enabled = false, steps = 0},
     {enabled = true, steps = 8},
     {enabled = true, steps = 32},
     {enabled = true, steps = 56},
 }
 
-ConfigManagerImpl.SSAOOptions = {
+ConfigManager.SSAOOptions = {
     {
         enabled = false,
         quality = -1,
@@ -220,7 +218,7 @@ ConfigManagerImpl.SSAOOptions = {
     },
 }
 
-ConfigManagerImpl.SSILOptions = {
+ConfigManager.SSILOptions = {
     {
         enabled = false,
         quality = -1
@@ -243,7 +241,7 @@ ConfigManagerImpl.SSILOptions = {
     },
 }
 
-ConfigManagerImpl.SDFGIOptions = {
+ConfigManager.SDFGIOptions = {
     {
         enabled = false,
         halfRes = false,
@@ -258,7 +256,7 @@ ConfigManagerImpl.SDFGIOptions = {
     },
 }
 
-ConfigManagerImpl.GlowOptions = {
+ConfigManager.GlowOptions = {
     {
         enabled = false,
         upscale = false,
@@ -273,7 +271,7 @@ ConfigManagerImpl.GlowOptions = {
     },
 }
 
-ConfigManagerImpl.VolumetricFogOptions = {
+ConfigManager.VolumetricFogOptions = {
     {
         enabled = false,
         filter = false,
@@ -288,7 +286,7 @@ ConfigManagerImpl.VolumetricFogOptions = {
     },
 }
 
-function ConfigManagerImpl.addOption(self: ConfigManager, key: string, defaultValue: Variant, handler: ConfigSetHandler?, restartRequired: boolean?, typeOverride: string?, isObject: boolean?)
+function ConfigManager.addOption(self: ConfigManager, key: string, defaultValue: Variant, handler: ConfigSetHandler?, restartRequired: boolean?, typeOverride: string?, isObject: boolean?)
     assert(not self.options[key])
 
     self.options[key] = {
@@ -300,7 +298,7 @@ function ConfigManagerImpl.addOption(self: ConfigManager, key: string, defaultVa
     }
 end
 
-function ConfigManagerImpl.addAudioBus(self: ConfigManager, bus: string)
+function ConfigManager.addAudioBus(self: ConfigManager, bus: string)
     local idx = AudioServer.singleton:GetBusIndex(bus)
     assert(idx >= 0)
 
@@ -329,7 +327,7 @@ local function mbEvent(button: EnumMouseButton)
     return ev
 end
 
-function ConfigManagerImpl.addAction(self: ConfigManager, action: string, default: InputEvent)
+function ConfigManager.addAction(self: ConfigManager, action: string, default: InputEvent)
     InputMap.singleton:AddAction(action)
 
     self:addOption(`input/action/{action}/bind`, default, function(value: InputEvent)
@@ -338,7 +336,7 @@ function ConfigManagerImpl.addAction(self: ConfigManager, action: string, defaul
     end, false, "InputEvent", true)
 end
 
-function ConfigManagerImpl.initOptions(self: ConfigManager)
+function ConfigManager.initOptions(self: ConfigManager)
     -- Graphics
     self:addOption("graphics/renderingMethod", 0, function(value: number)
         local values = {"forward_plus", "mobile", "gl_compatibility"}
@@ -502,7 +500,7 @@ end
 
 -- Initialization --
 
-function ConfigManagerImpl._Init(self: ConfigManager)
+function ConfigManager._Init(self: ConfigManager)
     self.config = ConfigFile.new()
     self.projectSettingsModified = false
     self.autosaveTimeout = 0
@@ -511,10 +509,9 @@ function ConfigManagerImpl._Init(self: ConfigManager)
     self:initOptions()
 end
 
-function ConfigManagerImpl._Ready(self: ConfigManager)
+--- @registerMethod
+function ConfigManager._Ready(self: ConfigManager)
     self:Load()
 end
 
-ConfigManager:RegisterMethod("_Ready")
-
-return ConfigManager
+return ConfigManagerC

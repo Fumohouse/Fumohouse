@@ -2,26 +2,24 @@ local MusicResBase = require("MusicResBase")
 local SongArtist = require("SongArtist")
 local SongLabel = require("SongLabel")
 
-local Song = gdclass("Song", MusicResBase)
+--- @class Song
+--- @extends MusicResBase
+local Song = {}
+local SongC = gdclass(Song)
 
-export type Song = MusicResBase.MusicResBase & {
+--- @classType Song
+export type Song = MusicResBase.MusicResBase & typeof(Song) & {
+    --- @property
     id: string,
 
+    --- @property
     artist: SongArtist.SongArtist,
+    --- @property
     label: SongLabel.SongLabel?,
 
+    --- @property
+    --- @file *.ogg *.mp3 *.wav
     path: string,
 }
 
-Song:RegisterProperty("id", Enum.VariantType.STRING)
-
-Song:RegisterProperty("artist", Enum.VariantType.OBJECT)
-    :Resource(SongArtist)
-
-Song:RegisterProperty("label", Enum.VariantType.OBJECT)
-    :Resource(SongLabel)
-
-Song:RegisterProperty("path", Enum.VariantType.STRING)
-    :File(false, "*.ogg", "*.mp3", "*.wav")
-
-return Song
+return SongC

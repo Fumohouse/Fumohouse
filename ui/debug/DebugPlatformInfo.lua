@@ -2,12 +2,14 @@ local DebugWindow = require("DebugWindow")
 local InfoTable = require("InfoTable")
 local Utils = require("../../utils/Utils.mod")
 
-local DebugPlatformInfoImpl = {}
-local DebugPlatformInfo = gdclass(nil, DebugWindow)
-    :Permissions(bit32.bor(Enum.Permissions.INTERNAL, Enum.Permissions.OS))
-    :RegisterImpl(DebugPlatformInfoImpl)
+--- @class
+--- @extends DebugWindow
+--- @permissions INTERNAL OS
+local DebugPlatformInfo = {}
+local DebugPlatformInfoC = gdclass(DebugPlatformInfo)
 
-export type DebugPlatformInfo = DebugWindow.DebugWindow & typeof(DebugPlatformInfoImpl) & {
+--- @classType DebugPlatformInfo
+export type DebugPlatformInfo = DebugWindow.DebugWindow & typeof(DebugPlatformInfo) & {
     infoTbl: InfoTable.InfoTable,
     egg: number,
 }
@@ -26,17 +28,18 @@ local DRIVERS = {
     ["gl_compatibility"] = "GLES 3",
 }
 
-function DebugPlatformInfoImpl._Init(self: DebugPlatformInfo)
+function DebugPlatformInfo._Init(self: DebugPlatformInfo)
     self.action = "debug_1"
     self.egg = 1
 end
 
-function DebugPlatformInfoImpl.updateEgg(self: DebugPlatformInfo)
+function DebugPlatformInfo.updateEgg(self: DebugPlatformInfo)
     local effect = EFFECTS[self.egg]
     self.infoTbl:SetVal("build", `[b]Fumohouse[/b] {effect[1]}[url=egg]{Utils.GetBuildString()}[/url]{effect[2]}`)
 end
 
-function DebugPlatformInfoImpl._OnMetaClicked(self: DebugPlatformInfo, meta: Variant)
+--- @registerMethod
+function DebugPlatformInfo._OnMetaClicked(self: DebugPlatformInfo, meta: Variant)
     if meta == "egg" then
         self.egg += 1
         if self.egg == #EFFECTS + 1 then
@@ -49,9 +52,7 @@ function DebugPlatformInfoImpl._OnMetaClicked(self: DebugPlatformInfo, meta: Var
     end
 end
 
-DebugPlatformInfo:RegisterMethodAST("_OnMetaClicked")
-
-function DebugPlatformInfoImpl._Ready(self: DebugPlatformInfo)
+function DebugPlatformInfo._Ready(self: DebugPlatformInfo)
     DebugWindow._Ready(self)
     self:SetWindowVisible(false)
 
@@ -104,6 +105,4 @@ function DebugPlatformInfoImpl._Ready(self: DebugPlatformInfo)
     self:updateEgg()
 end
 
-DebugPlatformInfo:RegisterMethod("_Ready")
-
-return DebugPlatformInfo
+return DebugPlatformInfoC

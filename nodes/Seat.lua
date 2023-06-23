@@ -1,11 +1,16 @@
 local Character = require("../character/Character")
 
-local SeatImpl = {}
-local Seat = gdclass(nil, StaticBody3D)
-    :RegisterImpl(SeatImpl)
+--- @class
+--- @extends StaticBody3D
+local Seat = {}
+local SeatC = gdclass(Seat)
 
-export type Seat = StaticBody3D & typeof(SeatImpl) & {
-    occupant: string,
+--- @classType Seat
+export type Seat = StaticBody3D & typeof(Seat) & {
+    --- @property
+    --- @set SetOccupant
+    --- @get GetOccupant
+    occupant: NodePathConstrained<RigidBody3D>,
     occupantInternal: string,
 
     joint: Joint3D,
@@ -13,23 +18,19 @@ export type Seat = StaticBody3D & typeof(SeatImpl) & {
     dismountMarker: Marker3D,
 }
 
-Seat:RegisterProperty("occupant", Enum.VariantType.NODE_PATH)
-    :NodePath(RigidBody3D)
-    :SetGet("SetOccupant", "GetOccupant")
-
-function SeatImpl._Init(self: Seat)
+function Seat._Init(self: Seat)
     self.occupantInternal = ""
 end
 
-function SeatImpl._Ready(self: Seat)
+--- @registerMethod
+function Seat._Ready(self: Seat)
     self.joint = self:GetNode("Joint") :: Joint3D
     self.marker = self:GetNode("Position") :: Marker3D
     self.dismountMarker = self:GetNode("DismountPosition") :: Marker3D
 end
 
-Seat:RegisterMethod("_Ready")
-
-function SeatImpl.SetOccupant(self: Seat, occupant: string)
+--- @registerMethod
+function Seat.SetOccupant(self: Seat, occupant: NodePath)
     if occupant == "" and self.occupant ~= "" then
         local oldOccupant = self:GetNode(self.occupant) :: Node3D
         -- Letting the character dismount at its current position drastically increases the probability
@@ -57,14 +58,9 @@ function SeatImpl.SetOccupant(self: Seat, occupant: string)
     self.occupantInternal = occupant
 end
 
-Seat:RegisterMethod("SetOccupant")
-    :Args({ name = "occupant", type = Enum.VariantType.NODE_PATH })
-
-function SeatImpl.GetOccupant(self: Seat)
+--- @registerMethod
+function Seat.GetOccupant(self: Seat): NodePath
     return self.occupantInternal
 end
 
-Seat:RegisterMethod("GetOccupant")
-    :ReturnVal({ type = Enum.VariantType.NODE_PATH })
-
-return Seat
+return SeatC

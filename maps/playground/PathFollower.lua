@@ -1,18 +1,18 @@
-local PathFollowerImpl = {}
-local PathFollower = gdclass(nil, PathFollow3D)
-    :RegisterImpl(PathFollowerImpl)
+--- @class
+--- @extends PathFollow3D
+local PathFollower = {}
+local PathFollowerC = gdclass(PathFollower)
 
-export type PathFollower = PathFollow3D & typeof(PathFollowerImpl) & {
+--- @classType PathFollower
+export type PathFollower = PathFollow3D & typeof(PathFollower) & {
+    --- @property
+    --- @range 0 10
     speed: number,
 }
 
-PathFollower:RegisterProperty("speed", Enum.VariantType.FLOAT)
-    :Range(0, 10)
-
-function PathFollowerImpl._PhysicsProcess(self: PathFollower, delta: number)
+--- @registerMethod
+function PathFollower._PhysicsProcess(self: PathFollower, delta: number)
     self.progress += self.speed * delta
 end
 
-PathFollower:RegisterMethodAST("_PhysicsProcess")
-
-return PathFollower
+return PathFollowerC

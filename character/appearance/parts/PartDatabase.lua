@@ -1,23 +1,25 @@
 local PartData = require("PartData")
 
-local PartDatabaseImpl = {}
-local PartDatabase = gdclass(nil, Node)
-    :Permissions(Enum.Permissions.FILE)
-    :RegisterImpl(PartDatabaseImpl)
+--- @class
+--- @extends Node
+--- @permissions FILE
+local PartDatabase = {}
+local PartDatabaseC = gdclass(PartDatabase)
 
-export type PartDatabase = Node & typeof(PartDatabaseImpl) & {
+--- @classType PartDatabase
+export type PartDatabase = Node & typeof(PartDatabase) & {
     parts: {[string]: PartData.PartData},
     partCount: number
 }
 
-PartDatabaseImpl.PART_INFO_PATH = "res://resources/part_data/"
+PartDatabase.PART_INFO_PATH = "res://resources/part_data/"
 
-function PartDatabaseImpl._Init(self: PartDatabase)
+function PartDatabase._Init(self: PartDatabase)
     self.parts = {}
     self.partCount = 0
 end
 
-function PartDatabaseImpl.scanDir(self: PartDatabase, path: string)
+function PartDatabase.scanDir(self: PartDatabase, path: string)
     print("Scanning path: ", path)
 
     local dir = DirAccess.Open(path)
@@ -47,16 +49,15 @@ function PartDatabaseImpl.scanDir(self: PartDatabase, path: string)
     end
 end
 
-function PartDatabaseImpl._Ready(self: PartDatabase)
+--- @registerMethod
+function PartDatabase._Ready(self: PartDatabase)
     print("---- PartDatabase beginning load ----")
     self:scanDir(PartDatabase.PART_INFO_PATH)
     print(`---- Finished loading {self.partCount} parts. ----`)
 end
 
-PartDatabase:RegisterMethod("_Ready")
-
-function PartDatabaseImpl.GetPart(self: PartDatabase, id: string): PartData.PartData?
+function PartDatabase.GetPart(self: PartDatabase, id: string): PartData.PartData?
     return self.parts[id]
 end
 
-return PartDatabase
+return PartDatabaseC

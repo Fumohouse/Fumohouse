@@ -1,12 +1,15 @@
-local FacePartStyle = gdclass("FacePartStyle", Resource)
+--- @class FacePartStyle
+--- @extends Resource
+local FacePartStyle = {}
+local FacePartStyleC = gdclass(FacePartStyle)
 
-export type FacePartStyle = Resource & {
+--- @classType FacePartStyle
+export type FacePartStyle = Resource & typeof(FacePartStyle) & {
+    --- @property
     name: string,
+
+    --- @property
     texture: Texture2D,
 }
 
-FacePartStyle:RegisterProperty("name", Enum.VariantType.STRING)
-FacePartStyle:RegisterProperty("texture", Enum.VariantType.OBJECT)
-    :Resource(Texture2D)
-
-return FacePartStyle
+return FacePartStyleC

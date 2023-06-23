@@ -1,19 +1,21 @@
 local NavButton = require("NavButton")
 local MenuUtils = require("MenuUtils.mod")
 
-local NavButtonContainerImpl = {}
-local NavButtonContainer = gdclass(nil, VBoxContainer)
-    :RegisterImpl(NavButtonContainerImpl)
+--- @class
+--- @extends VBoxContainer
+local NavButtonContainer = {}
+local NavButtonContainerC = gdclass(NavButtonContainer)
 
-export type NavButtonContainer = VBoxContainer & typeof(NavButtonContainerImpl) & {
+--- @classType NavButtonContainer
+export type NavButtonContainer = VBoxContainer & typeof(NavButtonContainer) & {
     tween: Tween?
 }
 
-function NavButtonContainerImpl.buttonTargetX(self: NavButtonContainer, button: NavButton.NavButton, vis: boolean)
+function NavButtonContainer.buttonTargetX(self: NavButtonContainer, button: NavButton.NavButton, vis: boolean)
     return if vis then 0 else -button.origWidth - MenuUtils.MARGIN
 end
 
-function NavButtonContainerImpl.Hide(self: NavButtonContainer)
+function NavButtonContainer.Hide(self: NavButtonContainer)
     for _, button: NavButton.NavButton in self:GetChildren() do
         button.disabled = true
         button.position = Vector2.new(self:buttonTargetX(button, false), button.position.y)
@@ -21,7 +23,7 @@ function NavButtonContainerImpl.Hide(self: NavButtonContainer)
     end
 end
 
-function NavButtonContainerImpl.Transition(self: NavButtonContainer, vis: boolean, buttonIdx: number?)
+function NavButtonContainer.Transition(self: NavButtonContainer, vis: boolean, buttonIdx: number?)
     if self.tween then
         self.tween:Kill()
     end
@@ -57,4 +59,4 @@ function NavButtonContainerImpl.Transition(self: NavButtonContainer, vis: boolea
     self.tween = tween
 end
 
-return NavButtonContainer
+return NavButtonContainerC

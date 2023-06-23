@@ -3,27 +3,29 @@ local PartDatabase = require("../../character/appearance/parts/PartDatabase")
 local AppearanceManager = require("../../character/appearance/AppearanceManager")
 local SinglePart = require("../../character/appearance/parts/SinglePart")
 
-local AppearanceSaverImpl = {}
-local AppearanceSaver = gdclass(nil, Control)
-    :Permissions(Enum.Permissions.FILE)
-    :Tool(true)
-    :RegisterImpl(AppearanceSaverImpl)
+--- @class
+--- @extends Control
+--- @tool
+--- @permissions FILE
+local AppearanceSaver = {}
+local AppearanceSaverC = gdclass(AppearanceSaver)
 
-export type AppearanceSaver = Control & {
+--- @classType AppearanceSaver
+export type AppearanceSaver = Control & typeof(AppearanceSaver) & {
     folderField: LineEdit,
     selection: EditorSelection,
 }
 
-function AppearanceSaverImpl._Ready(self: AppearanceSaver)
+--- @registerMethod
+function AppearanceSaver._Ready(self: AppearanceSaver)
     self.folderField = self:GetNode("Folder") :: LineEdit
 
     local plugin = (self:GetNode("../..") :: Dock.Dock).plugin
     self.selection = plugin:GetEditorInterface():GetSelection()
 end
 
-AppearanceSaver:RegisterMethod("_Ready")
-
-function AppearanceSaverImpl._OnButtonPressed(self: AppearanceSaver)
+--- @registerMethod
+function AppearanceSaver._OnButtonPressed(self: AppearanceSaver)
     -- Selection
     local selected = self.selection:GetSelectedNodes()
     if selected:IsEmpty() then
@@ -86,6 +88,4 @@ function AppearanceSaverImpl._OnButtonPressed(self: AppearanceSaver)
     end
 end
 
-AppearanceSaver:RegisterMethod("_OnButtonPressed")
-
-return AppearanceSaver
+return AppearanceSaverC

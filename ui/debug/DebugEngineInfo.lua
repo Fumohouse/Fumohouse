@@ -1,12 +1,14 @@
 local DebugWindow = require("DebugWindow")
 local InfoTable = require("InfoTable")
 
-local DebugEngineInfoImpl = {}
-local DebugEngineInfo = gdclass(nil, DebugWindow)
-    :Permissions(bit32.bor(Enum.Permissions.INTERNAL, Enum.Permissions.OS))
-    :RegisterImpl(DebugEngineInfoImpl)
+--- @class
+--- @extends DebugWindow
+--- @permissions INTERNAL OS
+local DebugEngineInfo = {}
+local DebugEngineInfoC = gdclass(DebugEngineInfo)
 
-export type DebugEngineInfo = DebugWindow.DebugWindow & typeof(DebugEngineInfoImpl) & {
+--- @classType DebugEngineInfo
+export type DebugEngineInfo = DebugWindow.DebugWindow & typeof(DebugEngineInfo) & {
     infoTbl: InfoTable.InfoTable,
 }
 
@@ -17,11 +19,11 @@ local VSYNC_MODES = {
     [DisplayServer.VSyncMode.MAILBOX] = "Mailbox",
 }
 
-function DebugEngineInfoImpl._Init(self: DebugEngineInfo)
+function DebugEngineInfo._Init(self: DebugEngineInfo)
     self.action = "debug_3"
 end
 
-function DebugEngineInfoImpl._Ready(self: DebugEngineInfo)
+function DebugEngineInfo._Ready(self: DebugEngineInfo)
     DebugWindow._Ready(self)
     self:SetWindowVisible(false)
 
@@ -42,9 +44,8 @@ function DebugEngineInfoImpl._Ready(self: DebugEngineInfo)
     end
 end
 
-DebugEngineInfo:RegisterMethod("_Ready")
-
-function DebugEngineInfoImpl._Process(self: DebugEngineInfo, delta: number)
+--- @registerMethod
+function DebugEngineInfo._Process(self: DebugEngineInfo, delta: number)
     local infoTbl = self.infoTbl
     local perf = Performance.singleton
 
@@ -121,6 +122,4 @@ function DebugEngineInfoImpl._Process(self: DebugEngineInfo, delta: number)
     end
 end
 
-DebugEngineInfo:RegisterMethodAST("_Process")
-
-return DebugEngineInfo
+return DebugEngineInfoC

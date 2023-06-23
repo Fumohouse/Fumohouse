@@ -11,18 +11,27 @@ local PartCustomizer = require("parts/customization/PartCustomizer")
 local PartDatabaseM = require("parts/PartDatabase")
 local PartDatabase = gdglobal("PartDatabase") :: PartDatabaseM.PartDatabase
 
-local AppearanceManagerImpl = {}
-local AppearanceManager = gdclass(nil, Node3D)
-    :RegisterImpl(AppearanceManagerImpl)
+--- @class
+--- @extends Node3D
+local AppearanceManager = {}
+local AppearanceManagerC = gdclass(AppearanceManager)
 
 type AttachedPartInfo = {
     nodes: {Node3D},
     materials: {Material},
 }
 
-export type AppearanceManager = Node3D & typeof(AppearanceManagerImpl) & {
+--- @classType AppearanceManager
+export type AppearanceManager = Node3D & typeof(AppearanceManager) & {
+    --- @property
     appearance: Appearance.Appearance,
+
+    --- @property
+    --- @default 1.5
     cameraFadeBegin: number,
+
+    --- @property
+    --- @default 0.25
     cameraFadeEnd: number,
 
     character: Character.Character,
@@ -38,7 +47,7 @@ export type AppearanceManager = Node3D & typeof(AppearanceManagerImpl) & {
     alpha: number,
 }
 
-AppearanceManagerImpl.ATTACHMENTS = {
+AppearanceManager.ATTACHMENTS = {
     [SinglePart.Bone.TORSO] = "Torso",
     [SinglePart.Bone.HEAD] = "Head",
     [SinglePart.Bone.R_ARM] = "RArm",
@@ -54,23 +63,14 @@ AppearanceManagerImpl.ATTACHMENTS = {
 local faceMaterial: ShaderMaterial = assert(load("face/face_material.tres"))
 local faceDatabase: FaceDatabase.FaceDatabase = assert(load("res://resources/face_database.tres"))
 
-AppearanceManager:RegisterProperty("appearance", Enum.VariantType.OBJECT)
-    :Resource(Appearance)
-
-AppearanceManager:RegisterProperty("cameraFadeBegin", Enum.VariantType.FLOAT)
-    :Default(1.5)
-
-AppearanceManager:RegisterProperty("cameraFadeEnd", Enum.VariantType.FLOAT)
-    :Default(0.25)
-
-function AppearanceManagerImpl._Init(self: AppearanceManager)
+function AppearanceManager._Init(self: AppearanceManager)
     self.attachedParts = {}
     self.baseCameraOffset = 0
 
     self.alpha = 1
 end
 
-function AppearanceManagerImpl.setAlpha(self: AppearanceManager, alpha: number)
+function AppearanceManager.setAlpha(self: AppearanceManager, alpha: number)
     local ALPHA_PARAM = "alpha"
 
     if self.alpha == alpha then
@@ -107,7 +107,7 @@ function AppearanceManagerImpl.setAlpha(self: AppearanceManager, alpha: number)
     end
 end
 
-function AppearanceManagerImpl.loadScale(self: AppearanceManager)
+function AppearanceManager.loadScale(self: AppearanceManager)
     local scaleVec = Vector3.ONE * self.appearance.scale
 
     self.rig.scale = scaleVec
@@ -122,7 +122,8 @@ function AppearanceManagerImpl.loadScale(self: AppearanceManager)
     end
 end
 
-function AppearanceManagerImpl._PhysicsProcess(self: AppearanceManager, delta: number)
+--- @registerMethod
+function AppearanceManager._PhysicsProcess(self: AppearanceManager, delta: number)
     if not self.character.state.camera then
         return
     end
@@ -145,17 +146,13 @@ function AppearanceManagerImpl._PhysicsProcess(self: AppearanceManager, delta: n
     self:setAlpha(alpha)
 end
 
-AppearanceManager:RegisterMethodAST("_PhysicsProcess")
-
-function AppearanceManagerImpl._OnCharacterCameraUpdated(self: AppearanceManager, camera: CameraController.CameraController)
+--- @registerMethod
+function AppearanceManager._OnCharacterCameraUpdated(self: AppearanceManager, camera: CameraController.CameraController)
     self.baseCameraOffset = camera.cameraOffset
     self:loadScale()
 end
 
-AppearanceManager:RegisterMethod("_OnCharacterCameraUpdated")
-    :Args({ name = "camera", type = Enum.VariantType.OBJECT })
-
-function AppearanceManagerImpl.loadFacePartStyle(self: AppearanceManager, getCb, styleName: string, uniform: string)
+function AppearanceManager.loadFacePartStyle(self: AppearanceManager, getCb, styleName: string, uniform: string)
     local texture: Texture2D?
 
     if styleName ~= "" then
@@ -168,7 +165,7 @@ function AppearanceManagerImpl.loadFacePartStyle(self: AppearanceManager, getCb,
     self.faceMaterial:SetShaderParameter(uniform, texture)
 end
 
-function AppearanceManagerImpl.loadFace(self: AppearanceManager)
+function AppearanceManager.loadFace(self: AppearanceManager)
     -- Eyebrow & mouth
     self:loadFacePartStyle(FaceDatabase.GetEyebrow, self.appearance.eyebrows, "brow_texture")
     self:loadFacePartStyle(FaceDatabase.GetMouth, self.appearance.mouth, "mouth_texture")
@@ -199,7 +196,7 @@ function AppearanceManagerImpl.loadFace(self: AppearanceManager)
     self.faceMaterial:SetShaderParameter("overlay_texture", overlayTexture)
 end
 
-function AppearanceManagerImpl.attachSingle(self: AppearanceManager, partInfo: SinglePart.SinglePart)
+function AppearanceManager.attachSingle(self: AppearanceManager, partInfo: SinglePart.SinglePart)
     local node = (assert(load(SinglePart.BASE_PATH .. partInfo.scenePath)) :: PackedScene):Instantiate() :: Node3D
 
     local targetAtt = self:GetNode(AppearanceManager.ATTACHMENTS[partInfo.bone]) :: BoneAttachment3D
@@ -231,7 +228,7 @@ local function searchMaterials(node: Node3D, list: {[Material]: true})
     return list
 end
 
-function AppearanceManagerImpl.attach(self: AppearanceManager, id: string)
+function AppearanceManager.attach(self: AppearanceManager, id: string)
     if self.attachedParts[id] then
         return
     end
@@ -274,7 +271,7 @@ function AppearanceManagerImpl.attach(self: AppearanceManager, id: string)
     }
 end
 
-function AppearanceManagerImpl.detach(self: AppearanceManager, id: string)
+function AppearanceManager.detach(self: AppearanceManager, id: string)
     if not self.attachedParts[id] then
         return
     end
@@ -286,7 +283,7 @@ function AppearanceManagerImpl.detach(self: AppearanceManager, id: string)
     self.attachedParts[id] = nil
 end
 
-function AppearanceManagerImpl.loadParts(self: AppearanceManager)
+function AppearanceManager.loadParts(self: AppearanceManager)
     for partId: string in self.appearance.attachedParts do
         self:attach(partId)
     end
@@ -307,15 +304,15 @@ function AppearanceManagerImpl.loadParts(self: AppearanceManager)
     end
 end
 
-function AppearanceManagerImpl.LoadAppearance(self: AppearanceManager)
+--- @registerMethod
+function AppearanceManager.LoadAppearance(self: AppearanceManager)
     self:loadFace()
     self:loadParts()
     self:loadScale()
 end
 
-AppearanceManager:RegisterMethod("LoadAppearance")
-
-function AppearanceManagerImpl._Ready(self: AppearanceManager)
+--- @registerMethod
+function AppearanceManager._Ready(self: AppearanceManager)
     self.character = self:GetParent() :: Character.Character
     self.rig = self:GetNode("../Rig") :: Node3D
     self.skeleton = self:GetNode("../Rig/Armature/Skeleton3D") :: Skeleton3D
@@ -330,6 +327,4 @@ function AppearanceManagerImpl._Ready(self: AppearanceManager)
     Callable.new(self, "LoadAppearance"):CallDeferred()
 end
 
-AppearanceManager:RegisterMethod("_Ready")
-
-return AppearanceManager
+return AppearanceManagerC

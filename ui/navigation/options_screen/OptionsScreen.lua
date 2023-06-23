@@ -5,19 +5,22 @@ local MenuUtils = require("../MenuUtils.mod")
 local ConfigManagerM = require("../../../config/ConfigManager")
 local ConfigManager = gdglobal("ConfigManager") :: ConfigManagerM.ConfigManager
 
-local OptionsScreenImpl = {}
-local OptionsScreen = gdclass(nil, TransitionElement)
-    :Permissions(bit32.bor(Enum.Permissions.INTERNAL, Enum.Permissions.OS))
-    :RegisterImpl(OptionsScreenImpl)
+--- @class
+--- @extends TransitionElement
+--- @permissions INTERNAL OS
+local OptionsScreen = {}
+local OptionsScreenC = gdclass(OptionsScreen)
 
-export type OptionsScreen = TransitionElement.TransitionElement & typeof(OptionsScreenImpl) & {
+--- @classType OptionsScreen
+export type OptionsScreen = TransitionElement.TransitionElement & typeof(OptionsScreen) & {
     tabContainer: ButtonTabContainer.ButtonTabContainer,
     currentTab: Control?,
     tabs: Control,
     restartPrompt: Control,
 }
 
-function OptionsScreenImpl._OnSelectionChanged(self: OptionsScreen)
+--- @registerMethod
+function OptionsScreen._OnSelectionChanged(self: OptionsScreen)
     if self.currentTab then
         self.currentTab.visible = false
     end
@@ -33,9 +36,7 @@ function OptionsScreenImpl._OnSelectionChanged(self: OptionsScreen)
     self.currentTab = tab
 end
 
-OptionsScreen:RegisterMethod("_OnSelectionChanged")
-
-function OptionsScreenImpl.restartPromptTargetPos(self: OptionsScreen, vis: boolean)
+function OptionsScreen.restartPromptTargetPos(self: OptionsScreen, vis: boolean)
     if vis then
         return Vector2.new(self.restartPrompt.position.x, self.size.y - self.restartPrompt.size.y)
     else
@@ -43,12 +44,12 @@ function OptionsScreenImpl.restartPromptTargetPos(self: OptionsScreen, vis: bool
     end
 end
 
-function OptionsScreenImpl.HideRestartPrompt(self: OptionsScreen)
+function OptionsScreen.HideRestartPrompt(self: OptionsScreen)
     self.restartPrompt.visible = false
     self.restartPrompt.position = self:restartPromptTargetPos(false)
 end
 
-function OptionsScreenImpl.TransitionRestartPrompt(self: OptionsScreen, vis: boolean)
+function OptionsScreen.TransitionRestartPrompt(self: OptionsScreen, vis: boolean)
     self.restartPrompt.visible = true
 
     local tween = MenuUtils.CommonTween(self, vis)
@@ -63,26 +64,24 @@ function OptionsScreenImpl.TransitionRestartPrompt(self: OptionsScreen, vis: boo
     end
 end
 
-function OptionsScreenImpl._OnRestartRequired(self: OptionsScreen)
+--- @registerMethod
+function OptionsScreen._OnRestartRequired(self: OptionsScreen)
     self:TransitionRestartPrompt(true)
 end
 
-OptionsScreen:RegisterMethod("_OnRestartRequired")
-
-function OptionsScreenImpl._OnRestartPromptCancelPressed(self: OptionsScreen)
+--- @registerMethod
+function OptionsScreen._OnRestartPromptCancelPressed(self: OptionsScreen)
     self:TransitionRestartPrompt(false)
 end
 
-OptionsScreen:RegisterMethod("_OnRestartPromptCancelPressed")
-
-function OptionsScreenImpl._OnRestartPromptRestartPressed(self: OptionsScreen)
+--- @registerMethod
+function OptionsScreen._OnRestartPromptRestartPressed(self: OptionsScreen)
     OS.singleton:SetRestartOnExit(true, OS.singleton:GetCmdlineArgs())
     self:GetTree():Quit()
 end
 
-OptionsScreen:RegisterMethod("_OnRestartPromptRestartPressed")
-
-function OptionsScreenImpl._Ready(self: OptionsScreen)
+--- @registerMethod
+function OptionsScreen._Ready(self: OptionsScreen)
     -- Tabs
     self.tabContainer = self:GetNode("%ButtonTabContainer") :: ButtonTabContainer.ButtonTabContainer
     self.tabs = self:GetNode("%Tabs") :: Control
@@ -109,6 +108,4 @@ function OptionsScreenImpl._Ready(self: OptionsScreen)
     ConfigManager.restartRequired:Connect(Callable.new(self, "_OnRestartRequired"))
 end
 
-OptionsScreen:RegisterMethod("_Ready")
-
-return OptionsScreen
+return OptionsScreenC

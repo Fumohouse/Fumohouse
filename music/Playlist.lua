@@ -1,15 +1,16 @@
 local Song = require("Song")
 
-local Playlist = gdclass("Playlist", Resource)
+--- @class Playlist
+--- @extends Resource
+local Playlist = {}
+local PlaylistC = gdclass(Playlist)
 
+--- @classType Playlist
 export type Playlist = Resource & {
+    --- @property
     id: string,
+    --- @property
     songs: TypedArray<Song.Song>,
 }
 
-Playlist:RegisterProperty("id", Enum.VariantType.STRING)
-
-Playlist:RegisterProperty("songs", Enum.VariantType.ARRAY)
-    :TypedArray(Song)
-
-return Playlist
+return PlaylistC

@@ -1,13 +1,15 @@
 local PartData = require("PartData")
 local SinglePart = require("SinglePart")
 
-local MultiPart = gdclass("MultiPart", PartData)
+--- @class MultiPart
+--- @extends PartData
+local MultiPart = {}
+local MultiPartC = gdclass(MultiPart)
 
-export type MultiPart = PartData.PartData & {
+--- @classType MultiPart
+export type MultiPart = PartData.PartData & typeof(MultiPart) & {
+    --- @property
     parts: TypedArray<SinglePart.SinglePart>,
 }
 
-MultiPart:RegisterProperty("parts", Enum.VariantType.ARRAY)
-    :TypedArray(SinglePart)
-
-return MultiPart
+return MultiPartC

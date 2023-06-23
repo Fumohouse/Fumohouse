@@ -3,13 +3,15 @@ local CameraController = require("../character/CameraController")
 local Character = require("../character/Character")
 local Spawnpoint = require("Spawnpoint")
 
-local BasicSpawnerImpl = {}
-local BasicSpawner = gdclass("BasicSpawner", CharacterSpawner)
-    :RegisterImpl(BasicSpawnerImpl)
+--- @class BasicSpawner
+--- @extends CharacterSpawner
+local BasicSpawner = {}
+local BasicSpawnerC = gdclass(BasicSpawner)
 
+--- @classType BasicSpawner
 export type BasicSpawner = CharacterSpawner.CharacterSpawner
 
-function BasicSpawnerImpl.SpawnCharacter(self: BasicSpawner, defaultScene: PackedScene, camera: CameraController.CameraController): Node3D?
+function BasicSpawner.SpawnCharacter(self: BasicSpawner, defaultScene: PackedScene, camera: CameraController.CameraController): Node3D?
     local character = defaultScene:Instantiate() :: Character.Character
     character.cameraPath = camera:GetPath()
 
@@ -23,4 +25,4 @@ function BasicSpawnerImpl.SpawnCharacter(self: BasicSpawner, defaultScene: Packe
     return character
 end
 
-return BasicSpawner
+return BasicSpawnerC

@@ -3,16 +3,30 @@ local Utils = require("../utils/Utils.mod")
 local ConfigManagerM = require("../config/ConfigManager")
 local ConfigManager = gdglobal("ConfigManager") :: ConfigManagerM.ConfigManager
 
-local CameraControllerImpl = {}
-local CameraController = gdclass("CameraController", Camera3D)
-    :RegisterImpl(CameraControllerImpl)
+--- @class CameraController
+--- @extends Camera3D
+local CameraController = {}
+local CameraControllerC = gdclass(CameraController)
 
-export type CameraController = Camera3D & typeof(CameraControllerImpl) & {
+--- @classType CameraController
+export type CameraController = Camera3D & typeof(CameraController) & {
+    --- @property
+    --- @range 0 10
+    --- @default 2.5
     cameraOffset: number,
+
+    --- @property
+    --- @range 0 200
+    --- @default 50.0
     maxFocusDistance: number,
+
+    --- @property
+    --- @range 0 200
+    --- @default 5.0
     focusDistanceTarget: number,
 
-    modeChanged: Signal,
+    --- @signal
+    modeChanged: SignalWithArgs<(mode: integer) -> ()>,
 
     cameraZoomSens: number,
     cameraLookSensFirstPerson: number,
@@ -26,7 +40,7 @@ export type CameraController = Camera3D & typeof(CameraControllerImpl) & {
     cameraMode: number
 }
 
-CameraControllerImpl.CameraMode = {
+CameraController.CameraMode = {
     -- Focused, no zoom
     FIRST_PERSON = 0,
 
@@ -39,22 +53,7 @@ CameraControllerImpl.CameraMode = {
 
 local CAMERA_MAX_X_ROT = math.pi / 2 - 1e-2
 
-CameraController:RegisterSignal("modeChanged")
-    :Args({ name = "mode", type = Enum.VariantType.INT })
-
-CameraController:RegisterProperty("cameraOffset", Enum.VariantType.FLOAT)
-    :Range(0, 10)
-    :Default(2.5)
-
-CameraController:RegisterProperty("maxFocusDistance", Enum.VariantType.FLOAT)
-    :Range(0, 200)
-    :Default(50)
-
-CameraController:RegisterProperty("focusDistanceTarget", Enum.VariantType.FLOAT)
-    :Range(0, 200)
-    :Default(5)
-
-function CameraControllerImpl._Init(self: CameraController)
+function CameraController._Init(self: CameraController)
     self.cameraRotation = Vector2.ZERO
     self.focusDistance = self.focusDistanceTarget
     self.lastMousePos = Vector2.ZERO
@@ -62,12 +61,12 @@ function CameraControllerImpl._Init(self: CameraController)
     self.cameraMode = -1
 end
 
-function CameraControllerImpl.GetFocalPoint(self: CameraController)
+function CameraController.GetFocalPoint(self: CameraController)
     assert(self.focusNode)
     return self.focusNode.globalPosition + self.focusNode.globalTransform.basis.y * self.cameraOffset
 end
 
-function CameraControllerImpl.processFirstPerson(self: CameraController)
+function CameraController.processFirstPerson(self: CameraController)
     if self.focusNode then
         self.globalTransform = Transform3D.new(
             Basis.IDENTITY,
@@ -82,7 +81,7 @@ function CameraControllerImpl.processFirstPerson(self: CameraController)
     )
 end
 
-function CameraControllerImpl.processThirdPerson(self: CameraController)
+function CameraController.processThirdPerson(self: CameraController)
     local focalPoint = self:GetFocalPoint()
     local camBasis = Basis.IDENTITY
         :Rotated(Vector3.RIGHT, self.cameraRotation.x)
@@ -103,7 +102,7 @@ function CameraControllerImpl.processThirdPerson(self: CameraController)
         :LookingAt(focalPoint, Vector3.UP)
 end
 
-function CameraControllerImpl.setCameraRotating(self: CameraController, rotating: boolean)
+function CameraController.setCameraRotating(self: CameraController, rotating: boolean)
     if self.cameraRotating == rotating then
         return
     end
@@ -119,31 +118,31 @@ function CameraControllerImpl.setCameraRotating(self: CameraController, rotating
     self.cameraRotating = rotating
 end
 
-function CameraControllerImpl.HandlePopup(self: CameraController)
+--- @registerMethod
+function CameraController.HandlePopup(self: CameraController)
     if self.cameraMode == CameraController.CameraMode.THIRD_PERSON then
         self:setCameraRotating(false)
     end
 end
 
-CameraController:RegisterMethod("HandlePopup")
-
-function CameraControllerImpl.applyFov(self: CameraController)
+function CameraController.applyFov(self: CameraController)
     self.fov = ConfigManager:Get("graphics/fov") :: number
 end
 
-function CameraControllerImpl.applySensFirstPerson(self: CameraController)
+function CameraController.applySensFirstPerson(self: CameraController)
     self.cameraLookSensFirstPerson = math.rad(ConfigManager:Get("input/sens/camera/firstPerson") :: number)
 end
 
-function CameraControllerImpl.applySensThirdPerson(self: CameraController)
+function CameraController.applySensThirdPerson(self: CameraController)
     self.cameraLookSensThirdPerson = math.rad(ConfigManager:Get("input/sens/camera/thirdPerson") :: number)
 end
 
-function CameraControllerImpl.applyZoomSens(self: CameraController)
+function CameraController.applyZoomSens(self: CameraController)
     self.cameraZoomSens = ConfigManager:Get("input/sens/cameraZoom") :: number
 end
 
-function CameraControllerImpl._OnConfigValueChanged(self: CameraController, key: string)
+--- @registerMethod
+function CameraController._OnConfigValueChanged(self: CameraController, key: string)
     if key == "graphics/fov" then
         self:applyFov()
     elseif key == "input/sens/camera/firstPerson" then
@@ -155,9 +154,8 @@ function CameraControllerImpl._OnConfigValueChanged(self: CameraController, key:
     end
 end
 
-CameraController:RegisterMethodAST("_OnConfigValueChanged")
-
-function CameraControllerImpl._Ready(self: CameraController)
+--- @registerMethod
+function CameraController._Ready(self: CameraController)
     self:applyFov()
     self:applySensFirstPerson()
     self:applySensThirdPerson()
@@ -165,9 +163,8 @@ function CameraControllerImpl._Ready(self: CameraController)
     ConfigManager.valueChanged:Connect(Callable.new(self, "_OnConfigValueChanged"))
 end
 
-CameraController:RegisterMethod("_Ready")
-
-function CameraControllerImpl._Process(self: CameraController, delta: number)
+--- @registerMethod
+function CameraController._Process(self: CameraController, delta: number)
     if not self.current then
         return
     end
@@ -207,9 +204,8 @@ function CameraControllerImpl._Process(self: CameraController, delta: number)
     end
 end
 
-CameraController:RegisterMethodAST("_Process")
-
-function CameraControllerImpl._UnhandledInput(self: CameraController, event: InputEvent)
+--- @registerMethod
+function CameraController._UnhandledInput(self: CameraController, event: InputEvent)
     if not Utils.DoGameInput(self) then
         return
     end
@@ -243,6 +239,4 @@ function CameraControllerImpl._UnhandledInput(self: CameraController, event: Inp
     end
 end
 
-CameraController:RegisterMethodAST("_UnhandledInput")
-
-return CameraController
+return CameraControllerC

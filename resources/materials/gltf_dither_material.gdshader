@@ -1,6 +1,6 @@
 // NOTE: Shader automatically converted from Godot Engine 4.0.alpha12's StandardMaterial3D.
 
-// For approximate parity with glTF imported materials, Emission, AO, and Normal Map 
+// For approximate parity with glTF imported materials, Emission, AO, and Normal Map
 // are turned on before StandardMaterial3D conversion to shader.
 
 shader_type spatial;

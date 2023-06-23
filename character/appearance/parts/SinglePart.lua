@@ -1,19 +1,27 @@
 local PartData = require("PartData")
 
-local SinglePartImpl = {}
-local SinglePart = gdclass("SinglePart", PartData)
-    :Tool(true) -- must be instantiable in the editor
-    :RegisterImpl(SinglePartImpl)
+--- @class SinglePart
+--- @extends PartData
+--- @tool
+local SinglePart = {} -- must be instantiable in the editor (addon)
+local SinglePartC = gdclass(SinglePart)
 
+--- @classType SinglePart
 export type SinglePart = PartData.PartData & {
+    --- @property
     scenePath: string,
+
+    --- @property
     transform: Transform3D,
-    bone: number,
+
+    --- @property
+    --- @enum Torso Head RArm LArm RHand LHand RLeg LLeg RFoot LFoot
+    bone: integer,
 }
 
-SinglePartImpl.BASE_PATH = "res://assets/models/characters/"
+SinglePart.BASE_PATH = "res://assets/models/characters/"
 
-SinglePartImpl.Bone = {
+SinglePart.Bone = {
 	TORSO = 0,
 	HEAD = 1,
 	R_ARM = 2,
@@ -26,16 +34,4 @@ SinglePartImpl.Bone = {
 	L_FOOT = 9,
 }
 
-SinglePart:RegisterProperty("scenePath", Enum.VariantType.STRING)
-SinglePart:RegisterProperty("transform", Enum.VariantType.TRANSFORM3D)
-
-SinglePart:RegisterProperty("bone", Enum.VariantType.INT)
-    :Enum(
-        "Torso", "Head",
-        "RArm", "LArm",
-        "RHand", "LHand",
-        "RLeg", "LLeg",
-        "RFoot", "LFoot"
-    )
-
-return SinglePart
+return SinglePartC

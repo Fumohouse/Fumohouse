@@ -1,8 +1,10 @@
-local DebugWindowImpl = {}
-local DebugWindow = gdclass(nil, Control)
-    :RegisterImpl(DebugWindowImpl)
+--- @class
+--- @extends Control
+local DebugWindow = {}
+local DebugWindowC = gdclass(DebugWindow)
 
-export type DebugWindow = Control & typeof(DebugWindowImpl) & {
+--- @classType DebugWindow
+export type DebugWindow = Control & typeof(DebugWindow) & {
     topBar: Control,
     contents: Control,
     resizeHandle: Control,
@@ -15,13 +17,14 @@ export type DebugWindow = Control & typeof(DebugWindowImpl) & {
     customSize: Vector2,
 }
 
-function DebugWindowImpl._Init(self: DebugWindow)
+function DebugWindow._Init(self: DebugWindow)
     self.action = ""
     self.isDragging = false
     self.isResizing = false
 end
 
-function DebugWindowImpl._Ready(self: DebugWindow)
+--- @registerMethod
+function DebugWindow._Ready(self: DebugWindow)
     self.customSize = self:GetMinimumSize()
 
     self.topBar = self:GetNode("%TopBar") :: Control
@@ -36,19 +39,17 @@ function DebugWindowImpl._Ready(self: DebugWindow)
     closeButton.pressed:Connect(Callable.new(self, "SetVisible"):Bind(false))
 end
 
-DebugWindow:RegisterMethod("_Ready")
-
-function DebugWindowImpl.SetContentsVisible(self: DebugWindow, visible: boolean)
+function DebugWindow.SetContentsVisible(self: DebugWindow, visible: boolean)
     self.contents.visible = visible
     self.resizeHandle.visible = visible
 end
 
-function DebugWindowImpl.SetWindowVisible(self: DebugWindow, visible: boolean)
+function DebugWindow.SetWindowVisible(self: DebugWindow, visible: boolean)
     self.visible = visible
     self:SetProcess(visible)
 end
 
-function DebugWindowImpl.updateLayout(self: DebugWindow, newPosition: Vector2?, newSize: Vector2?)
+function DebugWindow.updateLayout(self: DebugWindow, newPosition: Vector2?, newSize: Vector2?)
     local viewportRect = self:GetViewportRect()
 
     -- Setting minimum size is no longer automatic after layout change
@@ -69,7 +70,8 @@ function DebugWindowImpl.updateLayout(self: DebugWindow, newPosition: Vector2?, 
     self.position = targetPos
 end
 
-function DebugWindowImpl._GuiInput(self: DebugWindow, event: InputEvent)
+--- @registerMethod
+function DebugWindow._GuiInput(self: DebugWindow, event: InputEvent)
     if event:IsA(InputEventMouseButton) then
         local emb = event :: InputEventMouseButton
         if emb.pressed then
@@ -78,9 +80,8 @@ function DebugWindowImpl._GuiInput(self: DebugWindow, event: InputEvent)
     end
 end
 
-DebugWindow:RegisterMethodAST("_GuiInput")
-
-function DebugWindowImpl._OnTopBarGuiInput(self: DebugWindow, event: InputEvent)
+--- @registerMethod
+function DebugWindow._OnTopBarGuiInput(self: DebugWindow, event: InputEvent)
     if event:IsA(InputEventMouseButton) then
         local emb = event :: InputEventMouseButton
 
@@ -104,9 +105,8 @@ function DebugWindowImpl._OnTopBarGuiInput(self: DebugWindow, event: InputEvent)
     end
 end
 
-DebugWindow:RegisterMethodAST("_OnTopBarGuiInput")
-
-function DebugWindowImpl._OnResizeHandleGuiInput(self: DebugWindow, event: InputEvent)
+--- @registerMethod
+function DebugWindow._OnResizeHandleGuiInput(self: DebugWindow, event: InputEvent)
     if event:IsA(InputEventMouseButton) then
         local emb = event :: InputEventMouseButton
 
@@ -124,14 +124,11 @@ function DebugWindowImpl._OnResizeHandleGuiInput(self: DebugWindow, event: Input
     end
 end
 
-DebugWindow:RegisterMethodAST("_OnResizeHandleGuiInput")
-
-function DebugWindowImpl._UnhandledInput(self: DebugWindow, event: InputEvent)
+--- @registerMethod
+function DebugWindow._UnhandledInput(self: DebugWindow, event: InputEvent)
     if self.action ~= "" and event:IsActionPressed(self.action) then
         self:SetWindowVisible(not self.visible)
     end
 end
 
-DebugWindow:RegisterMethodAST("_UnhandledInput")
-
-return DebugWindow
+return DebugWindowC

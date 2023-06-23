@@ -1,12 +1,14 @@
 local Appearance = require("../../Appearance")
 
-local PartCustomizerImpl = {}
-local PartCustomizer = gdclass(nil, Node3D)
-    :RegisterImpl(PartCustomizerImpl)
+--- @class
+--- @extends Node3D
+local PartCustomizer = {}
+local PartCustomizerC = gdclass(PartCustomizer)
 
-export type PartCustomizer = Node3D & typeof(PartCustomizerImpl)
+--- @classType PartCustomizer
+export type PartCustomizer = Node3D & typeof(PartCustomizer)
 
-function PartCustomizerImpl.Update(self: PartCustomizer, appearance: Appearance.Appearance, config: Dictionary?)
+function PartCustomizer.Update(self: PartCustomizer, appearance: Appearance.Appearance, config: Dictionary?)
 end
 
-return PartCustomizer
+return PartCustomizerC

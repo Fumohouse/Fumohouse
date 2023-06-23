@@ -1,13 +1,16 @@
-local MusicResBase = gdclass("MusicResBase", Resource)
+--- @class MusicResBase
+--- @extends Resource
+local MusicResBase = {}
+local MusicResBaseC = gdclass(MusicResBase)
 
-export type MusicResBase = Resource & {
+--- @classType MusicResBase
+export type MusicResBase = Resource & typeof(MusicResBase) & {
+    --- @property
     nameUnicode: string,
+    --- @property
     nameRomanized: string,
+    --- @property
     url: string,
 }
 
-MusicResBase:RegisterProperty("nameUnicode", Enum.VariantType.STRING)
-MusicResBase:RegisterProperty("nameRomanized", Enum.VariantType.STRING)
-MusicResBase:RegisterProperty("url", Enum.VariantType.STRING)
-
-return MusicResBase
+return MusicResBaseC

@@ -1,27 +1,30 @@
 local ConfigBoundControl = require("ConfigBoundControl")
 
-local ConfigRangeImpl = {}
-local ConfigRange = gdclass(nil, ConfigBoundControl)
-    :RegisterImpl(ConfigRangeImpl)
+--- @class
+--- @extends ConfigBoundControl
+local ConfigRange = {}
+local ConfigRangeC = gdclass(ConfigRange)
 
-export type ConfigRange = ConfigBoundControl.ConfigBoundControl & typeof(ConfigRangeImpl) & {
+--- @classType ConfigRange
+export type ConfigRange = ConfigBoundControl.ConfigBoundControl & typeof(ConfigRange) & {
     input: Range,
+
+    --- @property
     onRelease: boolean,
 
     isDragging: boolean,
 }
 
-ConfigRange:RegisterProperty("onRelease", Enum.VariantType.BOOL)
-
-function ConfigRangeImpl._SetValue(self: ConfigRange, value: number)
+function ConfigRange._SetValue(self: ConfigRange, value: number)
     self.input.value = value
 end
 
-function ConfigRangeImpl._GetValue(self: ConfigRange): Variant
+function ConfigRange._GetValue(self: ConfigRange): Variant
     return self.input.value
 end
 
-function ConfigRangeImpl._OnRangeValueChanged(self: ConfigRange, value: number)
+--- @registerMethod
+function ConfigRange._OnRangeValueChanged(self: ConfigRange, value: number)
     if self.onRelease and self.isDragging then
         return
     end
@@ -29,15 +32,13 @@ function ConfigRangeImpl._OnRangeValueChanged(self: ConfigRange, value: number)
     self:UpdateConfigValue()
 end
 
-ConfigRange:RegisterMethodAST("_OnRangeValueChanged")
-
-function ConfigRangeImpl._OnDragStarted(self: ConfigRange)
+--- @registerMethod
+function ConfigRange._OnDragStarted(self: ConfigRange)
     self.isDragging = true
 end
 
-ConfigRange:RegisterMethodAST("_OnDragStarted")
-
-function ConfigRangeImpl._OnDragEnded(self: ConfigRange, valueChanged: boolean)
+--- @registerMethod
+function ConfigRange._OnDragEnded(self: ConfigRange, valueChanged: boolean)
     self.isDragging = false
 
     if valueChanged then
@@ -45,13 +46,11 @@ function ConfigRangeImpl._OnDragEnded(self: ConfigRange, valueChanged: boolean)
     end
 end
 
-ConfigRange:RegisterMethodAST("_OnDragEnded")
-
-function ConfigRangeImpl._Init(self: ConfigRange)
+function ConfigRange._Init(self: ConfigRange)
     self.isDragging = false
 end
 
-function ConfigRangeImpl._Ready(self: ConfigRange)
+function ConfigRange._Ready(self: ConfigRange)
     ConfigBoundControl._Ready(self)
 
     self.input.valueChanged:Connect(Callable.new(self, "_OnRangeValueChanged"))
@@ -63,4 +62,4 @@ function ConfigRangeImpl._Ready(self: ConfigRange)
     end
 end
 
-return ConfigRange
+return ConfigRangeC

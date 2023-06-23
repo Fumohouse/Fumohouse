@@ -1,12 +1,14 @@
 local MusicPlayerM = require("../../music/MusicPlayer")
 local MusicPlayer = gdglobal("MusicPlayer") :: MusicPlayerM.MusicPlayer
 
-local MusicVisualizerImpl = {}
-local MusicVisualizer = gdclass(nil, Control)
-    :Permissions(Enum.Permissions.INTERNAL)
-    :RegisterImpl(MusicVisualizerImpl)
+--- @class
+--- @extends Control
+--- @permissions INTERNAL
+local MusicVisualizer = {}
+local MusicVisualizerC = gdclass(MusicVisualizer)
 
-export type MusicVisualizer = Control & typeof(MusicVisualizerImpl) & {
+--- @classType MusicVisualizer
+export type MusicVisualizer = Control & typeof(MusicVisualizer) & {
     curve: Curve2D,
     spectrum: AudioEffectSpectrumAnalyzerInstance,
     histogram: {number},
@@ -22,7 +24,8 @@ local RANGE_LEN = (FREQ_HIGH - FREQ_LOW) / POINTS
 local MIN_DB = -70
 local MAX_DB = 50
 
-function MusicVisualizerImpl._Ready(self: MusicVisualizer)
+--- @registerMethod
+function MusicVisualizer._Ready(self: MusicVisualizer)
     self.curve = Curve2D.new()
 
     local bus = AudioServer.singleton:GetBusIndex(MusicPlayerM.BUS)
@@ -35,9 +38,8 @@ function MusicVisualizerImpl._Ready(self: MusicVisualizer)
     end
 end
 
-MusicVisualizer:RegisterMethod("_Ready")
-
-function MusicVisualizerImpl._Process(self: MusicVisualizer, delta: number)
+--- @registerMethod
+function MusicVisualizer._Process(self: MusicVisualizer, delta: number)
     for i = 1, POINTS do
         local factor = 0
 
@@ -58,14 +60,13 @@ function MusicVisualizerImpl._Process(self: MusicVisualizer, delta: number)
     self:QueueRedraw()
 end
 
-MusicVisualizer:RegisterMethodAST("_Process")
-
-function MusicVisualizerImpl.getPoint(self: MusicVisualizer, i: number)
+function MusicVisualizer.getPoint(self: MusicVisualizer, i: number)
     local factor = math.max(self.histogram[i], 0.01)
     return Vector2.new((i - 1) / POINTS * self.size.x, self.size.y - factor * self.size.y)
 end
 
-function MusicVisualizerImpl._Draw(self: MusicVisualizer)
+--- @registerMethod
+function MusicVisualizer._Draw(self: MusicVisualizer)
     self.curve:ClearPoints()
 
     local ctlOffset = Vector2.new(5, 0)
@@ -87,6 +88,4 @@ function MusicVisualizerImpl._Draw(self: MusicVisualizer)
     self:DrawColoredPolygon(points, Color.WHITE)
 end
 
-MusicVisualizer:RegisterMethod("_Draw")
-
-return MusicVisualizer
+return MusicVisualizerC

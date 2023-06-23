@@ -1,8 +1,9 @@
-local PartDataImpl = {}
-local PartData = gdclass("PartData", Resource)
-    :RegisterImpl(PartDataImpl)
+--- @class PartData
+--- @extends Resource
+local PartData = {}
+local PartDataC = gdclass(PartData)
 
-PartDataImpl.Scope = {
+PartData.Scope = {
     NONE = 0,
 	ACCESSORY = 1,
 	OUTFIT = 2,
@@ -13,22 +14,14 @@ PartDataImpl.Scope = {
 	TAIL = 7,
 }
 
-export type PartData = Resource & {
+--- @classType PartData
+export type PartData = Resource & typeof(PartData) & {
+    --- @property
     id: string,
-    scope: number,
+
+    --- @property
+    --- @enum None Accessory Outfit Hair Shoes Hat Ears Tail
+    scope: integer,
 }
 
-PartData:RegisterProperty("id", Enum.VariantType.STRING)
-PartData:RegisterProperty("scope", Enum.VariantType.INT)
-    :Enum(
-        "None",
-        "Accessory",
-        "Outfit",
-        "Hair",
-        "Shoes",
-        "Hat",
-        "Ears",
-        "Tail"
-    )
-
-return PartData
+return PartDataC

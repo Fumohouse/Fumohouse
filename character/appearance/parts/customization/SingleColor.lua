@@ -2,30 +2,30 @@ local PartCustomizer = require("PartCustomizer")
 
 local Appearance = require("../../Appearance")
 
-local SingleColorImpl = {}
-local SingleColor = gdclass(nil, PartCustomizer)
-    :RegisterImpl(SingleColorImpl)
+--- @class
+--- @extends PartCustomizer
+local SingleColor = {}
+local SingleColorC = gdclass(SingleColor)
 
-type SingleColor = PartCustomizer.PartCustomizer & typeof(SingleColorImpl) & {
+--- @classType SingleColor
+type SingleColor = PartCustomizer.PartCustomizer & typeof(SingleColor) & {
+    --- @property
     defaultColor: Color,
-    mesh: string,
+
+    --- @property
+    mesh: NodePathConstrained<MeshInstance3D>,
+
     meshInstance: MeshInstance3D?,
 }
 
-SingleColor:RegisterProperty("defaultColor", Enum.VariantType.COLOR)
-
-SingleColor:RegisterProperty("mesh", Enum.VariantType.NODE_PATH)
-    :NodePath(MeshInstance3D)
-
-function SingleColorImpl._Ready(self: SingleColor)
+--- @registerMethod
+function SingleColor._Ready(self: SingleColor)
     if self.mesh ~= "" then
         self.meshInstance = self:GetNode(self.mesh) :: MeshInstance3D
     end
 end
 
-SingleColor:RegisterMethod("_Ready")
-
-function SingleColorImpl.Update(self: SingleColor, appearance: Appearance.Appearance, config: Dictionary?)
+function SingleColor.Update(self: SingleColor, appearance: Appearance.Appearance, config: Dictionary?)
     if not self.meshInstance then
         push_warning("This single colored part has no linked mesh.")
         return
@@ -48,4 +48,4 @@ function SingleColorImpl.Update(self: SingleColor, appearance: Appearance.Appear
     end
 end
 
-return SingleColor
+return SingleColorC

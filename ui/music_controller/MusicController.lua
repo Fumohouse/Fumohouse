@@ -5,11 +5,13 @@ local MenuUtils = require("../navigation/MenuUtils.mod")
 local MusicPlayerM = require("../../music/MusicPlayer")
 local MusicPlayer = gdglobal("MusicPlayer") :: MusicPlayerM.MusicPlayer
 
-local MusicControllerImpl = {}
-local MusicController = gdclass(nil, Control)
-    :RegisterImpl(MusicControllerImpl)
+--- @class
+--- @extends Control
+local MusicController = {}
+local MusicControllerC = gdclass(MusicController)
 
-export type MusicController = Control & typeof(MusicControllerImpl) & {
+--- @classType MusicController
+export type MusicController = Control & typeof(MusicController) & {
     marquee: Marquee.Marquee,
     playButton: TextureButton,
     seekBar: HSlider,
@@ -23,14 +25,15 @@ export type MusicController = Control & typeof(MusicControllerImpl) & {
 local playIcon = assert(load("res://assets/textures/ui/icons/play-fill.svg")) :: Texture2D
 local pauseIcon = assert(load("res://assets/textures/ui/icons/pause-fill.svg")) :: Texture2D
 
-function MusicControllerImpl.updatePaused(self: MusicController)
+function MusicController.updatePaused(self: MusicController)
     local isPaused = MusicPlayer.streamPaused
 
     self.playButton.textureNormal = if isPaused then playIcon else pauseIcon
     self.wasPaused = isPaused
 end
 
-function MusicControllerImpl.updateSong(self: MusicController, song: Song.Song?)
+--- @registerMethod
+function MusicController.updateSong(self: MusicController, song: Song.Song?)
     if song then
         local artistName = if song.artist.nameUnicode == "" then song.artist.nameRomanized else song.artist.nameUnicode
         local songName = if song.nameUnicode == "" then song.nameRomanized else song.nameUnicode
@@ -40,16 +43,13 @@ function MusicControllerImpl.updateSong(self: MusicController, song: Song.Song?)
     end
 end
 
-MusicController:RegisterMethod("updateSong")
-    :Args({ name = "song", type = Enum.VariantType.OBJECT, hint = Enum.PropertyHint.RESOURCE_TYPE, hintString = "Song" })
-
-function MusicControllerImpl._OnPrevNext(self: MusicController, advanceBy: integer)
+--- @registerMethod
+function MusicController._OnPrevNext(self: MusicController, advanceBy: integer)
     MusicPlayer:AdvancePlaylist(advanceBy)
 end
 
-MusicController:RegisterMethodAST("_OnPrevNext")
-
-function MusicControllerImpl._Ready(self: MusicController)
+--- @registerMethod
+function MusicController._Ready(self: MusicController)
     self.marquee = self:GetNode("%Marquee") :: Marquee.Marquee
     self.playButton = self:GetNode("%PlayPause") :: TextureButton
     self.seekBar = self:GetNode("%SeekBar") :: HSlider
@@ -73,22 +73,19 @@ function MusicControllerImpl._Ready(self: MusicController)
     MusicPlayer.songChanged:Connect(Callable.new(self, "updateSong"))
 end
 
-MusicController:RegisterMethod("_Ready")
-
-function MusicControllerImpl._OnPlayPressed(self: MusicController)
+--- @registerMethod
+function MusicController._OnPlayPressed(self: MusicController)
     MusicPlayer.streamPaused = not MusicPlayer.streamPaused
     self:updatePaused()
 end
 
-MusicController:RegisterMethod("_OnPlayPressed")
-
-function MusicControllerImpl._OnSeekStarted(self: MusicController)
+--- @registerMethod
+function MusicController._OnSeekStarted(self: MusicController)
     self.isSeeking = true
 end
 
-MusicController:RegisterMethod("_OnSeekStarted")
-
-function MusicControllerImpl._OnSeekEnded(self: MusicController, changed: boolean)
+--- @registerMethod
+function MusicController._OnSeekEnded(self: MusicController, changed: boolean)
     if MusicPlayer.stream then
         -- HACK: Seek does nothing when paused
         local wasPaused = MusicPlayer.streamPaused
@@ -105,9 +102,8 @@ function MusicControllerImpl._OnSeekEnded(self: MusicController, changed: boolea
     self.isSeeking = false
 end
 
-MusicController:RegisterMethodAST("_OnSeekEnded")
-
-function MusicControllerImpl._Process(self: MusicController, delta: number)
+--- @registerMethod
+function MusicController._Process(self: MusicController, delta: number)
     if MusicPlayer.streamPaused ~= self.wasPaused then
         self:updatePaused()
     end
@@ -121,14 +117,12 @@ function MusicControllerImpl._Process(self: MusicController, delta: number)
     end
 end
 
-MusicController:RegisterMethodAST("_Process")
-
-function MusicControllerImpl.Hide(self: MusicController)
+function MusicController.Hide(self: MusicController)
     self.scale = Vector2.new(0, 1)
     self.visible = false
 end
 
-function MusicControllerImpl.Transition(self: MusicController, vis: boolean)
+function MusicController.Transition(self: MusicController, vis: boolean)
     if self.tween then
         self.tween:Kill()
     end
@@ -151,4 +145,4 @@ function MusicControllerImpl.Transition(self: MusicController, vis: boolean)
     end)()
 end
 
-return MusicController
+return MusicControllerC

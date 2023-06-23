@@ -1,6 +1,7 @@
-local InfoTableImpl = {}
-local InfoTable = gdclass("InfoTable", VBoxContainer)
-    :RegisterImpl(InfoTableImpl)
+--- @class InfoTable
+--- @extends VBoxContainer
+local InfoTable = {}
+local InfoTableC = gdclass(InfoTable)
 
 export type InfoTableEntry = {
     root: Control,
@@ -8,11 +9,12 @@ export type InfoTableEntry = {
     contents: RichTextLabel,
 }
 
-export type InfoTable = VBoxContainer & typeof(InfoTableImpl) & {
+--- @classType InfoTable
+export type InfoTable = VBoxContainer & typeof(InfoTable) & {
     entries: {[string]: InfoTableEntry},
 }
 
-function InfoTableImpl._Init(self: InfoTable)
+function InfoTable._Init(self: InfoTable)
     self.entries = {}
 end
 
@@ -31,7 +33,7 @@ local function createLabel()
     return label
 end
 
-function InfoTableImpl.AddEntry(self: InfoTable, id: string, label: string?)
+function InfoTable.AddEntry(self: InfoTable, id: string, label: string?)
     local entry: InfoTableEntry
 
     if label then
@@ -66,8 +68,8 @@ function InfoTableImpl.AddEntry(self: InfoTable, id: string, label: string?)
     return entry
 end
 
-function InfoTableImpl.SetVal(self: InfoTable, id: string, contents: string)
+function InfoTable.SetVal(self: InfoTable, id: string, contents: string)
     self.entries[id].contents.text = contents
 end
 
-return InfoTable
+return InfoTableC

@@ -1,31 +1,31 @@
 local MotionState = require("MotionState.mod")
 local CameraController = require("CameraController")
 
-local CharacterImpl = {}
-local Character = gdclass("Character", RigidBody3D)
-    :RegisterImpl(CharacterImpl)
+--- @class Character
+--- @extends RigidBody3D
+local Character = {}
+local CharacterC = gdclass(Character)
 
-export type Character = RigidBody3D & typeof(CharacterImpl) & {
-    cameraPath: string,
-    cameraUpdated: Signal,
+--- @classType Character
+export type Character = RigidBody3D & typeof(Character) & {
+    --- @property
+    --- @set setCameraPath
+    --- @get getCameraPath
+    cameraPath: NodePathConstrained<CameraController.CameraController>,
+
+    --- @signal
+    cameraUpdated: SignalWithArgs<(camera: Camera3D) -> ()>,
 
     cameraPathInternal: string,
     state: MotionState.MotionState,
 }
 
-Character:RegisterProperty("cameraPath", Enum.VariantType.NODE_PATH)
-    :NodePath(CameraController)
-    :SetGet("setCameraPath", "getCameraPath")
-
-Character:RegisterSignal("cameraUpdated")
-    :Args({ name = "camera", type = Enum.VariantType.OBJECT, className = "Camera3D" })
-
-function CharacterImpl._Init(self: Character)
+function Character._Init(self: Character)
     self.state = MotionState.new()
     self.cameraPathInternal = ""
 end
 
-function CharacterImpl.updateCamera(self: Character)
+function Character.updateCamera(self: Character)
     if not self:IsInsideTree() then
         return
     end
@@ -45,22 +45,19 @@ function CharacterImpl.updateCamera(self: Character)
     end
 end
 
-function CharacterImpl.setCameraPath(self: Character, path: string)
+--- @registerMethod
+function Character.setCameraPath(self: Character, path: NodePath)
     self.cameraPathInternal = path
     self:updateCamera()
 end
 
-Character:RegisterMethod("setCameraPath")
-    :Args({ name = "path", type = Enum.VariantType.NODE_PATH })
-
-function CharacterImpl.getCameraPath(self: Character)
+--- @registerMethod
+function Character.getCameraPath(self: Character): NodePath
     return self.cameraPathInternal
 end
 
-Character:RegisterMethod("getCameraPath")
-    :ReturnVal({ type = Enum.VariantType.NODE_PATH })
-
-function CharacterImpl._Ready(self: Character)
+--- @registerMethod
+function Character._Ready(self: Character)
     local mainCollider = self:GetNode("MainCollider") :: CollisionShape3D
     local ragdollCollider = self:GetNode("RagdollCollider") :: CollisionShape3D
 
@@ -82,14 +79,11 @@ function CharacterImpl._Ready(self: Character)
     self:updateCamera()
 end
 
-Character:RegisterMethod("_Ready")
-
-function CharacterImpl._PhysicsProcess(self: Character, delta: number)
+--- @registerMethod
+function Character._PhysicsProcess(self: Character, delta: number)
     if self.state.camera then
         self.state:Update(delta)
     end
 end
 
-Character:RegisterMethodAST("_PhysicsProcess")
-
-return Character
+return CharacterC

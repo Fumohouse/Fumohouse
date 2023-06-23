@@ -1,6 +1,7 @@
-local DebugDrawImpl = {}
-local DebugDraw = gdclass(nil, MeshInstance3D)
-    :RegisterImpl(DebugDrawImpl)
+--- @class
+--- @extends MeshInstance3D
+local DebugDraw = {}
+local DebugDrawC = gdclass(DebugDraw)
 
 type LineInfo = {
     timeAlive: number,
@@ -11,13 +12,14 @@ type LineInfo = {
     c2: Color,
 }
 
-export type DebugDraw = MeshInstance3D & typeof(DebugDrawImpl) & {
+--- @classType DebugDraw
+export type DebugDraw = MeshInstance3D & typeof(DebugDraw) & {
     mesh: ImmediateMesh,
 
     lines: {LineInfo},
 }
 
-function DebugDrawImpl._Init(self: DebugDraw)
+function DebugDraw._Init(self: DebugDraw)
     self.mesh = ImmediateMesh.new()
     self.lines = {}
 
@@ -31,7 +33,9 @@ function DebugDrawImpl._Init(self: DebugDraw)
     self.processPriority = 500
 end
 
-function DebugDrawImpl.DrawLine(self: DebugDraw, p1: Vector3, p2: Vector3, c1: Color, c2: Variant, lifetime: number?)
+--- @registerMethod
+--- @defaultArgs [null, 0]
+function DebugDraw.DrawLine(self: DebugDraw, p1: Vector3, p2: Vector3, c1: Color, c2: Variant, lifetime: number?)
     local c2A = if c2 == nil then c1 else c2 :: Color
 
     self.lines[#self.lines + 1] = {
@@ -44,10 +48,9 @@ function DebugDrawImpl.DrawLine(self: DebugDraw, p1: Vector3, p2: Vector3, c1: C
     }
 end
 
-DebugDraw:RegisterMethodAST("DrawLine")
-    :DefaultArgs(nil, 0)
-
-function DebugDrawImpl.DrawMarker(self: DebugDraw, pos: Vector3, color: Color, lifetime: number?, size: number?)
+--- @registerMethod
+--- @defaultArgs [0, 0.05]
+function DebugDraw.DrawMarker(self: DebugDraw, pos: Vector3, color: Color, lifetime: number?, size: number?)
     local sizeA = size or 0.05
 
     local camera = assert(self:GetViewport():GetCamera3D())
@@ -73,10 +76,8 @@ function DebugDrawImpl.DrawMarker(self: DebugDraw, pos: Vector3, color: Color, l
     )
 end
 
-DebugDraw:RegisterMethodAST("DrawMarker")
-    :DefaultArgs(0, 0.05)
-
-function DebugDrawImpl._Process(self: DebugDraw, delta: number)
+--- @registerMethod
+function DebugDraw._Process(self: DebugDraw, delta: number)
     self.mesh:ClearSurfaces()
 
     if #self.lines == 0 then
@@ -102,6 +103,4 @@ function DebugDrawImpl._Process(self: DebugDraw, delta: number)
     self.mesh:SurfaceEnd()
 end
 
-DebugDraw:RegisterMethodAST("_Process")
-
-return DebugDraw
+return DebugDrawC

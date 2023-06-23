@@ -2,11 +2,13 @@ local BackButton = require("BackButton")
 local TransitionElement = require("TransitionElement")
 local NavButton = require("NavButton")
 
-local NavMenuImpl = {}
-local NavMenu = gdclass(nil, Control)
-    :RegisterImpl(NavMenuImpl)
+--- @class
+--- @extends Control
+local NavMenu = {}
+local NavMenuC = gdclass(NavMenu)
 
-export type NavMenu = Control & typeof(NavMenuImpl) & {
+--- @classType NavMenu
+export type NavMenu = Control & typeof(NavMenu) & {
     mainScreen: TransitionElement.TransitionElement?,
     currentScreen: TransitionElement.TransitionElement?,
     backButton: BackButton.BackButton,
@@ -17,12 +19,12 @@ export type NavMenu = Control & typeof(NavMenuImpl) & {
     tweenOut: Tween?,
 }
 
-function NavMenuImpl.HideScreen(screen: TransitionElement.TransitionElement)
+function NavMenu.HideScreen(screen: TransitionElement.TransitionElement)
     screen:Hide()
     screen.visible = false
 end
 
-function NavMenuImpl.transitionScreen(screen: TransitionElement.TransitionElement, vis: boolean, ...: any)
+function NavMenu.transitionScreen(screen: TransitionElement.TransitionElement, vis: boolean, ...: any)
     screen.visible = true
 
     local tween = screen:Transition(vis, ...)
@@ -38,7 +40,7 @@ function NavMenuImpl.transitionScreen(screen: TransitionElement.TransitionElemen
     return tween
 end
 
-function NavMenuImpl.Hide(self: NavMenu)
+function NavMenu.Hide(self: NavMenu)
     if self.currentScreen then
         NavMenu.HideScreen(self.currentScreen)
         self.currentScreen = nil
@@ -50,7 +52,7 @@ export type SwitchArgs = {
     outArgs: {any},
 }
 
-function NavMenuImpl.SwitchScreen(self: NavMenu, screen: TransitionElement.TransitionElement?, args: SwitchArgs?)
+function NavMenu.SwitchScreen(self: NavMenu, screen: TransitionElement.TransitionElement?, args: SwitchArgs?)
     if self.currentScreen == screen then
         return
     end
@@ -91,16 +93,16 @@ function NavMenuImpl.SwitchScreen(self: NavMenu, screen: TransitionElement.Trans
     self.currentScreen = screen
 end
 
-function NavMenuImpl._OnBackButtonPress(self: NavMenu)
+--- @registerMethod
+function NavMenu._OnBackButtonPress(self: NavMenu)
     self:SwitchScreen(assert(self.mainScreen))
 end
 
-NavMenu:RegisterMethod("_OnBackButtonPress")
-
-function NavMenuImpl.Dismiss(self: NavMenu)
+function NavMenu.Dismiss(self: NavMenu)
 end
 
-function NavMenuImpl._UnhandledInput(self: NavMenu, event: InputEvent)
+--- @registerMethod
+function NavMenu._UnhandledInput(self: NavMenu, event: InputEvent)
     if Input.singleton:IsActionJustPressed("menu_back") then
         -- TODO: Luau 570: WTF
         if self.currentScreen and self.mainScreen and self.currentScreen:GetInstanceId() ~= self.mainScreen:GetInstanceId() then
@@ -111,15 +113,13 @@ function NavMenuImpl._UnhandledInput(self: NavMenu, event: InputEvent)
     end
 end
 
-NavMenu:RegisterMethodAST("_UnhandledInput")
-
-function NavMenuImpl._OnScreenNavButtonPressed(self: NavMenu, button: Button, screen: Control)
+--- @registerMethod
+function NavMenu._OnScreenNavButtonPressed(self: NavMenu, button: Button, screen: Control)
     self:SwitchScreen(screen :: TransitionElement.TransitionElement, (button :: NavButton.NavButton):TransitionArgs())
 end
 
-NavMenu:RegisterMethodAST("_OnScreenNavButtonPressed")
-
-function NavMenuImpl._Ready(self: NavMenu)
+--- @registerMethod
+function NavMenu._Ready(self: NavMenu)
     -- Inheriters shoulld set this before calling super _Ready
     self.backButton = self:GetNode("BackButton") :: BackButton.BackButton
     self.backButton.visible = true -- Hidden in editor
@@ -133,6 +133,4 @@ function NavMenuImpl._Ready(self: NavMenu)
     end
 end
 
-NavMenu:RegisterMethod("_Ready")
-
-return NavMenu
+return NavMenuC

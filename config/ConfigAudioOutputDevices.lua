@@ -1,15 +1,17 @@
 local ConfigOptionButton = require("ConfigOptionButton")
 
-local ConfigAudioOutputDevicesImpl = {}
-local ConfigAudioOutputDevices = gdclass(nil, ConfigOptionButton)
-    :Permissions(Enum.Permissions.INTERNAL)
-    :RegisterImpl(ConfigAudioOutputDevicesImpl)
+--- @class
+--- @extends ConfigOptionButton
+--- @permissions INTERNAL
+local ConfigAudioOutputDevices = {}
+local ConfigAudioOutputDevicesC = gdclass(ConfigAudioOutputDevices)
 
-export type ConfigAudioOutputDevices = ConfigOptionButton.ConfigOptionButton & typeof(ConfigAudioOutputDevicesImpl) & {
+--- @classType ConfigAudioOutputDevices
+export type ConfigAudioOutputDevices = ConfigOptionButton.ConfigOptionButton & typeof(ConfigAudioOutputDevices) & {
     devices: PackedStringArray,
 }
 
-function ConfigAudioOutputDevicesImpl._SetValue(self: ConfigAudioOutputDevices, value: string)
+function ConfigAudioOutputDevices._SetValue(self: ConfigAudioOutputDevices, value: string)
     -- Initialize here due to super _Ready. Kinda hacky
     if self.input.itemCount == 0 then
         for _, device: string in self.devices do
@@ -26,13 +28,13 @@ function ConfigAudioOutputDevicesImpl._SetValue(self: ConfigAudioOutputDevices, 
     end
 end
 
-function ConfigAudioOutputDevicesImpl._GetValue(self: ConfigAudioOutputDevices): Variant
+function ConfigAudioOutputDevices._GetValue(self: ConfigAudioOutputDevices): Variant
     return self.devices:Get(self.input.selected + 1)
 end
 
-function ConfigAudioOutputDevicesImpl._Ready(self: ConfigAudioOutputDevices)
+function ConfigAudioOutputDevices._Ready(self: ConfigAudioOutputDevices)
     self.devices = AudioServer.singleton:GetOutputDeviceList()
     ConfigOptionButton._Ready(self)
 end
 
-return ConfigAudioOutputDevices
+return ConfigAudioOutputDevicesC

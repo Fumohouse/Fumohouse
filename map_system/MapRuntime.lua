@@ -3,11 +3,13 @@ local CameraController = require("../character/CameraController")
 local DebugCharacter = require("../ui/debug/DebugCharacter")
 local CharacterSpawner = require("CharacterSpawner")
 
-local MapRuntimeImpl = {}
-local MapRuntime = gdclass(nil, Node3D)
-    :RegisterImpl(MapRuntimeImpl)
+--- @class
+--- @extends Node3D
+local MapRuntime = {}
+local MapRuntimeC = gdclass(MapRuntime)
 
-export type MapRuntime = Node3D & typeof(MapRuntimeImpl) & {
+--- @classType MapRuntime
+export type MapRuntime = Node3D & typeof(MapRuntime) & {
     camera: CameraController.CameraController,
     players: Node3D,
     debugCharacter: DebugCharacter.DebugCharacter,
@@ -15,7 +17,8 @@ export type MapRuntime = Node3D & typeof(MapRuntimeImpl) & {
     characterScene: PackedScene,
 }
 
-function MapRuntimeImpl._Ready(self: MapRuntime)
+--- @registerMethod
+function MapRuntime._Ready(self: MapRuntime)
     self.camera = self:GetNode("CameraController") :: CameraController.CameraController
     self.players = self:GetNode("Players") :: Node3D
     self.debugCharacter = self:GetNode("HUD/DebugMenus/DebugCharacter") :: DebugCharacter.DebugCharacter
@@ -24,9 +27,7 @@ function MapRuntimeImpl._Ready(self: MapRuntime)
     self.characterScene = assert(load("res://character/character.tscn")) :: PackedScene
 end
 
-MapRuntime:RegisterMethod("_Ready")
-
-function MapRuntimeImpl.SpawnLocalCharacter(self: MapRuntime, scene: Node)
+function MapRuntime.SpawnLocalCharacter(self: MapRuntime, scene: Node)
     local spawner = scene:GetNodeOrNull("CharacterSpawner")
     if spawner and spawner:IsA(CharacterSpawner) then
         local character = (spawner :: CharacterSpawner.CharacterSpawner):SpawnCharacter(self.characterScene, self.camera)
@@ -48,4 +49,4 @@ function MapRuntimeImpl.SpawnLocalCharacter(self: MapRuntime, scene: Node)
     end
 end
 
-return MapRuntime
+return MapRuntimeC

@@ -4,19 +4,21 @@ local TransitionElement = require("../TransitionElement")
 local MainScreen = require("MainScreen")
 local NavButton = require("../NavButton")
 
-local MainMenuImpl = {}
-local MainMenu = gdclass(nil, NavMenu)
-    :Permissions(Enum.Permissions.INTERNAL)
-    :RegisterImpl(MainMenuImpl)
+--- @class
+--- @extends NavMenu
+--- @permissions INTERNAL
+local MainMenu = {}
+local MainMenuC = gdclass(MainMenu)
 
-export type MainMenu = NavMenu.NavMenu & typeof(MainMenuImpl) & {
+--- @classType MainMenu
+export type MainMenu = NavMenu.NavMenu & typeof(MainMenu) & {
     mainScreen: MainScreen.MainScreen,
     optionsScreen: TransitionElement.TransitionElement,
     placeholderScreen: TransitionElement.TransitionElement,
     dim: ColorRect,
 }
 
-function MainMenuImpl.Dim(self: MainMenu, vis: boolean)
+function MainMenu.Dim(self: MainMenu, vis: boolean)
     self.dim.visible = true
 
     local duration = if vis then 1.5 * MenuUtils.TRANSITION_DURATION else 0.5 * MenuUtils.TRANSITION_DURATION
@@ -33,7 +35,8 @@ function MainMenuImpl.Dim(self: MainMenu, vis: boolean)
     return tween
 end
 
-function MainMenuImpl._OnExitButtonPressed(self: MainMenu, button: Button)
+--- @registerMethod
+function MainMenu._OnExitButtonPressed(self: MainMenu, button: Button)
     self:SwitchScreen(nil, (button :: NavButton.NavButton):TransitionArgs())
 
     local dimTween = self:Dim(true)
@@ -43,9 +46,7 @@ function MainMenuImpl._OnExitButtonPressed(self: MainMenu, button: Button)
     self:GetTree():Quit()
 end
 
-MainMenu:RegisterMethodAST("_OnExitButtonPressed")
-
-function MainMenuImpl._Ready(self: MainMenu)
+function MainMenu._Ready(self: MainMenu)
     self.mainScreen = self:GetNode("Screens/MainScreen") :: MainScreen.MainScreen
     self.optionsScreen = self:GetNode("Screens/OptionsScreen") :: TransitionElement.TransitionElement
     self.placeholderScreen = self:GetNode("Screens/PlaceholderScreen") :: TransitionElement.TransitionElement
@@ -73,4 +74,4 @@ function MainMenuImpl._Ready(self: MainMenu)
     self:SwitchScreen(self.mainScreen)
 end
 
-return MainMenu
+return MainMenuC

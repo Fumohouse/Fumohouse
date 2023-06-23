@@ -1,24 +1,22 @@
 local FacePartStyle = require("FacePartStyle")
 local EyeStyle = require("EyeStyle")
 
-local FaceDatabaseImpl = {}
-local FaceDatabase = gdclass("FaceDatabase", Resource)
-    :RegisterImpl(FaceDatabaseImpl)
+--- @class FaceDatabase
+--- @extends Resource
+local FaceDatabase = {}
+local FaceDatabaseC = gdclass(FaceDatabase)
 
-export type FaceDatabase = Resource & typeof(FaceDatabaseImpl) & {
+--- @classType FaceDatabase
+export type FaceDatabase = Resource & typeof(FaceDatabase) & {
+    --- @property
     eyebrowStyles: TypedArray<FacePartStyle.FacePartStyle>,
+
+    --- @property
     eyeStyles: TypedArray<EyeStyle.EyeStyle>,
+
+    --- @property
     mouthStyles: TypedArray<FacePartStyle.FacePartStyle>,
 }
-
-FaceDatabase:RegisterProperty("eyebrowStyles", Enum.VariantType.ARRAY)
-    :TypedArray(FacePartStyle)
-
-FaceDatabase:RegisterProperty("eyeStyles", Enum.VariantType.ARRAY)
-    :TypedArray(EyeStyle)
-
-FaceDatabase:RegisterProperty("mouthStyles", Enum.VariantType.ARRAY)
-    :TypedArray(FacePartStyle)
 
 local function findByName<T>(list: TypedArray<T>, name: string): T?
     for i, item in list do
@@ -30,16 +28,16 @@ local function findByName<T>(list: TypedArray<T>, name: string): T?
     return nil
 end
 
-function FaceDatabaseImpl.GetEyebrow(self: FaceDatabase, name: string)
+function FaceDatabase.GetEyebrow(self: FaceDatabase, name: string)
     return findByName(self.eyebrowStyles, name)
 end
 
-function FaceDatabaseImpl.GetEye(self: FaceDatabase, name: string)
+function FaceDatabase.GetEye(self: FaceDatabase, name: string)
     return findByName(self.eyeStyles, name)
 end
 
-function FaceDatabaseImpl.GetMouth(self: FaceDatabase, name: string)
+function FaceDatabase.GetMouth(self: FaceDatabase, name: string)
     return findByName(self.mouthStyles, name)
 end
 
-return FaceDatabase
+return FaceDatabaseC

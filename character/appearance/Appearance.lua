@@ -1,33 +1,35 @@
 local PartDatabaseM = require("parts/PartDatabase")
 local PartDatabase = gdglobal("PartDatabase") :: PartDatabaseM.PartDatabase
 
-local AppearanceImpl = {}
-local Appearance = gdclass("Appearance", Resource)
-    :RegisterImpl(AppearanceImpl)
+--- @class Appearance
+--- @extends Resource
+local Appearance = {}
+local AppearanceC = gdclass(Appearance)
 
-export type Appearance = Resource & typeof(AppearanceImpl) & {
+--- @classType Appearance
+export type Appearance = Resource & typeof(Appearance) & {
+    --- @property
     eyebrows: string,
+
+    --- @property
     eyes: string,
+
+    --- @property
     mouth: string,
+
+    --- @property
     eyesColor: Color,
 
+    --- @property
+    --- @range 0 3 0.25
+    --- @default 1.0
     scale: number,
 
+    --- @property
     attachedParts: Dictionary,
 }
 
-Appearance:RegisterProperty("eyebrows", Enum.VariantType.STRING)
-Appearance:RegisterProperty("eyes", Enum.VariantType.STRING)
-Appearance:RegisterProperty("mouth", Enum.VariantType.STRING)
-Appearance:RegisterProperty("eyesColor", Enum.VariantType.COLOR)
-
-Appearance:RegisterProperty("scale", Enum.VariantType.FLOAT)
-    :Range(0, 3, 0.25)
-    :Default(1)
-
-Appearance:RegisterProperty("attachedParts", Enum.VariantType.DICTIONARY)
-
-function AppearanceImpl.GetPartOfScope(self: Appearance, scope: number): string?
+function Appearance.GetPartOfScope(self: Appearance, scope: number): string?
     for id: string in self.attachedParts do
         local part = PartDatabase:GetPart(id)
 
@@ -39,4 +41,4 @@ function AppearanceImpl.GetPartOfScope(self: Appearance, scope: number): string?
     return nil
 end
 
-return Appearance
+return AppearanceC

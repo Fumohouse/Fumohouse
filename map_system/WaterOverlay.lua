@@ -1,31 +1,29 @@
 local CameraController = require("../character/CameraController")
 
-local WaterOverlayImpl = {}
-local WaterOverlay = gdclass(nil, Control)
-    :RegisterImpl(WaterOverlayImpl)
+--- @class
+--- @extends Control
+local WaterOverlay = {}
+local WaterOverlayC = gdclass(WaterOverlay)
 
-export type WaterOverlay = Control & typeof(WaterOverlayImpl) & {
-    cameraPath: string,
+--- @classType WaterOverlay
+export type WaterOverlay = Control & typeof(WaterOverlay) & {
+    --- @property
+    cameraPath: NodePathConstrained<CameraController.CameraController>,
+    --- @property
     cameraShape: SphereShape3D?,
 
     camera: CameraController.CameraController,
 }
 
-WaterOverlay:RegisterProperty("cameraPath", Enum.VariantType.NODE_PATH)
-    :NodePath(CameraController)
-
-WaterOverlay:RegisterProperty("cameraShape", Enum.VariantType.OBJECT)
-    :Resource(SphereShape3D)
-
-function WaterOverlayImpl._Ready(self: WaterOverlay)
+--- @registerMethod
+function WaterOverlay._Ready(self: WaterOverlay)
     if self.cameraPath ~= "" then
         self.camera = self:GetNode(self.cameraPath) :: CameraController.CameraController
     end
 end
 
-WaterOverlay:RegisterMethod("_Ready")
-
-function WaterOverlayImpl._Process(self: WaterOverlay, delta: number)
+--- @registerMethod
+function WaterOverlay._Process(self: WaterOverlay, delta: number)
     assert(self.cameraShape)
 
     local directSpaceState = self.camera:GetWorld3D().directSpaceState
@@ -75,6 +73,4 @@ function WaterOverlayImpl._Process(self: WaterOverlay, delta: number)
     self.visible = true
 end
 
-WaterOverlay:RegisterMethodAST("_Process")
-
-return WaterOverlay
+return WaterOverlayC

@@ -1,26 +1,25 @@
-local OptionButtonTransparentImpl = {}
-local OptionButtonTransparent = gdclass("OptionButtonTransparent", OptionButton)
-    :RegisterImpl(OptionButtonTransparentImpl)
+--- @class OptionButtonTransparent
+--- @extends OptionButton
+local OptionButtonTransparent = {}
+local OptionButtonTransparentC = gdclass(OptionButtonTransparent)
 
-export type OptionButtonTransparent = OptionButton & typeof(OptionButtonTransparentImpl) & {
-    menuSpacing: number,
+--- @classType OptionButtonTransparent
+export type OptionButtonTransparent = OptionButton & typeof(OptionButtonTransparent) & {
+    --- @property
+    --- @default 4
+    menuSpacing: integer,
 }
 
-OptionButtonTransparent:RegisterProperty("menuSpacing", Enum.VariantType.INT)
-    :Default(4)
-
-function OptionButtonTransparentImpl._OnPressed(self: OptionButtonTransparent)
+--- @registerMethod
+function OptionButtonTransparent._OnPressed(self: OptionButtonTransparent)
     self:GetPopup().position += Vector2i.new(0, self.menuSpacing)
 end
 
-OptionButtonTransparent:RegisterMethod("_OnPressed")
-
-function OptionButtonTransparentImpl._Ready(self: OptionButtonTransparent)
+--- @registerMethod
+function OptionButtonTransparent._Ready(self: OptionButtonTransparent)
     -- Otherwise, popup will have filled in corners when there is a corner radius
     self:GetPopup().transparentBg = true
     self.pressed:Connect(Callable.new(self, "_OnPressed"))
 end
 
-OptionButtonTransparent:RegisterMethod("_Ready")
-
-return OptionButtonTransparent
+return OptionButtonTransparentC

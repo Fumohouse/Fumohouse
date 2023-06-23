@@ -1,12 +1,15 @@
 local Utils = require("../../../utils/Utils.mod")
 
-local VersionLabelImpl = {}
-local VersionLabel = gdclass(nil, Control)
-    :RegisterImpl(VersionLabelImpl)
+--- @class
+--- @extends Control
+local VersionLabel = {}
+local VersionLabelC = gdclass(VersionLabel)
 
-export type VersionLabel = Control & typeof(VersionLabelImpl)
+--- @classType VersionLabel
+export type VersionLabel = Control & typeof(VersionLabel)
 
-function VersionLabelImpl._Ready(self: VersionLabel)
+--- @registerMethod
+function VersionLabel._Ready(self: VersionLabel)
     local stageBg = self:GetNode("Stage/Background") :: ColorRect
     stageBg.color = Utils.stageColor
 
@@ -17,6 +20,4 @@ function VersionLabelImpl._Ready(self: VersionLabel)
     versionText.text = Utils.version
 end
 
-VersionLabel:RegisterMethod("_Ready")
-
-return VersionLabel
+return VersionLabelC

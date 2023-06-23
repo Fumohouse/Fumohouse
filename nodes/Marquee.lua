@@ -1,28 +1,29 @@
-local MarqueeImpl = {}
-local Marquee = gdclass(nil, Control)
-    :RegisterImpl(MarqueeImpl)
+--- @class
+--- @extends Control
+local Marquee = {}
+local MarqueeC = gdclass(Marquee)
 
-export type Marquee = Control & typeof(MarqueeImpl) & {
+--- @classType Marquee
+export type Marquee = Control & typeof(Marquee) & {
+    --- @property
+    --- @range 0 120
+    --- @default 60.0
     scrollSpeed: number,
 
     text: Label,
 }
 
-Marquee:RegisterProperty("scrollSpeed", Enum.VariantType.FLOAT)
-    :Range(0, 120)
-    :Default(60)
-
-function MarqueeImpl.SetText(self: Marquee, text: string)
+function Marquee.SetText(self: Marquee, text: string)
     self.text.text = text
 end
 
-function MarqueeImpl._Ready(self: Marquee)
+--- @registerMethod
+function Marquee._Ready(self: Marquee)
     self.text = self:GetNode("Text") :: Label
 end
 
-Marquee:RegisterMethod("_Ready")
-
-function MarqueeImpl._Process(self: Marquee, delta: number)
+--- @registerMethod
+function Marquee._Process(self: Marquee, delta: number)
     self.text.size = self.text.customMinimumSize
 
     local oldPos = self.text.position
@@ -40,6 +41,4 @@ function MarqueeImpl._Process(self: Marquee, delta: number)
     end
 end
 
-Marquee:RegisterMethodAST("_Process")
-
-return Marquee
+return MarqueeC
