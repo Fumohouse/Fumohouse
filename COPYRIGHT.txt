@@ -9,8 +9,13 @@
 # Information on the Godot Engine's copyright and external libraries is embedded into the editor
 # or present in Godot's COPYRIGHT.txt (https://github.com/godotengine/godot/blob/master/COPYRIGHT.txt)
 #
-# This file does not contain the licenses of internal components of included files.
-# For example, the licenses of libraries included within Godot are not listed.
+# This file may not contain the licenses of internal components of included
+# files. For example, the licenses of libraries included within Godot are not
+# listed.
+#
+# For the purposes of this project, this file may not be correct under Debian's
+# actual packaging standard. The main goal is to attribute external authors as
+# deemed appropriate.
 
 
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
