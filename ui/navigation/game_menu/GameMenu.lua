@@ -92,8 +92,9 @@ function GameMenu.Dismiss(self: GameMenu)
 end
 
 function GameMenu._UnhandledInput(self: GameMenu, event: InputEvent)
-    if Input.singleton:IsActionJustPressed("game_menu") and not self.isVisible then
+    if Input.singleton:IsActionJustPressed("menu_back") and event:IsPressed() and not self.isVisible then
         self:Transition(true)
+        self:GetViewport():SetInputAsHandled()
         return
     end
 

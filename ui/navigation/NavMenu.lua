@@ -103,13 +103,16 @@ end
 
 --- @registerMethod
 function NavMenu._UnhandledInput(self: NavMenu, event: InputEvent)
-    if Input.singleton:IsActionJustPressed("menu_back") then
+    -- Checking IsPressed prevents GameMenu from closing and opening again on (very) quick presses to menu_back
+    if Input.singleton:IsActionJustPressed("menu_back") and event:IsPressed() then
         -- TODO: Luau 570: WTF
         if self.currentScreen and self.mainScreen and self.currentScreen:GetInstanceId() ~= self.mainScreen:GetInstanceId() then
             self:SwitchScreen(self.mainScreen)
         else
             self:Dismiss()
         end
+
+        self:GetViewport():SetInputAsHandled()
     end
 end
 

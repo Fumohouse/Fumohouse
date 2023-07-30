@@ -751,7 +751,7 @@ text = "Zoom Sensitivity"
 
 [node name="LabeledSlider" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/CameraZoom" index="2"]
 custom_minimum_size = Vector2(250, 0)
-formatString = "%.1fm/tickkj"
+formatString = "%.1fm/tick"
 
 [node name="HSlider" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera/Options/CameraZoom/LabeledSlider" index="0"]
 min_value = 0.1
@@ -882,29 +882,18 @@ text = "Camera Zoom Out"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/CameraZoomOut" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="GameMenu" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="11" instance=ExtResource("13_b7px7")]
-layout_mode = 2
-key = "input/action/game_menu/bind"
-
-[node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/GameMenu" index="0"]
-custom_minimum_size = Vector2(400, 0)
-text = "Game Menu"
-
-[node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/GameMenu" index="1"]
-custom_minimum_size = Vector2(100, 0)
-
-[node name="MenuBack" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="12" instance=ExtResource("13_b7px7")]
+[node name="MenuBack" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="11" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/menu_back/bind"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MenuBack" index="0"]
 custom_minimum_size = Vector2(400, 0)
-text = "Menu Back"
+text = "Game Menu / Back"
 
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MenuBack" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="Debug1" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="13" instance=ExtResource("13_b7px7")]
+[node name="Debug1" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="12" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/debug_1/bind"
 
@@ -915,7 +904,7 @@ text = "Debug 1"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug1" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="Debug2" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="14" instance=ExtResource("13_b7px7")]
+[node name="Debug2" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="13" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/debug_2/bind"
 
@@ -926,7 +915,7 @@ text = "Debug 2"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug2" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="Debug3" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="15" instance=ExtResource("13_b7px7")]
+[node name="Debug3" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="14" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/debug_3/bind"
 
@@ -1058,7 +1047,6 @@ text = "Restart"
 [editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/CameraRotate"]
 [editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/CameraZoomIn"]
 [editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/CameraZoomOut"]
-[editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/GameMenu"]
 [editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MenuBack"]
 [editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug1"]
 [editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug2"]

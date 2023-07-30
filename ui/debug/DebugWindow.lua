@@ -128,6 +128,7 @@ end
 function DebugWindow._UnhandledInput(self: DebugWindow, event: InputEvent)
     if self.action ~= "" and event:IsActionPressed(self.action) then
         self:SetWindowVisible(not self.visible)
+        self:GetViewport():SetInputAsHandled()
     end
 end
 

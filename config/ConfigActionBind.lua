@@ -21,7 +21,7 @@ end
 
 --- @registerMethod
 function ConfigActionBind._Input(self: ConfigActionBind, event: InputEvent)
-    if not self.input.buttonPressed or event:IsPressed() then
+    if not self.input.buttonPressed or not event:IsPressed() then
         return
     end
 

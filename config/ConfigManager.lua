@@ -490,7 +490,6 @@ function ConfigManager.initOptions(self: ConfigManager)
     self:addAction("camera_zoom_in", mbEvent(Enum.MouseButton.WHEEL_UP))
     self:addAction("camera_zoom_out", mbEvent(Enum.MouseButton.WHEEL_DOWN))
 
-    self:addAction("game_menu", keyEvent(Enum.Key.ESCAPE))
     self:addAction("menu_back", keyEvent(Enum.Key.ESCAPE))
 
     self:addAction("debug_1", keyEvent(Enum.Key.F1))

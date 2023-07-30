@@ -217,6 +217,8 @@ function CameraController._UnhandledInput(self: CameraController, event: InputEv
         elseif event:IsActionPressed("camera_zoom_out") then
             self.focusDistanceTarget = math.min(self.focusDistanceTarget + self.cameraZoomSens, self.maxFocusDistance)
         end
+
+        self:GetViewport():SetInputAsHandled()
     end
 
     -- Rotate
@@ -231,11 +233,14 @@ function CameraController._UnhandledInput(self: CameraController, event: InputEv
             math.clamp(self.cameraRotation.x - rotDelta.y, -CAMERA_MAX_X_ROT, CAMERA_MAX_X_ROT),
             (self.cameraRotation.y - rotDelta.x) % (2 * math.pi)
         )
+
+        self:GetViewport():SetInputAsHandled()
     end
 
     -- Trigger rotate
     if self.cameraMode ~= CameraController.CameraMode.FIRST_PERSON and event:IsAction("camera_rotate") then
         self:setCameraRotating(event:IsActionPressed("camera_rotate"))
+        self:GetViewport():SetInputAsHandled()
     end
 end
 
