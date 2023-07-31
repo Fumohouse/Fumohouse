@@ -212,10 +212,27 @@ function CameraController._UnhandledInput(self: CameraController, event: InputEv
 
     -- Zoom
     if self.focusNode then
+        -- Hardcode a few gestures (mainly for macOS)
         if event:IsActionPressed("camera_zoom_in") then
             self.focusDistanceTarget = math.max(self.focusDistanceTarget - self.cameraZoomSens, 0)
         elseif event:IsActionPressed("camera_zoom_out") then
             self.focusDistanceTarget = math.min(self.focusDistanceTarget + self.cameraZoomSens, self.maxFocusDistance)
+        elseif event:IsA(InputEventPanGesture) then
+            local epg = event :: InputEventPanGesture
+            -- Value given in pixels. Roughly convert to scroll ticks to preserve only one sensitivity setting.
+            local viewportHeight = self:GetTree().root.contentScaleSize.y
+            if viewportHeight == 0 then
+                viewportHeight = self:GetTree().root.size.y
+            end
+
+            -- Estimate a scroll tick is around 2% of the screen height?
+            local SCROLL_TICK_FRAC = 0.02
+            local delta = self.cameraZoomSens * epg.delta.y / (viewportHeight * SCROLL_TICK_FRAC)
+
+            self.focusDistanceTarget = math.clamp(self.focusDistanceTarget + delta, 0, self.maxFocusDistance)
+        elseif event:IsA(InputEventMagnifyGesture) then
+            local emg = event :: InputEventMagnifyGesture
+            self.focusDistanceTarget = math.min(self.focusDistanceTarget / emg.factor, self.maxFocusDistance)
         end
 
         self:GetViewport():SetInputAsHandled()

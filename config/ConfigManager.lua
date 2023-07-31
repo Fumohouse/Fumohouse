@@ -32,8 +32,8 @@ local CONFIG_LOCATION = "user://config.ini"
 local AUTOSAVE_TIMEOUT = 30
 
 local viewportStartSize = Vector2i.new(
-    ProjectSettings.singleton:Get("display/window/size/viewport_width") :: number,
-    ProjectSettings.singleton:Get("display/window/size/viewport_height") :: number
+    ProjectSettings.singleton:GetSetting("display/window/size/viewport_width") :: number,
+    ProjectSettings.singleton:GetSetting("display/window/size/viewport_height") :: number
 )
 
 -- I/O --
