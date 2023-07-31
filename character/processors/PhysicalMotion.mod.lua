@@ -41,9 +41,9 @@ function PhysicalMotion.Initialize(self: PhysicalMotion, state: MotionState.Moti
     end
 end
 
-function PhysicalMotion.getJumpVelocity(self: PhysicalMotion)
+function PhysicalMotion.getJumpVelocity(self: PhysicalMotion, height: number)
     -- Kinematics
-    return math.sqrt(2 * self.options.gravity * self.options.jumpHeight)
+    return math.sqrt(2 * self.options.gravity * height)
 end
 
 function PhysicalMotion.HandleCancel(self: PhysicalMotion, state: MotionState.MotionState)
@@ -55,12 +55,12 @@ function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionS
     local ctx = state.ctx
     local wasJumping = state:IsState(MotionState.CharacterState.JUMPING)
 
-    -- true: force jump, false: block jump
-    local jumpMsg = ctx.messages[PhysicalMotion.JUMP] :: boolean?
+    -- > 0: force jump with given height, 0: block jump
+    local jumpMsg = ctx.messages[PhysicalMotion.JUMP] :: number?
 
     if state.isGrounded and not wasJumping or state.isRagdoll then
         self.velocity = Vector3.ZERO
-        self.cancelJump = jumpMsg == false
+        self.cancelJump = jumpMsg == 0
     else
         self.velocity += Vector3.DOWN * self.options.gravity * delta
     end
@@ -70,13 +70,13 @@ function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionS
         self.velocity = Utils.ApplyDrag(self.velocity, drag, delta)
     end
 
-    if jumpMsg == true or
+    if jumpMsg or
             (Utils.DoGameInput(state.node) and
             Input.singleton:IsActionPressed("move_jump") and
             self.airborneTime < self.options.jumpForgiveness and
             not self.cancelJump and
             not wasJumping) then
-        self.velocity = Vector3.UP * self:getJumpVelocity()
+        self.velocity = Vector3.UP * self:getJumpVelocity(jumpMsg or self.options.jumpHeight)
         self.cancelJump = true
         ctx:SetState(MotionState.CharacterState.JUMPING)
 

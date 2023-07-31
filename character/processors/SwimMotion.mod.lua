@@ -19,6 +19,7 @@ function SwimMotion.new()
 
     self.options = {
         dragCoeff = 8,
+        jumpOutHeight = 7.25,
     }
 
     return setmetatable(self, SwimMotion)
@@ -96,9 +97,10 @@ function SwimMotion.Process(self: SwimMotion, state: MotionState.MotionState, de
     end
 
     local MIN_JUMP_DIST_ABOVE = 0.2 -- min distAbove to jump
-    if distAbove > MIN_JUMP_DIST_ABOVE and Utils.DoGameInput(state.node) and Input.singleton:IsActionPressed("move_jump") then
+    if distAbove > MIN_JUMP_DIST_ABOVE and state:IsState(MotionState.CharacterState.SWIMMING) and
+            Utils.DoGameInput(state.node) and Input.singleton:IsActionPressed("move_jump") then
         -- Jump with the intent of exiting the water
-        ctx.messages[PhysicalMotion.JUMP] = true
+        ctx.messages[PhysicalMotion.JUMP] = self.options.jumpOutHeight
         return
     end
 
