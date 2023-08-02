@@ -610,7 +610,6 @@ key = "graphics/brightness"
 text = "Brightness"
 
 [node name="HSlider" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options/Brightness/LabeledSlider" index="0"]
-min_value = 0.5
 max_value = 4.0
 step = 0.1
 value = 0.5
@@ -623,7 +622,6 @@ key = "graphics/contrast"
 text = "Contrast"
 
 [node name="HSlider" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options/Contrast/LabeledSlider" index="0"]
-min_value = 0.5
 max_value = 4.0
 step = 0.1
 value = 0.5
@@ -636,7 +634,6 @@ key = "graphics/saturation"
 text = "Saturation"
 
 [node name="HSlider" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment/Options/Saturation/LabeledSlider" index="0"]
-min_value = 0.5
 max_value = 10.0
 step = 0.1
 value = 0.5
