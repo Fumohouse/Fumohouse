@@ -80,7 +80,7 @@ function AppearanceSaver._OnButtonPressed(self: AppearanceSaver)
             partData.transform = part.transform
             partData.bone = bone
 
-            ResourceSaver.singleton:Save(
+            save(
                 partData,
                 `{folderPath}{attachment.name}_{part.name}.tres`
             )
