@@ -8,22 +8,14 @@ local WaterOverlayC = gdclass(WaterOverlay)
 --- @classType WaterOverlay
 export type WaterOverlay = Control & typeof(WaterOverlay) & {
     --- @property
-    cameraPath: NodePathConstrained<CameraController.CameraController>,
+    camera: CameraController.CameraController?,
     --- @property
     cameraShape: SphereShape3D?,
-
-    camera: CameraController.CameraController,
 }
 
 --- @registerMethod
-function WaterOverlay._Ready(self: WaterOverlay)
-    if self.cameraPath ~= "" then
-        self.camera = self:GetNode(self.cameraPath) :: CameraController.CameraController
-    end
-end
-
---- @registerMethod
 function WaterOverlay._Process(self: WaterOverlay, delta: number)
+    assert(self.camera)
     assert(self.cameraShape)
 
     local directSpaceState = self.camera:GetWorld3D().directSpaceState

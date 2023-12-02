@@ -149,7 +149,7 @@ nodes/walk/node = SubResource("AnimationNodeAnimation_x5u6q")
 nodes/walk/position = Vector2(-420, 100)
 nodes/walk_speed/node = SubResource("AnimationNodeTimeScale_gnl2h")
 nodes/walk_speed/position = Vector2(-260, 100)
-node_connections = [&"output", 0, &"jump_oneshot", &"climb_speed", 0, &"climb", &"horizontal", 0, &"walk_speed", &"horizontal", 1, &"run_speed", &"jump_oneshot", 0, &"main", &"jump_oneshot", 1, &"jump", &"main", 0, &"base", &"main", 1, &"idle", &"main", 2, &"sit", &"main", 3, &"horizontal", &"main", 4, &"vertical", &"main", 5, &"swimming", &"run_speed", 0, &"run", &"vertical", 0, &"fall", &"vertical", 1, &"climb_speed", &"walk_speed", 0, &"walk", &"swimming", 0, &"swim_idle", &"swimming", 1, &"swim_speed", &"swim_speed", 0, &"swim"]
+node_connections = [&"climb_speed", 0, &"climb", &"horizontal", 0, &"walk_speed", &"horizontal", 1, &"run_speed", &"jump_oneshot", 0, &"main", &"jump_oneshot", 1, &"jump", &"main", 0, &"base", &"main", 1, &"idle", &"main", 2, &"sit", &"main", 3, &"horizontal", &"main", 4, &"vertical", &"main", 5, &"swimming", &"output", 0, &"jump_oneshot", &"run_speed", 0, &"run", &"swim_speed", 0, &"swim", &"swimming", 0, &"swim_idle", &"swimming", 1, &"swim_speed", &"vertical", 0, &"fall", &"vertical", 1, &"climb_speed", &"walk_speed", 0, &"walk"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_raqf0"]
 _data = {

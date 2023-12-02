@@ -36,16 +36,16 @@ function MapRuntime.SpawnLocalCharacter(self: MapRuntime, scene: Node)
             self.players:AddChild(character)
 
             if character:IsA(Character) then
-                self.debugCharacter.characterPath = character:GetPath()
+                self.debugCharacter.character = character :: Character.Character
             end
         end
     else
         -- Fallback: Spawn at Vector3.ZERO
         local character = self.characterScene:Instantiate() :: Character.Character
-        character.cameraPath = self.camera:GetPath()
+        character.camera = self.camera
 
         self.players:AddChild(character)
-        self.debugCharacter.characterPath = character:GetPath()
+        self.debugCharacter.character = character
     end
 end
 

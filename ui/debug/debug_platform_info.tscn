@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://bm752i4dsv5c2"]
 
 [ext_resource type="PackedScene" path="res://ui/debug/debug_window.tscn" id="1_q7xgp"]
 [ext_resource type="Texture2D" uid="uid://cs26kmefu5xmq" path="res://assets/textures/logo_dark.svg" id="2_1c1m2"]

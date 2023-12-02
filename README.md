@@ -1,7 +1,7 @@
 # Fumohouse
 
-[![Godot Badge](https://img.shields.io/badge/Godot-4.1.1--stable-orange)](https://godotengine.org/)
-[![godot-luau-script Badge](https://img.shields.io/badge/godot--luau--script-13685f6b-blue)](https://github.com/Fumohouse/godot-luau-script)
+[![Godot Badge](https://img.shields.io/badge/Godot-4.2--stable-orange)](https://godotengine.org/)
+[![godot-luau-script Badge](https://img.shields.io/badge/godot--luau--script-v0.9.1-blue)](https://github.com/Fumohouse/godot-luau-script)
 
 > **Note**
 >

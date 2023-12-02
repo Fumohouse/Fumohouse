@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://map_system/MapRuntime.lua" id="1_ry2y1"]
 [ext_resource type="Script" path="res://character/CameraController.lua" id="1_uy88u"]
 [ext_resource type="Environment" uid="uid://ce4pqtesx7c2e" path="res://resources/default_environment.tres" id="2_wrnpf"]
-[ext_resource type="PackedScene" path="res://ui/debug/debug_platform_info.tscn" id="3_ddrpn"]
+[ext_resource type="PackedScene" uid="uid://bm752i4dsv5c2" path="res://ui/debug/debug_platform_info.tscn" id="3_ddrpn"]
 [ext_resource type="Script" path="res://config/ConfigWorldEnvironment.lua" id="3_j3r1m"]
 [ext_resource type="Script" path="res://map_system/WaterOverlay.lua" id="3_jtsf3"]
-[ext_resource type="PackedScene" path="res://ui/debug/debug_character.tscn" id="3_l5mc6"]
-[ext_resource type="PackedScene" path="res://ui/debug/debug_engine_info.tscn" id="4_q5r36"]
+[ext_resource type="PackedScene" uid="uid://mnxplajycktx" path="res://ui/debug/debug_character.tscn" id="3_l5mc6"]
+[ext_resource type="PackedScene" uid="uid://sffor1fn8rwd" path="res://ui/debug/debug_engine_info.tscn" id="4_q5r36"]
 [ext_resource type="PackedScene" uid="uid://bgnrbj5aeace" path="res://ui/crosshair/crosshair.tscn" id="4_uh2uu"]
 [ext_resource type="PackedScene" uid="uid://dao560qb1sydi" path="res://ui/navigation/game_menu/game_menu.tscn" id="5_qsgy7"]
 
@@ -35,7 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="WaterOverlay" type="ColorRect" parent="HUD"]
+[node name="WaterOverlay" type="ColorRect" parent="HUD" node_paths=PackedStringArray("camera")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,7 +45,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.0901961, 0.356863, 0.639216, 0.313726)
 script = ExtResource("3_jtsf3")
-cameraPath = NodePath("../../CameraController")
+camera = NodePath("../../CameraController")
 cameraShape = SubResource("SphereShape3D_n8cho")
 
 [node name="Crosshair" parent="HUD" instance=ExtResource("4_uh2uu")]

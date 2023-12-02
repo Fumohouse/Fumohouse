@@ -10,7 +10,7 @@ local ConfigBoundControlC = gdclass(ConfigBoundControl)
 --- @classType ConfigBoundControl
 export type ConfigBoundControl = Control & typeof(ConfigBoundControl) & {
     --- @property
-    inputPath: NodePathConstrained<Control>,
+    input: Control,
 
     --- @property
     key: string,
@@ -19,7 +19,6 @@ export type ConfigBoundControl = Control & typeof(ConfigBoundControl) & {
     features: PackedStringArray,
 
     updatingConfig: boolean,
-    input: Control,
 }
 
 function ConfigBoundControl._SetValue(self: ConfigBoundControl, value: Variant)
@@ -50,9 +49,6 @@ end
 
 --- @registerMethod
 function ConfigBoundControl._Ready(self: ConfigBoundControl)
-    assert(self.inputPath ~= "")
-    self.input = self:GetNode(self.inputPath) :: Control
-
     for _, platform: string in self.features do
         if not OS.singleton:HasFeature(platform) then
             self.visible = false

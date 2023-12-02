@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://ds5lxlewc7pkx" path="res://ui/navigation/options_screen/labeled_input.tscn" id="1_e7i17"]
 [ext_resource type="Script" path="res://config/ConfigActionBind.lua" id="2_736xi"]
 
-[node name="LabeledActionInput" instance=ExtResource("1_e7i17")]
+[node name="LabeledActionInput" instance=ExtResource("1_e7i17") node_paths=PackedStringArray("input")]
 script = ExtResource("2_736xi")
-inputPath = NodePath("Button")
+input = NodePath("Button")
 
 [node name="Button" type="Button" parent="." index="2"]
 custom_minimum_size = Vector2(64, 0)

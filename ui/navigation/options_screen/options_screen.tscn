@@ -178,10 +178,10 @@ theme_override_constants/separation = 24
 [node name="General" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
 layout_mode = 2
 
-[node name="RenderingMethod" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options" index="0" instance=ExtResource("4_t4igy")]
+[node name="RenderingMethod" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options" index="0" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("5_ek72r")
-inputPath = NodePath("OptionButtonTransparent")
+input = NodePath("OptionButtonTransparent")
 key = "graphics/renderingMethod"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/RenderingMethod" index="0"]
@@ -198,10 +198,10 @@ popup/item_2/text = "Compatibility"
 popup/item_2/id = 2
 script = ExtResource("4_3vyqi")
 
-[node name="WindowMode" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options" index="1" instance=ExtResource("4_t4igy")]
+[node name="WindowMode" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options" index="1" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("5_ek72r")
-inputPath = NodePath("OptionButtonTransparent")
+input = NodePath("OptionButtonTransparent")
 key = "graphics/windowMode"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/WindowMode" index="0"]
@@ -220,10 +220,10 @@ popup/item_3/text = "Exclusive Fullscreen"
 popup/item_3/id = 3
 script = ExtResource("4_3vyqi")
 
-[node name="VSync" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options" index="2" instance=ExtResource("4_t4igy")]
+[node name="VSync" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options" index="2" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("5_ek72r")
-inputPath = NodePath("OptionButtonTransparent")
+input = NodePath("OptionButtonTransparent")
 key = "graphics/vsyncMode"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/VSync" index="0"]
@@ -278,10 +278,10 @@ layout_mode = 2
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling" index="0"]
 text = "3D Scaling"
 
-[node name="Scaling3DMode" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options" index="0" instance=ExtResource("4_t4igy")]
+[node name="Scaling3DMode" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options" index="0" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("5_ek72r")
-inputPath = NodePath("OptionButtonTransparent")
+input = NodePath("OptionButtonTransparent")
 key = "graphics/scaling3d/mode"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options/Scaling3DMode" index="0"]
@@ -289,11 +289,13 @@ text = "3D Scale Mode"
 
 [node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options/Scaling3DMode"]
 layout_mode = 2
-item_count = 2
+item_count = 3
 popup/item_0/text = "Bilinear"
 popup/item_0/id = 0
 popup/item_1/text = "AMD FSR"
 popup/item_1/id = 1
+popup/item_2/text = "AMD FSR 2"
+popup/item_2/id = 2
 script = ExtResource("4_3vyqi")
 
 [node name="Scaling3DScale" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options" index="1" instance=ExtResource("9_3jj1h")]
@@ -326,10 +328,10 @@ layout_mode = 2
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing" index="0"]
 text = "Anti Aliasing"
 
-[node name="MSAA3D" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options" index="0" instance=ExtResource("4_t4igy")]
+[node name="MSAA3D" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options" index="0" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("5_ek72r")
-inputPath = NodePath("OptionButtonTransparent")
+input = NodePath("OptionButtonTransparent")
 key = "graphics/msaa3d"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/MSAA3D" index="0"]
@@ -348,10 +350,10 @@ popup/item_3/text = "8x"
 popup/item_3/id = 3
 script = ExtResource("4_3vyqi")
 
-[node name="TAA" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options" index="1" instance=ExtResource("4_t4igy")]
+[node name="TAA" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options" index="1" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("9_y5hc6")
-inputPath = NodePath("CheckButton")
+input = NodePath("CheckButton")
 key = "graphics/taa"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/TAA" index="0"]
@@ -360,10 +362,10 @@ text = "TAA"
 [node name="CheckButton" type="CheckButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/TAA"]
 layout_mode = 2
 
-[node name="ScreenSpaceAa" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options" index="2" instance=ExtResource("4_t4igy")]
+[node name="ScreenSpaceAa" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options" index="2" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("5_ek72r")
-inputPath = NodePath("OptionButtonTransparent")
+input = NodePath("OptionButtonTransparent")
 key = "graphics/screenSpaceAa"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/ScreenSpaceAa" index="0"]
@@ -384,10 +386,10 @@ layout_mode = 2
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality" index="0"]
 text = "Quality"
 
-[node name="ShadowQuality" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options" index="0" instance=ExtResource("4_t4igy")]
+[node name="ShadowQuality" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options" index="0" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("5_ek72r")
-inputPath = NodePath("OptionButtonTransparent")
+input = NodePath("OptionButtonTransparent")
 key = "graphics/shadows/quality"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/ShadowQuality" index="0"]
@@ -410,10 +412,10 @@ popup/item_5/text = "Ultra"
 popup/item_5/id = 5
 script = ExtResource("4_3vyqi")
 
-[node name="ShadowFilter" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options" index="1" instance=ExtResource("4_t4igy")]
+[node name="ShadowFilter" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options" index="1" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("5_ek72r")
-inputPath = NodePath("OptionButtonTransparent")
+input = NodePath("OptionButtonTransparent")
 key = "graphics/shadows/filter"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/ShadowFilter" index="0"]
@@ -436,10 +438,10 @@ popup/item_5/text = "Very High"
 popup/item_5/id = 5
 script = ExtResource("4_3vyqi")
 
-[node name="LodThreshold" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options" index="2" instance=ExtResource("4_t4igy")]
+[node name="LodThreshold" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options" index="2" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("5_ek72r")
-inputPath = NodePath("OptionButtonTransparent")
+input = NodePath("OptionButtonTransparent")
 key = "graphics/lodThreshold"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/LodThreshold" index="0"]
@@ -466,10 +468,10 @@ layout_mode = 2
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment" index="0"]
 text = "Environment"
 
-[node name="SSR" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="0" instance=ExtResource("4_t4igy")]
+[node name="SSR" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="0" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("5_ek72r")
-inputPath = NodePath("OptionButtonTransparent")
+input = NodePath("OptionButtonTransparent")
 key = "graphics/ssr"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSR" index="0"]
@@ -488,10 +490,10 @@ popup/item_3/text = "High"
 popup/item_3/id = 3
 script = ExtResource("4_3vyqi")
 
-[node name="SSAO" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="1" instance=ExtResource("4_t4igy")]
+[node name="SSAO" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="1" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("5_ek72r")
-inputPath = NodePath("OptionButtonTransparent")
+input = NodePath("OptionButtonTransparent")
 key = "graphics/ssao"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSAO" index="0"]
@@ -512,10 +514,10 @@ popup/item_4/text = "High"
 popup/item_4/id = 4
 script = ExtResource("4_3vyqi")
 
-[node name="SSIL" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="2" instance=ExtResource("4_t4igy")]
+[node name="SSIL" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="2" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("5_ek72r")
-inputPath = NodePath("OptionButtonTransparent")
+input = NodePath("OptionButtonTransparent")
 key = "graphics/ssil"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSIL" index="0"]
@@ -536,10 +538,10 @@ popup/item_4/text = "High"
 popup/item_4/id = 4
 script = ExtResource("4_3vyqi")
 
-[node name="SDFGI" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="3" instance=ExtResource("4_t4igy")]
+[node name="SDFGI" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="3" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("5_ek72r")
-inputPath = NodePath("OptionButtonTransparent")
+input = NodePath("OptionButtonTransparent")
 key = "graphics/sdfgi"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SDFGI" index="0"]
@@ -556,10 +558,10 @@ popup/item_2/text = "High"
 popup/item_2/id = 2
 script = ExtResource("4_3vyqi")
 
-[node name="Glow" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="4" instance=ExtResource("4_t4igy")]
+[node name="Glow" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="4" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("5_ek72r")
-inputPath = NodePath("OptionButtonTransparent")
+input = NodePath("OptionButtonTransparent")
 key = "graphics/glow"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/Glow" index="0"]
@@ -576,10 +578,10 @@ popup/item_2/text = "High"
 popup/item_2/id = 2
 script = ExtResource("4_3vyqi")
 
-[node name="VolumetricFog" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="5" instance=ExtResource("4_t4igy")]
+[node name="VolumetricFog" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options" index="5" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("5_ek72r")
-inputPath = NodePath("OptionButtonTransparent")
+input = NodePath("OptionButtonTransparent")
 key = "graphics/volumetricFog"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/VolumetricFog" index="0"]
@@ -652,10 +654,10 @@ layout_mode = 2
 [node name="Label" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Devices" index="0"]
 text = "Device Selection"
 
-[node name="OutputDevice" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Devices/Options" index="0" instance=ExtResource("4_t4igy")]
+[node name="OutputDevice" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Devices/Options" index="0" node_paths=PackedStringArray("input") instance=ExtResource("4_t4igy")]
 layout_mode = 2
 script = ExtResource("12_jdutg")
-inputPath = NodePath("OptionButtonTransparent")
+input = NodePath("OptionButtonTransparent")
 key = "audio/outputDevice"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Devices/Options/OutputDevice" index="0"]

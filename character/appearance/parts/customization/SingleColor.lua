@@ -13,25 +13,16 @@ type SingleColor = PartCustomizer.PartCustomizer & typeof(SingleColor) & {
     defaultColor: Color,
 
     --- @property
-    mesh: NodePathConstrained<MeshInstance3D>,
-
-    meshInstance: MeshInstance3D?,
+    mesh: MeshInstance3D?,
 }
 
---- @registerMethod
-function SingleColor._Ready(self: SingleColor)
-    if self.mesh ~= "" then
-        self.meshInstance = self:GetNode(self.mesh) :: MeshInstance3D
-    end
-end
-
 function SingleColor.Update(self: SingleColor, appearance: Appearance.Appearance, config: Dictionary?)
-    if not self.meshInstance then
+    if not self.mesh then
         push_warning("This single colored part has no linked mesh.")
         return
     end
 
-    local material = assert(self.meshInstance:GetActiveMaterial(0))
+    local material = assert(self.mesh:GetActiveMaterial(0))
     local color = if config and config:Has("color") then
         config:Get("color") :: Color
     else

@@ -361,7 +361,7 @@ function ConfigManager.initOptions(self: ConfigManager)
     self:addOption("graphics/fov", 75)
 
     self:addOption("graphics/scaling3d/mode", Viewport.Scaling3DMode.BILINEAR, function(value: number)
-        if value == Viewport.Scaling3DMode.FSR then
+        if value == Viewport.Scaling3DMode.FSR or value == Viewport.Scaling3DMode.FSR2 then
             self:Set("graphics/scaling3d/scale", math.min(1, self:Get("graphics/scaling3d/scale") :: number))
         end
 

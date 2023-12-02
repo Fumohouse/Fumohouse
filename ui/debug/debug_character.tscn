@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://mnxplajycktx"]
 
 [ext_resource type="PackedScene" path="res://ui/debug/debug_window.tscn" id="1_io0nl"]
 [ext_resource type="Script" path="res://ui/debug/InfoTable.lua" id="2_c8hxj"]

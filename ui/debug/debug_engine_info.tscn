@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://sffor1fn8rwd"]
 
 [ext_resource type="PackedScene" path="res://ui/debug/debug_window.tscn" id="1_fpknp"]
 [ext_resource type="Script" path="res://ui/debug/DebugEngineInfo.lua" id="2_t2fn1"]

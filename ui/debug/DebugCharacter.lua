@@ -18,12 +18,11 @@ local DebugCharacterC = gdclass(DebugCharacter)
 --- @classType DebugCharacter
 export type DebugCharacter = DebugWindow.DebugWindow & typeof(DebugCharacter) & {
     --- @property
-    --- @set setCharacterPath
-    --- @get getCharacterPath
-    characterPath: NodePathConstrained<RigidBody3D>,
-    characterPathInternal: string,
-
+    --- @set setCharacter
+    --- @get getCharacter
     character: Character.Character?,
+
+    characterInternal: Character.Character?,
     horizontalMotion: HorizontalMotion.HorizontalMotion?,
     physicalMotion: PhysicalMotion.PhysicalMotion?,
     stairsMotion: StairsMotion.StairsMotion?,
@@ -37,26 +36,24 @@ function DebugCharacter._Init(self: DebugCharacter)
 end
 
 function DebugCharacter.updateCharacter(self: DebugCharacter)
-    if self:IsInsideTree() and self.characterPathInternal ~= "" then
-        local character = self:GetNode(self.characterPath) :: Character.Character
-
-        self.horizontalMotion = character.state:GetMotionProcessor(HorizontalMotion.ID)
-        self.physicalMotion = character.state:GetMotionProcessor(PhysicalMotion.ID)
-        self.stairsMotion = character.state:GetMotionProcessor(StairsMotion.ID)
-
-        self.character = character
+    if not self:IsInsideTree() or not self.character then
+        return
     end
+
+    self.horizontalMotion = self.character.state:GetMotionProcessor(HorizontalMotion.ID)
+    self.physicalMotion = self.character.state:GetMotionProcessor(PhysicalMotion.ID)
+    self.stairsMotion = self.character.state:GetMotionProcessor(StairsMotion.ID)
 end
 
 --- @registerMethod
-function DebugCharacter.setCharacterPath(self: DebugCharacter, path: NodePath)
-    self.characterPathInternal = path
+function DebugCharacter.setCharacter(self: DebugCharacter, character: Character.Character?)
+    self.characterInternal = character
     self:updateCharacter()
 end
 
 --- @registerMethod
-function DebugCharacter.getCharacterPath(self: DebugCharacter): NodePath
-    return self.characterPathInternal
+function DebugCharacter.getCharacter(self: DebugCharacter): Character.Character?
+    return self.characterInternal
 end
 
 function DebugCharacter._Ready(self: DebugCharacter)

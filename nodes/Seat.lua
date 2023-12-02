@@ -10,17 +10,13 @@ export type Seat = StaticBody3D & typeof(Seat) & {
     --- @property
     --- @set SetOccupant
     --- @get GetOccupant
-    occupant: NodePathConstrained<RigidBody3D>,
-    occupantInternal: string,
+    occupant: RigidBody3D?,
 
+    occupantInternal: RigidBody3D?,
     joint: Joint3D,
     marker: Marker3D,
     dismountMarker: Marker3D,
 }
-
-function Seat._Init(self: Seat)
-    self.occupantInternal = ""
-end
 
 --- @registerMethod
 function Seat._Ready(self: Seat)
@@ -30,36 +26,36 @@ function Seat._Ready(self: Seat)
 end
 
 --- @registerMethod
-function Seat.SetOccupant(self: Seat, occupant: NodePath)
-    if occupant == "" and self.occupant ~= "" then
-        local oldOccupant = self:GetNode(self.occupant) :: Node3D
-        -- Letting the character dismount at its current position drastically increases the probability
-        -- of it getting stuck and recovery failing. That's bad!
-        oldOccupant.globalPosition = self.dismountMarker.globalPosition
+function Seat.SetOccupant(self: Seat, occupant: RigidBody3D?)
+    if not occupant then
+        if self.occupant then
+            -- Letting the character dismount at its current position drastically increases the probability
+            -- of it getting stuck and recovery failing. That's bad!
+            self.occupant.globalPosition = self.dismountMarker.globalPosition
 
-        self.joint.nodeB = ""
-        self.occupantInternal = ""
+            self.joint.nodeB = ""
+            self.occupantInternal = nil
+        end
+
         return
     end
 
-    local node = self:GetNode(occupant) :: Node3D
-
     local seatPivot: Vector3
-    if node:IsA(Character) then
-        seatPivot = (node :: Character.Character).state:GetBottomPosition()
+    if occupant:IsA(Character) then
+        seatPivot = (occupant :: Character.Character).state:GetBottomPosition()
     else
-        seatPivot = node.globalPosition
+        seatPivot = occupant.globalPosition
     end
 
-    local pivotOffset = seatPivot - node.globalPosition
-    node.globalTransform = self.marker.globalTransform:Translated(-pivotOffset)
+    local pivotOffset = seatPivot - occupant.globalPosition
+    occupant.globalTransform = self.marker.globalTransform:Translated(-pivotOffset)
 
-    self.joint.nodeB = occupant
+    self.joint.nodeB = occupant:GetPath()
     self.occupantInternal = occupant
 end
 
 --- @registerMethod
-function Seat.GetOccupant(self: Seat): NodePath
+function Seat.GetOccupant(self: Seat): RigidBody3D?
     return self.occupantInternal
 end
 

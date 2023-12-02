@@ -55,7 +55,7 @@ function Ragdoll.Process(self: Ragdoll, state: MotionState.MotionState, delta: n
             self.lastSeat = self.currentSeat
             self.seatDebounceLeft = self.options.seatDebounce
 
-            self.currentSeat.occupant = ""
+            self.currentSeat.occupant = nil
             self.currentSeat = nil
         end
     else
@@ -78,7 +78,7 @@ function Ragdoll.Process(self: Ragdoll, state: MotionState.MotionState, delta: n
                     ctx:CancelProcessor(Move.ID)
 
                     local seat = body :: Seat.Seat
-                    seat.occupant = state.node:GetPath()
+                    seat.occupant = state.node
                     self.currentSeat = seat
                 end
             end

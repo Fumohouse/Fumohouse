@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Fumohouse"
 config/project_settings_override="user://override.godot"
-config/features=PackedStringArray("4.1")
+config/features=PackedStringArray("4.2")
 config/icon="res://assets/textures/logo.svg"
 
 [audio]

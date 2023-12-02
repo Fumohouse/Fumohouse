@@ -9,20 +9,19 @@ local CharacterC = gdclass(Character)
 --- @classType Character
 export type Character = RigidBody3D & typeof(Character) & {
     --- @property
-    --- @set setCameraPath
-    --- @get getCameraPath
-    cameraPath: NodePathConstrained<CameraController.CameraController>,
+    --- @set setCamera
+    --- @get getCamera
+    camera: CameraController.CameraController?,
 
     --- @signal
     cameraUpdated: SignalWithArgs<(camera: Camera3D) -> ()>,
 
-    cameraPathInternal: string,
     state: MotionState.MotionState,
+    cameraInternal: CameraController.CameraController?,
 }
 
 function Character._Init(self: Character)
     self.state = MotionState.new()
-    self.cameraPathInternal = ""
 end
 
 function Character.updateCamera(self: Character)
@@ -34,26 +33,25 @@ function Character.updateCamera(self: Character)
         self.state.camera.focusNode = nil
     end
 
-    if self.cameraPathInternal == "" then
+    if not self.camera then
         self.state.camera = nil
     else
-        local camera = self:GetNode(self.cameraPathInternal) :: CameraController.CameraController
-        camera.focusNode = self
-        self.state.camera = camera
+        self.camera.focusNode = self
+        self.state.camera = self.camera
 
-        self.cameraUpdated:Emit(camera)
+        self.cameraUpdated:Emit(self.camera)
     end
 end
 
 --- @registerMethod
-function Character.setCameraPath(self: Character, path: NodePath)
-    self.cameraPathInternal = path
+function Character.setCamera(self: Character, camera: CameraController.CameraController?)
+    self.cameraInternal = camera
     self:updateCamera()
 end
 
 --- @registerMethod
-function Character.getCameraPath(self: Character): NodePath
-    return self.cameraPathInternal
+function Character.getCamera(self: Character): CameraController.CameraController?
+    return self.cameraInternal
 end
 
 --- @registerMethod

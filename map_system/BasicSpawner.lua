@@ -13,7 +13,7 @@ export type BasicSpawner = CharacterSpawner.CharacterSpawner
 
 function BasicSpawner.SpawnCharacter(self: BasicSpawner, defaultScene: PackedScene, camera: CameraController.CameraController): Node3D?
     local character = defaultScene:Instantiate() :: Character.Character
-    character.cameraPath = camera:GetPath()
+    character.camera = camera
 
     local children = self:GetChildren()
     local spawnpoint = children:Get(math.random(1, children:Size())) :: Node

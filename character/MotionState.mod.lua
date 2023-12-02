@@ -123,7 +123,7 @@ function MotionState.new()
     -- Managed externally --
 
     -- Objects
-    self.node = (nil :: any) :: Node -- Kinda janky but avoids unnecessary asserts
+    self.node = (nil :: any) :: RigidBody3D -- Kinda janky but avoids unnecessary asserts
     self.rid = RID.new()
     self.camera = nil :: CameraController.CameraController?
 
