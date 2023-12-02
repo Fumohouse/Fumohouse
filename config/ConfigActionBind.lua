@@ -34,7 +34,7 @@ end
 
 --- @registerMethod
 function ConfigActionBind._Input(self: ConfigActionBind, event: InputEvent)
-    if not self.input.buttonPressed or not event:IsPressed() then
+    if not self.input.buttonPressed or event:IsPressed() then
         return
     end
 
@@ -67,6 +67,14 @@ function ConfigActionBind._OnToggled(self: ConfigActionBind, isPressed: boolean)
     else
         self.input.text = displayEvent(self.event)
     end
+
+    -- Prevent options menu from being dismissed due to pressing menu_back
+    -- Two frames because... yeah.
+    for i = 1, 2 do
+        wait_signal(self:GetTree().processFrame)
+    end
+
+    self.input:SetMeta("blockDismiss", isPressed)
 end
 
 function ConfigActionBind._Ready(self: ConfigActionBind)
