@@ -11,8 +11,21 @@ export type ConfigActionBind = ConfigBoundControl.ConfigBoundControl & typeof(Co
     event: InputEvent,
 }
 
+local function displayEvent(event: InputEvent)
+    if event:IsA(InputEventKey) then
+        local ek = event :: InputEventKey
+        return ek:AsTextPhysicalKeycode()
+    elseif event:IsA(InputEventMouseButton) then
+        local emb = event :: InputEventMouseButton
+        return emb:AsText()
+    end
+
+    return "???"
+end
+
 function ConfigActionBind._SetValue(self: ConfigActionBind, value: InputEvent)
     self.event = value
+    self.input.text = displayEvent(self.event)
 end
 
 function ConfigActionBind._GetValue(self: ConfigActionBind): Variant
@@ -45,18 +58,6 @@ function ConfigActionBind._Input(self: ConfigActionBind, event: InputEvent)
         self:GetViewport():SetInputAsHandled()
         self.input.buttonPressed = false
     end
-end
-
-local function displayEvent(event: InputEvent)
-    if event:IsA(InputEventKey) then
-        local ek = event :: InputEventKey
-        return ek:AsTextPhysicalKeycode()
-    elseif event:IsA(InputEventMouseButton) then
-        local emb = event :: InputEventMouseButton
-        return emb:AsText()
-    end
-
-    return "???"
 end
 
 --- @registerMethod

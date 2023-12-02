@@ -4,11 +4,12 @@
 [ext_resource type="Script" path="res://config/ConfigRange.lua" id="2_sevt0"]
 [ext_resource type="PackedScene" uid="uid://q66b6blbtmsk" path="res://nodes/labeled_slider.tscn" id="3_04ss1"]
 
-[node name="LabeledRangeInput" node_paths=PackedStringArray("input") instance=ExtResource("1_bqupk")]
+[node name="LabeledRangeInput" node_paths=PackedStringArray("input", "revertButton") instance=ExtResource("1_bqupk")]
 script = ExtResource("2_sevt0")
 input = NodePath("LabeledSlider/HSlider")
+revertButton = NodePath("Revert")
 
-[node name="LabeledSlider" parent="." index="2" instance=ExtResource("3_04ss1")]
+[node name="LabeledSlider" parent="." index="3" instance=ExtResource("3_04ss1")]
 layout_mode = 2
 
 [editable path="LabeledSlider"]

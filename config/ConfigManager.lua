@@ -51,6 +51,11 @@ function ConfigManager.Get(self: ConfigManager, key: string)
     return self.config:GetValue(splitKey(key))
 end
 
+function ConfigManager.GetDefault(self: ConfigManager, key: string)
+    local keyInfo = assert(self.options[key])
+    return keyInfo.default
+end
+
 function ConfigManager.Set(self: ConfigManager, key: string, value: Variant, isInit: boolean?)
     if self:Has(key) and self:Get(key) == value then
         return

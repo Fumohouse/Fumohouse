@@ -11,6 +11,8 @@ local ConfigBoundControlC = gdclass(ConfigBoundControl)
 export type ConfigBoundControl = Control & typeof(ConfigBoundControl) & {
     --- @property
     input: Control,
+    --- @property
+    revertButton: Button,
 
     --- @property
     key: string,
@@ -34,13 +36,30 @@ function ConfigBoundControl.UpdateConfigValue(self: ConfigBoundControl)
     self.updatingConfig = false
 end
 
+function ConfigBoundControl.updateFromConfig(self: ConfigBoundControl)
+    local value = ConfigManager:Get(self.key)
+
+    if self.revertButton then
+        self.revertButton.visible = value ~= ConfigManager:GetDefault(self.key)
+    end
+
+    if not self.updatingConfig then
+        self:_SetValue(value)
+    end
+end
+
 --- @registerMethod
 function ConfigBoundControl._OnConfigValueChanged(self: ConfigBoundControl, key: string)
-    if self.updatingConfig or key ~= self.key then
+    if key ~= self.key then
         return
     end
 
-    self:_SetValue(ConfigManager:Get(key))
+    self:updateFromConfig()
+end
+
+--- @registerMethod
+function ConfigBoundControl._OnRevertButtonPressed(self: ConfigBoundControl)
+    ConfigManager:Set(self.key, ConfigManager:GetDefault(self.key))
 end
 
 function ConfigBoundControl._Init(self: ConfigBoundControl)
@@ -56,7 +75,12 @@ function ConfigBoundControl._Ready(self: ConfigBoundControl)
         end
     end
 
-    self:_SetValue(ConfigManager:Get(self.key))
+    self:updateFromConfig()
+
+    if self.revertButton then
+        self.revertButton.pressed:Connect(Callable.new(self, "_OnRevertButtonPressed"))
+    end
+
     ConfigManager.valueChanged:Connect(Callable.new(self, "_OnConfigValueChanged"))
 end
 
