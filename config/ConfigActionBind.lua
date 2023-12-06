@@ -32,6 +32,20 @@ function ConfigActionBind._GetValue(self: ConfigActionBind): Variant
     return self.event
 end
 
+function ConfigActionBind._ApproxEqual(self: ConfigActionBind, a: any, b: any)
+    if typeof(a) == "InputEventKey" and typeof(b) == "InputEventKey" then
+        local eka = a :: InputEventKey
+        local ekb = b :: InputEventKey
+
+        local keycodeA = if eka.keycode == 0 then eka.physicalKeycode else eka.keycode
+        local keycodeB = if ekb.keycode == 0 then ekb.physicalKeycode else ekb.keycode
+
+        return keycodeA == keycodeB and eka:GetModifiersMask() == ekb:GetModifiersMask()
+    end
+
+    return ConfigBoundControl._ApproxEqual(self, a, b)
+end
+
 --- @registerMethod
 function ConfigActionBind._Input(self: ConfigActionBind, event: InputEvent)
     if not self.input.buttonPressed or event:IsPressed() then

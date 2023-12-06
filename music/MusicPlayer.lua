@@ -160,7 +160,7 @@ function MusicPlayer.SwitchPlaylist(self: MusicPlayer, playlistId: string)
 end
 
 function MusicPlayer.AdvancePlaylist(self: MusicPlayer, steps: number)
-    if steps == 0 then
+    if steps == 0 or self.currentPlaylist == "" then
         return
     end
 

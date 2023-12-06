@@ -36,11 +36,23 @@ function ConfigBoundControl.UpdateConfigValue(self: ConfigBoundControl)
     self.updatingConfig = false
 end
 
+function ConfigBoundControl._ApproxEqual(self: ConfigBoundControl, a: any, b: any)
+    if a == b then
+        return true
+    end
+
+    if type(a) == "number" and type(b) == "number" then
+        return math.abs(a - b) < 1e-4
+    end
+
+    return false
+end
+
 function ConfigBoundControl.updateFromConfig(self: ConfigBoundControl)
     local value = ConfigManager:Get(self.key)
 
     if self.revertButton then
-        self.revertButton.visible = value ~= ConfigManager:GetDefault(self.key)
+        self.revertButton.visible = not self:_ApproxEqual(value, ConfigManager:GetDefault(self.key))
     end
 
     if not self.updatingConfig then
