@@ -52,7 +52,7 @@ local JUMP = "parameters/jump_oneshot/request"
 type StateInfo = {
     state: number,
     properties: {[string]: any},
-    update: (self: CharacterAnimator, state: MotionState.MotionState, animator: AnimationTree) -> ()?,
+    update: (self: CharacterAnimator, state: MotionState.MotionState, animator: AnimationTree, delta: number) -> ()?,
 }
 
 local STATES: {StateInfo} = {
@@ -114,7 +114,7 @@ local STATES: {StateInfo} = {
         properties = {
             [TRANSITION_MAIN] = MainTransition.HORIZONTAL,
         },
-        update = function(self, state, animator)
+        update = function(self, state, animator, delta)
             assert(self.horizontalMotion)
 
             local velocityFlat = state.velocity
@@ -123,8 +123,15 @@ local STATES: {StateInfo} = {
 
             local SPEED_THRESHOLD = 0.2
 
-            -- TODO: Luau 567: type hack below
+            -- TODO: Luau 567: type hacks below
+            -- Prevent jittery switching between animations (e.g. on stairs)
             if horizSpeed > self.horizontalMotion.options.walkSpeed :: number + SPEED_THRESHOLD then
+                self.runningTime = self.runningTime :: number + delta
+            else
+                self.runningTime = 0
+            end
+
+            if self.runningTime > self.options.minRunningTime then
                 animator:Set(TRANSITION_HORIZONTAL, HorizontalTransition.RUN)
                 animator:Set(RUN_SPEED, horizSpeed / self.horizontalMotion.options.runSpeed)
             else
@@ -150,6 +157,12 @@ function CharacterAnimator.new()
     self.ladderMotion = nil :: LadderMotion.LadderMotion?
 
     self.state = nil :: StateInfo?
+
+    self.runningTime = 0
+
+    self.options = {
+        minRunningTime = 0.15,
+    }
 
     return setmetatable(self, CharacterAnimator)
 end
@@ -194,7 +207,7 @@ function CharacterAnimator.Process(self: CharacterAnimator, state: MotionState.M
     end
 
     if self.state and self.state.update then
-        self.state.update(self, state, self.animator)
+        self.state.update(self, state, self.animator, delta)
     end
 end
 

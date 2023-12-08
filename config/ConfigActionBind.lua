@@ -2,6 +2,7 @@ local ConfigBoundControl = require("ConfigBoundControl")
 
 --- @class
 --- @extends ConfigBoundControl
+--- @permissions INTERNAL
 local ConfigActionBind = {}
 local ConfigActionBindC = gdclass(ConfigActionBind)
 
@@ -14,7 +15,14 @@ export type ConfigActionBind = ConfigBoundControl.ConfigBoundControl & typeof(Co
 local function displayEvent(event: InputEvent)
     if event:IsA(InputEventKey) then
         local ek = event :: InputEventKey
-        return ek:AsTextPhysicalKeycode()
+
+        if ek.physicalKeycode == 0 then
+            -- Physical not supported?
+            return ek:AsTextKeycode() .. " (Layout specific)"
+        end
+
+        local keycode = DisplayServer.singleton:KeyboardGetKeycodeFromPhysical(ek.physicalKeycode)
+        return OS.singleton:GetKeycodeString(keycode)
     elseif event:IsA(InputEventMouseButton) then
         local emb = event :: InputEventMouseButton
         return emb:AsText()
@@ -37,10 +45,8 @@ function ConfigActionBind._ApproxEqual(self: ConfigActionBind, a: any, b: any)
         local eka = a :: InputEventKey
         local ekb = b :: InputEventKey
 
-        local keycodeA = if eka.keycode == 0 then eka.physicalKeycode else eka.keycode
-        local keycodeB = if ekb.keycode == 0 then ekb.physicalKeycode else ekb.keycode
-
-        return keycodeA == keycodeB and eka:GetModifiersMask() == ekb:GetModifiersMask()
+        -- Defaults are always physical keycodes so this is ok
+        return eka.physicalKeycode == ekb.physicalKeycode and eka:GetModifiersMask() == ekb:GetModifiersMask()
     end
 
     return ConfigBoundControl._ApproxEqual(self, a, b)

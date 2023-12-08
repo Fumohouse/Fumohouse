@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cdwau5ohe3wxa"]
+[gd_scene load_steps=21 format=3 uid="uid://cdwau5ohe3wxa"]
 
 [ext_resource type="Theme" uid="uid://c7tdpcfevijlu" path="res://resources/main_theme/main_theme.tres" id="1_eexot"]
 [ext_resource type="Script" path="res://ui/navigation/options_screen/OptionsScreen.lua" id="2_kifl8"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://config/ConfigButton.lua" id="9_y5hc6"]
 [ext_resource type="Script" path="res://config/ConfigAudioOutputDevices.lua" id="12_jdutg"]
 [ext_resource type="PackedScene" uid="uid://c8bvcctmkdmbk" path="res://ui/navigation/options_screen/labeled_action_input.tscn" id="13_b7px7"]
-[ext_resource type="FontFile" uid="uid://cl1t2pm0rvomw" path="res://assets/fonts/IBMPlexSans-Italic.ttf" id="13_be2mu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hev0"]
 bg_color = Color(0, 0.180392, 0.34902, 1)
@@ -781,14 +780,7 @@ layout_mode = 2
 [node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds" index="0"]
 text = "Keybinds"
 
-[node name="Label" type="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="0"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("13_be2mu")
-theme_override_font_sizes/font_size = 14
-text = "Note: All keys are bound as if you are using a QWERTY layout."
-vertical_alignment = 1
-
-[node name="MoveForward" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="1" instance=ExtResource("13_b7px7")]
+[node name="MoveForward" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="0" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/move_forward/bind"
 
@@ -799,7 +791,7 @@ text = "Move Forward"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveForward" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="MoveBackward" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="2" instance=ExtResource("13_b7px7")]
+[node name="MoveBackward" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="1" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/move_backward/bind"
 
@@ -810,7 +802,7 @@ text = "Move Backward"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveBackward" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="MoveLeft" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="3" instance=ExtResource("13_b7px7")]
+[node name="MoveLeft" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="2" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/move_left/bind"
 
@@ -821,7 +813,7 @@ text = "Move Left"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveLeft" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="MoveRight" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="4" instance=ExtResource("13_b7px7")]
+[node name="MoveRight" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="3" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/move_right/bind"
 
@@ -832,7 +824,7 @@ text = "Move Right"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveRight" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="MoveJump" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="5" instance=ExtResource("13_b7px7")]
+[node name="MoveJump" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="4" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/move_jump/bind"
 
@@ -843,7 +835,7 @@ text = "Jump"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveJump" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="MoveSit" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="6" instance=ExtResource("13_b7px7")]
+[node name="MoveSit" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="5" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/move_sit/bind"
 
@@ -854,7 +846,7 @@ text = "Sit"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveSit" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="MoveRun" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="7" instance=ExtResource("13_b7px7")]
+[node name="MoveRun" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="6" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/move_run/bind"
 
@@ -865,7 +857,7 @@ text = "Run"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MoveRun" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="CameraRotate" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="8" instance=ExtResource("13_b7px7")]
+[node name="CameraRotate" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="7" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/camera_rotate/bind"
 
@@ -876,7 +868,7 @@ text = "Camera Rotate (3rd Person)"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/CameraRotate" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="CameraZoomIn" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="9" instance=ExtResource("13_b7px7")]
+[node name="CameraZoomIn" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="8" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/camera_zoom_in/bind"
 
@@ -887,7 +879,7 @@ text = "Camera Zoom In"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/CameraZoomIn" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="CameraZoomOut" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="10" instance=ExtResource("13_b7px7")]
+[node name="CameraZoomOut" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="9" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/camera_zoom_out/bind"
 
@@ -898,7 +890,7 @@ text = "Camera Zoom Out"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/CameraZoomOut" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="MenuBack" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="11" instance=ExtResource("13_b7px7")]
+[node name="MenuBack" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="10" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/menu_back/bind"
 
@@ -909,7 +901,7 @@ text = "Game Menu / Back"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/MenuBack" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="Debug1" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="12" instance=ExtResource("13_b7px7")]
+[node name="Debug1" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="11" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/debug_1/bind"
 
@@ -920,7 +912,7 @@ text = "Debug 1"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug1" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="Debug2" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="13" instance=ExtResource("13_b7px7")]
+[node name="Debug2" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="12" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/debug_2/bind"
 
@@ -931,7 +923,7 @@ text = "Debug 2"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug2" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="Debug3" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="14" instance=ExtResource("13_b7px7")]
+[node name="Debug3" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options" index="13" instance=ExtResource("13_b7px7")]
 layout_mode = 2
 key = "input/action/debug_3/bind"
 

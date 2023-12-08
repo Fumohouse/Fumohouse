@@ -95,7 +95,9 @@ function CameraController.processThirdPerson(self: CameraController)
 
     local result = self:GetWorld3D().directSpaceState:IntersectRay(parameters)
     if not result:IsEmpty() then
-        pos = (result:Get("position") :: Vector3) * 0.99
+        -- Minimize clipping into walls, etc.
+        local HIT_MARGIN = 0.05
+        pos = (result:Get("position") :: Vector3) + (result:Get("normal") :: Vector3) * HIT_MARGIN
     end
 
     self.globalTransform = Transform3D.new(Basis.IDENTITY, pos)
