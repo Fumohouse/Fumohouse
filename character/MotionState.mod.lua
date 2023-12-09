@@ -183,6 +183,7 @@ function MotionState.new()
     addProcessor("PhysicalMotion")
     addProcessor("StairsMotion")
     addProcessor("PlatformMotion")
+    addProcessor("CollisionMotion")
 
     addProcessor("Move")
     addProcessor("Grounding")

@@ -184,10 +184,6 @@ function Move.move(self: Move, state: MotionState.MotionState, motion: Vector3, 
         end
 
         if not state.isRagdoll and not (state.isGrounded and rid == state.groundRid) and MotionState.ShouldPush(rid) then
-            -- TODO: If moving faster than a certain velocity (i.e. related to movement velocity),
-            -- apply traditional collision resolution (impulse, etc.)
-            -- https://www.euclideanspace.com/physics/dynamics/collision/threed/index.htm
-
             local bodyState = assert(PhysicsServer3D.singleton:BodyGetDirectState(rid))
 
             bodyState:ApplyForce(

@@ -19,6 +19,21 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vx15d"]
 bounce = 0.2
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_raqf0"]
+_data = {
+"base": ExtResource("7_xw4fc"),
+"climb": ExtResource("13_1sw8o"),
+"emote_spin": ExtResource("15_00aet"),
+"fall": ExtResource("14_ewtaw"),
+"idle": ExtResource("8_l8522"),
+"jump": ExtResource("9_j6ru4"),
+"run": ExtResource("12_ibjrc"),
+"sit": ExtResource("10_jftow"),
+"swim": ExtResource("13_3oyjv"),
+"swim_idle": ExtResource("14_gmxao"),
+"walk": ExtResource("11_wpe27")
+}
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bcnwp"]
 animation = &"base"
 
@@ -151,21 +166,6 @@ nodes/walk_speed/node = SubResource("AnimationNodeTimeScale_gnl2h")
 nodes/walk_speed/position = Vector2(-260, 100)
 node_connections = [&"climb_speed", 0, &"climb", &"horizontal", 0, &"walk_speed", &"horizontal", 1, &"run_speed", &"jump_oneshot", 0, &"main", &"jump_oneshot", 1, &"jump", &"main", 0, &"base", &"main", 1, &"idle", &"main", 2, &"sit", &"main", 3, &"horizontal", &"main", 4, &"vertical", &"main", 5, &"swimming", &"output", 0, &"jump_oneshot", &"run_speed", 0, &"run", &"swim_speed", 0, &"swim", &"swimming", 0, &"swim_idle", &"swimming", 1, &"swim_speed", &"vertical", 0, &"fall", &"vertical", 1, &"climb_speed", &"walk_speed", 0, &"walk"]
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_raqf0"]
-_data = {
-"base": ExtResource("7_xw4fc"),
-"climb": ExtResource("13_1sw8o"),
-"emote_spin": ExtResource("15_00aet"),
-"fall": ExtResource("14_ewtaw"),
-"idle": ExtResource("8_l8522"),
-"jump": ExtResource("9_j6ru4"),
-"run": ExtResource("12_ibjrc"),
-"sit": ExtResource("10_jftow"),
-"swim": ExtResource("13_3oyjv"),
-"swim_idle": ExtResource("14_gmxao"),
-"walk": ExtResource("11_wpe27")
-}
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pp1wc"]
 resource_local_to_scene = true
 height = 3.4
@@ -185,70 +185,70 @@ script = ExtResource("8_ip6d1")
 appearance = ExtResource("9_6jjgu")
 
 [node name="Torso" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(1, 1.96365e-08, -1.88261e-08, -1.88261e-08, 0.999113, 0.0421181, 1.96365e-08, -0.0421181, 0.999113, -2.44157e-08, 0.83798, 0.0155896)
+transform = Transform3D(1, 1.96365e-08, -1.88261e-08, -1.88261e-08, 0.999113, 0.0421181, 1.96365e-08, -0.0421181, 0.999113, -2.44157e-08, 0.905569, 0.0155896)
 bone_name = "Torso"
 bone_idx = 0
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="Head" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(1, -4.63302e-10, 4.68821e-10, 4.68814e-10, 0.99993, -0.0118264, -4.63308e-10, 0.0118264, 0.99993, -2.35208e-09, 1.96059, -0.0317344)
+transform = Transform3D(1, -4.63302e-10, 4.68821e-10, 4.68814e-10, 0.99993, -0.0118264, -4.63308e-10, 0.0118264, 0.99993, -2.35208e-09, 2.02817, -0.0317344)
 bone_name = "Head"
 bone_idx = 5
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="RArm" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.415745, 0.764366, 0.492849, 0.49285, -0.644782, 0.584255, 0.764365, -5.71832e-07, -0.644783, 0.201908, 1.86605, 0.0109229)
+transform = Transform3D(0.415745, 0.764366, 0.492849, 0.49285, -0.644782, 0.584255, 0.764365, -5.71832e-07, -0.644783, 0.201908, 1.93363, 0.0109229)
 bone_name = "RArm"
 bone_idx = 1
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="LArm" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.415745, -0.764366, -0.492849, -0.49285, -0.644782, 0.584255, -0.764365, -6.03497e-07, -0.644783, -0.201911, 1.86605, 0.0109229)
+transform = Transform3D(0.415745, -0.764366, -0.492849, -0.49285, -0.644782, 0.584255, -0.764365, -6.03497e-07, -0.644783, -0.201911, 1.93363, 0.0109229)
 bone_name = "LArm"
 bone_idx = 3
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="RHand" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.413177, 0.766044, 0.492403, 0.492404, -0.642787, 0.586824, 0.766044, -5.39934e-07, -0.642788, 0.896792, 1.27987, 0.0109225)
+transform = Transform3D(0.413177, 0.766044, 0.492403, 0.492404, -0.642787, 0.586824, 0.766044, -5.39934e-07, -0.642788, 0.896792, 1.34746, 0.0109225)
 bone_name = "RHand"
 bone_idx = 2
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="LHand" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.413177, -0.766044, -0.492403, -0.492404, -0.642788, 0.586824, -0.766044, -5.99422e-07, -0.642788, -0.896795, 1.27987, 0.0109223)
+transform = Transform3D(0.413177, -0.766044, -0.492403, -0.492404, -0.642788, 0.586824, -0.766044, -5.99422e-07, -0.642788, -0.896795, 1.34746, 0.0109223)
 bone_name = "LHand"
 bone_idx = 4
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="RLeg" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.975812, 0.155977, 0.153151, 0.153148, -0.987742, 0.0301662, 0.155978, -0.00598181, -0.987742, 0.213903, 1.02528, 0.0236284)
+transform = Transform3D(0.975812, 0.155977, 0.153151, 0.153148, -0.987742, 0.0301662, 0.155978, -0.00598181, -0.987742, 0.213903, 1.09287, 0.0236284)
 bone_name = "RLeg"
 bone_idx = 6
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="LLeg" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.977738, -0.14966, -0.147107, -0.147111, -0.98872, 0.0281265, -0.149658, -0.00585926, -0.988721, -0.213903, 1.02528, 0.0236284)
+transform = Transform3D(0.977738, -0.14966, -0.147107, -0.147111, -0.98872, 0.0281265, -0.149658, -0.00585926, -0.988721, -0.213903, 1.09287, 0.0236284)
 bone_name = "LLeg"
 bone_idx = 8
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="RFoot" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.994518, 0.10453, 8.19564e-08, -1.09011e-06, 1.19209e-07, 1, 0.104529, -0.994521, 7.45058e-08, 0.380816, -0.0317194, 0.0172271)
+transform = Transform3D(0.994518, 0.10453, 8.19564e-08, -1.09011e-06, 1.19209e-07, 1, 0.104529, -0.994521, 7.45058e-08, 0.380816, 0.0358695, 0.0172271)
 bone_name = "RFoot"
 bone_idx = 7
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="LFoot" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.994527, -0.104526, -1.82074e-07, -1.33889e-06, -3.68804e-07, 1, -0.104527, -0.994523, -2.90573e-07, -0.373898, -0.0317199, 0.0173645)
+transform = Transform3D(0.994527, -0.104526, -1.82074e-07, -1.33889e-06, -3.68804e-07, 1, -0.104527, -0.994523, -2.90573e-07, -0.373898, 0.035869, 0.0173645)
 bone_name = "LFoot"
 bone_idx = 9
 use_external_skeleton = true
@@ -270,6 +270,10 @@ bones/8/position = Vector3(-0.213903, 0.186792, 0.0159202)
 bones/8/rotation = Quaternion(0.99398, -0.0730236, -0.0761655, -0.0294879)
 
 [node name="AnimationTree" type="AnimationTree" parent="Rig/Armature" index="1"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_raqf0")
+}
 tree_root = SubResource("AnimationNodeBlendTree_ycajw")
 anim_player = NodePath("../AnimationPlayer")
 parameters/climb_speed/scale = 1.0
@@ -277,6 +281,7 @@ parameters/horizontal/current_state = ""
 parameters/horizontal/transition_request = ""
 parameters/horizontal/current_index = -1
 parameters/jump_oneshot/active = false
+parameters/jump_oneshot/internal_active = false
 parameters/jump_oneshot/request = 0
 parameters/main/current_state = "base"
 parameters/main/transition_request = ""
