@@ -439,7 +439,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2, -24)
 curve = SubResource("Curve3D_4rve1")
 
 [node name="Rot" type="PathFollow3D" parent="Map/Interactables/Path3D"]
-transform = Transform3D(0.07922, -0.242031, -0.967015, 0, 0.970064, -0.242794, 0.996843, 0.0192344, 0.0768495, 0, 0, 0)
+transform = Transform3D(0.0792199, -0.242031, -0.967015, 0, 0.970064, -0.242794, 0.996843, 0.0192344, 0.0768495, 0, 0, 0)
 rotation_mode = 2
 script = ExtResource("5_v2edg")
 speed = 4.0

@@ -25,6 +25,16 @@ export type CameraController = Camera3D & typeof(CameraController) & {
     --- @default 5.0
     focusDistanceTarget: number,
 
+    --- @property
+    --- @range 1 100
+    --- @default 16.0
+    moveSpeed: number,
+
+    --- @property
+    --- @range 1 100
+    --- @default 24.0
+    moveSpeedFast: number,
+
     --- @signal
     modeChanged: SignalWithArgs<(mode: integer) -> ()>,
 
@@ -184,6 +194,10 @@ function CameraController._Process(self: CameraController, delta: number)
 
     if not self.focusNode then
         self.cameraMode = CameraController.CameraMode.FLOATING
+
+        local direction = Input.singleton:GetVector("move_left", "move_right", "move_forward", "move_backward")
+        local speed = if Input.singleton:IsActionPressed("move_run") then self.moveSpeedFast else self.moveSpeed
+        self.position += speed * delta * self.basis * Vector3.new(direction.x, 0, direction.y)
     elseif self.focusDistanceTarget == 0 then
         self.cameraMode = CameraController.CameraMode.FIRST_PERSON
         self:setCameraRotating(true)

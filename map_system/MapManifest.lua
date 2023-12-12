@@ -12,6 +12,8 @@ export type MapManifest = Resource & typeof(MapManifest) & {
     --- @property
     name: string,
     --- @property
+    version: string,
+    --- @property
     author: string,
 
     --- @property

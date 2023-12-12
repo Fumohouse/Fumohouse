@@ -18,7 +18,7 @@ function AreaHandler.new()
 end
 
 function AreaHandler.Process(self: AreaHandler, state: MotionState.MotionState, delta: number)
-    local currentMap = assert(MapManager.currentMap)
+    local currentMap = assert(MapManager.currentMap).manifest
 
     for _, area in state.intersections.areas do
         if not area:HasMeta("playlist") then

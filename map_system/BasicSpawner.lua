@@ -11,8 +11,10 @@ local BasicSpawnerC = gdclass(BasicSpawner)
 --- @classType BasicSpawner
 export type BasicSpawner = CharacterSpawner.CharacterSpawner
 
-function BasicSpawner.SpawnCharacter(self: BasicSpawner, defaultScene: PackedScene, camera: CameraController.CameraController): Node3D?
-    local character = defaultScene:Instantiate() :: Character.Character
+local characterScene = assert(load("res://character/character.tscn")) :: PackedScene
+
+function BasicSpawner.SpawnCharacter(self: BasicSpawner, camera: CameraController.CameraController): Node3D?
+    local character = characterScene:Instantiate() :: Character.Character
     character.camera = camera
 
     local children = self:GetChildren()

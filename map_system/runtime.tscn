@@ -16,6 +16,8 @@
 [node name="FumohouseRuntime" type="Node3D"]
 script = ExtResource("1_ry2y1")
 
+[node name="Players" type="Node3D" parent="."]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_wrnpf")
 script = ExtResource("3_j3r1m")
@@ -23,8 +25,6 @@ script = ExtResource("3_j3r1m")
 [node name="CameraController" type="Camera3D" parent="."]
 current = true
 script = ExtResource("1_uy88u")
-
-[node name="Players" type="Node3D" parent="."]
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3

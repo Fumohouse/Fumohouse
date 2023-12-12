@@ -10,8 +10,10 @@ local MapRuntimeC = gdclass(MapRuntime)
 
 --- @classType MapRuntime
 export type MapRuntime = Node3D & typeof(MapRuntime) & {
-    camera: CameraController.CameraController,
+    scene: Node,
     players: Node3D,
+
+    camera: CameraController.CameraController,
     debugCharacter: DebugCharacter.DebugCharacter,
 
     characterScene: PackedScene,
@@ -19,18 +21,17 @@ export type MapRuntime = Node3D & typeof(MapRuntime) & {
 
 --- @registerMethod
 function MapRuntime._Ready(self: MapRuntime)
-    self.camera = self:GetNode("CameraController") :: CameraController.CameraController
+    self.scene = assert(self:GetParent())
     self.players = self:GetNode("Players") :: Node3D
-    self.debugCharacter = self:GetNode("HUD/DebugMenus/DebugCharacter") :: DebugCharacter.DebugCharacter
 
-    -- Cannot do at load-time due to cyclic dependency :( (character.tscn -> AreaHandler -> MapRuntime -> character.tscn)
-    self.characterScene = assert(load("res://character/character.tscn")) :: PackedScene
+    self.camera = self:GetNode("CameraController") :: CameraController.CameraController
+    self.debugCharacter = self:GetNode("HUD/DebugMenus/DebugCharacter") :: DebugCharacter.DebugCharacter
 end
 
-function MapRuntime.SpawnLocalCharacter(self: MapRuntime, scene: Node)
-    local spawner = scene:GetNodeOrNull("CharacterSpawner")
+function MapRuntime.SpawnLocalCharacter(self: MapRuntime)
+    local spawner = self.scene:GetNodeOrNull("CharacterSpawner")
     if spawner and spawner:IsA(CharacterSpawner) then
-        local character = (spawner :: CharacterSpawner.CharacterSpawner):SpawnCharacter(self.characterScene, self.camera)
+        local character = (spawner :: CharacterSpawner.CharacterSpawner):SpawnCharacter(self.camera)
 
         if character then
             self.players:AddChild(character)
@@ -39,13 +40,6 @@ function MapRuntime.SpawnLocalCharacter(self: MapRuntime, scene: Node)
                 self.debugCharacter.character = character :: Character.Character
             end
         end
-    else
-        -- Fallback: Spawn at Vector3.ZERO
-        local character = self.characterScene:Instantiate() :: Character.Character
-        character.camera = self.camera
-
-        self.players:AddChild(character)
-        self.debugCharacter.character = character
     end
 end
 

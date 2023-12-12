@@ -67,8 +67,8 @@ function MenuScreen._Ready(self: MenuScreen)
 
     local mapName = self.bottomBar:GetNode("MapName") :: Label
     local currentMap = MapManager.currentMap
-    local name = if currentMap then currentMap.name else "???"
-    local author = if currentMap then currentMap.author else "???"
+    local name = if currentMap then currentMap.manifest.name else "???"
+    local author = if currentMap then currentMap.manifest.author else "???"
     mapName.text = string.format("%s • %s", name, author)
 end
 

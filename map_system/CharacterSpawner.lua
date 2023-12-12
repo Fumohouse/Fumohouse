@@ -9,7 +9,7 @@ local CharacterSpawnerC = gdclass(CharacterSpawner)
 export type CharacterSpawner = Node3D & typeof(CharacterSpawner)
 
 --- @registerMethod
-function CharacterSpawner.SpawnCharacter(self: CharacterSpawner, defaultScene: PackedScene, camera: CameraController.CameraController): Node3D?
+function CharacterSpawner.SpawnCharacter(self: CharacterSpawner, camera: CameraController.CameraController): Node3D?
     return nil
 end
 

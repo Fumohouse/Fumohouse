@@ -82,7 +82,6 @@ function ButtonTabContainer._OnChildExitingTree(self: ButtonTabContainer, child:
 
     local idx = btn:GetIndex()
 
-    print(idx)
     if idx == self.selection then
         self.selection = 0
     elseif idx < self.selection then

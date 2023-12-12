@@ -10,10 +10,15 @@ local MusicPlayer = gdglobal("MusicPlayer") :: MusicPlayerM.MusicPlayer
 local MapManager = {}
 local MapManagerC = gdclass(MapManager)
 
+export type MapData = {
+    manifest: MapManifest.MapManifest,
+    hash: string,
+}
+
 --- @classType MapManager
 export type MapManager = Node & typeof(MapManager) & {
-    maps: {MapManifest.MapManifest},
-    currentMap: MapManifest.MapManifest?,
+    maps: {[string]: MapData},
+    currentMap: MapData?,
     currentRuntime: MapRuntime.MapRuntime?,
     runtimeScene: PackedScene,
 }
@@ -41,10 +46,15 @@ function MapManager._Ready(self: MapManager)
             local mapDir = BASE_DIR .. fileName .. "/"
             local manifestPath = mapDir .. "manifest.tres"
 
-            local manifest = load(manifestPath) :: Resource?
+            local res = load(manifestPath) :: Resource?
 
-            if manifest and manifest:IsA(MapManifest) then
-                table.insert(self.maps, manifest :: MapManifest.MapManifest)
+            if res and res:IsA(MapManifest) then
+                local manifest = res :: MapManifest.MapManifest
+
+                self.maps[manifest.id] = {
+                    manifest = manifest,
+                    hash = "",
+                }
             else
                 push_warning(`Manifest at {manifestPath} is invalid or doesn't exist.`)
             end
@@ -54,26 +64,29 @@ function MapManager._Ready(self: MapManager)
     end
 end
 
---- Requires INTERNAL
-function MapManager.loadInternal(self: MapManager, manifest: MapManifest.MapManifest)
-    local scene = load(manifest.mainScenePath) :: Resource?
-    if not scene or not scene:IsA(PackedScene) then
-        error(`Failed to load main scene at {manifest.mainScenePath}.`)
+function MapManager.Load(self: MapManager, id: string)
+    local map = self.maps[id]
+    if not map then
+        return
     end
 
-    MusicPlayer:LoadPlaylists(manifest.playlists)
+    local scene = load(map.manifest.mainScenePath) :: Resource?
+    if not scene or not scene:IsA(PackedScene) then
+        error(`Failed to load main scene at {map.manifest.mainScenePath}.`)
+    end
+
+    MusicPlayer:LoadPlaylists(map.manifest.playlists)
 
     -- Switch scenes manually (otherwise switch is deferred to next frame)
     local newScene = (scene :: PackedScene):Instantiate()
     self:GetTree():GetRoot():AddChild(newScene)
 
     local runtime = self.runtimeScene:Instantiate() :: MapRuntime.MapRuntime
-    self.currentMap = manifest
+    self.currentMap = map
     self.currentRuntime = runtime
 
     newScene:AddChild(runtime)
     newScene:MoveChild(runtime, 0)
-    runtime:SpawnLocalCharacter(newScene)
 
     local currentScene = self:GetTree():GetCurrentScene()
     if currentScene then
@@ -81,15 +94,6 @@ function MapManager.loadInternal(self: MapManager, manifest: MapManifest.MapMani
     end
 
     self:GetTree():SetCurrentScene(newScene)
-end
-
-function MapManager.Load(self: MapManager, id: string)
-    for _, map in self.maps do
-        if map.id == id then
-            self:loadInternal(map)
-            return
-        end
-    end
 end
 
 return MapManagerC

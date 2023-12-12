@@ -26,6 +26,7 @@ DebugDraw="*res://utils/DebugDraw.lua"
 PartDatabase="*res://character/appearance/parts/PartDatabase.lua"
 MusicPlayer="*res://music/MusicPlayer.lua"
 MapManager="*res://map_system/MapManager.lua"
+NetworkManager="*res://networking/NetworkManager.lua"
 
 [display]
 
