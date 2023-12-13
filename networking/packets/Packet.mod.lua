@@ -19,6 +19,7 @@ local PacketTypes = {
     require("AuthPacket.mod") :: any,
     require("PeerStatusPacket.mod") :: any,
     require("GoodbyePacket.mod") :: any,
+    require("PingPacket.mod") :: any,
 }
 
 local Id = {}

@@ -13,25 +13,32 @@ local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
 local PacketHandlerServer = {}
 
 function PacketHandlerServer.OnPeerConnected(nm: NetworkManager.NetworkManager, peer: number)
-    assert(not nm.peerStates[peer])
+    assert(not nm.peerData[peer])
 
-    nm.peerStates[peer] = NetworkManager.PeerState.CONNECTED
+    nm.peerData[peer] = {
+        state = NetworkManager.PeerState.CONNECTED,
+        identity = "",
+        successfulPings = 0,
+        rtt = 0,
+    }
+
     nm:DisconnectTimeout(peer, function()
-        return nm.peerStates[peer] == NetworkManager.PeerState.CONNECTED
+        return nm.peerData[peer].state == NetworkManager.PeerState.CONNECTED
     end)
 end
 
 function PacketHandlerServer.OnPeerDisconnected(nm: NetworkManager.NetworkManager, peer: number)
-    local status = PeerStatusPacket.server.new(PeerStatusPacket.PeerStatus.LEFT, nm.peerIdentities[peer], peer)
+    local status = PeerStatusPacket.server.new(PeerStatusPacket.PeerStatus.LEFT, nm.peerData[peer].identity, peer)
     nm:SendPacket(0, status)
 
-    nm.peerStates[peer] = nil
-    nm.peerIdentities[peer] = nil
+    nm.peerData[peer] = nil
 end
 
 PacketHandlerServer[HelloPacket.client.NAME] = function(nm: NetworkManager.NetworkManager, peer: number, packet: Packet.Packet)
     -- HANDSHAKE: 2) Server HELLO
-    if nm.peerStates[peer] ~= NetworkManager.PeerState.CONNECTED then
+    local peerData = nm.peerData[peer]
+
+    if peerData.state ~= NetworkManager.PeerState.CONNECTED then
         nm:DisconnectWithReason(peer, "Incorrect stage for handshake begin")
     end
 
@@ -42,7 +49,7 @@ PacketHandlerServer[HelloPacket.client.NAME] = function(nm: NetworkManager.Netwo
         return
     end
 
-    nm.peerIdentities[peer] = hp.identity
+    peerData.identity = hp.identity
 
     local authType = 0
 
@@ -54,15 +61,17 @@ PacketHandlerServer[HelloPacket.client.NAME] = function(nm: NetworkManager.Netwo
     local hello = HelloPacket.server.new(authType, currentMap.manifest.id, currentMap.manifest.version, currentMap.hash)
     nm:SendPacket(peer, hello)
 
-    nm.peerStates[peer] = NetworkManager.PeerState.AUTH
+    peerData.state = NetworkManager.PeerState.AUTH
     nm:DisconnectTimeout(peer, function()
-        return nm.peerStates[peer] == NetworkManager.PeerState.AUTH
+        return peerData.state == NetworkManager.PeerState.AUTH
     end)
 end
 
 PacketHandlerServer[AuthPacket.client.NAME] = function(nm: NetworkManager.NetworkManager, peer: number, packet: Packet.Packet)
     -- HANDSHAKE: 4) Server JOIN
-    if nm.peerStates[peer] ~= NetworkManager.PeerState.AUTH then
+    local peerData = nm.peerData[peer]
+
+    if peerData.state ~= NetworkManager.PeerState.AUTH then
         nm:DisconnectWithReason(peer, "Incorrect stage for authentication")
     end
 
@@ -75,11 +84,11 @@ PacketHandlerServer[AuthPacket.client.NAME] = function(nm: NetworkManager.Networ
         end
     end
 
-    local status = PeerStatusPacket.server.new(PeerStatusPacket.PeerStatus.JOIN, nm.peerIdentities[peer], peer)
+    local status = PeerStatusPacket.server.new(PeerStatusPacket.PeerStatus.JOIN, peerData.identity, peer)
     nm:SendPacket(0, status)
-    nm.peerStates[peer] = NetworkManager.PeerState.JOINED
+    peerData.state = NetworkManager.PeerState.JOINED
 
-    nm:Log(`peer {peer} joined as {nm.peerIdentities[peer]}`)
+    nm:Log(`peer {peer} joined as {peerData.identity}`)
 end
 
 return PacketHandlerServer

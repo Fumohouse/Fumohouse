@@ -2,6 +2,7 @@ local Packet = require("packets/Packet.mod")
 local SerDe = require("SerDe.mod")
 
 local GoodbyePacket = require("packets/GoodbyePacket.mod")
+local PingPacket = require("packets/PingPacket.mod")
 
 local MapManagerM = require("../map_system/MapManager")
 local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
@@ -33,6 +34,13 @@ type PacketHandlerClient = {
     [string]: (nm: NetworkManager, packet: Packet.Packet) -> (),
 }
 
+type PeerData = {
+    state: number,
+    identity: string,
+    successfulPings: number,
+    rtt: number,
+}
+
 --- @classType NetworkManager
 export type NetworkManager = Node & typeof(NetworkManager) & {
     multiplayer: SceneMultiplayer,
@@ -53,9 +61,10 @@ export type NetworkManager = Node & typeof(NetworkManager) & {
 
     password: string,
 
+    nextPing: number,
+
     peer: ENetMultiplayerPeer,
-    peerStates: {[number]: number},
-    peerIdentities: {[number]: string},
+    peerData: {[number]: PeerData},
 
     ser: SerDe.Serializer,
 
@@ -71,7 +80,6 @@ NetworkManager.PeerState = {
     AUTH = 1,
 
     JOINED = 10,
-    PING = 11,
 }
 
 function NetworkManager.Log(self: NetworkManager, ...: any)
@@ -86,6 +94,8 @@ function NetworkManager.resetState(self: NetworkManager)
     self.isServer = true
 
     self.password = ""
+
+    self.nextPing = 0
 
     self.host = ""
     self.port = 0
@@ -107,8 +117,7 @@ function NetworkManager._Ready(self: NetworkManager)
     self:resetState()
 
     self.peer = ENetMultiplayerPeer.new()
-    self.peerStates = {}
-    self.peerIdentities = {}
+    self.peerData = {}
 
     self.ser = SerDe.Serializer.new()
 
@@ -147,7 +156,7 @@ end
 ----------------------
 
 function NetworkManager.SendPacket(self: NetworkManager, peer: number, packet: Packet.Packet)
-    if (peer > 0 and not self.peerStates[peer]) or self.peer:GetConnectionStatus() ~= MultiplayerPeer.ConnectionStatus.CONNECTED then
+    if (peer > 0 and not self.peerData[peer]) or self.peer:GetConnectionStatus() ~= MultiplayerPeer.ConnectionStatus.CONNECTED then
         return
     end
 
@@ -265,10 +274,41 @@ function NetworkManager.Reset(self: NetworkManager)
         return
     end
 
-    table.clear(self.peerStates)
-    table.clear(self.peerIdentities)
+    self:resetState()
+    table.clear(self.peerData)
 
     self.generation += 1
+end
+
+function NetworkManager.Ping(self: NetworkManager, peer: number)
+    local ping = PingPacket.server.new(false, Time.singleton:GetTicksUsec())
+    self:SendPacket(peer, ping)
+
+    local existingPings = self.peerData[peer].successfulPings
+    self:DisconnectTimeout(peer, function()
+        return self.peerData[peer].successfulPings == existingPings
+    end)
+end
+
+--- @registerMethod
+function NetworkManager._Process(self: NetworkManager, delta: number)
+    if not self.isActive then
+        return
+    end
+
+    if self.nextPing == 0 then
+        for peer, data in self.peerData do
+            if data.state < NetworkManager.PeerState.JOINED then
+                continue
+            end
+
+            self:Ping(peer)
+        end
+
+        self.nextPing = 1
+    else
+        self.nextPing = math.max(0, self.nextPing - delta)
+    end
 end
 
 --#endregion
@@ -386,8 +426,6 @@ function NetworkManager.HandlePacketCommon(self: NetworkManager, peer: number, p
 end
 
 function NetworkManager.HandlePacketServer(self: NetworkManager, peer: number, packet: Packet.Packet)
-    self:Log("packet from client ", peer, ": ", packet.NAME, " ", packet)
-
     local handler = self.packetHandlerServer[packet.NAME]
     if handler then
         handler(self, peer, packet)
@@ -395,8 +433,6 @@ function NetworkManager.HandlePacketServer(self: NetworkManager, peer: number, p
 end
 
 function NetworkManager.HandlePacketClient(self: NetworkManager, packet: Packet.Packet)
-    self:Log("packet from server: ", packet.NAME, " ", packet)
-
     local handler = self.packetHandlerClient[packet.NAME]
     if handler then
         handler(self, packet)

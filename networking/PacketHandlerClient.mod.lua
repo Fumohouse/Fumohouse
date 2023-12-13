@@ -14,19 +14,28 @@ local PacketHandlerClient = {}
 
 function PacketHandlerClient.OnConnectedToServer(nm: NetworkManager.NetworkManager)
     -- HANDSHAKE: 1) Client HELLO
-    nm.peerStates[1] = NetworkManager.PeerState.CONNECTED
+    nm.peerData[1] = {
+        state = NetworkManager.PeerState.CONNECTED,
+        identity = "SERVER",
+        successfulPings = 0,
+        rtt = 0,
+    }
+
+    nm.peerData[1].state = NetworkManager.PeerState.CONNECTED
 
     local hello = HelloPacket.client.new(Utils.version, nm.identity)
     nm:SendPacket(1, hello)
 
     nm:DisconnectTimeout(nil, function()
-        return nm.peerStates[1] == NetworkManager.PeerState.CONNECTED
+        return nm.peerData[1].state == NetworkManager.PeerState.CONNECTED
     end)
 end
 
 PacketHandlerClient[HelloPacket.server.NAME] = function(nm: NetworkManager.NetworkManager, packet: Packet.Packet)
     -- HANDSHAKE: 3) Client AUTH
-    if nm.peerStates[1] ~= NetworkManager.PeerState.CONNECTED then
+    local peerData = nm.peerData[1]
+
+    if peerData.state ~= NetworkManager.PeerState.CONNECTED then
         nm:DisconnectWithReason(1, "Incorrect stage for handshake begin")
     end
 
@@ -59,27 +68,33 @@ PacketHandlerClient[HelloPacket.server.NAME] = function(nm: NetworkManager.Netwo
 
     nm:SendPacket(1, auth)
 
-    nm.peerStates[1] = NetworkManager.PeerState.AUTH
+    peerData.state = NetworkManager.PeerState.AUTH
     nm:DisconnectTimeout(1, function()
-        return nm.peerStates[1] == NetworkManager.PeerState.AUTH
+        return peerData.state == NetworkManager.PeerState.AUTH
     end)
 end
 
 PacketHandlerClient[PeerStatusPacket.server.NAME] = function(nm: NetworkManager.NetworkManager, packet: Packet.Packet)
+    local peerData = nm.peerData[1]
     local psp = packet :: PeerStatusPacket.PeerStatusPacket
 
     if psp.status == PeerStatusPacket.PeerStatus.JOIN then
         if psp.peer == nm.peer:GetUniqueId() then
             -- HANDSHAKE: 5) End
-            if nm.peerStates[1] ~= NetworkManager.PeerState.AUTH then
+            if peerData.state ~= NetworkManager.PeerState.AUTH then
                 nm:DisconnectWithReason(1, "Incorrect stage for join status")
             end
 
-            nm.peerStates[1] = NetworkManager.PeerState.JOINED
+            peerData.state = NetworkManager.PeerState.JOINED
             nm:Log(`successfully joined as {psp.identity}`)
         else
             nm:Log(`peer {psp.peer} joined as {psp.identity}`)
-            nm.peerIdentities[psp.peer] = psp.identity
+            nm.peerData[psp.peer] = {
+                state = NetworkManager.PeerState.JOINED,
+                identity = psp.identity,
+                successfulPings = 0,
+                rtt = 0,
+            }
         end
     else
         if psp.peer == nm.peer:GetUniqueId() then
@@ -87,7 +102,7 @@ PacketHandlerClient[PeerStatusPacket.server.NAME] = function(nm: NetworkManager.
         end
 
         nm:Log(`peer {psp.peer} ({psp.identity}) left`)
-        nm.peerIdentities[psp.peer] = nil
+        nm.peerData[psp.peer] = nil
     end
 end
 
