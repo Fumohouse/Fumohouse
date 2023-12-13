@@ -1,12 +1,7 @@
 local Packet = require("packets/Packet.mod")
 local SerDe = require("SerDe.mod")
 
-local Utils = require("../utils/Utils.mod")
-
-local HelloPacket = require("packets/HelloPacket.mod")
 local GoodbyePacket = require("packets/GoodbyePacket.mod")
-local AuthPacket = require("packets/AuthPacket.mod")
-local PeerStatusPacket = require("packets/PeerStatusPacket.mod")
 
 local MapManagerM = require("../map_system/MapManager")
 local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
@@ -19,9 +14,32 @@ local DEFAULT_TIMEOUT = 10
 local NetworkManager = {}
 local NetworkManagerC = gdclass(NetworkManager)
 
+type PacketHandler = {
+    [string]: (nm: NetworkManager, peer: number, packet: Packet.Packet) -> (),
+}
+
+type PacketHandlerServer = {
+    OnPeerConnected: ((nm: NetworkManager, peer: number) -> ())?,
+    OnPeerDisconnected: ((nm: NetworkManager, peer: number) -> ())?,
+
+    [string]: (nm: NetworkManager, peer: number, packet: Packet.Packet) -> (),
+}
+
+type PacketHandlerClient = {
+    OnConnectedToServer: ((nm: NetworkManager) -> ())?,
+    OnConnectionFailed: ((nm: NetworkManager) -> ())?,
+    OnServerDisconnected: ((nm: NetworkManager) -> ())?,
+
+    [string]: (nm: NetworkManager, packet: Packet.Packet) -> (),
+}
+
 --- @classType NetworkManager
 export type NetworkManager = Node & typeof(NetworkManager) & {
     multiplayer: SceneMultiplayer,
+
+    packetHandlerCommon: PacketHandler,
+    packetHandlerServer: PacketHandlerServer,
+    packetHandlerClient: PacketHandlerClient,
 
     -- Common state
 
@@ -29,6 +47,7 @@ export type NetworkManager = Node & typeof(NetworkManager) & {
     -- (use for timeouts)
     generation: number,
 
+    isActive: boolean,
     isServer: boolean,
     isQuitting: boolean,
 
@@ -56,10 +75,14 @@ NetworkManager.PeerState = {
 }
 
 function NetworkManager.Log(self: NetworkManager, ...: any)
-    print("[network] ", ...)
+    local prefix = "[network] "
+    prefix ..= if self.isServer then "[S] " else "[C] "
+
+    print(prefix, ...)
 end
 
 function NetworkManager.resetState(self: NetworkManager)
+    self.isActive = false
     self.isServer = true
 
     self.password = ""
@@ -72,6 +95,10 @@ end
 --- @registerMethod
 function NetworkManager._Ready(self: NetworkManager)
     assert(self.multiplayer:IsA(SceneMultiplayer))
+
+    self.packetHandlerCommon = require("PacketHandlerCommon.mod") :: any
+    self.packetHandlerServer = require("PacketHandlerServer.mod") :: any
+    self.packetHandlerClient = require("PacketHandlerClient.mod") :: any
 
     self:GetTree().autoAcceptQuit = false
 
@@ -136,9 +163,10 @@ end
 
 function NetworkManager.Join(self: NetworkManager, addr: string, port: number, identity: string, password: string?)
     assert(self.peer:GetConnectionStatus() == MultiplayerPeer.ConnectionStatus.DISCONNECTED)
-    self:Log(`joining server at {addr}:{port}`)
 
     self.isServer = false
+
+    self:Log(`joining server at {addr}:{port}`)
 
     self.password = password or ""
 
@@ -152,6 +180,7 @@ function NetworkManager.Join(self: NetworkManager, addr: string, port: number, i
     end
 
     self.multiplayer.multiplayerPeer = self.peer
+    self.isActive = true
 
     return Enum.Error.OK
 end
@@ -197,6 +226,7 @@ function NetworkManager.Serve(self: NetworkManager, mapId: string, port: number,
     end
 
     self.multiplayer.multiplayerPeer = self.peer
+    self.isActive = true
 
     MapManager:Load(mapId)
 
@@ -250,24 +280,28 @@ end
 function NetworkManager._OnConnectedToServer(self: NetworkManager)
     self:Log("client connected")
 
-    self.peerStates[1] = NetworkManager.PeerState.CONNECTED
-
-    local hello = HelloPacket.client.new(Utils.version, self.identity)
-    self:SendPacket(1, hello)
-
-    self:DisconnectTimeout(nil, function()
-        return self.peerStates[1] == NetworkManager.PeerState.CONNECTED
-    end)
+    if self.packetHandlerClient.OnConnectedToServer then
+        self.packetHandlerClient.OnConnectedToServer(self)
+    end
 end
 
 --- @registerMethod
 function NetworkManager._OnConnectionFailed(self: NetworkManager)
     self:Log(`client connection to {self.host}:{self.port} failed`)
+
+    if self.packetHandlerClient.OnConnectionFailed then
+        self.packetHandlerClient.OnConnectionFailed(self)
+    end
 end
 
 --- @registerMethod
 function NetworkManager._OnServerDisconnected(self: NetworkManager)
     self:Log("client disconnected")
+
+    if self.packetHandlerClient.OnServerDisconnected then
+        self.packetHandlerClient.OnServerDisconnected(self)
+    end
+
     self:Reset()
 end
 
@@ -280,12 +314,9 @@ function NetworkManager._OnPeerConnected(self: NetworkManager, peer: number)
     local enetPeer = assert(self.peer:GetPeer(peer))
     self:Log(`peer connected: {peer} @ {enetPeer:GetRemoteAddress()}:{enetPeer:GetRemotePort()}`)
 
-    assert(not self.peerStates[peer])
-
-    self.peerStates[peer] = NetworkManager.PeerState.CONNECTED
-    self:DisconnectTimeout(peer, function()
-        return self.peerStates[peer] == NetworkManager.PeerState.CONNECTED
-    end)
+    if self.packetHandlerServer.OnPeerConnected then
+        self.packetHandlerServer.OnPeerConnected(self, peer)
+    end
 end
 
 --- @registerMethod
@@ -296,11 +327,9 @@ function NetworkManager._OnPeerDisconnected(self: NetworkManager, peer: number)
 
     self:Log("peer disconnected: ", peer)
 
-    local status = PeerStatusPacket.server.new(PeerStatusPacket.PeerStatus.LEFT, self.peerIdentities[peer], peer)
-    self:SendPacket(0, status)
-
-    self.peerStates[peer] = nil
-    self.peerIdentities[peer] = nil
+    if self.packetHandlerServer.OnPeerDisconnected then
+        self.packetHandlerServer.OnPeerDisconnected(self, peer)
+    end
 end
 
 --- @registerMethod
@@ -350,119 +379,27 @@ end
 -------------------------
 
 function NetworkManager.HandlePacketCommon(self: NetworkManager, peer: number, packet: Packet.Packet)
-    if packet.NAME == GoodbyePacket.client.NAME then
-        local gp = packet :: GoodbyePacket.GoodbyePacket
-        self:Log("peer ", peer, " disconnected: ", gp.reason)
-
-        if self.isServer then
-            self.multiplayer:DisconnectPeer(peer)
-        else
-            self:Reset()
-        end
+    local handler = self.packetHandlerCommon[packet.NAME]
+    if handler then
+        handler(self, peer, packet)
     end
 end
 
 function NetworkManager.HandlePacketServer(self: NetworkManager, peer: number, packet: Packet.Packet)
     self:Log("packet from client ", peer, ": ", packet.NAME, " ", packet)
 
-    if packet.NAME == HelloPacket.client.NAME then
-        local hp = packet :: HelloPacket.HelloPacketClient
-
-        if hp.version ~= Utils.version then
-            self:DisconnectWithReason(peer, `Fumohouse version mismatch — server: {Utils.version}, you: {hp.version}`)
-            return
-        end
-
-        self.peerIdentities[peer] = hp.identity
-
-        local authType = 0
-
-        if self.password ~= "" then
-            authType = bit32.bor(authType, AuthPacket.AuthType.PASSWORD)
-        end
-
-        local currentMap = assert(MapManager.currentMap)
-        local hello = HelloPacket.server.new(authType, currentMap.manifest.id, currentMap.manifest.version, currentMap.hash)
-        self:SendPacket(peer, hello)
-
-        self.peerStates[peer] = NetworkManager.PeerState.AUTH
-        self:DisconnectTimeout(peer, function()
-            return self.peerStates[peer] == NetworkManager.PeerState.AUTH
-        end)
-    elseif packet.NAME == AuthPacket.client.NAME then
-        local ap = packet :: AuthPacket.AuthPacket
-
-        if self.password ~= "" then
-            if ap.password ~= self.password then
-                self:DisconnectWithReason(peer, "Incorrect password")
-                return
-            end
-        end
-
-        local status = PeerStatusPacket.server.new(PeerStatusPacket.PeerStatus.JOIN, self.peerIdentities[peer], peer)
-        self:SendPacket(0, status)
-        self.peerStates[peer] = NetworkManager.PeerState.JOINED
-
-        self:Log(`peer {peer} joined as {self.peerIdentities[peer]}`)
+    local handler = self.packetHandlerServer[packet.NAME]
+    if handler then
+        handler(self, peer, packet)
     end
 end
 
 function NetworkManager.HandlePacketClient(self: NetworkManager, packet: Packet.Packet)
     self:Log("packet from server: ", packet.NAME, " ", packet)
 
-    if packet.NAME == HelloPacket.server.NAME then
-        local hp = packet :: HelloPacket.HelloPacketServer
-
-        local map = MapManager.maps[hp.mapId]
-
-        if not map then
-            self:DisconnectWithReason(1, "Client doesn't have requested map")
-            return
-        end
-
-        if map.manifest.version ~= hp.mapVersion then
-            self:DisconnectWithReason(1, "Client map version mismatch")
-            return
-        end
-
-        if map.hash ~= hp.mapHash then
-            self:DisconnectWithReason(1, "Client map hash mismatch")
-            return
-        end
-
-        MapManager:Load(hp.mapId)
-
-        local auth = AuthPacket.client.new()
-
-        if bit32.band(hp.authType, AuthPacket.AuthType.PASSWORD) ~= 0 then
-            auth.password = self.password
-        end
-
-        self:SendPacket(1, auth)
-
-        self.peerStates[1] = NetworkManager.PeerState.AUTH
-        self:DisconnectTimeout(1, function()
-            return self.peerStates[1] == NetworkManager.PeerState.AUTH
-        end)
-    elseif packet.NAME == PeerStatusPacket.server.NAME then
-        local psp = packet :: PeerStatusPacket.PeerStatusPacket
-
-        if psp.status == PeerStatusPacket.PeerStatus.JOIN then
-            if psp.peer == self.peer:GetUniqueId() then
-                self.peerStates[1] = NetworkManager.PeerState.JOINED
-                self:Log(`successfully joined as {psp.identity}`)
-            else
-                self:Log(`peer {psp.peer} joined as {psp.identity}`)
-                self.peerIdentities[psp.peer] = psp.identity
-            end
-        else
-            if psp.peer == self.peer:GetUniqueId() then
-                return
-            end
-
-            self:Log(`peer {psp.peer} ({psp.identity}) left`)
-            self.peerIdentities[psp.peer] = nil
-        end
+    local handler = self.packetHandlerClient[packet.NAME]
+    if handler then
+        handler(self, packet)
     end
 end
 
