@@ -5,12 +5,8 @@
 local Move = require("Move.mod")
 local Seat = require("../../nodes/Seat")
 local MotionState = require("../MotionState.mod")
-local Utils = require("../../utils/Utils.mod")
 
-local Ragdoll = setmetatable({
-    ID = "ragdoll",
-}, MotionState.MotionProcessor)
-
+local Ragdoll = { ID = "ragdoll" }
 Ragdoll.__index = Ragdoll
 
 function Ragdoll.new()
@@ -27,10 +23,10 @@ function Ragdoll.new()
     return setmetatable(self, Ragdoll)
 end
 
-local function handleState(state: MotionState.MotionState, action: string, characterState: number)
+local function handleState(state: MotionState.MotionState, action: boolean, characterState: number)
     local ctx = state.ctx
 
-    if Utils.DoGameInput(state.node) and Input.singleton:IsActionJustPressed(action) then
+    if action then
         if state:IsState(characterState) then
             state:SetRagdoll(false)
         elseif not state.isRagdoll then
@@ -44,9 +40,8 @@ local function handleState(state: MotionState.MotionState, action: string, chara
 end
 
 function Ragdoll.Process(self: Ragdoll, state: MotionState.MotionState, delta: number)
-    handleState(state, "move_sit", MotionState.CharacterState.SITTING)
-
     local ctx = state.ctx
+    handleState(state, ctx.motion.sit, MotionState.CharacterState.SITTING)
 
     -- Seat handling
     if self.currentSeat then

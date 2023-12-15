@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdg6ll858bf3f"]
+[gd_scene load_steps=13 format=3 uid="uid://cdg6ll858bf3f"]
 
 [ext_resource type="Script" path="res://map_system/MapRuntime.lua" id="1_ry2y1"]
 [ext_resource type="Script" path="res://character/CameraController.lua" id="1_uy88u"]
+[ext_resource type="Script" path="res://map_system/CharacterManager.lua" id="2_mij5g"]
 [ext_resource type="Environment" uid="uid://ce4pqtesx7c2e" path="res://resources/default_environment.tres" id="2_wrnpf"]
 [ext_resource type="PackedScene" uid="uid://bm752i4dsv5c2" path="res://ui/debug/debug_platform_info.tscn" id="3_ddrpn"]
 [ext_resource type="Script" path="res://config/ConfigWorldEnvironment.lua" id="3_j3r1m"]
@@ -13,10 +14,14 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_n8cho"]
 
-[node name="FumohouseRuntime" type="Node3D"]
+[node name="FumohouseRuntime" type="Node3D" node_paths=PackedStringArray("players")]
 script = ExtResource("1_ry2y1")
+players = NodePath("Players")
 
-[node name="Players" type="Node3D" parent="."]
+[node name="Players" type="Node3D" parent="." node_paths=PackedStringArray("debugCharacter", "camera")]
+script = ExtResource("2_mij5g")
+debugCharacter = NodePath("../HUD/DebugMenus/DebugCharacter")
+camera = NodePath("../CameraController")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_wrnpf")

@@ -6,11 +6,11 @@
 local MotionState = require("../MotionState.mod")
 local Utils = require("../../utils/Utils.mod")
 
-local PhysicalMotion = setmetatable({
+local PhysicalMotion = {
     ID = "physical",
     DRAG = "drag",
     JUMP = "jump",
-}, MotionState.MotionProcessor)
+}
 
 PhysicalMotion.__index = PhysicalMotion
 
@@ -71,8 +71,7 @@ function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionS
     end
 
     if jumpMsg or
-            (Utils.DoGameInput(state.node) and
-            Input.singleton:IsActionPressed("move_jump") and
+            (ctx.motion.jump and
             self.airborneTime < self.options.jumpForgiveness and
             not self.cancelJump and
             not wasJumping) then

@@ -7,10 +7,7 @@ local HorizontalMotion = require("HorizontalMotion.mod")
 local LadderMotion = require("LadderMotion.mod")
 local MotionState = require("../MotionState.mod")
 
-local CharacterAnimator = setmetatable({
-    ID = "animator",
-}, MotionState.MotionProcessor)
-
+local CharacterAnimator = { ID = "animator" }
 CharacterAnimator.__index = CharacterAnimator
 
 local MainTransition = {

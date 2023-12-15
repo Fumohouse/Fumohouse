@@ -4,10 +4,7 @@
 
 local MotionState = require("../MotionState.mod")
 
-local Intersections = setmetatable({
-    ID = "intersections",
-}, MotionState.MotionProcessor)
-
+local Intersections = { ID = "intersections" }
 Intersections.__index = Intersections
 
 function Intersections.new()

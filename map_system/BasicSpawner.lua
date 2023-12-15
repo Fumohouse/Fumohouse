@@ -1,5 +1,4 @@
 local CharacterSpawner = require("CharacterSpawner")
-local CameraController = require("../character/CameraController")
 local Character = require("../character/Character")
 local Spawnpoint = require("Spawnpoint")
 
@@ -13,18 +12,20 @@ export type BasicSpawner = CharacterSpawner.CharacterSpawner
 
 local characterScene = assert(load("res://character/character.tscn")) :: PackedScene
 
-function BasicSpawner.SpawnCharacter(self: BasicSpawner, camera: CameraController.CameraController): Node3D?
-    local character = characterScene:Instantiate() :: Character.Character
-    character.camera = camera
+--- @registerMethod
+function BasicSpawner.MakeCharacter(self: BasicSpawner): Node3D?
+    return characterScene:Instantiate() :: Character.Character
+end
 
+function BasicSpawner.GetSpawnpoint(self: BasicSpawner, character: Node3D): Transform3D
     local children = self:GetChildren()
     local spawnpoint = children:Get(math.random(1, children:Size())) :: Node
 
     if spawnpoint:IsA(Spawnpoint) then
-        character.transform = (spawnpoint :: Spawnpoint.Spawnpoint):GetSpawnPoint()
+        return (spawnpoint :: Spawnpoint.Spawnpoint):GetSpawnPoint()
     end
 
-    return character
+    return Transform3D.IDENTITY
 end
 
 return BasicSpawnerC

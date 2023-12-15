@@ -13,7 +13,7 @@ export type PlaygroundLoader = Node3D & typeof(PlaygroundLoader)
 --- @registerMethod
 function PlaygroundLoader.switch(self: PlaygroundLoader)
     MapManager:Load("playground")
-    assert(MapManager.currentRuntime):SpawnLocalCharacter()
+    assert(MapManager.currentRuntime).players:SpawnCharacter()
 end
 
 --- @registerMethod

@@ -4,11 +4,6 @@ local SerDe = require("SerDe.mod")
 local GoodbyePacket = require("packets/GoodbyePacket.mod")
 local PingPacket = require("packets/PingPacket.mod")
 
-local MapManagerM = require("../map_system/MapManager")
-local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
-
-local DEFAULT_TIMEOUT = 10
-
 --- @class
 --- @extends Node
 --- @permissions INTERNAL
@@ -20,8 +15,10 @@ type PacketHandler = {
 }
 
 type PacketHandlerServer = {
+    OnServerStart: ((nm: NetworkManager) -> ())?,
     OnPeerConnected: ((nm: NetworkManager, peer: number) -> ())?,
     OnPeerDisconnected: ((nm: NetworkManager, peer: number) -> ())?,
+    OnServerClose: ((nm: NetworkManager) -> ())?,
 
     [string]: (nm: NetworkManager, peer: number, packet: Packet.Packet) -> (),
 }
@@ -34,7 +31,7 @@ type PacketHandlerClient = {
     [string]: (nm: NetworkManager, packet: Packet.Packet) -> (),
 }
 
-type PeerData = {
+export type PeerData = {
     state: number,
     identity: string,
     successfulPings: number,
@@ -68,6 +65,10 @@ export type NetworkManager = Node & typeof(NetworkManager) & {
 
     ser: SerDe.Serializer,
 
+    -- Server state
+
+    mapId: string,
+
     -- Client state
 
     host: string,
@@ -96,6 +97,8 @@ function NetworkManager.resetState(self: NetworkManager)
     self.password = ""
 
     self.nextPing = 0
+
+    self.mapId = ""
 
     self.host = ""
     self.port = 0
@@ -194,21 +197,28 @@ function NetworkManager.Join(self: NetworkManager, addr: string, port: number, i
     return Enum.Error.OK
 end
 
-function NetworkManager.DisconnectTimeout(self: NetworkManager, peer: number?, pred: (() -> boolean)?, timeout: number?)
+function NetworkManager.DisconnectTimeout(self: NetworkManager, peer: number?, pred: (() -> boolean)?)
+    local DEFAULT_TIMEOUT = 10
     local generation = self.generation
 
     coroutine.wrap(function()
-        wait(timeout or DEFAULT_TIMEOUT)
+        wait(DEFAULT_TIMEOUT)
 
         if not pred or not pred() or self.generation ~= generation then
             return
         end
 
-        self:Log(`disconnecting peer {peer} after timeout`)
-
         if self.isServer then
-            self.multiplayer:DisconnectPeer(assert(peer))
+            assert(peer)
+
+            if not self.peerData[peer] then
+                return
+            end
+
+            self:Log(`disconnecting peer {peer} after timeout`)
+            self.multiplayer:DisconnectPeer(peer)
         else
+            self:Log(`disconnecting after timeout`)
             self:Reset()
         end
     end)()
@@ -229,6 +239,8 @@ function NetworkManager.Serve(self: NetworkManager, mapId: string, port: number,
 
     self.password = password or ""
 
+    self.mapId = mapId
+
     local err = self.peer:CreateServer(port, maxClients)
     if err ~= Enum.Error.OK then
         return err
@@ -237,7 +249,9 @@ function NetworkManager.Serve(self: NetworkManager, mapId: string, port: number,
     self.multiplayer.multiplayerPeer = self.peer
     self.isActive = true
 
-    MapManager:Load(mapId)
+    if self.packetHandlerServer.OnServerStart then
+        self.packetHandlerServer.OnServerStart(self)
+    end
 
     return Enum.Error.OK
 end
@@ -259,6 +273,10 @@ function NetworkManager.CloseServer(self: NetworkManager)
         end
 
         timeWaited += wait(MAX_WAIT / ATTEMPTS)
+    end
+
+    if self.packetHandlerServer.OnServerClose then
+        self.packetHandlerServer.OnServerClose(self)
     end
 
     self:Reset()
@@ -286,7 +304,7 @@ function NetworkManager.Ping(self: NetworkManager, peer: number)
 
     local existingPings = self.peerData[peer].successfulPings
     self:DisconnectTimeout(peer, function()
-        return self.peerData[peer].successfulPings == existingPings
+        return self.peerData[peer] and self.peerData[peer].successfulPings == existingPings
     end)
 end
 
@@ -297,12 +315,16 @@ function NetworkManager._Process(self: NetworkManager, delta: number)
     end
 
     if self.nextPing == 0 then
-        for peer, data in self.peerData do
-            if data.state < NetworkManager.PeerState.JOINED then
-                continue
-            end
+        if self.isServer then
+            for peer, data in self.peerData do
+                if data.state < NetworkManager.PeerState.JOINED then
+                    continue
+                end
 
-            self:Ping(peer)
+                self:Ping(peer)
+            end
+        elseif self.peerData[1] and self.peerData[1].state == NetworkManager.PeerState.JOINED then
+            self:Ping(1)
         end
 
         self.nextPing = 1

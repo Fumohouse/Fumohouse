@@ -20,6 +20,11 @@ local PacketTypes = {
     require("PeerStatusPacket.mod") :: any,
     require("GoodbyePacket.mod") :: any,
     require("PingPacket.mod") :: any,
+    require("SyncPacket.mod") :: any,
+
+    require("runtime/CharacterRequestPacket.mod") :: any,
+    require("runtime/CharacterStatePacket.mod") :: any,
+    require("runtime/CharacterSyncPacket.mod") :: any,
 }
 
 local Id = {}

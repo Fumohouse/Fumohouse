@@ -6,10 +6,7 @@ local MusicPlayer = gdglobal("MusicPlayer") :: MusicPlayerM.MusicPlayer
 local MapManagerM = require("../../map_system/MapManager")
 local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
 
-local AreaHandler = setmetatable({
-    ID = "areaHandler",
-}, MotionState.MotionProcessor)
-
+local AreaHandler = { ID = "areaHandler" }
 AreaHandler.__index = AreaHandler
 
 function AreaHandler.new()

@@ -7,12 +7,12 @@
 local Utils = require("../../utils/Utils.mod")
 local MotionState = require("../MotionState.mod")
 
-local Move = setmetatable({
+local Move = {
     ID = "move",
     CANCEL_UPRIGHTING = "cancelUprighting",
 
     UPRIGHTING_FACTOR = 5e-6,
-}, MotionState.MotionProcessor)
+}
 
 Move.__index = Move
 

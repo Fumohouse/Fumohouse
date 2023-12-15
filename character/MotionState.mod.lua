@@ -1,6 +1,3 @@
-local CameraController = require("CameraController")
-local Utils = require("../utils/Utils.mod")
-
 local MotionState = {
     CharacterState = {
         NONE = 0,
@@ -22,36 +19,30 @@ export type WallInfo = {
     collider: Object,
 }
 
----------------------
--- MotionProcessor --
----------------------
+export type Motion = {
+    direction: Vector2,
+    jump: boolean,
+    run: boolean,
+    sit: boolean,
 
-local MotionProcessor = { ID = "" }
-MotionProcessor.__index = MotionProcessor
-
-function MotionProcessor.Initialize(self: MotionProcessor, state: MotionState)
-end
-
-function MotionProcessor.HandleCancel(self: MotionProcessor, state: MotionState)
-end
-
-function MotionProcessor.Process(self: MotionProcessor, state: MotionState, delta: number)
-end
-
-function MotionProcessor.GetVelocity(self: MotionProcessor): Vector3?
-    return nil
-end
-
-export type MotionProcessor = {
-    ID: string,
-
-    Initialize: (self: MotionProcessor, state: MotionState) -> (),
-    HandleCancel: (self: MotionProcessor, state: MotionState) -> (),
-    Process: (self: MotionProcessor, state: MotionState, delta: number) -> (),
-    GetVelocity: (self: MotionProcessor) -> Vector3?,
+    cameraRotation: Vector2,
+    cameraMode: number,
 }
 
-MotionState.MotionProcessor = MotionProcessor
+export type MotionProcessorImpl = {
+    __index: MotionProcessorImpl,
+
+    ID: string,
+
+    Initialize: ((self: MotionProcessor, state: MotionState) -> ())?,
+    HandleCancel: ((self: MotionProcessor, state: MotionState) -> ())?,
+    Process: ((self: MotionProcessor, state: MotionState, delta: number) -> ())?,
+    GetVelocity: ((self: MotionProcessor) -> Vector3?)?,
+
+    [any]: any,
+}
+
+export type MotionProcessor = typeof(setmetatable({}, {} :: MotionProcessorImpl))
 
 -------------------
 -- MotionContext --
@@ -64,6 +55,12 @@ function MotionContext.new()
     local self = {}
 
     -- Input
+    self.motion = {
+        direction = Vector2.ZERO,
+        jump = false,
+        run = false,
+    } :: Motion
+
     self.inputDirection = Vector3.ZERO
     self.camBasisFlat = Basis.IDENTITY
 
@@ -125,7 +122,6 @@ function MotionState.new()
     -- Objects
     self.node = (nil :: any) :: RigidBody3D -- Kinda janky but avoids unnecessary asserts
     self.rid = RID.new()
-    self.camera = nil :: CameraController.CameraController?
 
     self.mainCollider = (nil :: any) :: CollisionShape3D
     self.mainCollisionShape = (nil :: any) :: CapsuleShape3D
@@ -145,6 +141,12 @@ function MotionState.new()
     }
 
     -- State
+    self.isGrounded = false
+    self.groundRid = RID.new()
+    self.groundNormal = Vector3.ZERO
+
+    self.isRagdoll = false
+
     self.walls = {} :: {WallInfo}
     self.intersections = {
         bodies = {} :: {CollisionObject3D},
@@ -158,12 +160,6 @@ function MotionState.new()
     -- State
     self.state = MotionState.CharacterState.IDLE
 
-    self.isGrounded = false
-    self.groundRid = RID.new()
-    self.groundNormal = Vector3.ZERO
-
-    self.isRagdoll = false
-
     -- Processors
     self.ctx = MotionContext.new()
     self.motionProcessors = {} :: {MotionProcessor}
@@ -174,6 +170,9 @@ function MotionState.new()
             (require(`processors/{file}.mod`) :: any).new()
         )
     end
+
+    -- Intersections first to prevent errors from bodies that were freed between frames
+    addProcessor("Intersections")
 
     addProcessor("Ragdoll")
 
@@ -187,7 +186,6 @@ function MotionState.new()
 
     addProcessor("Move")
     addProcessor("Grounding")
-    addProcessor("Intersections")
 
     addProcessor("AreaHandler")
     addProcessor("CharacterAnimator")
@@ -217,7 +215,10 @@ function MotionState.Initialize(self: MotionState, config)
     self:SetRagdoll(false)
 
     for _, processor in self.motionProcessors do
-        processor:Initialize(self)
+        if processor.Initialize then
+            -- TODO: does not type check with :
+            processor.Initialize(processor, self)
+        end
     end
 end
 
@@ -267,31 +268,30 @@ function MotionState.IsState(self: MotionState, state: number): boolean
     return bit32.band(self.state, state) == state
 end
 
-function MotionState.Update(self: MotionState, delta: number)
-    assert(self.camera)
-
+function MotionState.Update(self: MotionState, motion: Motion, delta: number)
     local origTransform = self.GetTransform()
 
     -- Update context
     self.ctx:Reset()
 
-
-    local inputDirection2 = if Utils.DoGameInput(self.node) then
-        Input.singleton:GetVector("move_left", "move_right", "move_forward", "move_backward")
-    else
-        Vector2.ZERO
-
-    self.ctx.inputDirection = Vector3.new(inputDirection2.x, 0, inputDirection2.y)
-    self.ctx.camBasisFlat = Basis.IDENTITY:Rotated(Vector3.UP, self.camera.cameraRotation.y)
+    self.ctx.motion = motion
+    self.ctx.inputDirection = Vector3.new(motion.direction.x, 0, motion.direction.y)
+    self.ctx.camBasisFlat = Basis.IDENTITY:Rotated(Vector3.UP, motion.cameraRotation.y)
     self.ctx.newBasis = origTransform.basis
 
     -- Process
     -- Every step of movement from finding the ground to actually moving the character is covered by these processors.
     for _, processor in self.motionProcessors do
         if self.ctx.cancelledProcessors[processor.ID] then
-            processor:HandleCancel(self)
+            if processor.HandleCancel then
+                -- TODO: does not type check with :
+                processor.HandleCancel(processor, self)
+            end
         else
-            processor:Process(self, delta)
+            if processor.Process then
+                -- TODO: does not type check with :
+                processor.Process(processor, self, delta)
+            end
         end
     end
 

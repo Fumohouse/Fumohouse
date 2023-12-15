@@ -5,10 +5,7 @@
 local MotionState = require("../MotionState.mod")
 local Grounding = require("Grounding.mod")
 
-local StairsMotion = setmetatable({
-    ID = "stairs",
-}, MotionState.MotionProcessor)
-
+local StairsMotion = { ID = "stairs" }
 StairsMotion.__index = StairsMotion
 
 local MAX_STEP_MARGIN = 0.01

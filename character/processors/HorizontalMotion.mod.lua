@@ -8,11 +8,11 @@ local Utils = require("../../utils/Utils.mod")
 local PhysicalMotion = require("PhysicalMotion.mod")
 local Move = require("Move.mod")
 
-local HorizontalMotion = setmetatable({
+local HorizontalMotion = {
     ID = "horizontal",
     CANCEL_ORIENT = "cancelOrient",
     MOVEMENT_DIRECTION = "movementDirection",
-}, MotionState.MotionProcessor)
+}
 
 HorizontalMotion.__index = HorizontalMotion
 
@@ -53,7 +53,7 @@ function HorizontalMotion.Process(self: HorizontalMotion, state: MotionState.Mot
     -- TODO: Luau 568: type hack
     assert(direction)
 
-    local targetSpeed = if Utils.DoGameInput(state.node) and Input.singleton:IsActionPressed("move_run") then self.options.runSpeed else self.options.walkSpeed
+    local targetSpeed = if ctx.motion.run then self.options.runSpeed else self.options.walkSpeed
     local targetVelocity = direction * targetSpeed
 
     if direction:LengthSquared() > 0 then
@@ -74,7 +74,7 @@ function HorizontalMotion.Process(self: HorizontalMotion, state: MotionState.Mot
     if not ctx.messages[HorizontalMotion.CANCEL_ORIENT] then
         -- Update rotation
         -- The rigidbody should never be scaled, so scale is reset when setting basis.
-        if state.camera and state.camera.cameraMode == CameraController.CameraMode.FIRST_PERSON then
+        if ctx.motion.cameraMode == CameraController.CameraMode.FIRST_PERSON then
             ctx.newBasis = ctx.camBasisFlat
         elseif direction:LengthSquared() > 0 then
             local movementBasis = Basis.new(Quaternion.new(Vector3.FORWARD, directionFlat))

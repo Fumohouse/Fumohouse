@@ -8,10 +8,7 @@ local PhysicalMotion = require("PhysicalMotion.mod")
 local HorizontalMotion = require("HorizontalMotion.mod")
 local Move = require("Move.mod")
 
-local SwimMotion = setmetatable({
-    ID = "swim",
-}, MotionState.MotionProcessor)
-
+local SwimMotion = { ID = "swim" }
 SwimMotion.__index = SwimMotion
 
 function SwimMotion.new()
@@ -98,7 +95,7 @@ function SwimMotion.Process(self: SwimMotion, state: MotionState.MotionState, de
 
     local MIN_JUMP_DIST_ABOVE = 0.2 -- min distAbove to jump
     if distAbove > MIN_JUMP_DIST_ABOVE and state:IsState(MotionState.CharacterState.SWIMMING) and
-            Utils.DoGameInput(state.node) and Input.singleton:IsActionPressed("move_jump") then
+            ctx.motion.jump then
         -- Jump with the intent of exiting the water
         ctx.messages[PhysicalMotion.JUMP] = self.options.jumpOutHeight
         return
@@ -134,7 +131,7 @@ function SwimMotion.Process(self: SwimMotion, state: MotionState.MotionState, de
         local canSwim = submerged or
                 (inWater and state:IsState(MotionState.CharacterState.SWIMMING) and not state:IsState(MotionState.CharacterState.IDLE))
 
-        if canSwim and state.camera then
+        if canSwim then
             ctx:SetState(MotionState.CharacterState.SWIMMING)
 
             ctx:CancelState(MotionState.CharacterState.WALKING)
@@ -148,7 +145,7 @@ function SwimMotion.Process(self: SwimMotion, state: MotionState.MotionState, de
 
                 -- Prevent player from swimming too high
                 local MAX_DIST_ABOVE = 0.8 -- max distAbove where player is allowed to swim by camera rotation
-                local cameraAngleX = state.camera.cameraRotation.x -- negative when looking down
+                local cameraAngleX = ctx.motion.cameraRotation.x -- negative when looking down
                 if cameraAngleX > 0 and distAbove >= 0 and not state.isGrounded then
                     cameraAngleX *= math.clamp(1 - distAbove / MAX_DIST_ABOVE, 0, 1)
                 end

@@ -3,9 +3,14 @@ local Packet = require("packets/Packet.mod")
 
 local HelloPacket = require("packets/HelloPacket.mod")
 local PeerStatusPacket = require("packets/PeerStatusPacket.mod")
+local CharacterStatePacket = require("packets/runtime/CharacterStatePacket.mod")
+local SyncPacket = require("packets/SyncPacket.mod")
+local CharacterSyncPacket = require("packets/runtime/CharacterSyncPacket.mod")
 local AuthPacket = require("packets/AuthPacket.mod")
+local CharacterRequestPacket = require("packets/runtime/CharacterRequestPacket.mod")
 
 local Utils = require("../utils/Utils.mod")
+local Character = require("../character/Character")
 
 local MapManagerM = require("../map_system/MapManager")
 local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
@@ -26,7 +31,7 @@ function PacketHandlerClient.OnConnectedToServer(nm: NetworkManager.NetworkManag
     local hello = HelloPacket.client.new(Utils.version, nm.identity)
     nm:SendPacket(1, hello)
 
-    nm:DisconnectTimeout(nil, function()
+    nm:DisconnectTimeout(1, function()
         return nm.peerData[1].state == NetworkManager.PeerState.CONNECTED
     end)
 end
@@ -87,6 +92,11 @@ PacketHandlerClient[PeerStatusPacket.server.NAME] = function(nm: NetworkManager.
 
             peerData.state = NetworkManager.PeerState.JOINED
             nm:Log(`successfully joined as {psp.identity}`)
+
+            local charReq = CharacterRequestPacket.client.new(CharacterStatePacket.CharacterStateUpdateType.SPAWN)
+            charReq.appearance = assert(load("res://resources/character_presets/doremy.tres")) -- TODO
+
+            nm:SendPacket(1, charReq)
         else
             nm:Log(`peer {psp.peer} joined as {psp.identity}`)
             nm.peerData[psp.peer] = {
@@ -102,7 +112,51 @@ PacketHandlerClient[PeerStatusPacket.server.NAME] = function(nm: NetworkManager.
         end
 
         nm:Log(`peer {psp.peer} ({psp.identity}) left`)
+        assert(MapManager.currentRuntime).players:DeleteCharacter(psp.peer)
         nm.peerData[psp.peer] = nil
+    end
+end
+
+PacketHandlerClient[CharacterStatePacket.server.NAME] = function(nm: NetworkManager.NetworkManager, packet: Packet.Packet)
+    local stu = packet :: CharacterStatePacket.CharacterStatePacket
+
+    local characterManager = assert(MapManager.currentRuntime).players
+
+    if stu.type == CharacterStatePacket.CharacterStateUpdateType.SPAWN then
+        local peer = if stu.peer == nm.peer:GetUniqueId() then nil else stu.peer
+        characterManager:SpawnCharacter(stu.appearance, peer, stu.transform)
+    elseif stu.type == CharacterStatePacket.CharacterStateUpdateType.APPEARANCE then
+        characterManager:UpdateAppearance(stu.peer, assert(stu.appearance))
+    end
+end
+
+PacketHandlerClient[SyncPacket.server.NAME] = function(nm: NetworkManager.NetworkManager, packet: Packet.Packet)
+    local syn = packet :: SyncPacket.SyncPacket
+
+    for i = 1, #syn.peers do
+        nm.peerData[syn.peers[i]] = {
+            state = NetworkManager.PeerState.JOINED,
+            identity = syn.identities[i],
+            successfulPings = 0,
+            rtt = 0,
+        }
+    end
+end
+
+PacketHandlerClient[CharacterSyncPacket.server.NAME] = function(nm: NetworkManager.NetworkManager, packet: Packet.Packet)
+    local syn = packet :: CharacterSyncPacket.CharacterSyncPacket
+
+    local characterManager = assert(MapManager.currentRuntime).players
+
+    for i = 1, #syn.peers do
+        local character = characterManager:SpawnCharacter(syn.appearances[i], syn.peers[i], syn.transforms[i])
+
+        if character and character:IsA(Character) then
+            local c = character :: Character.Character
+
+            c.state.state = syn.states[i]
+            c.state:SetRagdoll(syn.isRagdoll[i])
+        end
     end
 end
 

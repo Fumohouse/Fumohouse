@@ -5,10 +5,7 @@
 local MotionState = require("../MotionState.mod")
 local Utils = require("../../utils/Utils.mod")
 
-local PlatformMotion = setmetatable({
-    ID = "platform",
-}, MotionState.MotionProcessor)
-
+local PlatformMotion = { ID = "platform" }
 PlatformMotion.__index = PlatformMotion
 
 function PlatformMotion.new()
@@ -33,13 +30,16 @@ function PlatformMotion.Process(self: PlatformMotion, state: MotionState.MotionS
     local ctx = state.ctx
 
     if state.isGrounded then
-        local bodyState = assert(PhysicsServer3D.singleton:BodyGetDirectState(state.groundRid))
+        -- Possibly null if ground was freed between frames
+        local bodyState = PhysicsServer3D.singleton:BodyGetDirectState(state.groundRid)
 
-        self.linearVelocity = bodyState:GetVelocityAtLocalPosition(
-            state.GetTransform().origin - bodyState.transform.origin
-        )
+        if bodyState then
+            self.linearVelocity = bodyState:GetVelocityAtLocalPosition(
+                state.GetTransform().origin - bodyState.transform.origin
+            )
 
-        self.angularVelocity = bodyState.angularVelocity.y
+            self.angularVelocity = bodyState.angularVelocity.y
+        end
     else
         -- Physically imprecise but probably good enough (and better than nothing)
         self.linearVelocity = Utils.ApplyDrag(self.linearVelocity, self.options.dragCoeff, delta)

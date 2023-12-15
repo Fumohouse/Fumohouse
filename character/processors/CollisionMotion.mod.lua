@@ -5,9 +5,7 @@
 local MotionState = require("../MotionState.mod")
 local Utils = require("../../utils/Utils.mod")
 
-local CollisionMotion = setmetatable({
-    ID = "collision",
-}, MotionState.MotionProcessor)
+local CollisionMotion = { ID = "collision" }
 
 CollisionMotion.__index = CollisionMotion
 
@@ -66,7 +64,7 @@ function CollisionMotion.Process(self: CollisionMotion, state: MotionState.Motio
         -- The show must go on
         -- https://github.com/godotengine/godot/pull/73569
         -- local impulse = self.directBodyState:GetContactImpulse(i)
-        local impulse = (self.directBodyState:GetContactLocalVelocityAtPosition(i):Project(normal)) * colliderMass
+        local impulse = (self.directBodyState:GetContactColliderVelocityAtPosition(i):Project(normal)) * colliderMass
 
         local MAGIC_CORRECTION = 1.6
 

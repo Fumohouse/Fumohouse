@@ -7,10 +7,7 @@ local HorizontalMotion = require("HorizontalMotion.mod")
 local PhysicalMotion = require("PhysicalMotion.mod")
 local StairsMotion = require("StairsMotion.mod")
 
-local LadderMotion = setmetatable({
-    ID = "ladder",
-}, MotionState.MotionProcessor)
-
+local LadderMotion = { ID = "ladder" }
 LadderMotion.__index = LadderMotion
 
 function LadderMotion.new()

@@ -4,10 +4,10 @@
 
 local MotionState = require("../MotionState.mod")
 
-local Grounding = setmetatable({
+local Grounding = {
     ID = "grounding",
     GROUND_OVERRIDE = "groundOverride",
-}, MotionState.MotionProcessor)
+}
 
 Grounding.__index = Grounding
 

@@ -25,8 +25,6 @@ PacketHandlerCommon[PingPacket.client.NAME] = function(nm: NetworkManager.Networ
         local rtt = (now - pp.payload) / 1000
         nm.peerData[peer].rtt = rtt
         nm.peerData[peer].successfulPings += 1
-
-        nm:Log(`successful ping to {peer}: RTT {rtt}ms`)
     else
         local pong = PingPacket.server.new(true, pp.payload)
         nm:SendPacket(peer, pong)

@@ -3,7 +3,10 @@ local Packet = require("packets/Packet.mod")
 
 local HelloPacket = require("packets/HelloPacket.mod")
 local AuthPacket = require("packets/AuthPacket.mod")
+local SyncPacket = require("packets/SyncPacket.mod")
+local CharacterRequestPacket = require("packets/runtime/CharacterRequestPacket.mod")
 local PeerStatusPacket = require("packets/PeerStatusPacket.mod")
+local CharacterStatePacket = require("packets/runtime/CharacterStatePacket.mod")
 
 local Utils = require("../utils/Utils.mod")
 
@@ -11,6 +14,11 @@ local MapManagerM = require("../map_system/MapManager")
 local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
 
 local PacketHandlerServer = {}
+
+function PacketHandlerServer.OnServerStart(nm: NetworkManager.NetworkManager)
+    -- Sad way of avoiding an extremely inconvenient cyclic dependency from NetworkManager thru Character
+    MapManager:Load(nm.mapId)
+end
 
 function PacketHandlerServer.OnPeerConnected(nm: NetworkManager.NetworkManager, peer: number)
     assert(not nm.peerData[peer])
@@ -23,7 +31,7 @@ function PacketHandlerServer.OnPeerConnected(nm: NetworkManager.NetworkManager, 
     }
 
     nm:DisconnectTimeout(peer, function()
-        return nm.peerData[peer].state == NetworkManager.PeerState.CONNECTED
+        return nm.peerData[peer] and nm.peerData[peer].state == NetworkManager.PeerState.CONNECTED
     end)
 end
 
@@ -31,6 +39,7 @@ function PacketHandlerServer.OnPeerDisconnected(nm: NetworkManager.NetworkManage
     local status = PeerStatusPacket.server.new(PeerStatusPacket.PeerStatus.LEFT, nm.peerData[peer].identity, peer)
     nm:SendPacket(0, status)
 
+    assert(MapManager.currentRuntime).players:DeleteCharacter(peer)
     nm.peerData[peer] = nil
 end
 
@@ -89,6 +98,49 @@ PacketHandlerServer[AuthPacket.client.NAME] = function(nm: NetworkManager.Networ
     peerData.state = NetworkManager.PeerState.JOINED
 
     nm:Log(`peer {peer} joined as {peerData.identity}`)
+
+    -- Sync state with client
+    local syn = SyncPacket.server.new()
+
+    for remotePeer, data in nm.peerData do
+        if data.state ~= NetworkManager.PeerState.JOINED or peer == remotePeer then
+            continue
+        end
+
+        syn.peers[#syn.peers + 1] = remotePeer
+        syn.identities[#syn.identities + 1] = data.identity
+    end
+
+    syn.playerCount = #syn.peers
+    nm:SendPacket(peer, syn)
+
+    assert(MapManager.currentRuntime).players:SendSyncPacket(peer)
+end
+
+PacketHandlerServer[CharacterRequestPacket.client.NAME] = function(nm: NetworkManager.NetworkManager, peer: number, packet: Packet.Packet)
+    if nm.peerData[peer].state ~= NetworkManager.PeerState.JOINED then
+        return
+    end
+
+    local req = packet :: CharacterRequestPacket.CharacterRequestPacket
+
+    if req.type == CharacterStatePacket.CharacterStateUpdateType.SPAWN then
+        local characterManager = assert(MapManager.currentRuntime).players
+        local character = characterManager:SpawnCharacter(req.appearance, peer)
+
+        if character then
+            local state = CharacterStatePacket.server.new(CharacterStatePacket.CharacterStateUpdateType.SPAWN, peer)
+            state.appearance = req.appearance
+            state.transform = character.globalTransform
+
+            nm:SendPacket(0, state)
+        end
+    elseif req.type == CharacterStatePacket.CharacterStateUpdateType.APPEARANCE then
+        local state = CharacterStatePacket.server.new(CharacterStatePacket.CharacterStateUpdateType.APPEARANCE, peer)
+        state.appearance = req.appearance
+
+        nm:SendPacket(0, state)
+    end
 end
 
 return PacketHandlerServer

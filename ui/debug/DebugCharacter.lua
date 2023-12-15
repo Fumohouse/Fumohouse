@@ -79,7 +79,7 @@ function DebugCharacter.debugDraw(self: DebugCharacter)
 
     local characterState = self.character.state
     local pos = self.character.globalPosition
-    local eyePos = pos + Vector3.UP * assert(self.character.state.camera).cameraOffset
+    local eyePos = pos + Vector3.UP * assert(self.character.camera).cameraOffset
 
     -- Bottom point
     DebugDraw:DrawMarker(characterState:GetBottomPosition(), Color.WHITE)
@@ -175,7 +175,12 @@ function DebugCharacter._Process(self: DebugCharacter, delta: number)
     local speedStr = `Total: {Utils.FormatVector3(characterState.velocity)} m/s`
 
     for _, processor in characterState.motionProcessors do
-        local velocity = processor:GetVelocity()
+        if not processor.GetVelocity then
+            continue
+        end
+
+        -- TODO: does not type check with :
+        local velocity = processor.GetVelocity(processor)
 
         if velocity then
             speedStr ..= `\n{processor.ID}: {Utils.FormatVector3(velocity)} m/s`
