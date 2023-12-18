@@ -86,7 +86,7 @@ function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionS
 
         -- Hit detection
         local roofParams = PhysicsTestMotionParameters3D.new()
-        roofParams.from = state.GetTransform()
+        roofParams.from = state.node.globalTransform
         roofParams.motion = Vector3.UP * self.velocity.y * delta
         roofParams.margin = state.options.margin
 
@@ -110,10 +110,10 @@ function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionS
                 ctx:SetState(MotionState.CharacterState.FALLING)
             else
                 local fallRayParams = PhysicsRayQueryParameters3D.new()
-                fallRayParams.from = state.GetTransform().origin
+                fallRayParams.from = state.node.position
                 fallRayParams.to = fallRayParams.from + Vector3.DOWN * self.options.fallingAltitude
 
-                local fallRayResult = state.GetWorld3D().directSpaceState:IntersectRay(fallRayParams)
+                local fallRayResult = state.node:GetWorld3D().directSpaceState:IntersectRay(fallRayParams)
                 if fallRayResult:IsEmpty() then
                     ctx:SetState(MotionState.CharacterState.FALLING)
                 end

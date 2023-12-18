@@ -92,10 +92,6 @@ function Character._Ready(self: Character)
 
         ragdollCollider = ragdollCollider,
         ragdollCollisionShape = assert(ragdollCollider.shape) :: BoxShape3D,
-
-        GetTransform = function() return self.globalTransform end,
-        SetTransform = function(transform) self.globalTransform = transform end,
-        GetWorld3D = function() return self:GetWorld3D() end,
     })
 
     self:updateCamera()

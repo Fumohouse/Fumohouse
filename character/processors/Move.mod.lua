@@ -49,7 +49,7 @@ function Move.customRecovery(self: Move, state: MotionState.MotionState, offset:
     params.exclude = exclude
 
     local MAX_PAIRS = 16
-    local result = state.GetWorld3D().directSpaceState:CollideShape(params, MAX_PAIRS)
+    local result = state.node:GetWorld3D().directSpaceState:CollideShape(params, MAX_PAIRS)
     if result:Size() == 0 then
         return Vector3.ZERO
     end
@@ -95,13 +95,13 @@ function Move.customRecovery(self: Move, state: MotionState.MotionState, offset:
             rayParams.to =  b + Vector3.DOWN * RAY_MARGIN
             rayParams.exclude = exclude
 
-            local rayResult = state.GetWorld3D().directSpaceState:IntersectRay(rayParams)
+            local rayResult = state.node:GetWorld3D().directSpaceState:IntersectRay(rayParams)
             if not rayResult:IsEmpty() then
                 local hitNormal = rayResult:Get("normal") :: Vector3
                 -- If zero then the ray was inside the body it hit (happens often when being pushed by a wall)
                 if not hitNormal:IsZeroApprox() then
                     local hitPos = rayResult:Get("position") :: Vector3
-                    a = state.GetTransform().origin + offset
+                    a = state.node.position + offset
                     b = Vector3.new(a.x, hitPos.y, a.z)
                 end
             end
@@ -121,7 +121,7 @@ function Move.customRecovery(self: Move, state: MotionState.MotionState, offset:
 end
 
 function Move.move(self: Move, state: MotionState.MotionState, motion: Vector3, delta: number)
-    local origTransform = state.GetTransform()
+    local origTransform = state.node.globalTransform
 
     local params = PhysicsTestMotionParameters3D.new()
     params.margin = state.options.margin
@@ -214,7 +214,7 @@ end
 
 function Move.Process(self: Move, state: MotionState.MotionState, delta: number)
     local ctx = state.ctx
-    local origTransform = state.GetTransform()
+    local origTransform = state.node.globalTransform
 
     local offset, recovery = self:move(state, ctx.offset, delta)
 
@@ -235,7 +235,7 @@ function Move.Process(self: Move, state: MotionState.MotionState, delta: number)
         targetBasis = ctx.newBasis:Slerp(Utils.BasisUpright(ctx.newBasis), Utils.LerpWeight(delta, Move.UPRIGHTING_FACTOR))
     end
 
-    state.SetTransform(Transform3D.new(targetBasis, origTransform.origin + offset))
+    state.node.globalTransform = Transform3D.new(targetBasis, origTransform.origin + offset)
 end
 
 export type Move = typeof(Move.new())

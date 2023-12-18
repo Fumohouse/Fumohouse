@@ -125,8 +125,6 @@ function CharacterManager.UpdateAppearance(self: CharacterManager, peer: number,
 end
 
 function CharacterManager.SendSyncPacket(self: CharacterManager, peer: number)
-    assert(NetworkManager.isServer)
-
     local sync = CharacterSyncPacket.server.new()
 
     local peers = sync.peers

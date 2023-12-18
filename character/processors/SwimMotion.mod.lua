@@ -37,7 +37,7 @@ function SwimMotion.isInWater(self: SwimMotion, state: MotionState.MotionState)
     intersectParams.collideWithAreas = true
     intersectParams.margin = state.options.margin
 
-    local intersectResult = state.GetWorld3D().directSpaceState:IntersectShape(intersectParams)
+    local intersectResult = state.node:GetWorld3D().directSpaceState:IntersectShape(intersectParams)
 
     local waterCollider: Area3D?
     for _, data: Dictionary in intersectResult do
@@ -63,7 +63,7 @@ function SwimMotion.isInWater(self: SwimMotion, state: MotionState.MotionState)
     rayParams.collideWithBodies = false
     rayParams.collideWithAreas = true
 
-    local rayResult = state.GetWorld3D().directSpaceState:IntersectRay(rayParams)
+    local rayResult = state.node:GetWorld3D().directSpaceState:IntersectRay(rayParams)
     if not rayResult:IsEmpty() then
         -- Distance from top of character to surface
         local distAbove = (rayParams.from - rayResult:Get("position") :: Vector3).y
@@ -109,7 +109,7 @@ function SwimMotion.Process(self: SwimMotion, state: MotionState.MotionState, de
 
         local CHECK_DIST = 2
         local snapParams = PhysicsTestMotionParameters3D.new()
-        snapParams.from = Transform3D.new(ctx.newBasis, state.GetTransform().origin)
+        snapParams.from = Transform3D.new(ctx.newBasis, state.node.position)
         snapParams.motion = ctx.camBasisFlat * ctx.inputDirection * CHECK_DIST
         snapParams.margin = state.options.margin
 
@@ -168,7 +168,7 @@ function SwimMotion.Process(self: SwimMotion, state: MotionState.MotionState, de
             groundRayParams.from = headPos
             groundRayParams.to = headPos + Vector3.DOWN * checkDist
 
-            local groundResult = state.GetWorld3D().directSpaceState:IntersectRay(groundRayParams)
+            local groundResult = state.node:GetWorld3D().directSpaceState:IntersectRay(groundRayParams)
 
             if not groundResult:IsEmpty() then
                 local actualNormal = groundResult:Get("normal") :: Vector3

@@ -47,7 +47,7 @@ function LadderMotion.Process(self: LadderMotion, state: MotionState.MotionState
         local ladderBasis = ladder.globalTransform.basis
         local ladderFwd = -ladderBasis.z
 
-        local characterTransform = state.GetTransform()
+        local characterTransform = state.node.globalTransform
 
         local charFwd = -characterTransform.basis.z
         local charFwdAlt = characterTransform.basis.y -- e.g. swimming
@@ -95,7 +95,7 @@ function LadderMotion.Process(self: LadderMotion, state: MotionState.MotionState
                 groundParams.from = characterTransform.origin
                 groundParams.to = groundParams.from + Vector3.DOWN * self.options.breakHeight
 
-                local groundResult = state.GetWorld3D().directSpaceState:IntersectRay(groundParams)
+                local groundResult = state.node:GetWorld3D().directSpaceState:IntersectRay(groundParams)
 
                 if groundResult:IsEmpty() or not state:IsStableGround(groundResult:Get("normal") :: Vector3) then
                     ctx:CancelProcessor(HorizontalMotion.ID)

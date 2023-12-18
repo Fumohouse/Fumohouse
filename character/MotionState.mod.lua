@@ -133,11 +133,6 @@ function MotionState.new()
     self.ragdollCollider = (nil :: any) :: CollisionShape3D
     self.ragdollCollisionShape = (nil :: any) :: BoxShape3D
 
-    -- Callbacks
-    self.GetTransform = function() return Transform3D.IDENTITY end
-    self.SetTransform = function(transform: Transform3D) end
-    self.GetWorld3D = (function() return assert(nil) end) :: () -> World3D
-
     -- Options
     self.options = {
         maxGroundAngle = 45,
@@ -217,10 +212,6 @@ function MotionState.Initialize(self: MotionState, config)
     self.ragdollCollider = config.ragdollCollider
     self.ragdollCollisionShape = config.ragdollCollisionShape
 
-    self.GetTransform = config.GetTransform
-    self.SetTransform = config.SetTransform
-    self.GetWorld3D = config.GetWorld3D
-
     self:SetRagdoll(false)
 
     for _, processor in self.motionProcessors do
@@ -238,7 +229,7 @@ function MotionState.GetBottomPosition(self: MotionState)
 
         return colliderTransform.origin - 0.5 * self.ragdollCollisionShape.size.y * colliderScale * colliderTransform.basis.y
     else
-        return self.GetTransform().origin
+        return self.node.globalTransform.origin
     end
 end
 
@@ -278,7 +269,7 @@ function MotionState.IsState(self: MotionState, state: number): boolean
 end
 
 function MotionState.Update(self: MotionState, motion: Motion, delta: number)
-    local origTransform = self.GetTransform()
+    local origTransform = self.node.globalTransform
 
     -- Update context
     self.ctx:Reset()

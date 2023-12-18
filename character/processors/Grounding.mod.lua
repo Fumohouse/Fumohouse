@@ -29,7 +29,7 @@ function Grounding.Process(self: Grounding, state: MotionState.MotionState, delt
         return
     end
 
-    local transform = state.GetTransform()
+    local transform = state.node.globalTransform
 
     local params = PhysicsTestMotionParameters3D.new()
     params.from = transform

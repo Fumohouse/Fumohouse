@@ -84,7 +84,7 @@ function StairsMotion.findStepUp(self: StairsMotion, state: MotionState.MotionSt
         return
     end
 
-    local characterTransform = state.GetTransform()
+    local characterTransform = state.node.globalTransform
     local forward = -characterTransform.basis.z
 
     -- 2x in case we are facing a bit diagonal compared to the step wall normal
@@ -128,7 +128,7 @@ function StairsMotion.findStepUp(self: StairsMotion, state: MotionState.MotionSt
 
     rayParams.to = rayParams.from + Vector3.DOWN * (RAY_DISTANCE + RAY_MARGIN)
 
-    local rayResult = state.GetWorld3D().directSpaceState:IntersectRay(rayParams)
+    local rayResult = state.node:GetWorld3D().directSpaceState:IntersectRay(rayParams)
     if rayResult:IsEmpty() or not self:isValidStair(rayResult:Get("normal") :: Vector3) then
         return
     end
@@ -145,8 +145,8 @@ function StairsMotion.findStepUp(self: StairsMotion, state: MotionState.MotionSt
 end
 
 function StairsMotion.findStepDown(self: StairsMotion, state: MotionState.MotionState): (Vector3?, Vector3?)
-    local characterTransform = state.GetTransform()
-    local directSpaceState = state.GetWorld3D().directSpaceState
+    local characterTransform = state.node.globalTransform
+    local directSpaceState = state.node:GetWorld3D().directSpaceState
 
     -- Fire a series of rays to determine slope end position
     local forward = -characterTransform.basis.z
@@ -208,7 +208,7 @@ function StairsMotion.findStepDown(self: StairsMotion, state: MotionState.Motion
 end
 
 function StairsMotion.applyMotion(self: StairsMotion, state: MotionState.MotionState, delta: number, targetPoint: Vector3, stairNormal: Vector3)
-    local characterTransform = state.GetTransform()
+    local characterTransform = state.node.globalTransform
 
     self.beginPosition = characterTransform.origin
     self.endPosition = targetPoint

@@ -17,7 +17,7 @@ function Intersections.Process(self: Intersections, state: MotionState.MotionSta
 
     -- Walls
     local wallParams = PhysicsTestMotionParameters3D.new()
-    wallParams.from = state.GetTransform()
+    wallParams.from = state.node.globalTransform
     wallParams.motion = Vector3.ZERO
     wallParams.margin = MARGIN
     wallParams.recoveryAsCollision = true
@@ -53,7 +53,7 @@ function Intersections.Process(self: Intersections, state: MotionState.MotionSta
     exclude:PushBack(state.rid)
     intersectParams.exclude = exclude
 
-    local intersectResult = state.GetWorld3D().directSpaceState:IntersectShape(intersectParams)
+    local intersectResult = state.node:GetWorld3D().directSpaceState:IntersectShape(intersectParams)
 
     for _, data: Dictionary in intersectResult do
         local collider = data:Get("collider") :: Object

@@ -33,7 +33,7 @@ function PlatformMotion.Process(self: PlatformMotion, state: MotionState.MotionS
         local bodyState = assert(PhysicsServer3D.singleton:BodyGetDirectState(state.groundRid))
 
         self.velocity = bodyState:GetVelocityAtLocalPosition(
-            state.GetTransform().origin - bodyState.transform.origin
+            state.node.position - bodyState.transform.origin
         )
 
         self.angularVelocity = bodyState.angularVelocity.y

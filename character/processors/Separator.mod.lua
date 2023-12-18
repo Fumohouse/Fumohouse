@@ -30,7 +30,7 @@ function Separator.Process(self: Separator, state: MotionState.MotionState, delt
             continue
         end
 
-        local offset = state.GetTransform().origin - body.position
+        local offset = state.node.position - body.position
         local offsetFlat = Vector3.new(offset.x, 0, offset.z)
         if offset:Length() > self.options.threshold then
             continue
