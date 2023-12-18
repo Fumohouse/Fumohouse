@@ -49,6 +49,10 @@ function Intersections.Process(self: Intersections, state: MotionState.MotionSta
     intersectParams.collideWithBodies = true
     intersectParams.margin = MARGIN
 
+    local exclude = Array.new()
+    exclude:PushBack(state.rid)
+    intersectParams.exclude = exclude
+
     local intersectResult = state.GetWorld3D().directSpaceState:IntersectShape(intersectParams)
 
     for _, data: Dictionary in intersectResult do

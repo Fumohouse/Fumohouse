@@ -85,5 +85,30 @@ function CollisionMotion.GetVelocity(self: CollisionMotion): Vector3?
     return self.velocity
 end
 
+function CollisionMotion.GetState(self: CollisionMotion)
+    local state = Dictionary.new()
+
+    state:Set("v", self.velocity)
+    state:Set("av", self.angularVelocity)
+
+    return state
+end
+
+function CollisionMotion.LoadState(self: CollisionMotion, state: Variant)
+    assert(typeof(state) == "Dictionary")
+
+    if state:Has("v") then
+        local val = state:Get("v")
+        assert(typeof(val) == "Vector3")
+        self.velocity = val
+    end
+
+    if state:Has("av") then
+        local val = state:Get("av")
+        assert(typeof(val) == "Vector3")
+        self.angularVelocity = val
+    end
+end
+
 export type CollisionMotion = typeof(CollisionMotion.new())
 return CollisionMotion

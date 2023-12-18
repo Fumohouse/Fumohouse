@@ -91,5 +91,15 @@ function HorizontalMotion.GetVelocity(self: HorizontalMotion): Vector3?
     return self.velocity
 end
 
+function HorizontalMotion.GetState(self: HorizontalMotion)
+    return self.velocity
+end
+
+function HorizontalMotion.LoadState(self: HorizontalMotion, state: Variant)
+    assert(typeof(state) == "Vector3")
+
+    self.velocity = state
+end
+
 export type HorizontalMotion = typeof(HorizontalMotion.new())
 return HorizontalMotion

@@ -127,6 +127,10 @@ PacketHandlerClient[CharacterStatePacket.server.NAME] = function(nm: NetworkMana
         characterManager:SpawnCharacter(stu.appearance, peer, stu.transform)
     elseif stu.type == CharacterStatePacket.CharacterStateUpdateType.APPEARANCE then
         characterManager:UpdateAppearance(stu.peer, assert(stu.appearance))
+    elseif stu.type == CharacterStatePacket.CharacterStateUpdateType.MOVEMENT then
+        characterManager:ProcessMovementUpdate(stu)
+    elseif stu.type == CharacterStatePacket.CharacterStateUpdateType.DELETE then
+        characterManager:DeleteCharacter(stu.peer, stu.died)
     end
 end
 

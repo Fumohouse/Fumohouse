@@ -9,6 +9,8 @@ local NetworkManagerM = require("../networking/NetworkManager")
 local NetworkManager = gdglobal("NetworkManager") :: NetworkManagerM.NetworkManager
 
 local CharacterSyncPacket = require("../networking/packets/runtime/CharacterSyncPacket.mod")
+local CharacterRequestPacket = require("../networking/packets/runtime/CharacterRequestPacket.mod")
+local CharacterStatePacket = require("../networking/packets/runtime/CharacterStatePacket.mod")
 
 --- @class
 --- @extends Node3D
@@ -88,10 +90,26 @@ function CharacterManager.SpawnCharacter(self: CharacterManager, appearance: App
     return character
 end
 
-function CharacterManager.DeleteCharacter(self: CharacterManager, peer: number)
-    local character = self.characters[peer]
+function CharacterManager.GetCharacter(self: CharacterManager, peer: number)
+    local character: Node3D?
+
+    if peer == NetworkManager.peer:GetUniqueId() then
+        character = self.localCharacter
+    else
+        character = self.characters[peer]
+    end
+
+    return character
+end
+
+function CharacterManager.DeleteCharacter(self: CharacterManager, peer: number, died: boolean?)
+    local character = self:GetCharacter(peer)
     if character then
-        character:QueueFree()
+        -- TODO: handle death animation
+        if not died then
+            character:QueueFree()
+        end
+
         self.characters[peer] = nil
     end
 end
@@ -138,6 +156,24 @@ function CharacterManager.SendSyncPacket(self: CharacterManager, peer: number)
     sync.count = #peers
 
     NetworkManager:SendPacket(peer, sync)
+end
+
+function CharacterManager.ProcessMovementRequest(self: CharacterManager, peer: number, packet: CharacterRequestPacket.CharacterRequestPacket)
+    local character = self.characters[peer]
+    if not character or not character:IsA(Character) then
+        return
+    end
+
+    (character :: Character.Character):ProcessMovementRequest(packet)
+end
+
+function CharacterManager.ProcessMovementUpdate(self: CharacterManager, packet: CharacterStatePacket.CharacterStatePacket)
+    local character = self:GetCharacter(packet.peer)
+    if not character or not character:IsA(Character) then
+        return
+    end
+
+    (character :: Character.Character):ProcessMovementUpdate(packet)
 end
 
 return CharacterManagerC

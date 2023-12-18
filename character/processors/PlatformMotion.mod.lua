@@ -11,7 +11,7 @@ PlatformMotion.__index = PlatformMotion
 function PlatformMotion.new()
     local self = {}
 
-    self.linearVelocity = Vector3.ZERO
+    self.velocity = Vector3.ZERO
     self.angularVelocity = 0
     self.options = {
         dragCoeff = 0.01
@@ -22,7 +22,7 @@ end
 
 function PlatformMotion.Process(self: PlatformMotion, state: MotionState.MotionState, delta: number)
     if state.isRagdoll then
-        self.linearVelocity = Vector3.ZERO
+        self.velocity = Vector3.ZERO
         self.angularVelocity = 0
         return
     end
@@ -30,28 +30,50 @@ function PlatformMotion.Process(self: PlatformMotion, state: MotionState.MotionS
     local ctx = state.ctx
 
     if state.isGrounded then
-        -- Possibly null if ground was freed between frames
-        local bodyState = PhysicsServer3D.singleton:BodyGetDirectState(state.groundRid)
+        local bodyState = assert(PhysicsServer3D.singleton:BodyGetDirectState(state.groundRid))
 
-        if bodyState then
-            self.linearVelocity = bodyState:GetVelocityAtLocalPosition(
-                state.GetTransform().origin - bodyState.transform.origin
-            )
+        self.velocity = bodyState:GetVelocityAtLocalPosition(
+            state.GetTransform().origin - bodyState.transform.origin
+        )
 
-            self.angularVelocity = bodyState.angularVelocity.y
-        end
+        self.angularVelocity = bodyState.angularVelocity.y
     else
         -- Physically imprecise but probably good enough (and better than nothing)
-        self.linearVelocity = Utils.ApplyDrag(self.linearVelocity, self.options.dragCoeff, delta)
+        self.velocity = Utils.ApplyDrag(self.velocity, self.options.dragCoeff, delta)
         self.angularVelocity = move_toward(self.angularVelocity, 0, self.options.dragCoeff * self.angularVelocity)
     end
 
-    ctx:AddOffset(self.linearVelocity * delta)
+    ctx:AddOffset(self.velocity * delta)
     ctx.newBasis = ctx.newBasis:Rotated(Vector3.UP, self.angularVelocity * delta)
 end
 
 function PlatformMotion.GetVelocity(self: PlatformMotion): Vector3?
-    return self.linearVelocity
+    return self.velocity
+end
+
+function PlatformMotion.GetState(self: PlatformMotion)
+    local state = Dictionary.new()
+
+    state:Set("v", self.velocity)
+    state:Set("av", self.angularVelocity)
+
+    return state
+end
+
+function PlatformMotion.LoadState(self: PlatformMotion, state: Variant)
+    assert(typeof(state) == "Dictionary")
+
+    if state:Has("v") then
+        local val = state:Get("v")
+        assert(typeof(val) == "Vector3")
+        self.velocity = val
+    end
+
+    if state:Has("av") then
+        local val = state:Get("av")
+        assert(typeof(val) == "number")
+        self.angularVelocity = val
+    end
 end
 
 export type PlatformMotion = typeof(PlatformMotion.new())

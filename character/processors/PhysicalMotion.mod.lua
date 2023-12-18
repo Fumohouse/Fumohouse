@@ -126,5 +126,37 @@ function PhysicalMotion.GetVelocity(self: PhysicalMotion): Vector3?
     return self.velocity
 end
 
+function PhysicalMotion.GetState(self: PhysicalMotion)
+    local state = Dictionary.new()
+
+    state:Set("v", self.velocity)
+    state:Set("at", self.airborneTime)
+    state:Set("cj", self.cancelJump)
+
+    return state
+end
+
+function PhysicalMotion.LoadState(self: PhysicalMotion, state: Variant)
+    assert(typeof(state) == "Dictionary")
+
+    if state:Has("v") then
+        local val = state:Get("v")
+        assert(typeof(val) == "Vector3")
+        self.velocity = val
+    end
+
+    if state:Has("at") then
+        local val = state:Get("at")
+        assert(typeof(val) == "number")
+        self.airborneTime = val
+    end
+
+    if state:Has("cj") then
+        local val = state:Get("cj")
+        assert(typeof(val) == "boolean")
+        self.cancelJump = val
+    end
+end
+
 export type PhysicalMotion = typeof(PhysicalMotion.new())
 return PhysicalMotion

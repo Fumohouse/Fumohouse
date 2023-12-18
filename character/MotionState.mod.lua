@@ -38,6 +38,8 @@ export type MotionProcessorImpl = {
     HandleCancel: ((self: MotionProcessor, state: MotionState) -> ())?,
     Process: ((self: MotionProcessor, state: MotionState, delta: number) -> ())?,
     GetVelocity: ((self: MotionProcessor) -> Vector3?)?,
+    GetState: ((self: MotionProcessor) -> Variant)?,
+    LoadState: ((self: MotionProcessor, state: Variant) -> ())?,
 
     [any]: any,
 }
@@ -119,6 +121,8 @@ function MotionState.new()
 
     -- Managed externally --
 
+    self.peer = 0
+
     -- Objects
     self.node = (nil :: any) :: RigidBody3D -- Kinda janky but avoids unnecessary asserts
     self.rid = RID.new()
@@ -171,21 +175,24 @@ function MotionState.new()
         )
     end
 
-    -- Intersections first to prevent errors from bodies that were freed between frames
+    -- Before Grounding due to GROUND_OVERRIDE
+    addProcessor("StairsMotion")
+
+    -- Early to prevent errors from objects freed between frames
+    -- Coming first also minimizes issues when netcode suddenly changing state, transform, etc. (e.g. grounding state being wrong)
     addProcessor("Intersections")
+    addProcessor("Grounding")
 
     addProcessor("Ragdoll")
-
+    addProcessor("Separator")
     addProcessor("LadderMotion")
     addProcessor("SwimMotion")
     addProcessor("HorizontalMotion")
     addProcessor("PhysicalMotion")
-    addProcessor("StairsMotion")
     addProcessor("PlatformMotion")
     addProcessor("CollisionMotion")
 
     addProcessor("Move")
-    addProcessor("Grounding")
 
     addProcessor("AreaHandler")
     addProcessor("CharacterAnimator")
@@ -199,6 +206,8 @@ function MotionState.ShouldPush(rid: RID): boolean
 end
 
 function MotionState.Initialize(self: MotionState, config)
+    self.peer = config.peer
+
     self.node = config.node
     self.rid = config.rid
 
@@ -303,6 +312,33 @@ function MotionState.Update(self: MotionState, motion: Motion, delta: number)
             self.ctx.newState,
             bit32.bnot(self.ctx.cancelledStates)
         )
+    end
+end
+
+function MotionState.GetState(self: MotionState)
+    local state = Dictionary.new()
+
+    for _, processor in self.motionProcessors do
+        if processor.GetState then
+            local pState = processor.GetState(processor)
+
+            if pState then
+                state:Set(processor.ID, pState)
+            end
+        end
+    end
+
+    return state
+end
+
+function MotionState.LoadState(self: MotionState, state: Dictionary)
+    for id, pState in state do
+        assert(type(id) == "string")
+
+        local processor = self:GetMotionProcessor(id)
+        if processor.LoadState then
+            processor.LoadState(processor, pState)
+        end
     end
 end
 

@@ -6,6 +6,9 @@ local MusicPlayer = gdglobal("MusicPlayer") :: MusicPlayerM.MusicPlayer
 local MapManagerM = require("../../map_system/MapManager")
 local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
 
+local NetworkManagerM = require("../../networking/NetworkManager")
+local NetworkManager = gdglobal("NetworkManager") :: NetworkManagerM.NetworkManager
+
 local AreaHandler = { ID = "areaHandler" }
 AreaHandler.__index = AreaHandler
 
@@ -15,6 +18,10 @@ function AreaHandler.new()
 end
 
 function AreaHandler.Process(self: AreaHandler, state: MotionState.MotionState, delta: number)
+    if NetworkManager.isActive and state.peer ~= 1 then
+        return
+    end
+
     local currentMap = assert(MapManager.currentMap).manifest
 
     for _, area in state.intersections.areas do

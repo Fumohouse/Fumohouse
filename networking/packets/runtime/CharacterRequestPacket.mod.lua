@@ -18,12 +18,11 @@ function CharacterRequestPacket.new(type: number?)
     return setmetatable({
         type = type or CharacterStatePacket.CharacterStateUpdateType.SPAWN,
 
-        count = 0,
-        userdata = {} :: {number},
-        direction = {} :: {Vector2},
-        movementFlags = {} :: {number},
-        cameraRotation = {} :: {Vector2},
-        cameraMode = {} :: {number},
+        userdata = 0,
+        direction = Vector2.ZERO,
+        movementFlags = MovementFlags.NONE,
+        cameraRotation = Vector2.ZERO,
+        cameraMode = 0,
 
         appearance = nil :: Appearance.Appearance?,
     }, CharacterRequestPacket)
@@ -33,15 +32,21 @@ function CharacterRequestPacket.SerDe(self: CharacterRequestPacket, serde: SerDe
     self.type = serde:SerDe(self.type, SerDe.NumberType.U8)
 
     if self.type == CharacterStatePacket.CharacterStateUpdateType.MOVEMENT then
-        self.count = serde:SerDe(self.count, SerDe.NumberType.U32)
+        self.userdata = serde:SerDe(self.userdata or 0, SerDe.NumberType.U64)
 
-        for i = 1, self.count do
-            self.userdata[i] = serde:SerDe(self.userdata[i] or 0, SerDe.NumberType.U64)
-            self.direction[i] = serde:SerDe(self.direction[i] or Vector2.ZERO)
-            self.movementFlags[i] = serde:SerDe(self.movementFlags[i], SerDe.NumberType.U8)
-            self.cameraRotation[i] = serde:SerDe(self.cameraRotation[i] or Vector2.ZERO)
-            self.cameraMode[i] = serde:SerDe(self.cameraMode[i] or 0, SerDe.NumberType.U8)
+        local idleValue = self.direction == Vector2.ZERO and self.movementFlags == MovementFlags.NONE
+        local idle = serde:SerDe(idleValue)
+
+        if not idle then
+            self.direction = serde:SerDe(self.direction)
+            self.movementFlags = serde:SerDe(self.movementFlags, SerDe.NumberType.U8)
+        else
+            self.direction = Vector2.ZERO
+            self.movementFlags = MovementFlags.NONE
         end
+
+        self.cameraRotation = serde:SerDe(self.cameraRotation)
+        self.cameraMode = serde:SerDe(self.cameraMode)
     end
 
     if self.type == CharacterStatePacket.CharacterStateUpdateType.SPAWN or

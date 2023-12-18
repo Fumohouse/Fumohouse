@@ -135,7 +135,6 @@ function SwimMotion.Process(self: SwimMotion, state: MotionState.MotionState, de
             ctx:SetState(MotionState.CharacterState.SWIMMING)
 
             ctx:CancelState(MotionState.CharacterState.WALKING)
-            ctx.messages[HorizontalMotion.CANCEL_ORIENT] = true
             ctx:CancelProcessor(PhysicalMotion.ID)
 
             local movementBasis = Basis.new(Quaternion.new(Vector3.FORWARD, ctx.camBasisFlat * ctx.inputDirection):Normalized())
@@ -191,6 +190,7 @@ function SwimMotion.Process(self: SwimMotion, state: MotionState.MotionState, de
     end
 
     ctx.messages[Move.CANCEL_UPRIGHTING] = true
+    ctx.messages[HorizontalMotion.CANCEL_ORIENT] = true
     -- Do uprighting but slower
     ctx.newBasis = ctx.newBasis:Slerp(targetBasis or Utils.BasisUpright(ctx.newBasis), Utils.LerpWeight(delta, 1e-2))
 end

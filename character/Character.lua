@@ -5,13 +5,16 @@ local Utils = require("../utils/Utils.mod")
 local NetworkManagerM = require("../networking/NetworkManager")
 local NetworkManager = gdglobal("NetworkManager") :: NetworkManagerM.NetworkManager
 
+local CharacterRequestPacket = require("../networking/packets/runtime/CharacterRequestPacket.mod")
+local CharacterStatePacket = require("../networking/packets/runtime/CharacterStatePacket.mod")
+
 --- @class Character
 --- @extends RigidBody3D
 local Character = {}
 local CharacterC = gdclass(Character)
 
 export type NetworkedMotion = {
-    frame: number,
+    userdata: number,
     motion: MotionState.Motion,
 }
 
@@ -31,6 +34,7 @@ export type Character = RigidBody3D & typeof(Character) & {
     -- 1: local, other: remote
     peer: number,
     motionQueue: {NetworkedMotion},
+    queuedStateUpdate: CharacterStatePacket.CharacterStatePacket?,
 
     lastCameraRotation: Vector2,
     lastCameraMode: number,
@@ -78,6 +82,8 @@ function Character._Ready(self: Character)
     local ragdollCollider = self:GetNode("RagdollCollider") :: CollisionShape3D
 
     self.state:Initialize({
+        peer = self.peer,
+
         node = self,
         rid = self:GetRid(),
 
@@ -118,43 +124,172 @@ function Character.getMotion(self: Character)
     return motion
 end
 
+local function getMovementFlags(motion: MotionState.Motion)
+    local movementFlags = 0
+
+    if motion.jump then
+        movementFlags = bit32.bor(movementFlags, CharacterRequestPacket.MovementFlags.JUMP)
+    end
+
+    if motion.run then
+        movementFlags = bit32.bor(movementFlags, CharacterRequestPacket.MovementFlags.RUN)
+    end
+
+    if motion.sit then
+        movementFlags = bit32.bor(movementFlags, CharacterRequestPacket.MovementFlags.SIT)
+    end
+
+    return movementFlags
+end
+
+function Character.sendMovementRequest(self: Character, motion: NetworkedMotion)
+    local request = CharacterRequestPacket.client.new(CharacterStatePacket.CharacterStateUpdateType.MOVEMENT)
+
+    request.userdata = motion.userdata
+    request.direction = motion.motion.direction
+
+    request.movementFlags = getMovementFlags(motion.motion)
+    request.cameraRotation = motion.motion.cameraRotation
+    request.cameraMode = motion.motion.cameraMode
+
+    NetworkManager:SendPacket(1, request)
+end
+
+function Character.sendMovementUpdate(self: Character, motion: NetworkedMotion)
+    local update = CharacterStatePacket.server.new(CharacterStatePacket.CharacterStateUpdateType.MOVEMENT)
+
+    update.peer = self.peer
+
+    update.transform = self.globalTransform
+
+    update.state = self.state.state
+    update.processorState = self.state:GetState()
+    update.isRagdoll = self.state.isRagdoll
+    update.movementAck = motion.userdata
+
+    update.direction = motion.motion.direction
+    update.movementFlags = getMovementFlags(motion.motion)
+    update.cameraRotation = motion.motion.cameraRotation
+    update.cameraMode = motion.motion.cameraMode
+
+    NetworkManager:SendPacket(self.peer, update)
+
+    update.movementAck = 0
+
+    for peer, _ in NetworkManager.peerData do
+        if peer == self.peer then
+            continue
+        end
+
+        NetworkManager:SendPacket(peer, update)
+    end
+end
+
+function Character.ackQueue(self: Character, ack: number)
+    if #self.motionQueue == 0 then
+        return
+    end
+
+    local i = 1
+
+    while i <= #self.motionQueue and self.motionQueue[i].userdata <= ack do
+        i += 1
+    end
+
+    local newQueue = {}
+    table.move(self.motionQueue, i, #self.motionQueue, 1, newQueue)
+
+    self.motionQueue = newQueue
+end
+
 --- @registerMethod
 function Character._PhysicsProcess(self: Character, delta: number)
+    if self.queuedStateUpdate then
+        self.globalTransform = self.queuedStateUpdate.transform
+
+        self.state.state = self.queuedStateUpdate.state
+        self.state:LoadState(self.queuedStateUpdate.processorState)
+        self.state:SetRagdoll(self.queuedStateUpdate.isRagdoll)
+
+        if self.peer == 1 then
+            self:ackQueue(self.queuedStateUpdate.movementAck)
+
+            for _, motion in self.motionQueue do
+                self.state:Update(motion.motion, delta)
+            end
+        else
+            local flags = self.queuedStateUpdate.movementFlags
+
+            self.state:Update({
+                direction = self.queuedStateUpdate.direction,
+                jump = bit32.band(flags, CharacterRequestPacket.MovementFlags.JUMP) ~= 0,
+                run = bit32.band(flags, CharacterRequestPacket.MovementFlags.RUN) ~= 0,
+                sit = bit32.band(flags, CharacterRequestPacket.MovementFlags.SIT) ~= 0,
+
+                cameraRotation = self.queuedStateUpdate.cameraRotation,
+                cameraMode = self.queuedStateUpdate.cameraMode,
+            }, NetworkManager.peerData[1].rtt / 1000 / 2)
+        end
+
+        self.queuedStateUpdate = nil
+    end
+
     if not NetworkManager.isActive then
-        -- Singleplayer handling
         if not self.camera then
             return
         end
 
         self.state:Update(self:getMotion(), delta)
     elseif self.peer == 1 then
-        -- Local handling
-        local motion = self:getMotion()
-        self.state:Update(self:getMotion(), delta)
+        local frames = Engine.singleton:GetPhysicsFrames()
 
-        self.motionQueue[#self.motionQueue + 1] = {
-            frame = Engine.singleton:GetPhysicsFrames(),
+        local motion = self:getMotion()
+        local netMotion = {
+            userdata = frames,
             motion = motion,
         }
+
+        self.motionQueue[#self.motionQueue + 1] = netMotion
+
+        self.state:Update(motion, delta)
+        self:sendMovementRequest(netMotion)
     elseif NetworkManager.isServer then
-        -- Remote handling (server)
-        local motion = table.remove(self.motionQueue, 1)
-        if not motion then
-            self.state:Update({
-                direction = Vector2.ZERO,
-                jump = false,
-                run = false,
-                sit = false,
+        local MAX_QUEUE_SIZE = 4
 
-                cameraRotation = self.lastCameraRotation,
-                cameraMode = self.lastCameraMode,
-            }, delta)
+        -- Loop to avoid overwhelming client (& memory)
+        while #self.motionQueue > MAX_QUEUE_SIZE do
+            local motion = table.remove(self.motionQueue, 1)
 
-            return
+            if motion then
+                self.state:Update(motion.motion, delta)
+
+                if Engine.singleton:GetPhysicsFrames() % 3 == 0 then
+                    self:sendMovementUpdate(motion)
+                end
+            end
         end
-
-        self.state:Update(motion.motion, delta)
     end
+end
+
+function Character.ProcessMovementRequest(self: Character, packet: CharacterRequestPacket.CharacterRequestPacket)
+    local flags = packet.movementFlags
+
+    self.motionQueue[#self.motionQueue + 1] = {
+        userdata = packet.userdata,
+        motion = {
+            direction = packet.direction,
+            jump = bit32.band(flags, CharacterRequestPacket.MovementFlags.JUMP) ~= 0,
+            run = bit32.band(flags, CharacterRequestPacket.MovementFlags.RUN) ~= 0,
+            sit = bit32.band(flags, CharacterRequestPacket.MovementFlags.SIT) ~= 0,
+
+            cameraRotation = packet.cameraRotation,
+            cameraMode = packet.cameraMode,
+        },
+    }
+end
+
+function Character.ProcessMovementUpdate(self: Character, packet: CharacterStatePacket.CharacterStatePacket)
+    self.queuedStateUpdate = packet
 end
 
 return CharacterC

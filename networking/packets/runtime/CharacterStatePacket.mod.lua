@@ -21,6 +21,7 @@ function CharacterStatePacket.new(type: number?, peer: number?)
         transform = Transform3D.new(),
 
         state = 0,
+        processorState = Dictionary.new(),
         isRagdoll = false,
         movementAck = 0,
         direction = Vector2.ZERO,
@@ -44,15 +45,19 @@ function CharacterStatePacket.SerDe(self: CharacterStatePacket, serde: SerDe.Ser
 
     if self.type == CharacterStateUpdateType.MOVEMENT then
         self.state = serde:SerDe(self.state, SerDe.NumberType.U16)
+        self.processorState = serde:SerDe(self.processorState)
         self.isRagdoll = serde:SerDe(self.isRagdoll)
 
         self.movementAck = serde:SerDe(self.movementAck, SerDe.NumberType.U64)
 
-        self.direction = serde:SerDe(self.direction)
-        self.movementFlags = serde:SerDe(self.movementFlags, SerDe.NumberType.U8)
+        if self.movementAck == 0 then
+            -- Only send this information if packet for remote character
+            self.direction = serde:SerDe(self.direction)
+            self.movementFlags = serde:SerDe(self.movementFlags, SerDe.NumberType.U8)
 
-        self.cameraRotation = serde:SerDe(self.cameraRotation)
-        self.cameraMode = serde:SerDe(self.cameraMode, SerDe.NumberType.S32)
+            self.cameraRotation = serde:SerDe(self.cameraRotation)
+            self.cameraMode = serde:SerDe(self.cameraMode, SerDe.NumberType.S32)
+        end
     end
 
     if self.type == CharacterStateUpdateType.SPAWN or self.type == CharacterStateUpdateType.APPEARANCE then
