@@ -40,6 +40,10 @@ local function handleState(state: MotionState.MotionState, action: boolean, char
 end
 
 function Ragdoll.Process(self: Ragdoll, state: MotionState.MotionState, delta: number)
+    if state:IsRemoteCharacter() then
+        return
+    end
+
     local ctx = state.ctx
     handleState(state, ctx.motion.sit, MotionState.CharacterState.SITTING)
 

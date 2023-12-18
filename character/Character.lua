@@ -32,7 +32,7 @@ export type Character = RigidBody3D & typeof(Character) & {
     state: MotionState.MotionState,
     cameraInternal: CameraController.CameraController?,
 
-    -- 1: local, other: remote
+    -- 0: singleplayer, 1: local, other: remote
     peer: number,
     motionQueue: {NetworkedMotion},
     queuedStateUpdate: CharacterStatePacket.CharacterStatePacket?,
@@ -121,6 +121,16 @@ function Character.getMotion(self: Character)
     return motion
 end
 
+local nullMotion: MotionState.Motion = {
+    direction = Vector2.ZERO,
+    jump = false,
+    run = false,
+    sit = false,
+
+    cameraRotation = Vector2.ZERO,
+    cameraMode = 0,
+}
+
 local function getMovementFlags(motion: MotionState.Motion)
     local movementFlags = 0
 
@@ -164,11 +174,6 @@ function Character.sendMovementUpdate(self: Character, motion: NetworkedMotion)
     update.isRagdoll = self.state.isRagdoll
     update.movementAck = motion.userdata
 
-    update.direction = motion.motion.direction
-    update.movementFlags = getMovementFlags(motion.motion)
-    update.cameraRotation = motion.motion.cameraRotation
-    update.cameraMode = motion.motion.cameraMode
-
     update.velocity = self.linearVelocity
     update.angularVelocity = self.angularVelocity
 
@@ -186,10 +191,6 @@ function Character.sendMovementUpdate(self: Character, motion: NetworkedMotion)
 end
 
 function Character.ackQueue(self: Character, ack: number)
-    if #self.motionQueue == 0 then
-        return
-    end
-
     local i = 1
 
     while i <= #self.motionQueue and self.motionQueue[i].userdata <= ack do
@@ -205,9 +206,6 @@ end
 --- @registerMethod
 function Character._PhysicsProcess(self: Character, delta: number)
     if self.queuedStateUpdate then
-        local initialTransform = self.globalTransform
-        self.globalTransform = self.queuedStateUpdate.transform
-
         self.state.state = self.queuedStateUpdate.state
         self.state:LoadState(self.queuedStateUpdate.processorState)
         self.state:SetRagdoll(self.queuedStateUpdate.isRagdoll)
@@ -215,7 +213,12 @@ function Character._PhysicsProcess(self: Character, delta: number)
         self.linearVelocity = self.queuedStateUpdate.velocity
         self.angularVelocity = self.queuedStateUpdate.angularVelocity
 
+        local interpolator = self.state:GetMotionProcessor(Interpolator.ID)
+
         if self.peer == 1 then
+            local initialTransform = self.globalTransform
+            self.globalTransform = self.queuedStateUpdate.transform
+
             self:ackQueue(self.queuedStateUpdate.movementAck)
 
             for _, motion in self.motionQueue do
@@ -225,20 +228,9 @@ function Character._PhysicsProcess(self: Character, delta: number)
             local targetTransform = self.globalTransform
             self.globalTransform = initialTransform
 
-            local interpolator = self.state:GetMotionProcessor(Interpolator.ID)
             interpolator:SetTarget(targetTransform)
         else
-            local flags = self.queuedStateUpdate.movementFlags
-
-            self.state:Update({
-                direction = self.queuedStateUpdate.direction,
-                jump = bit32.band(flags, CharacterRequestPacket.MovementFlags.JUMP) ~= 0,
-                run = bit32.band(flags, CharacterRequestPacket.MovementFlags.RUN) ~= 0,
-                sit = bit32.band(flags, CharacterRequestPacket.MovementFlags.SIT) ~= 0,
-
-                cameraRotation = self.queuedStateUpdate.cameraRotation,
-                cameraMode = self.queuedStateUpdate.cameraMode,
-            }, NetworkManager.peerData[1].rtt / 1000 / 2)
+            interpolator:SetTarget(self.queuedStateUpdate.transform)
         end
 
         self.queuedStateUpdate = nil
@@ -278,6 +270,8 @@ function Character._PhysicsProcess(self: Character, delta: number)
                 end
             end
         end
+    else
+        self.state:Update(nullMotion, delta, false, true)
     end
 end
 
@@ -299,6 +293,10 @@ function Character.ProcessMovementRequest(self: Character, packet: CharacterRequ
 end
 
 function Character.ProcessMovementUpdate(self: Character, packet: CharacterStatePacket.CharacterStatePacket)
+    if self.peer == 1 and (#self.motionQueue == 0 or packet.movementAck < self.motionQueue[1].userdata) then
+        return
+    end
+
     self.queuedStateUpdate = packet
 end
 

@@ -24,10 +24,6 @@ function CharacterStatePacket.new(type: number?, peer: number?)
         processorState = Dictionary.new(),
         isRagdoll = false,
         movementAck = 0,
-        direction = Vector2.ZERO,
-        movementFlags = 0,
-        cameraRotation = Vector2.ZERO,
-        cameraMode = 0,
 
         velocity = Vector3.new(),
         angularVelocity = Vector3.new(),
@@ -52,15 +48,6 @@ function CharacterStatePacket.SerDe(self: CharacterStatePacket, serde: SerDe.Ser
         self.isRagdoll = serde:SerDe(self.isRagdoll)
 
         self.movementAck = serde:SerDe(self.movementAck, SerDe.NumberType.U64)
-
-        if self.movementAck == 0 then
-            -- Only send this information if packet for remote character
-            self.direction = serde:SerDe(self.direction)
-            self.movementFlags = serde:SerDe(self.movementFlags, SerDe.NumberType.U8)
-
-            self.cameraRotation = serde:SerDe(self.cameraRotation)
-            self.cameraMode = serde:SerDe(self.cameraMode, SerDe.NumberType.S32)
-        end
 
         if self.isRagdoll then
             self.velocity = serde:SerDe(self.velocity)

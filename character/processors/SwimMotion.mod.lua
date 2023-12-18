@@ -80,7 +80,7 @@ function SwimMotion.isInWater(self: SwimMotion, state: MotionState.MotionState)
 end
 
 function SwimMotion.Process(self: SwimMotion, state: MotionState.MotionState, delta: number)
-    if state.isRagdoll then
+    if state.isRagdoll or state:IsRemoteCharacter() then
         return
     end
 

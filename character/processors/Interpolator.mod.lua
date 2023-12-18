@@ -20,7 +20,7 @@ function Interpolator.new()
     self.lastTranslate = Vector3.new()
 
     self.options = {
-        time = 0.16,
+        time = 0.12,
         teleportThreshold = 3,
     }
 
@@ -43,7 +43,7 @@ function Interpolator.Process(self: Interpolator, state: MotionState.MotionState
     local newBasisOffset = Basis.IDENTITY:Slerp(self.basisOffset, self.progress)
     local newTranslateOffset = self.translateOffset * self.progress
 
-    state.node.position += newTranslateOffset - self.lastTranslate
+    ctx:AddOffset(newTranslateOffset - self.lastTranslate)
     -- This multiplication order seems odd but it works
     ctx.newBasis = ctx.newBasis * newBasisOffset * self.lastBasis:Inverse()
 

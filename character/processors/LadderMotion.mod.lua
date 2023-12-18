@@ -27,6 +27,10 @@ function LadderMotion.new()
 end
 
 function LadderMotion.Process(self: LadderMotion, state: MotionState.MotionState, delta: number)
+    if state:IsRemoteCharacter() then
+        return
+    end
+
     self.velocity = Vector3.ZERO
 
     if state.isRagdoll or #state.walls == 0 then

@@ -35,6 +35,10 @@ function CollisionMotion.HandleCancel(self: CollisionMotion, state: MotionState.
 end
 
 function CollisionMotion.Process(self: CollisionMotion, state: MotionState.MotionState, delta: number)
+    if state:IsRemoteCharacter() then
+        return
+    end
+
     if state.isRagdoll then
         self.velocity = Vector3.ZERO
         self.angularVelocity = Vector3.ZERO

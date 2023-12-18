@@ -21,7 +21,7 @@ function Separator.new()
 end
 
 function Separator.Process(self: Separator, state: MotionState.MotionState, delta: number)
-    if state.isRagdoll then
+    if state.isRagdoll or state:IsRemoteCharacter() then
         return
     end
 

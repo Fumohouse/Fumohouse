@@ -1,3 +1,6 @@
+local NetworkManagerM = require("../networking/NetworkManager")
+local NetworkManager = gdglobal("NetworkManager") :: NetworkManagerM.NetworkManager
+
 local MotionState = {
     CharacterState = {
         NONE = 0,
@@ -226,6 +229,10 @@ function MotionState.Initialize(self: MotionState, config)
     end
 end
 
+function MotionState.IsRemoteCharacter(self: MotionState)
+    return self.peer > 1 and not NetworkManager.isServer
+end
+
 function MotionState.GetBottomPosition(self: MotionState)
     if self.isRagdoll then
         local colliderTransform = self.ragdollCollider.globalTransform
@@ -272,7 +279,7 @@ function MotionState.IsState(self: MotionState, state: number): boolean
     return bit32.band(self.state, state) == state
 end
 
-function MotionState.Update(self: MotionState, motion: Motion, delta: number, isReplay: boolean?)
+function MotionState.Update(self: MotionState, motion: Motion, delta: number, isReplay: boolean?, persistState: boolean?)
     local origTransform = self.node.globalTransform
 
     -- Update context
@@ -283,6 +290,10 @@ function MotionState.Update(self: MotionState, motion: Motion, delta: number, is
     self.ctx.camBasisFlat = Basis.IDENTITY:Rotated(Vector3.UP, motion.cameraRotation.y)
 
     self.ctx.isReplay = isReplay or false
+
+    if persistState then
+        self.ctx.newState = self.state
+    end
 
     self.ctx.newBasis = origTransform.basis
 

@@ -21,6 +21,10 @@ function PlatformMotion.new()
 end
 
 function PlatformMotion.Process(self: PlatformMotion, state: MotionState.MotionState, delta: number)
+    if state:IsRemoteCharacter() then
+        return
+    end
+
     if state.isRagdoll then
         self.velocity = Vector3.ZERO
         self.angularVelocity = 0
