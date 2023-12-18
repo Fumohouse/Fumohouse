@@ -27,16 +27,15 @@ end
 
 --- @registerMethod
 function Seat.SetOccupant(self: Seat, occupant: RigidBody3D?)
+    if self.occupant then
+        -- Letting the character dismount at its current position drastically increases the probability
+        -- of it getting stuck and recovery failing. That's bad!
+        self.occupant.globalPosition = self.dismountMarker.globalPosition
+    end
+
     if not occupant then
-        if self.occupant then
-            -- Letting the character dismount at its current position drastically increases the probability
-            -- of it getting stuck and recovery failing. That's bad!
-            self.occupant.globalPosition = self.dismountMarker.globalPosition
-
-            self.joint.nodeB = ""
-            self.occupantInternal = nil
-        end
-
+        self.joint.nodeB = ""
+        self.occupantInternal = nil
         return
     end
 

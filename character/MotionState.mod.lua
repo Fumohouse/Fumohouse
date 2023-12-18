@@ -66,6 +66,8 @@ function MotionContext.new()
     self.inputDirection = Vector3.ZERO
     self.camBasisFlat = Basis.IDENTITY
 
+    self.isReplay = false
+
     -- State
 
     -- List of motion processor IDs which should be cancelled.
@@ -178,8 +180,10 @@ function MotionState.new()
     addProcessor("Intersections")
     addProcessor("Grounding")
 
-    addProcessor("Ragdoll")
     addProcessor("Separator")
+    addProcessor("Interpolator")
+
+    addProcessor("Ragdoll")
     addProcessor("LadderMotion")
     addProcessor("SwimMotion")
     addProcessor("HorizontalMotion")
@@ -268,7 +272,7 @@ function MotionState.IsState(self: MotionState, state: number): boolean
     return bit32.band(self.state, state) == state
 end
 
-function MotionState.Update(self: MotionState, motion: Motion, delta: number)
+function MotionState.Update(self: MotionState, motion: Motion, delta: number, isReplay: boolean?)
     local origTransform = self.node.globalTransform
 
     -- Update context
@@ -277,6 +281,9 @@ function MotionState.Update(self: MotionState, motion: Motion, delta: number)
     self.ctx.motion = motion
     self.ctx.inputDirection = Vector3.new(motion.direction.x, 0, motion.direction.y)
     self.ctx.camBasisFlat = Basis.IDENTITY:Rotated(Vector3.UP, motion.cameraRotation.y)
+
+    self.ctx.isReplay = isReplay or false
+
     self.ctx.newBasis = origTransform.basis
 
     -- Process

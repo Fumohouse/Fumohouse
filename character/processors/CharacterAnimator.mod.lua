@@ -181,7 +181,7 @@ function CharacterAnimator.Initialize(self: CharacterAnimator, state: MotionStat
 end
 
 function CharacterAnimator.Process(self: CharacterAnimator, state: MotionState.MotionState, delta: number)
-    if not self.character or not self.animator then
+    if state.ctx.isReplay or not self.character or not self.animator then
         return
     end
 

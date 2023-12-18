@@ -29,6 +29,9 @@ function CharacterStatePacket.new(type: number?, peer: number?)
         cameraRotation = Vector2.ZERO,
         cameraMode = 0,
 
+        velocity = Vector3.new(),
+        angularVelocity = Vector3.new(),
+
         appearance = nil :: Appearance.Appearance?,
 
         died = false,
@@ -57,6 +60,11 @@ function CharacterStatePacket.SerDe(self: CharacterStatePacket, serde: SerDe.Ser
 
             self.cameraRotation = serde:SerDe(self.cameraRotation)
             self.cameraMode = serde:SerDe(self.cameraMode, SerDe.NumberType.S32)
+        end
+
+        if self.isRagdoll then
+            self.velocity = serde:SerDe(self.velocity)
+            self.angularVelocity = serde:SerDe(self.angularVelocity)
         end
     end
 

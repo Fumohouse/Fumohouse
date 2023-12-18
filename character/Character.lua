@@ -1,6 +1,7 @@
 local MotionState = require("MotionState.mod")
 local CameraController = require("CameraController")
 local Utils = require("../utils/Utils.mod")
+local Interpolator = require("processors/Interpolator.mod")
 
 local NetworkManagerM = require("../networking/NetworkManager")
 local NetworkManager = gdglobal("NetworkManager") :: NetworkManagerM.NetworkManager
@@ -168,6 +169,9 @@ function Character.sendMovementUpdate(self: Character, motion: NetworkedMotion)
     update.cameraRotation = motion.motion.cameraRotation
     update.cameraMode = motion.motion.cameraMode
 
+    update.velocity = self.linearVelocity
+    update.angularVelocity = self.angularVelocity
+
     NetworkManager:SendPacket(self.peer, update)
 
     update.movementAck = 0
@@ -201,18 +205,28 @@ end
 --- @registerMethod
 function Character._PhysicsProcess(self: Character, delta: number)
     if self.queuedStateUpdate then
+        local initialTransform = self.globalTransform
         self.globalTransform = self.queuedStateUpdate.transform
 
         self.state.state = self.queuedStateUpdate.state
         self.state:LoadState(self.queuedStateUpdate.processorState)
         self.state:SetRagdoll(self.queuedStateUpdate.isRagdoll)
 
+        self.linearVelocity = self.queuedStateUpdate.velocity
+        self.angularVelocity = self.queuedStateUpdate.angularVelocity
+
         if self.peer == 1 then
             self:ackQueue(self.queuedStateUpdate.movementAck)
 
             for _, motion in self.motionQueue do
-                self.state:Update(motion.motion, delta)
+                self.state:Update(motion.motion, delta, true)
             end
+
+            local targetTransform = self.globalTransform
+            self.globalTransform = initialTransform
+
+            local interpolator = self.state:GetMotionProcessor(Interpolator.ID)
+            interpolator:SetTarget(targetTransform)
         else
             local flags = self.queuedStateUpdate.movementFlags
 
