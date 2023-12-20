@@ -42,6 +42,7 @@ export type AppearanceManager = Node3D & typeof(AppearanceManager) & {
     skinMaterial: ShaderMaterial,
 
     attachedParts: {[string]: AttachedPartInfo},
+    baseRagdollColliderPosition: Vector3,
     baseCameraOffset: number,
 
     alpha: number,
@@ -116,6 +117,10 @@ function AppearanceManager.loadScale(self: AppearanceManager)
     local mainCollider = self.character.state.mainCollider
     mainCollider.scale = scaleVec
     mainCollider.position = Vector3.UP * self.character.state.mainCollisionShape.height * self.appearance.scale / 2
+
+    local ragdollCollider = self.character.state.ragdollCollider
+    ragdollCollider.scale = scaleVec
+    ragdollCollider.position = self.baseRagdollColliderPosition * self.appearance.scale
 
     if self.character.camera then
         self.character.camera.cameraOffset = self.baseCameraOffset * self.appearance.scale
@@ -322,6 +327,8 @@ function AppearanceManager._Ready(self: AppearanceManager)
 
     local head = self.skeleton:GetNode("Head") :: MeshInstance3D
     head.materialOverride = self.faceMaterial
+
+    self.baseRagdollColliderPosition = (self:GetNode("../RagdollCollider") :: CollisionShape3D).position
 
     self.character.cameraUpdated:Connect(Callable.new(self, "_OnCharacterCameraUpdated"))
     Callable.new(self, "LoadAppearance"):CallDeferred()

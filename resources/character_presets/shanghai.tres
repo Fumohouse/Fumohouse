@@ -8,7 +8,7 @@ eyebrows = "curved"
 eyes = "curved_hooks"
 mouth = "straight"
 eyesColor = Color(0.129412, 0.352941, 0.647059, 1)
-scale = 1
+scale = 0.75
 attachedParts = {
 "shanghai_bow": null,
 "shanghai_hair": null,

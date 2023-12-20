@@ -40,9 +40,6 @@ function CharacterRequestPacket.SerDe(self: CharacterRequestPacket, serde: SerDe
         if not idle then
             self.direction = serde:SerDe(self.direction)
             self.movementFlags = serde:SerDe(self.movementFlags, SerDe.NumberType.U8)
-        else
-            self.direction = Vector2.ZERO
-            self.movementFlags = MovementFlags.NONE
         end
 
         self.cameraRotation = serde:SerDe(self.cameraRotation)
