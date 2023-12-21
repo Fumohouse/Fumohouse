@@ -30,6 +30,8 @@ function PhysicalMotion.new()
         -- FALLING state options
         fallingTime = 0.3,
         fallingAltitude = 2,
+
+        terminalVelocity = 48,
     }
 
     return setmetatable(self, PhysicalMotion)
@@ -67,6 +69,7 @@ function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionS
         self.cancelJump = jumpMsg == 0
     else
         self.velocity += Vector3.DOWN * self.options.gravity * delta
+        self.velocity = self.velocity:LimitLength(self.options.terminalVelocity)
     end
 
     local drag = ctx.messages[PhysicalMotion.DRAG] :: number?

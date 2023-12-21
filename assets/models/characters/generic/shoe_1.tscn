@@ -1,32 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c40e7ipntnosa"]
+[gd_scene load_steps=3 format=3 uid="uid://c40e7ipntnosa"]
 
 [ext_resource type="PackedScene" uid="uid://d0n7tnpencapx" path="res://assets/models/characters/generic/shoe_1.glb" id="1_01st6"]
 [ext_resource type="Script" path="res://character/appearance/parts/customization/SingleColor.lua" id="2_80cdm"]
-[ext_resource type="Texture2D" uid="uid://j3p1obmff1ev" path="res://assets/textures/ordered_dither.png" id="3_n4tyn"]
-[ext_resource type="Shader" path="res://resources/materials/gltf_dither_material.gdshader" id="3_yajdm"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qb8n6"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("3_yajdm")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/specular = 0.5
-shader_parameter/metallic = 0.0
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy = 1.0
-shader_parameter/normal_scale = 1.0
-shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/ao_light_affect = 0.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/alpha = 1.0
-shader_parameter/dither_texture = ExtResource("3_n4tyn")
-
-[node name="shoe_1" instance=ExtResource("1_01st6") node_paths=PackedStringArray("mesh")]
+[node name="shoe_1" node_paths=PackedStringArray("mesh") instance=ExtResource("1_01st6")]
 script = ExtResource("2_80cdm")
 mesh = NodePath("Shoe")
-
-[node name="Shoe" parent="." index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_qb8n6")

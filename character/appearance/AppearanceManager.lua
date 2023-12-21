@@ -46,6 +46,7 @@ export type AppearanceManager = Node3D & typeof(AppearanceManager) & {
     baseCameraOffset: number,
 
     alpha: number,
+    dissolve: number,
 }
 
 AppearanceManager.ATTACHMENTS = {
@@ -69,12 +70,31 @@ function AppearanceManager._Init(self: AppearanceManager)
     self.baseCameraOffset = 0
 
     self.alpha = 1
+    self.dissolve = 0
 end
 
-function AppearanceManager.setAlpha(self: AppearanceManager, alpha: number)
-    local ALPHA_PARAM = "alpha"
+function AppearanceManager.setShaderParameter(self: AppearanceManager, param: string, value: Variant)
+    self.faceMaterial:SetShaderParameter(param, value)
+    self.skinMaterial:SetShaderParameter(param, value)
 
-    if self.alpha == alpha then
+    for _, info in self.attachedParts do
+        for _, material in info.materials do
+            if not material:IsA(ShaderMaterial) then
+                continue
+            end
+
+            local shaderMaterial = material :: ShaderMaterial
+            if not shaderMaterial:GetShaderParameter(param) then
+                continue
+            end
+
+            shaderMaterial:SetShaderParameter(param, value)
+        end
+    end
+end
+
+function AppearanceManager.setAlpha(self: AppearanceManager, alpha: number, force: boolean?)
+    if self.alpha == alpha and not force then
         return
     end
 
@@ -89,23 +109,18 @@ function AppearanceManager.setAlpha(self: AppearanceManager, alpha: number)
     self.rig.visible = true
     self.visible = true
 
-    self.faceMaterial:SetShaderParameter(ALPHA_PARAM, alpha)
-    self.skinMaterial:SetShaderParameter(ALPHA_PARAM, alpha)
+    self:setShaderParameter("alpha", alpha)
+end
 
-    for _, info in self.attachedParts do
-        for _, material in info.materials do
-            if not material:IsA(ShaderMaterial) then
-                continue
-            end
-
-            local shaderMaterial = material :: ShaderMaterial
-            if not shaderMaterial:GetShaderParameter(ALPHA_PARAM) then
-                continue
-            end
-
-            shaderMaterial:SetShaderParameter(ALPHA_PARAM, alpha)
-        end
+--- @registerMethod
+--- @defaultArgs [false]
+function AppearanceManager.SetDissolve(self: AppearanceManager, dissolve: number, force: boolean?)
+    if self.dissolve == dissolve and not force then
+        return
     end
+
+    self.dissolve = dissolve
+    self:setShaderParameter("dissolve", dissolve)
 end
 
 function AppearanceManager.loadScale(self: AppearanceManager)
@@ -314,6 +329,9 @@ function AppearanceManager.LoadAppearance(self: AppearanceManager)
     self:loadFace()
     self:loadParts()
     self:loadScale()
+
+    self:setAlpha(self.alpha, true)
+    self:SetDissolve(self.dissolve, true)
 end
 
 --- @registerMethod

@@ -4,7 +4,12 @@
 // are turned on before StandardMaterial3D conversion to shader.
 
 shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+
+#include "dither_common.gdshaderinc"
+#include "dissolve_common.gdshaderinc"
+
+// cull_back -> cull_disabled
+render_mode blend_mix,depth_draw_opaque,cull_disabled,diffuse_burley,specular_schlick_ggx;
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
 //uniform float point_size : hint_range(0,128);
@@ -27,28 +32,17 @@ uniform vec3 uv1_offset;
 //uniform vec3 uv2_scale;
 //uniform vec3 uv2_offset;
 
-/// DITHER
-const float VIEWPORT_REF_SIZE = 1080.0;
-uniform sampler2D dither_texture : filter_nearest, hint_default_white;
-uniform float alpha : hint_range(0.0, 1.0) = 1.0;
-/// END DITHER
+DITHER_UNIFORMS
+DISSOLVE_UNIFORMS
 
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
+
+	DISSOLVE_VERTEX
 }
 
 void fragment() {
-	/// DITHER
-	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
-	float viewport_scale = VIEWPORT_SIZE.y / VIEWPORT_REF_SIZE;
-	vec2 uv_square = SCREEN_UV;
-	uv_square.x *= aspect;
-
-	float dither = texture(dither_texture, uv_square * viewport_scale).r;
-
-	if (alpha < dither)
-		discard;
-	/// END DITHER
+	DITHER_FRAGMENT
 
 	vec2 base_uv = UV;
 	vec4 albedo_tex = texture(texture_albedo,base_uv);
@@ -65,4 +59,6 @@ void fragment() {
 	EMISSION = (emission.rgb+emission_tex)*emission_energy;
 	AO = dot(texture(texture_ambient_occlusion,base_uv),ao_texture_channel);
 	AO_LIGHT_AFFECT = ao_light_affect;
+
+	DISSOLVE_FRAGMENT
 }

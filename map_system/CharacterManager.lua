@@ -26,6 +26,7 @@ export type CharacterManager = Node3D & typeof(CharacterManager) & {
 
     localCharacter: Node3D?,
     characters: {[number]: Node3D},
+    nextId: number,
 
     -- DI
     scene: Node,
@@ -33,6 +34,7 @@ export type CharacterManager = Node3D & typeof(CharacterManager) & {
 
 function CharacterManager._Init(self: CharacterManager)
     self.characters = {}
+    self.nextId = 1
 end
 
 function CharacterManager.SpawnCharacter(self: CharacterManager, appearance: Appearance.Appearance?, peer: number?, transform: Transform3D?): Node3D?
@@ -62,7 +64,7 @@ function CharacterManager.SpawnCharacter(self: CharacterManager, appearance: App
         end
 
         if appearance then
-            local appearanceManager = c:GetNode("%Appearance") :: AppearanceManager.AppearanceManager
+            local appearanceManager = c:GetNode("Appearance") :: AppearanceManager.AppearanceManager
             appearanceManager.appearance = appearance
         end
 
@@ -87,13 +89,25 @@ function CharacterManager.SpawnCharacter(self: CharacterManager, appearance: App
     end
 
     self:AddChild(character)
+
+    if NetworkManager.isServer then
+        local state = CharacterStatePacket.server.new(CharacterStatePacket.CharacterStateUpdateType.SPAWN, peer)
+
+        if appearance then
+            state.appearance = appearance
+        end
+        state.transform = character.globalTransform
+
+        NetworkManager:SendPacket(0, state)
+    end
+
     return character
 end
 
 function CharacterManager.GetCharacter(self: CharacterManager, peer: number)
     local character: Node3D?
 
-    if peer == NetworkManager.peer:GetUniqueId() then
+    if not NetworkManager.isActive or peer == NetworkManager.peer:GetUniqueId() then
         character = self.localCharacter
     else
         character = self.characters[peer]
@@ -102,22 +116,52 @@ function CharacterManager.GetCharacter(self: CharacterManager, peer: number)
     return character
 end
 
-function CharacterManager.DeleteCharacter(self: CharacterManager, peer: number, died: boolean?)
+local DEATH_TIMEOUT = 5
+
+function CharacterManager.DeleteCharacter(self: CharacterManager, peer: number, died: boolean?, callback: (() -> ())?)
     local character = self:GetCharacter(peer)
     if character then
-        -- TODO: handle death animation
-        if not died then
+        if died and character:IsA(Character) then
+            local c = character :: Character.Character
+
+            if c.state:IsDead() then
+                return
+            end
+
+            c.state:Die(DEATH_TIMEOUT, function()
+                if callback then
+                    callback()
+                end
+
+                if character == self.localCharacter then
+                    self.localCharacter = nil
+                elseif character == self.characters[peer] then
+                    self.characters[peer] = nil
+                end
+            end)
+        else
             character:QueueFree()
+
+            if character == self.localCharacter then
+                self.localCharacter = nil
+            else
+                self.characters[peer] = nil
+            end
         end
 
-        self.characters[peer] = nil
+        if NetworkManager.isServer then
+            local state = CharacterStatePacket.server.new(CharacterStatePacket.CharacterStateUpdateType.DELETE, peer)
+            state.died = died or false
+
+            NetworkManager:SendPacket(0, state)
+        end
     end
 end
 
 function CharacterManager.UpdateAppearance(self: CharacterManager, peer: number, appearance: Appearance.Appearance)
     local character = self.characters[peer]
     if character and character:IsA(Character) then
-        local appearanceManager = (character:GetNode("%Appearance") :: AppearanceManager.AppearanceManager)
+        local appearanceManager = (character:GetNode("Appearance") :: AppearanceManager.AppearanceManager)
 
         appearanceManager.appearance = appearance
         appearanceManager:LoadAppearance()
@@ -147,7 +191,7 @@ function CharacterManager.SendSyncPacket(self: CharacterManager, peer: number)
 
             states[i] = c.state.state
             isRagdoll[i] = c.state.isRagdoll
-            appearances[i] = (character:GetNode("%Appearance") :: AppearanceManager.AppearanceManager).appearance
+            appearances[i] = (character:GetNode("Appearance") :: AppearanceManager.AppearanceManager).appearance
         end
     end
 
@@ -172,6 +216,69 @@ function CharacterManager.ProcessMovementUpdate(self: CharacterManager, packet: 
     end
 
     (character :: Character.Character):ProcessMovementUpdate(packet)
+end
+
+local function getAppearance(character: Node3D): Appearance.Appearance?
+    if character:IsA(Character) then
+        return ((character :: Character.Character):GetNode("Appearance") :: AppearanceManager.AppearanceManager).appearance
+    else
+        return nil
+    end
+end
+
+--- @registerMethod
+function CharacterManager._Process(self: CharacterManager, delta: number)
+    local FALL_LIMIT = -64
+
+    if self.localCharacter and Input.singleton:IsActionJustPressed("reset_character") then
+        local appearance = getAppearance(self.localCharacter)
+
+        if NetworkManager.isActive then
+            if NetworkManager.isServer then
+                return
+            end
+
+            local req = CharacterRequestPacket.client.new(CharacterStatePacket.CharacterStateUpdateType.DELETE)
+            req.died = true
+
+            NetworkManager:SendPacket(1, req)
+
+            wait(DEATH_TIMEOUT + 1)
+
+            local req2 = CharacterRequestPacket.client.new(CharacterStatePacket.CharacterStateUpdateType.SPAWN)
+            req2.appearance = appearance
+
+            NetworkManager:SendPacket(1, req2)
+        else
+            self:DeleteCharacter(0, true, function()
+                self:SpawnCharacter(appearance)
+            end)
+        end
+    end
+
+    if NetworkManager.isActive then
+        if not NetworkManager.isServer then
+            return
+        end
+
+        for peer, character in self.characters do
+            if character.position.y < FALL_LIMIT then
+                local appearance = getAppearance(character)
+
+                self:DeleteCharacter(peer, true, function()
+                    self:SpawnCharacter(appearance, peer)
+                end)
+            end
+        end
+    else
+        if self.localCharacter and self.localCharacter.position.y < FALL_LIMIT then
+            local appearance = getAppearance(self.localCharacter)
+
+            self:DeleteCharacter(0, true, function()
+                self:SpawnCharacter(appearance)
+            end)
+        end
+    end
 end
 
 return CharacterManagerC

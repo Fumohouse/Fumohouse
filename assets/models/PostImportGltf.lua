@@ -75,8 +75,12 @@ function PostImportGltf.iterate(self: PostImportGltf, node: Node)
 
         for i = 0, mesh:GetSurfaceCount() - 1 do
             local material = assert(mesh:SurfaceGetMaterial(i))
+            -- Set overrides to ensure local to scene functions properly
+            -- (if not using overrides, parent mesh must also be local to scene for it to work)
             if material:IsA(StandardMaterial3D) then
-                mesh:SurfaceSetMaterial(i, self:convertMaterial(material :: StandardMaterial3D))
+                meshInst:SetSurfaceOverrideMaterial(i, self:convertMaterial(material :: StandardMaterial3D))
+            else
+                meshInst:SetSurfaceOverrideMaterial(i, material)
             end
         end
     end

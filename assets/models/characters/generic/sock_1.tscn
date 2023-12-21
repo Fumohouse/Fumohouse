@@ -1,32 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://buohjg3lvr682"]
+[gd_scene load_steps=3 format=3 uid="uid://buohjg3lvr682"]
 
 [ext_resource type="PackedScene" uid="uid://8h7ooe4gus7k" path="res://assets/models/characters/generic/sock_1.glb" id="1_40vi0"]
 [ext_resource type="Script" path="res://character/appearance/parts/customization/SingleColor.lua" id="2_y4d08"]
-[ext_resource type="Texture2D" uid="uid://j3p1obmff1ev" path="res://assets/textures/ordered_dither.png" id="3_e2yiq"]
-[ext_resource type="Shader" path="res://resources/materials/gltf_dither_material.gdshader" id="3_o1qm8"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kl3a5"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("3_o1qm8")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/specular = 0.5
-shader_parameter/metallic = 0.0
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy = 1.0
-shader_parameter/normal_scale = 1.0
-shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/ao_light_affect = 0.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/alpha = 1.0
-shader_parameter/dither_texture = ExtResource("3_e2yiq")
-
-[node name="sock_1" instance=ExtResource("1_40vi0") node_paths=PackedStringArray("mesh")]
+[node name="sock_1" node_paths=PackedStringArray("mesh") instance=ExtResource("1_40vi0")]
 script = ExtResource("2_y4d08")
 mesh = NodePath("Sock")
-
-[node name="Sock" parent="." index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_kl3a5")

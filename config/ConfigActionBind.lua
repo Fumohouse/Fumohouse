@@ -16,13 +16,31 @@ local function displayEvent(event: InputEvent)
     if event:IsA(InputEventKey) then
         local ek = event :: InputEventKey
 
+        local modifiersString = ""
+
+        if ek.ctrlPressed then
+            modifiersString ..= "Ctrl + "
+        end
+
+        if ek.shiftPressed then
+            modifiersString ..= "Shift + "
+        end
+
+        if ek.altPressed then
+            modifiersString ..= "Alt + "
+        end
+
+        if ek.metaPressed then
+            modifiersString ..= "Meta + "
+        end
+
         if ek.physicalKeycode == 0 then
             -- Physical not supported?
-            return ek:AsTextKeycode() .. " (Layout specific)"
+            return modifiersString .. DisplayServer.singleton:KeyboardGetKeycodeFromPhysical(ek.keycode) .. " (Layout specific)"
         end
 
         local keycode = DisplayServer.singleton:KeyboardGetKeycodeFromPhysical(ek.physicalKeycode)
-        return OS.singleton:GetKeycodeString(keycode)
+        return modifiersString .. OS.singleton:GetKeycodeString(keycode)
     elseif event:IsA(InputEventMouseButton) then
         local emb = event :: InputEventMouseButton
         return emb:AsText()

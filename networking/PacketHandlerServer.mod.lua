@@ -126,16 +126,13 @@ PacketHandlerServer[CharacterRequestPacket.client.NAME] = function(nm: NetworkMa
     local characterManager = assert(MapManager.currentRuntime).players
 
     if req.type == CharacterStatePacket.CharacterStateUpdateType.SPAWN then
-        local character = characterManager:SpawnCharacter(req.appearance, peer)
-
-        if character then
-            local state = CharacterStatePacket.server.new(CharacterStatePacket.CharacterStateUpdateType.SPAWN, peer)
-            state.appearance = req.appearance
-            state.transform = character.globalTransform
-
-            nm:SendPacket(0, state)
-        end
+        characterManager:SpawnCharacter(req.appearance, peer)
     elseif req.type == CharacterStatePacket.CharacterStateUpdateType.APPEARANCE then
+        local character = characterManager:GetCharacter(peer)
+        if not character then
+            return
+        end
+
         local state = CharacterStatePacket.server.new(CharacterStatePacket.CharacterStateUpdateType.APPEARANCE, peer)
         state.appearance = req.appearance
 
@@ -143,12 +140,7 @@ PacketHandlerServer[CharacterRequestPacket.client.NAME] = function(nm: NetworkMa
     elseif req.type == CharacterStatePacket.CharacterStateUpdateType.MOVEMENT then
         characterManager:ProcessMovementRequest(peer, req)
     elseif req.type == CharacterStatePacket.CharacterStateUpdateType.DELETE then
-        characterManager:DeleteCharacter(peer)
-
-        local state = CharacterStatePacket.server.new(CharacterStatePacket.CharacterStateUpdateType.DELETE, peer)
-        state.died = false
-
-        nm:SendPacket(0, state)
+        characterManager:DeleteCharacter(peer, req.died)
     end
 end
 

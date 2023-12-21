@@ -491,6 +491,8 @@ function ConfigManager.initOptions(self: ConfigManager)
     self:addAction("move_sit", keyEvent(Enum.Key.C))
     self:addAction("move_run", keyEvent(Enum.Key.SHIFT))
 
+    self:addAction("reset_character", evtMod(keyEvent(Enum.Key.F5), false, true))
+
     self:addAction("camera_rotate", mbEvent(Enum.MouseButton.RIGHT))
     self:addAction("camera_zoom_in", mbEvent(Enum.MouseButton.WHEEL_UP))
     self:addAction("camera_zoom_out", mbEvent(Enum.MouseButton.WHEEL_DOWN))

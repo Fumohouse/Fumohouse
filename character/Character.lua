@@ -103,7 +103,7 @@ function Character.getMotion(self: Character)
 
     local motion = {} :: MotionState.Motion
 
-    if Utils.DoGameInput(self) then
+    if Utils.DoGameInput(self) and not self.state:IsDead() then
         motion.direction = Input.singleton:GetVector("move_left", "move_right", "move_forward", "move_backward")
         motion.jump = Input.singleton:IsActionPressed("move_jump")
         motion.run = Input.singleton:IsActionPressed("move_run")
@@ -163,9 +163,7 @@ function Character.sendMovementRequest(self: Character, motion: NetworkedMotion)
 end
 
 function Character.sendMovementUpdate(self: Character, motion: NetworkedMotion)
-    local update = CharacterStatePacket.server.new(CharacterStatePacket.CharacterStateUpdateType.MOVEMENT)
-
-    update.peer = self.peer
+    local update = CharacterStatePacket.server.new(CharacterStatePacket.CharacterStateUpdateType.MOVEMENT, self.peer)
 
     update.transform = self.globalTransform
 
@@ -259,17 +257,22 @@ function Character._PhysicsProcess(self: Character, delta: number)
         local MAX_QUEUE_SIZE = 4
 
         -- Loop to avoid overwhelming client (& memory)
-        while #self.motionQueue > MAX_QUEUE_SIZE do
+        repeat
             local motion = table.remove(self.motionQueue, 1)
 
             if motion then
-                self.state:Update(motion.motion, delta)
+                local actualMotion = if self.state:IsDead() then
+                    nullMotion
+                else
+                    motion.motion
+
+                self.state:Update(actualMotion, delta)
 
                 if Engine.singleton:GetPhysicsFrames() % 3 == 0 then
                     self:sendMovementUpdate(motion)
                 end
             end
-        end
+        until #self.motionQueue <= MAX_QUEUE_SIZE
     else
         self.state:Update(nullMotion, delta, false, true)
     end

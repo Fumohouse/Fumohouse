@@ -1,5 +1,8 @@
 shader_type spatial;
 
+#include "res://resources/materials/dither_common.gdshaderinc"
+#include "res://resources/materials/dissolve_common.gdshaderinc"
+
 uniform vec4 skin_color : source_color = vec4(1.0);
 
 uniform sampler2D brow_texture : hint_default_transparent;
@@ -10,11 +13,12 @@ uniform sampler2D mouth_texture : hint_default_transparent;
 
 uniform vec4 eye_tint : source_color = vec4(1.0);
 
-/// DITHER
-const float VIEWPORT_REF_SIZE = 1080.0;
-uniform sampler2D dither_texture : filter_nearest, hint_default_white;
-uniform float alpha : hint_range(0.0, 1.0) = 1.0;
-/// END DITHER
+DITHER_UNIFORMS
+DISSOLVE_UNIFORMS
+
+void vertex() {
+	DISSOLVE_VERTEX
+}
 
 void blend(vec4 brow, vec4 eye, vec4 overlay, vec4 shine, vec4 mouth, out vec3 albedo) {
 	// list is from the highest "layer" to the lowest one
@@ -43,17 +47,7 @@ void blend(vec4 brow, vec4 eye, vec4 overlay, vec4 shine, vec4 mouth, out vec3 a
 }
 
 void fragment() {
-	/// DITHER
-	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
-	float viewport_scale = VIEWPORT_SIZE.y / VIEWPORT_REF_SIZE;
-	vec2 uv_square = SCREEN_UV;
-	uv_square.x *= aspect;
-
-	float dither = texture(dither_texture, uv_square * viewport_scale).r;
-
-	if (alpha < dither)
-		discard;
-	/// END DITHER
+	DITHER_FRAGMENT
 
 	vec4 brow = texture(brow_texture, UV.xy);
 	vec4 eye = texture(eye_texture, UV.xy);
@@ -64,4 +58,6 @@ void fragment() {
 	vec4 eye_color = eye * eye_tint;
 
 	blend(brow, eye_color, overlay, shine, mouth, ALBEDO);
+
+	DISSOLVE_FRAGMENT
 }

@@ -74,7 +74,7 @@ function Ragdoll.Process(self: Ragdoll, state: MotionState.MotionState, delta: n
         end
 
         -- Find seat
-        if not state.isRagdoll then
+        if not state.isRagdoll and not state:IsDead() then
             for _, body in state.intersections.bodies do
                 -- TODO: Luau 570
                 if (not self.lastSeat or body ~= self.lastSeat :: CollisionObject3D) and body:IsA(Seat) then

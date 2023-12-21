@@ -25,6 +25,8 @@ function CharacterRequestPacket.new(type: number?)
         cameraMode = 0,
 
         appearance = nil :: Appearance.Appearance?,
+
+        died = false,
     }, CharacterRequestPacket)
 end
 
@@ -52,6 +54,10 @@ function CharacterRequestPacket.SerDe(self: CharacterRequestPacket, serde: SerDe
         appearance:SerDe(serde)
 
         self.appearance = appearance.appearance
+    end
+
+    if self.type == CharacterStatePacket.CharacterStateUpdateType.DELETE then
+        self.died = serde:SerDe(self.died)
     end
 end
 

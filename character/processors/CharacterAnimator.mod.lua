@@ -3,6 +3,7 @@
 ]]
 
 local Character = require("../Character")
+local AppearanceManager = require("../appearance/AppearanceManager")
 local HorizontalMotion = require("HorizontalMotion.mod")
 local LadderMotion = require("LadderMotion.mod")
 local MotionState = require("../MotionState.mod")
@@ -17,6 +18,7 @@ local MainTransition = {
     HORIZONTAL = "horizontal",
     VERTICAL = "vertical",
     SWIM = "swim",
+    DEAD = "dead",
 }
 
 local VerticalTransition = {
@@ -34,6 +36,11 @@ local SwimmingTransition = {
     SWIM = "swim",
 }
 
+local DeadTransition = {
+    IDLE = "idle",
+    DEATH1 = "death1",
+}
+
 local WALK_SPEED = "parameters/walk_speed/scale"
 local RUN_SPEED = "parameters/run_speed/scale"
 local CLIMB_SPEED = "parameters/climb_speed/scale"
@@ -43,16 +50,54 @@ local TRANSITION_MAIN = "parameters/main/transition_request"
 local TRANSITION_VERTICAL = "parameters/vertical/transition_request"
 local TRANSITION_HORIZONTAL = "parameters/horizontal/transition_request"
 local TRANSITION_SWIMMING = "parameters/swimming/transition_request"
+local TRANSITION_DEAD = "parameters/dead/transition_request"
 
 local JUMP = "parameters/jump_oneshot/request"
 
 type StateInfo = {
     state: number,
     properties: {[string]: any},
+    init: (self: CharacterAnimator, state: MotionState.MotionState, animator: AnimationTree) -> ()?,
     update: (self: CharacterAnimator, state: MotionState.MotionState, animator: AnimationTree, delta: number) -> ()?,
 }
 
+local function updateDeathAnimation(state: MotionState.MotionState, animator: AnimationTree)
+    if state:IsState(MotionState.CharacterState.FALLING) then
+        animator:Set(TRANSITION_DEAD, DeadTransition.IDLE)
+    else
+        animator:Set(TRANSITION_DEAD, DeadTransition.DEATH1)
+        return 1.5
+    end
+
+    return 0
+end
+
 local STATES: {StateInfo} = {
+    {
+        state = MotionState.CharacterState.DEAD,
+        properties = {
+            [TRANSITION_MAIN] = MainTransition.DEAD,
+        },
+        init = function(self, state, animator)
+            assert(self.appearanceManager)
+
+            local flakeDelay = updateDeathAnimation(state, animator)
+
+            coroutine.wrap(function()
+                wait(flakeDelay)
+
+                -- TODO: awful type hacks to avoid weird errors
+                local particles = (self.character :: Character.Character):GetNode("%DeathParticles") :: GPUParticles3D
+                particles.emitting = true
+
+                local tween = (self.appearanceManager :: AppearanceManager.AppearanceManager):GetTree():CreateTween()
+                tween:TweenMethod(Callable.new(self.appearanceManager :: AppearanceManager.AppearanceManager, "SetDissolve"), 1e-10, 1.0, 2.0)
+            end)()
+        end,
+        update = function(self, state, animator)
+            updateDeathAnimation(state, animator)
+        end,
+    },
     {
         state = bit32.bor(MotionState.CharacterState.SWIMMING, MotionState.CharacterState.IDLE),
         properties = {
@@ -150,6 +195,7 @@ function CharacterAnimator.new()
 
     self.character = nil :: Character.Character?
     self.animator = nil :: AnimationTree?
+    self.appearanceManager = nil :: AppearanceManager.AppearanceManager?
     self.horizontalMotion = nil :: HorizontalMotion.HorizontalMotion?
     self.ladderMotion = nil :: LadderMotion.LadderMotion?
 
@@ -171,6 +217,7 @@ function CharacterAnimator.Initialize(self: CharacterAnimator, state: MotionStat
 
     self.character = state.node :: Character.Character
     self.animator = state.node:GetNodeOrNull("Rig/Armature/AnimationTree") :: AnimationTree?
+    self.appearanceManager = state.node:GetNodeOrNull("Appearance") :: AppearanceManager.AppearanceManager?
 
     if self.animator then
         self.animator.active = true
@@ -195,6 +242,10 @@ function CharacterAnimator.Process(self: CharacterAnimator, state: MotionState.M
         end
 
         self.state = stateInfo
+
+        if stateInfo.init then
+            stateInfo.init(self, state, self.animator)
+        end
 
         for key, value in stateInfo.properties do
             self.animator:Set(key, value)

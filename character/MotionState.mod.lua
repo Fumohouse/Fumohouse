@@ -11,6 +11,8 @@ local MotionState = {
         CLIMBING = 16,
         SITTING = 32,
         SWIMMING = 64,
+
+        DEAD = 32768,
     },
 }
 
@@ -159,6 +161,8 @@ function MotionState.new()
 
     self.velocity = Vector3.ZERO
 
+    self.queueDead = false
+
     -- Managed locally --
 
     -- State
@@ -279,6 +283,10 @@ function MotionState.IsState(self: MotionState, state: number): boolean
     return bit32.band(self.state, state) == state
 end
 
+function MotionState.IsDead(self: MotionState)
+    return self:IsState(MotionState.CharacterState.DEAD)
+end
+
 function MotionState.Update(self: MotionState, motion: Motion, delta: number, isReplay: boolean?, persistState: boolean?)
     local origTransform = self.node.globalTransform
 
@@ -290,6 +298,11 @@ function MotionState.Update(self: MotionState, motion: Motion, delta: number, is
     self.ctx.camBasisFlat = Basis.IDENTITY:Rotated(Vector3.UP, motion.cameraRotation.y)
 
     self.ctx.isReplay = isReplay or false
+
+    if self.queueDead or self:IsState(MotionState.CharacterState.DEAD) then
+        self.ctx:SetState(MotionState.CharacterState.DEAD)
+        self.queueDead = false
+    end
 
     if persistState then
         self.ctx.newState = self.state
@@ -349,6 +362,25 @@ function MotionState.LoadState(self: MotionState, state: Dictionary)
             processor.LoadState(processor, pState)
         end
     end
+end
+
+function MotionState.Die(self: MotionState, timeout: number, callback: (() -> ())?)
+    -- In case this is called in the middle of a frame
+    -- (prevent state from being reset before it can be persisted)
+    self.queueDead = true
+    self:SetRagdoll(false)
+
+    coroutine.wrap(function()
+        wait(timeout)
+
+        if is_instance_valid(self.node) then
+            self.node:QueueFree()
+
+            if callback then
+                callback()
+            end
+        end
+    end)()
 end
 
 export type MotionState = typeof(MotionState.new())

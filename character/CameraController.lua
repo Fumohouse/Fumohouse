@@ -35,6 +35,9 @@ export type CameraController = Camera3D & typeof(CameraController) & {
     --- @default 24.0
     moveSpeedFast: number,
 
+    --- @property
+    focusNode: Node3D?,
+
     --- @signal
     modeChanged: SignalWithArgs<(mode: integer) -> ()>,
 
@@ -42,7 +45,6 @@ export type CameraController = Camera3D & typeof(CameraController) & {
     cameraLookSensFirstPerson: number,
     cameraLookSensThirdPerson: number,
 
-    focusNode: Node3D?,
     cameraRotation: Vector2,
     focusDistance: number,
     lastMousePos: Vector2,
