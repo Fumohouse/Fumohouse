@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cewbassnie0qr" path="res://assets/textures/ui/faces_bg.svg" id="1_efpvf"]
 [ext_resource type="Script" path="res://ui/navigation/main_menu/MainMenu.lua" id="2_kqbd2"]
 [ext_resource type="Script" path="res://ui/navigation/main_menu/MainScreen.lua" id="3_gaw40"]
-[ext_resource type="Texture2D" uid="uid://cs26kmefu5xmq" path="res://assets/textures/logo_dark.svg" id="3_w1vre"]
 [ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="4_0v5t1"]
 [ext_resource type="Script" path="res://ui/navigation/main_menu/VersionLabel.lua" id="4_5s06d"]
 [ext_resource type="Script" path="res://ui/navigation/TransitionElement.lua" id="4_ubl7r"]
@@ -13,6 +12,7 @@
 [ext_resource type="Script" path="res://ui/navigation/main_menu/KskLogo.lua" id="5_sft8o"]
 [ext_resource type="Texture2D" uid="uid://l068kvg3crfl" path="res://assets/textures/ksk.svg" id="6_p1kjr"]
 [ext_resource type="Texture2D" uid="uid://bk46ldudbxtal" path="res://assets/textures/ksk_anim.svg" id="6_w867p"]
+[ext_resource type="PackedScene" uid="uid://dck1137u3e4q3" path="res://ui/logo.tscn" id="7_2idjs"]
 [ext_resource type="PackedScene" uid="uid://b3vcp7kq81ujl" path="res://ui/navigation/nav_button.tscn" id="10_16bi3"]
 [ext_resource type="PackedScene" uid="uid://drkq414nse0uk" path="res://ui/navigation/main_menu/main_menu_icon_button.tscn" id="11_adj8w"]
 [ext_resource type="Texture2D" uid="uid://ds6ygslc2b6h" path="res://assets/textures/ui/icons/github.svg" id="12_hk2nd"]
@@ -118,24 +118,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Logo" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation" index="0"]
-layout_mode = 1
+[node name="Logo" parent="Screens/MainScreen/NonNavigation" index="0" instance=ExtResource("7_2idjs")]
+layout_mode = 0
 offset_left = 48.0
 offset_top = 48.0
-offset_right = 267.0
+offset_right = 277.0
 offset_bottom = 128.0
-theme_override_constants/separation = 12
-
-[node name="LogoImage" type="TextureRect" parent="Screens/MainScreen/NonNavigation/Logo" index="0"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-texture = ExtResource("3_w1vre")
-expand_mode = 1
-
-[node name="Fumohouse" type="Label" parent="Screens/MainScreen/NonNavigation/Logo" index="1"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Fumohouse"
 
 [node name="VersionLabel" type="Control" parent="Screens/MainScreen/NonNavigation" index="1"]
 layout_mode = 1

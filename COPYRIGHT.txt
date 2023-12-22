@@ -110,6 +110,12 @@ Comment: Godot Engine logo
 Copyright: 2017 Andrea Calabró
 License: CC-BY-4.0
 
+Files: assets/textures/luau_logo.svg
+Comment: Luau language logo
+Copyright: 2019-2023 Roblox Corporation
+ 1994–2019 Lua.org, PUC-Rio.
+License: Expat
+
 ######################
 # Expat License Text #
 ######################

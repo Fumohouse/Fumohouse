@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Fumohouse"
+run/main_scene="res://ui/navigation/intro/intro.tscn"
 config/project_settings_override="user://override.godot"
 config/features=PackedStringArray("4.2")
 config/icon="res://assets/textures/logo.svg"

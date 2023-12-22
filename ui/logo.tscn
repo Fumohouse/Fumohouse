@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dck1137u3e4q3"]
+
+[ext_resource type="Texture2D" uid="uid://cs26kmefu5xmq" path="res://assets/textures/logo_dark.svg" id="1_kdurk"]
+
+[node name="Logo" type="HBoxContainer"]
+offset_right = 229.0
+offset_bottom = 80.0
+theme_override_constants/separation = 12
+
+[node name="LogoImage" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("1_kdurk")
+expand_mode = 1
+
+[node name="Fumohouse" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Fumohouse"

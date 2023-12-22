@@ -96,4 +96,23 @@ function MapManager.Load(self: MapManager, id: string)
     self:GetTree():SetCurrentScene(newScene)
 end
 
+function MapManager.getTitleMap(self: MapManager)
+    local DEFAULT_MAP = "fumohouse"
+
+    local map = self.maps[DEFAULT_MAP]
+    if not map then
+        local _, firstMap = next(self.maps)
+        map = firstMap
+    end
+
+    return map
+end
+
+function MapManager.PlayTitlePlaylist(self: MapManager)
+    local menuMap = self:getTitleMap().manifest
+
+    MusicPlayer:LoadPlaylists(menuMap.playlists)
+    MusicPlayer:SwitchPlaylist(menuMap.titlePlaylist)
+end
+
 return MapManagerC

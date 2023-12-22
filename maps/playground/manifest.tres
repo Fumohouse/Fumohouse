@@ -13,5 +13,5 @@ author = "Fumohouse"
 description = "Fumohouse's testing map."
 mainScenePath = "res://maps/playground/playground.tscn"
 playlists = [ExtResource("1_4lptv"), ExtResource("2_3tpvn")]
-titlePlaylist = "main"
+titlePlaylist = "special"
 defaultPlaylist = "main"

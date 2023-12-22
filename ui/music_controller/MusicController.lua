@@ -69,7 +69,7 @@ function MusicController._Ready(self: MusicController)
     self.wasPaused = MusicPlayer.streamPaused
     self:updatePaused()
 
-    self:updateSong(nil)
+    self:updateSong(MusicPlayer.currentSong)
     MusicPlayer.songChanged:Connect(Callable.new(self, "updateSong"))
 end
 
