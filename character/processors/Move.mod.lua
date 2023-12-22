@@ -45,6 +45,7 @@ function Move.customRecovery(self: Move, state: MotionState.MotionState, offset:
 
     local params = PhysicsShapeQueryParameters3D.new()
     params.shape = state.mainCollisionShape
+    params.collisionMask = state.node.collisionMask
     params.transform = state.mainCollider.globalTransform:Translated(offset)
     params.exclude = exclude
 

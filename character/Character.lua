@@ -93,6 +93,9 @@ function Character._Ready(self: Character)
 
         ragdollCollider = ragdollCollider,
         ragdollCollisionShape = assert(ragdollCollider.shape) :: BoxShape3D,
+
+        normalCollisionLayer = 2,
+        ragdollCollisionLayer = 4,
     })
 
     self:updateCamera()
@@ -261,10 +264,16 @@ function Character._PhysicsProcess(self: Character, delta: number)
             local motion = table.remove(self.motionQueue, 1)
 
             if motion then
-                local actualMotion = if self.state:IsDead() then
-                    nullMotion
-                else
-                    motion.motion
+                local actualMotion = motion.motion
+
+                if self.state:IsDead() then
+                    -- Client sends nothing, but reset anyway in case hacking
+                    actualMotion.direction = Vector2.ZERO
+
+                    actualMotion.jump = false
+                    actualMotion.run = false
+                    actualMotion.sit = false
+                end
 
                 self.state:Update(actualMotion, delta)
 

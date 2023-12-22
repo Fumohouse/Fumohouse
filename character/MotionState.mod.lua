@@ -140,6 +140,9 @@ function MotionState.new()
     self.ragdollCollider = (nil :: any) :: CollisionShape3D
     self.ragdollCollisionShape = (nil :: any) :: BoxShape3D
 
+    self.normalCollisionLayer = 0
+    self.ragdollCollisionLayer = 0
+
     -- Options
     self.options = {
         maxGroundAngle = 45,
@@ -223,6 +226,9 @@ function MotionState.Initialize(self: MotionState, config)
     self.ragdollCollider = config.ragdollCollider
     self.ragdollCollisionShape = config.ragdollCollisionShape
 
+    self.normalCollisionLayer = config.normalCollisionLayer
+    self.ragdollCollisionLayer = config.ragdollCollisionLayer
+
     self:SetRagdoll(false)
 
     for _, processor in self.motionProcessors do
@@ -267,6 +273,8 @@ function MotionState.SetRagdoll(self: MotionState, ragdoll: boolean)
     self.ragdollCollider.disabled = not ragdoll
 
     self.isRagdoll = ragdoll
+
+    self.node.collisionLayer = if ragdoll then self.ragdollCollisionLayer else self.normalCollisionLayer
 end
 
 function MotionState.GetMotionProcessor(self: MotionState, id: string): any

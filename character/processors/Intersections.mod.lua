@@ -44,6 +44,7 @@ function Intersections.Process(self: Intersections, state: MotionState.MotionSta
 
     local intersectParams = PhysicsShapeQueryParameters3D.new()
     intersectParams.shape = state.mainCollisionShape
+    intersectParams.collisionMask = state.node.collisionMask
     intersectParams.transform = state.mainCollider.globalTransform
     intersectParams.collideWithAreas = true
     intersectParams.collideWithBodies = true

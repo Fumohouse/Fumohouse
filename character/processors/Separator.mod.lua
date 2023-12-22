@@ -4,8 +4,6 @@
 
 local MotionState = require("../MotionState.mod")
 
-local Character = require("../Character")
-
 local Separator = { ID = "separator" }
 Separator.__index = Separator
 
@@ -13,8 +11,7 @@ function Separator.new()
     local self = {}
 
     self.options = {
-        separation = 1.25,
-        threshold = 0.9,
+        velocity = 5.0,
     }
 
     return setmetatable(self, Separator)
@@ -25,25 +22,33 @@ function Separator.Process(self: Separator, state: MotionState.MotionState, delt
         return
     end
 
-    for _, body in state.intersections.bodies do
-        if not body:IsA(Character) then
-            continue
+    local exclude = Array.new()
+    exclude:PushBack(state.rid)
+
+    local params = PhysicsShapeQueryParameters3D.new()
+    params.shape = state.mainCollisionShape
+    params.collisionMask = 2 -- other characters
+    params.transform = state.mainCollider.globalTransform
+    params.exclude = exclude
+
+    local MAX_PAIRS = 16
+    local result = state.node:GetWorld3D().directSpaceState:CollideShape(params, MAX_PAIRS)
+    if result:Size() == 0 then
+        return Vector3.ZERO
+    end
+
+    for i = 0, result:Size() - 1, 2 do
+        local a = result:Get(i) :: Vector3
+        local b = result:Get(i + 1) :: Vector3
+
+        local direction = (b - a):Normalized()
+        if direction:LengthSquared() == 0 or direction:Dot(Vector3.UP) > 0.9999 then
+            -- Deterministic for server. Randomness would be nice but oh well
+            local ANGLE = math.pi / 4
+            direction = Vector3.new(math.cos(ANGLE), 0, math.sin(ANGLE))
         end
 
-        local offset = state.node.position - body.position
-        local offsetFlat = Vector3.new(offset.x, 0, offset.z)
-        if offset:Length() > self.options.threshold then
-            continue
-        end
-
-        local direction = offsetFlat:Normalized()
-
-        if direction:LengthSquared() == 0 then
-            local angle = math.random() * 2 * math.pi
-            direction = Vector3.new(math.cos(angle), 0, math.sin(angle))
-        end
-
-        state.ctx:AddOffset((self.options.separation - offsetFlat:Length()) * direction)
+        state.ctx:AddOffset(self.options.velocity * delta * direction)
     end
 end
 

@@ -4,6 +4,7 @@ local DebugCharacter = require("../ui/debug/DebugCharacter")
 local CameraController = require("../character/CameraController")
 local Appearance = require("../character/appearance/Appearance")
 local AppearanceManager = require("../character/appearance/AppearanceManager")
+local Utils = require("../utils/Utils.mod")
 
 local NetworkManagerM = require("../networking/NetworkManager")
 local NetworkManager = gdglobal("NetworkManager") :: NetworkManagerM.NetworkManager
@@ -235,7 +236,7 @@ end
 function CharacterManager._Process(self: CharacterManager, delta: number)
     local FALL_LIMIT = -64
 
-    if self.localCharacter and Input.singleton:IsActionJustPressed("reset_character") then
+    if self.localCharacter and Utils.DoGameInput(self) and Input.singleton:IsActionJustPressed("reset_character") then
         local appearance = getAppearance(self.localCharacter)
 
         if NetworkManager.isActive then

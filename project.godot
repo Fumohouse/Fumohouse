@@ -41,6 +41,7 @@ enabled=PackedStringArray("res://addons/fumohouse/plugin.cfg")
 
 3d_physics/layer_1="Terrain"
 3d_physics/layer_2="Character"
+3d_physics/layer_3="Character Ragdoll"
 
 [rendering]
 
