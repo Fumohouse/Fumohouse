@@ -91,7 +91,7 @@ local STATES: {StateInfo} = {
                 particles.emitting = true
 
                 local tween = (self.appearanceManager :: AppearanceManager.AppearanceManager):GetTree():CreateTween()
-                tween:TweenMethod(Callable.new(self.appearanceManager :: AppearanceManager.AppearanceManager, "SetDissolve"), 1e-10, 1.0, 2.0)
+                tween:TweenMethod(Callable.new(self.appearanceManager :: AppearanceManager.AppearanceManager, "SetDissolve"), tofloat(1e-10), 1.0, 2.0)
             end)()
         end,
         update = function(self, state, animator)

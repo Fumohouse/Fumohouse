@@ -19,7 +19,7 @@ end
 
 function BasicSpawner.GetSpawnpoint(self: BasicSpawner, character: Node3D): Transform3D
     local children = self:GetChildren()
-    local spawnpoint = children:Get(math.random(1, children:Size())) :: Node
+    local spawnpoint = children:Get(math.random(0, children:Size() - 1)) :: Node
 
     if spawnpoint:IsA(Spawnpoint) then
         return (spawnpoint :: Spawnpoint.Spawnpoint):GetSpawnPoint()

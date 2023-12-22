@@ -55,7 +55,7 @@ function Serializer.WriteBuffer(self: Serializer, buffer: PackedByteArray)
     local size = buffer:Size()
     self:EnsureCapacity(size)
 
-    for i = 1, size do
+    for i = 0, size - 1 do
         self.buffer:Set(self.position + i, buffer:Get(i))
     end
 

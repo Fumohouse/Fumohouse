@@ -1,7 +1,7 @@
 # Fumohouse
 
 [![Godot Badge](https://img.shields.io/badge/Godot-4.2--stable-orange)](https://godotengine.org/)
-[![godot-luau-script Badge](https://img.shields.io/badge/godot--luau--script-47dd6fd-blue)](https://github.com/Fumohouse/godot-luau-script)
+[![godot-luau-script Badge](https://img.shields.io/badge/godot--luau--script-2352623-blue)](https://github.com/Fumohouse/godot-luau-script)
 
 > **Note**
 >
@@ -12,7 +12,8 @@
 A fumo-centric game-in-progress, inspired by [Become Fumo](https://www.roblox.com/games/6238705697/Become-Fumo)
 and powered by the Godot Engine.
 
-Fumos are produced by [Gift](https://www.gift-gift.jp/) and designed by [ANGELTYPE](http://blog.angeltype.under.jp/).
+Fumos are produced by [Gift](https://www.gift-gift.jp/) and designed by
+[ANGELTYPE](http://blog.angeltype.under.jp/).
 
 [![shanghai alice badge](http://www16.big.or.jp/~zun/image/banner.gif)](http://www16.big.or.jp/~zun/)
 
@@ -23,18 +24,21 @@ This game is not affiliated with source or inspiration works.
 ## Development
 
 This project depends on [godot-luau-script](https://github.com/Fumohouse/godot-luau-script),
-which must be built separately and added to this project as a GDExtension (`bin/luau-script/`).
+which must be built separately and added to this project as a GDExtension
+(`bin/luau-script/`).
 
 ## License
 
-3rd party content (fonts, models, and external textures) are *not* covered under these licenses.
+3rd party content (fonts, models, and external textures) are *not* covered under
+these licenses.
 
-Detailed information on the copyrights and licenses of all project files can be found in `COPYRIGHT.txt`.
+Detailed information on the copyrights and licenses of all project files can be
+found in `COPYRIGHT.txt`.
 
 ### For code
 
-Code of this project is licensed under the MIT license.
-See `LICENSE.txt` for more information.
+Code of this project is licensed under the MIT license. See `LICENSE.txt` for
+more information.
 
 ### For assets
 
@@ -42,4 +46,5 @@ See `LICENSE.txt` for more information.
 
 Original assets in this project are licensed under CC BY-NC-SA 4.0.
 
-Detailed information about these assets, including information required to attribute, is provided in `COPYRIGHT.txt`.
+Detailed information about these assets, including information required to
+attribute, is provided in `COPYRIGHT.txt`.

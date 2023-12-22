@@ -29,7 +29,7 @@ function ConfigAudioOutputDevices._SetValue(self: ConfigAudioOutputDevices, valu
 end
 
 function ConfigAudioOutputDevices._GetValue(self: ConfigAudioOutputDevices): Variant
-    return self.devices:Get(self.input.selected + 1)
+    return self.devices:Get(self.input.selected)
 end
 
 function ConfigAudioOutputDevices._Ready(self: ConfigAudioOutputDevices)

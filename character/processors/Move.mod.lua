@@ -72,7 +72,7 @@ function Move.customRecovery(self: Move, state: MotionState.MotionState, offset:
     end
 
     local recovery = Vector3.ZERO
-    for i = 1, result:Size(), 2 do
+    for i = 0, result:Size() - 1, 2 do
         local a = result:Get(i) :: Vector3
         local b = result:Get(i + 1) :: Vector3
 

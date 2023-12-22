@@ -131,10 +131,10 @@ function MusicPlayer.continuePlaylist(self: MusicPlayer, playlistId: string)
             self:play(playlist.songs:Get(self.playlistPosition) :: Song.Song, true, true, position.time)
         end)()
     else
-        self.playlistPosition = 1
+        self.playlistPosition = 0
 
         coroutine.wrap(function()
-            self:play(playlist.songs:Get(1) :: Song.Song, true, false, 0)
+            self:play(playlist.songs:Get(0) :: Song.Song, true, false, 0)
         end)()
     end
 
@@ -168,9 +168,9 @@ function MusicPlayer.AdvancePlaylist(self: MusicPlayer, steps: number)
 
     self.playlistPosition += steps
 
-    if self.playlistPosition > playlist.songs:Size() then
+    if self.playlistPosition >= playlist.songs:Size() then
         self.playlistPosition -= playlist.songs:Size()
-    elseif self.playlistPosition < 1 then
+    elseif self.playlistPosition < 0 then
         self.playlistPosition += playlist.songs:Size()
     end
 
