@@ -17,7 +17,8 @@ end
 
 --- @registerMethod
 function PlaygroundMP.join(self: PlaygroundMP)
-    NetworkManager:Join("127.0.0.1", 20722, "voided_etc", "password")
+    local username = "voided_ver" .. tostring(math.random(0, 1000))
+    NetworkManager:Join("127.0.0.1", 20722, username, "password")
 end
 
 --- @registerMethod

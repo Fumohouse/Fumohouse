@@ -11,7 +11,7 @@ local MovementFlags = {
     SIT = 4,
 }
 
-local CharacterRequestPacket = { NAME = "RNT.CHR.REQ", MODE = nil, CHANNEL = nil }
+local CharacterRequestPacket = { NAME = "RNT.CHR.REQ", MODE = nil, CHANNEL = 1 }
 CharacterRequestPacket.__index = CharacterRequestPacket
 
 function CharacterRequestPacket.new(type: number?)

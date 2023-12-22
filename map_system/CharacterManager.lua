@@ -79,10 +79,15 @@ function CharacterManager.SpawnCharacter(self: CharacterManager, appearance: App
             self.characters[peer]:QueueFree()
         end
 
+        character.name = NetworkManager.peerData[peer].identity
         self.characters[peer] = character
     else
         if self.localCharacter then
             self.localCharacter:QueueFree()
+        end
+
+        if NetworkManager.isActive then
+            character.name = NetworkManager.identity
         end
 
         self.localCharacter = character

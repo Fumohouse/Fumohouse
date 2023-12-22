@@ -7,6 +7,7 @@ local FaceDatabase = require("face/FaceDatabase")
 local FacePartStyle = require("face/FacePartStyle")
 local EyeStyle = require("face/EyeStyle")
 local PartCustomizer = require("parts/customization/PartCustomizer")
+local Utils = require("../../utils/Utils.mod")
 
 local PartDatabaseM = require("parts/PartDatabase")
 local PartDatabase = gdglobal("PartDatabase") :: PartDatabaseM.PartDatabase
@@ -24,6 +25,15 @@ type AttachedPartInfo = {
 --- @classType AppearanceManager
 export type AppearanceManager = Node3D & typeof(AppearanceManager) & {
     --- @property
+    character: Character.Character,
+    --- @property
+    rig: Node3D,
+    --- @property
+    skeleton: Skeleton3D,
+    --- @property
+    nametag: Sprite3D,
+
+    --- @property
     appearance: Appearance.Appearance,
 
     --- @property
@@ -34,9 +44,9 @@ export type AppearanceManager = Node3D & typeof(AppearanceManager) & {
     --- @default 0.25
     cameraFadeEnd: number,
 
-    character: Character.Character,
-    rig: Node3D,
-    skeleton: Skeleton3D,
+    --- @property
+    --- @default 0.5
+    nametagOffset: number,
 
     faceMaterial: ShaderMaterial,
     skinMaterial: ShaderMaterial,
@@ -142,8 +152,7 @@ function AppearanceManager.loadScale(self: AppearanceManager)
     end
 end
 
---- @registerMethod
-function AppearanceManager._PhysicsProcess(self: AppearanceManager, delta: number)
+function AppearanceManager.updateAlphaCamera(self: AppearanceManager)
     if not self.character.camera then
         return
     end
@@ -164,6 +173,25 @@ function AppearanceManager._PhysicsProcess(self: AppearanceManager, delta: numbe
     alpha = math.clamp(alpha, 0, 1)
 
     self:setAlpha(alpha)
+end
+
+function AppearanceManager.updateNametagPosition(self: AppearanceManager)
+    if not self.nametag.visible then
+        return
+    end
+
+    local headAtt = self:GetNode("Head") :: Node3D
+
+    local aabb = self.globalTransform * Utils.CalculateBounds(headAtt)
+    local topY = aabb["end"].y + self.nametagOffset * self.appearance.scale
+
+    self.nametag.globalPosition = Vector3.new(headAtt.globalPosition.x, topY, headAtt.globalPosition.z)
+end
+
+--- @registerMethod
+function AppearanceManager._Process(self: AppearanceManager, delta: number)
+    self:updateAlphaCamera()
+    self:updateNametagPosition()
 end
 
 --- @registerMethod
@@ -336,10 +364,6 @@ end
 
 --- @registerMethod
 function AppearanceManager._Ready(self: AppearanceManager)
-    self.character = self:GetParent() :: Character.Character
-    self.rig = self:GetNode("../Rig") :: Node3D
-    self.skeleton = self:GetNode("../Rig/Armature/Skeleton3D") :: Skeleton3D
-
     self.faceMaterial = faceMaterial:Duplicate()
     self.skinMaterial = (self.skeleton:GetNode("Head") :: MeshInstance3D):GetActiveMaterial(0) :: ShaderMaterial
 

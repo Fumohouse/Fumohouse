@@ -6,7 +6,7 @@ local BillboardC = gdclass(Billboard)
 --- @classType Billboard
 export type Billboard = Sprite3D & typeof(Billboard) & {
     --- @property
-    --- @range 0 0.1 suffix:m
+    --- @range 0.001 0.1 0.01 suffix:m
     --- @default 0.01
     targetPixelSize: number,
 
@@ -54,7 +54,7 @@ function Billboard._Ready(self: Billboard)
     self:ReparentContents()
 end
 
-function Billboard.GetScreenSize(self: Billboard, camera: Camera3D)
+function Billboard.getCorners(self: Billboard)
     local gBasis = self.globalTransform.basis
 
     local worldSize = self.origSize * self.targetPixelSize
@@ -71,6 +71,12 @@ function Billboard.GetScreenSize(self: Billboard, camera: Camera3D)
         + gBasis.x * worldSize.x / 2
         - gBasis.y * worldSize.y / 2
 
+    return topLeft, bottomRight
+end
+
+function Billboard.GetScreenSize(self: Billboard, camera: Camera3D)
+    local topLeft, bottomRight = self:getCorners()
+
     local screenTL = camera:UnprojectPosition(topLeft)
     local screenBR = camera:UnprojectPosition(bottomRight)
     local screenSize = screenBR - screenTL
@@ -80,18 +86,20 @@ end
 
 --- @registerMethod
 function Billboard._Process(self: Billboard, delta: number)
+    if not self.visible then
+        return
+    end
+
     local camera = self:GetViewport():GetCamera3D()
     if not camera then
         return
     end
 
     if camera:IsPositionBehind(self.globalPosition) then
-        self.visible = false
         self.viewport.renderTargetUpdateMode = SubViewport.UpdateMode.DISABLED
         return
     end
 
-    self.visible = true
     self.viewport.renderTargetUpdateMode = SubViewport.UpdateMode.ALWAYS
 
     -- Manual billboard helps with math
@@ -119,6 +127,48 @@ function Billboard._Process(self: Billboard, delta: number)
 
     -- Must adjust the pixel size in order to update texture size, etc.
     self.pixelSize = self.targetPixelSize * self.origSize.x / screenSize.x
+end
+
+--- @registerMethod
+function Billboard._UnhandledInput(self: Billboard, event: InputEvent)
+    local camera = self:GetViewport():GetCamera3D()
+    if not camera then
+        return
+    end
+
+    if not event:IsA(InputEventMouse) then
+        return
+    end
+
+    local em = event :: InputEventMouse
+
+    local plane = Plane.new(self.globalBasis.z, self.globalPosition)
+    local cameraRayOrig = camera:ProjectRayOrigin(em.position)
+    local cameraRayNorm = camera:ProjectRayNormal(em.position)
+
+    local intersect = plane:IntersectsRay(cameraRayOrig, cameraRayNorm) :: Vector3?
+    if not intersect then
+        return
+    end
+
+    local topLeft = self:getCorners()
+    local screenSize = self:GetScreenSize(camera)
+
+    local offset = intersect - topLeft
+
+    local x = offset:Dot(self.globalBasis.x)
+    local y = -offset:Dot(self.globalBasis.y)
+
+    if x < 0 or y < 0 or x > screenSize.x or y > screenSize.y then
+        return
+    end
+
+    local viewportPos = Vector2.new(x, y) / self.pixelSize
+
+    local viewportEvt = em:Duplicate()
+    viewportEvt.position = viewportPos
+
+    self.viewport:PushInput(viewportEvt, true)
 end
 
 return BillboardC

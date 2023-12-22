@@ -56,10 +56,12 @@ function Grounding.Process(self: Grounding, state: MotionState.MotionState, delt
         local shouldSnap = not state.isRagdoll and is_equal_approx(state.ctx.offset.y, 0)
 
         if foundGround and shouldSnap then
+            local MAX_UP_SNAP = 0.01
+
             -- dot to account for any possible horiz. movement due to depenetration
-            local offset = Vector3.UP * Vector3.UP:Dot(result:GetTravel())
-            if offset:LengthSquared() > state.options.margin ^ 2 then
-                state.ctx:AddOffset(offset * (1 - state.options.margin))
+            local snapLength = Vector3.DOWN:Dot(result:GetTravel())
+            if math.abs(snapLength) > state.options.margin and snapLength > -MAX_UP_SNAP then
+                state.ctx:AddOffset(Vector3.DOWN * snapLength * (1 - state.options.margin))
             end
         end
     end

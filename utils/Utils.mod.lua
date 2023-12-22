@@ -32,4 +32,21 @@ function Utils.DoGameInput(self: Node)
     return self:GetViewport():GuiGetFocusOwner() == nil
 end
 
+-- https://github.com/godotengine/godot/blob/9d1cbab1c432b6f1d66ec939445bec68b6af519e/editor/plugins/node_3d_editor_plugin.cpp#L4091-L4121
+function Utils.CalculateBounds(node: Node3D)
+    local bounds = AABB.new()
+
+    if node:IsA(VisualInstance3D) then
+        bounds = (node :: VisualInstance3D):GetAabb()
+    end
+
+    for _, child in node:GetChildren() do
+        if child:IsA(Node3D) then
+            bounds = bounds:Merge(Utils.CalculateBounds(child))
+        end
+    end
+
+    return node.transform * bounds
+end
+
 return Utils

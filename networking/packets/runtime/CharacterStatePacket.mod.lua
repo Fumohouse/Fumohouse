@@ -10,7 +10,7 @@ local CharacterStateUpdateType = {
     DELETE = 3,
 }
 
-local CharacterStatePacket = { NAME = "RNT.CHR.STU", MODE = nil, CHANNEL = nil }
+local CharacterStatePacket = { NAME = "RNT.CHR.STU", MODE = nil, CHANNEL = 1 }
 CharacterStatePacket.__index = CharacterStatePacket
 
 function CharacterStatePacket.new(type: number?, peer: number?)

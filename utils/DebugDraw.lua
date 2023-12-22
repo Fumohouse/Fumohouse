@@ -49,6 +49,39 @@ function DebugDraw.DrawLine(self: DebugDraw, p1: Vector3, p2: Vector3, c1: Color
 end
 
 --- @registerMethod
+--- @defaultArgs [0]
+function DebugDraw.DrawAABB(self: DebugDraw, aabb: AABB, color: Color, lifetime: number?)
+    local length = Vector3.BACK * aabb.size.z
+    local width = Vector3.RIGHT * aabb.size.x
+    local height = Vector3.UP * aabb.size.y
+
+    local p1 = aabb.position
+    local p2 = p1 + width
+    local p3 = p1 + length
+    local p4 = p3 + width
+
+    local p5 = p1 + height
+    local p6 = p2 + height
+    local p7 = p3 + height
+    local p8 = p4 + height
+
+    self:DrawLine(p1, p2, color, lifetime)
+    self:DrawLine(p1, p3, color, lifetime)
+    self:DrawLine(p2, p4, color, lifetime)
+    self:DrawLine(p3, p4, color, lifetime)
+
+    self:DrawLine(p1, p5, color, lifetime)
+    self:DrawLine(p2, p6, color, lifetime)
+    self:DrawLine(p3, p7, color, lifetime)
+    self:DrawLine(p4, p8, color, lifetime)
+
+    self:DrawLine(p5, p6, color, lifetime)
+    self:DrawLine(p5, p7, color, lifetime)
+    self:DrawLine(p6, p8, color, lifetime)
+    self:DrawLine(p7, p8, color, lifetime)
+end
+
+--- @registerMethod
 --- @defaultArgs [0, 0.05]
 function DebugDraw.DrawMarker(self: DebugDraw, pos: Vector3, color: Color, lifetime: number?, size: number?)
     local sizeA = size or 0.05

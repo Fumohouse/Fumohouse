@@ -228,8 +228,12 @@ function CameraController._UnhandledInput(self: CameraController, event: InputEv
         return
     end
 
+    local handleInput = false
+
     -- Zoom
     if self.focusNode then
+        handleInput = true
+
         -- Hardcode a few gestures (mainly for macOS)
         if event:IsActionPressed("camera_zoom_in") then
             self.focusDistanceTarget = math.max(self.focusDistanceTarget - self.cameraZoomSens, 0)
@@ -251,9 +255,9 @@ function CameraController._UnhandledInput(self: CameraController, event: InputEv
         elseif event:IsA(InputEventMagnifyGesture) then
             local emg = event :: InputEventMagnifyGesture
             self.focusDistanceTarget = math.min(self.focusDistanceTarget / emg.factor, self.maxFocusDistance)
+        else
+            handleInput = false
         end
-
-        self:GetViewport():SetInputAsHandled()
     end
 
     -- Rotate
@@ -269,12 +273,16 @@ function CameraController._UnhandledInput(self: CameraController, event: InputEv
             (self.cameraRotation.y - rotDelta.x) % (2 * math.pi)
         )
 
-        self:GetViewport():SetInputAsHandled()
+        handleInput = true
     end
 
     -- Trigger rotate
     if self.cameraMode ~= CameraController.CameraMode.FIRST_PERSON and event:IsAction("camera_rotate") then
         self:setCameraRotating(event:IsActionPressed("camera_rotate"))
+        handleInput = true
+    end
+
+    if handleInput then
         self:GetViewport():SetInputAsHandled()
     end
 end
