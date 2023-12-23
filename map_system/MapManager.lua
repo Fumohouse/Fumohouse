@@ -79,7 +79,7 @@ function MapManager.Load(self: MapManager, id: string)
 
     -- Switch scenes manually (otherwise switch is deferred to next frame)
     local newScene = (scene :: PackedScene):Instantiate()
-    self:GetTree():GetRoot():AddChild(newScene)
+    self:GetTree().root:AddChild(newScene)
 
     local runtime = self.runtimeScene:Instantiate() :: MapRuntime.MapRuntime
     self.currentMap = map
