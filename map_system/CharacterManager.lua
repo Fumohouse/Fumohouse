@@ -71,7 +71,6 @@ function CharacterManager.SpawnCharacter(self: CharacterManager, appearance: App
 
         if not peer then
             c.camera = self.camera
-            self.debugCharacter.character = c
         end
     end
 
@@ -95,6 +94,9 @@ function CharacterManager.SpawnCharacter(self: CharacterManager, appearance: App
     end
 
     self:AddChild(character)
+    if character:IsA(Character) then
+        self.debugCharacter.character = character :: Character.Character
+    end
 
     if NetworkManager.isServer then
         local state = CharacterStatePacket.server.new(CharacterStatePacket.CharacterStateUpdateType.SPAWN, peer)

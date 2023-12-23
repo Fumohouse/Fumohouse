@@ -54,10 +54,6 @@ function PhysicalMotion.HandleCancel(self: PhysicalMotion, state: MotionState.Mo
 end
 
 function PhysicalMotion.Process(self: PhysicalMotion, state: MotionState.MotionState, delta: number)
-    if state:IsRemoteCharacter() then
-        return
-    end
-
     local ctx = state.ctx
     local wasJumping = state:IsState(MotionState.CharacterState.JUMPING)
 

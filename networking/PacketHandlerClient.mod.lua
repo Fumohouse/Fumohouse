@@ -118,6 +118,11 @@ PacketHandlerClient[PeerStatusPacket.server.NAME] = function(nm: NetworkManager.
 end
 
 PacketHandlerClient[CharacterStatePacket.server.NAME] = function(nm: NetworkManager.NetworkManager, packet: Packet.Packet)
+    -- The character will be synced anyway; errors may occur if packets sent before sync
+    if nm.peerData[1].state < NetworkManager.PeerState.SYNCED then
+        return
+    end
+
     local stu = packet :: CharacterStatePacket.CharacterStatePacket
 
     local characterManager = assert(MapManager.currentRuntime).players
@@ -162,6 +167,8 @@ PacketHandlerClient[CharacterSyncPacket.server.NAME] = function(nm: NetworkManag
             c.state:SetRagdoll(syn.isRagdoll[i])
         end
     end
+
+    nm.peerData[1].state = NetworkManager.PeerState.SYNCED
 end
 
 return PacketHandlerClient

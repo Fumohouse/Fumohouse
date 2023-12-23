@@ -81,6 +81,7 @@ NetworkManager.PeerState = {
     AUTH = 1,
 
     JOINED = 10,
+    SYNCED = 11,
 }
 
 function NetworkManager.Log(self: NetworkManager, ...: any)
@@ -159,7 +160,8 @@ end
 ----------------------
 
 function NetworkManager.SendPacket(self: NetworkManager, peer: number, packet: Packet.Packet)
-    if (peer > 0 and not self.peerData[peer]) or self.peer:GetConnectionStatus() ~= MultiplayerPeer.ConnectionStatus.CONNECTED then
+    if self.peer:GetConnectionStatus() ~= MultiplayerPeer.ConnectionStatus.CONNECTED or
+            (peer > 0 and not self.multiplayer:GetPeers():Has(peer)) then
         return
     end
 
@@ -323,7 +325,7 @@ function NetworkManager._Process(self: NetworkManager, delta: number)
 
                 self:Ping(peer)
             end
-        elseif self.peerData[1] and self.peerData[1].state == NetworkManager.PeerState.JOINED then
+        elseif self.peerData[1] and self.peerData[1].state >= NetworkManager.PeerState.JOINED then
             self:Ping(1)
         end
 

@@ -124,5 +124,14 @@ function LadderMotion.GetVelocity(self: LadderMotion): Vector3?
     return self.velocity
 end
 
+function LadderMotion.GetState(self: LadderMotion)
+    return self.isMoving
+end
+
+function LadderMotion.LoadState(self: LadderMotion, state: Variant)
+    assert(type(state) == "boolean")
+    self.isMoving = state
+end
+
 export type LadderMotion = typeof(LadderMotion.new())
 return LadderMotion

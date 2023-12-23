@@ -103,7 +103,7 @@ PacketHandlerServer[AuthPacket.client.NAME] = function(nm: NetworkManager.Networ
     local syn = SyncPacket.server.new()
 
     for remotePeer, data in nm.peerData do
-        if data.state ~= NetworkManager.PeerState.JOINED or peer == remotePeer then
+        if data.state < NetworkManager.PeerState.JOINED or peer == remotePeer then
             continue
         end
 
@@ -118,7 +118,7 @@ PacketHandlerServer[AuthPacket.client.NAME] = function(nm: NetworkManager.Networ
 end
 
 PacketHandlerServer[CharacterRequestPacket.client.NAME] = function(nm: NetworkManager.NetworkManager, peer: number, packet: Packet.Packet)
-    if nm.peerData[peer].state ~= NetworkManager.PeerState.JOINED then
+    if nm.peerData[peer].state < NetworkManager.PeerState.JOINED then
         return
     end
 

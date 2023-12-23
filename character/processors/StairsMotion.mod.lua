@@ -80,7 +80,7 @@ function StairsMotion.normalTest(self: StairsMotion, state: MotionState.MotionSt
 end
 
 function StairsMotion.findStepUp(self: StairsMotion, state: MotionState.MotionState): (Vector3?, Vector3?)
-    if state.isRagdoll or state:IsRemoteCharacter() then
+    if state.isRagdoll then
         return
     end
 

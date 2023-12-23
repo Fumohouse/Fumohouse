@@ -3,6 +3,7 @@
 ]]
 
 local MotionState = require("../MotionState.mod")
+local Move = require("Move.mod")
 
 local Interpolator = { ID = "interpolator" }
 Interpolator.__index = Interpolator
@@ -34,9 +35,11 @@ end
 function Interpolator.Process(self: Interpolator, state: MotionState.MotionState, delta: number)
     local ctx = state.ctx
 
-    if state.ctx.isReplay or not self.basisOffset or not self.translateOffset then
+    if ctx.isReplay or not self.basisOffset or not self.translateOffset then
         return
     end
+
+    ctx.messages[Move.CANCEL_UPRIGHTING] = true
 
     self.progress = math.min(1, self.progress + delta / self.options.time)
 

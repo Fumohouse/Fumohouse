@@ -49,7 +49,7 @@ function CharacterRequestPacket.SerDe(self: CharacterRequestPacket, serde: SerDe
     end
 
     if self.type == CharacterStatePacket.CharacterStateUpdateType.SPAWN or
-        self.type == CharacterStatePacket.CharacterStateUpdateType.APPEARANCE then
+            self.type == CharacterStatePacket.CharacterStateUpdateType.APPEARANCE then
         local appearance = CharacterAppearanceFragment.client.new(self.appearance)
         appearance:SerDe(serde)
 

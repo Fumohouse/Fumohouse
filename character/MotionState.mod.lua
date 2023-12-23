@@ -175,37 +175,6 @@ function MotionState.new()
     self.ctx = MotionContext.new()
     self.motionProcessors = {} :: {MotionProcessor}
 
-    local function addProcessor(file: string)
-        table.insert(
-            self.motionProcessors,
-            (require(`processors/{file}.mod`) :: any).new()
-        )
-    end
-
-    -- Before Grounding due to GROUND_OVERRIDE
-    addProcessor("StairsMotion")
-
-    -- Early to prevent errors from objects freed between frames
-    -- Coming first also minimizes issues when netcode suddenly changing state, transform, etc. (e.g. grounding state being wrong)
-    addProcessor("Intersections")
-    addProcessor("Grounding")
-
-    addProcessor("Separator")
-    addProcessor("Interpolator")
-
-    addProcessor("Ragdoll")
-    addProcessor("LadderMotion")
-    addProcessor("SwimMotion")
-    addProcessor("HorizontalMotion")
-    addProcessor("PhysicalMotion")
-    addProcessor("PlatformMotion")
-    addProcessor("CollisionMotion")
-
-    addProcessor("Move")
-
-    addProcessor("AreaHandler")
-    addProcessor("CharacterAnimator")
-
     return setmetatable(self, MotionState)
 end
 
@@ -216,6 +185,50 @@ end
 
 function MotionState.Initialize(self: MotionState, config)
     self.peer = config.peer
+
+    local function addProcessor(file: string)
+        table.insert(
+            self.motionProcessors,
+            (require(`processors/{file}.mod`) :: any).new()
+        )
+    end
+
+    local isServer = NetworkManager.isServer
+    local isRemote = self:IsRemoteCharacter()
+
+    -- Before Grounding due to GROUND_OVERRIDE
+    if not isRemote then
+        addProcessor("StairsMotion")
+
+        -- Early to prevent errors from objects freed between frames
+        -- Coming first also minimizes issues when netcode suddenly changing state, transform, etc. (e.g. grounding state being wrong)
+        addProcessor("Intersections")
+        addProcessor("Grounding")
+
+        addProcessor("Separator")
+    end
+    if not isServer then
+        addProcessor("Interpolator")
+    end
+
+    addProcessor("Ragdoll")
+    addProcessor("LadderMotion")
+    if not isRemote then
+        addProcessor("SwimMotion")
+    end
+    addProcessor("HorizontalMotion")
+    if not isRemote then
+        addProcessor("PhysicalMotion")
+        addProcessor("PlatformMotion")
+        addProcessor("CollisionMotion")
+    end
+
+    addProcessor("Move")
+
+    if not isRemote then
+        addProcessor("AreaHandler")
+    end
+    addProcessor("CharacterAnimator")
 
     self.node = config.node
     self.rid = config.rid
@@ -366,7 +379,7 @@ function MotionState.LoadState(self: MotionState, state: Dictionary)
         assert(type(id) == "string")
 
         local processor = self:GetMotionProcessor(id)
-        if processor.LoadState then
+        if processor and processor.LoadState then
             processor.LoadState(processor, pState)
         end
     end
