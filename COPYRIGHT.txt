@@ -17,7 +17,6 @@
 # actual packaging standard. The main goal is to attribute external authors as
 # deemed appropriate.
 
-
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Fumohouse
 Upstream-Contact: voided_etc <fumohouse@pm.me>

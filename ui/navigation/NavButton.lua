@@ -15,7 +15,7 @@ local EXPAND = 20
 function NavButton.TransitionArgs(self: NavButton)
     return {
         inArgs = {},
-        outArgs = { self:GetIndex() + 1 }
+        outArgs = { self:GetIndex() }
     }
 end
 

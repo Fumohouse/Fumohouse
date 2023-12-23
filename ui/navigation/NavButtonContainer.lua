@@ -52,7 +52,7 @@ function NavButtonContainer.Transition(self: NavButtonContainer, vis: boolean, b
         local tweener = tween:Parallel():TweenProperty(button, "position:x", self:buttonTargetX(button, vis), MenuUtils.TRANSITION_DURATION)
 
         if not buttonIdx or vis then
-            tweener:SetDelay(0.03 * (i - 1))
+            tweener:SetDelay(0.03 * i)
         end
     end
 

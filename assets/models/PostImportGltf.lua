@@ -10,7 +10,7 @@ export type PostImportGltf = EditorScenePostImport & typeof(PostImportGltf) & {
     convertedMaterials: {[number]: ShaderMaterial}
 }
 
-local PROPERTY_MAP = {
+local PROPERTY_MAP: {[string]: string} = {
 	["albedo_color"] = "albedo",
 	["albedo_texture"] = "texture_albedo",
 	["ao_light_affect"] = "ao_light_affect",
@@ -56,8 +56,14 @@ function PostImportGltf.convertMaterial(self: PostImportGltf, mat: StandardMater
     local newMat = (assert(load("res://resources/materials/gltf_dither_material.tres")) :: ShaderMaterial)
         :Duplicate()
 
-    for from, to in pairs(PROPERTY_MAP) do
-        newMat:SetShaderParameter(to, mat:Get(from))
+    for from, to in PROPERTY_MAP do
+        local orig = mat:Get(from)
+
+        if type(orig) == "number" then
+            newMat:SetShaderParameter(to, tofloat(orig))
+        else
+            newMat:SetShaderParameter(to, orig)
+        end
     end
 
     newMat:SetShaderParameter("ao_texture_channel", getTextureMask(mat.aoTextureChannel))
