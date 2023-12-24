@@ -1,10 +1,11 @@
 --- @class
---- @extends Control
+--- @extends Button
+--- @permissions OS
 local KskLogo = {}
 local KskLogoC = gdclass(KskLogo)
 
 --- @classType KskLogo
-export type KskLogo = Control & typeof(KskLogo) & {
+export type KskLogo = Button & typeof(KskLogo) & {
     logoMat: ShaderMaterial,
     tween: Tween?,
 }
@@ -19,6 +20,8 @@ function KskLogo._Ready(self: KskLogo)
 
     logo.mouseEntered:Connect(Callable.new(self, "_OnMouseEntered"))
     logo.mouseExited:Connect(Callable.new(self, "_OnMouseExited"))
+
+    self.pressed:Connect(Callable.new(self, "_OnPressed"))
 end
 
 function KskLogo.beginTween(self: KskLogo)
@@ -47,6 +50,11 @@ function KskLogo._OnMouseExited(self: KskLogo)
     local tween = self:beginTween()
     tween:TweenProperty(self.logoMat, PROGRESS_PARAM, 0, TRANSITION_DURATION)
     self.tween = tween
+end
+
+--- @registerMethod
+function KskLogo._OnPressed(self: KskLogo)
+    OS.singleton:ShellOpen("https://kyo.seki.pw/")
 end
 
 return KskLogoC

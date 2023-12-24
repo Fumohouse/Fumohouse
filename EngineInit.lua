@@ -1,6 +1,6 @@
 --- @class
---- @permissions INTERNAL
 --- @extends Node
+--- @permissions INTERNAL
 local EngineInit = {}
 local EngineInitC = gdclass(EngineInit)
 

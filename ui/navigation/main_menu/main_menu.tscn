@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bi4nul2t2fnl8"]
+[gd_scene load_steps=27 format=3 uid="uid://bi4nul2t2fnl8"]
 
 [ext_resource type="PackedScene" uid="uid://nrh6mhdp4grr" path="res://ui/navigation/nav_menu.tscn" id="1_67448"]
 [ext_resource type="Texture2D" uid="uid://cewbassnie0qr" path="res://assets/textures/ui/faces_bg.svg" id="1_efpvf"]
@@ -6,9 +6,9 @@
 [ext_resource type="Script" path="res://ui/navigation/main_menu/MainScreen.lua" id="3_gaw40"]
 [ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="4_0v5t1"]
 [ext_resource type="Script" path="res://ui/navigation/main_menu/VersionLabel.lua" id="4_5s06d"]
-[ext_resource type="Script" path="res://ui/navigation/TransitionElement.lua" id="4_ubl7r"]
 [ext_resource type="PackedScene" uid="uid://bxnpb5vh0ddmo" path="res://ui/navigation/info_screen/info_screen.tscn" id="5_73rts"]
 [ext_resource type="PackedScene" uid="uid://cdwau5ohe3wxa" path="res://ui/navigation/options_screen/options_screen.tscn" id="5_deh0t"]
+[ext_resource type="PackedScene" uid="uid://ccd2h2cmi606" path="res://ui/navigation/changelog_screen/changelog_screen.tscn" id="5_gu5lu"]
 [ext_resource type="Shader" path="res://ui/navigation/main_menu/ksk_logo.gdshader" id="5_ka0he"]
 [ext_resource type="Script" path="res://ui/navigation/main_menu/KskLogo.lua" id="5_sft8o"]
 [ext_resource type="Texture2D" uid="uid://l068kvg3crfl" path="res://assets/textures/ksk.svg" id="6_p1kjr"]
@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://bwqgvr4b7aq6j" path="res://assets/textures/ui/icons/bell-fill.svg" id="16_aw72i"]
 [ext_resource type="PackedScene" uid="uid://chehkmfpoevq6" path="res://ui/navigation/nav_button_container.tscn" id="18_wsqm6"]
 [ext_resource type="PackedScene" uid="uid://d0mo4s2hqyov3" path="res://ui/music_controller/music_controller.tscn" id="19_cmuwc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_itoho"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_262lo"]
 shader = ExtResource("5_ka0he")
@@ -71,34 +73,11 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.392157)
 
-[node name="PlaceholderScreen" type="PanelContainer" parent="Screens" index="0"]
+[node name="InfoScreen" parent="Screens" index="0" instance=ExtResource("5_73rts")]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -210.0
-offset_right = 320.0
-offset_bottom = 210.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_ubl7r")
 
-[node name="MarginContainer" type="MarginContainer" parent="Screens/PlaceholderScreen" index="0"]
-layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Screens/PlaceholderScreen/MarginContainer" index="0"]
-layout_mode = 2
-text = "This is a placeholder screen."
-
-[node name="InfoScreen" parent="Screens" index="1" instance=ExtResource("5_73rts")]
+[node name="ChangelogScreen" parent="Screens" index="1" instance=ExtResource("5_gu5lu")]
 visible = false
 layout_mode = 1
 
@@ -217,10 +196,11 @@ offset_bottom = -48.0
 grow_vertical = 0
 theme_override_constants/separation = 16
 
-[node name="ksk" type="Control" parent="Screens/MainScreen/NonNavigation/LowerLeft" index="0"]
+[node name="ksk" type="Button" parent="Screens/MainScreen/NonNavigation/LowerLeft" index="0"]
 custom_minimum_size = Vector2(56, 37)
 layout_mode = 2
-mouse_filter = 1
+theme_override_styles/focus = SubResource("StyleBoxEmpty_itoho")
+flat = true
 script = ExtResource("5_sft8o")
 
 [node name="Logo" type="ColorRect" parent="Screens/MainScreen/NonNavigation/LowerLeft/ksk" index="0"]
@@ -240,6 +220,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(30, 20)
 size_flags_vertical = 4
+mouse_filter = 1
 mouse_default_cursor_shape = 2
 
 [node name="Separator" type="ColorRect" parent="Screens/MainScreen/NonNavigation/LowerLeft" index="1"]

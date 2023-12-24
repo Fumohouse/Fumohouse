@@ -16,7 +16,7 @@ custom_minimum_size = Vector2(0, 48)
 layout_mode = 0
 offset_left = 184.0
 offset_top = 32.0
-offset_right = 500.0
+offset_right = 244.0
 offset_bottom = 80.0
 theme_override_constants/separation = 48
 

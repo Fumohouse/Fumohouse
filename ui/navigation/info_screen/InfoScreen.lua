@@ -7,8 +7,8 @@ local MapManagerM = require("../../../map_system/MapManager")
 local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
 
 --- @class
---- @permissions FILE
 --- @extends ScreenBase
+--- @permissions FILE
 local InfoScreen = {}
 local InfoScreenC = gdclass(InfoScreen)
 

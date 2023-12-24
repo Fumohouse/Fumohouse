@@ -14,8 +14,8 @@ local MainMenuC = gdclass(MainMenu)
 export type MainMenu = NavMenu.NavMenu & typeof(MainMenu) & {
     mainScreen: MainScreen.MainScreen,
     infoScreen: TransitionElement.TransitionElement,
+    changelogScreen: TransitionElement.TransitionElement,
     optionsScreen: TransitionElement.TransitionElement,
-    placeholderScreen: TransitionElement.TransitionElement,
     dim: ColorRect,
 }
 
@@ -50,8 +50,8 @@ end
 function MainMenu._Ready(self: MainMenu)
     self.mainScreen = self:GetNode("Screens/MainScreen") :: MainScreen.MainScreen
     self.infoScreen = self:GetNode("Screens/InfoScreen") :: TransitionElement.TransitionElement
+    self.changelogScreen = self:GetNode("Screens/ChangelogScreen") :: TransitionElement.TransitionElement
     self.optionsScreen = self:GetNode("Screens/OptionsScreen") :: TransitionElement.TransitionElement
-    self.placeholderScreen = self:GetNode("Screens/PlaceholderScreen") :: TransitionElement.TransitionElement
 
     NavMenu._Ready(self)
 
@@ -60,18 +60,14 @@ function MainMenu._Ready(self: MainMenu)
     local infoButton = self:GetNode("%InfoButton") :: NavButton.NavButton
     infoButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(infoButton, self.infoScreen))
 
+    local changelogButton = self:GetNode("%ChangelogButton") :: NavButton.NavButton
+    changelogButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(changelogButton, self.changelogScreen))
+
     local optionsButton = self:GetNode("%OptionsButton") :: NavButton.NavButton
     optionsButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(optionsButton, self.optionsScreen))
 
     local exitButton = self:GetNode("%ExitButton") :: NavButton.NavButton
     exitButton.pressed:Connect(Callable.new(self, "_OnExitButtonPressed"):Bind(exitButton))
-
-    for _, button: NavButton.NavButton in self.mainScreen.mainButtons:GetChildren() do
-        -- TODO: this is very temporary
-        if button.name ~= "InfoButton" and button.name ~= "OptionsButton" and button.name ~= "ExitButton" then
-            button.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(button, self.placeholderScreen))
-        end
-    end
 
     -- Setup
     wait(0.05)

@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccd2h2cmi606"]
+
+[ext_resource type="PackedScene" uid="uid://ghrg27kkromx" path="res://ui/navigation/screen_base_layout.tscn" id="1_jm3s8"]
+[ext_resource type="Script" path="res://ui/navigation/changelog_screen/ChangelogScreen.lua" id="2_bl162"]
+[ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="3_6sm4s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8xs5e"]
+font = ExtResource("3_6sm4s")
+font_size = 18
+
+[node name="ChangelogScreen" node_paths=PackedStringArray("entries", "entryTitle", "entryContents") instance=ExtResource("1_jm3s8")]
+script = ExtResource("2_bl162")
+entries = NodePath("Contents/MarginContainer/HSplitContainer/Entries/ScrollContainer/VBoxContainer")
+entryTitle = NodePath("Contents/MarginContainer/HSplitContainer/VBoxContainer/Label")
+entryContents = NodePath("Contents/MarginContainer/HSplitContainer/VBoxContainer/Contents")
+
+[node name="Title" parent="TopBar" index="0"]
+text = "Changelog"
+
+[node name="MarginContainer" parent="Contents" index="0"]
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Contents/MarginContainer" index="0"]
+layout_mode = 2
+theme_override_constants/autohide = 0
+split_offset = 200
+
+[node name="Entries" type="VBoxContainer" parent="Contents/MarginContainer/HSplitContainer" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Contents/MarginContainer/HSplitContainer/Entries" index="0"]
+layout_mode = 2
+text = "Entries"
+label_settings = SubResource("LabelSettings_8xs5e")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Contents/MarginContainer/HSplitContainer/Entries" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/HSplitContainer/Entries/ScrollContainer" index="0"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/HSplitContainer" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Contents/MarginContainer/HSplitContainer/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Changelog for 2023/12/23"
+label_settings = SubResource("LabelSettings_8xs5e")
+
+[node name="Contents" type="RichTextLabel" parent="Contents/MarginContainer/HSplitContainer/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
