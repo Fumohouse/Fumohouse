@@ -30,6 +30,10 @@ export type MapManifest = Resource & typeof(MapManifest) & {
     titlePlaylist: string,
     --- @property
     defaultPlaylist: string,
+
+    --- @property
+    --- @file *.txt
+    copyrightFile: string,
 }
 
 return MapManifestC

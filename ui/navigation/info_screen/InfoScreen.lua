@@ -1,6 +1,10 @@
 local ScreenBase = require("../ScreenBase")
 local Utils = require("../../../utils/Utils.mod")
 local CopyrightParser = require("../../../utils/CopyrightParser.mod")
+local MapManifest = require("../../../map_system/MapManifest")
+
+local MapManagerM = require("../../../map_system/MapManager")
+local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
 
 --- @class
 --- @permissions FILE
@@ -14,15 +18,20 @@ export type InfoScreen = ScreenBase.ScreenBase & typeof(InfoScreen) & {
     versionText: RichTextLabel,
     --- @property
     copyrightText: RichTextLabel,
+    --- @property
+    mapCopyrightTitle: Label,
+    --- @property
+    mapCopyrightText: RichTextLabel,
 
     --- @property
-    licensePopup: Window,
+    infoPopup: Window,
     --- @property
-    licenseTitle: Label,
+    infoTitle: Label,
     --- @property
-    licenseText: RichTextLabel,
+    infoText: RichTextLabel,
 
     copyrightInfo: CopyrightParser.CopyrightFile,
+    mapCopyrightInfo: CopyrightParser.CopyrightFile?,
 }
 
 local function hangingIndent(str: string)
@@ -41,6 +50,30 @@ local function hangingIndent(str: string)
     return output
 end
 
+local function parseCopyrightInfo(path: string)
+    local file = FileAccess.Open(path, FileAccess.ModeFlags.READ)
+    assert(file, `Failed to open {path}`)
+
+    local copyrightInfo = CopyrightParser.Parse(file:GetAsText())
+
+    local copyrightInfoText = ""
+
+    for i, filesInfo in copyrightInfo.files do
+        copyrightInfoText ..= string.format([[
+[b]%s[/b]
+    [b]Files[/b]: [code]%s[/code]
+    [b]Copyright[/b]: %s
+    [b]License[/b]: [url=%s]%s[/url]
+        ]], filesInfo.comment, filesInfo.files, hangingIndent(filesInfo.copyright), filesInfo.license, filesInfo.license)
+
+        if i ~= #copyrightInfo.files then
+            copyrightInfoText ..= "\n"
+        end
+    end
+
+    return copyrightInfo, copyrightInfoText
+end
+
 --- @registerMethod
 function InfoScreen._Ready(self: InfoScreen)
     ScreenBase._Ready(self)
@@ -54,37 +87,52 @@ function InfoScreen._Ready(self: InfoScreen)
     local file = FileAccess.Open("res://COPYRIGHT.txt", FileAccess.ModeFlags.READ)
     assert(file, "Failed to open COPYRIGHT.txt")
 
-    self.copyrightInfo = CopyrightParser.Parse(file:GetAsText())
+    local copyrightInfo, copyrightInfoText = parseCopyrightInfo("res://COPYRIGHT.txt")
 
-    local copyrightInfoText = ""
-
-    for i, filesInfo in self.copyrightInfo.files do
-        copyrightInfoText ..= string.format([[
-[b]%s[/b]
-    [b]Files[/b]: [code]%s[/code]
-    [b]Copyright[/b]: %s
-    [b]License[/b]: [url=%s]%s[/url]
-        ]], filesInfo.comment, filesInfo.files, hangingIndent(filesInfo.copyright), filesInfo.license, filesInfo.license)
-
-        if i ~= #self.copyrightInfo.files then
-            copyrightInfoText ..= "\n"
-        end
-    end
-
+    self.copyrightInfo = copyrightInfo
     self.copyrightText.text = copyrightInfoText
+
     self.copyrightText.metaClicked:Connect(Callable.new(self, "_OnCopyrightMetaClicked"))
+    self.mapCopyrightText.metaClicked:Connect(Callable.new(self, "_OnMapCopyrightMetaClicked"))
+
+    self:_OnMapChanged(MapManager.currentMap and MapManager.currentMap.manifest)
+    MapManager.mapChanged:Connect(Callable.new(self, "_OnMapChanged"))
+end
+
+--- @registerMethod
+function InfoScreen._OnMapChanged(self: InfoScreen, manifest: MapManifest.MapManifest?)
+    local actualManifest = manifest or MapManager:GetTitleMap().manifest
+
+    self.mapCopyrightTitle.text = `{actualManifest.author} - {actualManifest.name} Copyright Information`
+
+    if FileAccess.FileExists(actualManifest.copyrightFile) then
+        local copyrightInfo, copyrightInfoText = parseCopyrightInfo(actualManifest.copyrightFile)
+        self.mapCopyrightInfo = copyrightInfo
+        self.mapCopyrightText.text = copyrightInfoText
+    else
+        self.mapCopyrightInfo = nil
+        self.mapCopyrightText.text = "This map does not provide any copyright information."
+    end
+end
+
+function InfoScreen.openLicensePopup(self: InfoScreen, key: string, license: CopyrightParser.CopyrightLicense?)
+    self.infoPopup.size = Vector2i.new(800, 640)
+
+    self.infoTitle.text = `{key} License Text`
+    self.infoText.text = if license then license.text else "License text not found."
+
+    self.infoPopup.visible = true
 end
 
 --- @registerMethod
 function InfoScreen._OnCopyrightMetaClicked(self: InfoScreen, meta: string)
-    local license = assert(self.copyrightInfo.licenses[meta])
+    self:openLicensePopup(meta, self.copyrightInfo.licenses[meta])
+end
 
-    self.licensePopup.size = Vector2i.new(800, 640)
-
-    self.licenseTitle.text = `{license.id} License Text`
-    self.licenseText.text = license.text
-
-    self.licensePopup.visible = true
+--- @registerMethod
+function InfoScreen._OnMapCopyrightMetaClicked(self: InfoScreen, meta: string)
+    assert(self.mapCopyrightInfo)
+    self:openLicensePopup(meta, self.mapCopyrightInfo.licenses[meta])
 end
 
 return InfoScreenC

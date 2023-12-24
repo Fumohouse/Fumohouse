@@ -17,6 +17,9 @@ export type MapData = {
 
 --- @classType MapManager
 export type MapManager = Node & typeof(MapManager) & {
+    --- @signal
+    mapChanged: SignalWithArgs<(manifest: MapManifest.MapManifest?) -> ()>,
+
     maps: {[string]: MapData},
     currentMap: MapData?,
     currentRuntime: MapRuntime.MapRuntime?,
@@ -94,9 +97,11 @@ function MapManager.Load(self: MapManager, id: string)
     end
 
     self:GetTree():SetCurrentScene(newScene)
+
+    self.mapChanged:Emit(map.manifest)
 end
 
-function MapManager.getTitleMap(self: MapManager)
+function MapManager.GetTitleMap(self: MapManager)
     local DEFAULT_MAP = "fumohouse"
 
     local map = self.maps[DEFAULT_MAP]
@@ -109,7 +114,7 @@ function MapManager.getTitleMap(self: MapManager)
 end
 
 function MapManager.PlayTitlePlaylist(self: MapManager)
-    local menuMap = self:getTitleMap().manifest
+    local menuMap = self:GetTitleMap().manifest
 
     MusicPlayer:LoadPlaylists(menuMap.playlists)
     MusicPlayer:SwitchPlaylist(menuMap.titlePlaylist)

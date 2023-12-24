@@ -15,6 +15,7 @@ export type GameMenu = NavMenu.NavMenu & typeof(GameMenu) & {
     opened: Signal,
 
     mainScreen: MenuScreen.MenuScreen,
+    infoScreen: TransitionElement.TransitionElement,
     optionsScreen: TransitionElement.TransitionElement,
     blurBackground: Control,
     blurMat: ShaderMaterial,
@@ -117,17 +118,23 @@ end
 function GameMenu._Ready(self: GameMenu)
     self.mainScreen = self:GetNode("Screens/MenuScreen") :: MenuScreen.MenuScreen
     self.mainScreen.transition:Connect(Callable.new(self, "_OnMainScreenTransition"))
+
+    self.infoScreen = self:GetNode("Screens/InfoScreen") :: TransitionElement.TransitionElement
     self.optionsScreen = self:GetNode("Screens/OptionsScreen") :: TransitionElement.TransitionElement
+
     NavMenu._Ready(self)
 
     self.blurBackground = self:GetNode("Blur") :: Control
     self.blurMat = assert(self.blurBackground.material) :: ShaderMaterial
 
-    local optionsButton = self:GetNode("%OptionsButton") :: NavButton.NavButton
-    optionsButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(optionsButton, self.optionsScreen))
-
     local continueButton = self:GetNode("%ContinueButton") :: NavButton.NavButton
     continueButton.pressed:Connect(Callable.new(self, "_OnContinueButtonPressed"):Bind(continueButton))
+
+    local infoButton = self:GetNode("%InfoButton") :: NavButton.NavButton
+    infoButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(infoButton, self.infoScreen))
+
+    local optionsButton = self:GetNode("%OptionsButton") :: NavButton.NavButton
+    optionsButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(optionsButton, self.optionsScreen))
 
     self:Hide()
 end

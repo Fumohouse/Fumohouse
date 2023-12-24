@@ -22,15 +22,17 @@ font_size = 12
 font = ExtResource("4_dxeln")
 font_size = 20
 
-[node name="InfoScreen" node_paths=PackedStringArray("tabContainer", "tabs", "versionText", "copyrightText", "licensePopup", "licenseTitle", "licenseText") instance=ExtResource("1_kosdp")]
+[node name="InfoScreen" node_paths=PackedStringArray("tabContainer", "tabs", "versionText", "copyrightText", "mapCopyrightTitle", "mapCopyrightText", "infoPopup", "infoTitle", "infoText") instance=ExtResource("1_kosdp")]
 script = ExtResource("2_gs52k")
 tabContainer = NodePath("TopBar/ButtonTabContainer")
 tabs = NodePath("Contents/MarginContainer/ScrollContainer/Tabs")
 versionText = NodePath("Contents/MarginContainer/ScrollContainer/Tabs/Main/Header/Version")
 copyrightText = NodePath("Contents/MarginContainer/ScrollContainer/Tabs/Copyright/MarginContainer/CopyrightText")
-licensePopup = NodePath("InfoPopup")
-licenseTitle = NodePath("InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
-licenseText = NodePath("InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
+mapCopyrightTitle = NodePath("Contents/MarginContainer/ScrollContainer/Tabs/MapCopyright/Heading")
+mapCopyrightText = NodePath("Contents/MarginContainer/ScrollContainer/Tabs/MapCopyright/MarginContainer/CopyrightText")
+infoPopup = NodePath("InfoPopup")
+infoTitle = NodePath("InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
+infoText = NodePath("InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
 
 [node name="Title" parent="TopBar" index="0"]
 text = "Credits/Info"
@@ -51,9 +53,14 @@ text = "Main Info"
 [node name="Copyright" type="Button" parent="TopBar/ButtonTabContainer" index="1"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
-text = "Copyright Information"
+text = "Copyright"
 
-[node name="Licenses" type="Button" parent="TopBar/ButtonTabContainer" index="2"]
+[node name="MapCopyright" type="Button" parent="TopBar/ButtonTabContainer" index="2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Map Copyright"
+
+[node name="Licenses" type="Button" parent="TopBar/ButtonTabContainer" index="3"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Open-source Licenses"
@@ -170,34 +177,7 @@ text = "Fumohouse is not officially affiliated with any external authors."
 label_settings = SubResource("LabelSettings_mihrk")
 horizontal_alignment = 1
 
-[node name="Kenney" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External/HFlowContainer" index="0" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
-layout_mode = 2
-name = "Kenney"
-role = "Assets"
-description = "Created the prototype texture used in the playground map"
-infoPopup = NodePath("../../../../../../../../InfoPopup")
-infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
-infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
-
-[node name="Kevin MacLeod" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External/HFlowContainer" index="1" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
-layout_mode = 2
-name = "Kevin MacLeod"
-role = "Music"
-description = "Created music used in the playground map"
-infoPopup = NodePath("../../../../../../../../InfoPopup")
-infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
-infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
-
-[node name="flowerhead" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External/HFlowContainer" index="2" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
-layout_mode = 2
-name = "flowerhead"
-role = "Music"
-description = "Created music used in the playground map"
-infoPopup = NodePath("../../../../../../../../InfoPopup")
-infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
-infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
-
-[node name="Godot" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External/HFlowContainer" index="3" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
+[node name="Godot" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External/HFlowContainer" index="0" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
 layout_mode = 2
 name = "Godot Contributors"
 role = "Godot Engine"
@@ -206,7 +186,7 @@ infoPopup = NodePath("../../../../../../../../InfoPopup")
 infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
 infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
 
-[node name="Andrea Calabró" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External/HFlowContainer" index="4" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
+[node name="Andrea Calabró" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External/HFlowContainer" index="1" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
 layout_mode = 2
 name = "Andrea Calabró"
 role = "Godot Logo"
@@ -215,7 +195,7 @@ infoPopup = NodePath("../../../../../../../../InfoPopup")
 infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
 infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
 
-[node name="Roblox" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External/HFlowContainer" index="5" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
+[node name="Roblox" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External/HFlowContainer" index="2" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
 layout_mode = 2
 name = "Roblox Corp."
 role = "Luau"
@@ -291,7 +271,26 @@ bbcode_enabled = true
 fit_content = true
 scroll_active = false
 
-[node name="Licenses" type="VBoxContainer" parent="Contents/MarginContainer/ScrollContainer/Tabs" index="2"]
+[node name="MapCopyright" type="VBoxContainer" parent="Contents/MarginContainer/ScrollContainer/Tabs" index="2"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Heading" parent="Contents/MarginContainer/ScrollContainer/Tabs/MapCopyright" index="0" instance=ExtResource("4_fmsuy")]
+layout_mode = 2
+text = "Map Copyright Information"
+
+[node name="MarginContainer" type="MarginContainer" parent="Contents/MarginContainer/ScrollContainer/Tabs/MapCopyright" index="1"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+
+[node name="CopyrightText" type="RichTextLabel" parent="Contents/MarginContainer/ScrollContainer/Tabs/MapCopyright/MarginContainer" index="0"]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="Licenses" type="VBoxContainer" parent="Contents/MarginContainer/ScrollContainer/Tabs" index="3"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 16

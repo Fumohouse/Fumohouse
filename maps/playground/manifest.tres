@@ -15,3 +15,4 @@ mainScenePath = "res://maps/playground/playground.tscn"
 playlists = [ExtResource("1_4lptv"), ExtResource("2_3tpvn")]
 titlePlaylist = "special"
 defaultPlaylist = "main"
+copyrightFile = "res://maps/playground/COPYRIGHT.txt"
