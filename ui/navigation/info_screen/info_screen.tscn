@@ -1,0 +1,418 @@
+[gd_scene load_steps=14 format=3 uid="uid://bxnpb5vh0ddmo"]
+
+[ext_resource type="PackedScene" uid="uid://ghrg27kkromx" path="res://ui/navigation/screen_base_layout.tscn" id="1_kosdp"]
+[ext_resource type="Script" path="res://ui/navigation/info_screen/InfoScreen.lua" id="2_gs52k"]
+[ext_resource type="Script" path="res://nodes/ButtonTabContainer.lua" id="3_0jemo"]
+[ext_resource type="Texture2D" uid="uid://cs26kmefu5xmq" path="res://assets/textures/logo_dark.svg" id="3_uwqg1"]
+[ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="4_dxeln"]
+[ext_resource type="PackedScene" uid="uid://b8kd4qjo2av52" path="res://ui/navigation/info_screen/info_heading.tscn" id="4_fmsuy"]
+[ext_resource type="PackedScene" uid="uid://cdvsqwyqsanea" path="res://ui/navigation/info_screen/info_contributor_section.tscn" id="5_e4440"]
+[ext_resource type="PackedScene" uid="uid://dw784110vdipn" path="res://ui/navigation/info_screen/info_license.tscn" id="5_m557c"]
+[ext_resource type="PackedScene" uid="uid://bj83f6m05qtl2" path="res://ui/navigation/info_screen/info_contributor.tscn" id="6_8tr7y"]
+[ext_resource type="FontFile" uid="uid://cl1t2pm0rvomw" path="res://assets/fonts/IBMPlexSans-Italic.ttf" id="7_6jxe4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gtt28"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_mihrk"]
+font = ExtResource("7_6jxe4")
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_xtcyw"]
+font = ExtResource("4_dxeln")
+font_size = 20
+
+[node name="InfoScreen" node_paths=PackedStringArray("tabContainer", "tabs", "versionText", "copyrightText", "licensePopup", "licenseTitle", "licenseText") instance=ExtResource("1_kosdp")]
+script = ExtResource("2_gs52k")
+tabContainer = NodePath("TopBar/ButtonTabContainer")
+tabs = NodePath("Contents/MarginContainer/ScrollContainer/Tabs")
+versionText = NodePath("Contents/MarginContainer/ScrollContainer/Tabs/Main/Header/Version")
+copyrightText = NodePath("Contents/MarginContainer/ScrollContainer/Tabs/Copyright/MarginContainer/CopyrightText")
+licensePopup = NodePath("InfoPopup")
+licenseTitle = NodePath("InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
+licenseText = NodePath("InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
+
+[node name="Title" parent="TopBar" index="0"]
+text = "Credits/Info"
+
+[node name="ButtonTabContainer" type="HBoxContainer" parent="TopBar" index="1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+script = ExtResource("3_0jemo")
+
+[node name="Main" type="Button" parent="TopBar/ButtonTabContainer" index="0"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Main Info"
+
+[node name="Copyright" type="Button" parent="TopBar/ButtonTabContainer" index="1"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Copyright Information"
+
+[node name="Licenses" type="Button" parent="TopBar/ButtonTabContainer" index="2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Open-source Licenses"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Contents/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="Tabs" type="MarginContainer" parent="Contents/MarginContainer/ScrollContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Main" type="VBoxContainer" parent="Contents/MarginContainer/ScrollContainer/Tabs" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Header" type="VBoxContainer" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main" index="0"]
+layout_mode = 2
+
+[node name="Logos" type="HBoxContainer" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Header" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Header/Logos" index="0"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("3_uwqg1")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Header/Logos" index="1"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Header/Logos/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Fumohouse"
+label_settings = SubResource("LabelSettings_gtt28")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Header/Logos/VBoxContainer" index="1"]
+layout_mode = 2
+bbcode_enabled = true
+text = "a [img height=20]res://assets/textures/ksk.svg[/img] project"
+fit_content = true
+scroll_active = false
+
+[node name="Version" type="RichTextLabel" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Header" index="1"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/bold_font_size = 14
+bbcode_enabled = true
+text = "[center]Version Placeholder[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Rule" type="ColorRect" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main" index="1"]
+custom_minimum_size = Vector2(400, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.301961, 0.301961, 0.301961, 1)
+
+[node name="Leadership" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main" index="2" instance=ExtResource("5_e4440")]
+layout_mode = 2
+
+[node name="Heading" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Leadership" index="0"]
+text = "Project leadership"
+
+[node name="voided_etc" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Leadership/HFlowContainer" index="0" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
+layout_mode = 2
+name = "voided_etc"
+role = "Lead Developer"
+description = "Lead developer of Fumohouse and godot-luau-script"
+infoPopup = NodePath("../../../../../../../../InfoPopup")
+infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
+infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
+
+[node name="Contributors" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main" index="3" instance=ExtResource("5_e4440")]
+layout_mode = 2
+
+[node name="Heading" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Contributors" index="0"]
+text = "Contributors"
+
+[node name="PoliticalCirno" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Contributors/HFlowContainer" index="0" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
+layout_mode = 2
+name = "PoliticalCirno"
+role = "Modeler"
+description = "Original modeler of the fumo rig"
+infoPopup = NodePath("../../../../../../../../InfoPopup")
+infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
+infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
+
+[node name="le_fortune" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Contributors/HFlowContainer" index="1" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
+layout_mode = 2
+name = "le_fortune"
+role = "Animator"
+description = "Created most of the default rig's animations"
+infoPopup = NodePath("../../../../../../../../InfoPopup")
+infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
+infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
+
+[node name="External" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main" index="4" instance=ExtResource("5_e4440")]
+layout_mode = 2
+
+[node name="Heading" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External" index="0"]
+text = "External works"
+
+[node name="Disclaimer" type="Label" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External" index="1"]
+layout_mode = 2
+text = "Fumohouse is not officially affiliated with any external authors."
+label_settings = SubResource("LabelSettings_mihrk")
+horizontal_alignment = 1
+
+[node name="Kenney" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External/HFlowContainer" index="0" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
+layout_mode = 2
+name = "Kenney"
+role = "Assets"
+description = "Created the prototype texture used in the playground map"
+infoPopup = NodePath("../../../../../../../../InfoPopup")
+infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
+infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
+
+[node name="Kevin MacLeod" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External/HFlowContainer" index="1" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
+layout_mode = 2
+name = "Kevin MacLeod"
+role = "Music"
+description = "Created music used in the playground map"
+infoPopup = NodePath("../../../../../../../../InfoPopup")
+infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
+infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
+
+[node name="flowerhead" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External/HFlowContainer" index="2" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
+layout_mode = 2
+name = "flowerhead"
+role = "Music"
+description = "Created music used in the playground map"
+infoPopup = NodePath("../../../../../../../../InfoPopup")
+infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
+infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
+
+[node name="Godot" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External/HFlowContainer" index="3" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
+layout_mode = 2
+name = "Godot Contributors"
+role = "Godot Engine"
+description = "Maintain the Godot Engine"
+infoPopup = NodePath("../../../../../../../../InfoPopup")
+infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
+infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
+
+[node name="Andrea Calabró" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External/HFlowContainer" index="4" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
+layout_mode = 2
+name = "Andrea Calabró"
+role = "Godot Logo"
+description = "Created the Godot logo"
+infoPopup = NodePath("../../../../../../../../InfoPopup")
+infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
+infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
+
+[node name="Roblox" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/External/HFlowContainer" index="5" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
+layout_mode = 2
+name = "Roblox Corp."
+role = "Luau"
+description = "Maintains the Luau language"
+infoPopup = NodePath("../../../../../../../../InfoPopup")
+infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
+infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
+
+[node name="Inspiration" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main" index="5" instance=ExtResource("5_e4440")]
+layout_mode = 2
+
+[node name="Heading" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Inspiration" index="0"]
+text = "Inspiration and source works"
+
+[node name="Disclaimer" type="Label" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Inspiration" index="1"]
+layout_mode = 2
+text = "Fumohouse is not officially affiliated with any of its inspiration or source works."
+label_settings = SubResource("LabelSettings_mihrk")
+horizontal_alignment = 1
+
+[node name="A019677" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Inspiration/HFlowContainer" index="0" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
+layout_mode = 2
+name = "A019677"
+role = "LeFumo Cafe"
+description = "Creator of the original cafe map for Fumofas"
+infoPopup = NodePath("../../../../../../../../InfoPopup")
+infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
+infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
+
+[node name="Okuechi" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Inspiration/HFlowContainer" index="1" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
+layout_mode = 2
+name = "Okuechi"
+role = "Become Fumo"
+description = "Creator of Become Fumo"
+infoPopup = NodePath("../../../../../../../../InfoPopup")
+infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
+infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
+
+[node name="ceat_ceat" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Inspiration/HFlowContainer" index="2" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
+layout_mode = 2
+name = "ceat_ceat"
+role = "Scuffed Become Fumo"
+description = "Creator of Scuffed Become Fumo"
+infoPopup = NodePath("../../../../../../../../InfoPopup")
+infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
+infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
+
+[node name="ZUN" parent="Contents/MarginContainer/ScrollContainer/Tabs/Main/Inspiration/HFlowContainer" index="3" node_paths=PackedStringArray("infoPopup", "infoTitle", "infoText") instance=ExtResource("6_8tr7y")]
+layout_mode = 2
+name = "ZUN"
+role = "Touhou"
+description = "Creator of the Touhou franchise"
+infoPopup = NodePath("../../../../../../../../InfoPopup")
+infoTitle = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Title")
+infoText = NodePath("../../../../../../../../InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Text")
+
+[node name="Copyright" type="VBoxContainer" parent="Contents/MarginContainer/ScrollContainer/Tabs" index="1"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Heading" parent="Contents/MarginContainer/ScrollContainer/Tabs/Copyright" index="0" instance=ExtResource("4_fmsuy")]
+layout_mode = 2
+text = "Fumohouse Copyright Information"
+
+[node name="MarginContainer" type="MarginContainer" parent="Contents/MarginContainer/ScrollContainer/Tabs/Copyright" index="1"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+
+[node name="CopyrightText" type="RichTextLabel" parent="Contents/MarginContainer/ScrollContainer/Tabs/Copyright/MarginContainer" index="0"]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="Licenses" type="VBoxContainer" parent="Contents/MarginContainer/ScrollContainer/Tabs" index="2"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Heading" parent="Contents/MarginContainer/ScrollContainer/Tabs/Licenses" index="0" instance=ExtResource("4_fmsuy")]
+layout_mode = 2
+text = "Open-source Licenses"
+
+[node name="Godot" parent="Contents/MarginContainer/ScrollContainer/Tabs/Licenses" index="1" instance=ExtResource("5_m557c")]
+layout_mode = 2
+
+[node name="Luau" parent="Contents/MarginContainer/ScrollContainer/Tabs/Licenses" index="2" instance=ExtResource("5_m557c")]
+layout_mode = 2
+
+[node name="Label" parent="Contents/MarginContainer/ScrollContainer/Tabs/Licenses/Luau" index="0"]
+text = "Luau"
+
+[node name="RichTextLabel" parent="Contents/MarginContainer/ScrollContainer/Tabs/Licenses/Luau/MarginContainer" index="0"]
+text = "Copyright (c) 2019-2023 Roblox Corporation
+Copyright (c) 1994–2019 Lua.org, PUC-Rio.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+
+[node name="FreeType" parent="Contents/MarginContainer/ScrollContainer/Tabs/Licenses" index="3" instance=ExtResource("5_m557c")]
+layout_mode = 2
+
+[node name="Label" parent="Contents/MarginContainer/ScrollContainer/Tabs/Licenses/FreeType" index="0"]
+text = "FreeType"
+
+[node name="RichTextLabel" parent="Contents/MarginContainer/ScrollContainer/Tabs/Licenses/FreeType/MarginContainer" index="0"]
+text = "Portions of this software are copyright © 2023 The FreeType Project (www.freetype.org). All rights reserved."
+
+[node name="ENet" parent="Contents/MarginContainer/ScrollContainer/Tabs/Licenses" index="4" instance=ExtResource("5_m557c")]
+layout_mode = 2
+
+[node name="Label" parent="Contents/MarginContainer/ScrollContainer/Tabs/Licenses/ENet" index="0"]
+text = "ENet"
+
+[node name="RichTextLabel" parent="Contents/MarginContainer/ScrollContainer/Tabs/Licenses/ENet/MarginContainer" index="0"]
+text = "Copyright (c) 2002-2020 Lee Salzman
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+
+[node name="Mbed TLS" parent="Contents/MarginContainer/ScrollContainer/Tabs/Licenses" index="5" instance=ExtResource("5_m557c")]
+layout_mode = 2
+
+[node name="Label" parent="Contents/MarginContainer/ScrollContainer/Tabs/Licenses/Mbed TLS" index="0"]
+text = "Mbed TLS"
+
+[node name="RichTextLabel" parent="Contents/MarginContainer/ScrollContainer/Tabs/Licenses/Mbed TLS/MarginContainer" index="0"]
+text = "Copyright The Mbed TLS Contributors
+
+Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License."
+
+[node name="InfoPopup" type="Popup" parent="." index="2"]
+transparent_bg = true
+initial_position = 2
+size = Vector2i(300, 300)
+
+[node name="PanelContainer" type="PanelContainer" parent="InfoPopup" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Panel1"
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoPopup/PanelContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="InfoPopup/PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoPopup/PanelContainer/MarginContainer/ScrollContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Title"
+label_settings = SubResource("LabelSettings_xtcyw")
+
+[node name="Text" type="RichTextLabel" parent="InfoPopup/PanelContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Text"
+fit_content = true
+
+[editable path="Contents/MarginContainer/ScrollContainer/Tabs/Main/Leadership"]
+[editable path="Contents/MarginContainer/ScrollContainer/Tabs/Main/Contributors"]
+[editable path="Contents/MarginContainer/ScrollContainer/Tabs/Main/External"]
+[editable path="Contents/MarginContainer/ScrollContainer/Tabs/Main/Inspiration"]
+[editable path="Contents/MarginContainer/ScrollContainer/Tabs/Licenses/Luau"]
+[editable path="Contents/MarginContainer/ScrollContainer/Tabs/Licenses/FreeType"]
+[editable path="Contents/MarginContainer/ScrollContainer/Tabs/Licenses/ENet"]
+[editable path="Contents/MarginContainer/ScrollContainer/Tabs/Licenses/Mbed TLS"]

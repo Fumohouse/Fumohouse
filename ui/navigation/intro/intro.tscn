@@ -335,7 +335,7 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 20
 theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "[center][b][color=red]Disclaimer[/color][/b][/center]
+text = "[center][b][color=red]Disclaimer:[/color][/b][/center]
 [center]Fumohouse is still in early development. Bugs and security issues may be present. Play at your own risk and report issues if you find any.[/center]"
 fit_content = true
 scroll_active = false

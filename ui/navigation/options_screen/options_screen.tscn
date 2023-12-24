@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://cdwau5ohe3wxa"]
 
-[ext_resource type="Theme" uid="uid://c7tdpcfevijlu" path="res://resources/main_theme/main_theme.tres" id="1_eexot"]
+[ext_resource type="PackedScene" uid="uid://ghrg27kkromx" path="res://ui/navigation/screen_base_layout.tscn" id="1_fsrh2"]
 [ext_resource type="Script" path="res://ui/navigation/options_screen/OptionsScreen.lua" id="2_kifl8"]
 [ext_resource type="Script" path="res://nodes/ButtonTabContainer.lua" id="3_fmdtd"]
 [ext_resource type="Script" path="res://nodes/OptionButtonTransparent.lua" id="4_3vyqi"]
@@ -13,12 +13,12 @@
 [ext_resource type="Script" path="res://config/ConfigAudioOutputDevices.lua" id="12_jdutg"]
 [ext_resource type="PackedScene" uid="uid://c8bvcctmkdmbk" path="res://ui/navigation/options_screen/labeled_action_input.tscn" id="13_b7px7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hev0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7fbo"]
 bg_color = Color(0, 0.180392, 0.34902, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bc6o"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5q1j1"]
 content_margin_left = 18.0
 content_margin_top = 3.0
 content_margin_right = 18.0
@@ -29,7 +29,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dp5k"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyail"]
 content_margin_left = 18.0
 content_margin_top = 3.0
 content_margin_right = 18.0
@@ -40,7 +40,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4jvx"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_383j7"]
 content_margin_left = 18.0
 content_margin_top = 3.0
 content_margin_right = 18.0
@@ -51,7 +51,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csybf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuplh"]
 content_margin_left = 18.0
 content_margin_top = 3.0
 content_margin_right = 18.0
@@ -62,7 +62,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8325y"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jywvu"]
 content_margin_left = 18.0
 content_margin_top = 3.0
 content_margin_right = 18.0
@@ -73,7 +73,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4ver"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5c65"]
 content_margin_left = 18.0
 content_margin_top = 3.0
 content_margin_right = 18.0
@@ -84,7 +84,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpjfg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2yj5"]
 bg_color = Color(0, 0, 0, 0)
 border_width_left = 3
 border_width_top = 3
@@ -96,77 +96,43 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[node name="OptionsScreen" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("1_eexot")
+[node name="OptionsScreen" node_paths=PackedStringArray("tabContainer", "tabs") instance=ExtResource("1_fsrh2")]
 script = ExtResource("2_kifl8")
+tabContainer = NodePath("TopBar/ButtonTabContainer")
+tabs = NodePath("Contents/MarginContainer/Tabs")
 
-[node name="TopBar" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 184.0
-offset_top = 35.0
-offset_right = 753.0
-offset_bottom = 78.0
-theme_override_constants/separation = 48
-
-[node name="Title" type="Label" parent="TopBar"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
+[node name="Title" parent="TopBar" index="0"]
 text = "Options"
-vertical_alignment = 1
 
-[node name="ButtonTabContainer" type="HBoxContainer" parent="TopBar"]
+[node name="ButtonTabContainer" type="HBoxContainer" parent="TopBar" index="1"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_constants/separation = 16
 script = ExtResource("3_fmdtd")
 
-[node name="Graphics" type="Button" parent="TopBar/ButtonTabContainer"]
+[node name="Graphics" type="Button" parent="TopBar/ButtonTabContainer" index="0"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Graphics"
 
-[node name="Audio" type="Button" parent="TopBar/ButtonTabContainer"]
+[node name="Audio" type="Button" parent="TopBar/ButtonTabContainer" index="1"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Audio"
 
-[node name="Input" type="Button" parent="TopBar/ButtonTabContainer"]
+[node name="Input" type="Button" parent="TopBar/ButtonTabContainer" index="2"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Input"
 
-[node name="Contents" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.109375
-anchor_top = 0.154321
-anchor_right = 0.890625
-anchor_bottom = 0.95679
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="MarginContainer" type="MarginContainer" parent="Contents"]
-layout_mode = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 6
-theme_override_constants/margin_bottom = 6
-
-[node name="Tabs" type="Control" parent="Contents/MarginContainer"]
+[node name="Tabs" type="Control" parent="Contents/MarginContainer" index="0"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Graphics" parent="Contents/MarginContainer/Tabs" instance=ExtResource("4_yx3s2")]
+[node name="Graphics" parent="Contents/MarginContainer/Tabs" index="0" instance=ExtResource("4_yx3s2")]
 layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer" index="0"]
@@ -174,7 +140,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 24
 
-[node name="General" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+[node name="General" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" index="0" instance=ExtResource("4_yentm")]
 layout_mode = 2
 
 [node name="RenderingMethod" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options" index="0" node_paths=PackedStringArray("input", "revertButton") instance=ExtResource("4_t4igy")]
@@ -187,7 +153,7 @@ key = "graphics/renderingMethod"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/RenderingMethod" index="0"]
 text = "Rendering Method"
 
-[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/RenderingMethod"]
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/RenderingMethod" index="3"]
 layout_mode = 2
 item_count = 3
 popup/item_0/text = "Forward+"
@@ -208,7 +174,7 @@ key = "graphics/windowMode"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/WindowMode" index="0"]
 text = "Window Mode"
 
-[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/WindowMode"]
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/WindowMode" index="3"]
 layout_mode = 2
 item_count = 4
 popup/item_0/text = "Windowed"
@@ -231,7 +197,7 @@ key = "graphics/vsyncMode"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/VSync" index="0"]
 text = "VSync Mode"
 
-[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/VSync"]
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/General/Options/VSync" index="3"]
 layout_mode = 2
 item_count = 4
 popup/item_0/text = "Disabled"
@@ -274,7 +240,7 @@ max_value = 2.0
 step = 0.1
 value = 1.0
 
-[node name="3DScaling" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+[node name="3DScaling" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" index="1" instance=ExtResource("4_yentm")]
 layout_mode = 2
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling" index="0"]
@@ -290,7 +256,7 @@ key = "graphics/scaling3d/mode"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options/Scaling3DMode" index="0"]
 text = "3D Scale Mode"
 
-[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options/Scaling3DMode"]
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/3DScaling/Options/Scaling3DMode" index="3"]
 layout_mode = 2
 item_count = 3
 popup/item_0/text = "Bilinear"
@@ -325,7 +291,7 @@ text = "FSR Sharpness"
 max_value = 2.0
 step = 0.1
 
-[node name="AntiAliasing" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+[node name="AntiAliasing" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" index="2" instance=ExtResource("4_yentm")]
 layout_mode = 2
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing" index="0"]
@@ -341,7 +307,7 @@ key = "graphics/msaa3d"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/MSAA3D" index="0"]
 text = "MSAA 3D"
 
-[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/MSAA3D"]
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/MSAA3D" index="3"]
 layout_mode = 2
 item_count = 4
 popup/item_0/text = "Disabled"
@@ -364,7 +330,7 @@ key = "graphics/taa"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/TAA" index="0"]
 text = "TAA"
 
-[node name="CheckButton" type="CheckButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/TAA"]
+[node name="CheckButton" type="CheckButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/TAA" index="3"]
 layout_mode = 2
 
 [node name="ScreenSpaceAa" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options" index="2" node_paths=PackedStringArray("input", "revertButton") instance=ExtResource("4_t4igy")]
@@ -377,7 +343,7 @@ key = "graphics/screenSpaceAa"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/ScreenSpaceAa" index="0"]
 text = "Screen Space AA"
 
-[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/ScreenSpaceAa"]
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/AntiAliasing/Options/ScreenSpaceAa" index="3"]
 layout_mode = 2
 item_count = 2
 popup/item_0/text = "Disabled"
@@ -386,7 +352,7 @@ popup/item_1/text = "FXAA"
 popup/item_1/id = 1
 script = ExtResource("4_3vyqi")
 
-[node name="Quality" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+[node name="Quality" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" index="3" instance=ExtResource("4_yentm")]
 layout_mode = 2
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality" index="0"]
@@ -402,7 +368,7 @@ key = "graphics/shadows/quality"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/ShadowQuality" index="0"]
 text = "Shadow Quality"
 
-[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/ShadowQuality"]
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/ShadowQuality" index="3"]
 layout_mode = 2
 item_count = 6
 popup/item_0/text = "Minimal"
@@ -429,7 +395,7 @@ key = "graphics/shadows/filter"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/ShadowFilter" index="0"]
 text = "Soft Shadow Filter"
 
-[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/ShadowFilter"]
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/ShadowFilter" index="3"]
 layout_mode = 2
 item_count = 6
 popup/item_0/text = "Hard (No filter)"
@@ -456,7 +422,7 @@ key = "graphics/lodThreshold"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/LodThreshold" index="0"]
 text = "Mesh Level of Detail"
 
-[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/LodThreshold"]
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Quality/Options/LodThreshold" index="3"]
 layout_mode = 2
 item_count = 5
 popup/item_0/text = "Very Low"
@@ -471,7 +437,7 @@ popup/item_4/text = "Ultra (LODs off)"
 popup/item_4/id = 4
 script = ExtResource("4_3vyqi")
 
-[node name="Environment" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+[node name="Environment" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" index="4" instance=ExtResource("4_yentm")]
 layout_mode = 2
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment" index="0"]
@@ -487,7 +453,7 @@ key = "graphics/ssr"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSR" index="0"]
 text = "SSR"
 
-[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSR"]
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSR" index="3"]
 layout_mode = 2
 item_count = 4
 popup/item_0/text = "Disabled"
@@ -510,7 +476,7 @@ key = "graphics/ssao"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSAO" index="0"]
 text = "SSAO"
 
-[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSAO"]
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSAO" index="3"]
 layout_mode = 2
 item_count = 5
 popup/item_0/text = "Disabled"
@@ -535,7 +501,7 @@ key = "graphics/ssil"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSIL" index="0"]
 text = "SSIL"
 
-[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSIL"]
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SSIL" index="3"]
 layout_mode = 2
 item_count = 5
 popup/item_0/text = "Disabled"
@@ -560,7 +526,7 @@ key = "graphics/sdfgi"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SDFGI" index="0"]
 text = "SDFGI"
 
-[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SDFGI"]
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/SDFGI" index="3"]
 layout_mode = 2
 item_count = 3
 popup/item_0/text = "Disabled"
@@ -581,7 +547,7 @@ key = "graphics/glow"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/Glow" index="0"]
 text = "Glow"
 
-[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/Glow"]
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/Glow" index="3"]
 layout_mode = 2
 item_count = 3
 popup/item_0/text = "Disabled"
@@ -602,7 +568,7 @@ key = "graphics/volumetricFog"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/VolumetricFog" index="0"]
 text = "Volumetric Fog"
 
-[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/VolumetricFog"]
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Environment/Options/VolumetricFog" index="3"]
 layout_mode = 2
 item_count = 3
 popup/item_0/text = "Disabled"
@@ -613,7 +579,7 @@ popup/item_2/text = "High"
 popup/item_2/id = 2
 script = ExtResource("4_3vyqi")
 
-[node name="Adjustment" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+[node name="Adjustment" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" index="5" instance=ExtResource("4_yentm")]
 layout_mode = 2
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer/Adjustment" index="0"]
@@ -655,7 +621,7 @@ max_value = 10.0
 step = 0.1
 value = 0.5
 
-[node name="Audio" parent="Contents/MarginContainer/Tabs" instance=ExtResource("4_yx3s2")]
+[node name="Audio" parent="Contents/MarginContainer/Tabs" index="1" instance=ExtResource("4_yx3s2")]
 visible = false
 layout_mode = 1
 
@@ -663,7 +629,7 @@ layout_mode = 1
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="Devices" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+[node name="Devices" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer" index="0" instance=ExtResource("4_yentm")]
 layout_mode = 2
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Devices" index="0"]
@@ -679,11 +645,11 @@ key = "audio/outputDevice"
 [node name="Label" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Devices/Options/OutputDevice" index="0"]
 text = "Output Device"
 
-[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Devices/Options/OutputDevice"]
+[node name="OptionButtonTransparent" type="OptionButton" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Devices/Options/OutputDevice" index="3"]
 layout_mode = 2
 script = ExtResource("4_3vyqi")
 
-[node name="Buses" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+[node name="Buses" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer" index="1" instance=ExtResource("4_yentm")]
 layout_mode = 2
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Buses" index="0"]
@@ -709,7 +675,7 @@ text = "Master Volume"
 [node name="LabeledSlider" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Buses/Options/MusicVolume" index="3"]
 formatString = "%d%%"
 
-[node name="Input" parent="Contents/MarginContainer/Tabs" instance=ExtResource("4_yx3s2")]
+[node name="Input" parent="Contents/MarginContainer/Tabs" index="2" instance=ExtResource("4_yx3s2")]
 visible = false
 layout_mode = 1
 
@@ -717,7 +683,7 @@ layout_mode = 1
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="Camera" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+[node name="Camera" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer" index="0" instance=ExtResource("4_yentm")]
 layout_mode = 2
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Camera" index="0"]
@@ -774,7 +740,7 @@ max_value = 20.0
 step = 0.1
 value = 0.1
 
-[node name="Keybinds" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer" instance=ExtResource("4_yentm")]
+[node name="Keybinds" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer" index="1" instance=ExtResource("4_yentm")]
 layout_mode = 2
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds" index="0"]
@@ -945,7 +911,7 @@ text = "Debug 3"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug3" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
-[node name="RestartPrompt" type="PanelContainer" parent="."]
+[node name="RestartPrompt" type="PanelContainer" parent="." index="2"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -958,48 +924,48 @@ offset_top = -47.9999
 offset_right = 475.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0hev0")
+theme_override_styles/panel = SubResource("StyleBoxFlat_q7fbo")
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="RestartPrompt"]
+[node name="MarginContainer" type="MarginContainer" parent="RestartPrompt" index="0"]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_right = 32
 
-[node name="HBoxContainer" type="HBoxContainer" parent="RestartPrompt/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="RestartPrompt/MarginContainer" index="0"]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="Label" type="Label" parent="RestartPrompt/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="RestartPrompt/MarginContainer/HBoxContainer" index="0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Some changes require a game restart to take effect. Restart?"
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="RestartPrompt/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="RestartPrompt/MarginContainer/HBoxContainer" index="1"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="RestartCancelButton" type="Button" parent="RestartPrompt/MarginContainer/HBoxContainer"]
+[node name="RestartCancelButton" type="Button" parent="RestartPrompt/MarginContainer/HBoxContainer" index="2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxFlat_3bc6o")
-theme_override_styles/hover = SubResource("StyleBoxFlat_3dp5k")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_d4jvx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5q1j1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kyail")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_383j7")
 text = "Not now"
 
-[node name="RestartRestartButton" type="Button" parent="RestartPrompt/MarginContainer/HBoxContainer"]
+[node name="RestartRestartButton" type="Button" parent="RestartPrompt/MarginContainer/HBoxContainer" index="3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxFlat_csybf")
-theme_override_styles/hover = SubResource("StyleBoxFlat_8325y")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_e4ver")
-theme_override_styles/focus = SubResource("StyleBoxFlat_kpjfg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_iuplh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jywvu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d5c65")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u2yj5")
 text = "Restart"
 
 [editable path="Contents/MarginContainer/Tabs/Graphics"]

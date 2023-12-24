@@ -1,40 +1,20 @@
-local TransitionElement = require("../TransitionElement")
-local ButtonTabContainer = require("../../../nodes/ButtonTabContainer")
+local ScreenBase = require('../ScreenBase')
 local MenuUtils = require("../MenuUtils.mod")
 
 local ConfigManagerM = require("../../../config/ConfigManager")
 local ConfigManager = gdglobal("ConfigManager") :: ConfigManagerM.ConfigManager
 
 --- @class
---- @extends TransitionElement
+--- @extends ScreenBase
 --- @permissions INTERNAL OS
 local OptionsScreen = {}
 local OptionsScreenC = gdclass(OptionsScreen)
 
 --- @classType OptionsScreen
-export type OptionsScreen = TransitionElement.TransitionElement & typeof(OptionsScreen) & {
-    tabContainer: ButtonTabContainer.ButtonTabContainer,
-    currentTab: Control?,
+export type OptionsScreen = ScreenBase.ScreenBase & typeof(OptionsScreen) & {
     tabs: Control,
     restartPrompt: Control,
 }
-
---- @registerMethod
-function OptionsScreen._OnSelectionChanged(self: OptionsScreen)
-    if self.currentTab then
-        self.currentTab.visible = false
-    end
-
-    local tabIdx = self.tabContainer.selection
-    if tabIdx < 0 then
-        self.currentTab = nil
-        return
-    end
-
-    local tab = assert(self.tabs:GetChild(self.tabContainer.selection)) :: Control
-    tab.visible = true
-    self.currentTab = tab
-end
 
 function OptionsScreen.restartPromptTargetPos(self: OptionsScreen, vis: boolean)
     if vis then
@@ -82,17 +62,7 @@ end
 
 --- @registerMethod
 function OptionsScreen._Ready(self: OptionsScreen)
-    -- Tabs
-    self.tabContainer = self:GetNode("%ButtonTabContainer") :: ButtonTabContainer.ButtonTabContainer
-    self.tabs = self:GetNode("%Tabs") :: Control
-
-    for _, child: Control in self.tabs:GetChildren() do
-        child.visible = false
-    end
-
-    self.tabContainer.selection = 0
-    self:_OnSelectionChanged()
-    self.tabContainer.selectionChanged:Connect(Callable.new(self, "_OnSelectionChanged"))
+    ScreenBase._Ready(self)
 
     -- Restart Prompt
     self.restartPrompt = self:GetNode("RestartPrompt") :: Control

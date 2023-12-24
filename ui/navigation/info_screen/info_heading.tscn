@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8kd4qjo2av52"]
+
+[ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="1_jsx8d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c41w0"]
+font = ExtResource("1_jsx8d")
+font_size = 18
+
+[node name="Heading" type="Label"]
+text = "Heading"
+label_settings = SubResource("LabelSettings_c41w0")

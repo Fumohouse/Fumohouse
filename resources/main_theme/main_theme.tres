@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://c7tdpcfevijlu"]
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://c7tdpcfevijlu"]
 
 [ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="1_6i6al"]
 [ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="1_g00ea"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://d4aoxe8g40t4v" path="res://assets/fonts/IBMPlexSans-BoldItalic.ttf" id="2_tltyu"]
 [ext_resource type="FontFile" uid="uid://cl1t2pm0rvomw" path="res://assets/fonts/IBMPlexSans-Italic.ttf" id="3_o0kyl"]
 [ext_resource type="Texture2D" uid="uid://bjvahmcq2c7fj" path="res://assets/textures/ui/icons/caret-down-fill_dropdown-arrow.svg" id="4_00wo2"]
+[ext_resource type="FontFile" uid="uid://4h6fuer52603" path="res://assets/fonts/mono/FiraMono-Regular.ttf" id="8_bhjdd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vm3jt"]
 content_margin_left = 8.0
@@ -128,3 +129,4 @@ PopupMenu/styles/panel_disabled = SubResource("StyleBoxFlat_vm3jt")
 RichTextLabel/fonts/bold_font = ExtResource("1_g00ea")
 RichTextLabel/fonts/bold_italics_font = ExtResource("2_tltyu")
 RichTextLabel/fonts/italics_font = ExtResource("3_o0kyl")
+RichTextLabel/fonts/mono_font = ExtResource("8_bhjdd")

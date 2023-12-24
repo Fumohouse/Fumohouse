@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bi4nul2t2fnl8"]
+[gd_scene load_steps=26 format=3 uid="uid://bi4nul2t2fnl8"]
 
 [ext_resource type="PackedScene" uid="uid://nrh6mhdp4grr" path="res://ui/navigation/nav_menu.tscn" id="1_67448"]
 [ext_resource type="Texture2D" uid="uid://cewbassnie0qr" path="res://assets/textures/ui/faces_bg.svg" id="1_efpvf"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="4_0v5t1"]
 [ext_resource type="Script" path="res://ui/navigation/main_menu/VersionLabel.lua" id="4_5s06d"]
 [ext_resource type="Script" path="res://ui/navigation/TransitionElement.lua" id="4_ubl7r"]
+[ext_resource type="PackedScene" uid="uid://bxnpb5vh0ddmo" path="res://ui/navigation/info_screen/info_screen.tscn" id="5_73rts"]
 [ext_resource type="PackedScene" uid="uid://cdwau5ohe3wxa" path="res://ui/navigation/options_screen/options_screen.tscn" id="5_deh0t"]
 [ext_resource type="Shader" path="res://ui/navigation/main_menu/ksk_logo.gdshader" id="5_ka0he"]
 [ext_resource type="Script" path="res://ui/navigation/main_menu/KskLogo.lua" id="5_sft8o"]
@@ -97,11 +98,15 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 text = "This is a placeholder screen."
 
-[node name="OptionsScreen" parent="Screens" index="1" instance=ExtResource("5_deh0t")]
+[node name="InfoScreen" parent="Screens" index="1" instance=ExtResource("5_73rts")]
 visible = false
 layout_mode = 1
 
-[node name="MainScreen" type="Control" parent="Screens" index="2"]
+[node name="OptionsScreen" parent="Screens" index="2" instance=ExtResource("5_deh0t")]
+visible = false
+layout_mode = 1
+
+[node name="MainScreen" type="Control" parent="Screens" index="3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

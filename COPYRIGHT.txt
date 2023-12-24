@@ -23,13 +23,13 @@ Upstream-Contact: voided_etc <fumohouse@pm.me>
 Source: https://github.com/Fumohouse/Fumohouse
 
 Files: *
-Comment: Fumohouse (source code)
+Comment: Fumohouse source code
 Copyright: 2022-present, voided_etc
  2022-present, Fumohouse contributors
 License: Expat
 
 Files: assets/*
-Comment: Fumohouse (assets)
+Comment: Fumohouse assets
 Copyright: 2021-present, voided_etc
 License: CC-BY-NC-SA-4.0
 
@@ -61,7 +61,8 @@ License: CC-BY-NC-SA-4.0
 
 Files: bin/luau-script/*
 Comment: Luau scripting language
-Copyright: 2022, voided_etc & co.
+Copyright: 2022-present, ksk
+ 2022-present, godot-luau-script contributors
 License: Expat
 
 ##################
@@ -75,8 +76,6 @@ License: CC0-1.0
 
 Files: maps/playground/assets/music/songs/Gymnopedie?No?1.ogg
 Comment: "Gymnopedie No. 1" Kevin MacLeod (incompetech.com)
- Licensed under Creative Commons: By Attribution 4.0 License
- http://creativecommons.org/licenses/by/4.0/
 Copyright: 2011, Kevin MacLeod
 License: CC-BY-4.0
 

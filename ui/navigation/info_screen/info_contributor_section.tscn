@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdvsqwyqsanea"]
+
+[ext_resource type="PackedScene" uid="uid://b8kd4qjo2av52" path="res://ui/navigation/info_screen/info_heading.tscn" id="1_pa4w5"]
+
+[node name="ContributorSection" type="VBoxContainer"]
+theme_override_constants/separation = 8
+
+[node name="Heading" parent="." instance=ExtResource("1_pa4w5")]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="HFlowContainer" type="HFlowContainer" parent="."]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 8
+alignment = 1

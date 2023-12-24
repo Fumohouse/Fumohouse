@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj83f6m05qtl2"]
+
+[ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="1_ltoos"]
+[ext_resource type="Script" path="res://ui/navigation/info_screen/InfoContributor.lua" id="1_w0rb0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b736f"]
+font = ExtResource("1_ltoos")
+font_size = 11
+
+[node name="Contributor" type="VBoxContainer" node_paths=PackedStringArray("nameButton", "roleText")]
+alignment = 1
+script = ExtResource("1_w0rb0")
+nameButton = NodePath("Name")
+roleText = NodePath("Role")
+
+[node name="Name" type="LinkButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Name"
+underline = 1
+
+[node name="Role" type="Label" parent="."]
+layout_mode = 2
+text = "Role"
+label_settings = SubResource("LabelSettings_b736f")
+horizontal_alignment = 1
+uppercase = true

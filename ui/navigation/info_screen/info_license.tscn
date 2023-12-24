@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw784110vdipn"]
+
+[ext_resource type="FontFile" uid="uid://4h6fuer52603" path="res://assets/fonts/mono/FiraMono-Regular.ttf" id="1_rl5g1"]
+
+[node name="License" type="VBoxContainer"]
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Godot Engine"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("1_rl5g1")
+theme_override_font_sizes/normal_font_size = 12
+text = "Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md).
+Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+fit_content = true
+scroll_active = false
