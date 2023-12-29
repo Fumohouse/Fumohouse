@@ -4,8 +4,10 @@
 
 [resource]
 script = ExtResource("1_xxlmw")
+name = "Shanghai Bow"
 id = "shanghai_bow"
 scope = 1
+optionsSchema = {}
 scenePath = "shanghai/shanghai_bow.glb"
 transform = Transform3D(1, -2.18519e-10, -6.21855e-10, -4.63309e-10, 0.438019, -0.898966, 4.6882e-10, 0.898966, 0.438019, 2.79045e-09, 1.47975, 0.527271)
 bone = 1

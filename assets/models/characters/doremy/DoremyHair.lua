@@ -18,7 +18,7 @@ function DoremyHair._Ready(self: DoremyHair)
 end
 
 function DoremyHair.Update(self: DoremyHair, appearance: Appearance.Appearance, config: Dictionary?)
-    self.ponytail.visible = appearance:GetPartOfScope(PartData.Scope.HAT) == nil
+    self.ponytail.visible = #appearance:GetPartsOfScope(PartData.Scope.HAT) == 0
 end
 
 return DoremyHairC

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ghrg27kkromx" path="res://ui/navigation/screen_base_layout.tscn" id="1_fsrh2"]
 [ext_resource type="Script" path="res://ui/navigation/options_screen/OptionsScreen.lua" id="2_kifl8"]
-[ext_resource type="Script" path="res://nodes/ButtonTabContainer.lua" id="3_fmdtd"]
+[ext_resource type="Script" path="res://nodes/RadioButtonContainer.lua" id="3_fmdtd"]
 [ext_resource type="Script" path="res://nodes/OptionButtonTransparent.lua" id="4_3vyqi"]
 [ext_resource type="PackedScene" uid="uid://ds5lxlewc7pkx" path="res://ui/navigation/options_screen/labeled_input.tscn" id="4_t4igy"]
 [ext_resource type="PackedScene" uid="uid://c7fll818kt82t" path="res://ui/navigation/options_screen/options_group.tscn" id="4_yentm"]
@@ -98,13 +98,13 @@ corner_radius_bottom_left = 12
 
 [node name="OptionsScreen" node_paths=PackedStringArray("tabContainer", "tabs") instance=ExtResource("1_fsrh2")]
 script = ExtResource("2_kifl8")
-tabContainer = NodePath("TopBar/ButtonTabContainer")
+tabContainer = NodePath("TopBar/RadioButtonContainer")
 tabs = NodePath("Contents/MarginContainer/Tabs")
 
 [node name="Title" parent="TopBar" index="0"]
 text = "Options"
 
-[node name="ButtonTabContainer" type="HBoxContainer" parent="TopBar" index="1"]
+[node name="RadioButtonContainer" type="HBoxContainer" parent="TopBar" index="1"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
@@ -112,17 +112,17 @@ size_flags_vertical = 4
 theme_override_constants/separation = 16
 script = ExtResource("3_fmdtd")
 
-[node name="Graphics" type="Button" parent="TopBar/ButtonTabContainer" index="0"]
+[node name="Graphics" type="Button" parent="TopBar/RadioButtonContainer" index="0"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Graphics"
 
-[node name="Audio" type="Button" parent="TopBar/ButtonTabContainer" index="1"]
+[node name="Audio" type="Button" parent="TopBar/RadioButtonContainer" index="1"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Audio"
 
-[node name="Input" type="Button" parent="TopBar/ButtonTabContainer" index="2"]
+[node name="Input" type="Button" parent="TopBar/RadioButtonContainer" index="2"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Input"

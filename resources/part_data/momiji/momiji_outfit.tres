@@ -5,30 +5,38 @@
 
 [sub_resource type="Resource" id="Resource_ktgvj"]
 script = ExtResource("1_3h6qs")
+name = ""
 id = "momiji_outfit_torso"
 scope = 0
+optionsSchema = {}
 scenePath = "momiji/momiji_outfit_torso.tscn"
 transform = Transform3D(1, -1.88261e-08, 1.96365e-08, 1.96365e-08, 0.999113, -0.042118, -1.88261e-08, 0.042118, 0.999113, 3.98855e-08, -0.83658, -0.0508698)
 bone = 0
 
 [sub_resource type="Resource" id="Resource_8eqmc"]
 script = ExtResource("1_3h6qs")
+name = ""
 id = "momiji_rsleeve"
 scope = 0
+optionsSchema = {}
 scenePath = "momiji/momiji_sleeve.glb"
 transform = Transform3D(0.644782, -0.00168135, 0.764365, -0.00260717, -0.999997, -5.64963e-07, 0.764363, -0.00199234, -0.644784, -0.000393987, 0.518789, -0.000587106)
 bone = 2
 
 [sub_resource type="Resource" id="Resource_3yhuh"]
 script = ExtResource("1_3h6qs")
+name = ""
 id = "momiji_lsleeve"
 scope = 0
+optionsSchema = {}
 scenePath = "momiji/momiji_sleeve.glb"
 transform = Transform3D(0.644782, 0.00168145, -0.764365, 0.00260708, -0.999997, -5.63835e-07, -0.764363, -0.00199231, -0.644784, 0.000395179, 0.518787, -0.000588298)
 bone = 3
 
 [resource]
 script = ExtResource("1_x6j5x")
+name = "Momiji Outfit"
 id = "momiji_outfit"
 scope = 2
+optionsSchema = {}
 parts = [SubResource("Resource_ktgvj"), SubResource("Resource_8eqmc"), SubResource("Resource_3yhuh")]

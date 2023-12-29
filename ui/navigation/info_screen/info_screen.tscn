@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ghrg27kkromx" path="res://ui/navigation/screen_base_layout.tscn" id="1_kosdp"]
 [ext_resource type="Script" path="res://ui/navigation/info_screen/InfoScreen.lua" id="2_gs52k"]
-[ext_resource type="Script" path="res://nodes/ButtonTabContainer.lua" id="3_0jemo"]
+[ext_resource type="Script" path="res://nodes/RadioButtonContainer.lua" id="3_0jemo"]
 [ext_resource type="Texture2D" uid="uid://cs26kmefu5xmq" path="res://assets/textures/logo_dark.svg" id="3_uwqg1"]
 [ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="4_dxeln"]
 [ext_resource type="PackedScene" uid="uid://b8kd4qjo2av52" path="res://ui/navigation/info_screen/info_heading.tscn" id="4_fmsuy"]
@@ -24,7 +24,7 @@ font_size = 20
 
 [node name="InfoScreen" node_paths=PackedStringArray("tabContainer", "tabs", "versionText", "copyrightText", "mapCopyrightTitle", "mapCopyrightText", "infoPopup", "infoTitle", "infoText") instance=ExtResource("1_kosdp")]
 script = ExtResource("2_gs52k")
-tabContainer = NodePath("TopBar/ButtonTabContainer")
+tabContainer = NodePath("TopBar/RadioButtonContainer")
 tabs = NodePath("Contents/MarginContainer/ScrollContainer/Tabs")
 versionText = NodePath("Contents/MarginContainer/ScrollContainer/Tabs/Main/Header/Version")
 copyrightText = NodePath("Contents/MarginContainer/ScrollContainer/Tabs/Copyright/MarginContainer/CopyrightText")
@@ -37,7 +37,7 @@ infoText = NodePath("InfoPopup/PanelContainer/MarginContainer/ScrollContainer/Ma
 [node name="Title" parent="TopBar" index="0"]
 text = "Credits/Info"
 
-[node name="ButtonTabContainer" type="HBoxContainer" parent="TopBar" index="1"]
+[node name="RadioButtonContainer" type="HBoxContainer" parent="TopBar" index="1"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
@@ -45,22 +45,22 @@ size_flags_vertical = 4
 theme_override_constants/separation = 16
 script = ExtResource("3_0jemo")
 
-[node name="Main" type="Button" parent="TopBar/ButtonTabContainer" index="0"]
+[node name="Main" type="Button" parent="TopBar/RadioButtonContainer" index="0"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Main Info"
 
-[node name="Copyright" type="Button" parent="TopBar/ButtonTabContainer" index="1"]
+[node name="Copyright" type="Button" parent="TopBar/RadioButtonContainer" index="1"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Copyright"
 
-[node name="MapCopyright" type="Button" parent="TopBar/ButtonTabContainer" index="2"]
+[node name="MapCopyright" type="Button" parent="TopBar/RadioButtonContainer" index="2"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Map Copyright"
 
-[node name="Licenses" type="Button" parent="TopBar/ButtonTabContainer" index="3"]
+[node name="Licenses" type="Button" parent="TopBar/RadioButtonContainer" index="3"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Open-source Licenses"

@@ -1,0 +1,412 @@
+[gd_scene load_steps=18 format=3 uid="uid://d0peyd5qi87y"]
+
+[ext_resource type="PackedScene" uid="uid://ghrg27kkromx" path="res://ui/navigation/screen_base_layout.tscn" id="1_126l8"]
+[ext_resource type="PackedScene" uid="uid://bubyuf8mn82tm" path="res://ui/character_editor/character_viewport.tscn" id="2_4lwsv"]
+[ext_resource type="Script" path="res://ui/character_editor/CharacterEditor.lua" id="2_nsn8x"]
+[ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="3_38xys"]
+[ext_resource type="Script" path="res://nodes/RadioButtonContainer.lua" id="3_ml3c8"]
+[ext_resource type="Shader" path="res://resources/materials/gltf_dither_material.gdshader" id="4_vs2dp"]
+[ext_resource type="Texture2D" uid="uid://j3p1obmff1ev" path="res://assets/textures/ordered_dither.png" id="5_0q3r2"]
+[ext_resource type="PackedScene" uid="uid://q66b6blbtmsk" path="res://nodes/labeled_slider.tscn" id="7_16kbu"]
+[ext_resource type="Script" path="res://ui/character_editor/FaceStyleSelector.lua" id="8_x24ge"]
+[ext_resource type="Script" path="res://ui/character_editor/PartSelector.lua" id="10_esof3"]
+[ext_resource type="Script" path="res://nodes/BasicColorPickerButton.lua" id="10_qigcd"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r8e7f"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rcveu"]
+noise = SubResource("FastNoiseLite_r8e7f")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sfawl"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_vs2dp")
+shader_parameter/albedo = Color(0.988235, 0.917647, 0.831373, 1)
+shader_parameter/roughness = null
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = null
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = null
+shader_parameter/normal_scale = null
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = null
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.00784314, 0.388235, 0.960784, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/dither_texture = ExtResource("5_0q3r2")
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_rcveu")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w54vo"]
+resource_local_to_scene = true
+height = 3.4
+
+[sub_resource type="LabelSettings" id="LabelSettings_jkb3w"]
+font = ExtResource("3_38xys")
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_6in4g"]
+font_size = 14
+
+[node name="CharacterEditor" node_paths=PackedStringArray("tabContainer", "tabs", "nameEdit", "presets", "appearanceManager", "scaleEdit", "eyesSelector", "eyeColorPicker", "eyebrowsSelector", "mouthSelector", "optionsEditorContainer") instance=ExtResource("1_126l8")]
+script = ExtResource("2_nsn8x")
+tabContainer = NodePath("Contents/MarginContainer/HBoxContainer/Editor/ScrollContainer/RadioButtonContainer")
+tabs = NodePath("Contents/MarginContainer/HBoxContainer/Editor/Tabs")
+nameEdit = NodePath("Contents/MarginContainer/HBoxContainer/Preview/NameEdit")
+presets = NodePath("Contents/MarginContainer/HBoxContainer/Preview/Presets/ScrollContainer/VBoxContainer")
+appearanceManager = NodePath("Contents/MarginContainer/HBoxContainer/Preview/CharacterViewport/SubViewport/Character/Appearance")
+scaleEdit = NodePath("Contents/MarginContainer/HBoxContainer/Preview/Scale/LabeledSlider/HSlider")
+eyesSelector = NodePath("Contents/MarginContainer/HBoxContainer/Editor/Tabs/Face/VBoxContainer/EyesSelector")
+eyeColorPicker = NodePath("Contents/MarginContainer/HBoxContainer/Editor/Tabs/Face/VBoxContainer/EyesColor/BasicColorPickerButton")
+eyebrowsSelector = NodePath("Contents/MarginContainer/HBoxContainer/Editor/Tabs/Face/VBoxContainer/EyebrowsSelector")
+mouthSelector = NodePath("Contents/MarginContainer/HBoxContainer/Editor/Tabs/Face/VBoxContainer/MouthSelector")
+optionsEditorContainer = NodePath("Contents/MarginContainer/HBoxContainer/Editor/Tabs/Settings/VBoxContainer")
+
+[node name="Title" parent="TopBar" index="0"]
+text = "Character Editor"
+
+[node name="MarginContainer" parent="Contents" index="0"]
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Preview" type="VBoxContainer" parent="Contents/MarginContainer/HBoxContainer" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="NameEdit" type="LineEdit" parent="Contents/MarginContainer/HBoxContainer/Preview" index="0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "Name"
+
+[node name="CharacterViewport" parent="Contents/MarginContainer/HBoxContainer/Preview" index="1" instance=ExtResource("2_4lwsv")]
+layout_mode = 2
+
+[node name="Head" parent="Contents/MarginContainer/HBoxContainer/Preview/CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_sfawl")
+
+[node name="LArm" parent="Contents/MarginContainer/HBoxContainer/Preview/CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_sfawl")
+
+[node name="LLeg" parent="Contents/MarginContainer/HBoxContainer/Preview/CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_sfawl")
+
+[node name="RArm" parent="Contents/MarginContainer/HBoxContainer/Preview/CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_sfawl")
+
+[node name="RLeg" parent="Contents/MarginContainer/HBoxContainer/Preview/CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = SubResource("ShaderMaterial_sfawl")
+
+[node name="Torso" parent="Contents/MarginContainer/HBoxContainer/Preview/CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = SubResource("ShaderMaterial_sfawl")
+
+[node name="MainCollider" parent="Contents/MarginContainer/HBoxContainer/Preview/CharacterViewport/SubViewport/Character" index="3"]
+shape = SubResource("CapsuleShape3D_w54vo")
+
+[node name="Scale" type="VBoxContainer" parent="Contents/MarginContainer/HBoxContainer/Preview" index="2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Contents/MarginContainer/HBoxContainer/Preview/Scale" index="0"]
+layout_mode = 2
+text = "Character Scale"
+label_settings = SubResource("LabelSettings_jkb3w")
+
+[node name="LabeledSlider" parent="Contents/MarginContainer/HBoxContainer/Preview/Scale" index="1" instance=ExtResource("7_16kbu")]
+layout_mode = 2
+
+[node name="HSlider" parent="Contents/MarginContainer/HBoxContainer/Preview/Scale/LabeledSlider" index="0"]
+min_value = 0.5
+max_value = 3.0
+step = 0.1
+value = 0.5
+
+[node name="Presets" type="VBoxContainer" parent="Contents/MarginContainer/HBoxContainer/Preview" index="3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Contents/MarginContainer/HBoxContainer/Preview/Presets" index="0"]
+layout_mode = 2
+text = "Presets"
+label_settings = SubResource("LabelSettings_jkb3w")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Contents/MarginContainer/HBoxContainer/Preview/Presets" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/HBoxContainer/Preview/Presets/ScrollContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Editor" type="VBoxContainer" parent="Contents/MarginContainer/HBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Contents/MarginContainer/HBoxContainer/Editor" index="0"]
+layout_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="RadioButtonContainer" type="HBoxContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/ScrollContainer" index="0"]
+layout_mode = 2
+script = ExtResource("3_ml3c8")
+
+[node name="Face" type="Button" parent="Contents/MarginContainer/HBoxContainer/Editor/ScrollContainer/RadioButtonContainer" index="0"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Face"
+
+[node name="Outfit" type="Button" parent="Contents/MarginContainer/HBoxContainer/Editor/ScrollContainer/RadioButtonContainer" index="1"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Outfit"
+
+[node name="Hair" type="Button" parent="Contents/MarginContainer/HBoxContainer/Editor/ScrollContainer/RadioButtonContainer" index="2"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Hair"
+
+[node name="Shoes" type="Button" parent="Contents/MarginContainer/HBoxContainer/Editor/ScrollContainer/RadioButtonContainer" index="3"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Shoes"
+
+[node name="Hat" type="Button" parent="Contents/MarginContainer/HBoxContainer/Editor/ScrollContainer/RadioButtonContainer" index="4"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Hat"
+
+[node name="Ears" type="Button" parent="Contents/MarginContainer/HBoxContainer/Editor/ScrollContainer/RadioButtonContainer" index="5"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Ears"
+
+[node name="Tail" type="Button" parent="Contents/MarginContainer/HBoxContainer/Editor/ScrollContainer/RadioButtonContainer" index="6"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Tail"
+
+[node name="Accessories" type="Button" parent="Contents/MarginContainer/HBoxContainer/Editor/ScrollContainer/RadioButtonContainer" index="7"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Accessories"
+
+[node name="Settings" type="Button" parent="Contents/MarginContainer/HBoxContainer/Editor/ScrollContainer/RadioButtonContainer" index="8"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Settings"
+
+[node name="Tabs" type="Control" parent="Contents/MarginContainer/HBoxContainer/Editor" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Face" type="ScrollContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Face" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="Eyes" type="Label" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Face/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Eyes"
+
+[node name="EyesSelector" type="HFlowContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Face/VBoxContainer" index="1"]
+layout_mode = 2
+script = ExtResource("8_x24ge")
+
+[node name="EyesColor" type="HBoxContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Face/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="BasicColorPickerButton" type="ColorPickerButton" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Face/VBoxContainer/EyesColor" index="0"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+edit_alpha = false
+script = ExtResource("10_qigcd")
+
+[node name="Label" type="Label" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Face/VBoxContainer/EyesColor" index="1"]
+layout_mode = 2
+text = "Eye Color"
+label_settings = SubResource("LabelSettings_6in4g")
+
+[node name="Eyebrows" type="Label" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Face/VBoxContainer" index="3"]
+layout_mode = 2
+text = "Eyebrows"
+
+[node name="EyebrowsSelector" type="HFlowContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Face/VBoxContainer" index="4"]
+layout_mode = 2
+script = ExtResource("8_x24ge")
+partType = 1
+
+[node name="Mouth" type="Label" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Face/VBoxContainer" index="5"]
+layout_mode = 2
+text = "Mouth"
+
+[node name="MouthSelector" type="HFlowContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Face/VBoxContainer" index="6"]
+layout_mode = 2
+script = ExtResource("8_x24ge")
+partType = 2
+
+[node name="Outfit" type="ScrollContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs" index="1"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OutfitSelector" type="HFlowContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Outfit" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("10_esof3")
+scope = 2
+
+[node name="Hair" type="ScrollContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs" index="2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HairSelector" type="HFlowContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Hair" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("10_esof3")
+scope = 3
+
+[node name="Shoes" type="ScrollContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs" index="3"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShoesSelector" type="HFlowContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Shoes" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("10_esof3")
+allowNone = true
+scope = 4
+
+[node name="Hat" type="ScrollContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs" index="4"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HatSelector" type="HFlowContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Hat" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("10_esof3")
+allowNone = true
+scope = 5
+
+[node name="Ears" type="ScrollContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs" index="5"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EarsSelector" type="HFlowContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Ears" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("10_esof3")
+allowNone = true
+scope = 6
+
+[node name="Tail" type="ScrollContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs" index="6"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TailSelector" type="HFlowContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Tail" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("10_esof3")
+allowNone = true
+scope = 7
+
+[node name="Accessories" type="ScrollContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs" index="7"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AccessoriesSelector" type="HFlowContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Accessories" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("10_esof3")
+allowNone = true
+multiSelection = true
+scope = 1
+
+[node name="Settings" type="ScrollContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs" index="8"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/HBoxContainer/Editor/Tabs/Settings" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[editable path="Contents/MarginContainer/HBoxContainer/Preview/CharacterViewport"]
+[editable path="Contents/MarginContainer/HBoxContainer/Preview/CharacterViewport/SubViewport/Character"]
+[editable path="Contents/MarginContainer/HBoxContainer/Preview/CharacterViewport/SubViewport/Character/Rig"]
+[editable path="Contents/MarginContainer/HBoxContainer/Preview/Scale/LabeledSlider"]

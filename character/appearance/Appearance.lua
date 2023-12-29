@@ -9,6 +9,9 @@ local AppearanceC = gdclass(Appearance)
 --- @classType Appearance
 export type Appearance = Resource & typeof(Appearance) & {
     --- @property
+    name: string,
+
+    --- @property
     eyebrows: string,
 
     --- @property
@@ -29,16 +32,29 @@ export type Appearance = Resource & typeof(Appearance) & {
     attachedParts: Dictionary,
 }
 
-function Appearance.GetPartOfScope(self: Appearance, scope: number): string?
+function Appearance.GetPartsOfScope(self: Appearance, scope: number)
+    local parts = {}
+
     for id: string in self.attachedParts do
         local part = PartDatabase:GetPart(id)
 
         if part and part.scope == scope then
-            return id
+            table.insert(parts, id)
         end
     end
 
-    return nil
+    return parts
+end
+
+function Appearance.CopyFrom(self: Appearance, other: Appearance)
+    self.name = other.name
+    self.eyebrows = other.eyebrows
+    self.eyes = other.eyes
+    self.mouth = other.mouth
+    self.eyesColor = other.eyesColor
+    self.scale = other.scale
+    -- Must deep copy to prevent changes to the Dictionary from being global
+    self.attachedParts = other.attachedParts:Duplicate(true)
 end
 
 return AppearanceC

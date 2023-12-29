@@ -4,8 +4,10 @@
 
 [resource]
 script = ExtResource("1_pu7p6")
+name = "Momiji Hair"
 id = "momiji_hair"
 scope = 3
+optionsSchema = {}
 scenePath = "momiji/momiji_hair.glb"
 transform = Transform3D(1, 4.68824e-10, -4.63311e-10, -4.63311e-10, 0.99993, 0.0118265, 4.68818e-10, -0.0118265, 0.99993, 0.003, 0.91973, 0.105865)
 bone = 1

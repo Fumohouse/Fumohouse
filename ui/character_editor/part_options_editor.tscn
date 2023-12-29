@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b13kky3a357gm"]
+
+[ext_resource type="Script" path="res://ui/character_editor/PartOptionsEditor.lua" id="1_e7d1w"]
+
+[node name="PartOptionsEditor" type="VBoxContainer" node_paths=PackedStringArray("label")]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_e7d1w")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2

@@ -4,8 +4,10 @@
 
 [resource]
 script = ExtResource("1_wcdxk")
+name = "Doremy Ears"
 id = "doremy_ears"
 scope = 6
+optionsSchema = {}
 scenePath = "doremy/doremy_ears.glb"
 transform = Transform3D(1, 4.68814e-10, -4.6331e-10, -4.63303e-10, 0.99993, 0.0118264, 4.6882e-10, -0.0118264, 0.99993, 1.22255e-07, 1.27665, -0.217218)
 bone = 1

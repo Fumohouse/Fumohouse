@@ -4,11 +4,12 @@
 
 [resource]
 script = ExtResource("1_mak5d")
+name = "Momiji"
 eyebrows = "curved"
 eyes = "curved_hooks"
 mouth = "smile"
 eyesColor = Color(0.905882, 0, 0.0196078, 1)
-scale = 1
+scale = 1.0
 attachedParts = {
 "momiji_ears": null,
 "momiji_hair": null,

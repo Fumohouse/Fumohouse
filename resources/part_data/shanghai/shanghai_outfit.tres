@@ -5,30 +5,38 @@
 
 [sub_resource type="Resource" id="Resource_o1lj1"]
 script = ExtResource("1_t7bei")
+name = ""
 id = "shanghai_outfit_torso"
 scope = 0
+optionsSchema = {}
 scenePath = "shanghai/shanghai_outfit_torso.tscn"
 transform = Transform3D(1, -1.88261e-08, 1.96365e-08, 1.96365e-08, 0.999113, -0.042118, -1.88261e-08, 0.042118, 0.999113, 3.98855e-08, -0.83658, -0.0508698)
 bone = 0
 
 [sub_resource type="Resource" id="Resource_mawhk"]
 script = ExtResource("1_t7bei")
+name = ""
 id = "shanghai_rsleeve"
 scope = 0
+optionsSchema = {}
 scenePath = "shanghai/shanghai_rsleeve.glb"
 transform = Transform3D(0.415746, 0.49285, 0.764366, 0.764366, -0.644783, -6.79055e-07, 0.49285, 0.584255, -0.644783, 0.000768781, 0.413914, 0.00079143)
 bone = 2
 
 [sub_resource type="Resource" id="Resource_1lysk"]
 script = ExtResource("1_t7bei")
+name = ""
 id = "shanghai_lsleeve"
 scope = 0
+optionsSchema = {}
 scenePath = "shanghai/shanghai_lsleeve.glb"
 transform = Transform3D(0.415746, -0.49285, -0.764366, -0.764366, -0.644783, -6.52258e-07, -0.49285, 0.584255, -0.644783, -0.000767589, 0.413912, 0.000790238)
 bone = 3
 
 [resource]
 script = ExtResource("1_ewfrb")
+name = "Shanghai Outfit"
 id = "shanghai_outfit"
 scope = 2
+optionsSchema = {}
 parts = [SubResource("Resource_o1lj1"), SubResource("Resource_mawhk"), SubResource("Resource_1lysk")]

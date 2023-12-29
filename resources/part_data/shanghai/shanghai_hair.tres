@@ -4,8 +4,10 @@
 
 [resource]
 script = ExtResource("1_75va8")
+name = "Shanghai Hair"
 id = "shanghai_hair"
 scope = 3
+optionsSchema = {}
 scenePath = "shanghai/shanghai_hair.glb"
 transform = Transform3D(1, 4.68823e-10, -4.63313e-10, -4.63309e-10, 0.99993, 0.0118265, 4.6882e-10, -0.0118265, 0.99993, 0.005, 1.15849, 0.0840393)
 bone = 1

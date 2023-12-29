@@ -4,8 +4,10 @@
 
 [resource]
 script = ExtResource("1_yfk7b")
+name = "Momiji Tail"
 id = "momiji_tail"
 scope = 7
+optionsSchema = {}
 scenePath = "momiji/momiji_tail.glb"
 transform = Transform3D(1, -1.88261e-08, 1.96365e-08, 1.96365e-08, 0.999113, -0.0421182, -1.88262e-08, 0.0421182, 0.999113, -0.00999998, 0.760161, 0.629986)
 bone = 0

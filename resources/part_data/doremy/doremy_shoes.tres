@@ -5,54 +5,68 @@
 
 [sub_resource type="Resource" id="Resource_4ljir"]
 script = ExtResource("1_s2ttj")
+name = ""
 id = "doremy_lshoe"
 scope = 0
+optionsSchema = {}
 scenePath = "generic/shoe_1.glb"
 transform = Transform3D(0.990732, 0.086678, -0.104525, -0.104128, -0.00911034, -0.994521, -0.0871544, 0.996194, -5.06731e-07, -0.00835231, -0.00160026, 0.139234)
 bone = 9
 
 [sub_resource type="Resource" id="Resource_36wca"]
 script = ExtResource("1_s2ttj")
+name = ""
 id = "doremy_lshoe_pom_1"
 scope = 0
+optionsSchema = {}
 scenePath = "doremy/doremy_pom_black.glb"
 transform = Transform3D(0.0199608, 0.065348, 0.00222859, 0.00477111, 0.000868228, -0.068193, -0.065212, 0.0200662, -0.00430706, 0.0958158, 0.171448, 0.198721)
 bone = 9
 
 [sub_resource type="Resource" id="Resource_1rm4n"]
 script = ExtResource("1_s2ttj")
+name = ""
 id = "doremy_lshoe_pom_2"
 scope = 0
+optionsSchema = {}
 scenePath = "doremy/doremy_pom_black.glb"
 transform = Transform3D(0.0104447, -0.0206663, 0.064324, -0.0180348, 0.0618738, 0.0228075, -0.0651111, -0.0204533, 0.00400124, -0.0627014, 0.188109, 0.212666)
 bone = 9
 
 [sub_resource type="Resource" id="Resource_pie2k"]
 script = ExtResource("1_s2ttj")
+name = ""
 id = "doremy_rshoe"
 scope = 0
+optionsSchema = {}
 scenePath = "generic/shoe_1.glb"
 transform = Transform3D(0.989077, -0.103956, 0.104531, 0.103957, -0.0109263, -0.994523, 0.10453, 0.994522, 2.32507e-07, -0.00775862, -0.00343163, 0.139396)
 bone = 8
 
 [sub_resource type="Resource" id="Resource_5sg7l"]
 script = ExtResource("1_s2ttj")
+name = ""
 id = "doremy_rshoe_pom_1"
 scope = 0
+optionsSchema = {}
 scenePath = "doremy/doremy_pom_black.glb"
 transform = Transform3D(0.00678344, -0.0352601, 0.058177, -0.00344132, 0.0582126, 0.0356829, -0.0679408, -0.00646906, 0.0040012, 0.0558357, 0.18725, 0.212665)
 bone = 8
 
 [sub_resource type="Resource" id="Resource_i5wuy"]
 script = ExtResource("1_s2ttj")
+name = ""
 id = "doremy_rshoe_pom_2"
 scope = 0
+optionsSchema = {}
 scenePath = "doremy/doremy_pom_black.glb"
 transform = Transform3D(0.0313802, 0.058494, 0.016358, 0.0116256, 0.0122873, -0.0662396, -0.059615, 0.0331861, -0.00430702, -0.102683, 0.170589, 0.19872)
 bone = 8
 
 [resource]
 script = ExtResource("1_itbqg")
+name = "Doremy Shoes"
 id = "doremy_shoes"
 scope = 4
+optionsSchema = {}
 parts = [SubResource("Resource_4ljir"), SubResource("Resource_36wca"), SubResource("Resource_1rm4n"), SubResource("Resource_pie2k"), SubResource("Resource_5sg7l"), SubResource("Resource_i5wuy")]

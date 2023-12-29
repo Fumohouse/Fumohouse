@@ -1,4 +1,4 @@
-local ButtonTabContainer = require("../../nodes/ButtonTabContainer")
+local RadioButtonContainer = require("../../nodes/RadioButtonContainer")
 local TransitionElement = require("TransitionElement")
 
 --- @class
@@ -9,7 +9,7 @@ local ScreenBaseC = gdclass(ScreenBase)
 --- @classType ScreenBase
 export type ScreenBase = TransitionElement.TransitionElement & typeof(ScreenBase) & {
     --- @property
-    tabContainer: ButtonTabContainer.ButtonTabContainer?,
+    tabContainer: RadioButtonContainer.RadioButtonContainer?,
     --- @property
     tabs: Control?,
 
@@ -23,7 +23,7 @@ function ScreenBase._Ready(self: ScreenBase)
             child.visible = false
         end
 
-        self.tabContainer.selection = 0
+        self.tabContainer.selectedButton = self.tabContainer:GetChild(0) :: Button
         self:_OnSelectionChanged()
         self.tabContainer.selectionChanged:Connect(Callable.new(self, "_OnSelectionChanged"))
     end
@@ -38,15 +38,15 @@ function ScreenBase._OnSelectionChanged(self: ScreenBase)
         self.currentTab.visible = false
     end
 
-    local tabIdx = self.tabContainer.selection
-    if tabIdx < 0 then
+    local tab = self.tabContainer.selectedButton
+    if not tab then
         self.currentTab = nil
         return
     end
 
-    local tab = assert(self.tabs:GetChild(self.tabContainer.selection)) :: Control
-    tab.visible = true
-    self.currentTab = tab
+    local tabContents = assert(self.tabs:GetChild(tab:GetIndex())) :: Control
+    tabContents.visible = true
+    self.currentTab = tabContents
 end
 
 return ScreenBaseC

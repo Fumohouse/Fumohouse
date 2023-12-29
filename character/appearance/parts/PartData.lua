@@ -16,12 +16,17 @@ PartData.Scope = {
 
 --- @classType PartData
 export type PartData = Resource & typeof(PartData) & {
+	--- @property
+	name: string,
     --- @property
     id: string,
 
     --- @property
     --- @enum None Accessory Outfit Hair Shoes Hat Ears Tail
     scope: integer,
+
+	--- @property
+	optionsSchema: Dictionary,
 }
 
 return PartDataC

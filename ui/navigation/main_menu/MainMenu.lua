@@ -12,10 +12,29 @@ local MainMenuC = gdclass(MainMenu)
 
 --- @classType MainMenu
 export type MainMenu = NavMenu.NavMenu & typeof(MainMenu) & {
+    --- @property
     mainScreen: MainScreen.MainScreen,
+    --- @property
     infoScreen: TransitionElement.TransitionElement,
+    --- @property
     changelogScreen: TransitionElement.TransitionElement,
+    --- @property
     optionsScreen: TransitionElement.TransitionElement,
+    --- @property
+    characterEditor: TransitionElement.TransitionElement,
+
+    --- @property
+    infoButton: NavButton.NavButton,
+    --- @property
+    changelogButton: NavButton.NavButton,
+    --- @property
+    optionsButton: NavButton.NavButton,
+    --- @property
+    exitButton: NavButton.NavButton,
+
+    --- @property
+    editButton: Button,
+
     dim: ColorRect,
 }
 
@@ -47,27 +66,22 @@ function MainMenu._OnExitButtonPressed(self: MainMenu, button: Button)
     self:GetTree():Quit()
 end
 
-function MainMenu._Ready(self: MainMenu)
-    self.mainScreen = self:GetNode("Screens/MainScreen") :: MainScreen.MainScreen
-    self.infoScreen = self:GetNode("Screens/InfoScreen") :: TransitionElement.TransitionElement
-    self.changelogScreen = self:GetNode("Screens/ChangelogScreen") :: TransitionElement.TransitionElement
-    self.optionsScreen = self:GetNode("Screens/OptionsScreen") :: TransitionElement.TransitionElement
+--- @registerMethod
+function MainMenu._OnEditButtonPressed(self: MainMenu)
+    self:SwitchScreen(self.characterEditor)
+end
 
+function MainMenu._Ready(self: MainMenu)
     NavMenu._Ready(self)
 
     self.dim = self:GetNode("Dim") :: ColorRect
 
-    local infoButton = self:GetNode("%InfoButton") :: NavButton.NavButton
-    infoButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(infoButton, self.infoScreen))
+    self.infoButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(self.infoButton, self.infoScreen))
+    self.changelogButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(self.changelogButton, self.changelogScreen))
+    self.optionsButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(self.optionsButton, self.optionsScreen))
+    self.exitButton.pressed:Connect(Callable.new(self, "_OnExitButtonPressed"):Bind(self.exitButton))
 
-    local changelogButton = self:GetNode("%ChangelogButton") :: NavButton.NavButton
-    changelogButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(changelogButton, self.changelogScreen))
-
-    local optionsButton = self:GetNode("%OptionsButton") :: NavButton.NavButton
-    optionsButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(optionsButton, self.optionsScreen))
-
-    local exitButton = self:GetNode("%ExitButton") :: NavButton.NavButton
-    exitButton.pressed:Connect(Callable.new(self, "_OnExitButtonPressed"):Bind(exitButton))
+    self.editButton.pressed:Connect(Callable.new(self, "_OnEditButtonPressed"))
 
     -- Setup
     wait(0.05)

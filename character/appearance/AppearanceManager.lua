@@ -56,6 +56,7 @@ export type AppearanceManager = Node3D & typeof(AppearanceManager) & {
     baseCameraOffset: number,
 
     alpha: number,
+    rigAlpha: number,
     dissolve: number,
 }
 
@@ -80,13 +81,16 @@ function AppearanceManager._Init(self: AppearanceManager)
     self.baseCameraOffset = 0
 
     self.alpha = 1
+    self.rigAlpha = 1
     self.dissolve = 0
 end
 
-function AppearanceManager.setShaderParameter(self: AppearanceManager, param: string, value: Variant)
+function AppearanceManager.setRigShaderParameter(self: AppearanceManager, param: string, value: Variant)
     self.faceMaterial:SetShaderParameter(param, value)
     self.skinMaterial:SetShaderParameter(param, value)
+end
 
+function AppearanceManager.setAttachmentShaderParameter(self: AppearanceManager, param: string, value: Variant)
     for _, info in self.attachedParts do
         for _, material in info.materials do
             if not material:IsA(ShaderMaterial) then
@@ -101,6 +105,11 @@ function AppearanceManager.setShaderParameter(self: AppearanceManager, param: st
             shaderMaterial:SetShaderParameter(param, value)
         end
     end
+end
+
+function AppearanceManager.SetRigAlpha(self: AppearanceManager, alpha: number)
+    self:setRigShaderParameter("alpha", alpha)
+    self.rigAlpha = alpha
 end
 
 function AppearanceManager.setAlpha(self: AppearanceManager, alpha: number, force: boolean?)
@@ -119,7 +128,8 @@ function AppearanceManager.setAlpha(self: AppearanceManager, alpha: number, forc
     self.rig.visible = true
     self.visible = true
 
-    self:setShaderParameter("alpha", alpha)
+    self:setRigShaderParameter("alpha", self.rigAlpha * alpha)
+    self:setAttachmentShaderParameter("alpha", alpha)
 end
 
 --- @registerMethod
@@ -130,7 +140,8 @@ function AppearanceManager.SetDissolve(self: AppearanceManager, dissolve: number
     end
 
     self.dissolve = dissolve
-    self:setShaderParameter("dissolve", dissolve)
+    self:setRigShaderParameter("dissolve", dissolve)
+    self:setAttachmentShaderParameter("dissolve", dissolve)
 end
 
 function AppearanceManager.loadScale(self: AppearanceManager)

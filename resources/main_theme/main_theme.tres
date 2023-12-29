@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=19 format=3 uid="uid://c7tdpcfevijlu"]
+[gd_resource type="Theme" load_steps=22 format=3 uid="uid://c7tdpcfevijlu"]
 
 [ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="1_6i6al"]
 [ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="1_g00ea"]
@@ -84,6 +84,40 @@ corner_radius_bottom_left = 3
 expand_margin_top = 3.0
 expand_margin_bottom = 3.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmxg7"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.360784, 0.482353, 0.6, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jxby"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.223529, 0.341176, 0.45098, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_645di"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12549, 0.188235, 0.25098, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25hb7"]
 bg_color = Color(0, 0.101961, 0.2, 1)
 corner_radius_top_left = 12
@@ -110,12 +144,18 @@ Button/styles/normal = SubResource("StyleBoxFlat_5jaxq")
 Button/styles/pressed = SubResource("StyleBoxFlat_hl0kt")
 CheckButton/colors/font_color = Color(1, 1, 1, 1)
 CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_xyays")
+ColorPicker/constants/h_width = 20
+ColorPicker/constants/label_width = 20
+ColorPicker/constants/margin = 16
 HSlider/icons/grabber = ExtResource("1_ocllp")
 HSlider/icons/grabber_disabled = ExtResource("2_rxfc8")
 HSlider/icons/grabber_highlight = ExtResource("2_0t65a")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_or67s")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_or67s")
 HSlider/styles/slider = SubResource("StyleBoxFlat_bc0rt")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_dmxg7")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_5jxby")
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_645di")
 OptionButton/icons/arrow = ExtResource("4_00wo2")
 Panel/styles/panel = SubResource("StyleBoxFlat_25hb7")
 Panel1/base_type = &"Panel"

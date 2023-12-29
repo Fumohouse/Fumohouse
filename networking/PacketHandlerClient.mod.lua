@@ -15,6 +15,9 @@ local Character = require("../character/Character")
 local MapManagerM = require("../map_system/MapManager")
 local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
 
+local AppearancesM = require("../character/appearance/Appearances")
+local Appearances = gdglobal("Appearances") :: AppearancesM.Appearances
+
 local PacketHandlerClient = {}
 
 function PacketHandlerClient.OnConnectedToServer(nm: NetworkManager.NetworkManager)
@@ -94,7 +97,7 @@ PacketHandlerClient[PeerStatusPacket.server.NAME] = function(nm: NetworkManager.
             nm:Log(`successfully joined as {psp.identity}`)
 
             local charReq = CharacterRequestPacket.client.new(CharacterStatePacket.CharacterStateUpdateType.SPAWN)
-            charReq.appearance = assert(load("res://resources/character_presets/doremy.tres")) -- TODO
+            charReq.appearance = Appearances.current
 
             nm:SendPacket(1, charReq)
         else

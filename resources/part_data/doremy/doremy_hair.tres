@@ -4,8 +4,10 @@
 
 [resource]
 script = ExtResource("1_5xtqd")
+name = "Doremy Hair"
 id = "doremy_hair"
 scope = 3
+optionsSchema = {}
 scenePath = "doremy/doremy_hair.tscn"
 transform = Transform3D(1, 4.68814e-10, -4.6331e-10, -4.63303e-10, 0.99993, 0.0118264, 4.6882e-10, -0.0118264, 0.99993, 1.41823e-09, -1.96007, 0.0549187)
 bone = 1

@@ -5,6 +5,7 @@ local ConfigManager = gdglobal("ConfigManager") :: ConfigManagerM.ConfigManager
 
 --- @class CameraController
 --- @extends Camera3D
+--- @permissions INTERNAL
 local CameraController = {}
 local CameraControllerC = gdclass(CameraController)
 
@@ -16,22 +17,27 @@ export type CameraController = Camera3D & typeof(CameraController) & {
     cameraOffset: number,
 
     --- @property
-    --- @range 0 200
+    --- @range 0.0 200.0
+    --- @default 0.0
+    minFocusDistance: number,
+
+    --- @property
+    --- @range 0.0 200.0
     --- @default 50.0
     maxFocusDistance: number,
 
     --- @property
-    --- @range 0 200
+    --- @range 0.0 200.0
     --- @default 5.0
     focusDistanceTarget: number,
 
     --- @property
-    --- @range 1 100
+    --- @range 1.0 100.0
     --- @default 16.0
     moveSpeed: number,
 
     --- @property
-    --- @range 1 100
+    --- @range 1.0 100.0
     --- @default 24.0
     moveSpeedFast: number,
 
@@ -122,11 +128,11 @@ function CameraController.setCameraRotating(self: CameraController, rotating: bo
     end
 
     if rotating then
-        self.lastMousePos = self:GetViewport():GetMousePosition()
+        self.lastMousePos = self:GetWindow():GetMousePosition()
         Input.singleton.mouseMode = Input.MouseMode.CAPTURED
     else
         Input.singleton.mouseMode = Input.MouseMode.VISIBLE
-        self:GetViewport():WarpMouse(self.lastMousePos)
+        self:GetWindow():WarpMouse(self.lastMousePos)
     end
 
     self.cameraRotating = rotating
@@ -236,7 +242,7 @@ function CameraController._UnhandledInput(self: CameraController, event: InputEv
 
         -- Hardcode a few gestures (mainly for macOS)
         if event:IsActionPressed("camera_zoom_in") then
-            self.focusDistanceTarget = math.max(self.focusDistanceTarget - self.cameraZoomSens, 0)
+            self.focusDistanceTarget = math.max(self.focusDistanceTarget - self.cameraZoomSens, self.minFocusDistance)
         elseif event:IsActionPressed("camera_zoom_out") then
             self.focusDistanceTarget = math.min(self.focusDistanceTarget + self.cameraZoomSens, self.maxFocusDistance)
         elseif event:IsA(InputEventPanGesture) then
@@ -251,7 +257,7 @@ function CameraController._UnhandledInput(self: CameraController, event: InputEv
             local SCROLL_TICK_FRAC = 0.02
             local delta = self.cameraZoomSens * epg.delta.y / (viewportHeight * SCROLL_TICK_FRAC)
 
-            self.focusDistanceTarget = math.clamp(self.focusDistanceTarget + delta, 0, self.maxFocusDistance)
+            self.focusDistanceTarget = math.clamp(self.focusDistanceTarget + delta, self.minFocusDistance, self.maxFocusDistance)
         elseif event:IsA(InputEventMagnifyGesture) then
             local emg = event :: InputEventMagnifyGesture
             self.focusDistanceTarget = math.min(self.focusDistanceTarget / emg.factor, self.maxFocusDistance)

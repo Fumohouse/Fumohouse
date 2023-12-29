@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bi4nul2t2fnl8"]
+[gd_scene load_steps=35 format=3 uid="uid://bi4nul2t2fnl8"]
 
 [ext_resource type="PackedScene" uid="uid://nrh6mhdp4grr" path="res://ui/navigation/nav_menu.tscn" id="1_67448"]
 [ext_resource type="Texture2D" uid="uid://cewbassnie0qr" path="res://assets/textures/ui/faces_bg.svg" id="1_efpvf"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://l068kvg3crfl" path="res://assets/textures/ksk.svg" id="6_p1kjr"]
 [ext_resource type="Texture2D" uid="uid://bk46ldudbxtal" path="res://assets/textures/ksk_anim.svg" id="6_w867p"]
 [ext_resource type="PackedScene" uid="uid://dck1137u3e4q3" path="res://ui/logo.tscn" id="7_2idjs"]
+[ext_resource type="PackedScene" uid="uid://d0peyd5qi87y" path="res://ui/character_editor/character_editor.tscn" id="7_q1dvg"]
 [ext_resource type="PackedScene" uid="uid://b3vcp7kq81ujl" path="res://ui/navigation/nav_button.tscn" id="10_16bi3"]
 [ext_resource type="PackedScene" uid="uid://drkq414nse0uk" path="res://ui/navigation/main_menu/main_menu_icon_button.tscn" id="11_adj8w"]
 [ext_resource type="Texture2D" uid="uid://ds6ygslc2b6h" path="res://assets/textures/ui/icons/github.svg" id="12_hk2nd"]
@@ -23,6 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://bwqgvr4b7aq6j" path="res://assets/textures/ui/icons/bell-fill.svg" id="16_aw72i"]
 [ext_resource type="PackedScene" uid="uid://chehkmfpoevq6" path="res://ui/navigation/nav_button_container.tscn" id="18_wsqm6"]
 [ext_resource type="PackedScene" uid="uid://d0mo4s2hqyov3" path="res://ui/music_controller/music_controller.tscn" id="19_cmuwc"]
+[ext_resource type="Shader" path="res://resources/materials/gltf_dither_material.gdshader" id="23_4sah4"]
+[ext_resource type="Texture2D" uid="uid://j3p1obmff1ev" path="res://assets/textures/ordered_dither.png" id="24_efyco"]
+[ext_resource type="PackedScene" uid="uid://bubyuf8mn82tm" path="res://ui/character_editor/character_viewport.tscn" id="24_snoew"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_itoho"]
 
@@ -40,8 +44,51 @@ bg_color = Color(0, 0.333333, 0.647059, 1)
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[node name="MainMenu" instance=ExtResource("1_67448")]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r8e7f"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rcveu"]
+noise = SubResource("FastNoiseLite_r8e7f")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdwrk"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("23_4sah4")
+shader_parameter/albedo = Color(0.988235, 0.917647, 0.831373, 1)
+shader_parameter/roughness = null
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = null
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = null
+shader_parameter/normal_scale = null
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = null
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.00784314, 0.388235, 0.960784, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/dither_texture = ExtResource("24_efyco")
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_rcveu")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ju70y"]
+resource_local_to_scene = true
+height = 3.4
+
+[node name="MainMenu" node_paths=PackedStringArray("mainScreen", "infoScreen", "changelogScreen", "optionsScreen", "characterEditor", "infoButton", "changelogButton", "optionsButton", "exitButton", "editButton") instance=ExtResource("1_67448")]
 script = ExtResource("2_kqbd2")
+mainScreen = NodePath("Screens/MainScreen")
+infoScreen = NodePath("Screens/InfoScreen")
+changelogScreen = NodePath("Screens/ChangelogScreen")
+optionsScreen = NodePath("Screens/OptionsScreen")
+characterEditor = NodePath("Screens/CharacterEditor")
+infoButton = NodePath("Screens/MainScreen/MainButtons/InfoButton")
+changelogButton = NodePath("Screens/MainScreen/MainButtons/ChangelogButton")
+optionsButton = NodePath("Screens/MainScreen/MainButtons/OptionsButton")
+exitButton = NodePath("Screens/MainScreen/MainButtons/ExitButton")
+editButton = NodePath("Screens/MainScreen/NonNavigation/Character/EditButton")
 
 [node name="Background" type="Control" parent="." index="0"]
 layout_mode = 1
@@ -85,7 +132,11 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="MainScreen" type="Control" parent="Screens" index="3"]
+[node name="CharacterEditor" parent="Screens" index="3" instance=ExtResource("7_q1dvg")]
+visible = false
+layout_mode = 1
+
+[node name="MainScreen" type="Control" parent="Screens" index="4" node_paths=PackedStringArray("nonNavigation", "mainButtons", "topBar", "versionLabel", "musicButton", "musicController", "previewAppearanceManager")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -93,6 +144,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_gaw40")
+nonNavigation = NodePath("NonNavigation")
+mainButtons = NodePath("MainButtons")
+topBar = NodePath("NonNavigation/TopBar")
+versionLabel = NodePath("NonNavigation/VersionLabel")
+musicButton = NodePath("NonNavigation/TopBar/MarginContainer/HBoxContainer/MusicButton")
+musicController = NodePath("MusicController")
+previewAppearanceManager = NodePath("NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance")
 
 [node name="NonNavigation" type="Control" parent="Screens/MainScreen" index="0"]
 layout_mode = 1
@@ -299,6 +357,51 @@ layout_mode = 2
 [node name="Icon" parent="Screens/MainScreen/NonNavigation/TopBar/MarginContainer/HBoxContainer/NotificationButton" index="0"]
 texture = ExtResource("16_aw72i")
 
+[node name="Character" type="VBoxContainer" parent="Screens/MainScreen/NonNavigation" index="5"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -336.0
+offset_top = -127.0
+offset_right = -96.0
+offset_bottom = 175.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="CharacterPreview" parent="Screens/MainScreen/NonNavigation/Character" index="0" instance=ExtResource("24_snoew")]
+layout_mode = 2
+
+[node name="Head" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_hdwrk")
+
+[node name="LArm" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_hdwrk")
+
+[node name="LLeg" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_hdwrk")
+
+[node name="RArm" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_hdwrk")
+
+[node name="RLeg" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = SubResource("ShaderMaterial_hdwrk")
+
+[node name="Torso" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = SubResource("ShaderMaterial_hdwrk")
+
+[node name="MainCollider" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character" index="3"]
+shape = SubResource("CapsuleShape3D_ju70y")
+
+[node name="EditButton" type="Button" parent="Screens/MainScreen/NonNavigation/Character" index="1"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Edit"
+
 [node name="MainButtons" parent="Screens/MainScreen" index="1" instance=ExtResource("18_wsqm6")]
 layout_mode = 1
 offset_top = -152.0
@@ -357,3 +460,6 @@ color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 [editable path="Screens/MainScreen/NonNavigation/BottomButtons/Website"]
 [editable path="Screens/MainScreen/NonNavigation/TopBar/MarginContainer/HBoxContainer/MusicButton"]
 [editable path="Screens/MainScreen/NonNavigation/TopBar/MarginContainer/HBoxContainer/NotificationButton"]
+[editable path="Screens/MainScreen/NonNavigation/Character/CharacterPreview"]
+[editable path="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character"]
+[editable path="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig"]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgx8o1jaybpww"]
+
+[ext_resource type="PackedScene" uid="uid://i0vg7piilqhm" path="res://ui/character_editor/preview_button.tscn" id="1_28iam"]
+[ext_resource type="Script" path="res://ui/character_editor/FacePreviewButton.lua" id="2_wtrvn"]
+
+[node name="FacePreviewButton" node_paths=PackedStringArray("layer1", "layer2", "layer3") instance=ExtResource("1_28iam")]
+script = ExtResource("2_wtrvn")
+style = null
+layer1 = NodePath("CenterContainer/Layer1")
+layer2 = NodePath("CenterContainer/Layer2")
+layer3 = NodePath("CenterContainer/Layer3")
+
+[node name="CenterContainer" type="CenterContainer" parent="." index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer" index="0"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+color = Color(0.988235, 0.917647, 0.831373, 1)
+
+[node name="Layer1" type="TextureRect" parent="CenterContainer" index="1"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+expand_mode = 1
+
+[node name="Layer2" type="TextureRect" parent="CenterContainer" index="2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+expand_mode = 1
+
+[node name="Layer3" type="TextureRect" parent="CenterContainer" index="3"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+expand_mode = 1

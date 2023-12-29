@@ -5,22 +5,30 @@
 
 [sub_resource type="Resource" id="Resource_l1h1u"]
 script = ExtResource("1_ubiph")
+name = null
 id = "sock_1_r"
 scope = 0
+optionsSchema = {}
 scenePath = "generic/sock_1.tscn"
 transform = Transform3D(0.989077, -0.103955, 0.104532, 0.103959, -0.0109258, -0.994522, 0.104528, 0.994522, 6.42805e-07, -0.00947258, -0.00378392, 0.20772)
 bone = 8
 
 [sub_resource type="Resource" id="Resource_e8r3l"]
 script = ExtResource("1_ubiph")
+name = null
 id = "sock_1_l"
 scope = 0
+optionsSchema = {}
 scenePath = "generic/sock_1.tscn"
 transform = Transform3D(0.989069, 0.103957, -0.104525, -0.103953, -0.0109263, -0.994521, -0.104528, 0.994522, -3.95721e-07, 0.00260678, -0.00292403, 0.20772)
 bone = 9
 
 [resource]
 script = ExtResource("2_wfqau")
+name = "Socks 1"
 id = "socks_1"
 scope = 1
+optionsSchema = {
+"color": Color(0, 0, 0, 1)
+}
 parts = [SubResource("Resource_l1h1u"), SubResource("Resource_e8r3l")]

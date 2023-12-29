@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://i0vg7piilqhm"]
+
+[ext_resource type="Theme" uid="uid://c7tdpcfevijlu" path="res://resources/main_theme/main_theme.tres" id="1_fc1fy"]
+[ext_resource type="Script" path="res://ui/character_editor/PreviewButton.lua" id="2_mngk7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unjb6"]
+bg_color = Color(0.447059, 0.960784, 0.356863, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="PreviewButton" type="Button" node_paths=PackedStringArray("indicator")]
+custom_minimum_size = Vector2(150, 150)
+theme = ExtResource("1_fc1fy")
+script = ExtResource("2_mngk7")
+indicator = NodePath("Indicator")
+
+[node name="Indicator" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -22.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 22.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_unjb6")

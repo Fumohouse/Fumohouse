@@ -2,6 +2,10 @@ local MenuUtils = require("../MenuUtils.mod")
 local MusicController = require("../../music_controller/MusicController")
 local NavButtonContainer = require("../NavButtonContainer")
 local TransitionElement = require("../TransitionElement")
+local AppearanceManager = require("../../../character/appearance/AppearanceManager")
+
+local AppearancesM = require("../../../character/appearance/Appearances")
+local Appearances = gdglobal("Appearances") :: AppearancesM.Appearances
 
 --- @class
 --- @extends TransitionElement
@@ -10,14 +14,25 @@ local MainScreenC = gdclass(MainScreen)
 
 --- @classType MainScreen
 export type MainScreen = TransitionElement.TransitionElement & typeof(MainScreen) & {
+    --- @property
     nonNavigation: Control,
+    --- @property
     mainButtons: NavButtonContainer.NavButtonContainer,
 
+    --- @property
     topBar: Control,
 
+    --- @property
     versionLabel: Control,
 
+    --- @property
+    musicButton: Button,
+    --- @property
     musicController: MusicController.MusicController,
+
+    --- @property
+    previewAppearanceManager: AppearanceManager.AppearanceManager,
+
     musicControllerTween: Tween?,
     musicControllerVisible: boolean,
 }
@@ -54,6 +69,8 @@ function MainScreen.Transition(self: MainScreen, vis: boolean, buttonIdx: number
     if not vis then
         -- Hide overlays
         self.musicController:Transition(false)
+    else
+        self.previewAppearanceManager:LoadAppearance()
     end
 
     local tween = MenuUtils.CommonTween(self, vis)
@@ -70,16 +87,11 @@ end
 
 --- @registerMethod
 function MainScreen._Ready(self: MainScreen)
-    self.nonNavigation = self:GetNode("NonNavigation") :: Control
-    self.mainButtons = self:GetNode("MainButtons") :: NavButtonContainer.NavButtonContainer
-    self.topBar = self:GetNode("NonNavigation/TopBar") :: Control
-    self.versionLabel = self:GetNode("NonNavigation/VersionLabel") :: Control
-
-    self.musicController = self:GetNode("MusicController") :: MusicController.MusicController
     self.musicController:Hide()
+    self.musicButton.pressed:Connect(Callable.new(self, "_OnMusicButtonPressed"))
 
-    local musicButton = self:GetNode("%MusicButton") :: Button
-    musicButton.pressed:Connect(Callable.new(self, "_OnMusicButtonPressed"))
+    self.previewAppearanceManager.appearance = Appearances.current
+    self.previewAppearanceManager:LoadAppearance()
 end
 
 return MainScreenC

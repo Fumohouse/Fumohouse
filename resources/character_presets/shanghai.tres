@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_nokr1")
+name = "Shanghai"
 eyebrows = "curved"
 eyes = "curved_hooks"
 mouth = "straight"

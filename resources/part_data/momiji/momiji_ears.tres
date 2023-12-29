@@ -4,8 +4,10 @@
 
 [resource]
 script = ExtResource("1_tpeih")
+name = "Momiji Ears"
 id = "momiji_ears"
 scope = 6
+optionsSchema = {}
 scenePath = "momiji/momiji_ears.glb"
 transform = Transform3D(1, 7.99368e-09, -5.44009e-15, -7.99312e-09, 0.99993, 0.0118264, 9.4537e-11, -0.0118264, 0.99993, 2.89148e-09, 1.31122, 0.145237)
 bone = 1

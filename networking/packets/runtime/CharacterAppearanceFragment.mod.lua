@@ -14,6 +14,7 @@ end
 function CharacterAppearanceFragment.SerDe(self: CharacterAppearanceFragment, serde: SerDe.SerDe)
     local appearance = self.appearance
 
+    appearance.name = serde:SerDe(appearance.name)
     appearance.eyebrows = serde:SerDe(appearance.eyebrows)
     appearance.eyes = serde:SerDe(appearance.eyes)
     appearance.mouth = serde:SerDe(appearance.mouth)

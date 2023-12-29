@@ -4,11 +4,12 @@
 
 [resource]
 script = ExtResource("1_ktcf5")
+name = "Doremy"
 eyebrows = "straight"
 eyes = "straight"
 mouth = "3"
 eyesColor = Color(0.172549, 0.352941, 0.764706, 1)
-scale = 1
+scale = 1.0
 attachedParts = {
 "doremy_hair": null,
 "doremy_hat": null,

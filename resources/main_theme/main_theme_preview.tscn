@@ -105,3 +105,11 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="ColorPicker" type="ColorPicker" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+picker_shape = 1
