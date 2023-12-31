@@ -12,45 +12,39 @@ export type Seat = StaticBody3D & typeof(Seat) & {
     --- @get GetOccupant
     occupant: RigidBody3D?,
 
+    --- @property
+    marker: Node3D,
+
     occupantInternal: RigidBody3D?,
-    joint: Joint3D,
-    marker: Marker3D,
-    dismountMarker: Marker3D,
+    occupantMode: number,
 }
 
 --- @registerMethod
-function Seat._Ready(self: Seat)
-    self.joint = self:GetNode("Joint") :: Joint3D
-    self.marker = self:GetNode("Position") :: Marker3D
-    self.dismountMarker = self:GetNode("DismountPosition") :: Marker3D
-end
-
---- @registerMethod
 function Seat.SetOccupant(self: Seat, occupant: RigidBody3D?)
-    if self.occupant then
-        -- Letting the character dismount at its current position drastically increases the probability
-        -- of it getting stuck and recovery failing. That's bad!
-        self.occupant.globalPosition = self.dismountMarker.globalPosition
+    if self.occupant ~= occupant then
+        if self.occupant then
+            PhysicsServer3D.singleton:BodySetMode(self.occupant:GetRid(), self.occupantMode)
+        end
+
+        if occupant then
+            self.occupantMode = PhysicsServer3D.singleton:BodyGetMode(occupant:GetRid())
+            PhysicsServer3D.singleton:BodySetMode(occupant:GetRid(), PhysicsServer3D.BodyMode.STATIC)
+        end
+
+        self.occupantInternal = occupant
     end
 
-    if not occupant then
-        self.joint.nodeB = ""
-        self.occupantInternal = nil
-        return
+    if occupant then
+        local seatPivot: Vector3
+        if occupant:IsA(Character) then
+            seatPivot = (occupant :: Character.Character).state:GetBottomPosition()
+        else
+            seatPivot = occupant.globalPosition
+        end
+
+        local pivotOffset = seatPivot - occupant.globalPosition
+        occupant.globalTransform = self.marker.globalTransform:Translated(-pivotOffset)
     end
-
-    local seatPivot: Vector3
-    if occupant:IsA(Character) then
-        seatPivot = (occupant :: Character.Character).state:GetBottomPosition()
-    else
-        seatPivot = occupant.globalPosition
-    end
-
-    local pivotOffset = seatPivot - occupant.globalPosition
-    occupant.globalTransform = self.marker.globalTransform:Translated(-pivotOffset)
-
-    self.joint.nodeB = occupant:GetPath()
-    self.occupantInternal = occupant
 end
 
 --- @registerMethod

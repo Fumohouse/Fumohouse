@@ -484,6 +484,7 @@ mesh = SubResource("BoxMesh_ubukq")
 skeleton = NodePath("")
 
 [node name="Seat" parent="Map" instance=ExtResource("7_6c7as")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 5, 6)
 
 [node name="Label3D" type="Label3D" parent="Map/Seat"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

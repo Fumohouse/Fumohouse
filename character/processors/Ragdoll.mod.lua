@@ -62,6 +62,9 @@ function Ragdoll.Process(self: Ragdoll, state: MotionState.MotionState, delta: n
 
             self.currentSeat.occupant = nil
             self.currentSeat = nil
+
+            -- Restore body mode to KINEMATIC
+            state:SetRagdoll(false)
         end
     else
         -- Debounce

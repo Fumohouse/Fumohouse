@@ -21,6 +21,7 @@ function CharacterStatePacket.new(type: number?, peer: number?)
         transform = Transform3D.new(),
 
         state = 0,
+        bodyMode = 0,
         processorState = Dictionary.new(),
         isRagdoll = false,
         movementAck = 0,
@@ -44,6 +45,7 @@ function CharacterStatePacket.SerDe(self: CharacterStatePacket, serde: SerDe.Ser
 
     if self.type == CharacterStateUpdateType.MOVEMENT then
         self.state = serde:SerDe(self.state, SerDe.NumberType.U16)
+        self.bodyMode = serde:SerDe(self.bodyMode, SerDe.NumberType.U8)
         self.processorState = serde:SerDe(self.processorState)
         self.isRagdoll = serde:SerDe(self.isRagdoll)
 

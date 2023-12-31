@@ -1,5 +1,6 @@
 --- @class
 --- @extends Control
+--- @permissions INTERNAL
 local DebugWindow = {}
 local DebugWindowC = gdclass(DebugWindow)
 

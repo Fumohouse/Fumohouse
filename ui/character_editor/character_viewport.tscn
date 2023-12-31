@@ -78,6 +78,7 @@ light_color = Color(1, 0.996078, 0.929412, 1)
 script = ExtResource("4_3ht4a")
 
 [node name="Character" parent="SubViewport" instance=ExtResource("6_tx8i0")]
+process_mode = 4
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -1.5, -8)
 
 [node name="Torso" parent="SubViewport/Character/Appearance" index="0"]

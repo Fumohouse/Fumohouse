@@ -171,6 +171,7 @@ function Character.sendMovementUpdate(self: Character, motion: NetworkedMotion)
     update.transform = self.globalTransform
 
     update.state = self.state.state
+    update.bodyMode = PhysicsServer3D.singleton:BodyGetMode(self:GetRid())
     update.processorState = self.state:GetState()
     update.isRagdoll = self.state.isRagdoll
     update.movementAck = motion.userdata
@@ -210,6 +211,7 @@ function Character._PhysicsProcess(self: Character, delta: number)
         self.state.state = self.queuedStateUpdate.state
         self.state:LoadState(self.queuedStateUpdate.processorState)
         self.state:SetRagdoll(self.queuedStateUpdate.isRagdoll)
+        self.state:SetBodyMode(self.queuedStateUpdate.bodyMode)
 
         self.linearVelocity = self.queuedStateUpdate.velocity
         self.angularVelocity = self.queuedStateUpdate.angularVelocity

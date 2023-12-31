@@ -259,9 +259,8 @@ end
 function MotionState.GetBottomPosition(self: MotionState)
     if self.isRagdoll then
         local colliderTransform = self.ragdollCollider.globalTransform
-        local colliderScale = colliderTransform.basis:GetScale().y
-
-        return colliderTransform.origin - 0.5 * self.ragdollCollisionShape.size.y * colliderScale * colliderTransform.basis.y
+        -- basis.y incorporates the scale of the collider
+        return colliderTransform.origin - 0.5 * self.ragdollCollisionShape.size.y * colliderTransform.basis.y
     else
         return self.node.globalTransform.origin
     end
@@ -276,12 +275,12 @@ function MotionState.TestMotion(self: MotionState, params: PhysicsTestMotionPara
     return PhysicsServer3D.singleton:BodyTestMotion(self.rid, params, result)
 end
 
-function MotionState.setBodyMode(self: MotionState, mode: ClassEnumPhysicsServer3D_BodyMode)
+function MotionState.SetBodyMode(self: MotionState, mode: ClassEnumPhysicsServer3D_BodyMode)
     PhysicsServer3D.singleton:BodySetMode(self.rid, mode)
 end
 
 function MotionState.SetRagdoll(self: MotionState, ragdoll: boolean)
-    self:setBodyMode(if ragdoll then PhysicsServer3D.BodyMode.RIGID else PhysicsServer3D.BodyMode.KINEMATIC)
+    self:SetBodyMode(if ragdoll then PhysicsServer3D.BodyMode.RIGID else PhysicsServer3D.BodyMode.KINEMATIC)
     self.mainCollider.disabled = ragdoll
     self.ragdollCollider.disabled = not ragdoll
 
