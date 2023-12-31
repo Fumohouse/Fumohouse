@@ -171,6 +171,7 @@ function MapManager.Leave(self: MapManager)
     local tween = self:CreateTween()
     tween:TweenProperty(mainMenu, "modulate", Color.WHITE, 0.6)
     tween:TweenCallback(Callable.new(self, "_OnLeaveTransitionFinished"):Bind(currentScene))
+    mainMenu:Dim(false)
 
     self:PlayTitlePlaylist()
 

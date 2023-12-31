@@ -2,7 +2,7 @@ local Utils = {
     stageColor = Color.FromHsv(203 / 360, 1, 0.7),
     stageName = "Prototype",
     stageAbbrev = "PRO",
-    version = "2023/12/23",
+    version = "2023/12/31",
 }
 
 function Utils.GetBuildString()

@@ -22,6 +22,9 @@ export type NetworkedMotion = {
 --- @classType Character
 export type Character = RigidBody3D & typeof(Character) & {
     --- @property
+    disabled: boolean,
+
+    --- @property
     --- @set setCamera
     --- @get getCamera
     camera: CameraController.CameraController?,
@@ -207,6 +210,10 @@ end
 
 --- @registerMethod
 function Character._PhysicsProcess(self: Character, delta: number)
+    if self.disabled then
+        return
+    end
+
     if self.queuedStateUpdate then
         self.state.state = self.queuedStateUpdate.state
         self.state:LoadState(self.queuedStateUpdate.processorState)
