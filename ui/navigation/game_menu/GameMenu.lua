@@ -39,6 +39,7 @@ export type GameMenu = NavMenu.NavMenu & typeof(GameMenu) & {
     blurBackground: Control,
     blurMat: ShaderMaterial,
     isVisible: boolean,
+    isLeaving: boolean,
 
     oldMouseMode: ClassEnumInput_MouseMode?,
     tween: Tween?,
@@ -126,6 +127,10 @@ end
 --- @registerMethod
 function GameMenu._OnMainScreenTransition(self: GameMenu, vis: boolean)
     if vis then
+        if not self.isVisible and not self.isLeaving then
+            self:Transition(true)
+        end
+
         -- Input systems (e.g. character input) will check focus to avoid unwanted behavior
         self:GrabFocus()
     end
@@ -138,8 +143,9 @@ end
 
 --- @registerMethod
 function GameMenu._OnLeaveButtonPressed(self: GameMenu)
+    self.isLeaving = true
+    self.inhibitBack = true
     self:_OnScreenNavButtonPressed(self.leaveButton, self.leaveScreen)
-    self.backButton.visible = false
     wait(0.5)
     MapManager:Leave()
 end

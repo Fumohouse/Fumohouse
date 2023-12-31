@@ -12,6 +12,7 @@ export type NavMenu = Control & typeof(NavMenu) & {
     mainScreen: TransitionElement.TransitionElement?,
     currentScreen: TransitionElement.TransitionElement?,
     backButton: BackButton.BackButton,
+    inhibitBack: boolean,
 
     -- "screenIn" is currentScreen
     tweenIn: Tween?,
@@ -88,7 +89,9 @@ function NavMenu.SwitchScreen(self: NavMenu, screen: TransitionElement.Transitio
         end
     end
 
-    self.backButton:Transition(notMainScreen)
+    if not self.inhibitBack then
+        self.backButton:Transition(notMainScreen)
+    end
 
     self.currentScreen = screen
 end
@@ -109,7 +112,9 @@ end
 
 --- @registerMethod
 function NavMenu._OnBackButtonPress(self: NavMenu)
-    self:SwitchScreen(assert(self.mainScreen))
+    if not self.inhibitBack then
+        self:SwitchScreen(assert(self.mainScreen))
+    end
 end
 
 function NavMenu.Dismiss(self: NavMenu)
@@ -118,7 +123,7 @@ end
 --- @registerMethod
 function NavMenu._UnhandledInput(self: NavMenu, event: InputEvent)
     -- Checking IsPressed prevents GameMenu from closing and opening again on (very) quick presses to menu_back
-    if event:IsActionPressed("menu_back") then
+    if not self.inhibitBack and event:IsActionPressed("menu_back") then
         local focus = self:GetViewport():GuiGetFocusOwner()
         if focus and focus:HasMeta("blockDismiss") and focus:GetMeta("blockDismiss") == true then
             return

@@ -1,5 +1,6 @@
 local TransitionElement = require("../TransitionElement")
 local NavButtonContainer = require("../NavButtonContainer")
+local NavMenu = require("../NavMenu")
 local NavButton = require("../NavButton")
 local MenuUtils = require("../MenuUtils.mod")
 local MusicController = require("../../music_controller/MusicController")
@@ -21,7 +22,7 @@ export type MenuScreen = TransitionElement.TransitionElement & typeof(MenuScreen
     transition: SignalWithArgs<(vis: boolean) -> ()>,
 
     --- @property
-    gameMenu: TransitionElement.TransitionElement,
+    gameMenu: NavMenu.NavMenu,
 
     --- @property
     gradientBackground: Control,
@@ -92,7 +93,7 @@ function MenuScreen._OnNetworkManagerUpdate(self: MenuScreen, details: string, f
     self.statusHeading.text = "Disconnected"
     self.statusDetails.text = details
 
-    self.gameMenu:Transition(true)
+    self:Transition(true)
 end
 
 --- @registerMethod

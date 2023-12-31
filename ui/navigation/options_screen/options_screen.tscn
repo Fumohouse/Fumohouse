@@ -677,7 +677,7 @@ layout_mode = 2
 key = "audio/bus/Music/volume"
 
 [node name="Label" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Buses/Options/MusicVolume" index="0"]
-text = "Master Volume"
+text = "Music Volume"
 
 [node name="LabeledSlider" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer/Buses/Options/MusicVolume" index="3"]
 formatString = "%d%%"
