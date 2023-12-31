@@ -14,6 +14,7 @@ PacketHandlerCommon[GoodbyePacket.client.NAME] = function(nm: NetworkManager.Net
         nm.multiplayer:DisconnectPeer(peer)
     else
         nm:Reset()
+        nm:sendStatusUpdate(`Kicked: {gp.reason}`, true, false)
     end
 end
 

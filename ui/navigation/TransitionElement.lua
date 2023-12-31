@@ -12,6 +12,10 @@ function TransitionElement.Hide(self: TransitionElement)
     self.modulate = Color.TRANSPARENT
 end
 
+function TransitionElement.Show(self: TransitionElement)
+    self.modulate = Color.WHITE
+end
+
 function TransitionElement.Transition(self: TransitionElement, vis: boolean, ...: any): Tween?
     local tween = self:CreateTween()
         :SetEase(Tween.EaseType.OUT)

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://csrp8nerdjpyv"]
+
+[ext_resource type="PackedScene" uid="uid://ds5lxlewc7pkx" path="res://ui/navigation/options_screen/labeled_input.tscn" id="1_5suag"]
+[ext_resource type="Script" path="res://config/ConfigSpinBox.lua" id="2_y0wi1"]
+
+[node name="LabeledSpinBox" node_paths=PackedStringArray("input", "revertButton") instance=ExtResource("1_5suag")]
+script = ExtResource("2_y0wi1")
+input = NodePath("SpinBox")
+revertButton = NodePath("Revert")
+
+[node name="SpinBox" type="SpinBox" parent="." index="3"]
+layout_mode = 2

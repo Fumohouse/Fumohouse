@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://k32y5f0dlmkg"]
-
-[ext_resource type="Script" path="res://map_system/PlaygroundLoader.lua" id="1_3wqcq"]
-
-[node name="Loader" type="Node3D"]
-script = ExtResource("1_3wqcq")

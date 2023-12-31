@@ -1,0 +1,120 @@
+[gd_scene load_steps=6 format=3 uid="uid://bns0myjfx0sin"]
+
+[ext_resource type="PackedScene" uid="uid://ghrg27kkromx" path="res://ui/navigation/screen_base_layout.tscn" id="1_j1lgw"]
+[ext_resource type="Script" path="res://ui/navigation/play_screen/PlayScreen.lua" id="2_unc6e"]
+[ext_resource type="Script" path="res://nodes/RadioButtonContainer.lua" id="3_bne3f"]
+[ext_resource type="PackedScene" uid="uid://cbbpkq8c31lab" path="res://ui/navigation/status_popup.tscn" id="4_q3mux"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6nrni"]
+font_size = 17
+
+[node name="PlayScreen" node_paths=PackedStringArray("tabContainer", "tabs", "mapList", "addressInput", "portInput", "usernameInput", "passwordInput", "joinButton", "statusPopup", "statusHeading", "statusDetails") instance=ExtResource("1_j1lgw")]
+script = ExtResource("2_unc6e")
+tabContainer = NodePath("TopBar/RadioButtonContainer")
+tabs = NodePath("Contents/MarginContainer/Tabs")
+mapList = NodePath("Contents/MarginContainer/Tabs/Maps/VBoxContainer")
+addressInput = NodePath("Contents/MarginContainer/Tabs/Multiplayer/HBoxContainer/Address")
+portInput = NodePath("Contents/MarginContainer/Tabs/Multiplayer/HBoxContainer/Port")
+usernameInput = NodePath("Contents/MarginContainer/Tabs/Multiplayer/Username")
+passwordInput = NodePath("Contents/MarginContainer/Tabs/Multiplayer/Password")
+joinButton = NodePath("Contents/MarginContainer/Tabs/Multiplayer/Button")
+statusPopup = NodePath("StatusPopup")
+statusHeading = NodePath("StatusPopup/MarginContainer/VBoxContainer/Heading")
+statusDetails = NodePath("StatusPopup/MarginContainer/VBoxContainer/Details")
+
+[node name="Title" parent="TopBar" index="0"]
+text = "Play"
+
+[node name="RadioButtonContainer" type="HBoxContainer" parent="TopBar" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 16
+script = ExtResource("3_bne3f")
+
+[node name="Maps" type="Button" parent="TopBar/RadioButtonContainer" index="0"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Maps"
+
+[node name="Multiplayer" type="Button" parent="TopBar/RadioButtonContainer" index="1"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Multiplayer"
+
+[node name="MarginContainer" parent="Contents" index="0"]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Tabs" type="Control" parent="Contents/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="Maps" type="ScrollContainer" parent="Contents/MarginContainer/Tabs" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Maps" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Multiplayer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs" index="1"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Contents/MarginContainer/Tabs/Multiplayer" index="0"]
+layout_mode = 2
+text = "Join a server"
+label_settings = SubResource("LabelSettings_6nrni")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer" index="1"]
+layout_mode = 2
+
+[node name="Address" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+placeholder_text = "Address"
+
+[node name="Port" type="SpinBox" parent="Contents/MarginContainer/Tabs/Multiplayer/HBoxContainer" index="1"]
+layout_mode = 2
+min_value = 1024.0
+max_value = 65535.0
+value = 20722.0
+
+[node name="Username" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer" index="2"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "Username"
+
+[node name="Password" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer" index="3"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "Password"
+secret = true
+
+[node name="Button" type="Button" parent="Contents/MarginContainer/Tabs/Multiplayer" index="4"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Join"
+
+[node name="StatusPopup" parent="." index="2" instance=ExtResource("4_q3mux")]
+visible = false
+layout_mode = 1
+offset_left = -140.0
+offset_top = -60.0
+offset_right = 140.0
+offset_bottom = 60.0
+
+[editable path="StatusPopup"]

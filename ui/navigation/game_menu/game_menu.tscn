@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dao560qb1sydi"]
+[gd_scene load_steps=16 format=3 uid="uid://dao560qb1sydi"]
 
 [ext_resource type="PackedScene" uid="uid://nrh6mhdp4grr" path="res://ui/navigation/nav_menu.tscn" id="1_73yqu"]
 [ext_resource type="Shader" path="res://resources/materials/ui_blur.gdshader" id="1_jwx5c"]
@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://chehkmfpoevq6" path="res://ui/navigation/nav_button_container.tscn" id="4_u7s4l"]
 [ext_resource type="PackedScene" uid="uid://c4dvtrx886y3v" path="res://ui/navigation/game_menu/game_menu_button.tscn" id="5_4nii6"]
 [ext_resource type="PackedScene" uid="uid://bxnpb5vh0ddmo" path="res://ui/navigation/info_screen/info_screen.tscn" id="5_ke7p5"]
+[ext_resource type="Script" path="res://ui/navigation/TransitionElement.lua" id="6_4cf0f"]
 [ext_resource type="PackedScene" uid="uid://d0mo4s2hqyov3" path="res://ui/music_controller/music_controller.tscn" id="7_iy5xf"]
+[ext_resource type="PackedScene" uid="uid://cbbpkq8c31lab" path="res://ui/navigation/status_popup.tscn" id="10_qc4tb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2htra"]
 resource_local_to_scene = true
@@ -16,15 +18,26 @@ shader = ExtResource("1_jwx5c")
 shader_parameter/blur = 1.0
 shader_parameter/dim = 0.3
 
+[sub_resource type="LabelSettings" id="LabelSettings_hr3mx"]
+font_size = 18
+
 [sub_resource type="Gradient" id="Gradient_xux5k"]
 colors = PackedColorArray(0.0392157, 0.121569, 0.2, 1, 0.04, 0.122667, 0.2, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2h3c3"]
 gradient = SubResource("Gradient_xux5k")
 
-[node name="GameMenu" instance=ExtResource("1_73yqu")]
+[node name="GameMenu" node_paths=PackedStringArray("mainScreen", "infoScreen", "optionsScreen", "leaveScreen", "continueButton", "infoButton", "optionsButton", "leaveButton") instance=ExtResource("1_73yqu")]
 focus_mode = 2
 script = ExtResource("1_ljh4l")
+mainScreen = NodePath("Screens/MenuScreen")
+infoScreen = NodePath("Screens/InfoScreen")
+optionsScreen = NodePath("Screens/OptionsScreen")
+leaveScreen = NodePath("Screens/LeaveScreen")
+continueButton = NodePath("Screens/MenuScreen/Contents/NavButtonContainer/ContinueButton")
+infoButton = NodePath("Screens/MenuScreen/Contents/NavButtonContainer/InfoButton")
+optionsButton = NodePath("Screens/MenuScreen/Contents/NavButtonContainer/OptionsButton")
+leaveButton = NodePath("Screens/MenuScreen/Contents/NavButtonContainer/LeaveButton")
 
 [node name="Blur" type="ColorRect" parent="." index="0"]
 material = SubResource("ShaderMaterial_2htra")
@@ -44,7 +57,30 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="MenuScreen" type="Control" parent="Screens" index="2"]
+[node name="LeaveScreen" type="PanelContainer" parent="Screens" index="2"]
+visible = false
+custom_minimum_size = Vector2(280, 70)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_4cf0f")
+
+[node name="Label" type="Label" parent="Screens/LeaveScreen" index="0"]
+layout_mode = 2
+text = "Please wait..."
+label_settings = SubResource("LabelSettings_hr3mx")
+horizontal_alignment = 1
+
+[node name="MenuScreen" type="Control" parent="Screens" index="3" node_paths=PackedStringArray("gameMenu", "gradientBackground", "title", "navButtons", "bottomBar", "musicController", "continueButton", "statusPopup", "statusHeading", "statusDetails")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,6 +89,16 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("4_dxl2y")
+gameMenu = NodePath("../..")
+gradientBackground = NodePath("GradientBackground")
+title = NodePath("Contents/Title")
+navButtons = NodePath("Contents/NavButtonContainer")
+bottomBar = NodePath("BottomBar")
+musicController = NodePath("MusicController")
+continueButton = NodePath("Contents/NavButtonContainer/ContinueButton")
+statusPopup = NodePath("StatusPopup")
+statusHeading = NodePath("StatusPopup/MarginContainer/VBoxContainer/Heading")
+statusDetails = NodePath("StatusPopup/MarginContainer/VBoxContainer/Details")
 
 [node name="GradientBackground" type="TextureRect" parent="Screens/MenuScreen" index="0"]
 custom_minimum_size = Vector2(500, 0)
@@ -76,7 +122,6 @@ theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Title" type="MarginContainer" parent="Screens/MenuScreen/Contents" index="0"]
-unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 48
 theme_override_constants/margin_top = 8
@@ -89,26 +134,21 @@ theme_override_font_sizes/font_size = 30
 text = "Game Menu"
 
 [node name="NavButtonContainer" parent="Screens/MenuScreen/Contents" index="1" instance=ExtResource("4_u7s4l")]
-unique_name_in_owner = true
 layout_mode = 2
 
 [node name="ContinueButton" parent="Screens/MenuScreen/Contents/NavButtonContainer" index="0" instance=ExtResource("5_4nii6")]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Continue"
 
 [node name="InfoButton" parent="Screens/MenuScreen/Contents/NavButtonContainer" index="1" instance=ExtResource("5_4nii6")]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Credits & Info"
 
 [node name="OptionsButton" parent="Screens/MenuScreen/Contents/NavButtonContainer" index="2" instance=ExtResource("5_4nii6")]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
 
 [node name="LeaveButton" parent="Screens/MenuScreen/Contents/NavButtonContainer" index="3" instance=ExtResource("5_4nii6")]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(225, 48)
 layout_mode = 2
 text = "Leave"
@@ -161,3 +201,17 @@ offset_bottom = -96.0
 grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(300, 40)
+
+[node name="StatusPopup" parent="Screens/MenuScreen" index="4" instance=ExtResource("10_qc4tb")]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -360.0
+offset_top = -60.0
+offset_right = -80.0
+offset_bottom = 60.0
+grow_horizontal = 0
+
+[editable path="Screens/MenuScreen/StatusPopup"]

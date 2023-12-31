@@ -15,6 +15,9 @@ export type RadioButtonContainer = Control & typeof(RadioButtonContainer) & {
     multiSelection: boolean,
 
     --- @property
+    allowRemoval: boolean,
+
+    --- @property
     --- @set SetSelection
     --- @get GetSelection
     selectedButton: Button?,
@@ -120,7 +123,7 @@ end
 
 --- @registerMethod
 function RadioButtonContainer._OnChildExitingTree(self: RadioButtonContainer, child: Node)
-    if not child:IsA(Button) then
+    if not self.allowRemoval or child:IsA(Button) then
         return
     end
 

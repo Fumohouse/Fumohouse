@@ -12,7 +12,7 @@ export type ConfigBoundControl = Control & typeof(ConfigBoundControl) & {
     --- @property
     input: Control,
     --- @property
-    revertButton: Button,
+    revertButton: BaseButton,
 
     --- @property
     key: string,

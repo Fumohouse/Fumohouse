@@ -1,10 +1,14 @@
 local TransitionElement = require("../TransitionElement")
 local NavButtonContainer = require("../NavButtonContainer")
+local NavButton = require("../NavButton")
 local MenuUtils = require("../MenuUtils.mod")
 local MusicController = require("../../music_controller/MusicController")
 
 local MapManagerM = require("../../../map_system/MapManager")
 local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
+
+local NetworkManagerM = require("../../../networking/NetworkManager")
+local NetworkManager = gdglobal("NetworkManager") :: NetworkManagerM.NetworkManager
 
 --- @class
 --- @extends TransitionElement
@@ -16,11 +20,29 @@ export type MenuScreen = TransitionElement.TransitionElement & typeof(MenuScreen
     --- @signal
     transition: SignalWithArgs<(vis: boolean) -> ()>,
 
+    --- @property
+    gameMenu: TransitionElement.TransitionElement,
+
+    --- @property
     gradientBackground: Control,
+    --- @property
     title: Control,
+    --- @property
     navButtons: NavButtonContainer.NavButtonContainer,
+    --- @property
     bottomBar: Control,
+    --- @property
     musicController: MusicController.MusicController,
+
+    --- @property
+    continueButton: NavButton.NavButton,
+
+    --- @property
+    statusPopup: Control,
+    --- @property
+    statusHeading: Label,
+    --- @property
+    statusDetails: Label,
 }
 
 function MenuScreen.bottomBarTargetPos(self: MenuScreen, vis: boolean)
@@ -47,6 +69,7 @@ function MenuScreen.Transition(self: MenuScreen, vis: boolean, buttonIdx: number
     tween:TweenProperty(self.gradientBackground, "modulate", targetModulate, MenuUtils.TRANSITION_DURATION)
     tween:Parallel():TweenProperty(self.title, "modulate", targetModulate, MenuUtils.TRANSITION_DURATION)
     tween:Parallel():TweenProperty(self.bottomBar, "modulate", targetModulate, MenuUtils.TRANSITION_DURATION)
+    tween:Parallel():TweenProperty(self.statusPopup, "modulate", targetModulate, MenuUtils.TRANSITION_DURATION)
     tween:Parallel():TweenProperty(self.bottomBar, "position", self:bottomBarTargetPos(vis), MenuUtils.TRANSITION_DURATION)
 
     self.navButtons:Transition(vis, buttonIdx)
@@ -54,22 +77,33 @@ function MenuScreen.Transition(self: MenuScreen, vis: boolean, buttonIdx: number
 
     self.transition:Emit(vis)
 
+    self.continueButton.disabled = self.statusPopup.visible
+
     return tween
 end
 
 --- @registerMethod
-function MenuScreen._Ready(self: MenuScreen)
-    self.gradientBackground = self:GetNode("GradientBackground") :: Control
-    self.title = self:GetNode("%Title") :: Control
-    self.navButtons = self:GetNode("%NavButtonContainer") :: NavButtonContainer.NavButtonContainer
-    self.bottomBar = self:GetNode("BottomBar") :: Control
-    self.musicController = self:GetNode("MusicController") :: MusicController.MusicController
+function MenuScreen._OnNetworkManagerUpdate(self: MenuScreen, details: string, failure: boolean)
+    if not failure then
+        return
+    end
 
+    self.statusPopup.visible = true
+    self.statusHeading.text = "Disconnected"
+    self.statusDetails.text = details
+
+    self.gameMenu:Transition(true)
+end
+
+--- @registerMethod
+function MenuScreen._Ready(self: MenuScreen)
     local mapName = self.bottomBar:GetNode("MapName") :: Label
     local currentMap = MapManager.currentMap
     local name = if currentMap then currentMap.manifest.name else "???"
     local author = if currentMap then currentMap.manifest.author else "???"
     mapName.text = string.format("%s • %s", name, author)
+
+    NetworkManager.statusUpdate:Connect(Callable.new(self, "_OnNetworkManagerUpdate"))
 end
 
 return MenuScreenC

@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=3 uid="uid://baddlc8u7rqe"]
+
+[ext_resource type="Script" path="res://ui/navigation/play_screen/MapCard.lua" id="1_kgu6w"]
+[ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="1_r6nmw"]
+[ext_resource type="FontFile" uid="uid://4h6fuer52603" path="res://assets/fonts/mono/FiraMono-Regular.ttf" id="2_1a0kc"]
+[ext_resource type="Texture2D" uid="uid://bl4wda6ryubkq" path="res://assets/textures/ui/icons/hdd-network-fill.svg" id="3_5q0if"]
+[ext_resource type="Texture2D" uid="uid://g44io1cjsslr" path="res://assets/textures/ui/icons/play-fill.svg" id="4_dhr1n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gkq2r"]
+font = ExtResource("1_r6nmw")
+font_size = 17
+
+[sub_resource type="LabelSettings" id="LabelSettings_2r3kw"]
+font = ExtResource("2_1a0kc")
+font_size = 12
+
+[node name="MapCard" type="PanelContainer" node_paths=PackedStringArray("nameLabel", "versionLabel", "descriptionLabel", "singleplayerButton", "multiplayerButton")]
+theme_type_variation = &"Panel1"
+script = ExtResource("1_kgu6w")
+nameLabel = NodePath("MarginContainer/HBoxContainer/Info/HBoxContainer/Name")
+versionLabel = NodePath("MarginContainer/HBoxContainer/Info/HBoxContainer/Version")
+descriptionLabel = NodePath("MarginContainer/HBoxContainer/Info/Description")
+singleplayerButton = NodePath("MarginContainer/HBoxContainer/Options/Singleplayer")
+multiplayerButton = NodePath("MarginContainer/HBoxContainer/Options/Multiplayer")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Info" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Info"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/Info/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Test Map"
+label_settings = SubResource("LabelSettings_gkq2r")
+
+[node name="Version" type="Label" parent="MarginContainer/HBoxContainer/Info/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "v0.1.2"
+label_settings = SubResource("LabelSettings_2r3kw")
+
+[node name="Description" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Info"]
+layout_mode = 2
+bbcode_enabled = true
+text = "This is a placeholder description."
+fit_content = true
+scroll_active = false
+
+[node name="Options" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Multiplayer" type="Button" parent="MarginContainer/HBoxContainer/Options"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+tooltip_text = "Launch graphical multiplayer server"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Options/Multiplayer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_5q0if")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Singleplayer" type="Button" parent="MarginContainer/HBoxContainer/Options"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+tooltip_text = "Play in singleplayer"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Options/Singleplayer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_dhr1n")
+expand_mode = 1
+stretch_mode = 5

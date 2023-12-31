@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbbpkq8c31lab"]
+
+[ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="1_lfs3w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8kbw3"]
+font = ExtResource("1_lfs3w")
+font_size = 18
+
+[node name="StatusPopup" type="PanelContainer"]
+custom_minimum_size = Vector2(280, 120)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -50.0
+offset_right = 120.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Panel1"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Heading" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Please wait..."
+label_settings = SubResource("LabelSettings_8kbw3")
+horizontal_alignment = 1
+
+[node name="Details" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+horizontal_alignment = 1
+vertical_alignment = 1

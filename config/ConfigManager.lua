@@ -502,6 +502,11 @@ function ConfigManager.initOptions(self: ConfigManager)
     self:addAction("debug_1", keyEvent(Enum.Key.F1))
     self:addAction("debug_2", keyEvent(Enum.Key.F2))
     self:addAction("debug_3", keyEvent(Enum.Key.F3))
+
+    -- Multiplayer
+    self:addOption("multiplayer/server/port", 20722)
+    self:addOption("multiplayer/server/maxClients", 20)
+    self:addOption("multiplayer/server/password", "")
 end
 
 -- Initialization --

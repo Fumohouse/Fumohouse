@@ -22,6 +22,11 @@ function BackButton.Hide(self: BackButton)
     self.position = self:targetPos(false)
 end
 
+function BackButton.Show(self: BackButton)
+    self.modulate = Color.WHITE
+    self.position = self:targetPos(true)
+end
+
 function BackButton.Transition(self: BackButton, vis: boolean)
     local tween = MenuUtils.CommonTween(self, vis)
     tween:TweenProperty(self, "modulate", if vis then Color.WHITE else Color.TRANSPARENT, MenuUtils.TRANSITION_DURATION)

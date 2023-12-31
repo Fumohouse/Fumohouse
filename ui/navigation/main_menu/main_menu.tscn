@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bi4nul2t2fnl8"]
+[gd_scene load_steps=36 format=3 uid="uid://bi4nul2t2fnl8"]
 
 [ext_resource type="PackedScene" uid="uid://nrh6mhdp4grr" path="res://ui/navigation/nav_menu.tscn" id="1_67448"]
 [ext_resource type="Texture2D" uid="uid://cewbassnie0qr" path="res://assets/textures/ui/faces_bg.svg" id="1_efpvf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://ui/navigation/main_menu/MainScreen.lua" id="3_gaw40"]
 [ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="4_0v5t1"]
 [ext_resource type="Script" path="res://ui/navigation/main_menu/VersionLabel.lua" id="4_5s06d"]
+[ext_resource type="PackedScene" uid="uid://bns0myjfx0sin" path="res://ui/navigation/play_screen/play_screen.tscn" id="4_eckt2"]
 [ext_resource type="PackedScene" uid="uid://bxnpb5vh0ddmo" path="res://ui/navigation/info_screen/info_screen.tscn" id="5_73rts"]
 [ext_resource type="PackedScene" uid="uid://cdwau5ohe3wxa" path="res://ui/navigation/options_screen/options_screen.tscn" id="5_deh0t"]
 [ext_resource type="PackedScene" uid="uid://ccd2h2cmi606" path="res://ui/navigation/changelog_screen/changelog_screen.tscn" id="5_gu5lu"]
@@ -77,13 +78,16 @@ shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_rcveu")
 resource_local_to_scene = true
 height = 3.4
 
-[node name="MainMenu" node_paths=PackedStringArray("mainScreen", "infoScreen", "changelogScreen", "optionsScreen", "characterEditor", "infoButton", "changelogButton", "optionsButton", "exitButton", "editButton") instance=ExtResource("1_67448")]
+[node name="MainMenu" node_paths=PackedStringArray("mainScreen", "playScreen", "infoScreen", "changelogScreen", "optionsScreen", "characterEditor", "playButton", "infoButton", "changelogButton", "optionsButton", "exitButton", "editButton") instance=ExtResource("1_67448")]
 script = ExtResource("2_kqbd2")
+transitionIn = true
 mainScreen = NodePath("Screens/MainScreen")
+playScreen = NodePath("Screens/PlayScreen")
 infoScreen = NodePath("Screens/InfoScreen")
 changelogScreen = NodePath("Screens/ChangelogScreen")
 optionsScreen = NodePath("Screens/OptionsScreen")
 characterEditor = NodePath("Screens/CharacterEditor")
+playButton = NodePath("Screens/MainScreen/MainButtons/PlayButton")
 infoButton = NodePath("Screens/MainScreen/MainButtons/InfoButton")
 changelogButton = NodePath("Screens/MainScreen/MainButtons/ChangelogButton")
 optionsButton = NodePath("Screens/MainScreen/MainButtons/OptionsButton")
@@ -120,23 +124,27 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.392157)
 
-[node name="InfoScreen" parent="Screens" index="0" instance=ExtResource("5_73rts")]
+[node name="PlayScreen" parent="Screens" index="0" instance=ExtResource("4_eckt2")]
 visible = false
 layout_mode = 1
 
-[node name="ChangelogScreen" parent="Screens" index="1" instance=ExtResource("5_gu5lu")]
+[node name="InfoScreen" parent="Screens" index="1" instance=ExtResource("5_73rts")]
 visible = false
 layout_mode = 1
 
-[node name="OptionsScreen" parent="Screens" index="2" instance=ExtResource("5_deh0t")]
+[node name="ChangelogScreen" parent="Screens" index="2" instance=ExtResource("5_gu5lu")]
 visible = false
 layout_mode = 1
 
-[node name="CharacterEditor" parent="Screens" index="3" instance=ExtResource("7_q1dvg")]
+[node name="OptionsScreen" parent="Screens" index="3" instance=ExtResource("5_deh0t")]
 visible = false
 layout_mode = 1
 
-[node name="MainScreen" type="Control" parent="Screens" index="4" node_paths=PackedStringArray("nonNavigation", "mainButtons", "topBar", "versionLabel", "musicButton", "musicController", "previewAppearanceManager")]
+[node name="CharacterEditor" parent="Screens" index="4" instance=ExtResource("7_q1dvg")]
+visible = false
+layout_mode = 1
+
+[node name="MainScreen" type="Control" parent="Screens" index="5" node_paths=PackedStringArray("nonNavigation", "mainButtons", "topBar", "versionLabel", "musicButton", "musicController", "previewAppearanceManager")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -375,6 +383,44 @@ theme_override_constants/separation = 24
 [node name="CharacterPreview" parent="Screens/MainScreen/NonNavigation/Character" index="0" instance=ExtResource("24_snoew")]
 layout_mode = 2
 
+[node name="Torso" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="0"]
+transform = Transform3D(1, 1.96365e-08, -1.88261e-08, -1.88261e-08, 0.999113, 0.0421181, 1.96365e-08, -0.0421181, 0.999113, -2.44157e-08, 0.83798, 0.0155897)
+
+[node name="Head" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="1"]
+transform = Transform3D(1, -4.63304e-10, 4.68823e-10, 4.68816e-10, 0.99993, -0.0118264, -4.63309e-10, 0.0118264, 0.99993, -2.35207e-09, 1.96059, -0.0317345)
+
+[node name="RArm" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="2"]
+transform = Transform3D(0.415745, 0.764366, 0.492849, 0.49285, -0.644783, 0.584255, 0.764365, -5.38304e-07, -0.644783, 0.201908, 1.86605, 0.0109234)
+
+[node name="LArm" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="3"]
+transform = Transform3D(0.415745, -0.764366, -0.49285, -0.49285, -0.644783, 0.584255, -0.764366, -6.18398e-07, -0.644783, -0.201911, 1.86605, 0.0109224)
+
+[node name="RHand" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="4"]
+transform = Transform3D(0.413177, 0.766044, 0.492403, 0.492404, -0.642788, 0.586824, 0.766044, -5.06407e-07, -0.642788, 0.896792, 1.27987, 0.0109224)
+
+[node name="LHand" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="5"]
+transform = Transform3D(0.413177, -0.766044, -0.492403, -0.492404, -0.642788, 0.586824, -0.766044, -6.14324e-07, -0.642788, -0.896795, 1.27987, 0.0109224)
+
+[node name="RLeg" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="6"]
+transform = Transform3D(0.975812, 0.155977, 0.153151, 0.153148, -0.987743, 0.0301662, 0.155978, -0.00598181, -0.987741, 0.213903, 1.02528, 0.0236282)
+
+[node name="LLeg" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="7"]
+transform = Transform3D(0.977742, -0.14966, -0.147107, -0.147111, -0.98872, 0.0281265, -0.149659, -0.00585926, -0.988721, -0.213903, 1.02528, 0.0236282)
+
+[node name="RFoot" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="8"]
+transform = Transform3D(0.994518, 0.10453, 1.4063e-07, -1.2744e-06, -1.017e-06, 1, 0.10453, -0.994521, -9.77889e-07, 0.380816, -0.03172, 0.0172272)
+
+[node name="LFoot" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="9"]
+transform = Transform3D(0.994532, -0.104525, -8.801e-07, -2.02353e-06, -4.1537e-07, 1, -0.104527, -0.994522, -1.69501e-07, -0.373898, -0.0317197, 0.0173645)
+
+[node name="Skeleton3D" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.0210637, -9.61779e-09, -9.61779e-09, 0.999778)
+bones/1/rotation = Quaternion(0.818468, 0.374048, 0.390148, -0.194892)
+bones/3/rotation = Quaternion(0.818468, -0.374048, -0.390148, -0.194892)
+bones/5/rotation = Quaternion(0.0269753, 9.90257e-09, 9.79864e-09, 0.999636)
+bones/6/rotation = Quaternion(0.993482, 0.0761011, 0.0793777, -0.0300256)
+bones/8/rotation = Quaternion(0.99398, -0.0730236, -0.0761655, -0.0294879)
+
 [node name="Head" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_hdwrk")
 
@@ -393,6 +439,9 @@ surface_material_override/0 = SubResource("ShaderMaterial_hdwrk")
 [node name="Torso" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature/Skeleton3D" index="5"]
 surface_material_override/0 = SubResource("ShaderMaterial_hdwrk")
 
+[node name="TorsoAttachment" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature/Skeleton3D" index="6"]
+transform = Transform3D(1, 1.96365e-08, -1.88261e-08, -1.88261e-08, 0.999113, 0.0421181, 1.96365e-08, -0.0421181, 0.999113, -2.44157e-08, 0.905569, 0.0155896)
+
 [node name="MainCollider" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character" index="3"]
 shape = SubResource("CapsuleShape3D_ju70y")
 
@@ -410,26 +459,21 @@ offset_bottom = 152.0
 alignment = 1
 
 [node name="PlayButton" parent="Screens/MainScreen/MainButtons" index="0" instance=ExtResource("10_16bi3")]
-unique_name_in_owner = true
 layout_mode = 2
 
 [node name="InfoButton" parent="Screens/MainScreen/MainButtons" index="1" instance=ExtResource("10_16bi3")]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Credits/Info"
 
 [node name="ChangelogButton" parent="Screens/MainScreen/MainButtons" index="2" instance=ExtResource("10_16bi3")]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Changelog"
 
 [node name="OptionsButton" parent="Screens/MainScreen/MainButtons" index="3" instance=ExtResource("10_16bi3")]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
 
 [node name="ExitButton" parent="Screens/MainScreen/MainButtons" index="4" instance=ExtResource("10_16bi3")]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(225, 48)
 layout_mode = 2
 text = "Exit"

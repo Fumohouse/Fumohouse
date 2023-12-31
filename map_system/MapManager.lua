@@ -1,8 +1,18 @@
 local MapManifest = require("MapManifest")
 local MapRuntime = require("MapRuntime")
+local MainMenu = require("../ui/navigation/main_menu/MainMenu")
 
 local MusicPlayerM = require("../music/MusicPlayer")
 local MusicPlayer = gdglobal("MusicPlayer") :: MusicPlayerM.MusicPlayer
+
+local AppearancesM = require("../character/appearance/Appearances")
+local Appearances = gdglobal("Appearances") :: AppearancesM.Appearances
+
+local NetworkManagerM = require("../networking/NetworkManager")
+local NetworkManager = gdglobal("NetworkManager") :: NetworkManagerM.NetworkManager
+
+local ConfigManagerM = require("../config/ConfigManager")
+local ConfigManager = gdglobal("ConfigManager") :: ConfigManagerM.ConfigManager
 
 --- @class
 --- @extends Node
@@ -17,6 +27,9 @@ export type MapData = {
 
 --- @classType MapManager
 export type MapManager = Node & typeof(MapManager) & {
+    --- @signal
+    statusUpdate: SignalWithArgs<(details: string, failure: boolean) -> ()>,
+
     --- @signal
     mapChanged: SignalWithArgs<(manifest: MapManifest.MapManifest?) -> ()>,
 
@@ -67,11 +80,20 @@ function MapManager._Ready(self: MapManager)
     end
 end
 
+function MapManager.sendStatusUpdate(self: MapManager, details: string, failure: boolean?)
+    self.statusUpdate:Emit(details, failure or false)
+    for i = 1, 2 do
+        wait_signal(self:GetTree().processFrame)
+    end
+end
+
 function MapManager.Load(self: MapManager, id: string)
     local map = self.maps[id]
     if not map then
         return
     end
+
+    self:sendStatusUpdate("Loading map...")
 
     local scene = load(map.manifest.mainScenePath) :: Resource?
     if not scene or not scene:IsA(PackedScene) then
@@ -91,14 +113,68 @@ function MapManager.Load(self: MapManager, id: string)
     newScene:AddChild(runtime)
     newScene:MoveChild(runtime, 0)
 
-    local currentScene = self:GetTree():GetCurrentScene()
+    local currentScene = self:GetTree().currentScene
     if currentScene then
         currentScene:QueueFree()
     end
 
-    self:GetTree():SetCurrentScene(newScene)
+    self:GetTree().currentScene = newScene
 
     self.mapChanged:Emit(map.manifest)
+end
+
+function MapManager.StartSingleplayer(self: MapManager, id: string)
+    self:Load(id)
+    assert(self.currentRuntime).players:SpawnCharacter(Appearances.current)
+end
+
+function MapManager.StartMultiplayerServer(self: MapManager, id: string)
+    local port = ConfigManager:Get("multiplayer/server/port") :: number
+    local maxClients = ConfigManager:Get("multiplayer/server/maxClients") :: number
+    local password = ConfigManager:Get("multiplayer/server/password") :: string
+
+    NetworkManager:Serve(id, port, maxClients, password)
+end
+
+--- @registerMethod
+function MapManager._OnLeaveTransitionFinished(self: MapManager, prevScene: Node)
+    if prevScene then
+        prevScene:QueueFree()
+    end
+end
+
+function MapManager.Leave(self: MapManager)
+    self.currentMap = nil
+    self.currentRuntime = nil
+
+    if NetworkManager.isActive then
+        if NetworkManager.isServer then
+            NetworkManager:CloseServer()
+        else
+            NetworkManager:DisconnectWithReason(1, "Disconnected")
+        end
+    end
+
+    self:sendStatusUpdate("Loading main scene...")
+
+    local mainScene: PackedScene = assert(load("res://ui/navigation/main_menu/main_menu.tscn"))
+
+    local mainMenu = mainScene:Instantiate() :: MainMenu.MainMenu
+    mainMenu.transitionIn = false
+    self:GetTree().root:AddChild(mainMenu)
+
+    local currentScene = self:GetTree().currentScene
+    self:GetTree().currentScene = mainMenu
+
+    mainMenu.modulate = Color.TRANSPARENT
+
+    local tween = self:CreateTween()
+    tween:TweenProperty(mainMenu, "modulate", Color.WHITE, 0.6)
+    tween:TweenCallback(Callable.new(self, "_OnLeaveTransitionFinished"):Bind(currentScene))
+
+    self:PlayTitlePlaylist()
+
+    mainMenu:SetScreen(mainMenu.playScreen)
 end
 
 function MapManager.GetTitleMap(self: MapManager)

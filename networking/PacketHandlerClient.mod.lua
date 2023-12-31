@@ -35,8 +35,10 @@ function PacketHandlerClient.OnConnectedToServer(nm: NetworkManager.NetworkManag
     nm:SendPacket(1, hello)
 
     nm:DisconnectTimeout(1, function()
-        return nm.peerData[1].state == NetworkManager.PeerState.CONNECTED
+        return nm.peerData[1] and nm.peerData[1].state == NetworkManager.PeerState.CONNECTED
     end)
+
+    nm:sendStatusUpdate("Waiting for handshake...", false, false)
 end
 
 PacketHandlerClient[HelloPacket.server.NAME] = function(nm: NetworkManager.NetworkManager, packet: Packet.Packet)
@@ -80,6 +82,8 @@ PacketHandlerClient[HelloPacket.server.NAME] = function(nm: NetworkManager.Netwo
     nm:DisconnectTimeout(1, function()
         return peerData.state == NetworkManager.PeerState.AUTH
     end)
+
+    nm:sendStatusUpdate("Authenticating...", false, false)
 end
 
 PacketHandlerClient[PeerStatusPacket.server.NAME] = function(nm: NetworkManager.NetworkManager, packet: Packet.Packet)

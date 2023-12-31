@@ -93,6 +93,20 @@ function NavMenu.SwitchScreen(self: NavMenu, screen: TransitionElement.Transitio
     self.currentScreen = screen
 end
 
+function NavMenu.SetScreen(self: NavMenu, screen: TransitionElement.TransitionElement?)
+    if self.currentScreen then
+        self:Hide()
+    end
+
+    self.currentScreen = screen
+
+    if screen then
+        screen.visible = true
+        screen:Show()
+        self.backButton:Show()
+    end
+end
+
 --- @registerMethod
 function NavMenu._OnBackButtonPress(self: NavMenu)
     self:SwitchScreen(assert(self.mainScreen))

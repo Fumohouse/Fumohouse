@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cdwau5ohe3wxa"]
+[gd_scene load_steps=23 format=3 uid="uid://cdwau5ohe3wxa"]
 
 [ext_resource type="PackedScene" uid="uid://ghrg27kkromx" path="res://ui/navigation/screen_base_layout.tscn" id="1_fsrh2"]
 [ext_resource type="Script" path="res://ui/navigation/options_screen/OptionsScreen.lua" id="2_kifl8"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://config/ConfigButton.lua" id="9_y5hc6"]
 [ext_resource type="Script" path="res://config/ConfigAudioOutputDevices.lua" id="12_jdutg"]
 [ext_resource type="PackedScene" uid="uid://c8bvcctmkdmbk" path="res://ui/navigation/options_screen/labeled_action_input.tscn" id="13_b7px7"]
+[ext_resource type="PackedScene" uid="uid://csrp8nerdjpyv" path="res://ui/navigation/options_screen/labeled_spin_box.tscn" id="13_ebw2x"]
+[ext_resource type="PackedScene" uid="uid://cpm5g1ilx0t6y" path="res://ui/navigation/options_screen/labeled_line_edit.tscn" id="14_4tv6x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7fbo"]
 bg_color = Color(0, 0.180392, 0.34902, 1)
@@ -126,6 +128,11 @@ text = "Audio"
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Input"
+
+[node name="Multiplayer" type="Button" parent="TopBar/RadioButtonContainer" index="3"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Multiplayer"
 
 [node name="Tabs" type="Control" parent="Contents/MarginContainer" index="0"]
 unique_name_in_owner = true
@@ -911,6 +918,53 @@ text = "Debug 3"
 [node name="Spacer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug3" index="1"]
 custom_minimum_size = Vector2(100, 0)
 
+[node name="Multiplayer" parent="Contents/MarginContainer/Tabs" index="3" instance=ExtResource("4_yx3s2")]
+visible = false
+layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Server" parent="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer/VBoxContainer" index="0" instance=ExtResource("4_yentm")]
+layout_mode = 2
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer/VBoxContainer/Server" index="0"]
+text = "Server"
+
+[node name="Port" parent="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer/VBoxContainer/Server/Options" index="0" instance=ExtResource("13_ebw2x")]
+layout_mode = 2
+key = "multiplayer/server/port"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer/VBoxContainer/Server/Options/Port" index="0"]
+text = "Port"
+
+[node name="SpinBox" parent="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer/VBoxContainer/Server/Options/Port" index="3"]
+min_value = 1024.0
+max_value = 65535.0
+value = 1024.0
+
+[node name="MaxClients" parent="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer/VBoxContainer/Server/Options" index="1" instance=ExtResource("13_ebw2x")]
+layout_mode = 2
+key = "multiplayer/server/maxClients"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer/VBoxContainer/Server/Options/MaxClients" index="0"]
+text = "Maximum Clients"
+
+[node name="SpinBox" parent="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer/VBoxContainer/Server/Options/MaxClients" index="3"]
+min_value = 1.0
+value = 1.0
+
+[node name="Password" parent="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer/VBoxContainer/Server/Options" index="2" instance=ExtResource("14_4tv6x")]
+layout_mode = 2
+key = "multiplayer/server/password"
+
+[node name="Label" parent="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer/VBoxContainer/Server/Options/Password" index="0"]
+text = "Password"
+
+[node name="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer/VBoxContainer/Server/Options/Password" index="3"]
+placeholder_text = "No password"
+
 [node name="RestartPrompt" type="PanelContainer" parent="." index="2"]
 visible = false
 layout_mode = 1
@@ -1037,3 +1091,8 @@ text = "Restart"
 [editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug1"]
 [editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug2"]
 [editable path="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer/Keybinds/Options/Debug3"]
+[editable path="Contents/MarginContainer/Tabs/Multiplayer"]
+[editable path="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer/VBoxContainer/Server"]
+[editable path="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer/VBoxContainer/Server/Options/Port"]
+[editable path="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer/VBoxContainer/Server/Options/MaxClients"]
+[editable path="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer/VBoxContainer/Server/Options/Password"]

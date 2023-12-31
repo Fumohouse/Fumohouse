@@ -15,11 +15,11 @@ function AreaHandler.new()
 end
 
 function AreaHandler.Process(self: AreaHandler, state: MotionState.MotionState, delta: number)
-    if state:IsRemoteCharacter() then
+    if state:IsRemoteCharacter() or not MapManager.currentMap then
         return
     end
 
-    local currentMap = assert(MapManager.currentMap).manifest
+    local currentMap = MapManager.currentMap.manifest
 
     for _, area in state.intersections.areas do
         if not area:HasMeta("playlist") then

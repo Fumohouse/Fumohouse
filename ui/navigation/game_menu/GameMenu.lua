@@ -4,8 +4,12 @@ local MenuScreen = require("MenuScreen")
 local NavButton = require("../NavButton")
 local TransitionElement = require("../TransitionElement")
 
+local MapManagerM = require("../../../map_system/MapManager")
+local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
+
 --- @class
 --- @extends NavMenu
+--- @permissions INTERNAL
 local GameMenu = {}
 local GameMenuC = gdclass(GameMenu)
 
@@ -14,9 +18,24 @@ export type GameMenu = NavMenu.NavMenu & typeof(GameMenu) & {
     --- @signal
     opened: Signal,
 
+    --- @property
     mainScreen: MenuScreen.MenuScreen,
+    --- @property
     infoScreen: TransitionElement.TransitionElement,
+    --- @property
     optionsScreen: TransitionElement.TransitionElement,
+    --- @property
+    leaveScreen: TransitionElement.TransitionElement,
+
+    --- @property
+    continueButton: NavButton.NavButton,
+    --- @property
+    infoButton: NavButton.NavButton,
+    --- @property
+    optionsButton: NavButton.NavButton,
+    --- @property
+    leaveButton: NavButton.NavButton,
+
     blurBackground: Control,
     blurMat: ShaderMaterial,
     isVisible: boolean,
@@ -89,7 +108,9 @@ function GameMenu.Transition(self: GameMenu, vis: boolean, args: NavMenu.SwitchA
 end
 
 function GameMenu.Dismiss(self: GameMenu)
-    self:Transition(false)
+    if not self.continueButton.disabled then
+        self:Transition(false)
+    end
 end
 
 function GameMenu._UnhandledInput(self: GameMenu, event: InputEvent)
@@ -115,26 +136,26 @@ function GameMenu._OnContinueButtonPressed(self: GameMenu, button: Button)
     self:Transition(false, (button :: NavButton.NavButton):TransitionArgs())
 end
 
+--- @registerMethod
+function GameMenu._OnLeaveButtonPressed(self: GameMenu)
+    self:_OnScreenNavButtonPressed(self.leaveButton, self.leaveScreen)
+    self.backButton.visible = false
+    wait(0.5)
+    MapManager:Leave()
+end
+
 function GameMenu._Ready(self: GameMenu)
-    self.mainScreen = self:GetNode("Screens/MenuScreen") :: MenuScreen.MenuScreen
-    self.mainScreen.transition:Connect(Callable.new(self, "_OnMainScreenTransition"))
-
-    self.infoScreen = self:GetNode("Screens/InfoScreen") :: TransitionElement.TransitionElement
-    self.optionsScreen = self:GetNode("Screens/OptionsScreen") :: TransitionElement.TransitionElement
-
     NavMenu._Ready(self)
+
+    self.mainScreen.transition:Connect(Callable.new(self, "_OnMainScreenTransition"))
 
     self.blurBackground = self:GetNode("Blur") :: Control
     self.blurMat = assert(self.blurBackground.material) :: ShaderMaterial
 
-    local continueButton = self:GetNode("%ContinueButton") :: NavButton.NavButton
-    continueButton.pressed:Connect(Callable.new(self, "_OnContinueButtonPressed"):Bind(continueButton))
-
-    local infoButton = self:GetNode("%InfoButton") :: NavButton.NavButton
-    infoButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(infoButton, self.infoScreen))
-
-    local optionsButton = self:GetNode("%OptionsButton") :: NavButton.NavButton
-    optionsButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(optionsButton, self.optionsScreen))
+    self.continueButton.pressed:Connect(Callable.new(self, "_OnContinueButtonPressed"):Bind(self.continueButton))
+    self.infoButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(self.infoButton, self.infoScreen))
+    self.optionsButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(self.optionsButton, self.optionsScreen))
+    self.leaveButton.pressed:Connect(Callable.new(self, "_OnLeaveButtonPressed"))
 
     self:Hide()
 end

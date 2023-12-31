@@ -13,7 +13,13 @@ local MainMenuC = gdclass(MainMenu)
 --- @classType MainMenu
 export type MainMenu = NavMenu.NavMenu & typeof(MainMenu) & {
     --- @property
+    --- @default true
+    transitionIn: boolean,
+
+    --- @property
     mainScreen: MainScreen.MainScreen,
+    --- @property
+    playScreen: TransitionElement.TransitionElement,
     --- @property
     infoScreen: TransitionElement.TransitionElement,
     --- @property
@@ -23,6 +29,8 @@ export type MainMenu = NavMenu.NavMenu & typeof(MainMenu) & {
     --- @property
     characterEditor: TransitionElement.TransitionElement,
 
+    --- @property
+    playButton: NavButton.NavButton,
     --- @property
     infoButton: NavButton.NavButton,
     --- @property
@@ -76,17 +84,22 @@ function MainMenu._Ready(self: MainMenu)
 
     self.dim = self:GetNode("Dim") :: ColorRect
 
-    self.infoButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(self.infoButton, self.infoScreen))
-    self.changelogButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(self.changelogButton, self.changelogScreen))
-    self.optionsButton.pressed:Connect(Callable.new(self, "_OnScreenNavButtonPressed"):Bind(self.optionsButton, self.optionsScreen))
+    local navButtonCb = Callable.new(self, "_OnScreenNavButtonPressed")
+    self.playButton.pressed:Connect(navButtonCb:Bind(self.playButton, self.playScreen))
+    self.infoButton.pressed:Connect(navButtonCb:Bind(self.infoButton, self.infoScreen))
+    self.changelogButton.pressed:Connect(navButtonCb:Bind(self.changelogButton, self.changelogScreen))
+    self.optionsButton.pressed:Connect(navButtonCb:Bind(self.optionsButton, self.optionsScreen))
+
     self.exitButton.pressed:Connect(Callable.new(self, "_OnExitButtonPressed"):Bind(self.exitButton))
 
     self.editButton.pressed:Connect(Callable.new(self, "_OnEditButtonPressed"))
 
     -- Setup
-    wait(0.05)
-    self:Dim(false)
-    self:SwitchScreen(self.mainScreen)
+    if self.transitionIn then
+        wait(0.05)
+        self:Dim(false)
+        self:SwitchScreen(self.mainScreen)
+    end
 end
 
 return MainMenuC

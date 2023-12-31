@@ -42,6 +42,9 @@ export type PeerData = {
 export type NetworkManager = Node & typeof(NetworkManager) & {
     multiplayer: SceneMultiplayer,
 
+    --- @signal
+    statusUpdate: SignalWithArgs<(details: string, failure: boolean) -> ()>,
+
     packetHandlerCommon: PacketHandler,
     packetHandlerServer: PacketHandlerServer,
     packetHandlerClient: PacketHandlerClient,
@@ -156,6 +159,18 @@ function NetworkManager._Notification(self: NetworkManager, what: number)
     end
 end
 
+function NetworkManager.sendStatusUpdate(self: NetworkManager, details: string, failure: boolean?, shouldWait: boolean?)
+    self.statusUpdate:Emit(details, failure or false)
+
+    if shouldWait == false then
+        return
+    end
+
+    for i = 1, 2 do
+        wait_signal(self:GetTree().processFrame)
+    end
+end
+
 --#region CONNECTIVITY
 ----------------------
 
@@ -179,6 +194,8 @@ function NetworkManager.Join(self: NetworkManager, addr: string, port: number, i
     assert(self.peer:GetConnectionStatus() == MultiplayerPeer.ConnectionStatus.DISCONNECTED)
 
     self.isServer = false
+
+    self:sendStatusUpdate("Connecting...")
 
     self:Log(`joining server at {addr}:{port}`)
 
@@ -223,6 +240,8 @@ function NetworkManager.DisconnectTimeout(self: NetworkManager, peer: number?, p
             self:Log(`disconnecting after timeout`)
             self:Reset()
         end
+
+        self:sendStatusUpdate("Timed out", true, false)
     end)()
 end
 
@@ -233,6 +252,10 @@ function NetworkManager.DisconnectWithReason(self: NetworkManager, peer: number,
     if doTimeout ~= false then
         self:DisconnectTimeout(peer)
     end
+
+    if not self.isServer then
+        self:sendStatusUpdate(`Disconnected: {reason}`, true, false)
+    end
 end
 
 function NetworkManager.Serve(self: NetworkManager, mapId: string, port: number, maxClients: number, password: string?)
@@ -242,6 +265,8 @@ function NetworkManager.Serve(self: NetworkManager, mapId: string, port: number,
     self.password = password or ""
 
     self.mapId = mapId
+
+    self:sendStatusUpdate("Starting server...")
 
     local err = self.peer:CreateServer(port, maxClients)
     if err ~= Enum.Error.OK then
