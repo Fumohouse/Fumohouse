@@ -225,7 +225,7 @@ function MotionState.Initialize(self: MotionState, config)
 
     addProcessor("Move")
 
-    if not isRemote and not isServer then
+    if not NetworkManager.isActive or (not isRemote and not isServer) then
         addProcessor("AreaHandler")
     end
     addProcessor("CharacterAnimator")
