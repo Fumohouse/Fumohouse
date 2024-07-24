@@ -12,7 +12,6 @@ local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
 local InfoScreen = {}
 local InfoScreenC = gdclass(InfoScreen)
 
---- @classType InfoScreen
 export type InfoScreen = ScreenBase.ScreenBase & typeof(InfoScreen) & {
     --- @property
     versionText: RichTextLabel,

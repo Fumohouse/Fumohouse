@@ -25,7 +25,6 @@ export type MapData = {
     hash: string,
 }
 
---- @classType MapManager
 export type MapManager = Node & typeof(MapManager) & {
     --- @signal
     statusUpdate: SignalWithArgs<(details: string, failure: boolean) -> ()>,

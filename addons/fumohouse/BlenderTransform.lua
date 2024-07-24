@@ -7,7 +7,6 @@ local Dock = require("Dock")
 local BlenderTransform = {}
 local BlenderTransformC = gdclass(BlenderTransform)
 
---- @classType BlenderTransform
 export type BlenderTransform = Button & typeof(BlenderTransform) & {
     selection: EditorSelection,
 }

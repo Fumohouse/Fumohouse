@@ -4,7 +4,6 @@
 local EngineInit = {}
 local EngineInitC = gdclass(EngineInit)
 
---- @classType EngineInit
 export type EngineInit = Node & typeof(EngineInit)
 
 --- @registerMethod

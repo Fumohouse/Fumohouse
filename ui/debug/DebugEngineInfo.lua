@@ -7,7 +7,6 @@ local InfoTable = require("InfoTable")
 local DebugEngineInfo = {}
 local DebugEngineInfoC = gdclass(DebugEngineInfo)
 
---- @classType DebugEngineInfo
 export type DebugEngineInfo = DebugWindow.DebugWindow & typeof(DebugEngineInfo) & {
     infoTbl: InfoTable.InfoTable,
 }

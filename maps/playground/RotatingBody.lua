@@ -3,7 +3,6 @@
 local RotatingBody  = {}
 local RotatingBodyC = gdclass(RotatingBody)
 
---- @classType RotatingBody
 export type RotatingBody = AnimatableBody3D & typeof(RotatingBody) & {
     --- @property
     --- @range 0 60 1 degrees

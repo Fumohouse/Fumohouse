@@ -7,7 +7,6 @@ local EyeStyle = require("../../character/appearance/face/EyeStyle")
 local FacePreviewButton = {}
 local FacePreviewButtonC = gdclass(FacePreviewButton)
 
---- @classType FacePreviewButton
 export type FacePreviewButton = PreviewButton.PreviewButton & typeof(FacePreviewButton) & {
     --- @property
     style: Resource,

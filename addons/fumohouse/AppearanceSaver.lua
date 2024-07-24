@@ -10,7 +10,6 @@ local SinglePart = require("../../character/appearance/parts/SinglePart")
 local AppearanceSaver = {}
 local AppearanceSaverC = gdclass(AppearanceSaver)
 
---- @classType AppearanceSaver
 export type AppearanceSaver = Control & typeof(AppearanceSaver) & {
     folderField: LineEdit,
     selection: EditorSelection,

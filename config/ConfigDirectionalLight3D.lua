@@ -6,7 +6,6 @@ local ConfigManager = gdglobal("ConfigManager") :: ConfigManagerM.ConfigManager
 local ConfigDirectionalLight3D = {}
 local ConfigDirectionalLight3DC = gdclass(ConfigDirectionalLight3D)
 
---- @classType ConfigDirectionalLight3D
 export type ConfigDirectionalLight3D = DirectionalLight3D & typeof(ConfigDirectionalLight3D)
 
 function ConfigDirectionalLight3D.applyBias(self: ConfigDirectionalLight3D)

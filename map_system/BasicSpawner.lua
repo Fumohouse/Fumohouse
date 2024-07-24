@@ -7,7 +7,6 @@ local Spawnpoint = require("Spawnpoint")
 local BasicSpawner = {}
 local BasicSpawnerC = gdclass(BasicSpawner)
 
---- @classType BasicSpawner
 export type BasicSpawner = CharacterSpawner.CharacterSpawner
 
 local characterScene = assert(load("res://character/character.tscn")) :: PackedScene

@@ -3,7 +3,6 @@
 local InfoContributor = {}
 local InfoContributorC = gdclass(InfoContributor)
 
---- @classType InfoContributor
 export type InfoContributor = Control & typeof(InfoContributor) & {
     --- @property
     name: string,

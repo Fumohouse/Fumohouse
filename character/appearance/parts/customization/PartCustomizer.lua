@@ -5,7 +5,6 @@ local Appearance = require("../../Appearance")
 local PartCustomizer = {}
 local PartCustomizerC = gdclass(PartCustomizer)
 
---- @classType PartCustomizer
 export type PartCustomizer = Node3D & typeof(PartCustomizer)
 
 function PartCustomizer.Update(self: PartCustomizer, appearance: Appearance.Appearance, config: Dictionary?)

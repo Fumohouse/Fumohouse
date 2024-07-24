@@ -3,7 +3,6 @@
 local IconButton = {}
 local IconButtonC = gdclass(IconButton)
 
---- @classType IconButton
 export type IconButton = TextureButton & typeof(IconButton) & {
     --- @property
     --- @default 0.15

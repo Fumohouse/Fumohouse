@@ -3,7 +3,6 @@
 local PreviewButton = {}
 local PreviewButtonC = gdclass(PreviewButton)
 
---- @classType PreviewButton
 export type PreviewButton = Button & typeof(PreviewButton) & {
     --- @property
     indicator: Control,

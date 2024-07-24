@@ -5,7 +5,6 @@ local ConfigBoundControl = require("ConfigBoundControl")
 local ConfigButton = {}
 local ConfigButtonC = gdclass(ConfigButton)
 
---- @classType ConfigButton
 export type ConfigButton = ConfigBoundControl.ConfigBoundControl & typeof(ConfigButton) & {
     input: Button,
 }

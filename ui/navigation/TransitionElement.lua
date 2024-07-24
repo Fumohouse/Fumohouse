@@ -5,7 +5,6 @@ local MenuUtils = require("MenuUtils.mod")
 local TransitionElement = {}
 local TransitionElementC = gdclass(TransitionElement)
 
---- @classType TransitionElement
 export type TransitionElement = Control & typeof(TransitionElement)
 
 function TransitionElement.Hide(self: TransitionElement)

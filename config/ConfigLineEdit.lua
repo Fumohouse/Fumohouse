@@ -5,7 +5,6 @@ local ConfigBoundControl = require("ConfigBoundControl")
 local ConfigLineEdit = {}
 local ConfigLineEditC = gdclass(ConfigLineEdit)
 
---- @classType ConfigLineEdit
 export type ConfigLineEdit = ConfigBoundControl.ConfigBoundControl & typeof(ConfigLineEdit) & {
     input: LineEdit,
 }

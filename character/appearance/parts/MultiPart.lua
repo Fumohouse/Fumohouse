@@ -6,7 +6,6 @@ local SinglePart = require("SinglePart")
 local MultiPart = {}
 local MultiPartC = gdclass(MultiPart)
 
---- @classType MultiPart
 export type MultiPart = PartData.PartData & typeof(MultiPart) & {
     --- @property
     parts: TypedArray<SinglePart.SinglePart>,

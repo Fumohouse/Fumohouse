@@ -9,7 +9,6 @@ local ConfigManager = gdglobal("ConfigManager") :: ConfigManagerM.ConfigManager
 local CameraController = {}
 local CameraControllerC = gdclass(CameraController)
 
---- @classType CameraController
 export type CameraController = Camera3D & typeof(CameraController) & {
     --- @property
     --- @range 0 10

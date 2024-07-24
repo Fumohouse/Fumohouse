@@ -3,7 +3,6 @@
 local FacePartStyle = {}
 local FacePartStyleC = gdclass(FacePartStyle)
 
---- @classType FacePartStyle
 export type FacePartStyle = Resource & typeof(FacePartStyle) & {
     --- @property
     name: string,

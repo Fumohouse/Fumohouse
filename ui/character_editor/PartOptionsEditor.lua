@@ -8,7 +8,6 @@ local PartDatabase = gdglobal("PartDatabase") :: PartDatabaseM.PartDatabase
 local PartOptionsEditor = {}
 local PartOptionsEditorC = gdclass(PartOptionsEditor)
 
---- @classType PartOptionsEditor
 export type PartOptionsEditor = Control & typeof(PartOptionsEditor) & {
     --- @property
     id: string,

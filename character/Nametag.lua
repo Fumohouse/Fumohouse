@@ -9,7 +9,6 @@ local NetworkManager = gdglobal("NetworkManager") :: NetworkManagerM.NetworkMana
 local Nametag = {}
 local NametagC = gdclass(Nametag)
 
---- @classType Nametag
 export type Nametag = Billboard.Billboard & typeof(Nametag) & {
     --- @property
     character: Character.Character,

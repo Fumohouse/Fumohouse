@@ -11,7 +11,6 @@ type PlaylistPosition = {
     time: number,
 }
 
---- @classType MusicPlayer
 export type MusicPlayer = AudioStreamPlayer & typeof(MusicPlayer) & {
     --- @signal
     songChanged: SignalWithArgs<(song: Song.Song) -> ()>,

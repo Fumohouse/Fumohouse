@@ -5,7 +5,6 @@ local CameraController = require("../character/CameraController")
 local WaterOverlay = {}
 local WaterOverlayC = gdclass(WaterOverlay)
 
---- @classType WaterOverlay
 export type WaterOverlay = Control & typeof(WaterOverlay) & {
     --- @property
     camera: CameraController.CameraController?,

@@ -38,7 +38,6 @@ export type PeerData = {
     rtt: number,
 }
 
---- @classType NetworkManager
 export type NetworkManager = Node & typeof(NetworkManager) & {
     multiplayer: SceneMultiplayer,
 

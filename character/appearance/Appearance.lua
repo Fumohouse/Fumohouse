@@ -6,7 +6,6 @@ local PartDatabase = gdglobal("PartDatabase") :: PartDatabaseM.PartDatabase
 local Appearance = {}
 local AppearanceC = gdclass(Appearance)
 
---- @classType Appearance
 export type Appearance = Resource & typeof(Appearance) & {
     --- @property
     name: string,

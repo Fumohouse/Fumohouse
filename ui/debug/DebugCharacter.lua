@@ -15,7 +15,6 @@ local DebugDraw = gdglobal("DebugDraw") :: DebugDrawM.DebugDraw
 local DebugCharacter = {}
 local DebugCharacterC = gdclass(DebugCharacter)
 
---- @classType DebugCharacter
 export type DebugCharacter = DebugWindow.DebugWindow & typeof(DebugCharacter) & {
     --- @property
     --- @set setCharacter

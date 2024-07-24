@@ -5,7 +5,6 @@
 local PostImportGltf = {}
 local PostImportGltfC = gdclass(PostImportGltf)
 
---- @classType PostImportGltf
 export type PostImportGltf = EditorScenePostImport & typeof(PostImportGltf) & {
     convertedMaterials: {[number]: ShaderMaterial}
 }

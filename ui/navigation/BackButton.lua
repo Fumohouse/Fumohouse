@@ -6,7 +6,6 @@ local MenuUtils = require("MenuUtils.mod")
 local BackButton = {}
 local BackButtonC = gdclass(BackButton)
 
---- @classType BackButton
 export type BackButton = NavButton.NavButton & typeof(BackButton)
 
 function BackButton.targetPos(self: BackButton, vis: boolean)

@@ -3,7 +3,6 @@
 local BasicColorPickerButton = {}
 local BasicColorPickerButtonC = gdclass(BasicColorPickerButton)
 
---- @classType BasicColorPickerButton
 export type BasicColorPickerButton = ColorPickerButton & typeof(BasicColorPickerButton)
 
 --- @registerMethod

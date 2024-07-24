@@ -7,7 +7,6 @@ local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
 local Intro = {}
 local IntroC = gdclass(Intro)
 
---- @classType Intro
 export type Intro = Control & typeof(Intro) & {
     --- @property
     postScene: PackedScene,

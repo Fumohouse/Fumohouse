@@ -5,7 +5,6 @@ local Playlist = require("../music/Playlist")
 local MapManifest = {}
 local MapManifestC = gdclass(MapManifest)
 
---- @classType MapManifest
 export type MapManifest = Resource & typeof(MapManifest) & {
     --- @property
     id: string,

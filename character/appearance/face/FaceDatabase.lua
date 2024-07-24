@@ -6,7 +6,6 @@ local EyeStyle = require("EyeStyle")
 local FaceDatabase = {}
 local FaceDatabaseC = gdclass(FaceDatabase)
 
---- @classType FaceDatabase
 export type FaceDatabase = Resource & typeof(FaceDatabase) & {
     --- @property
     eyebrowStyles: TypedArray<FacePartStyle.FacePartStyle>,

@@ -7,7 +7,6 @@ local Appearance = require("../../Appearance")
 local SingleColor = {}
 local SingleColorC = gdclass(SingleColor)
 
---- @classType SingleColor
 type SingleColor = PartCustomizer.PartCustomizer & typeof(SingleColor) & {
     --- @property
     defaultColor: Color,

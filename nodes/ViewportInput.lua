@@ -3,7 +3,6 @@
 local ViewportInput = {}
 local ViewportInputC = gdclass(ViewportInput)
 
---- @classType ViewportInput
 export type ViewportInput = Control & typeof(ViewportInput) & {
     --- @property
     --- @default true

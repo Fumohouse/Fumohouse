@@ -5,7 +5,6 @@ local MusicResBase = require("MusicResBase")
 local SongLabel = {}
 local SongLabelC = gdclass(SongLabel)
 
---- @classType SongLabel
 export type SongLabel = MusicResBase.MusicResBase
 
 return SongLabelC

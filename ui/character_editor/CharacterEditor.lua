@@ -17,7 +17,6 @@ local PartDatabase = gdglobal("PartDatabase") :: PartDatabaseM.PartDatabase
 local CharacterEditor = {}
 local CharacterEditorC = gdclass(CharacterEditor)
 
---- @classType CharacterEditor
 export type CharacterEditor = ScreenBase.ScreenBase & typeof(CharacterEditor) & {
     --- @property
     nameEdit: LineEdit,

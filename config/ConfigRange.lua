@@ -5,7 +5,6 @@ local ConfigBoundControl = require("ConfigBoundControl")
 local ConfigRange = {}
 local ConfigRangeC = gdclass(ConfigRange)
 
---- @classType ConfigRange
 export type ConfigRange = ConfigBoundControl.ConfigBoundControl & typeof(ConfigRange) & {
     input: Range,
 

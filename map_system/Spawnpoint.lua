@@ -3,7 +3,6 @@
 local Spawnpoint = {}
 local SpawnpointC = gdclass(Spawnpoint)
 
---- @classType Spawnpoint
 export type Spawnpoint = Node3D & typeof(Spawnpoint)
 
 --- @registerMethod

@@ -3,7 +3,6 @@
 local EyeStyle = {}
 local EyeStyleC = gdclass(EyeStyle)
 
---- @classType EyeStyle
 export type EyeStyle = Resource & typeof(EyeStyle) & {
     --- @property
     name: string,

@@ -3,7 +3,6 @@
 local RadioButtonContainer = {}
 local RadioButtonContainerC = gdclass(RadioButtonContainer)
 
---- @classType RadioButtonContainer
 export type RadioButtonContainer = Control & typeof(RadioButtonContainer) & {
     --- @signal
     selectionChanged: Signal,

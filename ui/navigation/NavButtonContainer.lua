@@ -6,7 +6,6 @@ local MenuUtils = require("MenuUtils.mod")
 local NavButtonContainer = {}
 local NavButtonContainerC = gdclass(NavButtonContainer)
 
---- @classType NavButtonContainer
 export type NavButtonContainer = VBoxContainer & typeof(NavButtonContainer) & {
     tween: Tween?
 }

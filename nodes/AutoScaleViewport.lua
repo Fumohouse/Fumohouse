@@ -3,7 +3,6 @@
 local AutoScaleViewport = {}
 local AutoScaleViewportC = gdclass(AutoScaleViewport)
 
---- @classType AutoScaleViewport
 export type AutoScaleViewport = SubViewport & typeof(AutoScaleViewport) & {
     baseSize: Vector2i,
     viewport: Window,

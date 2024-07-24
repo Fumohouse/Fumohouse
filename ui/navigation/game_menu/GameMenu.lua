@@ -13,7 +13,6 @@ local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
 local GameMenu = {}
 local GameMenuC = gdclass(GameMenu)
 
---- @classType GameMenu
 export type GameMenu = NavMenu.NavMenu & typeof(GameMenu) & {
     --- @signal
     opened: Signal,

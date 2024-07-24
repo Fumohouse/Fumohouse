@@ -7,7 +7,6 @@ local AppearanceManager = require("../../character/appearance/AppearanceManager"
 local PartPreviewButton = {}
 local PartPreviewButtonC = gdclass(PartPreviewButton)
 
---- @classType PartPreviewButton
 export type PartPreviewButton = PreviewButton.PreviewButton & typeof(PartPreviewButton) & {
     --- @property
     id: string,

@@ -5,7 +5,6 @@ local Song = require("Song")
 local Playlist = {}
 local PlaylistC = gdclass(Playlist)
 
---- @classType Playlist
 export type Playlist = Resource & {
     --- @property
     id: string,

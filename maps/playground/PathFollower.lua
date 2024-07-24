@@ -3,7 +3,6 @@
 local PathFollower = {}
 local PathFollowerC = gdclass(PathFollower)
 
---- @classType PathFollower
 export type PathFollower = PathFollow3D & typeof(PathFollower) & {
     --- @property
     --- @range 0 10

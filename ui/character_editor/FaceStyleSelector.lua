@@ -7,7 +7,6 @@ local FacePreviewButton = require("FacePreviewButton")
 local FaceStyleSelector = {}
 local FaceStyleSelectorC = gdclass(FaceStyleSelector)
 
---- @classType FaceStyleSelector
 export type FaceStyleSelector = RadioButtonContainer.RadioButtonContainer & typeof(FaceStyleSelector) & {
     --- @property
     --- @enum Eye Eyebrow Mouth

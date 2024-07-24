@@ -12,7 +12,6 @@ local Appearances = gdglobal("Appearances") :: AppearancesM.Appearances
 local MainScreen = {}
 local MainScreenC = gdclass(MainScreen)
 
---- @classType MainScreen
 export type MainScreen = TransitionElement.TransitionElement & typeof(MainScreen) & {
     --- @property
     nonNavigation: Control,

@@ -18,7 +18,6 @@ local CharacterStatePacket = require("../networking/packets/runtime/CharacterSta
 local CharacterManager = {}
 local CharacterManagerC = gdclass(CharacterManager)
 
---- @classType CharacterManager
 export type CharacterManager = Node3D & typeof(CharacterManager) & {
     --- @property
     debugCharacter: DebugCharacter.DebugCharacter,

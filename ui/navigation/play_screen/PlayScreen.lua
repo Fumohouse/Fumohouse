@@ -12,7 +12,6 @@ local NetworkManager = gdglobal("NetworkManager") :: NetworkManagerM.NetworkMana
 local PlayScreen = {}
 local PlayScreenC = gdclass(PlayScreen)
 
---- @classType PlayScreen
 export type PlayScreen = ScreenBase.ScreenBase & typeof(PlayScreen) & {
     --- @property
     mapList: Control,

@@ -4,7 +4,6 @@
 local KskLogo = {}
 local KskLogoC = gdclass(KskLogo)
 
---- @classType KskLogo
 export type KskLogo = Button & typeof(KskLogo) & {
     logoMat: ShaderMaterial,
     tween: Tween?,

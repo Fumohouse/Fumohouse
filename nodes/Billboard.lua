@@ -3,7 +3,6 @@
 local Billboard = {}
 local BillboardC = gdclass(Billboard)
 
---- @classType Billboard
 export type Billboard = Sprite3D & typeof(Billboard) & {
     --- @property
     --- @range 0.001 0.1 0.01 suffix:m

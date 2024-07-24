@@ -12,7 +12,6 @@ type LineInfo = {
     c2: Color,
 }
 
---- @classType DebugDraw
 export type DebugDraw = MeshInstance3D & typeof(DebugDraw) & {
     mesh: ImmediateMesh,
 

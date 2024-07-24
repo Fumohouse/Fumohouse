@@ -5,7 +5,6 @@ local Appearance = require("Appearance")
 local Appearances = {}
 local AppearancesC = gdclass(Appearances)
 
---- @classType Appearances
 export type Appearances = Node & typeof(Appearances) & {
     current: Appearance.Appearance,
 }

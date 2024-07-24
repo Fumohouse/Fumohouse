@@ -14,7 +14,6 @@ PartData.Scope = {
 	TAIL = 7,
 }
 
---- @classType PartData
 export type PartData = Resource & typeof(PartData) & {
 	--- @property
 	name: string,

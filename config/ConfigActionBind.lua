@@ -6,7 +6,6 @@ local ConfigBoundControl = require("ConfigBoundControl")
 local ConfigActionBind = {}
 local ConfigActionBindC = gdclass(ConfigActionBind)
 
---- @classType ConfigActionBind
 export type ConfigActionBind = ConfigBoundControl.ConfigBoundControl & typeof(ConfigActionBind) & {
     input: Button,
     event: InputEvent,

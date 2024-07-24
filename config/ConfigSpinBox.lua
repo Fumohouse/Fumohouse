@@ -5,7 +5,6 @@ local ConfigBoundControl = require("ConfigBoundControl")
 local ConfigSpinBox = {}
 local ConfigSpinBoxC = gdclass(ConfigSpinBox)
 
---- @classType ConfigSpinBox
 export type ConfigSpinBox = ConfigBoundControl.ConfigBoundControl & typeof(ConfigSpinBox) & {
     input: SpinBox,
 }

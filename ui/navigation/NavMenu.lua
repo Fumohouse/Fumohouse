@@ -7,7 +7,6 @@ local NavButton = require("NavButton")
 local NavMenu = {}
 local NavMenuC = gdclass(NavMenu)
 
---- @classType NavMenu
 export type NavMenu = Control & typeof(NavMenu) & {
     mainScreen: TransitionElement.TransitionElement?,
     currentScreen: TransitionElement.TransitionElement?,

@@ -19,7 +19,6 @@ export type NetworkedMotion = {
     motion: MotionState.Motion,
 }
 
---- @classType Character
 export type Character = RigidBody3D & typeof(Character) & {
     --- @property
     disabled: boolean,

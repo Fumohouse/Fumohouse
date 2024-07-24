@@ -6,7 +6,6 @@ local PartData = require("PartData")
 local SinglePart = {} -- must be instantiable in the editor (addon)
 local SinglePartC = gdclass(SinglePart)
 
---- @classType SinglePart
 export type SinglePart = PartData.PartData & {
     --- @property
     scenePath: string,

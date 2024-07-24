@@ -5,7 +5,6 @@ local Utils = require("../../../utils/Utils.mod")
 local VersionLabel = {}
 local VersionLabelC = gdclass(VersionLabel)
 
---- @classType VersionLabel
 export type VersionLabel = Control & typeof(VersionLabel)
 
 --- @registerMethod

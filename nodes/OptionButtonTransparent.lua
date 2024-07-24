@@ -3,7 +3,6 @@
 local OptionButtonTransparent = {}
 local OptionButtonTransparentC = gdclass(OptionButtonTransparent)
 
---- @classType OptionButtonTransparent
 export type OptionButtonTransparent = OptionButton & typeof(OptionButtonTransparent) & {
     --- @property
     --- @default 4

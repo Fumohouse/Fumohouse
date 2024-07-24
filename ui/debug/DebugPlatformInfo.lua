@@ -8,7 +8,6 @@ local Utils = require("../../utils/Utils.mod")
 local DebugPlatformInfo = {}
 local DebugPlatformInfoC = gdclass(DebugPlatformInfo)
 
---- @classType DebugPlatformInfo
 export type DebugPlatformInfo = DebugWindow.DebugWindow & typeof(DebugPlatformInfo) & {
     infoTbl: InfoTable.InfoTable,
     egg: number,

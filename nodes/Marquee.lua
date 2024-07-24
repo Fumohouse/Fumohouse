@@ -3,7 +3,6 @@
 local Marquee = {}
 local MarqueeC = gdclass(Marquee)
 
---- @classType Marquee
 export type Marquee = Control & typeof(Marquee) & {
     --- @property
     --- @range 0 120

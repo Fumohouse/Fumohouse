@@ -9,7 +9,6 @@ local PartDatabase = gdglobal("PartDatabase") :: PartDatabaseM.PartDatabase
 local PartSelector = {}
 local PartSelectorC = gdclass(PartSelector)
 
---- @classType PartSelector
 export type PartSelector = RadioButtonContainer.RadioButtonContainer & typeof(PartSelector) & {
     -- Update with PartData.Scope
     --- @property

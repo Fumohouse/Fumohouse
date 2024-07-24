@@ -3,7 +3,6 @@
 local NavButton = {}
 local NavButtonC = gdclass(NavButton)
 
---- @classType NavButton
 export type NavButton = Button & typeof(NavButton) & {
     origWidth: number,
 

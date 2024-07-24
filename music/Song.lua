@@ -7,7 +7,6 @@ local SongLabel = require("SongLabel")
 local Song = {}
 local SongC = gdclass(Song)
 
---- @classType Song
 export type Song = MusicResBase.MusicResBase & typeof(Song) & {
     --- @property
     id: string,

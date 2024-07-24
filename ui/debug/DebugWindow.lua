@@ -4,7 +4,6 @@
 local DebugWindow = {}
 local DebugWindowC = gdclass(DebugWindow)
 
---- @classType DebugWindow
 export type DebugWindow = Control & typeof(DebugWindow) & {
     topBar: Control,
     contents: Control,

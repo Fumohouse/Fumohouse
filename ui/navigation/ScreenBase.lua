@@ -6,7 +6,6 @@ local TransitionElement = require("TransitionElement")
 local ScreenBase = {}
 local ScreenBaseC = gdclass(ScreenBase)
 
---- @classType ScreenBase
 export type ScreenBase = TransitionElement.TransitionElement & typeof(ScreenBase) & {
     --- @property
     tabContainer: RadioButtonContainer.RadioButtonContainer?,

@@ -10,7 +10,6 @@ local MusicPlayer = gdglobal("MusicPlayer") :: MusicPlayerM.MusicPlayer
 local MusicController = {}
 local MusicControllerC = gdclass(MusicController)
 
---- @classType MusicController
 export type MusicController = Control & typeof(MusicController) & {
     marquee: Marquee.Marquee,
     playButton: TextureButton,

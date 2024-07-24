@@ -6,7 +6,6 @@ local TransitionElement = require("../TransitionElement")
 local ChangelogScreen = {}
 local ChangelogScreenC = gdclass(ChangelogScreen)
 
---- @classType ChangelogScreen
 export type ChangelogScreen = TransitionElement.TransitionElement & typeof(ChangelogScreen) & {
     --- @property
     entries: Control,

@@ -5,7 +5,6 @@ local CharacterManager = require("CharacterManager")
 local MapRuntime = {}
 local MapRuntimeC = gdclass(MapRuntime)
 
---- @classType MapRuntime
 export type MapRuntime = Node3D & typeof(MapRuntime) & {
     --- @property
     players: CharacterManager.CharacterManager,

@@ -6,7 +6,6 @@ local ConfigOptionButton = require("ConfigOptionButton")
 local ConfigAudioOutputDevices = {}
 local ConfigAudioOutputDevicesC = gdclass(ConfigAudioOutputDevices)
 
---- @classType ConfigAudioOutputDevices
 export type ConfigAudioOutputDevices = ConfigOptionButton.ConfigOptionButton & typeof(ConfigAudioOutputDevices) & {
     devices: PackedStringArray,
 }

@@ -7,7 +7,6 @@ local MusicPlayer = gdglobal("MusicPlayer") :: MusicPlayerM.MusicPlayer
 local MusicVisualizer = {}
 local MusicVisualizerC = gdclass(MusicVisualizer)
 
---- @classType MusicVisualizer
 export type MusicVisualizer = Control & typeof(MusicVisualizer) & {
     curve: Curve2D,
     spectrum: AudioEffectSpectrumAnalyzerInstance,

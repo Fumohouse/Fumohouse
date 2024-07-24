@@ -3,7 +3,6 @@
 local CharacterSpawner = {}
 local CharacterSpawnerC = gdclass(CharacterSpawner)
 
---- @classType CharacterSpawner
 export type CharacterSpawner = Node3D & typeof(CharacterSpawner)
 
 --- @registerMethod

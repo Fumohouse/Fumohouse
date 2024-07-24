@@ -6,7 +6,6 @@ local PartData = require("PartData")
 local PartDatabase = {}
 local PartDatabaseC = gdclass(PartDatabase)
 
---- @classType PartDatabase
 export type PartDatabase = Node & typeof(PartDatabase) & {
     parts: {[string]: PartData.PartData},
     partCount: number

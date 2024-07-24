@@ -4,7 +4,6 @@
 local LinkButton = {}
 local LinkButtonC = gdclass(LinkButton)
 
---- @classType LinkButton
 export type LinkButton = Button & typeof(LinkButton) & {
     --- @property
     link: string,

@@ -10,7 +10,6 @@ local NavButton = require("../NavButton")
 local MainMenu = {}
 local MainMenuC = gdclass(MainMenu)
 
---- @classType MainMenu
 export type MainMenu = NavMenu.NavMenu & typeof(MainMenu) & {
     --- @property
     --- @default true

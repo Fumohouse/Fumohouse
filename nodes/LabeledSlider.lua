@@ -3,7 +3,6 @@
 local LabeledSlider = {}
 local LabeledSliderC = gdclass(LabeledSlider)
 
---- @classType LabeledSlider
 export type LabeledSlider = Control & typeof(LabeledSlider) & {
     --- @property
     --- @default "%.1f"

@@ -6,7 +6,6 @@ local ConfigManager = gdglobal("ConfigManager") :: ConfigManagerM.ConfigManager
 local ConfigWorldEnvironment = {}
 local ConfigWorldEnvironmentC = gdclass(ConfigWorldEnvironment)
 
---- @classType ConfigWorldEnvironment
 export type ConfigWorldEnvironment = WorldEnvironment & typeof(ConfigWorldEnvironment)
 
 function ConfigWorldEnvironment.applySsr(self: ConfigWorldEnvironment)

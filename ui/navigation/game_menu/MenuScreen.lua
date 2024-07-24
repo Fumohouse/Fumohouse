@@ -16,7 +16,6 @@ local NetworkManager = gdglobal("NetworkManager") :: NetworkManagerM.NetworkMana
 local MenuScreen = {}
 local MenuScreenC = gdclass(MenuScreen)
 
---- @classType MenuScreen
 export type MenuScreen = TransitionElement.TransitionElement & typeof(MenuScreen) & {
     --- @signal
     transition: SignalWithArgs<(vis: boolean) -> ()>,

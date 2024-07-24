@@ -7,7 +7,6 @@ local MapManager = gdglobal("MapManager") :: MapManagerM.MapManager
 local MapCard = {}
 local MapCardC = gdclass(MapCard)
 
---- @classType MapCard
 export type MapCard = Control & typeof(MapCard) & {
     --- @property
     id: string,

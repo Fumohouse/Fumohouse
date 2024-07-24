@@ -6,7 +6,6 @@ local Dock = require("Dock")
 local Plugin = {}
 local PluginC = gdclass(Plugin)
 
---- @classType Plugin
 export type Plugin = EditorPlugin & typeof(Plugin) & {
     dock: Dock.Dock,
 }

@@ -5,7 +5,6 @@ local MusicResBase = require("MusicResBase")
 local SongArtist = {}
 local SongArtistC = gdclass(SongArtist)
 
---- @classType SongArtist
 export type SongArtist = MusicResBase.MusicResBase
 
 return SongArtistC

@@ -5,7 +5,6 @@ local Character = require("../character/Character")
 local Seat = {}
 local SeatC = gdclass(Seat)
 
---- @classType Seat
 export type Seat = StaticBody3D & typeof(Seat) & {
     --- @property
     --- @set SetOccupant

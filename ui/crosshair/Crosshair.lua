@@ -5,7 +5,6 @@ local CameraController = require("../../character/CameraController")
 local Crosshair = {}
 local CrosshairC = gdclass(Crosshair)
 
---- @classType Crosshair
 export type Crosshair = Control & typeof(Crosshair)
 
 --- @registerMethod

@@ -22,7 +22,6 @@ type AttachedPartInfo = {
     materials: {Material},
 }
 
---- @classType AppearanceManager
 export type AppearanceManager = Node3D & typeof(AppearanceManager) & {
     --- @property
     character: Character.Character,

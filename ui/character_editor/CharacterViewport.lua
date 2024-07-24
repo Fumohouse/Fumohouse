@@ -6,7 +6,6 @@ local AppearanceManager = require("../../character/appearance/AppearanceManager"
 local CharacterViewport = {}
 local CharacterViewportC = gdclass(CharacterViewport)
 
---- @classType CharacterViewport
 export type CharacterViewport = TextureRect & ViewportInput.ViewportInput & typeof(CharacterViewport) & {
     --- @property
     appearance: AppearanceManager.AppearanceManager,

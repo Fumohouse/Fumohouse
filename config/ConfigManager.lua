@@ -14,7 +14,6 @@ type ConfigKey = {
     restartRequired: boolean,
 }
 
---- @classType ConfigManager
 export type ConfigManager = Node & typeof(ConfigManager) & {
     --- @signal
     valueChanged: SignalWithArgs<(key: string) -> ()>,

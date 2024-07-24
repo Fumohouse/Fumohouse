@@ -9,7 +9,6 @@ export type InfoTableEntry = {
     contents: RichTextLabel,
 }
 
---- @classType InfoTable
 export type InfoTable = VBoxContainer & typeof(InfoTable) & {
     entries: {[string]: InfoTableEntry},
 }

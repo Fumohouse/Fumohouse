@@ -7,7 +7,6 @@ local Appearance = require("../../../../character/appearance/Appearance")
 local DoremyHair = {}
 local DoremyHairC = gdclass(DoremyHair)
 
---- @classType DoremyHair
 export type DoremyHair = PartCustomizer.PartCustomizer & typeof(DoremyHair) & {
     ponytail: Node3D,
 }

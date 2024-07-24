@@ -7,7 +7,6 @@ local ConfigManager = gdglobal("ConfigManager") :: ConfigManagerM.ConfigManager
 local ConfigBoundControl = {}
 local ConfigBoundControlC = gdclass(ConfigBoundControl)
 
---- @classType ConfigBoundControl
 export type ConfigBoundControl = Control & typeof(ConfigBoundControl) & {
     --- @property
     input: Control,

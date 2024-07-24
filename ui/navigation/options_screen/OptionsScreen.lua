@@ -10,7 +10,6 @@ local ConfigManager = gdglobal("ConfigManager") :: ConfigManagerM.ConfigManager
 local OptionsScreen = {}
 local OptionsScreenC = gdclass(OptionsScreen)
 
---- @classType OptionsScreen
 export type OptionsScreen = ScreenBase.ScreenBase & typeof(OptionsScreen) & {
     tabs: Control,
     restartPrompt: Control,
