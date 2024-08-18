@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bi4nul2t2fnl8"]
+[gd_scene load_steps=31 format=3 uid="uid://bi4nul2t2fnl8"]
 
 [ext_resource type="PackedScene" uid="uid://nrh6mhdp4grr" path="res://ui/navigation/nav_menu.tscn" id="1_67448"]
 [ext_resource type="Texture2D" uid="uid://cewbassnie0qr" path="res://assets/textures/ui/faces_bg.svg" id="1_efpvf"]
@@ -25,8 +25,6 @@
 [ext_resource type="Texture2D" uid="uid://bwqgvr4b7aq6j" path="res://assets/textures/ui/icons/bell-fill.svg" id="16_aw72i"]
 [ext_resource type="PackedScene" uid="uid://chehkmfpoevq6" path="res://ui/navigation/nav_button_container.tscn" id="18_wsqm6"]
 [ext_resource type="PackedScene" uid="uid://d0mo4s2hqyov3" path="res://ui/music_controller/music_controller.tscn" id="19_cmuwc"]
-[ext_resource type="Shader" path="res://resources/materials/gltf_dither_material.gdshader" id="23_4sah4"]
-[ext_resource type="Texture2D" uid="uid://j3p1obmff1ev" path="res://assets/textures/ordered_dither.png" id="24_efyco"]
 [ext_resource type="PackedScene" uid="uid://bubyuf8mn82tm" path="res://ui/character_editor/character_viewport.tscn" id="24_snoew"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_itoho"]
@@ -44,35 +42,6 @@ shader_parameter/anim = ExtResource("6_w867p")
 bg_color = Color(0, 0.333333, 0.647059, 1)
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_r8e7f"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rcveu"]
-noise = SubResource("FastNoiseLite_r8e7f")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdwrk"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("23_4sah4")
-shader_parameter/albedo = Color(0.988235, 0.917647, 0.831373, 1)
-shader_parameter/roughness = null
-shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/specular = 0.5
-shader_parameter/metallic = null
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy = null
-shader_parameter/normal_scale = null
-shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/ao_light_affect = null
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/alpha = 1.0
-shader_parameter/dissolve = 0.0
-shader_parameter/dissolve_border = 0.05
-shader_parameter/dissolve_emission = Color(0.00784314, 0.388235, 0.960784, 1)
-shader_parameter/dissolve_emission_energy = 4.0
-shader_parameter/dither_texture = ExtResource("24_efyco")
-shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_rcveu")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ju70y"]
 resource_local_to_scene = true
@@ -390,54 +359,47 @@ transform = Transform3D(1, 1.96365e-08, -1.88261e-08, -1.88261e-08, 0.999113, 0.
 transform = Transform3D(1, -4.63304e-10, 4.68823e-10, 4.68816e-10, 0.99993, -0.0118264, -4.63309e-10, 0.0118264, 0.99993, -2.35207e-09, 1.96059, -0.0317345)
 
 [node name="RArm" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="2"]
-transform = Transform3D(0.415745, 0.764366, 0.492849, 0.49285, -0.644783, 0.584255, 0.764365, -5.38304e-07, -0.644783, 0.201908, 1.86605, 0.0109234)
+transform = Transform3D(0.415745, 0.764366, 0.492849, 0.49285, -0.644783, 0.584255, 0.764365, -5.06639e-07, -0.644783, 0.201908, 1.86605, 0.0109234)
 
 [node name="LArm" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="3"]
-transform = Transform3D(0.415745, -0.764366, -0.49285, -0.49285, -0.644783, 0.584255, -0.764366, -6.18398e-07, -0.644783, -0.201911, 1.86605, 0.0109224)
+transform = Transform3D(0.415745, -0.764366, -0.492849, -0.49285, -0.644783, 0.584255, -0.764365, -5.99772e-07, -0.644783, -0.201911, 1.86605, 0.0109224)
 
 [node name="RHand" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="4"]
-transform = Transform3D(0.413177, 0.766044, 0.492403, 0.492404, -0.642788, 0.586824, 0.766044, -5.06407e-07, -0.642788, 0.896792, 1.27987, 0.0109224)
+transform = Transform3D(0.413177, 0.766044, 0.492403, 0.492404, -0.642788, 0.586824, 0.766044, -4.74858e-07, -0.642788, 0.896792, 1.27987, 0.0109224)
 
 [node name="LHand" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="5"]
-transform = Transform3D(0.413177, -0.766044, -0.492403, -0.492404, -0.642788, 0.586824, -0.766044, -6.14324e-07, -0.642788, -0.896795, 1.27987, 0.0109224)
+transform = Transform3D(0.413177, -0.766044, -0.492403, -0.492404, -0.642788, 0.586824, -0.766044, -5.95697e-07, -0.642788, -0.896795, 1.27987, 0.0109224)
 
 [node name="RLeg" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="6"]
-transform = Transform3D(0.975812, 0.155977, 0.153151, 0.153148, -0.987743, 0.0301662, 0.155978, -0.00598181, -0.987741, 0.213903, 1.02528, 0.0236282)
+transform = Transform3D(0.975812, 0.155977, 0.153151, 0.153148, -0.987742, 0.0301662, 0.155978, -0.00598182, -0.987742, 0.213903, 1.02528, 0.0236282)
 
 [node name="LLeg" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="7"]
-transform = Transform3D(0.977742, -0.14966, -0.147107, -0.147111, -0.98872, 0.0281265, -0.149659, -0.00585926, -0.988721, -0.213903, 1.02528, 0.0236282)
+transform = Transform3D(0.977738, -0.14966, -0.147107, -0.147111, -0.98872, 0.0281265, -0.149658, -0.00585927, -0.988721, -0.213903, 1.02528, 0.0236282)
 
 [node name="RFoot" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="8"]
-transform = Transform3D(0.994518, 0.10453, 1.4063e-07, -1.2744e-06, -1.017e-06, 1, 0.10453, -0.994521, -9.77889e-07, 0.380816, -0.03172, 0.0172272)
+transform = Transform3D(0.994518, 0.10453, 9.49949e-08, -1.13423e-06, -5.96046e-08, 1, 0.10453, -0.994521, -1.00583e-07, 0.380815, -0.0317161, 0.0172272)
 
 [node name="LFoot" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Appearance" index="9"]
-transform = Transform3D(0.994532, -0.104525, -8.801e-07, -2.02353e-06, -4.1537e-07, 1, -0.104527, -0.994522, -1.69501e-07, -0.373898, -0.0317197, 0.0173645)
+transform = Transform3D(0.994527, -0.104526, -1.80211e-07, -1.35403e-06, -3.78117e-07, 1, -0.104527, -0.994523, -2.84985e-07, -0.373899, -0.0317243, 0.0173645)
 
 [node name="Skeleton3D" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature" index="0"]
-bones/0/rotation = Quaternion(-0.0210637, -9.61779e-09, -9.61779e-09, 0.999778)
-bones/1/rotation = Quaternion(0.818468, 0.374048, 0.390148, -0.194892)
+bones/2/rest = Transform3D(0.999995, 0.00168099, 0.00260528, -0.00167579, 0.999996, -0.00199707, -0.00260862, 0.0019927, 0.999995, 6.0536e-08, 0.909099, -2.84053e-08)
+bones/2/rotation = Quaternion(0.000997445, 0.00130348, -0.000839196, 0.999998)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rest = Transform3D(0.415745, -0.764366, -0.49285, -0.460219, -0.644211, 0.610894, -0.784445, -0.0271569, -0.619603, -0.201911, 1.02735, 0.0386376)
 bones/3/rotation = Quaternion(0.818468, -0.374048, -0.390148, -0.194892)
-bones/5/rotation = Quaternion(0.0269753, 9.90257e-09, 9.79864e-09, 0.999636)
+bones/3/scale = Vector3(1, 1, 1)
+bones/6/rest = Transform3D(0.975812, 0.155977, 0.153148, 0.146443, -0.986614, 0.0717408, 0.162287, -0.0475783, -0.985595, 0.213903, 0.186792, 0.0159202)
 bones/6/rotation = Quaternion(0.993482, 0.0761011, 0.0793777, -0.0300256)
+bones/6/scale = Vector3(0.999996, 1, 0.999999)
+bones/7/rest = Transform3D(0.986774, -0.0531221, 0.153149, 0.154498, 0.0222534, -0.987743, 0.0490629, 0.99834, 0.0301663, -4.02797e-08, 1.07011, 4.07454e-09)
+bones/7/rotation = Quaternion(0.695405, 0.0364448, 0.0726958, 0.714002)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rest = Transform3D(0.977737, -0.14966, -0.147111, -0.140677, -0.987596, 0.0697452, -0.155725, -0.0474971, -0.986658, -0.213903, 0.186792, 0.0159202)
 bones/8/rotation = Quaternion(0.99398, -0.0730236, -0.0761655, -0.0294879)
-
-[node name="Head" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_hdwrk")
-
-[node name="LArm" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature/Skeleton3D" index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_hdwrk")
-
-[node name="LLeg" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature/Skeleton3D" index="2"]
-surface_material_override/0 = SubResource("ShaderMaterial_hdwrk")
-
-[node name="RArm" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature/Skeleton3D" index="3"]
-surface_material_override/0 = SubResource("ShaderMaterial_hdwrk")
-
-[node name="RLeg" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature/Skeleton3D" index="4"]
-surface_material_override/0 = SubResource("ShaderMaterial_hdwrk")
-
-[node name="Torso" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature/Skeleton3D" index="5"]
-surface_material_override/0 = SubResource("ShaderMaterial_hdwrk")
+bones/8/scale = Vector3(1.00001, 1, 1)
+bones/9/rest = Transform3D(0.98802, 0.0466394, -0.147109, -0.148227, 0.0214708, -0.98872, -0.0429548, 0.998681, 0.0281268, -1.11759e-08, 1.06906, 3.95812e-09)
+bones/9/rotation = Quaternion(0.696136, -0.0364827, -0.0682568, 0.713726)
 
 [node name="TorsoAttachment" parent="Screens/MainScreen/NonNavigation/Character/CharacterPreview/SubViewport/Character/Rig/Armature/Skeleton3D" index="6"]
 transform = Transform3D(1, 1.96365e-08, -1.88261e-08, -1.88261e-08, 0.999113, 0.0421181, 1.96365e-08, -0.0421181, 0.999113, -2.44157e-08, 0.905569, 0.0155896)

@@ -375,9 +375,9 @@ end
 --- @registerMethod
 function AppearanceManager._Ready(self: AppearanceManager)
     self.faceMaterial = faceMaterial:Duplicate()
-    self.skinMaterial = (self.skeleton:GetNode("Head") :: MeshInstance3D):GetActiveMaterial(0) :: ShaderMaterial
+    self.skinMaterial = (self.skeleton:GetNode("HeadModel") :: MeshInstance3D):GetActiveMaterial(0) :: ShaderMaterial
 
-    local head = self.skeleton:GetNode("Head") :: MeshInstance3D
+    local head = self.skeleton:GetNode("HeadModel") :: MeshInstance3D
     head.materialOverride = self.faceMaterial
 
     self.baseRagdollColliderPosition = (self:GetNode("../RagdollCollider") :: CollisionShape3D).position

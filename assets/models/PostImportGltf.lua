@@ -10,23 +10,23 @@ export type PostImportGltf = EditorScenePostImport & typeof(PostImportGltf) & {
 }
 
 local PROPERTY_MAP: {[string]: string} = {
-	["albedo_color"] = "albedo",
-	["albedo_texture"] = "texture_albedo",
-	["ao_light_affect"] = "ao_light_affect",
-	["ao_texture"] = "texture_ambient_occlusion",
-	-- ao_texture_channel: special behavior
-	["emission"] = "emission",
-	["emission_energy"] = "emission_energy",
-	["metallic"] = "metallic",
-	["metallic_specular"] = "specular",
-	["metallic_texture"] = "texture_metallic",
-	-- metallic_texture_channel: special behavior
-	["normal_scale"] = "normal_scale",
-	["normal_texture"] = "texture_normal",
-	["roughness"] = "roughness",
-	["roughness_texture"] = "texture_roughness",
-	["uv1_offset"] = "uv1_offset",
-	["uv1_scale"] = "uv1_scale",
+    ["albedo_color"] = "albedo",
+    ["albedo_texture"] = "texture_albedo",
+    ["ao_light_affect"] = "ao_light_affect",
+    ["ao_texture"] = "texture_ambient_occlusion",
+    -- ao_texture_channel: special behavior
+    ["emission"] = "emission",
+    ["emission_energy"] = "emission_energy",
+    ["metallic"] = "metallic",
+    ["metallic_specular"] = "specular",
+    ["metallic_texture"] = "texture_metallic",
+    -- metallic_texture_channel: special behavior
+    ["normal_scale"] = "normal_scale",
+    ["normal_texture"] = "texture_normal",
+    ["roughness"] = "roughness",
+    ["roughness_texture"] = "texture_roughness",
+    ["uv1_offset"] = "uv1_offset",
+    ["uv1_scale"] = "uv1_scale",
 }
 
 local TEXTURE_MASKS = {
@@ -42,11 +42,11 @@ function PostImportGltf._Init(self: PostImportGltf)
 end
 
 local function getTextureMask(channel: ClassEnumBaseMaterial3D_TextureChannel)
-	return TEXTURE_MASKS[channel + 1]
+    return TEXTURE_MASKS[channel + 1]
 end
 
 function PostImportGltf.convertMaterial(self: PostImportGltf, mat: StandardMaterial3D)
-    local id = mat:GetInstanceId()
+    local id = tostring(mat:GetInstanceId())
 
     if self.convertedMaterials[id] then
         return self.convertedMaterials[id]
