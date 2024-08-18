@@ -238,9 +238,9 @@ function NetworkManager.DisconnectTimeout(self: NetworkManager, peer: number?, p
         else
             self:Log(`disconnecting after timeout`)
             self:Reset()
-        end
 
-        self:sendStatusUpdate("Timed out", true, false)
+            self:sendStatusUpdate("Timed out", true, false)
+        end
     end)()
 end
 
