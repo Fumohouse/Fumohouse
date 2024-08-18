@@ -20,17 +20,6 @@ bg_color = Color(0, 0.180392, 0.34902, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5q1j1"]
-content_margin_left = 18.0
-content_margin_top = 3.0
-content_margin_right = 18.0
-content_margin_bottom = 3.0
-bg_color = Color(0.223529, 0.341176, 0.45098, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyail"]
 content_margin_left = 18.0
 content_margin_top = 3.0
@@ -53,12 +42,24 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuplh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5q1j1"]
 content_margin_left = 18.0
 content_margin_top = 3.0
 content_margin_right = 18.0
 content_margin_bottom = 3.0
-bg_color = Color(0.701961, 0.34902, 0.572549, 1)
+bg_color = Color(0.223529, 0.341176, 0.45098, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2yj5"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.901961, 0.541176, 0.768627, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
@@ -86,13 +87,12 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2yj5"]
-bg_color = Color(0, 0, 0, 0)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.901961, 0.541176, 0.768627, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuplh"]
+content_margin_left = 18.0
+content_margin_top = 3.0
+content_margin_right = 18.0
+content_margin_bottom = 3.0
+bg_color = Color(0.701961, 0.34902, 0.572549, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
@@ -145,7 +145,7 @@ layout_mode = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 24
+theme_override_constants/separation = 30
 
 [node name="General" parent="Contents/MarginContainer/Tabs/Graphics/MarginContainer/VBoxContainer" index="0" instance=ExtResource("4_yentm")]
 layout_mode = 2
@@ -164,7 +164,6 @@ text = "Rendering Method"
 layout_mode = 2
 item_count = 3
 popup/item_0/text = "Forward+"
-popup/item_0/id = 0
 popup/item_1/text = "Mobile"
 popup/item_1/id = 1
 popup/item_2/text = "Compatibility"
@@ -185,7 +184,6 @@ text = "Window Mode"
 layout_mode = 2
 item_count = 4
 popup/item_0/text = "Windowed"
-popup/item_0/id = 0
 popup/item_1/text = "Maximized"
 popup/item_1/id = 1
 popup/item_2/text = "Fullscreen"
@@ -208,7 +206,6 @@ text = "VSync Mode"
 layout_mode = 2
 item_count = 4
 popup/item_0/text = "Disabled"
-popup/item_0/id = 0
 popup/item_1/text = "Enabled"
 popup/item_1/id = 1
 popup/item_2/text = "Adaptive"
@@ -267,7 +264,6 @@ text = "3D Scale Mode"
 layout_mode = 2
 item_count = 3
 popup/item_0/text = "Bilinear"
-popup/item_0/id = 0
 popup/item_1/text = "AMD FSR"
 popup/item_1/id = 1
 popup/item_2/text = "AMD FSR 2"
@@ -318,7 +314,6 @@ text = "MSAA 3D"
 layout_mode = 2
 item_count = 4
 popup/item_0/text = "Disabled"
-popup/item_0/id = 0
 popup/item_1/text = "2x"
 popup/item_1/id = 1
 popup/item_2/text = "4x"
@@ -354,7 +349,6 @@ text = "Screen Space AA"
 layout_mode = 2
 item_count = 2
 popup/item_0/text = "Disabled"
-popup/item_0/id = 0
 popup/item_1/text = "FXAA"
 popup/item_1/id = 1
 script = ExtResource("4_3vyqi")
@@ -379,7 +373,6 @@ text = "Shadow Quality"
 layout_mode = 2
 item_count = 6
 popup/item_0/text = "Minimal"
-popup/item_0/id = 0
 popup/item_1/text = "Very Low"
 popup/item_1/id = 1
 popup/item_2/text = "Low"
@@ -406,7 +399,6 @@ text = "Soft Shadow Filter"
 layout_mode = 2
 item_count = 6
 popup/item_0/text = "Hard (No filter)"
-popup/item_0/id = 0
 popup/item_1/text = "Very Low"
 popup/item_1/id = 1
 popup/item_2/text = "Low"
@@ -433,7 +425,6 @@ text = "Mesh Level of Detail"
 layout_mode = 2
 item_count = 5
 popup/item_0/text = "Very Low"
-popup/item_0/id = 0
 popup/item_1/text = "Low"
 popup/item_1/id = 1
 popup/item_2/text = "Medium"
@@ -464,7 +455,6 @@ text = "SSR"
 layout_mode = 2
 item_count = 4
 popup/item_0/text = "Disabled"
-popup/item_0/id = 0
 popup/item_1/text = "Low"
 popup/item_1/id = 1
 popup/item_2/text = "Medium"
@@ -487,7 +477,6 @@ text = "SSAO"
 layout_mode = 2
 item_count = 5
 popup/item_0/text = "Disabled"
-popup/item_0/id = 0
 popup/item_1/text = "Very Low"
 popup/item_1/id = 1
 popup/item_2/text = "Low"
@@ -512,7 +501,6 @@ text = "SSIL"
 layout_mode = 2
 item_count = 5
 popup/item_0/text = "Disabled"
-popup/item_0/id = 0
 popup/item_1/text = "Very Low"
 popup/item_1/id = 1
 popup/item_2/text = "Low"
@@ -537,7 +525,6 @@ text = "SDFGI"
 layout_mode = 2
 item_count = 3
 popup/item_0/text = "Disabled"
-popup/item_0/id = 0
 popup/item_1/text = "Low"
 popup/item_1/id = 1
 popup/item_2/text = "High"
@@ -558,7 +545,6 @@ text = "Glow"
 layout_mode = 2
 item_count = 3
 popup/item_0/text = "Disabled"
-popup/item_0/id = 0
 popup/item_1/text = "Low"
 popup/item_1/id = 1
 popup/item_2/text = "High"
@@ -579,7 +565,6 @@ text = "Volumetric Fog"
 layout_mode = 2
 item_count = 3
 popup/item_0/text = "Disabled"
-popup/item_0/id = 0
 popup/item_1/text = "Low"
 popup/item_1/id = 1
 popup/item_2/text = "High"
@@ -634,7 +619,7 @@ layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer" index="0"]
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = 30
 
 [node name="Devices" parent="Contents/MarginContainer/Tabs/Audio/MarginContainer/VBoxContainer" index="0" instance=ExtResource("4_yentm")]
 layout_mode = 2
@@ -688,7 +673,7 @@ layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Input/MarginContainer" index="0"]
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = 30
 
 [node name="Camera" parent="Contents/MarginContainer/Tabs/Input/MarginContainer/VBoxContainer" index="0" instance=ExtResource("4_yentm")]
 layout_mode = 2
@@ -924,7 +909,7 @@ layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer" index="0"]
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = 30
 
 [node name="Server" parent="Contents/MarginContainer/Tabs/Multiplayer/MarginContainer/VBoxContainer" index="0" instance=ExtResource("4_yentm")]
 layout_mode = 2
@@ -1006,9 +991,9 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxFlat_5q1j1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_kyail")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_383j7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5q1j1")
 text = "Not now"
 
 [node name="RestartRestartButton" type="Button" parent="RestartPrompt/MarginContainer/HBoxContainer" index="3"]
@@ -1016,10 +1001,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxFlat_iuplh")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u2yj5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jywvu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_d5c65")
-theme_override_styles/focus = SubResource("StyleBoxFlat_u2yj5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_iuplh")
 text = "Restart"
 
 [editable path="Contents/MarginContainer/Tabs/Graphics"]
