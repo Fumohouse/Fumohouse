@@ -22,8 +22,6 @@ export type MainMenu = NavMenu.NavMenu & typeof(MainMenu) & {
     --- @property
     infoScreen: TransitionElement.TransitionElement,
     --- @property
-    changelogScreen: TransitionElement.TransitionElement,
-    --- @property
     optionsScreen: TransitionElement.TransitionElement,
     --- @property
     characterEditor: TransitionElement.TransitionElement,
@@ -32,8 +30,6 @@ export type MainMenu = NavMenu.NavMenu & typeof(MainMenu) & {
     playButton: NavButton.NavButton,
     --- @property
     infoButton: NavButton.NavButton,
-    --- @property
-    changelogButton: NavButton.NavButton,
     --- @property
     optionsButton: NavButton.NavButton,
     --- @property
@@ -86,7 +82,6 @@ function MainMenu._Ready(self: MainMenu)
     local navButtonCb = Callable.new(self, "_OnScreenNavButtonPressed")
     self.playButton.pressed:Connect(navButtonCb:Bind(self.playButton, self.playScreen))
     self.infoButton.pressed:Connect(navButtonCb:Bind(self.infoButton, self.infoScreen))
-    self.changelogButton.pressed:Connect(navButtonCb:Bind(self.changelogButton, self.changelogScreen))
     self.optionsButton.pressed:Connect(navButtonCb:Bind(self.optionsButton, self.optionsScreen))
 
     self.exitButton.pressed:Connect(Callable.new(self, "_OnExitButtonPressed"):Bind(self.exitButton))

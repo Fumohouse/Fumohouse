@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bi4nul2t2fnl8"]
+[gd_scene load_steps=35 format=3 uid="uid://bi4nul2t2fnl8"]
 
 [ext_resource type="PackedScene" uid="uid://nrh6mhdp4grr" path="res://ui/navigation/nav_menu.tscn" id="1_67448"]
 [ext_resource type="Texture2D" uid="uid://cewbassnie0qr" path="res://assets/textures/ui/faces_bg.svg" id="1_efpvf"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bns0myjfx0sin" path="res://ui/navigation/play_screen/play_screen.tscn" id="4_eckt2"]
 [ext_resource type="PackedScene" uid="uid://bxnpb5vh0ddmo" path="res://ui/navigation/info_screen/info_screen.tscn" id="5_73rts"]
 [ext_resource type="PackedScene" uid="uid://cdwau5ohe3wxa" path="res://ui/navigation/options_screen/options_screen.tscn" id="5_deh0t"]
-[ext_resource type="PackedScene" uid="uid://ccd2h2cmi606" path="res://ui/navigation/changelog_screen/changelog_screen.tscn" id="5_gu5lu"]
 [ext_resource type="Shader" path="res://ui/navigation/main_menu/ksk_logo.gdshader" id="5_ka0he"]
 [ext_resource type="Script" path="res://ui/navigation/main_menu/KskLogo.lua" id="5_sft8o"]
 [ext_resource type="Texture2D" uid="uid://l068kvg3crfl" path="res://assets/textures/ksk.svg" id="6_p1kjr"]
@@ -84,12 +83,12 @@ transitionIn = true
 mainScreen = NodePath("Screens/MainScreen")
 playScreen = NodePath("Screens/PlayScreen")
 infoScreen = NodePath("Screens/InfoScreen")
-changelogScreen = NodePath("Screens/ChangelogScreen")
+changelogScreen = NodePath("")
 optionsScreen = NodePath("Screens/OptionsScreen")
 characterEditor = NodePath("Screens/CharacterEditor")
 playButton = NodePath("Screens/MainScreen/MainButtons/PlayButton")
 infoButton = NodePath("Screens/MainScreen/MainButtons/InfoButton")
-changelogButton = NodePath("Screens/MainScreen/MainButtons/ChangelogButton")
+changelogButton = NodePath("")
 optionsButton = NodePath("Screens/MainScreen/MainButtons/OptionsButton")
 exitButton = NodePath("Screens/MainScreen/MainButtons/ExitButton")
 editButton = NodePath("Screens/MainScreen/NonNavigation/Character/EditButton")
@@ -132,19 +131,15 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="ChangelogScreen" parent="Screens" index="2" instance=ExtResource("5_gu5lu")]
+[node name="OptionsScreen" parent="Screens" index="2" instance=ExtResource("5_deh0t")]
 visible = false
 layout_mode = 1
 
-[node name="OptionsScreen" parent="Screens" index="3" instance=ExtResource("5_deh0t")]
+[node name="CharacterEditor" parent="Screens" index="3" instance=ExtResource("7_q1dvg")]
 visible = false
 layout_mode = 1
 
-[node name="CharacterEditor" parent="Screens" index="4" instance=ExtResource("7_q1dvg")]
-visible = false
-layout_mode = 1
-
-[node name="MainScreen" type="Control" parent="Screens" index="5" node_paths=PackedStringArray("nonNavigation", "mainButtons", "topBar", "versionLabel", "musicButton", "musicController", "previewAppearanceManager")]
+[node name="MainScreen" type="Control" parent="Screens" index="4" node_paths=PackedStringArray("nonNavigation", "mainButtons", "topBar", "versionLabel", "musicButton", "musicController", "previewAppearanceManager")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -471,15 +466,11 @@ layout_mode = 2
 layout_mode = 2
 text = "Credits/Info"
 
-[node name="ChangelogButton" parent="Screens/MainScreen/MainButtons" index="2" instance=ExtResource("10_16bi3")]
-layout_mode = 2
-text = "Changelog"
-
-[node name="OptionsButton" parent="Screens/MainScreen/MainButtons" index="3" instance=ExtResource("10_16bi3")]
+[node name="OptionsButton" parent="Screens/MainScreen/MainButtons" index="2" instance=ExtResource("10_16bi3")]
 layout_mode = 2
 text = "Options"
 
-[node name="ExitButton" parent="Screens/MainScreen/MainButtons" index="4" instance=ExtResource("10_16bi3")]
+[node name="ExitButton" parent="Screens/MainScreen/MainButtons" index="3" instance=ExtResource("10_16bi3")]
 custom_minimum_size = Vector2(225, 48)
 layout_mode = 2
 text = "Exit"
