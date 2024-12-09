@@ -1,10 +1,12 @@
-[gd_scene load_steps=53 format=3 uid="uid://bdricnhkc377e"]
+[gd_scene load_steps=58 format=3 uid="uid://bdricnhkc377e"]
 
 [ext_resource type="Script" path="res://character/Character.lua" id="1_esdqo"]
 [ext_resource type="Script" path="res://character/Nametag.lua" id="4_g0jnx"]
 [ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="5_1iw6q"]
 [ext_resource type="PackedScene" uid="uid://dp4hh5fn4ecp4" path="res://assets/models/rig/rig.glb" id="6_s8jgh"]
+[ext_resource type="Shader" path="res://resources/materials/gltf_dither_material.gdshader" id="7_lj8st"]
 [ext_resource type="Animation" uid="uid://dil87a12bdo51" path="res://assets/models/rig/animations/base.tres" id="7_xw4fc"]
+[ext_resource type="Texture2D" uid="uid://j3p1obmff1ev" path="res://assets/textures/ordered_dither.png" id="8_g6ojv"]
 [ext_resource type="Script" path="res://character/appearance/AppearanceManager.lua" id="8_ip6d1"]
 [ext_resource type="Animation" uid="uid://bvrgnfyuy7ccg" path="res://assets/models/rig/animations/idle.tres" id="8_l8522"]
 [ext_resource type="Resource" uid="uid://d2erpcdyaexcj" path="res://resources/character_presets/momiji.tres" id="9_6jjgu"]
@@ -26,6 +28,35 @@ bounce = 0.2
 [sub_resource type="LabelSettings" id="LabelSettings_6vnie"]
 font = ExtResource("5_1iw6q")
 font_size = 20
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r8e7f"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rcveu"]
+noise = SubResource("FastNoiseLite_r8e7f")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_601hk"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("7_lj8st")
+shader_parameter/albedo = Color(0.988235, 0.917647, 0.831373, 1)
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = null
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = null
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = null
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.00784314, 0.388235, 0.960784, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/dither_texture = ExtResource("8_g6ojv")
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_rcveu")
 
 [sub_resource type="Gradient" id="Gradient_ofekd"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -290,7 +321,7 @@ use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="RArm" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.415745, 0.764366, 0.492849, 0.49285, -0.644783, 0.584255, 0.764365, -5.06639e-07, -0.644783, 0.201908, 1.86605, 0.0109229)
+transform = Transform3D(0.415745, 0.764366, 0.492849, 0.49285, -0.644783, 0.584255, 0.764365, -5.08502e-07, -0.644783, 0.201908, 1.86605, 0.0109229)
 bone_name = "RArm"
 bone_idx = 1
 use_external_skeleton = true
@@ -304,42 +335,42 @@ use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="RHand" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.413177, 0.766044, 0.492403, 0.492404, -0.642787, 0.586824, 0.766043, -4.75207e-07, -0.642788, 0.896792, 1.27987, 0.0109225)
+transform = Transform3D(0.413177, 0.766044, 0.492403, 0.492404, -0.642787, 0.586824, 0.766044, -4.76488e-07, -0.642788, 0.896792, 1.27987, 0.0109225)
 bone_name = "RHand"
 bone_idx = 2
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="LHand" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.413177, -0.766045, -0.492403, -0.492404, -0.642788, 0.586824, -0.766043, -5.94882e-07, -0.642788, -0.896796, 1.27987, 0.0109223)
+transform = Transform3D(0.413177, -0.766044, -0.492403, -0.492404, -0.642788, 0.586824, -0.766044, -5.94184e-07, -0.642788, -0.896795, 1.27987, 0.0109223)
 bone_name = "LHand"
 bone_idx = 4
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="RLeg" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.975812, 0.155977, 0.153151, 0.153148, -0.987742, 0.0301662, 0.155978, -0.00598182, -0.987741, 0.213903, 1.02528, 0.0236284)
+transform = Transform3D(0.975812, 0.155977, 0.15315, 0.153148, -0.987742, 0.0301662, 0.155978, -0.00598182, -0.987741, 0.213903, 1.02528, 0.0236284)
 bone_name = "RLeg"
 bone_idx = 6
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="LLeg" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.977737, -0.14966, -0.147107, -0.147111, -0.98872, 0.0281265, -0.149658, -0.00585926, -0.988721, -0.213903, 1.02528, 0.0236284)
+transform = Transform3D(0.977733, -0.14966, -0.147107, -0.14711, -0.98872, 0.0281265, -0.149657, -0.00585926, -0.988721, -0.213903, 1.02528, 0.0236284)
 bone_name = "LLeg"
 bone_idx = 8
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="RFoot" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.994518, 0.10453, 3.48315e-07, -1.5219e-06, -6.51926e-08, 1, 0.104529, -0.994521, -5.02914e-08, 0.380815, -0.031716, 0.0172271)
+transform = Transform3D(0.994518, 0.10453, 5.56465e-07, -1.65764e-06, -9.79751e-07, 1, 0.104529, -0.994521, -9.07108e-07, 0.380815, -0.0317162, 0.0172271)
 bone_name = "RFoot"
 bone_idx = 7
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="LFoot" type="BoneAttachment3D" parent="Appearance"]
-transform = Transform3D(0.994527, -0.104526, 5.07571e-08, -1.50339e-06, -3.78117e-07, 1, -0.104527, -0.994522, -3.65078e-07, -0.373899, -0.0317242, 0.0173644)
+transform = Transform3D(0.994522, -0.104526, 7.06874e-07, -7.90227e-07, -9.59262e-07, 1, -0.104526, -0.994522, -1.0673e-06, -0.373899, -0.0317242, 0.0173644)
 bone_name = "LFoot"
 bone_idx = 9
 use_external_skeleton = true
@@ -420,7 +451,24 @@ bones/8/scale = Vector3(1, 1, 1)
 bones/9/rest = Transform3D(0.98802, 0.0466394, -0.147109, -0.148227, 0.0214708, -0.98872, -0.0429548, 0.998681, 0.0281268, -1.11759e-08, 1.06906, 3.95812e-09)
 bones/9/position = Vector3(-1.11759e-08, 1.06906, 3.95812e-09)
 bones/9/rotation = Quaternion(0.696136, -0.0364826, -0.0682568, 0.713726)
-bones/9/scale = Vector3(1, 1, 1)
+
+[node name="HeadModel" parent="Rig/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_601hk")
+
+[node name="LArmModel" parent="Rig/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_601hk")
+
+[node name="LLegModel" parent="Rig/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_601hk")
+
+[node name="RArmModel" parent="Rig/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_601hk")
+
+[node name="RLegModel" parent="Rig/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = SubResource("ShaderMaterial_601hk")
+
+[node name="TorsoModel" parent="Rig/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = SubResource("ShaderMaterial_601hk")
 
 [node name="TorsoAttachment" type="BoneAttachment3D" parent="Rig/Armature/Skeleton3D" index="6"]
 transform = Transform3D(1, 1.96365e-08, -1.88261e-08, -1.88261e-08, 0.999113, 0.0421181, 1.96365e-08, -0.0421181, 0.999113, -2.44157e-08, 0.905569, 0.0155896)

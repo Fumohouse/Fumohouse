@@ -11,18 +11,18 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rcveu"]
 noise = SubResource("FastNoiseLite_r8e7f")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rrwv0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sg2vl"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_yalaj")
 shader_parameter/albedo = Color(0.988235, 0.917647, 0.831373, 1)
-shader_parameter/roughness = null
+shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = null
 shader_parameter/emission = Color(0, 0, 0, 1)
 shader_parameter/emission_energy = null
-shader_parameter/normal_scale = null
+shader_parameter/normal_scale = 1.0
 shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/ao_light_affect = null
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
@@ -58,52 +58,52 @@ size = Vector2i(300, 300)
 focusDistanceTarget = 4.0
 
 [node name="Torso" parent="CharacterViewport/SubViewport/Character/Appearance" index="0"]
-transform = Transform3D(1, 1.96365e-08, -1.88261e-08, -1.88261e-08, 0.999113, 0.0421181, 1.96365e-08, -0.0421181, 0.999113, -2.44157e-08, 0.905569, 0.0155896)
+transform = Transform3D(1, 1.96365e-08, -1.88261e-08, -1.88261e-08, 0.999113, 0.0421181, 1.96365e-08, -0.0421181, 0.999113, -2.44157e-08, 0.83798, 0.0155897)
 
 [node name="Head" parent="CharacterViewport/SubViewport/Character/Appearance" index="1"]
-transform = Transform3D(1, -4.63302e-10, 4.68821e-10, 4.68814e-10, 0.99993, -0.0118264, -4.63308e-10, 0.0118264, 0.99993, -2.35208e-09, 2.02817, -0.0317344)
+transform = Transform3D(1, -4.63304e-10, 4.68823e-10, 4.68816e-10, 0.99993, -0.0118264, -4.63309e-10, 0.0118264, 0.99993, -2.35207e-09, 1.96059, -0.0317345)
 
 [node name="RArm" parent="CharacterViewport/SubViewport/Character/Appearance" index="2"]
-transform = Transform3D(0.415745, 0.764366, 0.492849, 0.49285, -0.644782, 0.584255, 0.764365, -5.73695e-07, -0.644783, 0.201908, 1.93363, 0.0109229)
+transform = Transform3D(0.415745, 0.764366, 0.492849, 0.49285, -0.644783, 0.584255, 0.764365, -5.08502e-07, -0.644783, 0.201908, 1.86605, 0.0109234)
 
 [node name="LArm" parent="CharacterViewport/SubViewport/Character/Appearance" index="3"]
-transform = Transform3D(0.415745, -0.764366, -0.492849, -0.49285, -0.644782, 0.584255, -0.764365, -6.03497e-07, -0.644783, -0.201911, 1.93363, 0.0109229)
+transform = Transform3D(0.415745, -0.764366, -0.492849, -0.49285, -0.644783, 0.584255, -0.764365, -5.97909e-07, -0.644783, -0.201911, 1.86605, 0.0109224)
 
 [node name="RHand" parent="CharacterViewport/SubViewport/Character/Appearance" index="4"]
-transform = Transform3D(0.413177, 0.766044, 0.492403, 0.492404, -0.642788, 0.586824, 0.766044, -5.41913e-07, -0.642788, 0.896792, 1.34746, 0.0109225)
+transform = Transform3D(0.413177, 0.766044, 0.492403, 0.492404, -0.642787, 0.586824, 0.766044, -4.76488e-07, -0.642788, 0.896792, 1.27987, 0.0109224)
 
 [node name="LHand" parent="CharacterViewport/SubViewport/Character/Appearance" index="5"]
-transform = Transform3D(0.413177, -0.766044, -0.492403, -0.492404, -0.642788, 0.586824, -0.766044, -5.99539e-07, -0.642788, -0.896795, 1.34746, 0.0109223)
+transform = Transform3D(0.413177, -0.766044, -0.492403, -0.492404, -0.642788, 0.586824, -0.766044, -5.94184e-07, -0.642788, -0.896795, 1.27987, 0.0109224)
 
 [node name="RLeg" parent="CharacterViewport/SubViewport/Character/Appearance" index="6"]
-transform = Transform3D(0.975812, 0.155977, 0.15315, 0.153148, -0.987742, 0.0301662, 0.155978, -0.00598182, -0.987741, 0.213903, 1.09287, 0.0236284)
+transform = Transform3D(0.975812, 0.155977, 0.15315, 0.153148, -0.987742, 0.0301662, 0.155978, -0.00598182, -0.987741, 0.213903, 1.02528, 0.0236282)
 
 [node name="LLeg" parent="CharacterViewport/SubViewport/Character/Appearance" index="7"]
-transform = Transform3D(0.977742, -0.14966, -0.147107, -0.147111, -0.98872, 0.0281265, -0.149659, -0.00585926, -0.988721, -0.213903, 1.09287, 0.0236284)
+transform = Transform3D(0.977733, -0.14966, -0.147107, -0.14711, -0.98872, 0.0281265, -0.149657, -0.00585926, -0.988721, -0.213903, 1.02528, 0.0236282)
 
 [node name="RFoot" parent="CharacterViewport/SubViewport/Character/Appearance" index="8"]
-transform = Transform3D(0.994518, 0.10453, 1.69035e-07, -1.22993e-06, -1.017e-06, 1, 0.10453, -0.99452, -9.74163e-07, 0.380816, 0.0358691, 0.0172271)
+transform = Transform3D(0.994518, 0.10453, 5.56465e-07, -1.65764e-06, -9.79751e-07, 1, 0.104529, -0.994521, -9.07108e-07, 0.380815, -0.0317162, 0.0172272)
 
 [node name="LFoot" parent="CharacterViewport/SubViewport/Character/Appearance" index="9"]
-transform = Transform3D(0.994532, -0.104525, -8.65199e-07, -2.03843e-06, -4.1537e-07, 1, -0.104527, -0.994522, -1.69501e-07, -0.373898, 0.0358692, 0.0173645)
+transform = Transform3D(0.994522, -0.104526, 7.06874e-07, -7.90227e-07, -9.59262e-07, 1, -0.104526, -0.994522, -1.0673e-06, -0.373899, -0.0317242, 0.0173645)
 
-[node name="Head" parent="CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_rrwv0")
+[node name="HeadModel" parent="CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_sg2vl")
 
-[node name="LArm" parent="CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_rrwv0")
+[node name="LArmModel" parent="CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_sg2vl")
 
-[node name="LLeg" parent="CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="2"]
-surface_material_override/0 = SubResource("ShaderMaterial_rrwv0")
+[node name="LLegModel" parent="CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_sg2vl")
 
-[node name="RArm" parent="CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="3"]
-surface_material_override/0 = SubResource("ShaderMaterial_rrwv0")
+[node name="RArmModel" parent="CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_sg2vl")
 
-[node name="RLeg" parent="CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="4"]
-surface_material_override/0 = SubResource("ShaderMaterial_rrwv0")
+[node name="RLegModel" parent="CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = SubResource("ShaderMaterial_sg2vl")
 
-[node name="Torso" parent="CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="5"]
-surface_material_override/0 = SubResource("ShaderMaterial_rrwv0")
+[node name="TorsoModel" parent="CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = SubResource("ShaderMaterial_sg2vl")
 
 [node name="TorsoAttachment" parent="CharacterViewport/SubViewport/Character/Rig/Armature/Skeleton3D" index="6"]
 transform = Transform3D(1, 1.96365e-08, -1.88261e-08, -1.88261e-08, 0.999113, 0.0421181, 1.96365e-08, -0.0421181, 0.999113, -2.44157e-08, 0.905569, 0.0155896)

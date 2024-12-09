@@ -77,18 +77,16 @@ shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_rcveu")
 resource_local_to_scene = true
 height = 3.4
 
-[node name="MainMenu" node_paths=PackedStringArray("mainScreen", "playScreen", "infoScreen", "changelogScreen", "optionsScreen", "characterEditor", "playButton", "infoButton", "changelogButton", "optionsButton", "exitButton", "editButton") instance=ExtResource("1_67448")]
+[node name="MainMenu" node_paths=PackedStringArray("mainScreen", "playScreen", "infoScreen", "optionsScreen", "characterEditor", "playButton", "infoButton", "optionsButton", "exitButton", "editButton") instance=ExtResource("1_67448")]
 script = ExtResource("2_kqbd2")
 transitionIn = true
 mainScreen = NodePath("Screens/MainScreen")
 playScreen = NodePath("Screens/PlayScreen")
 infoScreen = NodePath("Screens/InfoScreen")
-changelogScreen = NodePath("")
 optionsScreen = NodePath("Screens/OptionsScreen")
 characterEditor = NodePath("Screens/CharacterEditor")
 playButton = NodePath("Screens/MainScreen/MainButtons/PlayButton")
 infoButton = NodePath("Screens/MainScreen/MainButtons/InfoButton")
-changelogButton = NodePath("")
 optionsButton = NodePath("Screens/MainScreen/MainButtons/OptionsButton")
 exitButton = NodePath("Screens/MainScreen/MainButtons/ExitButton")
 editButton = NodePath("Screens/MainScreen/NonNavigation/Character/EditButton")
