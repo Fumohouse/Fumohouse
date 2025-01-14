@@ -11,12 +11,17 @@ config_version=5
 [application]
 
 config/name="Fumohouse"
+run/main_scene="uid://cme8febygijfl"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://cly828ija347l"
 
 [audio]
 
 buses/default_bus_layout="uid://d3dmrtth2yhtv"
+
+[autoload]
+
+Modules="*res://addons/@fumohouse/base/modules.gd"
 
 [display]
 
@@ -25,4 +30,4 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/@fumohouse/main/plugin.cfg")
+enabled=PackedStringArray("res://addons/@fumohouse/base/plugin.cfg", "res://addons/@fumohouse/main/plugin.cfg")
