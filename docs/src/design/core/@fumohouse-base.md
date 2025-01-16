@@ -1,13 +1,13 @@
 # `@fumohouse/base`: Module system
 
-1. All of Fumohouse's/Fumofas' game code/tooling/assets should be organized into
+1. All of Fumohouse's/Fumofas' game code/tooling/assets is organized into
    modules.
 1. The module system is based on Godot's addon/plugin system. Each module is a
    Godot plugin and therefore must contain a `plugin.cfg`.
 1. By convention, a module's plugin script should be named `plugin.gd`.
 1. Modules should be named like `res://addons/@<scope>/<module_name>`.
-1. Module scopes should be dedicated to one person or group. Several scopes may
-   be reserved by Fumohouse for first-party use.
+1. Module scopes are dedicated to one person or group. Several scopes may be
+   reserved by Fumohouse for first-party use.
    1. The `@fumohouse` scope is reserved for official Fumohouse modules.
    1. The `@assets` scope should be used for permissively-licensed asset
       collections.
@@ -18,13 +18,13 @@
 1. The order in which modules are loaded shall be determined by a topological
    ordering of the dependency graph.
 1. Each module must contain a module manifest `module.tres` next to its
-   `plugin.cfg`. The manifest should store dependencies, entry point scene,
-   autoloads, restricted API usage, etc.
+   `plugin.cfg`. The manifest stores dependencies, entry point scene, autoloads,
+   restricted API usage, etc.
 1. Each module may contain a Debian-format `COPYRIGHT.txt` next to its
    `plugin.cfg` to declare copyright information.
-1. Autoload classes/scenes should be registered per-module and be managed by one
-   Godot autoload that loads all module autoloads and and exposes them similar
-   to Roblox's `game:GetService()`.[^autoload]
+1. Autoload classes/scenes are registered per-module and managed by one Godot
+   autoload that loads all module autoloads and and exposes them similar to
+   Roblox's `game:GetService()`.[^autoload]
    1. For type safety, module autoloads should have a global class name and
       return their instance through a `get_singleton` static function.
    1. Autoloads are not available earlier than `_ready`.
