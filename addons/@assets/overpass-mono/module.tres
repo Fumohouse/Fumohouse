@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ModuleManifest" load_steps=2 format=3 uid="uid://b82ss15inx5k0"]
+
+[ext_resource type="Script" uid="uid://c5kqgift21f1k" path="res://addons/@fumohouse/base/module_manifest.gd" id="1_3mbnh"]
+
+[resource]
+script = ExtResource("1_3mbnh")
+dependencies = Dictionary[StringName, Variant]({
+&"@fumohouse/base": null
+})
+entry_scene = ""
+autoloads = Dictionary[StringName, String]({})
+metadata/_custom_type_script = ExtResource("1_3mbnh")

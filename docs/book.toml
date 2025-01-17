@@ -10,3 +10,4 @@ create-missing = false
 
 [output.html]
 smart-punctuation = true
+additional-css = ["custom.css"]

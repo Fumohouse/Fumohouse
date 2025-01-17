@@ -1,0 +1,36 @@
+/* Clarity City and Source Code Pro are under the Open Font License. See https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL */
+
+@font-face {
+  font-family: Clarity City;
+  font-style: normal;
+  font-weight: 400;
+  src: url('ClarityCity-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Clarity City;
+  font-style: italic;
+  font-weight: 400;
+  src: url('ClarityCity-RegularItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Clarity City;
+  font-style: normal;
+  font-weight: 700;
+  src: url('ClarityCity-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Clarity City;
+  font-style: italic;
+  font-weight: 700;
+  src: url('ClarityCity-BoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Overpass Mono;
+  font-style: normal;
+  font-weight: 500;
+  src: url('overpass-mono-regular.woff2') format('woff2');
+}
