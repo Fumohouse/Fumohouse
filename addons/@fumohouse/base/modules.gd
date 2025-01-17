@@ -61,6 +61,7 @@ func _scan_modules():
 
 	while mod_file != "":
 		if not mods_dir.current_is_dir() or not mod_file.begins_with("@"):
+			mod_file = mods_dir.get_next()
 			continue
 
 		var scope_path: String = MODULES_DIR.path_join(mod_file)
@@ -74,6 +75,7 @@ func _scan_modules():
 
 		while scope_file != "":
 			if not scope_dir.current_is_dir():
+				scope_file = scope_dir.get_next()
 				continue
 
 			_index_module(scope_path.path_join(scope_file))
