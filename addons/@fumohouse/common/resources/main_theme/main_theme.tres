@@ -1,0 +1,51 @@
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://bwtx8apvqhdb3"]
+
+[ext_resource type="FontFile" uid="uid://clifouy6vdsx0" path="res://addons/@assets/clarity-city/ClarityCity-Regular.woff2" id="1_1qjo2"]
+[ext_resource type="StyleBox" uid="uid://bikux3espg13i" path="res://addons/@fumohouse/common/resources/styleboxes/button_disabled.tres" id="1_8cxsb"]
+[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@assets/clarity-city/ClarityCity-Bold.woff2" id="1_64law"]
+[ext_resource type="Texture2D" uid="uid://cjwe1coxwsqua" path="res://addons/@fumohouse/common/assets/textures/ui/slider_grabber.svg" id="1_ponq8"]
+[ext_resource type="StyleBox" uid="uid://su7e0vh2xqbd" path="res://addons/@fumohouse/common/resources/styleboxes/button_focus.tres" id="2_0pr56"]
+[ext_resource type="FontFile" uid="uid://cy7dvil6s4ebc" path="res://addons/@assets/clarity-city/ClarityCity-BoldItalic.woff2" id="2_wtyyj"]
+[ext_resource type="Texture2D" uid="uid://bwtlfs2mbovsi" path="res://addons/@fumohouse/common/assets/textures/ui/slider_grabber_disabled.svg" id="2_xk7gw"]
+[ext_resource type="StyleBox" uid="uid://c1paknlk70k7p" path="res://addons/@fumohouse/common/resources/styleboxes/button_hover.tres" id="3_gbuug"]
+[ext_resource type="FontFile" uid="uid://c4qltp4duykro" path="res://addons/@assets/clarity-city/ClarityCity-RegularItalic.woff2" id="3_q4g4c"]
+[ext_resource type="Texture2D" uid="uid://ddjwffvhr4ma7" path="res://addons/@fumohouse/common/assets/textures/ui/slider_grabber_highlight.svg" id="3_x51nx"]
+[ext_resource type="StyleBox" uid="uid://cbkdsiqaqi5gc" path="res://addons/@fumohouse/common/resources/styleboxes/button_normal.tres" id="4_fatdi"]
+[ext_resource type="FontFile" uid="uid://dy1lesqssmhwm" path="res://addons/@assets/overpass-mono/overpass-mono-regular.woff2" id="4_ponq8"]
+[ext_resource type="StyleBox" uid="uid://bnt3h5sfaoa6w" path="res://addons/@fumohouse/common/resources/styleboxes/panel_0.tres" id="4_x51nx"]
+[ext_resource type="StyleBox" uid="uid://df6263hava71u" path="res://addons/@fumohouse/common/resources/styleboxes/button_pressed.tres" id="5_2j2a2"]
+[ext_resource type="StyleBox" uid="uid://b4qwto3daj57o" path="res://addons/@fumohouse/common/resources/styleboxes/panel_1.tres" id="5_cm2td"]
+[ext_resource type="StyleBox" uid="uid://bcsf7lrldvdxf" path="res://addons/@fumohouse/common/resources/styleboxes/slider.tres" id="9_0pr56"]
+[ext_resource type="StyleBox" uid="uid://dxtixcenekol6" path="res://addons/@fumohouse/common/resources/styleboxes/grabber_area.tres" id="9_gbuug"]
+
+[resource]
+default_font = ExtResource("1_1qjo2")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/styles/disabled = ExtResource("1_8cxsb")
+Button/styles/focus = ExtResource("2_0pr56")
+Button/styles/hover = ExtResource("3_gbuug")
+Button/styles/normal = ExtResource("4_fatdi")
+Button/styles/pressed = ExtResource("5_2j2a2")
+CheckBox/styles/hover_pressed = ExtResource("5_2j2a2")
+CheckButton/styles/hover_pressed = ExtResource("5_2j2a2")
+HSlider/icons/grabber = ExtResource("1_ponq8")
+HSlider/icons/grabber_disabled = ExtResource("2_xk7gw")
+HSlider/icons/grabber_highlight = ExtResource("3_x51nx")
+HSlider/styles/grabber_area = ExtResource("9_gbuug")
+HSlider/styles/grabber_area_highlight = ExtResource("9_gbuug")
+HSlider/styles/slider = ExtResource("9_0pr56")
+LineEdit/styles/focus = ExtResource("2_0pr56")
+LineEdit/styles/normal = ExtResource("4_fatdi")
+LineEdit/styles/read_only = ExtResource("1_8cxsb")
+Panel/styles/panel = ExtResource("4_x51nx")
+Panel1/base_type = &"Panel"
+Panel1/styles/panel = ExtResource("5_cm2td")
+PanelContainer/styles/panel = ExtResource("4_x51nx")
+PopupMenu/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+PopupMenu/styles/hover = ExtResource("3_gbuug")
+PopupMenu/styles/panel = ExtResource("5_cm2td")
+RichTextLabel/constants/line_separation = 3
+RichTextLabel/fonts/bold_font = ExtResource("1_64law")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_wtyyj")
+RichTextLabel/fonts/italics_font = ExtResource("3_q4g4c")
+RichTextLabel/fonts/mono_font = ExtResource("4_ponq8")

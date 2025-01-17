@@ -1,0 +1,122 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcmyneanwu1f3"]
+
+[ext_resource type="Script" uid="uid://c2mo31oe5hccm" path="res://addons/@fumohouse/common/nodes/option_button_offset.gd" id="1_fhdb4"]
+
+[node name="Preview" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VFlowContainer" type="VFlowContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Whereas disregard and contempt for human rights have resulted"
+autowrap_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "Whereas [b]disregard[/b] and [i]contempt[/i] for human rights have resulted
+[rainbow freq=0.2 sat=1 val=1]Rainbow[/rainbow]"
+fit_content = true
+scroll_active = false
+
+[node name="Panel1" type="PanelContainer" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"Panel1"
+
+[node name="Label" type="Label" parent="MarginContainer/VFlowContainer/Panel1"]
+layout_mode = 2
+text = "Panel1"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Button"
+
+[node name="ButtonDisabled" type="Button" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+disabled = true
+text = "Button"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+value = 50.0
+tick_count = 5
+
+[node name="HSliderDisabled" type="HSlider" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+value = 50.0
+editable = false
+
+[node name="OptionButtonOffset" type="OptionButton" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Option 1"
+popup/item_0/id = 0
+popup/item_1/text = "Disabled"
+popup/item_1/id = 1
+popup/item_1/disabled = true
+popup/item_2/text = "Option 2"
+popup/item_2/id = 2
+script = ExtResource("1_fhdb4")
+metadata/_custom_type_script = ExtResource("1_fhdb4")
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+text = "Toggle"
+
+[node name="CheckButtonFlat" type="CheckButton" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+text = "Toggle Flat"
+flat = true
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+text = "Checkbox"
+
+[node name="CheckBoxFlat" type="CheckBox" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+text = "Checkbox Flat"
+flat = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VFlowContainer/ScrollContainer"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+
+[node name="ColorPicker" type="ColorPicker" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+picker_shape = 1
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+
+[node name="LineEditDisabled" type="LineEdit" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+text = "Disabled"
+editable = false
