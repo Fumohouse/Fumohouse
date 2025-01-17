@@ -3,7 +3,6 @@
 1. `@fumohouse/common`: Various custom nodes, scenes, UI components, materials,
    resources, etc. to be used in Fumohouse Core or Fumofa's.
 1. `@fumohouse/debug`: Debug overlays, drawing, and other debugging tools.
-1. `@fumohouse/camera`: A dynamic, orbiting camera controller.
 1. `@fumohouse/config`: A dynamic, persistent configuration manager.
 1. `@fumohouse/music`: A playlist-based music player system.
 1. `@fumohouse/netcode`: A modular networking system offered as an alternative

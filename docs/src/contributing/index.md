@@ -49,6 +49,8 @@ Thank you for your interest in contributing to Fumohouse!
    | `snake_case` | files,[^filenames] folders, animations         |
    | `PascalCase` | classes, autoloads, nodes (incl. in 3D models) |
 1. Public interfaces should be documented.
+1. Do not use Godot's binary resource formats `.res` or `.scn` unless otherwise
+   stated.
 
 ### Asset optimization
 

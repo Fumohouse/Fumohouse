@@ -4,5 +4,5 @@
 
 ![Fumo model wireframe](assets/fumo.png)
 
-1. The module should contain the rig, animations, and parts/accessories of
+1. [ ] The module should contain the rig, animations, and parts/accessories of
    various builtin characters.
