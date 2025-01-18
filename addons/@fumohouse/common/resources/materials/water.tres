@@ -1,0 +1,43 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://dbc0ratgleys3"]
+
+[ext_resource type="Shader" uid="uid://du45i2xkuj4fb" path="res://addons/@fumohouse/common/resources/materials/water.gdshader" id="1_8wiho"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xjol7"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a4seb"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_xjol7")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fepdj"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8yist"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_fepdj")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_8wiho")
+shader_parameter/albedo = Color(0.175, 0.44625, 0.7, 0.498039)
+shader_parameter/metallic = 0.2
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.2
+shader_parameter/fresnel_color = Color(0.7, 0.95, 1, 1)
+shader_parameter/fresnel_settings = Vector3(-0.3, 0.6, 2.5)
+shader_parameter/fog_color = Color(0, 0.258333, 0.5, 1)
+shader_parameter/fog_density = 0.5
+shader_parameter/background_fog_factor = 0.75
+shader_parameter/foam_color = Color(1, 1, 1, 1)
+shader_parameter/foam_distance = 0.1
+shader_parameter/normal_map_1 = SubResource("NoiseTexture2D_a4seb")
+shader_parameter/normal_map_2 = SubResource("NoiseTexture2D_8yist")
+shader_parameter/normal_factor = 0.5
+shader_parameter/normal_map_1_movement = Vector2(-0.1, 0)
+shader_parameter/normal_map_2_movement = Vector2(-0.02, -0.08)
+shader_parameter/refraction_strength = 0.005
+shader_parameter/wave_1 = Vector4(1, 0, 0.15, 5)
+shader_parameter/wave_2 = Vector4(0.3, 0.5, 0.075, 3.5)
+shader_parameter/wave_3 = Vector4(-0.7, 0.2, 0.038, 2.5)
