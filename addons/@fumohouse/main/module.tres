@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_n5nu5")
 dependencies = Dictionary[StringName, Variant]({
-&"@fumohouse/base": null
+&"@fumohouse/base": null,
+&"@fumohouse/config": null
 })
 entry_scene = "uid://cme8febygijfl"
 autoloads = Dictionary[StringName, String]({})

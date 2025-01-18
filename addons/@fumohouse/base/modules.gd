@@ -116,8 +116,13 @@ func _load_autoloads(ordering: Array[StringName]):
 			var res: Resource = load(manifest.autoloads[auto_name])
 			if res is GDScript:
 				var obj: Object = (res as GDScript).new()
+				if obj is Node:
+					obj.name = auto_name
+					add_child(obj as Node)
 				_autoloads[auto_name] = obj
+				print("[Modules] Loaded autoload class '%s'." % auto_name)
 			elif res is PackedScene:
 				var node: Node = (res as PackedScene).instantiate()
 				add_child(node)
 				_autoloads[auto_name] = node
+				print("[Modules] Loaded autoload scene '%s'." % auto_name)

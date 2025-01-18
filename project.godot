@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Fumohouse"
 run/main_scene="uid://cme8febygijfl"
+config/project_settings_override="user://override.godot"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://cly828ija347l"
 
@@ -30,7 +31,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/@assets/clarity-city/plugin.cfg", "res://addons/@assets/overpass-mono/plugin.cfg", "res://addons/@fumohouse/base/plugin.cfg", "res://addons/@fumohouse/common/plugin.cfg", "res://addons/@fumohouse/main/plugin.cfg")
+enabled=PackedStringArray("res://addons/@assets/clarity-city/plugin.cfg", "res://addons/@assets/overpass-mono/plugin.cfg", "res://addons/@fumohouse/base/plugin.cfg", "res://addons/@fumohouse/common/plugin.cfg", "res://addons/@fumohouse/config/plugin.cfg", "res://addons/@fumohouse/main/plugin.cfg")
 
 [gui]
 
