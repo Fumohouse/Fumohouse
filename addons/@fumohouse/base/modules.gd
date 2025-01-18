@@ -1,8 +1,8 @@
 extends Node
 ## A singleton for managing modules.
 
-const MODULES_DIR := "res://addons/"
-const MANIFEST_NAME := "module.tres"
+const _MODULES_DIR := "res://addons/"
+const _MANIFEST_NAME := "module.tres"
 
 var _modules: Dictionary[StringName, ModuleManifest] = {}
 var _configs: Dictionary[StringName, ConfigFile] = {}
@@ -16,7 +16,7 @@ func _enter_tree():
 	# will explode
 	var scene_path: String = get_tree().current_scene.scene_file_path
 	var scene_path_split: PackedStringArray = \
-			scene_path.substr(MODULES_DIR.length()).split("/")
+			scene_path.substr(_MODULES_DIR.length()).split("/")
 	var scene_module: String = "/".join(scene_path_split.slice(0, 2))
 	print("[Modules] Detected main scene in module '%s'!" % scene_module)
 
@@ -31,7 +31,7 @@ func get_singleton(name: StringName) -> Object:
 
 
 func _index_module(path: String):
-	var manifest := load(path.path_join(MANIFEST_NAME)) as ModuleManifest
+	var manifest := load(path.path_join(_MANIFEST_NAME)) as ModuleManifest
 	if not manifest:
 		push_error("[Modules] Invalid manifest at '%s'." % path)
 		return
@@ -42,7 +42,7 @@ func _index_module(path: String):
 		push_error("[Modules] Failed to load plugin configuration for '%s'." % path)
 		return
 
-	var module_name := StringName(path.substr(MODULES_DIR.length()))
+	var module_name := StringName(path.substr(_MODULES_DIR.length()))
 	_modules[module_name] = manifest
 	_configs[module_name] = cfg
 	print("[Modules] Indexed module '%s'." % module_name)
@@ -51,7 +51,7 @@ func _index_module(path: String):
 func _scan_modules():
 	print("[Modules] Scanning for modules...")
 
-	var mods_dir := DirAccess.open(MODULES_DIR)
+	var mods_dir := DirAccess.open(_MODULES_DIR)
 	if not mods_dir:
 		push_error("[Modules] Failed to open modules directory.")
 		return
@@ -64,7 +64,7 @@ func _scan_modules():
 			mod_file = mods_dir.get_next()
 			continue
 
-		var scope_path: String = MODULES_DIR.path_join(mod_file)
+		var scope_path: String = _MODULES_DIR.path_join(mod_file)
 		var scope_dir := DirAccess.open(scope_path)
 		if not scope_dir:
 			push_error("[Modules] Failed to open scope directory '%s'." % mod_file)

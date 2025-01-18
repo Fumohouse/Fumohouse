@@ -4,9 +4,9 @@ extends EditorScenePostImport
 ## version of [StandardMaterial3D] that includes dither alpha and dissolve
 ## components.
 
-const BASE_MAT: ShaderMaterial = preload("extended_standard_material.tres")
+const _BASE_MAT: ShaderMaterial = preload("extended_standard_material.tres")
 
-const PROPERTY_MAP: Dictionary[String, String] = {
+const _PROPERTY_MAP: Dictionary[String, String] = {
 	"albedo_color": "albedo",
 	"albedo_texture": "texture_albedo",
 	"ao_light_affect": "ao_light_affect",
@@ -28,7 +28,7 @@ const PROPERTY_MAP: Dictionary[String, String] = {
 	"uv2_scale": "uv2_scale",
 }
 
-const TEXTURE_MASKS: Array[Vector4] = [
+const _TEXTURE_MASKS: Array[Vector4] = [
 	Vector4(1, 0, 0, 0),
 	Vector4(0, 1, 0, 0),
 	Vector4(0, 0, 1, 0),
@@ -69,17 +69,17 @@ func _convert_material(mat: StandardMaterial3D) -> ShaderMaterial:
 	if _converted_materials.has(mat):
 		return _converted_materials[mat]
 
-	var new_mat := BASE_MAT.duplicate() as ShaderMaterial
+	var new_mat := _BASE_MAT.duplicate() as ShaderMaterial
 
-	for key in PROPERTY_MAP.keys():
-		new_mat.set_shader_parameter(PROPERTY_MAP[key], mat.get(key))
+	for key in _PROPERTY_MAP.keys():
+		new_mat.set_shader_parameter(_PROPERTY_MAP[key], mat.get(key))
 
 	new_mat.set_shader_parameter(
-			"ao_texture_channel", TEXTURE_MASKS[mat.ao_texture_channel])
+			"ao_texture_channel", _TEXTURE_MASKS[mat.ao_texture_channel])
 
 	new_mat.set_shader_parameter(
 			"metallic_texture_channel",
-			TEXTURE_MASKS[mat.metallic_texture_channel])
+			_TEXTURE_MASKS[mat.metallic_texture_channel])
 
 	new_mat.resource_local_to_scene = true
 
