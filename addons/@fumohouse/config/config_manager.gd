@@ -23,6 +23,7 @@ var _options: Dictionary[StringName, ConfigOption] = {}
 
 func _ready():
 	load_file.call_deferred()
+	QuitManager.get_singleton().before_quit.connect(_on_before_quit)
 
 
 func _process(delta: float):
@@ -32,17 +33,6 @@ func _process(delta: float):
 	_autosave_timeout = move_toward(_autosave_timeout, 0.0, delta)
 	if _autosave_timeout == 0.0:
 		save_file()
-
-
-func _exit_tree():
-	if _autosave_timeout > 0.0:
-		save_file()
-
-
-func _notification(what: int):
-	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		if _autosave_timeout > 0.0:
-			save_file()
 
 
 static func get_singleton() -> ConfigManager:
@@ -160,6 +150,11 @@ func _split_key(key: StringName) -> Array[StringName]:
 	var head := key.get_slice("/", 0)
 	var tail := key.substr(head.length() + 1)
 	return [head, tail]
+
+
+func _on_before_quit():
+	if _autosave_timeout > 0.0:
+		save_file()
 
 
 class ConfigOption extends RefCounted:

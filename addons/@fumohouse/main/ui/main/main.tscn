@@ -1,0 +1,266 @@
+[gd_scene load_steps=22 format=3 uid="uid://r3htqql86m4u"]
+
+[ext_resource type="PackedScene" uid="uid://ctxaywfcdgbmw" path="res://addons/@fumohouse/main/ui/navigation/nav_menu.tscn" id="1_30nbv"]
+[ext_resource type="Script" uid="uid://donqdlntewiwc" path="res://addons/@fumohouse/main/ui/main/main_menu.gd" id="2_fl0rv"]
+[ext_resource type="Texture2D" uid="uid://cdxg2w1khoiq4" path="res://addons/@fumohouse/main/assets/textures/faces_bg.svg" id="2_gurn1"]
+[ext_resource type="Script" uid="uid://beubs5pgskp1y" path="res://addons/@fumohouse/main/ui/main/main_screen.gd" id="3_fl0rv"]
+[ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@fumohouse/main/assets/textures/logo.png" id="5_dmftq"]
+[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@assets/clarity-city/ClarityCity-Bold.woff2" id="6_b5xtq"]
+[ext_resource type="PackedScene" uid="uid://cxuayqoo84sm7" path="res://addons/@fumohouse/main/ui/main/version_label.tscn" id="7_b5xtq"]
+[ext_resource type="Script" uid="uid://c8kh3mwukbfrf" path="res://addons/@fumohouse/main/ui/main/ksk.gd" id="8_15rud"]
+[ext_resource type="Shader" uid="uid://y5gx0jvj3y86" path="res://addons/@fumohouse/main/ui/main/ksk.gdshader" id="8_j6tus"]
+[ext_resource type="Texture2D" uid="uid://c7ifohxj3gwa4" path="res://addons/@fumohouse/main/assets/textures/ksk.svg" id="8_ujcgd"]
+[ext_resource type="PackedScene" uid="uid://chha350wco1td" path="res://addons/@fumohouse/main/ui/main/main_menu_icon_button.tscn" id="11_7jp73"]
+[ext_resource type="Texture2D" uid="uid://clru50xcudklb" path="res://addons/@assets/bootstrap-icons/icons/globe-americas.svg" id="12_hcfsd"]
+[ext_resource type="Texture2D" uid="uid://cc5la4nel6kem" path="res://addons/@assets/bootstrap-icons/icons/git.svg" id="13_5640k"]
+[ext_resource type="PackedScene" uid="uid://1iygih3bhie5" path="res://addons/@fumohouse/main/ui/main/main_menu_bar_button.tscn" id="13_hcfsd"]
+[ext_resource type="Texture2D" uid="uid://qa0shx76d22c" path="res://addons/@assets/bootstrap-icons/icons/bell-fill.svg" id="14_5640k"]
+[ext_resource type="Texture2D" uid="uid://dp58mtapmcmf7" path="res://addons/@assets/bootstrap-icons/icons/music-note.svg" id="14_ch7cy"]
+[ext_resource type="PackedScene" uid="uid://by5n53kx2tkhx" path="res://addons/@fumohouse/main/ui/navigation/components/nav_button_container.tscn" id="17_o1m3j"]
+[ext_resource type="PackedScene" uid="uid://dr32entbvcc4" path="res://addons/@fumohouse/main/ui/navigation/components/nav_button.tscn" id="18_i7y6j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ujcgd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o1m3j"]
+shader = ExtResource("8_j6tus")
+shader_parameter/progress = 0.0
+shader_parameter/brightness = 1.5
+shader_parameter/begin_scale = 0.9
+shader_parameter/end_scale = 1.0
+shader_parameter/logo = ExtResource("8_ujcgd")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hcfsd"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0, 0.333333, 0.647059, 1)
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="MainMenu" node_paths=PackedStringArray("main_screen") instance=ExtResource("1_30nbv")]
+script = ExtResource("2_fl0rv")
+main_screen = NodePath("Screens/MainScreen")
+
+[node name="Background" type="Control" parent="." index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 4.0
+anchor_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_gurn1")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Dim" type="ColorRect" parent="Background" index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="MainScreen" type="Control" parent="Screens" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_fl0rv")
+
+[node name="NonNavigation" type="Control" parent="Screens/MainScreen" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation" index="0"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 88.0
+offset_bottom = 88.0
+
+[node name="TextureRect" type="TextureRect" parent="Screens/MainScreen/NonNavigation/Logo" index="0"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("5_dmftq")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Screens/MainScreen/NonNavigation/Logo" index="1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_b5xtq")
+theme_override_font_sizes/font_size = 24
+text = "Fumohouse"
+
+[node name="VersionLabel" parent="Screens/MainScreen/NonNavigation" index="1" instance=ExtResource("7_b5xtq")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -84.0
+offset_right = 0.0
+offset_bottom = -60.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="LowerLeft" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation" index="2"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -108.0
+offset_right = 148.0
+offset_bottom = -48.0
+grow_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="ksk" type="Button" parent="Screens/MainScreen/NonNavigation/LowerLeft" index="0"]
+custom_minimum_size = Vector2(90, 65)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ujcgd")
+flat = true
+script = ExtResource("8_15rud")
+
+[node name="Logo" type="ColorRect" parent="Screens/MainScreen/NonNavigation/LowerLeft/ksk" index="0"]
+material = SubResource("ShaderMaterial_o1m3j")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Separator" type="ColorRect" parent="Screens/MainScreen/NonNavigation/LowerLeft" index="1"]
+custom_minimum_size = Vector2(2, 50)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Screens/MainScreen/NonNavigation/LowerLeft" index="2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/line_separation = 0
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "voided_etc & co. // 2025
+Made with [img=12x12 color=d973b2]res://addons/@assets/bootstrap-icons/icons/heart-fill.svg[/img]"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+vertical_alignment = 1
+
+[node name="BottomButtons" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation" index="3"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 365.0
+offset_top = -104.0
+offset_right = 405.0
+offset_bottom = -64.0
+grow_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="Website" parent="Screens/MainScreen/NonNavigation/BottomButtons" index="0" instance=ExtResource("11_7jp73")]
+layout_mode = 2
+
+[node name="Icon" parent="Screens/MainScreen/NonNavigation/BottomButtons/Website" index="0"]
+texture = ExtResource("12_hcfsd")
+
+[node name="Codeberg2" parent="Screens/MainScreen/NonNavigation/BottomButtons" index="1" instance=ExtResource("11_7jp73")]
+layout_mode = 2
+link = "https://codeberg.org/ksk/Fumohouse"
+
+[node name="Icon" parent="Screens/MainScreen/NonNavigation/BottomButtons/Codeberg2" index="0"]
+texture = ExtResource("13_5640k")
+
+[node name="TopBar" type="PanelContainer" parent="Screens/MainScreen/NonNavigation" index="4"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -148.0
+offset_right = -60.0
+offset_bottom = 48.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hcfsd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation/TopBar" index="0"]
+layout_mode = 2
+alignment = 1
+
+[node name="MusicButton" parent="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer" index="0" instance=ExtResource("13_hcfsd")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Icon" parent="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer/MusicButton" index="0"]
+texture = ExtResource("14_ch7cy")
+
+[node name="NotificationButton" parent="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer" index="1" instance=ExtResource("13_hcfsd")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Icon" parent="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer/NotificationButton" index="0"]
+texture = ExtResource("14_5640k")
+
+[node name="MainButtons" parent="Screens/MainScreen" index="1" instance=ExtResource("17_o1m3j")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+
+[node name="PlayButton" parent="Screens/MainScreen/MainButtons" index="0" instance=ExtResource("18_i7y6j")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="InfoButton" parent="Screens/MainScreen/MainButtons" index="1" instance=ExtResource("18_i7y6j")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Credits/Info"
+
+[node name="OptionsButton" parent="Screens/MainScreen/MainButtons" index="2" instance=ExtResource("18_i7y6j")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Options"
+
+[node name="ExitButton" parent="Screens/MainScreen/MainButtons" index="3" instance=ExtResource("18_i7y6j")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(225, 48)
+layout_mode = 2
+text = "Exit"
+
+[node name="Dim" type="ColorRect" parent="." index="3"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
+[editable path="Screens/MainScreen/NonNavigation/BottomButtons/Website"]
+[editable path="Screens/MainScreen/NonNavigation/BottomButtons/Codeberg2"]
+[editable path="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer/MusicButton"]
+[editable path="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer/NotificationButton"]

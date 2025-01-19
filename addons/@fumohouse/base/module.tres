@@ -6,5 +6,7 @@
 script = ExtResource("1_wjdbm")
 dependencies = Dictionary[StringName, Variant]({})
 entry_scene = ""
-autoloads = Dictionary[StringName, String]({})
+autoloads = Dictionary[StringName, String]({
+&"QuitManager": "res://addons/@fumohouse/base/quit_manager.gd"
+})
 metadata/_custom_type_script = ExtResource("1_wjdbm")

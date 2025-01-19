@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxuayqoo84sm7"]
+
+[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@assets/clarity-city/ClarityCity-Bold.woff2" id="1_otnlh"]
+[ext_resource type="Script" uid="uid://cc8mbcuhhslh" path="res://addons/@fumohouse/main/ui/main/version_label.gd" id="1_tnpqh"]
+
+[node name="VersionLabel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 190.0
+offset_bottom = 24.0
+script = ExtResource("1_tnpqh")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="Stage" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 50.0
+offset_bottom = 24.0
+
+[node name="Background" type="ColorRect" parent="Stage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[node name="Text" type="Label" parent="Stage"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -7.5
+offset_right = 15.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_otnlh")
+theme_override_font_sizes/font_size = 14
+text = "PLA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Version" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 60.0
+offset_top = -7.5
+offset_right = 90.0
+offset_bottom = 7.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "2025.1.18"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -49,6 +49,11 @@ Comment: Overpass Mono font
 Copyright: 2021 The Overpass Project Authors
 License: OFL-1.1
 
+Files: addons/@assets/bootstrap-icons/icons/*
+Comment: Bootstrap icons
+Copyright: 2019-2024, The Bootstrap Authors
+License: Expat
+
 ######################
 # Expat License Text #
 ######################
