@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwfpt2e5bsunh"]
+[gd_scene load_steps=6 format=3 uid="uid://bwfpt2e5bsunh"]
 
 [ext_resource type="Script" uid="uid://po351v810l2i" path="res://addons/@fumohouse/main/ui/navigation/components/nav_button.gd" id="1_aw4mf"]
-[ext_resource type="Texture2D" uid="uid://cwpwoep2v55l4" path="res://addons/@assets/bootstrap-icons/icons/arrow-left-short.svg" id="3_sn0y6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aw4mf"]
 bg_color = Color(0.08, 0.245333, 0.4, 0)
@@ -43,28 +42,5 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_aw4mf")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hefmm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vc0qn")
 theme_override_styles/normal = SubResource("StyleBoxFlat_aekdw")
+text = " Back"
 script = ExtResource("1_aw4mf")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 4
-alignment = 1
-
-[node name="Icon" type="TextureRect" parent="HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 2
-texture = ExtResource("3_sn0y6")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "Back"
-vertical_alignment = 1

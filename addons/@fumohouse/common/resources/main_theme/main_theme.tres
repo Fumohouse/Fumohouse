@@ -1,6 +1,5 @@
 [gd_resource type="Theme" load_steps=18 format=3 uid="uid://bwtx8apvqhdb3"]
 
-[ext_resource type="FontFile" uid="uid://clifouy6vdsx0" path="res://addons/@assets/clarity-city/ClarityCity-Regular.woff2" id="1_1qjo2"]
 [ext_resource type="StyleBox" uid="uid://bikux3espg13i" path="res://addons/@fumohouse/common/resources/styleboxes/button_disabled.tres" id="1_8cxsb"]
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@assets/clarity-city/ClarityCity-Bold.woff2" id="1_64law"]
 [ext_resource type="Texture2D" uid="uid://cjwe1coxwsqua" path="res://addons/@fumohouse/common/assets/textures/ui/slider_grabber.svg" id="1_ponq8"]
@@ -17,9 +16,10 @@
 [ext_resource type="StyleBox" uid="uid://b4qwto3daj57o" path="res://addons/@fumohouse/common/resources/styleboxes/panel_1.tres" id="5_cm2td"]
 [ext_resource type="StyleBox" uid="uid://bcsf7lrldvdxf" path="res://addons/@fumohouse/common/resources/styleboxes/slider.tres" id="9_0pr56"]
 [ext_resource type="StyleBox" uid="uid://dxtixcenekol6" path="res://addons/@fumohouse/common/resources/styleboxes/grabber_area.tres" id="9_gbuug"]
+[ext_resource type="FontVariation" uid="uid://dunlfet4wbyp3" path="res://addons/@fumohouse/common/resources/fonts/clarity_bootstrap_regular.tres" id="17_gbuug"]
 
 [resource]
-default_font = ExtResource("1_1qjo2")
+default_font = ExtResource("17_gbuug")
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/styles/disabled = ExtResource("1_8cxsb")
 Button/styles/focus = ExtResource("2_0pr56")

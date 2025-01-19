@@ -1,6 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://1iygih3bhie5"]
-
-[ext_resource type="Texture2D" uid="uid://qxr5i3iux0ub" path="res://addons/@assets/bootstrap-icons/icons/heart-fill.svg" id="1_80wmt"]
+[gd_scene load_steps=5 format=3 uid="uid://1iygih3bhie5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3m8qd"]
 bg_color = Color(0, 0.284167, 0.55, 0)
@@ -39,19 +37,3 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_3m8qd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_514dr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_h3te8")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rils5")
-
-[node name="Icon" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_80wmt")
-expand_mode = 1

@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_n5nu5")
 dependencies = Dictionary[StringName, Variant]({
-&"@assets/bootstrap-icons": null,
 &"@fumohouse/base": null,
+&"@fumohouse/common": null,
 &"@fumohouse/config": null
 })
 entry_scene = "uid://r3htqql86m4u"

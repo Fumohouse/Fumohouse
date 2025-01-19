@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_cmvt8")
 dependencies = Dictionary[StringName, Variant]({
+&"@assets/bootstrap-icons": null,
 &"@assets/clarity-city": null,
 &"@assets/overpass-mono": null,
 &"@fumohouse/base": null

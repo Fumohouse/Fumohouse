@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://r3htqql86m4u"]
+[gd_scene load_steps=18 format=3 uid="uid://r3htqql86m4u"]
 
 [ext_resource type="PackedScene" uid="uid://ctxaywfcdgbmw" path="res://addons/@fumohouse/main/ui/navigation/nav_menu.tscn" id="1_30nbv"]
 [ext_resource type="Script" uid="uid://donqdlntewiwc" path="res://addons/@fumohouse/main/ui/main/main_menu.gd" id="2_fl0rv"]
@@ -11,11 +11,7 @@
 [ext_resource type="Shader" uid="uid://y5gx0jvj3y86" path="res://addons/@fumohouse/main/ui/main/ksk.gdshader" id="8_j6tus"]
 [ext_resource type="Texture2D" uid="uid://c7ifohxj3gwa4" path="res://addons/@fumohouse/main/assets/textures/ksk.svg" id="8_ujcgd"]
 [ext_resource type="PackedScene" uid="uid://chha350wco1td" path="res://addons/@fumohouse/main/ui/main/main_menu_icon_button.tscn" id="11_7jp73"]
-[ext_resource type="Texture2D" uid="uid://clru50xcudklb" path="res://addons/@assets/bootstrap-icons/icons/globe-americas.svg" id="12_hcfsd"]
-[ext_resource type="Texture2D" uid="uid://cc5la4nel6kem" path="res://addons/@assets/bootstrap-icons/icons/git.svg" id="13_5640k"]
 [ext_resource type="PackedScene" uid="uid://1iygih3bhie5" path="res://addons/@fumohouse/main/ui/main/main_menu_bar_button.tscn" id="13_hcfsd"]
-[ext_resource type="Texture2D" uid="uid://qa0shx76d22c" path="res://addons/@assets/bootstrap-icons/icons/bell-fill.svg" id="14_5640k"]
-[ext_resource type="Texture2D" uid="uid://dp58mtapmcmf7" path="res://addons/@assets/bootstrap-icons/icons/music-note.svg" id="14_ch7cy"]
 [ext_resource type="PackedScene" uid="uid://by5n53kx2tkhx" path="res://addons/@fumohouse/main/ui/navigation/components/nav_button_container.tscn" id="17_o1m3j"]
 [ext_resource type="PackedScene" uid="uid://dr32entbvcc4" path="res://addons/@fumohouse/main/ui/navigation/components/nav_button.tscn" id="18_i7y6j"]
 
@@ -156,13 +152,13 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Screens/MainScreen/NonNavigation/LowerLeft" index="2"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 theme_override_constants/line_separation = 0
 theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "voided_etc & co. // 2025
-Made with [img=12x12 color=d973b2]res://addons/@assets/bootstrap-icons/icons/heart-fill.svg[/img]"
+Made with [color=d973b2][/color]"
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
@@ -182,16 +178,12 @@ theme_override_constants/separation = 16
 
 [node name="Website" parent="Screens/MainScreen/NonNavigation/BottomButtons" index="0" instance=ExtResource("11_7jp73")]
 layout_mode = 2
-
-[node name="Icon" parent="Screens/MainScreen/NonNavigation/BottomButtons/Website" index="0"]
-texture = ExtResource("12_hcfsd")
+text = ""
 
 [node name="Codeberg2" parent="Screens/MainScreen/NonNavigation/BottomButtons" index="1" instance=ExtResource("11_7jp73")]
 layout_mode = 2
+text = ""
 link = "https://codeberg.org/ksk/Fumohouse"
-
-[node name="Icon" parent="Screens/MainScreen/NonNavigation/BottomButtons/Codeberg2" index="0"]
-texture = ExtResource("13_5640k")
 
 [node name="TopBar" type="PanelContainer" parent="Screens/MainScreen/NonNavigation" index="4"]
 custom_minimum_size = Vector2(0, 48)
@@ -212,16 +204,12 @@ alignment = 1
 [node name="MusicButton" parent="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer" index="0" instance=ExtResource("13_hcfsd")]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="Icon" parent="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer/MusicButton" index="0"]
-texture = ExtResource("14_ch7cy")
+text = ""
 
 [node name="NotificationButton" parent="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer" index="1" instance=ExtResource("13_hcfsd")]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="Icon" parent="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer/NotificationButton" index="0"]
-texture = ExtResource("14_5640k")
+text = ""
 
 [node name="MainButtons" parent="Screens/MainScreen" index="1" instance=ExtResource("17_o1m3j")]
 layout_mode = 1

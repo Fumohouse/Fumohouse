@@ -1,26 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://chha350wco1td"]
+[gd_scene load_steps=2 format=3 uid="uid://chha350wco1td"]
 
 [ext_resource type="Script" uid="uid://cqlbcm8gbadrr" path="res://addons/@fumohouse/common/nodes/custom_link_button.gd" id="1_2l1xp"]
-[ext_resource type="Texture2D" uid="uid://qxr5i3iux0ub" path="res://addons/@assets/bootstrap-icons/icons/heart-fill.svg" id="2_2l1xp"]
 
 [node name="Website" type="Button"]
 custom_minimum_size = Vector2(48, 48)
 script = ExtResource("1_2l1xp")
 link = "https://kyo.seki.pw/fumohouse/"
 metadata/_custom_type_script = ExtResource("1_2l1xp")
-
-[node name="Icon" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -9.0
-offset_top = -9.0
-offset_right = 9.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_2l1xp")
-expand_mode = 1
