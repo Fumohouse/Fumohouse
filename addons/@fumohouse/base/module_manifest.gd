@@ -4,11 +4,9 @@ extends Resource
 ##
 ## It should be placed alongside it in a file called [code]module.tres[/code].
 
-## Dependencies of this module, where the key is the name of the dependency and
-## the value is its configuration (or [code]null[/code]).
-@export var dependencies: Dictionary[StringName, Variant] = {
-	"@fumohouse/base": null,
-}
+## Dependencies of this module. It is assumed that all modules depend on
+## [code]@fumohouse/base[/code].
+@export var dependencies: Array[ModuleDependency] = []
 
 ## The scene to use when using this module as an entry point.
 @export_file("*.tscn") var entry_scene := ""

@@ -1,14 +1,21 @@
-[gd_resource type="Resource" script_class="ModuleManifest" load_steps=2 format=3 uid="uid://d1kinh043krwh"]
+[gd_resource type="Resource" script_class="ModuleManifest" load_steps=5 format=3 uid="uid://d1kinh043krwh"]
 
 [ext_resource type="Script" uid="uid://c5kqgift21f1k" path="res://addons/@fumohouse/base/module_manifest.gd" id="1_n5nu5"]
+[ext_resource type="Script" uid="uid://cyriemmrcefgc" path="res://addons/@fumohouse/base/module_dependency.gd" id="1_u056h"]
+
+[sub_resource type="Resource" id="Resource_u056h"]
+script = ExtResource("1_u056h")
+name = &"@fumohouse/config"
+metadata/_custom_type_script = ExtResource("1_u056h")
+
+[sub_resource type="Resource" id="Resource_ikpyo"]
+script = ExtResource("1_u056h")
+name = &"@fumohouse/common"
+metadata/_custom_type_script = ExtResource("1_u056h")
 
 [resource]
 script = ExtResource("1_n5nu5")
-dependencies = Dictionary[StringName, Variant]({
-&"@fumohouse/base": null,
-&"@fumohouse/common": null,
-&"@fumohouse/config": null
-})
+dependencies = Array[ExtResource("1_u056h")]([SubResource("Resource_u056h"), SubResource("Resource_ikpyo")])
 entry_scene = "uid://r3htqql86m4u"
 autoloads = Dictionary[StringName, String]({})
 metadata/_custom_type_script = ExtResource("1_n5nu5")

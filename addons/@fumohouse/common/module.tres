@@ -1,15 +1,26 @@
-[gd_resource type="Resource" script_class="ModuleManifest" load_steps=2 format=3 uid="uid://br4id0kmjeqv"]
+[gd_resource type="Resource" script_class="ModuleManifest" load_steps=6 format=3 uid="uid://br4id0kmjeqv"]
 
+[ext_resource type="Script" uid="uid://cyriemmrcefgc" path="res://addons/@fumohouse/base/module_dependency.gd" id="1_1n2gj"]
 [ext_resource type="Script" uid="uid://c5kqgift21f1k" path="res://addons/@fumohouse/base/module_manifest.gd" id="1_cmvt8"]
+
+[sub_resource type="Resource" id="Resource_1n2gj"]
+script = ExtResource("1_1n2gj")
+name = &"@assets/bootstrap-icons"
+metadata/_custom_type_script = ExtResource("1_1n2gj")
+
+[sub_resource type="Resource" id="Resource_umvoo"]
+script = ExtResource("1_1n2gj")
+name = &"@assets/clarity-city"
+metadata/_custom_type_script = ExtResource("1_1n2gj")
+
+[sub_resource type="Resource" id="Resource_d6f88"]
+script = ExtResource("1_1n2gj")
+name = &"@assets/overpass-mono"
+metadata/_custom_type_script = ExtResource("1_1n2gj")
 
 [resource]
 script = ExtResource("1_cmvt8")
-dependencies = Dictionary[StringName, Variant]({
-&"@assets/bootstrap-icons": null,
-&"@assets/clarity-city": null,
-&"@assets/overpass-mono": null,
-&"@fumohouse/base": null
-})
+dependencies = Array[ExtResource("1_1n2gj")]([SubResource("Resource_1n2gj"), SubResource("Resource_umvoo"), SubResource("Resource_d6f88")])
 entry_scene = ""
 autoloads = Dictionary[StringName, String]({})
 metadata/_custom_type_script = ExtResource("1_cmvt8")

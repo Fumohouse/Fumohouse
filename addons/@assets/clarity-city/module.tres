@@ -1,12 +1,11 @@
-[gd_resource type="Resource" script_class="ModuleManifest" load_steps=2 format=3 uid="uid://ddc5cmf2iau0q"]
+[gd_resource type="Resource" script_class="ModuleManifest" load_steps=3 format=3 uid="uid://b060yuyqqu6fx"]
 
-[ext_resource type="Script" uid="uid://c5kqgift21f1k" path="res://addons/@fumohouse/base/module_manifest.gd" id="1_4e2gq"]
+[ext_resource type="Script" uid="uid://cyriemmrcefgc" path="res://addons/@fumohouse/base/module_dependency.gd" id="1_sfq3f"]
+[ext_resource type="Script" uid="uid://c5kqgift21f1k" path="res://addons/@fumohouse/base/module_manifest.gd" id="2_om11c"]
 
 [resource]
-script = ExtResource("1_4e2gq")
-dependencies = Dictionary[StringName, Variant]({
-&"@fumohouse/base": null
-})
+script = ExtResource("2_om11c")
+dependencies = Array[ExtResource("1_sfq3f")]([])
 entry_scene = ""
 autoloads = Dictionary[StringName, String]({})
-metadata/_custom_type_script = ExtResource("1_4e2gq")
+metadata/_custom_type_script = ExtResource("2_om11c")

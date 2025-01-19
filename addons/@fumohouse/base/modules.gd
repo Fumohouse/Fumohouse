@@ -88,9 +88,9 @@ func _scan_modules():
 func _walk_dependencies_internal(from: StringName, out: Array[StringName]):
 	var manifest := _modules[from]
 	for dep in manifest.dependencies:
-		if out.has(dep):
+		if out.has(dep.name):
 			continue
-		_walk_dependencies_internal(dep, out)
+		_walk_dependencies_internal(dep.name, out)
 
 	out.push_back(from)
 
@@ -98,7 +98,7 @@ func _walk_dependencies_internal(from: StringName, out: Array[StringName]):
 ## Returns a topological ordering of the dependency graph starting from
 ## [param from].
 func _walk_dependencies(from: StringName) -> Array[StringName]:
-	var out: Array[StringName] = []
+	var out: Array[StringName] = ["@fumohouse/base"]
 	_walk_dependencies_internal(from, out)
 	return out
 
