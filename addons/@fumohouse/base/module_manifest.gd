@@ -11,6 +11,5 @@ extends Resource
 ## The scene to use when using this module as an entry point.
 @export_file("*.tscn") var entry_scene := ""
 
-## The scenes/scripts to automatically load as singletons, where the key is the
-## name of the singleton and the value is the path to the scene/script.
-@export var autoloads: Dictionary[StringName, String] = {}
+## The scenes/scripts to automatically load as singletons.
+@export var autoloads: Array[ModuleAutoload] = []
