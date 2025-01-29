@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://r3htqql86m4u"]
+[gd_scene load_steps=19 format=3 uid="uid://r3htqql86m4u"]
 
 [ext_resource type="PackedScene" uid="uid://ctxaywfcdgbmw" path="res://addons/@fumohouse/main/ui/navigation/nav_menu.tscn" id="1_30nbv"]
 [ext_resource type="Script" uid="uid://donqdlntewiwc" path="res://addons/@fumohouse/main/ui/main/main_menu.gd" id="2_fl0rv"]
 [ext_resource type="Texture2D" uid="uid://cdxg2w1khoiq4" path="res://addons/@fumohouse/main/assets/textures/faces_bg.svg" id="2_gurn1"]
 [ext_resource type="Script" uid="uid://beubs5pgskp1y" path="res://addons/@fumohouse/main/ui/main/main_screen.gd" id="3_fl0rv"]
+[ext_resource type="PackedScene" uid="uid://c55ax8y8twfnj" path="res://addons/@fumohouse/main/ui/options_screen/options_screen.tscn" id="4_ch7cy"]
 [ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@fumohouse/main/assets/textures/logo.png" id="5_dmftq"]
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@assets/clarity-city/ClarityCity-Bold.woff2" id="6_b5xtq"]
 [ext_resource type="PackedScene" uid="uid://cxuayqoo84sm7" path="res://addons/@fumohouse/main/ui/main/version_label.tscn" id="7_b5xtq"]
@@ -63,9 +64,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.392157)
+color = Color(0, 0, 0, 0.313726)
 
-[node name="MainScreen" type="Control" parent="Screens" index="0"]
+[node name="OptionsScreen" parent="Screens" index="0" instance=ExtResource("4_ch7cy")]
+layout_mode = 1
+
+[node name="MainScreen" type="Control" parent="Screens" index="1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

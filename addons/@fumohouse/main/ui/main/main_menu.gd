@@ -6,7 +6,10 @@ var transition_in := true
 
 @onready var _dim: ColorRect = $Dim
 
+@onready var _options_button: Button = %OptionsButton
 @onready var _exit_button: Button = %ExitButton
+
+@onready var _options_screen: TransitionElement = $Screens/OptionsScreen
 
 
 func _ready():
@@ -17,10 +20,12 @@ func _ready():
 		dim(false)
 		switch_screen(main_screen)
 
+	_options_button.pressed.connect(func():
+		switch_screen(_options_screen))
 	_exit_button.pressed.connect(_on_exit_button_pressed)
 
 	for button: Button in $Screens/MainScreen/MainButtons.get_children():
-		if button == _exit_button:
+		if [_options_button, _exit_button].has(button):
 			continue
 		button.pressed.connect(func(): switch_screen(null))
 

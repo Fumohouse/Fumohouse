@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c55ax8y8twfnj"]
+
+[ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/main/ui/navigation/screen_base_layout.tscn" id="1_5m4yv"]
+[ext_resource type="Script" path="res://addons/@fumohouse/main/ui/options_screen/options_screen.gd" id="2_ydm8a"]
+
+[node name="OptionsScreen" instance=ExtResource("1_5m4yv")]
+script = ExtResource("2_ydm8a")
+
+[node name="Title" parent="TopBar" index="0"]
+text = "Options"
