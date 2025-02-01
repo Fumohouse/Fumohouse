@@ -36,3 +36,7 @@ enabled=PackedStringArray("res://addons/@assets/bootstrap-icons/plugin.cfg", "re
 [gui]
 
 theme/custom="uid://bwtx8apvqhdb3"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
