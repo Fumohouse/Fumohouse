@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=23 format=3 uid="uid://bwtx8apvqhdb3"]
+[gd_resource type="Theme" load_steps=24 format=3 uid="uid://bwtx8apvqhdb3"]
 
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@assets/clarity-city/ClarityCity-Bold.woff2" id="1_64law"]
 [ext_resource type="StyleBox" uid="uid://bikux3espg13i" path="res://addons/@fumohouse/common/resources/styleboxes/button/disabled.tres" id="1_gbuug"]
@@ -23,6 +23,8 @@
 [ext_resource type="StyleBox" uid="uid://duipaicy43tuf" path="res://addons/@fumohouse/common/resources/styleboxes/button_accent/pressed.tres" id="10_f2jtf"]
 [ext_resource type="FontVariation" uid="uid://dunlfet4wbyp3" path="res://addons/@fumohouse/common/resources/fonts/clarity_bootstrap_regular.tres" id="17_gbuug"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rii2k"]
+
 [resource]
 default_font = ExtResource("17_gbuug")
 Button/colors/font_color = Color(1, 1, 1, 1)
@@ -39,6 +41,13 @@ ButtonAccent/styles/normal = ExtResource("9_q76uc")
 ButtonAccent/styles/pressed = ExtResource("10_f2jtf")
 CheckBox/styles/hover_pressed = ExtResource("5_tix5y")
 CheckButton/styles/hover_pressed = ExtResource("5_tix5y")
+FlatButton/colors/font_hover_color = Color(0.8, 0.8, 0.8, 1)
+FlatButton/colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+FlatButton/styles/disabled = SubResource("StyleBoxEmpty_rii2k")
+FlatButton/styles/focus = SubResource("StyleBoxEmpty_rii2k")
+FlatButton/styles/hover = SubResource("StyleBoxEmpty_rii2k")
+FlatButton/styles/normal = SubResource("StyleBoxEmpty_rii2k")
+FlatButton/styles/pressed = SubResource("StyleBoxEmpty_rii2k")
 HSlider/icons/grabber = ExtResource("1_ponq8")
 HSlider/icons/grabber_disabled = ExtResource("2_xk7gw")
 HSlider/icons/grabber_highlight = ExtResource("3_x51nx")
