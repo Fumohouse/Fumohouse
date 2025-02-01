@@ -50,6 +50,12 @@ layout_mode = 2
 size_flags_horizontal = 0
 text = "Button"
 
+[node name="ButtonAccent" type="Button" parent="MarginContainer/VFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"ButtonAccent"
+text = "Button"
+
 [node name="ButtonDisabled" type="Button" parent="MarginContainer/VFlowContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
