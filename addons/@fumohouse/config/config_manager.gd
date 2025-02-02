@@ -56,12 +56,18 @@ func get_default(key: StringName) -> Variant:
 	return _options[key].default
 
 
+## Get the required [OS] features for an option.
+func get_opt_features(key: StringName):
+	return _options[key].features
+
+
 ## Add a config option.
 func add_opt(
 		key: StringName,
 		default: Variant,
-		handler := func(): pass,
+		handler := func(value: Variant): pass,
 		restart_required := false,
+		features: PackedStringArray = [],
 ):
 	if _options.has(key):
 		push_error("[ConfigManager] Option already exists: '%s'" % key)
@@ -75,6 +81,7 @@ func add_opt(
 	opt.default = default
 	opt.handler = handler
 	opt.restart_required = restart_required
+	opt.features = features
 
 	_options[key] = opt
 
@@ -161,8 +168,9 @@ class ConfigOption extends RefCounted:
 	var type: Variant.Type
 	var obj_class := ""
 	var default: Variant = null
-	var handler: Callable = func(): pass
+	var handler: Callable = func(value: Variant): pass
 	var restart_required := false
+	var features: PackedStringArray = []
 
 	func type_matches(value: Variant):
 		if type == TYPE_OBJECT:

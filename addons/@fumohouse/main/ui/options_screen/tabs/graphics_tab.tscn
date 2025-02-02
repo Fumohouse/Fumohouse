@@ -1,0 +1,447 @@
+[gd_scene load_steps=6 format=3 uid="uid://c246gir0epl0y"]
+
+[ext_resource type="PackedScene" uid="uid://dx1sp5c0awg1f" path="res://addons/@fumohouse/main/ui/options_screen/options_tab.tscn" id="1_ejtek"]
+[ext_resource type="PackedScene" uid="uid://3pgovqemhie4" path="res://addons/@fumohouse/main/ui/options_screen/options_group.tscn" id="2_lqpwh"]
+[ext_resource type="PackedScene" uid="uid://owbmfk1mfsb7" path="res://addons/@fumohouse/config/ui/config_option_button.tscn" id="3_0p1jq"]
+[ext_resource type="PackedScene" uid="uid://dkc1c5664nsdq" path="res://addons/@fumohouse/config/ui/config_range.tscn" id="4_lqpwh"]
+[ext_resource type="PackedScene" uid="uid://bg87aw2lxnk7r" path="res://addons/@fumohouse/config/ui/config_button.tscn" id="5_0p1jq"]
+
+[node name="Graphics" instance=ExtResource("1_ejtek")]
+
+[node name="General" parent="MarginContainer/VBoxContainer" index="0" instance=ExtResource("2_lqpwh")]
+layout_mode = 2
+
+[node name="RenderingMethod" parent="MarginContainer/VBoxContainer/General/Options" index="0" instance=ExtResource("3_0p1jq")]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+key = &"graphics/rendering_method"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/General/Options/RenderingMethod" index="0"]
+text = "Rendering Method"
+
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/General/Options/RenderingMethod" index="3"]
+item_count = 3
+popup/item_0/text = "Forward+"
+popup/item_0/id = 0
+popup/item_1/text = "Mobile"
+popup/item_1/id = 1
+popup/item_2/text = "Compatibility"
+popup/item_2/id = 2
+
+[node name="WindowMode" parent="MarginContainer/VBoxContainer/General/Options" index="1" instance=ExtResource("3_0p1jq")]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+key = &"graphics/window_mode"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/General/Options/WindowMode" index="0"]
+text = "Window Mode"
+
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/General/Options/WindowMode" index="3"]
+item_count = 4
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Maximized"
+popup/item_1/id = 2
+popup/item_2/text = "Fullscreen"
+popup/item_2/id = 3
+popup/item_3/text = "Exclusive Fullscreen"
+popup/item_3/id = 4
+
+[node name="VSyncMode" parent="MarginContainer/VBoxContainer/General/Options" index="2" instance=ExtResource("3_0p1jq")]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+key = &"graphics/vsync_mode"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/General/Options/VSyncMode" index="0"]
+text = "VSync"
+
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/General/Options/VSyncMode" index="3"]
+item_count = 4
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Enabled"
+popup/item_1/id = 1
+popup/item_2/text = "Adaptive"
+popup/item_2/id = 2
+popup/item_3/text = "Mailbox"
+popup/item_3/id = 3
+
+[node name="FOV" parent="MarginContainer/VBoxContainer/General/Options" index="3" instance=ExtResource("4_lqpwh")]
+layout_mode = 2
+key = &"graphics/fov"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/General/Options/FOV" index="0"]
+text = "FOV"
+
+[node name="LabeledSlider" parent="MarginContainer/VBoxContainer/General/Options/FOV" index="3"]
+format_string = "%d°"
+
+[node name="Slider" parent="MarginContainer/VBoxContainer/General/Options/FOV/LabeledSlider" index="0"]
+min_value = 50.0
+max_value = 120.0
+step = 5.0
+value = 50.0
+
+[node name="UIScale" parent="MarginContainer/VBoxContainer/General/Options" index="4" instance=ExtResource("4_lqpwh")]
+layout_mode = 2
+on_release = true
+key = &"graphics/ui_scale"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/General/Options/UIScale" index="0"]
+text = "UI Scale"
+
+[node name="Slider" parent="MarginContainer/VBoxContainer/General/Options/UIScale/LabeledSlider" index="0"]
+min_value = 0.9
+max_value = 2.0
+step = 0.1
+value = 0.9
+
+[node name="3DScaling" parent="MarginContainer/VBoxContainer" index="1" instance=ExtResource("2_lqpwh")]
+layout_mode = 2
+
+[node name="Label" parent="MarginContainer/VBoxContainer/3DScaling" index="0"]
+text = "3D Scaling"
+
+[node name="Mode" parent="MarginContainer/VBoxContainer/3DScaling/Options" index="0" instance=ExtResource("3_0p1jq")]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+key = &"graphics/scaling_3d/mode"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/3DScaling/Options/Mode" index="0"]
+text = "Mode"
+
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/3DScaling/Options/Mode" index="3"]
+item_count = 3
+popup/item_0/text = "Bilinear"
+popup/item_0/id = 0
+popup/item_1/text = "AMD FSR"
+popup/item_1/id = 1
+popup/item_2/text = "AMD FSR 2"
+popup/item_2/id = 2
+
+[node name="Scale" parent="MarginContainer/VBoxContainer/3DScaling/Options" index="1" instance=ExtResource("4_lqpwh")]
+layout_mode = 2
+key = &"graphics/scaling_3d/scale"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/3DScaling/Options/Scale" index="0"]
+text = "Scale"
+
+[node name="Slider" parent="MarginContainer/VBoxContainer/3DScaling/Options/Scale/LabeledSlider" index="0"]
+min_value = 0.5
+max_value = 1.5
+step = 0.1
+value = 0.5
+
+[node name="FSRSharpness" parent="MarginContainer/VBoxContainer/3DScaling/Options" index="2" instance=ExtResource("4_lqpwh")]
+layout_mode = 2
+key = &"graphics/scaling_3d/fsr_sharpness"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/3DScaling/Options/FSRSharpness" index="0"]
+text = "FSR Sharpness"
+
+[node name="Slider" parent="MarginContainer/VBoxContainer/3DScaling/Options/FSRSharpness/LabeledSlider" index="0"]
+max_value = 2.0
+step = 0.1
+
+[node name="AntiAliasing" parent="MarginContainer/VBoxContainer" index="2" instance=ExtResource("2_lqpwh")]
+layout_mode = 2
+
+[node name="Label" parent="MarginContainer/VBoxContainer/AntiAliasing" index="0"]
+text = "Anti Aliasing"
+
+[node name="MSAA3D" parent="MarginContainer/VBoxContainer/AntiAliasing/Options" index="0" instance=ExtResource("3_0p1jq")]
+layout_mode = 2
+key = &"graphics/msaa3d"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/AntiAliasing/Options/MSAA3D" index="0"]
+text = "MSAA 3D"
+
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/AntiAliasing/Options/MSAA3D" index="3"]
+item_count = 4
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "2x"
+popup/item_1/id = 1
+popup/item_2/text = "4x"
+popup/item_2/id = 2
+popup/item_3/text = "8x"
+popup/item_3/id = 3
+
+[node name="TAA" parent="MarginContainer/VBoxContainer/AntiAliasing/Options" index="1" instance=ExtResource("5_0p1jq")]
+layout_mode = 2
+key = &"graphics/taa"
+
+[node name="ScreenSpaceAA" parent="MarginContainer/VBoxContainer/AntiAliasing/Options" index="2" instance=ExtResource("3_0p1jq")]
+layout_mode = 2
+key = &"graphics/screen_space_aa"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/AntiAliasing/Options/ScreenSpaceAA" index="0"]
+text = "Screen Space AA"
+
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/AntiAliasing/Options/ScreenSpaceAA" index="3"]
+item_count = 2
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "FXAA"
+popup/item_1/id = 1
+
+[node name="Quality" parent="MarginContainer/VBoxContainer" index="3" instance=ExtResource("2_lqpwh")]
+layout_mode = 2
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Quality" index="0"]
+text = "Quality"
+
+[node name="ShadowQuality" parent="MarginContainer/VBoxContainer/Quality/Options" index="0" instance=ExtResource("3_0p1jq")]
+layout_mode = 2
+key = &"graphics/shadows/quality"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Quality/Options/ShadowQuality" index="0"]
+text = "Shadow Quality"
+
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Quality/Options/ShadowQuality" index="3"]
+item_count = 6
+popup/item_0/text = "Minimal"
+popup/item_0/id = 0
+popup/item_1/text = "Very Low"
+popup/item_1/id = 1
+popup/item_2/text = "Low"
+popup/item_2/id = 2
+popup/item_3/text = "Medium"
+popup/item_3/id = 3
+popup/item_4/text = "High"
+popup/item_4/id = 4
+popup/item_5/text = "Ultra"
+popup/item_5/id = 5
+
+[node name="ShadowFilter" parent="MarginContainer/VBoxContainer/Quality/Options" index="1" instance=ExtResource("3_0p1jq")]
+layout_mode = 2
+key = &"graphics/shadows/filter"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Quality/Options/ShadowFilter" index="0"]
+text = "Soft Shadow Filter"
+
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Quality/Options/ShadowFilter" index="3"]
+item_count = 6
+popup/item_0/text = "Hard (No filter)"
+popup/item_0/id = 0
+popup/item_1/text = "Very Low"
+popup/item_1/id = 1
+popup/item_2/text = "Low"
+popup/item_2/id = 2
+popup/item_3/text = "Medium"
+popup/item_3/id = 3
+popup/item_4/text = "High"
+popup/item_4/id = 4
+popup/item_5/text = "Very High"
+popup/item_5/id = 5
+
+[node name="LOD" parent="MarginContainer/VBoxContainer/Quality/Options" index="2" instance=ExtResource("3_0p1jq")]
+layout_mode = 2
+key = &"graphics/lod_threshold"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Quality/Options/LOD" index="0"]
+text = "Level of Detail"
+
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Quality/Options/LOD" index="3"]
+item_count = 5
+popup/item_0/text = "Very Low"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "High"
+popup/item_3/id = 3
+popup/item_4/text = "Ultra (LODs off)"
+popup/item_4/id = 4
+
+[node name="Environment" parent="MarginContainer/VBoxContainer" index="4" instance=ExtResource("2_lqpwh")]
+layout_mode = 2
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Environment" index="0"]
+text = "Environment"
+
+[node name="SSR" parent="MarginContainer/VBoxContainer/Environment/Options" index="0" instance=ExtResource("3_0p1jq")]
+layout_mode = 2
+key = &"graphics/ssr"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/SSR" index="0"]
+text = "SSR"
+
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/SSR" index="3"]
+item_count = 4
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "High"
+popup/item_3/id = 3
+
+[node name="SSAO" parent="MarginContainer/VBoxContainer/Environment/Options" index="1" instance=ExtResource("3_0p1jq")]
+layout_mode = 2
+key = &"graphics/ssao"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/SSAO" index="0"]
+text = "SSAO"
+
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/SSAO" index="3"]
+item_count = 6
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Very Low"
+popup/item_1/id = 1
+popup/item_2/text = "Low"
+popup/item_2/id = 2
+popup/item_3/text = "Medium"
+popup/item_3/id = 3
+popup/item_4/text = "High"
+popup/item_4/id = 4
+popup/item_5/text = "Ultra"
+popup/item_5/id = 5
+
+[node name="SSIL" parent="MarginContainer/VBoxContainer/Environment/Options" index="2" instance=ExtResource("3_0p1jq")]
+layout_mode = 2
+key = &"graphics/ssil"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/SSIL" index="0"]
+text = "SSIL"
+
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/SSIL" index="3"]
+item_count = 6
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Very Low"
+popup/item_1/id = 1
+popup/item_2/text = "Low"
+popup/item_2/id = 2
+popup/item_3/text = "Medium"
+popup/item_3/id = 3
+popup/item_4/text = "High"
+popup/item_4/id = 4
+popup/item_5/text = "Ultra"
+popup/item_5/id = 5
+
+[node name="SDFGI" parent="MarginContainer/VBoxContainer/Environment/Options" index="3" instance=ExtResource("3_0p1jq")]
+layout_mode = 2
+key = &"graphics/sdfgi"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/SDFGI" index="0"]
+text = "SDFGI"
+
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/SDFGI" index="3"]
+item_count = 3
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "High"
+popup/item_2/id = 2
+
+[node name="Glow" parent="MarginContainer/VBoxContainer/Environment/Options" index="4" instance=ExtResource("3_0p1jq")]
+layout_mode = 2
+key = &"graphics/glow"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/Glow" index="0"]
+text = "Glow"
+
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/Glow" index="3"]
+item_count = 3
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "High"
+popup/item_2/id = 2
+
+[node name="Fog" parent="MarginContainer/VBoxContainer/Environment/Options" index="5" instance=ExtResource("3_0p1jq")]
+layout_mode = 2
+key = &"graphics/volumetric_fog"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/Fog" index="0"]
+text = "Volumetric Fog"
+
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/Fog" index="3"]
+item_count = 3
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "High"
+popup/item_2/id = 2
+
+[node name="Adjustment" parent="MarginContainer/VBoxContainer" index="5" instance=ExtResource("2_lqpwh")]
+layout_mode = 2
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Adjustment" index="0"]
+text = "Adjustment"
+
+[node name="Brightness" parent="MarginContainer/VBoxContainer/Adjustment/Options" index="0" instance=ExtResource("4_lqpwh")]
+layout_mode = 2
+key = &"graphics/brightness"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Adjustment/Options/Brightness" index="0"]
+text = "Brightness"
+
+[node name="Slider" parent="MarginContainer/VBoxContainer/Adjustment/Options/Brightness/LabeledSlider" index="0"]
+max_value = 4.0
+step = 0.1
+
+[node name="Saturation" parent="MarginContainer/VBoxContainer/Adjustment/Options" index="1" instance=ExtResource("4_lqpwh")]
+layout_mode = 2
+key = &"graphics/saturation"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Adjustment/Options/Saturation" index="0"]
+text = "Saturation"
+
+[node name="Slider" parent="MarginContainer/VBoxContainer/Adjustment/Options/Saturation/LabeledSlider" index="0"]
+max_value = 4.0
+step = 0.1
+
+[node name="Contrast" parent="MarginContainer/VBoxContainer/Adjustment/Options" index="2" instance=ExtResource("4_lqpwh")]
+layout_mode = 2
+key = &"graphics/contrast"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Adjustment/Options/Contrast" index="0"]
+text = "Contrast"
+
+[node name="Slider" parent="MarginContainer/VBoxContainer/Adjustment/Options/Contrast/LabeledSlider" index="0"]
+max_value = 10.0
+step = 0.1
+
+[editable path="MarginContainer/VBoxContainer/General"]
+[editable path="MarginContainer/VBoxContainer/General/Options/RenderingMethod"]
+[editable path="MarginContainer/VBoxContainer/General/Options/WindowMode"]
+[editable path="MarginContainer/VBoxContainer/General/Options/VSyncMode"]
+[editable path="MarginContainer/VBoxContainer/General/Options/FOV"]
+[editable path="MarginContainer/VBoxContainer/General/Options/FOV/LabeledSlider"]
+[editable path="MarginContainer/VBoxContainer/General/Options/UIScale"]
+[editable path="MarginContainer/VBoxContainer/General/Options/UIScale/LabeledSlider"]
+[editable path="MarginContainer/VBoxContainer/3DScaling"]
+[editable path="MarginContainer/VBoxContainer/3DScaling/Options/Mode"]
+[editable path="MarginContainer/VBoxContainer/3DScaling/Options/Scale"]
+[editable path="MarginContainer/VBoxContainer/3DScaling/Options/Scale/LabeledSlider"]
+[editable path="MarginContainer/VBoxContainer/3DScaling/Options/FSRSharpness"]
+[editable path="MarginContainer/VBoxContainer/3DScaling/Options/FSRSharpness/LabeledSlider"]
+[editable path="MarginContainer/VBoxContainer/AntiAliasing"]
+[editable path="MarginContainer/VBoxContainer/AntiAliasing/Options/MSAA3D"]
+[editable path="MarginContainer/VBoxContainer/AntiAliasing/Options/ScreenSpaceAA"]
+[editable path="MarginContainer/VBoxContainer/Quality"]
+[editable path="MarginContainer/VBoxContainer/Quality/Options/ShadowQuality"]
+[editable path="MarginContainer/VBoxContainer/Quality/Options/ShadowFilter"]
+[editable path="MarginContainer/VBoxContainer/Quality/Options/LOD"]
+[editable path="MarginContainer/VBoxContainer/Environment"]
+[editable path="MarginContainer/VBoxContainer/Environment/Options/SSR"]
+[editable path="MarginContainer/VBoxContainer/Environment/Options/SSAO"]
+[editable path="MarginContainer/VBoxContainer/Environment/Options/SSIL"]
+[editable path="MarginContainer/VBoxContainer/Environment/Options/SDFGI"]
+[editable path="MarginContainer/VBoxContainer/Environment/Options/Glow"]
+[editable path="MarginContainer/VBoxContainer/Environment/Options/Fog"]
+[editable path="MarginContainer/VBoxContainer/Adjustment"]
+[editable path="MarginContainer/VBoxContainer/Adjustment/Options/Brightness"]
+[editable path="MarginContainer/VBoxContainer/Adjustment/Options/Brightness/LabeledSlider"]
+[editable path="MarginContainer/VBoxContainer/Adjustment/Options/Saturation"]
+[editable path="MarginContainer/VBoxContainer/Adjustment/Options/Saturation/LabeledSlider"]
+[editable path="MarginContainer/VBoxContainer/Adjustment/Options/Contrast"]
+[editable path="MarginContainer/VBoxContainer/Adjustment/Options/Contrast/LabeledSlider"]

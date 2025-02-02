@@ -1,10 +1,53 @@
-[gd_scene load_steps=3 format=3 uid="uid://c55ax8y8twfnj"]
+[gd_scene load_steps=7 format=3 uid="uid://c55ax8y8twfnj"]
 
 [ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/main/ui/navigation/screen_base_layout.tscn" id="1_5m4yv"]
-[ext_resource type="Script" path="res://addons/@fumohouse/main/ui/options_screen/options_screen.gd" id="2_ydm8a"]
+[ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="3_0eq8h"]
+[ext_resource type="PackedScene" uid="uid://c246gir0epl0y" path="res://addons/@fumohouse/main/ui/options_screen/tabs/graphics_tab.tscn" id="4_gb75b"]
+[ext_resource type="PackedScene" uid="uid://d2u1fw2dlkujn" path="res://addons/@fumohouse/main/ui/options_screen/tabs/audio_tab.tscn" id="5_3c6qe"]
+[ext_resource type="PackedScene" uid="uid://r0g4ywp4thny" path="res://addons/@fumohouse/main/ui/options_screen/tabs/input_tab.tscn" id="6_hp4et"]
+[ext_resource type="PackedScene" uid="uid://62pkyk82rvkj" path="res://addons/@fumohouse/main/ui/options_screen/restart_prompt.tscn" id="8_3c6qe"]
 
-[node name="OptionsScreen" instance=ExtResource("1_5m4yv")]
-script = ExtResource("2_ydm8a")
+[node name="OptionsScreen" node_paths=PackedStringArray("tabs", "tab_content") instance=ExtResource("1_5m4yv")]
+tabs = NodePath("TopBar/Tabs")
+tab_content = NodePath("Contents/MarginContainer/TabContent")
 
 [node name="Title" parent="TopBar" index="0"]
 text = "Options"
+
+[node name="Tabs" type="HBoxContainer" parent="TopBar" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 16
+script = ExtResource("3_0eq8h")
+
+[node name="Graphics" type="Button" parent="TopBar/Tabs" index="0"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Graphics"
+
+[node name="Audio" type="Button" parent="TopBar/Tabs" index="1"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Audio"
+
+[node name="Input" type="Button" parent="TopBar/Tabs" index="2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Input"
+
+[node name="TabContent" type="Control" parent="Contents/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="Graphics" parent="Contents/MarginContainer/TabContent" index="0" instance=ExtResource("4_gb75b")]
+layout_mode = 1
+
+[node name="Audio" parent="Contents/MarginContainer/TabContent" index="1" instance=ExtResource("5_3c6qe")]
+visible = false
+layout_mode = 1
+
+[node name="Input" parent="Contents/MarginContainer/TabContent" index="2" instance=ExtResource("6_hp4et")]
+visible = false
+layout_mode = 1
+
+[node name="RestartPrompt" parent="." index="2" instance=ExtResource("8_3c6qe")]
+visible = false
+layout_mode = 1

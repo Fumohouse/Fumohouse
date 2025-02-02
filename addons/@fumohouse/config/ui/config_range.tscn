@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkc1c5664nsdq"]
+
+[ext_resource type="PackedScene" uid="uid://dw61lmvhlgmsl" path="res://addons/@fumohouse/config/ui/config_bound_control.tscn" id="1_87ym0"]
+[ext_resource type="Script" uid="uid://bhwf13gcw3ha" path="res://addons/@fumohouse/config/ui/config_range.gd" id="2_6bikv"]
+[ext_resource type="PackedScene" uid="uid://cal3353l6slus" path="res://addons/@fumohouse/common/nodes/labeled_slider.tscn" id="2_hi0iy"]
+
+[node name="ConfigBoundControl" node_paths=PackedStringArray("input", "revert_button") instance=ExtResource("1_87ym0")]
+script = ExtResource("2_6bikv")
+input = NodePath("LabeledSlider/Slider")
+revert_button = NodePath("Revert")
+
+[node name="LabeledSlider" parent="." index="3" instance=ExtResource("2_hi0iy")]
+layout_mode = 2
+
+[editable path="LabeledSlider"]

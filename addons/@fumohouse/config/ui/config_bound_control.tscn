@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dw61lmvhlgmsl"]
+
+[node name="ConfigBoundControl" type="HBoxContainer"]
+custom_minimum_size = Vector2(300, 36)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Label"
+
+[node name="Spacer" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Revert" type="Button" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"FlatButton"
+text = ""

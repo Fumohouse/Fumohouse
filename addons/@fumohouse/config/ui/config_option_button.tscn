@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://owbmfk1mfsb7"]
+
+[ext_resource type="PackedScene" uid="uid://dw61lmvhlgmsl" path="res://addons/@fumohouse/config/ui/config_bound_control.tscn" id="1_0ji3e"]
+[ext_resource type="Script" uid="uid://cyr6u0qngijto" path="res://addons/@fumohouse/config/ui/config_option_button.gd" id="2_dqld6"]
+[ext_resource type="Script" uid="uid://c2mo31oe5hccm" path="res://addons/@fumohouse/common/nodes/option_button_offset.gd" id="3_je23f"]
+
+[node name="ConfigOptionButton" node_paths=PackedStringArray("input", "revert_button") instance=ExtResource("1_0ji3e")]
+script = ExtResource("2_dqld6")
+input = NodePath("OptionButtonOffset")
+revert_button = NodePath("Revert")
+
+[node name="OptionButtonOffset" type="OptionButton" parent="." index="3"]
+layout_mode = 2
+script = ExtResource("3_je23f")
+metadata/_custom_type_script = ExtResource("3_je23f")

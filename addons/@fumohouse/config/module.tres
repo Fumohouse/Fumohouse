@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ModuleManifest" load_steps=5 format=3 uid="uid://cs54dh8jbinac"]
+[gd_resource type="Resource" script_class="ModuleManifest" load_steps=7 format=3 uid="uid://cs54dh8jbinac"]
 
 [ext_resource type="Script" uid="uid://bv6m4s88g0oi6" path="res://addons/@fumohouse/base/module_autoload.gd" id="1_6cgqi"]
 [ext_resource type="Script" uid="uid://c5kqgift21f1k" path="res://addons/@fumohouse/base/module_manifest.gd" id="1_f5utd"]
@@ -10,9 +10,20 @@ name = &"ConfigManager"
 path = "uid://cie3pxt3yoyeu"
 metadata/_custom_type_script = ExtResource("1_6cgqi")
 
+[sub_resource type="Resource" id="Resource_5j7fo"]
+script = ExtResource("1_6cgqi")
+name = &"GraphicsConfigManager"
+path = "uid://bsf3aqw8h67d1"
+metadata/_custom_type_script = ExtResource("1_6cgqi")
+
+[sub_resource type="Resource" id="Resource_6cgqi"]
+script = ExtResource("1_jlwx5")
+name = &"@fumohouse/common"
+metadata/_custom_type_script = ExtResource("1_jlwx5")
+
 [resource]
 script = ExtResource("1_f5utd")
-dependencies = Array[ExtResource("1_jlwx5")]([])
+dependencies = Array[ExtResource("1_jlwx5")]([SubResource("Resource_6cgqi")])
 entry_scene = ""
-autoloads = Array[ExtResource("1_6cgqi")]([SubResource("Resource_yca8t")])
+autoloads = Array[ExtResource("1_6cgqi")]([SubResource("Resource_yca8t"), SubResource("Resource_5j7fo")])
 metadata/_custom_type_script = ExtResource("1_f5utd")
