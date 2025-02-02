@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://caqdxpy84mm0k"]
+
+[ext_resource type="PackedScene" uid="uid://owbmfk1mfsb7" path="res://addons/@fumohouse/config/ui/config_option_button.tscn" id="1_p0sg0"]
+[ext_resource type="Script" uid="uid://csco75s175o36" path="res://addons/@fumohouse/config/ui/config_audio_output_devices.gd" id="2_ir8wh"]
+
+[node name="ConfigAudioOutputDevices" instance=ExtResource("1_p0sg0")]
+script = ExtResource("2_ir8wh")
+key = &"audio/output_device"
+
+[node name="Label" parent="." index="0"]
+text = "Output Device"
