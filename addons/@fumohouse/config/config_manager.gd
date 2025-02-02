@@ -2,7 +2,8 @@ class_name ConfigManager
 extends Node
 ## A dynamic, persistent configuration manager.
 ##
-## Define options in [method _ready].
+## Define options in [method _enter_tree]. Option values should be available in
+## [method _ready].
 
 ## Emitted when a config value changes.
 signal value_changed(key: StringName)
@@ -22,7 +23,7 @@ var _options: Dictionary[StringName, ConfigOption] = {}
 
 
 func _ready():
-	load_file.call_deferred()
+	load_file()
 	QuitManager.get_singleton().before_quit.connect(_on_before_quit)
 
 

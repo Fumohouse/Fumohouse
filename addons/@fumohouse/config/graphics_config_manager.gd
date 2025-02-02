@@ -119,14 +119,15 @@ const VOLUMETRIC_FOG_OPTIONS: Array[Dictionary] = [
 
 const LOD_THRESHOLD_SETTINGS := [8, 4, 2, 1, 0]
 
-@onready var cm := ConfigManager.get_singleton()
 @onready var _viewport_start_size := Vector2i(
 	ProjectSettings.get_setting("display/window/size/viewport_width"),
 	ProjectSettings.get_setting("display/window/size/viewport_height")
 )
 
 
-func _ready():
+func _enter_tree():
+	var cm := ConfigManager.get_singleton()
+
 	# General
 	cm.add_opt(&"graphics/rendering_method", 0, func(value: int):
 		cm.set_project_settings_opt(

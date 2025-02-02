@@ -25,7 +25,7 @@ func _ready():
 			visible = false
 			return
 
-	_update_from_config.call_deferred()
+	_update_from_config()
 
 	if revert_button:
 		revert_button.pressed.connect(_on_revert_button_pressed)
