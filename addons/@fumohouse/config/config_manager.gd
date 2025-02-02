@@ -129,7 +129,7 @@ func load_file():
 		if has_opt(key):
 			var val: Variant = get_opt(key)
 			if opt.type_matches(val):
-				opt.handler.call(val)
+				opt.handler.call_deferred(val) # defer e.g. due to UI scale
 				continue
 
 		# Fall back to default value if current one is missing or invalid.
