@@ -69,6 +69,7 @@ func add_opt(
 		handler := func(value: Variant): pass,
 		restart_required := false,
 		features: PackedStringArray = [],
+		obj_class_override: StringName = "",
 ):
 	if _options.has(key):
 		push_error("[ConfigManager] Option already exists: '%s'" % key)
@@ -77,7 +78,10 @@ func add_opt(
 	var opt := ConfigOption.new()
 	opt.type = typeof(default)
 	if opt.type == TYPE_OBJECT:
-		opt.obj_class = (default as Object).get_class()
+		if obj_class_override.is_empty():
+			opt.obj_class = (default as Object).get_class()
+		else:
+			opt.obj_class = obj_class_override
 
 	opt.default = default
 	opt.handler = handler

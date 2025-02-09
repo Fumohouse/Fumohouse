@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3trtaukoxstd"]
+
+[ext_resource type="PackedScene" uid="uid://dw61lmvhlgmsl" path="res://addons/@fumohouse/config/ui/config_bound_control.tscn" id="1_mh7hx"]
+[ext_resource type="Script" uid="uid://bi3otbgthip43" path="res://addons/@fumohouse/config/ui/config_action_bind.gd" id="2_1g1ab"]
+
+[node name="ConfigActionBind" node_paths=PackedStringArray("input", "revert_button") instance=ExtResource("1_mh7hx")]
+script = ExtResource("2_1g1ab")
+input = NodePath("Button")
+revert_button = NodePath("Revert")
+
+[node name="Button" type="Button" parent="." index="3"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+toggle_mode = true

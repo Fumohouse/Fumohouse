@@ -34,7 +34,7 @@ func _unhandled_input(event: InputEvent):
 		):
 			return
 
-		if _current_screen and _current_screen != main_screen:
+		if _current_screen != main_screen:
 			switch_screen(main_screen)
 		else:
 			dismiss()

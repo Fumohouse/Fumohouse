@@ -1,9 +1,204 @@
-[gd_scene load_steps=2 format=3 uid="uid://r0g4ywp4thny"]
+[gd_scene load_steps=5 format=3 uid="uid://r0g4ywp4thny"]
 
 [ext_resource type="PackedScene" uid="uid://dx1sp5c0awg1f" path="res://addons/@fumohouse/main/ui/options_screen/options_tab.tscn" id="1_gv0pu"]
+[ext_resource type="PackedScene" uid="uid://3pgovqemhie4" path="res://addons/@fumohouse/main/ui/options_screen/options_group.tscn" id="2_bey3n"]
+[ext_resource type="PackedScene" uid="uid://dkc1c5664nsdq" path="res://addons/@fumohouse/config/ui/config_range.tscn" id="3_0jmwj"]
+[ext_resource type="PackedScene" uid="uid://d3trtaukoxstd" path="res://addons/@fumohouse/config/ui/config_action_bind.tscn" id="4_0jmwj"]
 
 [node name="Input" instance=ExtResource("1_gv0pu")]
 
-[node name="Label" type="Label" parent="MarginContainer" index="0"]
+[node name="Camera" parent="MarginContainer/VBoxContainer" index="0" instance=ExtResource("2_bey3n")]
 layout_mode = 2
-text = "Input"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Camera" index="0"]
+text = "Camera"
+
+[node name="Sens1P" parent="MarginContainer/VBoxContainer/Camera/Options" index="0" instance=ExtResource("3_0jmwj")]
+layout_mode = 2
+key = &"input/sens/camera/first_person"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/Sens1P" index="0"]
+text = "Look Sensitivity (1st Person)"
+
+[node name="LabeledSlider" parent="MarginContainer/VBoxContainer/Camera/Options/Sens1P" index="3"]
+format_string = "%.1f°/px"
+
+[node name="Slider" parent="MarginContainer/VBoxContainer/Camera/Options/Sens1P/LabeledSlider" index="0"]
+min_value = 0.1
+max_value = 20.0
+step = 0.1
+value = 0.1
+
+[node name="Sens3P" parent="MarginContainer/VBoxContainer/Camera/Options" index="1" instance=ExtResource("3_0jmwj")]
+layout_mode = 2
+key = &"input/sens/camera/third_person"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/Sens3P" index="0"]
+text = "Look Sensitivity (3rd Person)"
+
+[node name="LabeledSlider" parent="MarginContainer/VBoxContainer/Camera/Options/Sens3P" index="3"]
+format_string = "%.1f°/px"
+
+[node name="Slider" parent="MarginContainer/VBoxContainer/Camera/Options/Sens3P/LabeledSlider" index="0"]
+min_value = 0.1
+max_value = 20.0
+step = 0.1
+value = 0.1
+
+[node name="SensZoom" parent="MarginContainer/VBoxContainer/Camera/Options" index="2" instance=ExtResource("3_0jmwj")]
+layout_mode = 2
+key = &"input/sens/camera/zoom"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/SensZoom" index="0"]
+text = "Zoom Sensitivity"
+
+[node name="LabeledSlider" parent="MarginContainer/VBoxContainer/Camera/Options/SensZoom" index="3"]
+format_string = "%.1fm/tick"
+
+[node name="Slider" parent="MarginContainer/VBoxContainer/Camera/Options/SensZoom/LabeledSlider" index="0"]
+min_value = 0.1
+max_value = 20.0
+step = 0.1
+value = 0.1
+
+[node name="Rotate" parent="MarginContainer/VBoxContainer/Camera/Options" index="3" instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/camera_rotate/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/Rotate" index="0"]
+text = "Look (3rd Person)"
+
+[node name="ZoomIn" parent="MarginContainer/VBoxContainer/Camera/Options" index="4" instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/camera_zoom_in/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/ZoomIn" index="0"]
+text = "Zoom In"
+
+[node name="ZoomOut" parent="MarginContainer/VBoxContainer/Camera/Options" index="5" instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/camera_zoom_out/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/ZoomOut" index="0"]
+text = "Zoom Out"
+
+[node name="Character" parent="MarginContainer/VBoxContainer" index="1" instance=ExtResource("2_bey3n")]
+layout_mode = 2
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Character" index="0"]
+text = "Character"
+
+[node name="MoveForward" parent="MarginContainer/VBoxContainer/Character/Options" index="0" instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/move_forward/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Character/Options/MoveForward" index="0"]
+text = "Move Forward"
+
+[node name="MoveBackward" parent="MarginContainer/VBoxContainer/Character/Options" index="1" instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/move_backward/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Character/Options/MoveBackward" index="0"]
+text = "Move Backward"
+
+[node name="MoveLeft" parent="MarginContainer/VBoxContainer/Character/Options" index="2" instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/move_left/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Character/Options/MoveLeft" index="0"]
+text = "Move Left"
+
+[node name="MoveRight" parent="MarginContainer/VBoxContainer/Character/Options" index="3" instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/move_right/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Character/Options/MoveRight" index="0"]
+text = "Move Right"
+
+[node name="Jump" parent="MarginContainer/VBoxContainer/Character/Options" index="4" instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/move_jump/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Character/Options/Jump" index="0"]
+text = "Jump"
+
+[node name="Sit" parent="MarginContainer/VBoxContainer/Character/Options" index="5" instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/move_sit/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Character/Options/Sit" index="0"]
+text = "Sit"
+
+[node name="Run" parent="MarginContainer/VBoxContainer/Character/Options" index="6" instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/move_run/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Character/Options/Run" index="0"]
+text = "Run"
+
+[node name="Reset" parent="MarginContainer/VBoxContainer/Character/Options" index="7" instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/reset_character/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Character/Options/Reset" index="0"]
+text = "Reset Character"
+
+[node name="UI" parent="MarginContainer/VBoxContainer" index="2" instance=ExtResource("2_bey3n")]
+layout_mode = 2
+
+[node name="Label" parent="MarginContainer/VBoxContainer/UI" index="0"]
+text = "User Interface"
+
+[node name="Back" parent="MarginContainer/VBoxContainer/UI/Options" index="0" instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/menu_back/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Back" index="0"]
+text = "Game Menu / Back"
+
+[node name="Debug1" parent="MarginContainer/VBoxContainer/UI/Options" index="1" instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/debug_1/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Debug1" index="0"]
+text = "Debug 1"
+
+[node name="Debug2" parent="MarginContainer/VBoxContainer/UI/Options" index="2" instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/debug_2/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Debug2" index="0"]
+text = "Debug 2"
+
+[node name="Debug3" parent="MarginContainer/VBoxContainer/UI/Options" index="3" instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/debug_3/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Debug3" index="0"]
+text = "Debug 3"
+
+[editable path="MarginContainer/VBoxContainer/Camera"]
+[editable path="MarginContainer/VBoxContainer/Camera/Options/Sens1P"]
+[editable path="MarginContainer/VBoxContainer/Camera/Options/Sens1P/LabeledSlider"]
+[editable path="MarginContainer/VBoxContainer/Camera/Options/Sens3P"]
+[editable path="MarginContainer/VBoxContainer/Camera/Options/Sens3P/LabeledSlider"]
+[editable path="MarginContainer/VBoxContainer/Camera/Options/SensZoom"]
+[editable path="MarginContainer/VBoxContainer/Camera/Options/SensZoom/LabeledSlider"]
+[editable path="MarginContainer/VBoxContainer/Camera/Options/Rotate"]
+[editable path="MarginContainer/VBoxContainer/Camera/Options/ZoomIn"]
+[editable path="MarginContainer/VBoxContainer/Camera/Options/ZoomOut"]
+[editable path="MarginContainer/VBoxContainer/Character"]
+[editable path="MarginContainer/VBoxContainer/Character/Options/MoveForward"]
+[editable path="MarginContainer/VBoxContainer/Character/Options/MoveBackward"]
+[editable path="MarginContainer/VBoxContainer/Character/Options/MoveLeft"]
+[editable path="MarginContainer/VBoxContainer/Character/Options/MoveRight"]
+[editable path="MarginContainer/VBoxContainer/Character/Options/Jump"]
+[editable path="MarginContainer/VBoxContainer/Character/Options/Sit"]
+[editable path="MarginContainer/VBoxContainer/Character/Options/Run"]
+[editable path="MarginContainer/VBoxContainer/Character/Options/Reset"]
+[editable path="MarginContainer/VBoxContainer/UI"]
+[editable path="MarginContainer/VBoxContainer/UI/Options/Back"]
+[editable path="MarginContainer/VBoxContainer/UI/Options/Debug1"]
+[editable path="MarginContainer/VBoxContainer/UI/Options/Debug2"]
+[editable path="MarginContainer/VBoxContainer/UI/Options/Debug3"]
