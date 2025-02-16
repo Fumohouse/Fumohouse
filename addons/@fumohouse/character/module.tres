@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ModuleManifest" load_steps=6 format=3 uid="uid://b51jjdopy11a7"]
+
+[ext_resource type="Script" uid="uid://bv6m4s88g0oi6" path="res://addons/@fumohouse/base/module_autoload.gd" id="1_iruhy"]
+[ext_resource type="Script" uid="uid://cyriemmrcefgc" path="res://addons/@fumohouse/base/module_dependency.gd" id="2_i47e5"]
+[ext_resource type="Script" uid="uid://c5kqgift21f1k" path="res://addons/@fumohouse/base/module_manifest.gd" id="3_54dtc"]
+
+[sub_resource type="Resource" id="Resource_iruhy"]
+script = ExtResource("2_i47e5")
+name = &"@fumohouse/common"
+metadata/_custom_type_script = ExtResource("2_i47e5")
+
+[sub_resource type="Resource" id="Resource_i47e5"]
+script = ExtResource("2_i47e5")
+name = &"@fumohouse/config"
+metadata/_custom_type_script = ExtResource("2_i47e5")
+
+[resource]
+script = ExtResource("3_54dtc")
+dependencies = Array[ExtResource("2_i47e5")]([SubResource("Resource_iruhy"), SubResource("Resource_i47e5")])
+entry_scene = ""
+autoloads = Array[ExtResource("1_iruhy")]([])
+metadata/_custom_type_script = ExtResource("3_54dtc")

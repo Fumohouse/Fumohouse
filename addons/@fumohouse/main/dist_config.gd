@@ -1,5 +1,5 @@
 class_name DistConfig
-extends RefCounted
+extends Object
 
 const STAGE_COLOR := "#006be3" # hsv(203, 100%, 70%)
 const STAGE_NAME := "Prototype"
