@@ -46,12 +46,13 @@ func _process(delta: float):
 
 	if camera.is_position_behind(global_position):
 		_viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
+		return
 
 	_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 
 	if follow_camera:
 		# Manual billboard helps with math
-		global_transform = Transform3D(camera.basis, global_position)
+		global_transform = Transform3D(camera.global_basis, global_position)
 
 	var screen_size: Vector2 = get_screen_size(camera)
 	var max_size: Vector2 = get_window().size * 4
@@ -63,6 +64,10 @@ func _process(delta: float):
 		viewport_size = Vector2(width, height)
 	else:
 		viewport_size = screen_size
+
+		if not follow_camera:
+			# Otherwise the size will be screwed up when viewing off-axis.
+			viewport_size.y = viewport_size.x * _orig_size.y / _orig_size.x
 
 	# I don't really know how this works.
 	# This basically replicates Godot's canvas_items scaling mode.
@@ -168,26 +173,24 @@ func _reparent_controls():
 
 
 func _get_corners() -> Array[Vector3]:
-	var g_basis := global_transform.basis
-
 	var world_size: Vector2 = _orig_size * target_pixel_size
 	var world_offset: Vector2 = offset * target_pixel_size
 	var world_origin: Vector3 = (
 			global_position
-			+ g_basis.x * world_offset.x
-			+ g_basis.y * world_offset.y
+			+ global_basis.x * world_offset.x
+			+ global_basis.y * world_offset.y
 	)
 
 	var top_left: Vector3 = (
 			world_origin
-			- g_basis.x * world_size.x / 2
-			+ g_basis.y * world_size.y / 2
+			- global_basis.x * world_size.x / 2
+			+ global_basis.y * world_size.y / 2
 	)
 
 	var bottom_right: Vector3 = (
 			world_origin
-			+ g_basis.x * world_size.x / 2
-			- g_basis.y * world_size.y / 2
+			+ global_basis.x * world_size.x / 2
+			- global_basis.y * world_size.y / 2
 	)
 
 	return [top_left, bottom_right]
