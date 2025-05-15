@@ -22,6 +22,10 @@ var _autosave_timeout := 0.0
 var _options: Dictionary[StringName, ConfigOption] = {}
 
 
+static func get_singleton() -> ConfigManager:
+	return Modules.get_singleton("ConfigManager") as ConfigManager
+
+
 func _ready():
 	load_file()
 	QuitManager.get_singleton().before_quit.connect(_on_before_quit)
@@ -34,10 +38,6 @@ func _process(delta: float):
 	_autosave_timeout = move_toward(_autosave_timeout, 0.0, delta)
 	if _autosave_timeout == 0.0:
 		save_file()
-
-
-static func get_singleton() -> ConfigManager:
-	return Modules.get_singleton("ConfigManager") as ConfigManager
 
 
 ## Check if the internal config has an option defined.

@@ -6,6 +6,10 @@ extends Node
 signal before_quit
 
 
+static func get_singleton() -> QuitManager:
+	return Modules.get_singleton("QuitManager") as QuitManager
+
+
 func _ready():
 	get_tree().auto_accept_quit = false
 
@@ -13,10 +17,6 @@ func _ready():
 func _notification(what: int):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		quit()
-
-
-static func get_singleton() -> QuitManager:
-	return Modules.get_singleton("QuitManager") as QuitManager
 
 
 func quit():

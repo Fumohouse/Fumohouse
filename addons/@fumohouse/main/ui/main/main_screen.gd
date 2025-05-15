@@ -1,12 +1,21 @@
 extends "../navigation/transition_element.gd"
 
+const MusicController = preload("res://addons/@fumohouse/music/music_controller.gd")
 const NavButtonContainer = preload("../navigation/components/nav_button_container.gd")
 
 @onready var _non_navigation: Control = $NonNavigation
 @onready var _main_buttons: NavButtonContainer = $MainButtons
+@onready var _music_controller: MusicController = $MusicController
 
 @onready var _top_bar: Control = $NonNavigation/TopBar
 @onready var _version_label: Control = $NonNavigation/VersionLabel
+
+@onready var _music_button: Button = %MusicButton
+
+
+func _ready():
+	_music_controller.nav_hide()
+	_music_button.pressed.connect(_on_music_button_pressed)
 
 
 func nav_hide():
@@ -37,6 +46,10 @@ func nav_transition(vis: bool):
 	_main_buttons.nav_transition(vis)
 
 	return tween
+
+
+func _on_music_button_pressed():
+	_music_controller.nav_transition(not _music_controller.visible)
 
 
 func _top_bar_target_y(vis: bool):

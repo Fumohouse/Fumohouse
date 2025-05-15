@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ModuleManifest" load_steps=6 format=3 uid="uid://wrqtgigluatj"]
+
+[ext_resource type="Script" uid="uid://bv6m4s88g0oi6" path="res://addons/@fumohouse/base/module_autoload.gd" id="1_hgv4f"]
+[ext_resource type="Script" uid="uid://cyriemmrcefgc" path="res://addons/@fumohouse/base/module_dependency.gd" id="2_8e4ld"]
+[ext_resource type="Script" uid="uid://c5kqgift21f1k" path="res://addons/@fumohouse/base/module_manifest.gd" id="3_y6mjv"]
+
+[sub_resource type="Resource" id="Resource_hgv4f"]
+script = ExtResource("1_hgv4f")
+name = &"MusicPlayer"
+path = "uid://dic6wl1kqr2jc"
+metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
+
+[sub_resource type="Resource" id="Resource_8e4ld"]
+script = ExtResource("2_8e4ld")
+name = &"@fumohouse/common"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[resource]
+script = ExtResource("3_y6mjv")
+dependencies = Array[ExtResource("2_8e4ld")]([SubResource("Resource_8e4ld")])
+entry_scene = ""
+autoloads = Array[ExtResource("1_hgv4f")]([SubResource("Resource_hgv4f")])
+metadata/_custom_type_script = "uid://c5kqgift21f1k"

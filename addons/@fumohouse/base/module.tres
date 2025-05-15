@@ -15,4 +15,4 @@ script = ExtResource("1_wjdbm")
 dependencies = Array[ExtResource("1_ciqbo")]([])
 entry_scene = ""
 autoloads = Array[ExtResource("1_fkvov")]([SubResource("Resource_fkvov")])
-metadata/_custom_type_script = ExtResource("1_wjdbm")
+metadata/_custom_type_script = "uid://c5kqgift21f1k"
