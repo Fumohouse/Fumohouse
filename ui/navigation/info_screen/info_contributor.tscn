@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bj83f6m05qtl2"]
 
 [ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="1_ltoos"]
-[ext_resource type="Script" path="res://ui/navigation/info_screen/InfoContributor.lua" id="1_w0rb0"]
+[ext_resource type="Script" uid="uid://br0x21y3cusdo" path="res://ui/navigation/info_screen/InfoContributor.lua" id="1_w0rb0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b736f"]
 font = ExtResource("1_ltoos")

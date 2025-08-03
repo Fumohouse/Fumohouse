@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://cfnbmhyq61nkp"]
 
 [ext_resource type="PackedScene" uid="uid://i0vg7piilqhm" path="res://ui/character_editor/preview_button.tscn" id="1_v1q2l"]
-[ext_resource type="Script" path="res://ui/character_editor/PartPreviewButton.lua" id="2_tigkp"]
+[ext_resource type="Script" uid="uid://1utv016b2hrk" path="res://ui/character_editor/PartPreviewButton.lua" id="2_tigkp"]
 [ext_resource type="PackedScene" uid="uid://bubyuf8mn82tm" path="res://ui/character_editor/character_viewport.tscn" id="2_wsu5i"]
-[ext_resource type="Shader" path="res://resources/materials/gltf_dither_material.gdshader" id="3_yalaj"]
+[ext_resource type="Shader" uid="uid://mvjqa18llowb" path="res://resources/materials/gltf_dither_material.gdshader" id="3_yalaj"]
 [ext_resource type="Texture2D" uid="uid://j3p1obmff1ev" path="res://assets/textures/ordered_dither.png" id="4_tgn76"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_r8e7f"]
@@ -19,21 +19,21 @@ shader_parameter/albedo = Color(0.988235, 0.917647, 0.831373, 1)
 shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/specular = 0.5
-shader_parameter/metallic = null
+shader_parameter/metallic = 0.0
 shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy = null
+shader_parameter/emission_energy = 0.0
 shader_parameter/normal_scale = 1.0
 shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/ao_light_affect = null
+shader_parameter/ao_light_affect = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("4_tgn76")
 shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_rcveu")
 shader_parameter/dissolve = 0.0
 shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.00784314, 0.388235, 0.960784, 1)
 shader_parameter/dissolve_emission_energy = 4.0
-shader_parameter/dither_texture = ExtResource("4_tgn76")
-shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_rcveu")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_exclh"]
 resource_local_to_scene = true

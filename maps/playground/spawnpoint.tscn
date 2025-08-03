@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfn8xb4oi4ne3"]
 
-[ext_resource type="Script" path="res://map_system/Spawnpoint.lua" id="1_r4avg"]
+[ext_resource type="Script" uid="uid://72plsiceki2u" path="res://map_system/Spawnpoint.lua" id="1_r4avg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_uwdag"]
 size = Vector3(3, 0.15, 3)

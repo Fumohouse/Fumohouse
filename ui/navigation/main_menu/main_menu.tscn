@@ -2,15 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://nrh6mhdp4grr" path="res://ui/navigation/nav_menu.tscn" id="1_67448"]
 [ext_resource type="Texture2D" uid="uid://cewbassnie0qr" path="res://assets/textures/ui/faces_bg.svg" id="1_efpvf"]
-[ext_resource type="Script" path="res://ui/navigation/main_menu/MainMenu.lua" id="2_kqbd2"]
-[ext_resource type="Script" path="res://ui/navigation/main_menu/MainScreen.lua" id="3_gaw40"]
+[ext_resource type="Script" uid="uid://co3eqb572r4k3" path="res://ui/navigation/main_menu/MainMenu.lua" id="2_kqbd2"]
+[ext_resource type="Script" uid="uid://bqo0h3vnow87t" path="res://ui/navigation/main_menu/MainScreen.lua" id="3_gaw40"]
 [ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="4_0v5t1"]
-[ext_resource type="Script" path="res://ui/navigation/main_menu/VersionLabel.lua" id="4_5s06d"]
+[ext_resource type="Script" uid="uid://c5pgpor6wsop4" path="res://ui/navigation/main_menu/VersionLabel.lua" id="4_5s06d"]
 [ext_resource type="PackedScene" uid="uid://bns0myjfx0sin" path="res://ui/navigation/play_screen/play_screen.tscn" id="4_eckt2"]
 [ext_resource type="PackedScene" uid="uid://bxnpb5vh0ddmo" path="res://ui/navigation/info_screen/info_screen.tscn" id="5_73rts"]
 [ext_resource type="PackedScene" uid="uid://cdwau5ohe3wxa" path="res://ui/navigation/options_screen/options_screen.tscn" id="5_deh0t"]
-[ext_resource type="Shader" path="res://ui/navigation/main_menu/ksk_logo.gdshader" id="5_ka0he"]
-[ext_resource type="Script" path="res://ui/navigation/main_menu/KskLogo.lua" id="5_sft8o"]
+[ext_resource type="Shader" uid="uid://dcahwltrebyyi" path="res://ui/navigation/main_menu/ksk_logo.gdshader" id="5_ka0he"]
+[ext_resource type="Script" uid="uid://bi5kocwdgnock" path="res://ui/navigation/main_menu/KskLogo.lua" id="5_sft8o"]
 [ext_resource type="Texture2D" uid="uid://l068kvg3crfl" path="res://assets/textures/ksk.svg" id="6_p1kjr"]
 [ext_resource type="Texture2D" uid="uid://bk46ldudbxtal" path="res://assets/textures/ksk_anim.svg" id="6_w867p"]
 [ext_resource type="PackedScene" uid="uid://dck1137u3e4q3" path="res://ui/logo.tscn" id="7_2idjs"]
@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://bwqgvr4b7aq6j" path="res://assets/textures/ui/icons/bell-fill.svg" id="16_aw72i"]
 [ext_resource type="PackedScene" uid="uid://chehkmfpoevq6" path="res://ui/navigation/nav_button_container.tscn" id="18_wsqm6"]
 [ext_resource type="PackedScene" uid="uid://d0mo4s2hqyov3" path="res://ui/music_controller/music_controller.tscn" id="19_cmuwc"]
-[ext_resource type="Shader" path="res://resources/materials/gltf_dither_material.gdshader" id="24_rjibk"]
+[ext_resource type="Shader" uid="uid://mvjqa18llowb" path="res://resources/materials/gltf_dither_material.gdshader" id="24_rjibk"]
 [ext_resource type="PackedScene" uid="uid://bubyuf8mn82tm" path="res://ui/character_editor/character_viewport.tscn" id="24_snoew"]
 [ext_resource type="Texture2D" uid="uid://j3p1obmff1ev" path="res://assets/textures/ordered_dither.png" id="25_66waf"]
 
@@ -35,9 +35,9 @@ shader = ExtResource("5_ka0he")
 shader_parameter/progress = 0.0
 shader_parameter/begin_scale = 0.9
 shader_parameter/end_scale = 1.0
-shader_parameter/default_color = Color(1, 1, 1, 1)
 shader_parameter/base = ExtResource("6_p1kjr")
 shader_parameter/anim = ExtResource("6_w867p")
+shader_parameter/default_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3x4tp"]
 bg_color = Color(0, 0.333333, 0.647059, 1)
@@ -57,21 +57,21 @@ shader_parameter/albedo = Color(0.988235, 0.917647, 0.831373, 1)
 shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/specular = 0.5
-shader_parameter/metallic = null
+shader_parameter/metallic = 0.0
 shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy = null
+shader_parameter/emission_energy = 0.0
 shader_parameter/normal_scale = 1.0
 shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/ao_light_affect = null
+shader_parameter/ao_light_affect = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("25_66waf")
 shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_rcveu")
 shader_parameter/dissolve = 0.0
 shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.00784314, 0.388235, 0.960784, 1)
 shader_parameter/dissolve_emission_energy = 4.0
-shader_parameter/dither_texture = ExtResource("25_66waf")
-shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_rcveu")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ju70y"]
 resource_local_to_scene = true

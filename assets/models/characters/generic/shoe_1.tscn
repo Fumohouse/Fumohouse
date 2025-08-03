@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c40e7ipntnosa"]
 
 [ext_resource type="PackedScene" uid="uid://d0n7tnpencapx" path="res://assets/models/characters/generic/shoe_1.glb" id="1_01st6"]
-[ext_resource type="Script" path="res://character/appearance/parts/customization/SingleColor.lua" id="2_80cdm"]
+[ext_resource type="Script" uid="uid://db2uainchnm6p" path="res://character/appearance/parts/customization/SingleColor.lua" id="2_80cdm"]
 
 [node name="shoe_1" node_paths=PackedStringArray("mesh") instance=ExtResource("1_01st6")]
 script = ExtResource("2_80cdm")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://drkq414nse0uk"]
 
 [ext_resource type="Texture2D" uid="uid://dxmlsmkbpfd54" path="res://assets/textures/ui/icons/heart-fill.svg" id="1_ogeub"]
-[ext_resource type="Script" path="res://nodes/LinkButton.lua" id="1_r8dl3"]
+[ext_resource type="Script" uid="uid://b7wusoefyeidj" path="res://nodes/LinkButton.lua" id="1_r8dl3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nuqqn"]
 content_margin_left = 48.0

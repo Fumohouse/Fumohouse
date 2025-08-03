@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dcn3xitj583da"]
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://dcn3xitj583da"]
 
-[ext_resource type="Script" path="res://music/Song.lua" id="1_j17ka"]
+[ext_resource type="Script" uid="uid://c1quui8h88ex5" path="res://music/Song.lua" id="1_j17ka"]
 [ext_resource type="Resource" uid="uid://8ynf857ppgdc" path="res://maps/playground/assets/music/artists/flowerhead.tres" id="1_owsyk"]
 
 [resource]

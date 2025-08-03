@@ -2,15 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://ghrg27kkromx" path="res://ui/navigation/screen_base_layout.tscn" id="1_126l8"]
 [ext_resource type="PackedScene" uid="uid://bubyuf8mn82tm" path="res://ui/character_editor/character_viewport.tscn" id="2_4lwsv"]
-[ext_resource type="Script" path="res://ui/character_editor/CharacterEditor.lua" id="2_nsn8x"]
+[ext_resource type="Script" uid="uid://dvhamr1alket6" path="res://ui/character_editor/CharacterEditor.lua" id="2_nsn8x"]
 [ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="3_38xys"]
-[ext_resource type="Script" path="res://nodes/RadioButtonContainer.lua" id="3_ml3c8"]
-[ext_resource type="Shader" path="res://resources/materials/gltf_dither_material.gdshader" id="4_vs2dp"]
+[ext_resource type="Script" uid="uid://dg4hb2x41u6k3" path="res://nodes/RadioButtonContainer.lua" id="3_ml3c8"]
+[ext_resource type="Shader" uid="uid://mvjqa18llowb" path="res://resources/materials/gltf_dither_material.gdshader" id="4_vs2dp"]
 [ext_resource type="Texture2D" uid="uid://j3p1obmff1ev" path="res://assets/textures/ordered_dither.png" id="5_0q3r2"]
 [ext_resource type="PackedScene" uid="uid://q66b6blbtmsk" path="res://nodes/labeled_slider.tscn" id="7_16kbu"]
-[ext_resource type="Script" path="res://ui/character_editor/FaceStyleSelector.lua" id="8_x24ge"]
-[ext_resource type="Script" path="res://ui/character_editor/PartSelector.lua" id="10_esof3"]
-[ext_resource type="Script" path="res://nodes/BasicColorPickerButton.lua" id="10_qigcd"]
+[ext_resource type="Script" uid="uid://nu6bvn1khdy6" path="res://ui/character_editor/FaceStyleSelector.lua" id="8_x24ge"]
+[ext_resource type="Script" uid="uid://chyocdbay26i3" path="res://ui/character_editor/PartSelector.lua" id="10_esof3"]
+[ext_resource type="Script" uid="uid://c46k0iocse1jt" path="res://nodes/BasicColorPickerButton.lua" id="10_qigcd"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_r8e7f"]
 
@@ -25,21 +25,21 @@ shader_parameter/albedo = Color(0.988235, 0.917647, 0.831373, 1)
 shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/specular = 0.5
-shader_parameter/metallic = null
+shader_parameter/metallic = 0.0
 shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy = null
+shader_parameter/emission_energy = 0.0
 shader_parameter/normal_scale = 1.0
 shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/ao_light_affect = null
+shader_parameter/ao_light_affect = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("5_0q3r2")
 shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_rcveu")
 shader_parameter/dissolve = 0.0
 shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.00784314, 0.388235, 0.960784, 1)
 shader_parameter/dissolve_emission_energy = 4.0
-shader_parameter/dither_texture = ExtResource("5_0q3r2")
-shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_rcveu")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w54vo"]
 resource_local_to_scene = true

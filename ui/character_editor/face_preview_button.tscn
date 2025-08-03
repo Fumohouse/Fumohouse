@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgx8o1jaybpww"]
 
 [ext_resource type="PackedScene" uid="uid://i0vg7piilqhm" path="res://ui/character_editor/preview_button.tscn" id="1_28iam"]
-[ext_resource type="Script" path="res://ui/character_editor/FacePreviewButton.lua" id="2_wtrvn"]
+[ext_resource type="Script" uid="uid://ckr56vnyls21n" path="res://ui/character_editor/FacePreviewButton.lua" id="2_wtrvn"]
 
 [node name="FacePreviewButton" node_paths=PackedStringArray("layer1", "layer2", "layer3") instance=ExtResource("1_28iam")]
 script = ExtResource("2_wtrvn")

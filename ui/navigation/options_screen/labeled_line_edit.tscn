@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpm5g1ilx0t6y"]
 
 [ext_resource type="PackedScene" uid="uid://ds5lxlewc7pkx" path="res://ui/navigation/options_screen/labeled_input.tscn" id="1_vf6ir"]
-[ext_resource type="Script" path="res://config/ConfigLineEdit.lua" id="2_7itrf"]
+[ext_resource type="Script" uid="uid://b2mj2357d7xx4" path="res://config/ConfigLineEdit.lua" id="2_7itrf"]
 
 [node name="LabeledLineEdit" node_paths=PackedStringArray("input", "revertButton") instance=ExtResource("1_vf6ir")]
 script = ExtResource("2_7itrf")

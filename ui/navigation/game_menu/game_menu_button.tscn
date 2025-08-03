@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c4dvtrx886y3v"]
 
-[ext_resource type="Script" path="res://ui/navigation/NavButton.lua" id="1_7hq2y"]
+[ext_resource type="Script" uid="uid://c1ks6f6qrk3ys" path="res://ui/navigation/NavButton.lua" id="1_7hq2y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwd3d"]
 content_margin_left = 48.0

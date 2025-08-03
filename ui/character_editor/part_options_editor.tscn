@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b13kky3a357gm"]
 
-[ext_resource type="Script" path="res://ui/character_editor/PartOptionsEditor.lua" id="1_e7d1w"]
+[ext_resource type="Script" uid="uid://c75apj3r7jwdh" path="res://ui/character_editor/PartOptionsEditor.lua" id="1_e7d1w"]
 
 [node name="PartOptionsEditor" type="VBoxContainer" node_paths=PackedStringArray("label")]
 offset_right = 40.0

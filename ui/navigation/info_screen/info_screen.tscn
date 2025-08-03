@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://bxnpb5vh0ddmo"]
 
 [ext_resource type="PackedScene" uid="uid://ghrg27kkromx" path="res://ui/navigation/screen_base_layout.tscn" id="1_kosdp"]
-[ext_resource type="Script" path="res://ui/navigation/info_screen/InfoScreen.lua" id="2_gs52k"]
-[ext_resource type="Script" path="res://nodes/RadioButtonContainer.lua" id="3_0jemo"]
+[ext_resource type="Script" uid="uid://b4fx4tmcnbjjl" path="res://ui/navigation/info_screen/InfoScreen.lua" id="2_gs52k"]
+[ext_resource type="Script" uid="uid://dg4hb2x41u6k3" path="res://nodes/RadioButtonContainer.lua" id="3_0jemo"]
 [ext_resource type="Texture2D" uid="uid://cs26kmefu5xmq" path="res://assets/textures/logo_dark.svg" id="3_uwqg1"]
 [ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="4_dxeln"]
 [ext_resource type="PackedScene" uid="uid://b8kd4qjo2av52" path="res://ui/navigation/info_screen/info_heading.tscn" id="4_fmsuy"]

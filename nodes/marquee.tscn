@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c52wxemyiy7p3"]
 
-[ext_resource type="Script" path="res://nodes/Marquee.lua" id="1_dfqf0"]
+[ext_resource type="Script" uid="uid://bx463m5nchleq" path="res://nodes/Marquee.lua" id="1_dfqf0"]
 
 [node name="Marquee" type="Control"]
 clip_contents = true

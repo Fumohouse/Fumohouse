@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ds5lxlewc7pkx"]
 
 [ext_resource type="Texture2D" uid="uid://x52tjd2e6lhy" path="res://assets/textures/ui/icons/arrow-counterclockwise.svg" id="1_fvr7g"]
-[ext_resource type="Script" path="res://nodes/IconButton.lua" id="2_p6xqm"]
+[ext_resource type="Script" uid="uid://cc1tmsdblr455" path="res://nodes/IconButton.lua" id="2_p6xqm"]
 
 [node name="LabeledInput" type="HBoxContainer"]
 custom_minimum_size = Vector2(0, 36)

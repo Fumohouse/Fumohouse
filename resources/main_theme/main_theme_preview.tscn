@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4dyjr4qc1cq8"]
 
 [ext_resource type="Theme" uid="uid://c7tdpcfevijlu" path="res://resources/main_theme/main_theme.tres" id="1_nuu18"]
-[ext_resource type="Script" path="res://nodes/OptionButtonTransparent.lua" id="2_xhb8f"]
+[ext_resource type="Script" uid="uid://cui0x3f6bjsgc" path="res://nodes/OptionButtonTransparent.lua" id="2_xhb8f"]
 
 [node name="Preview" type="PanelContainer"]
 custom_minimum_size = Vector2(0, 648)

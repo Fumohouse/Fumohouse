@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ebykaiwveqe7"]
 
-[ext_resource type="Script" path="res://ui/navigation/BackButton.lua" id="1_vu15t"]
+[ext_resource type="Script" uid="uid://doh2exbhnkjym" path="res://ui/navigation/BackButton.lua" id="1_vu15t"]
 [ext_resource type="Texture2D" uid="uid://bbgpquxbk2c1m" path="res://assets/textures/ui/icons/arrow-left-short.svg" id="2_xnbrg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26wrj"]

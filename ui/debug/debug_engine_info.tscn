@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://sffor1fn8rwd"]
 
-[ext_resource type="PackedScene" path="res://ui/debug/debug_window.tscn" id="1_fpknp"]
-[ext_resource type="Script" path="res://ui/debug/DebugEngineInfo.lua" id="2_t2fn1"]
+[ext_resource type="PackedScene" uid="uid://4qb0jx2wxsla" path="res://ui/debug/debug_window.tscn" id="1_fpknp"]
+[ext_resource type="Script" uid="uid://bgktyg6v4qubo" path="res://ui/debug/DebugEngineInfo.lua" id="2_t2fn1"]
 [ext_resource type="Texture2D" uid="uid://c7wam6e17u5ne" path="res://assets/textures/godot_logo.svg" id="2_ym6nr"]
-[ext_resource type="Script" path="res://ui/debug/InfoTable.lua" id="4_d3uth"]
+[ext_resource type="Script" uid="uid://c5liystv7rrs6" path="res://ui/debug/InfoTable.lua" id="4_d3uth"]
 
 [node name="DebugEngineInfo" instance=ExtResource("1_fpknp")]
 script = ExtResource("2_t2fn1")

@@ -1,13 +1,13 @@
 [gd_scene load_steps=58 format=3 uid="uid://bdricnhkc377e"]
 
-[ext_resource type="Script" path="res://character/Character.lua" id="1_esdqo"]
-[ext_resource type="Script" path="res://character/Nametag.lua" id="4_g0jnx"]
+[ext_resource type="Script" uid="uid://bk5d0yljoqw1r" path="res://character/Character.lua" id="1_esdqo"]
+[ext_resource type="Script" uid="uid://bdwwmwcxtvn43" path="res://character/Nametag.lua" id="4_g0jnx"]
 [ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="5_1iw6q"]
 [ext_resource type="PackedScene" uid="uid://dp4hh5fn4ecp4" path="res://assets/models/rig/rig.glb" id="6_s8jgh"]
-[ext_resource type="Shader" path="res://resources/materials/gltf_dither_material.gdshader" id="7_lj8st"]
+[ext_resource type="Shader" uid="uid://mvjqa18llowb" path="res://resources/materials/gltf_dither_material.gdshader" id="7_lj8st"]
 [ext_resource type="Animation" uid="uid://dil87a12bdo51" path="res://assets/models/rig/animations/base.tres" id="7_xw4fc"]
 [ext_resource type="Texture2D" uid="uid://j3p1obmff1ev" path="res://assets/textures/ordered_dither.png" id="8_g6ojv"]
-[ext_resource type="Script" path="res://character/appearance/AppearanceManager.lua" id="8_ip6d1"]
+[ext_resource type="Script" uid="uid://djmuke2ryf5h3" path="res://character/appearance/AppearanceManager.lua" id="8_ip6d1"]
 [ext_resource type="Animation" uid="uid://bvrgnfyuy7ccg" path="res://assets/models/rig/animations/idle.tres" id="8_l8522"]
 [ext_resource type="Resource" uid="uid://d2erpcdyaexcj" path="res://resources/character_presets/momiji.tres" id="9_6jjgu"]
 [ext_resource type="Animation" uid="uid://cxqf8ebitk1qc" path="res://assets/models/rig/animations/jump.tres" id="9_j6ru4"]
@@ -42,21 +42,21 @@ shader_parameter/albedo = Color(0.988235, 0.917647, 0.831373, 1)
 shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/specular = 0.5
-shader_parameter/metallic = null
+shader_parameter/metallic = 0.0
 shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy = null
+shader_parameter/emission_energy = 0.0
 shader_parameter/normal_scale = 1.0
 shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/ao_light_affect = null
+shader_parameter/ao_light_affect = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("8_g6ojv")
 shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_rcveu")
 shader_parameter/dissolve = 0.0
 shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.00784314, 0.388235, 0.960784, 1)
 shader_parameter/dissolve_emission_energy = 4.0
-shader_parameter/dither_texture = ExtResource("8_g6ojv")
-shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_rcveu")
 
 [sub_resource type="Gradient" id="Gradient_ofekd"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -270,18 +270,18 @@ node_connections = [&"climb_speed", 0, &"climb", &"dead", 0, &"death_idle", &"de
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_raqf0"]
 _data = {
-"base": ExtResource("7_xw4fc"),
-"climb": ExtResource("13_1sw8o"),
-"death1": ExtResource("17_r2wue"),
-"emote_spin": ExtResource("15_00aet"),
-"fall": ExtResource("14_ewtaw"),
-"idle": ExtResource("8_l8522"),
-"jump": ExtResource("9_j6ru4"),
-"run": ExtResource("12_ibjrc"),
-"sit": ExtResource("10_jftow"),
-"swim": ExtResource("13_3oyjv"),
-"swim_idle": ExtResource("14_gmxao"),
-"walk": ExtResource("11_wpe27")
+&"base": ExtResource("7_xw4fc"),
+&"climb": ExtResource("13_1sw8o"),
+&"death1": ExtResource("17_r2wue"),
+&"emote_spin": ExtResource("15_00aet"),
+&"fall": ExtResource("14_ewtaw"),
+&"idle": ExtResource("8_l8522"),
+&"jump": ExtResource("9_j6ru4"),
+&"run": ExtResource("12_ibjrc"),
+&"sit": ExtResource("10_jftow"),
+&"swim": ExtResource("13_3oyjv"),
+&"swim_idle": ExtResource("14_gmxao"),
+&"walk": ExtResource("11_wpe27")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pp1wc"]

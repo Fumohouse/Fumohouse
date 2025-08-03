@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dy7ckg1n8a8ci"]
 
-[ext_resource type="Script" path="res://assets/models/characters/doremy/DoremyHair.lua" id="1_1sioe"]
+[ext_resource type="Script" uid="uid://bndak1x8235q" path="res://assets/models/characters/doremy/DoremyHair.lua" id="1_1sioe"]
 [ext_resource type="PackedScene" uid="uid://ci5hqhcsha2dt" path="res://assets/models/characters/doremy/doremy_hair.glb" id="1_wnca6"]
 [ext_resource type="PackedScene" uid="uid://4ur73ac3kwvt" path="res://assets/models/characters/doremy/doremy_ponytail.glb" id="2_51mxb"]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bns0myjfx0sin"]
 
 [ext_resource type="PackedScene" uid="uid://ghrg27kkromx" path="res://ui/navigation/screen_base_layout.tscn" id="1_j1lgw"]
-[ext_resource type="Script" path="res://ui/navigation/play_screen/PlayScreen.lua" id="2_unc6e"]
-[ext_resource type="Script" path="res://nodes/RadioButtonContainer.lua" id="3_bne3f"]
+[ext_resource type="Script" uid="uid://dj6jemvsbjd72" path="res://ui/navigation/play_screen/PlayScreen.lua" id="2_unc6e"]
+[ext_resource type="Script" uid="uid://dg4hb2x41u6k3" path="res://nodes/RadioButtonContainer.lua" id="3_bne3f"]
 [ext_resource type="PackedScene" uid="uid://cbbpkq8c31lab" path="res://ui/navigation/status_popup.tscn" id="4_q3mux"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6nrni"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dp2ki7ld3mbja"]
 
-[ext_resource type="Script" path="res://nodes/Seat.lua" id="1_75iiq"]
+[ext_resource type="Script" uid="uid://bmtolhryv648t" path="res://nodes/Seat.lua" id="1_75iiq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k4dqv"]
 

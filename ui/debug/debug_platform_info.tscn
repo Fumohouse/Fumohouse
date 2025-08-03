@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bm752i4dsv5c2"]
 
-[ext_resource type="PackedScene" path="res://ui/debug/debug_window.tscn" id="1_q7xgp"]
+[ext_resource type="PackedScene" uid="uid://4qb0jx2wxsla" path="res://ui/debug/debug_window.tscn" id="1_q7xgp"]
 [ext_resource type="Texture2D" uid="uid://cs26kmefu5xmq" path="res://assets/textures/logo_dark.svg" id="2_1c1m2"]
-[ext_resource type="Script" path="res://ui/debug/DebugPlatformInfo.lua" id="2_f600d"]
-[ext_resource type="Script" path="res://ui/debug/InfoTable.lua" id="4_w213b"]
+[ext_resource type="Script" uid="uid://57qcvhsf65re" path="res://ui/debug/DebugPlatformInfo.lua" id="2_f600d"]
+[ext_resource type="Script" uid="uid://c5liystv7rrs6" path="res://ui/debug/InfoTable.lua" id="4_w213b"]
 
 [node name="DebugPlatformInfo" instance=ExtResource("1_q7xgp")]
 script = ExtResource("2_f600d")

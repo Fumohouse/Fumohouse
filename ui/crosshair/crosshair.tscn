@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgnrbj5aeace"]
 
-[ext_resource type="Shader" path="res://ui/crosshair/crosshair.gdshader" id="1_q5f6e"]
+[ext_resource type="Shader" uid="uid://7khlak6ntssr" path="res://ui/crosshair/crosshair.gdshader" id="1_q5f6e"]
 [ext_resource type="Texture2D" uid="uid://c4hf8x4q0ol6i" path="res://assets/textures/ui/crosshair.svg" id="2_7oxfp"]
-[ext_resource type="Script" path="res://ui/crosshair/Crosshair.lua" id="3_486cf"]
+[ext_resource type="Script" uid="uid://neexiv51ycjl" path="res://ui/crosshair/Crosshair.lua" id="3_486cf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5bihr"]
 shader = ExtResource("1_q5f6e")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="MapManifest" load_steps=4 format=3 uid="uid://cgtshr0dparf"]
 
 [ext_resource type="Resource" uid="uid://ccv4nc6fammte" path="res://maps/playground/assets/music/playlists/main.tres" id="1_4lptv"]
-[ext_resource type="Script" path="res://map_system/MapManifest.lua" id="1_7gxr0"]
+[ext_resource type="Script" uid="uid://p66s2ewtvx7q" path="res://map_system/MapManifest.lua" id="1_7gxr0"]
 [ext_resource type="Resource" uid="uid://8i30uyc51bje" path="res://maps/playground/assets/music/playlists/special.tres" id="2_3tpvn"]
 
 [resource]

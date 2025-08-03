@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://buohjg3lvr682"]
 
 [ext_resource type="PackedScene" uid="uid://8h7ooe4gus7k" path="res://assets/models/characters/generic/sock_1.glb" id="1_40vi0"]
-[ext_resource type="Script" path="res://character/appearance/parts/customization/SingleColor.lua" id="2_y4d08"]
+[ext_resource type="Script" uid="uid://db2uainchnm6p" path="res://character/appearance/parts/customization/SingleColor.lua" id="2_y4d08"]
 
 [node name="sock_1" node_paths=PackedStringArray("mesh") instance=ExtResource("1_40vi0")]
 script = ExtResource("2_y4d08")

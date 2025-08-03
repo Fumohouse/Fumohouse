@@ -1,20 +1,20 @@
 [gd_resource type="Resource" script_class="FaceDatabase" load_steps=26 format=3 uid="uid://c2cxpgo2nnkv8"]
 
 [ext_resource type="Texture2D" uid="uid://dmdh3aum5baqn" path="res://assets/textures/faces/eyes/straight/eyes.svg" id="1_60vdp"]
-[ext_resource type="Script" path="res://character/appearance/face/EyeStyle.lua" id="2_5513h"]
+[ext_resource type="Script" uid="uid://bowdfyrear74t" path="res://character/appearance/face/EyeStyle.lua" id="2_5513h"]
 [ext_resource type="Texture2D" uid="uid://dtddn1ropdcmi" path="res://assets/textures/faces/eyes/straight/shine.svg" id="3_vlwhc"]
 [ext_resource type="Texture2D" uid="uid://cgbuce13grddh" path="res://assets/textures/faces/eyes/straight/hooks.svg" id="4_oesau"]
 [ext_resource type="Texture2D" uid="uid://cs4x0g5unl0x1" path="res://assets/textures/faces/eyes/curved/eyes.svg" id="5_qfugq"]
 [ext_resource type="Texture2D" uid="uid://dfl8hnovh2ty" path="res://assets/textures/faces/eyes/curved/shine.svg" id="6_wiexk"]
 [ext_resource type="Texture2D" uid="uid://buiawm4gwre0u" path="res://assets/textures/faces/eyes/curved/hooks.svg" id="7_7ikaa"]
-[ext_resource type="Script" path="res://character/appearance/face/FacePartStyle.lua" id="8_xghfh"]
+[ext_resource type="Script" uid="uid://bh4m34mvtx16s" path="res://character/appearance/face/FacePartStyle.lua" id="8_xghfh"]
 [ext_resource type="Texture2D" uid="uid://cy7j3snkewtm8" path="res://assets/textures/faces/eyebrows/angled_down.svg" id="9_i42d4"]
 [ext_resource type="Texture2D" uid="uid://chmxhx5v1bryr" path="res://assets/textures/faces/eyebrows/curved.svg" id="10_s6sd1"]
 [ext_resource type="Texture2D" uid="uid://0d74x1c85mib" path="res://assets/textures/faces/eyebrows/straight.svg" id="11_knyho"]
 [ext_resource type="Texture2D" uid="uid://crcp5o6l4q4b6" path="res://assets/textures/faces/mouths/straight.svg" id="12_63vkg"]
 [ext_resource type="Texture2D" uid="uid://cvny6u1iuyh6f" path="res://assets/textures/faces/mouths/smile.svg" id="13_kqvat"]
 [ext_resource type="Texture2D" uid="uid://b5yfdfj5aib5d" path="res://assets/textures/faces/mouths/3.svg" id="14_smim7"]
-[ext_resource type="Script" path="res://character/appearance/face/FaceDatabase.lua" id="15_ng3rm"]
+[ext_resource type="Script" uid="uid://b28v7hhq13pxr" path="res://character/appearance/face/FaceDatabase.lua" id="15_ng3rm"]
 
 [sub_resource type="Resource" id="Resource_ejl5l"]
 script = ExtResource("2_5513h")

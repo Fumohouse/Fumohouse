@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SinglePart" load_steps=2 format=3 uid="uid://dba1d60rrltbf"]
 
-[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_5xtqd"]
+[ext_resource type="Script" uid="uid://b7tyqxk6fwc2a" path="res://character/appearance/parts/SinglePart.lua" id="1_5xtqd"]
 
 [resource]
 script = ExtResource("1_5xtqd")

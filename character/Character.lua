@@ -38,9 +38,6 @@ export type Character = RigidBody3D & typeof(Character) & {
     peer: number,
     motionQueue: {NetworkedMotion},
     queuedStateUpdate: CharacterStatePacket.CharacterStatePacket?,
-
-    lastCameraRotation: Vector2,
-    lastCameraMode: number,
 }
 
 function Character._Init(self: Character)
@@ -48,9 +45,6 @@ function Character._Init(self: Character)
 
     self.peer = 0
     self.motionQueue = {}
-
-    self.lastCameraRotation = Vector2.new()
-    self.lastCameraMode = 0
 end
 
 function Character.updateCamera(self: Character)

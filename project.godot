@@ -13,7 +13,7 @@ config_version=5
 config/name="Fumohouse"
 run/main_scene="res://ui/navigation/intro/intro.tscn"
 config/project_settings_override="user://override.godot"
-config/features=PackedStringArray("4.3")
+config/features=PackedStringArray("4.4")
 config/icon="res://assets/textures/logo.svg"
 
 [audio]

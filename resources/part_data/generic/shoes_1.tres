@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="MultiPart" load_steps=5 format=3 uid="uid://dwjnyr1tm6p25"]
 
-[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_nklxv"]
-[ext_resource type="Script" path="res://character/appearance/parts/MultiPart.lua" id="2_oyqbv"]
+[ext_resource type="Script" uid="uid://b7tyqxk6fwc2a" path="res://character/appearance/parts/SinglePart.lua" id="1_nklxv"]
+[ext_resource type="Script" uid="uid://dyn0w5wym6qde" path="res://character/appearance/parts/MultiPart.lua" id="2_oyqbv"]
 
 [sub_resource type="Resource" id="Resource_2kw0b"]
 script = ExtResource("1_nklxv")
-name = null
+name = ""
 id = "shoe_1_r"
 scope = 0
 optionsSchema = {}
@@ -15,7 +15,7 @@ bone = 8
 
 [sub_resource type="Resource" id="Resource_sj20y"]
 script = ExtResource("1_nklxv")
-name = null
+name = ""
 id = "shoe_1_l"
 scope = 0
 optionsSchema = {}

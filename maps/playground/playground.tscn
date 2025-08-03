@@ -1,19 +1,19 @@
 [gd_scene load_steps=43 format=3 uid="uid://dyiqyy1oqg18g"]
 
-[ext_resource type="Script" path="res://map_system/BasicSpawner.lua" id="1_be2v8"]
+[ext_resource type="Script" uid="uid://bp8svjknkk6re" path="res://map_system/BasicSpawner.lua" id="1_be2v8"]
 [ext_resource type="PackedScene" uid="uid://cfn8xb4oi4ne3" path="res://maps/playground/spawnpoint.tscn" id="2_6ocf1"]
 [ext_resource type="Texture2D" uid="uid://cs26kmefu5xmq" path="res://assets/textures/logo_dark.svg" id="2_agg1b"]
 [ext_resource type="Material" path="res://maps/playground/assets/prototype.tres" id="3_0827c"]
-[ext_resource type="Script" path="res://nodes/Billboard.lua" id="5_5g01e"]
+[ext_resource type="Script" uid="uid://bmyqnk6a0gp32" path="res://nodes/Billboard.lua" id="5_5g01e"]
 [ext_resource type="PackedScene" uid="uid://lero4iw0i34c" path="res://maps/playground/ladder.tscn" id="5_a2h7v"]
-[ext_resource type="Script" path="res://maps/playground/PathFollower.lua" id="5_v2edg"]
-[ext_resource type="Script" path="res://maps/playground/RotatingBody.lua" id="6_78pbp"]
+[ext_resource type="Script" uid="uid://cwb5cam8evtg7" path="res://maps/playground/PathFollower.lua" id="5_v2edg"]
+[ext_resource type="Script" uid="uid://ci7mihkuq7h3" path="res://maps/playground/RotatingBody.lua" id="6_78pbp"]
 [ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="6_jvjd4"]
 [ext_resource type="FontFile" uid="uid://cl1t2pm0rvomw" path="res://assets/fonts/IBMPlexSans-Italic.ttf" id="7_4fan8"]
 [ext_resource type="PackedScene" uid="uid://dp2ki7ld3mbja" path="res://nodes/seat.tscn" id="7_6c7as"]
 [ext_resource type="PackedScene" uid="uid://bl7y215xsajnc" path="res://maps/playground/assets/models/arc.glb" id="9_i0s7i"]
-[ext_resource type="Shader" path="res://resources/materials/water.gdshader" id="10_0crbr"]
-[ext_resource type="Script" path="res://config/ConfigDirectionalLight3D.lua" id="12_j30tf"]
+[ext_resource type="Shader" uid="uid://g8b3hcw1cwg3" path="res://resources/materials/water.gdshader" id="10_0crbr"]
+[ext_resource type="Script" uid="uid://s8wgglg4cscb" path="res://config/ConfigDirectionalLight3D.lua" id="12_j30tf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_11hvr"]
 friction = 0.5
@@ -101,12 +101,12 @@ shader_parameter/fog_density = 0.5
 shader_parameter/background_fog_factor = 0.75
 shader_parameter/foam_color = Color(1, 1, 1, 1)
 shader_parameter/foam_distance = 0.1
+shader_parameter/normal_map_1 = SubResource("NoiseTexture2D_jcj4b")
+shader_parameter/normal_map_2 = SubResource("NoiseTexture2D_kbdh7")
 shader_parameter/normal_factor = 0.5
 shader_parameter/normal_map_1_movement = Vector2(-0.05, 0)
 shader_parameter/normal_map_2_movement = Vector2(0.05, 0)
 shader_parameter/refraction_strength = 0.005
-shader_parameter/normal_map_1 = SubResource("NoiseTexture2D_jcj4b")
-shader_parameter/normal_map_2 = SubResource("NoiseTexture2D_kbdh7")
 shader_parameter/wave_1 = Vector4(0, 1, 0.1, 3)
 shader_parameter/wave_2 = Vector4(-0.3, -0.2, 0.1, 2)
 shader_parameter/wave_3 = Vector4(1, 0.3, 0.1, 2)
@@ -138,12 +138,12 @@ shader_parameter/fog_density = 0.5
 shader_parameter/background_fog_factor = 0.75
 shader_parameter/foam_color = Color(1, 1, 1, 1)
 shader_parameter/foam_distance = 0.1
+shader_parameter/normal_map_1 = SubResource("NoiseTexture2D_ksqra")
+shader_parameter/normal_map_2 = SubResource("NoiseTexture2D_a30qt")
 shader_parameter/normal_factor = 0.5
 shader_parameter/normal_map_1_movement = Vector2(-0.05, 0)
 shader_parameter/normal_map_2_movement = Vector2(0.05, 0)
 shader_parameter/refraction_strength = 0.005
-shader_parameter/normal_map_1 = SubResource("NoiseTexture2D_ksqra")
-shader_parameter/normal_map_2 = SubResource("NoiseTexture2D_a30qt")
 shader_parameter/wave_1 = Vector4(1, 0, 0.1, 5)
 shader_parameter/wave_2 = Vector4(0.3, 0.5, 0.25, 3.5)
 shader_parameter/wave_3 = Vector4(-0.7, 0.2, 0.2, 2.5)

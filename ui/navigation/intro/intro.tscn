@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dck1137u3e4q3" path="res://ui/logo.tscn" id="1_cykfs"]
 [ext_resource type="Theme" uid="uid://c7tdpcfevijlu" path="res://resources/main_theme/main_theme.tres" id="1_obhab"]
-[ext_resource type="Script" path="res://ui/navigation/intro/Intro.lua" id="2_bvw61"]
+[ext_resource type="Script" uid="uid://ddpwdmcte8o3r" path="res://ui/navigation/intro/Intro.lua" id="2_bvw61"]
 [ext_resource type="PackedScene" uid="uid://bi4nul2t2fnl8" path="res://ui/navigation/main_menu/main_menu.tscn" id="3_2pxmr"]
 [ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="3_lgg0b"]
 [ext_resource type="Texture2D" uid="uid://c7wam6e17u5ne" path="res://assets/textures/godot_logo.svg" id="4_bsw5l"]
@@ -185,8 +185,8 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y8c2b"]
 _data = {
-"RESET": SubResource("Animation_hwsvp"),
-"intro_sequence": SubResource("Animation_ut2rf")
+&"RESET": SubResource("Animation_hwsvp"),
+&"intro_sequence": SubResource("Animation_ut2rf")
 }
 
 [node name="Intro" type="Control"]

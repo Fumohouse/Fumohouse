@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://4qb0jx2wxsla"]
 
-[ext_resource type="Shader" path="res://resources/materials/ui_blur.gdshader" id="1_3nb2l"]
+[ext_resource type="Shader" uid="uid://whj75q4dwjj1" path="res://resources/materials/ui_blur.gdshader" id="1_3nb2l"]
 [ext_resource type="Theme" uid="uid://dknqom53w812u" path="res://ui/debug/debug_theme.tres" id="1_j2ja4"]
-[ext_resource type="Script" path="res://ui/debug/DebugWindow.lua" id="2_rw5sj"]
+[ext_resource type="Script" uid="uid://qwfaehoithdx" path="res://ui/debug/DebugWindow.lua" id="2_rw5sj"]
 [ext_resource type="Texture2D" uid="uid://cu18o88insfv6" path="res://assets/textures/ui/icons/x.svg" id="3_n1fwc"]
 [ext_resource type="FontFile" uid="uid://conialjr0ykae" path="res://assets/fonts/IBMPlexSans-Regular.ttf" id="3_vsk1c"]
 [ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="4_fxkdj"]

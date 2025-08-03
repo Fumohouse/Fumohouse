@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://bubyuf8mn82tm"]
 
-[ext_resource type="Script" path="res://ui/character_editor/CharacterViewport.lua" id="1_77i5d"]
-[ext_resource type="Script" path="res://nodes/AutoScaleViewport.lua" id="2_4srlx"]
-[ext_resource type="Script" path="res://character/CameraController.lua" id="3_p3nki"]
-[ext_resource type="Script" path="res://config/ConfigDirectionalLight3D.lua" id="4_3ht4a"]
+[ext_resource type="Script" uid="uid://disgdl0v276pm" path="res://ui/character_editor/CharacterViewport.lua" id="1_77i5d"]
+[ext_resource type="Script" uid="uid://crh575w8xr1xt" path="res://nodes/AutoScaleViewport.lua" id="2_4srlx"]
+[ext_resource type="Script" uid="uid://bwy8dhypnleif" path="res://character/CameraController.lua" id="3_p3nki"]
+[ext_resource type="Script" uid="uid://s8wgglg4cscb" path="res://config/ConfigDirectionalLight3D.lua" id="4_3ht4a"]
 [ext_resource type="PackedScene" uid="uid://bdricnhkc377e" path="res://character/character.tscn" id="6_tx8i0"]
-[ext_resource type="Shader" path="res://resources/materials/gltf_dither_material.gdshader" id="7_18nru"]
+[ext_resource type="Shader" uid="uid://mvjqa18llowb" path="res://resources/materials/gltf_dither_material.gdshader" id="7_18nru"]
 [ext_resource type="Texture2D" uid="uid://j3p1obmff1ev" path="res://assets/textures/ordered_dither.png" id="8_nr7xb"]
 
 [sub_resource type="Environment" id="Environment_6d4uf"]
@@ -29,21 +29,21 @@ shader_parameter/albedo = Color(0.988235, 0.917647, 0.831373, 1)
 shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/specular = 0.5
-shader_parameter/metallic = null
+shader_parameter/metallic = 0.0
 shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy = null
+shader_parameter/emission_energy = 0.0
 shader_parameter/normal_scale = 1.0
 shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/ao_light_affect = null
+shader_parameter/ao_light_affect = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("8_nr7xb")
 shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_rcveu")
 shader_parameter/dissolve = 0.0
 shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.00784314, 0.388235, 0.960784, 1)
 shader_parameter/dissolve_emission_energy = 4.0
-shader_parameter/dither_texture = ExtResource("8_nr7xb")
-shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_rcveu")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_02hwb"]
 resource_local_to_scene = true

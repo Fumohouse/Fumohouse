@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://chehkmfpoevq6"]
 
-[ext_resource type="Script" path="res://ui/navigation/NavButtonContainer.lua" id="1_7uj67"]
+[ext_resource type="Script" uid="uid://cjsvnwommd5rc" path="res://ui/navigation/NavButtonContainer.lua" id="1_7uj67"]
 
 [node name="NavButtonContainer" type="VBoxContainer"]
 anchors_preset = 4

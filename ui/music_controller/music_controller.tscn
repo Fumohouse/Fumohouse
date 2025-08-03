@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://d0mo4s2hqyov3"]
 
 [ext_resource type="Theme" uid="uid://c7tdpcfevijlu" path="res://resources/main_theme/main_theme.tres" id="1_av17h"]
-[ext_resource type="Script" path="res://ui/music_controller/MusicController.lua" id="2_6ce3v"]
+[ext_resource type="Script" uid="uid://dis38emre47by" path="res://ui/music_controller/MusicController.lua" id="2_6ce3v"]
 [ext_resource type="PackedScene" uid="uid://c52wxemyiy7p3" path="res://nodes/marquee.tscn" id="2_ae0ga"]
 [ext_resource type="Texture2D" uid="uid://2uhtxecd4bhf" path="res://assets/textures/ui/icons/skip-start-fill.svg" id="2_tcc43"]
 [ext_resource type="Texture2D" uid="uid://g44io1cjsslr" path="res://assets/textures/ui/icons/play-fill.svg" id="3_eqsd2"]
-[ext_resource type="Script" path="res://ui/music_controller/MusicVisualizer.lua" id="3_ry3dh"]
+[ext_resource type="Script" uid="uid://dwwy2k484e2gl" path="res://ui/music_controller/MusicVisualizer.lua" id="3_ry3dh"]
 [ext_resource type="Texture2D" uid="uid://bsu3a5ka8lxr8" path="res://assets/textures/ui/icons/skip-end-fill.svg" id="4_b0lp2"]
-[ext_resource type="Script" path="res://nodes/IconButton.lua" id="4_jc5lg"]
+[ext_resource type="Script" uid="uid://cc1tmsdblr455" path="res://nodes/IconButton.lua" id="4_jc5lg"]
 
 [node name="MusicController" type="PanelContainer"]
 clip_children = 2

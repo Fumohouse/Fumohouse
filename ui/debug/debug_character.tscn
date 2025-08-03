@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://mnxplajycktx"]
 
-[ext_resource type="PackedScene" path="res://ui/debug/debug_window.tscn" id="1_io0nl"]
-[ext_resource type="Script" path="res://ui/debug/InfoTable.lua" id="2_c8hxj"]
-[ext_resource type="Script" path="res://ui/debug/DebugCharacter.lua" id="2_jos65"]
+[ext_resource type="PackedScene" uid="uid://4qb0jx2wxsla" path="res://ui/debug/debug_window.tscn" id="1_io0nl"]
+[ext_resource type="Script" uid="uid://c5liystv7rrs6" path="res://ui/debug/InfoTable.lua" id="2_c8hxj"]
+[ext_resource type="Script" uid="uid://8dyrwxykwe1r" path="res://ui/debug/DebugCharacter.lua" id="2_jos65"]
 
 [node name="DebugWindow" instance=ExtResource("1_io0nl")]
 script = ExtResource("2_jos65")

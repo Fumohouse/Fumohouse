@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="MultiPart" load_steps=8 format=3 uid="uid://dsew2q83y874"]
 
-[ext_resource type="Script" path="res://character/appearance/parts/SinglePart.lua" id="1_ibqda"]
-[ext_resource type="Script" path="res://character/appearance/parts/MultiPart.lua" id="1_w0i5r"]
+[ext_resource type="Script" uid="uid://b7tyqxk6fwc2a" path="res://character/appearance/parts/SinglePart.lua" id="1_ibqda"]
+[ext_resource type="Script" uid="uid://dyn0w5wym6qde" path="res://character/appearance/parts/MultiPart.lua" id="1_w0i5r"]
 
 [sub_resource type="Resource" id="Resource_bxrkr"]
 script = ExtResource("1_ibqda")

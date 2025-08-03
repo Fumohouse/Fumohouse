@@ -191,7 +191,7 @@ function CameraController._Process(self: CameraController, delta: number)
     -- "Tween" camera focal distance
     if self.cameraMode ~= CameraController.CameraMode.FLOATING then
         if math.abs(self.focusDistanceTarget - self.focusDistance) >= 1e-2 then
-            self.focusDistance = lerp(self.focusDistance, self.focusDistanceTarget, Utils.LerpWeight(delta))
+            self.focusDistance = math.lerp(self.focusDistance, self.focusDistanceTarget, Utils.LerpWeight(delta))
         else
             self.focusDistance = self.focusDistanceTarget
         end

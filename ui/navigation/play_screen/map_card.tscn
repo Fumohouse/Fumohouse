@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://baddlc8u7rqe"]
 
-[ext_resource type="Script" path="res://ui/navigation/play_screen/MapCard.lua" id="1_kgu6w"]
+[ext_resource type="Script" uid="uid://bscaoqv1lgn0w" path="res://ui/navigation/play_screen/MapCard.lua" id="1_kgu6w"]
 [ext_resource type="FontFile" uid="uid://tew5simyfkh8" path="res://assets/fonts/IBMPlexSans-Bold.ttf" id="1_r6nmw"]
 [ext_resource type="FontFile" uid="uid://4h6fuer52603" path="res://assets/fonts/mono/FiraMono-Regular.ttf" id="2_1a0kc"]
 [ext_resource type="Texture2D" uid="uid://bl4wda6ryubkq" path="res://assets/textures/ui/icons/hdd-network-fill.svg" id="3_5q0if"]
