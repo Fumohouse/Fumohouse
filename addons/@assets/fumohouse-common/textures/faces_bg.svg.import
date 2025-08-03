@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cdxg2w1khoiq4"
-path="res://.godot/imported/faces_bg.svg-0dabf949612c9aa54c43eef39ba65f50.ctex"
+path="res://.godot/imported/faces_bg.svg-b2cb592aa395623e9ff0563fb80099ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/@fumohouse/main/assets/textures/faces_bg.svg"
-dest_files=["res://.godot/imported/faces_bg.svg-0dabf949612c9aa54c43eef39ba65f50.ctex"]
+source_file="res://addons/@assets/fumohouse-common/textures/faces_bg.svg"
+dest_files=["res://.godot/imported/faces_bg.svg-b2cb592aa395623e9ff0563fb80099ad.ctex"]
 
 [params]
 

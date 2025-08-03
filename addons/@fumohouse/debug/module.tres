@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ModuleManifest" load_steps=5 format=3 uid="uid://dxatww6k5udhs"]
+[gd_resource type="Resource" script_class="ModuleManifest" load_steps=12 format=3 uid="uid://dxatww6k5udhs"]
 
 [ext_resource type="Script" uid="uid://bv6m4s88g0oi6" path="res://addons/@fumohouse/base/module_autoload.gd" id="1_t50hr"]
 [ext_resource type="Script" uid="uid://cyriemmrcefgc" path="res://addons/@fumohouse/base/module_dependency.gd" id="2_woswa"]
@@ -10,9 +10,45 @@ name = &"DebugDraw"
 path = "uid://dule8huyq7lph"
 metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
 
+[sub_resource type="Resource" id="Resource_uy6h6"]
+script = ExtResource("1_t50hr")
+name = &"_DebugContainer"
+path = "uid://dv3y8io4f5dns"
+metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
+
+[sub_resource type="Resource" id="Resource_woswa"]
+script = ExtResource("2_woswa")
+name = &"@fumohouse/common"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[sub_resource type="Resource" id="Resource_t012k"]
+script = ExtResource("2_woswa")
+name = &"@assets/overpass-mono"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[sub_resource type="Resource" id="Resource_tkq64"]
+script = ExtResource("2_woswa")
+name = &"@assets/clarity-city"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[sub_resource type="Resource" id="Resource_cwtdo"]
+script = ExtResource("2_woswa")
+name = &"@assets/bootstrap-icons"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[sub_resource type="Resource" id="Resource_dnx0b"]
+script = ExtResource("2_woswa")
+name = &"@assets/fumohouse-common"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[sub_resource type="Resource" id="Resource_u4hbf"]
+script = ExtResource("2_woswa")
+name = &"@fumohouse/config"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
 [resource]
 script = ExtResource("3_t012k")
-dependencies = Array[ExtResource("2_woswa")]([])
+dependencies = Array[ExtResource("2_woswa")]([SubResource("Resource_woswa"), SubResource("Resource_t012k"), SubResource("Resource_tkq64"), SubResource("Resource_cwtdo"), SubResource("Resource_dnx0b"), SubResource("Resource_u4hbf")])
 entry_scene = ""
-autoloads = Array[ExtResource("1_t50hr")]([SubResource("Resource_t50hr")])
+autoloads = Array[ExtResource("1_t50hr")]([SubResource("Resource_t50hr"), SubResource("Resource_uy6h6")])
 metadata/_custom_type_script = "uid://c5kqgift21f1k"

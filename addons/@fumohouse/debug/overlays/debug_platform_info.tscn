@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://doaikbfuqcjah"]
+
+[ext_resource type="PackedScene" uid="uid://cnhpap8tim3hh" path="res://addons/@fumohouse/debug/overlays/debug_window.tscn" id="1_vsbpw"]
+[ext_resource type="Script" uid="uid://dl46el4r4634o" path="res://addons/@fumohouse/debug/overlays/debug_platform_info.gd" id="2_c36ks"]
+[ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@assets/fumohouse-common/textures/logo.png" id="2_ldhgs"]
+[ext_resource type="Script" uid="uid://bpfn17p03x4rq" path="res://addons/@fumohouse/debug/overlays/debug_info_table.gd" id="4_055pr"]
+
+[node name="DebugPlatformInfo" instance=ExtResource("1_vsbpw")]
+script = ExtResource("2_c36ks")
+
+[node name="Icon" parent="Foreground/VBoxContainer/TopBar" index="0"]
+visible = true
+texture = ExtResource("2_ldhgs")
+
+[node name="Title" parent="Foreground/VBoxContainer/TopBar" index="1"]
+text = "Platform Info"
+
+[node name="DebugInfoTable" type="VBoxContainer" parent="Foreground/VBoxContainer/Contents" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("4_055pr")
+metadata/_custom_type_script = "uid://bpfn17p03x4rq"

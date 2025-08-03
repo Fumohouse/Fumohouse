@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://8e0rdqic34kn"]
+
+[ext_resource type="PackedScene" uid="uid://cnhpap8tim3hh" path="res://addons/@fumohouse/debug/overlays/debug_window.tscn" id="1_csdy7"]
+[ext_resource type="Script" uid="uid://cdn1xftc1b5qy" path="res://addons/@fumohouse/debug/overlays/debug_engine_info.gd" id="2_peou7"]
+[ext_resource type="Script" uid="uid://bpfn17p03x4rq" path="res://addons/@fumohouse/debug/overlays/debug_info_table.gd" id="3_h8mqi"]
+[ext_resource type="Texture2D" uid="uid://i3bxly1l6ve5" path="res://addons/@assets/fumohouse-common/textures/godot_logo.svg" id="3_o0qfn"]
+
+[node name="DebugEngineInfo" instance=ExtResource("1_csdy7")]
+script = ExtResource("2_peou7")
+
+[node name="Icon" parent="Foreground/VBoxContainer/TopBar" index="0"]
+visible = true
+texture = ExtResource("3_o0qfn")
+
+[node name="Title" parent="Foreground/VBoxContainer/TopBar" index="1"]
+text = "Engine Info"
+
+[node name="DebugInfoTable" type="VBoxContainer" parent="Foreground/VBoxContainer/Contents" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("3_h8mqi")
+metadata/_custom_type_script = "uid://bpfn17p03x4rq"

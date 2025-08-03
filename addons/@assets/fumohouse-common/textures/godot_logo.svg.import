@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cly828ija347l"
-path="res://.godot/imported/logo.png-2d74753bd1dea2923a54827fd43db0b9.ctex"
+uid="uid://i3bxly1l6ve5"
+path="res://.godot/imported/godot_logo.svg-2adc2e59aeb3f456342234442fb18595.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/@fumohouse/main/assets/textures/logo.png"
-dest_files=["res://.godot/imported/logo.png-2d74753bd1dea2923a54827fd43db0b9.ctex"]
+source_file="res://addons/@assets/fumohouse-common/textures/godot_logo.svg"
+dest_files=["res://.godot/imported/godot_logo.svg-2adc2e59aeb3f456342234442fb18595.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
