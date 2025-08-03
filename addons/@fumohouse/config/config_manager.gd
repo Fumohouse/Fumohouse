@@ -23,7 +23,7 @@ var _options: Dictionary[StringName, ConfigOption] = {}
 
 
 static func get_singleton() -> ConfigManager:
-	return Modules.get_singleton("ConfigManager") as ConfigManager
+	return Modules.get_singleton(&"ConfigManager") as ConfigManager
 
 
 func _ready():

@@ -24,7 +24,7 @@ var _tween: Tween
 
 
 static func get_singleton() -> MusicPlayer:
-	return Modules.get_singleton("MusicPlayer") as MusicPlayer
+	return Modules.get_singleton(&"MusicPlayer") as MusicPlayer
 
 
 func _ready():

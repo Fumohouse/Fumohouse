@@ -7,7 +7,7 @@ signal before_quit
 
 
 static func get_singleton() -> QuitManager:
-	return Modules.get_singleton("QuitManager") as QuitManager
+	return Modules.get_singleton(&"QuitManager") as QuitManager
 
 
 func _ready():
