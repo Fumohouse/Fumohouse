@@ -37,6 +37,12 @@ enabled=PackedStringArray("res://addons/@assets/bootstrap-icons/plugin.cfg", "re
 
 theme/custom="uid://bwtx8apvqhdb3"
 
+[layer_names]
+
+3d_physics/layer_1="Terrain"
+3d_physics/layer_2="Character"
+3d_physics/layer_3="Character Ragdoll"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

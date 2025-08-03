@@ -48,7 +48,7 @@ var _sens_first_person := 0.0
 var _sens_third_person := 0.0
 var _zoom_sens := 0.0
 
-var _rotation := Vector2.ZERO
+var camera_rotation := Vector2.ZERO
 var _rotating := false
 var _last_mouse_pos := Vector2.ZERO
 var _focus_distance := focus_distance
@@ -147,9 +147,9 @@ func _unhandled_input(event: InputEvent):
 				if mode == CameraMode.MODE_FIRST_PERSON
 				else _sens_third_person)
 
-		_rotation = Vector2(
-				clampf(_rotation.x - rot_delta.y, -CAMERA_MAX_X_ROT, CAMERA_MAX_X_ROT),
-				fmod(_rotation.y - rot_delta.x, TAU)
+		camera_rotation = Vector2(
+				clampf(camera_rotation.x - rot_delta.y, -CAMERA_MAX_X_ROT, CAMERA_MAX_X_ROT),
+				fmod(camera_rotation.y - rot_delta.x, TAU)
 		)
 
 		handle_input = true
@@ -200,15 +200,15 @@ func _process_first_person():
 				get_focal_point()
 		)
 
-	camera.rotation.x = _rotation.x
-	camera.rotation.y = _rotation.y
+	camera.rotation.x = camera_rotation.x
+	camera.rotation.y = camera_rotation.y
 
 
 func _process_third_person():
 	var focal_point := get_focal_point()
 	var cam_basis := Basis.IDENTITY \
-			.rotated(Vector3.RIGHT, _rotation.x) \
-			.rotated(Vector3.UP, _rotation.y)
+			.rotated(Vector3.RIGHT, camera_rotation.x) \
+			.rotated(Vector3.UP, camera_rotation.y)
 
 	var pos := focal_point + cam_basis * Vector3(0, 0, _focus_distance)
 
