@@ -6,9 +6,9 @@ Badge](https://img.shields.io/badge/Godot-4.4--stable-orange)](https://godotengi
 > **Note**
 >
 > This repository is mirrored from
-> [Codeberg](https://codeberg.org/ksk/Fumohouse) to
+> [Forgejo](https://git.seki.pw/Fumohouse/Fumohouse) to
 > [GitHub](https://github.com/Fumohouse/Fumohouse). Issues and pull requests are
-> accepted from both sites, but pushes only occur from Codeberg.
+> accepted from both sites, but pushes only occur from Forgejo.
 
 An open-source game framework based on Godot that provides fumos as character
 models.

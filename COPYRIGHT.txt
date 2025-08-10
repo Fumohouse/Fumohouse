@@ -22,7 +22,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Fumohouse
 Upstream-Contact: voided_etc <contact@seki.pw>
-Source: https://codeberg.org/ksk/Fumohouse
+Source: https://git.seki.pw/Fumohouse/Fumohouse
 
 Files: *
 Comment: Fumohouse source code

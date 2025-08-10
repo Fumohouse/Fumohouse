@@ -187,10 +187,10 @@ layout_mode = 2
 text = ""
 metadata/_custom_type_script = "uid://cqlbcm8gbadrr"
 
-[node name="Codeberg2" parent="Screens/MainScreen/NonNavigation/BottomButtons" index="1" instance=ExtResource("11_7jp73")]
+[node name="Forgejo" parent="Screens/MainScreen/NonNavigation/BottomButtons" index="1" instance=ExtResource("11_7jp73")]
 layout_mode = 2
 text = ""
-link = "https://codeberg.org/ksk/Fumohouse"
+link = "https://git.seki.pw/Fumohouse/Fumohouse"
 metadata/_custom_type_script = "uid://cqlbcm8gbadrr"
 
 [node name="TopBar" type="PanelContainer" parent="Screens/MainScreen/NonNavigation" index="4"]
@@ -269,6 +269,6 @@ grow_vertical = 2
 color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 
 [editable path="Screens/MainScreen/NonNavigation/BottomButtons/Website"]
-[editable path="Screens/MainScreen/NonNavigation/BottomButtons/Codeberg2"]
+[editable path="Screens/MainScreen/NonNavigation/BottomButtons/Forgejo"]
 [editable path="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer/MusicButton"]
 [editable path="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer/NotificationButton"]
