@@ -33,6 +33,11 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/@assets/bootstrap-icons/plugin.cfg", "res://addons/@assets/clarity-city/plugin.cfg", "res://addons/@assets/fumohouse-common/plugin.cfg", "res://addons/@assets/overpass-mono/plugin.cfg", "res://addons/@fumohouse/base/plugin.cfg", "res://addons/@fumohouse/character/plugin.cfg", "res://addons/@fumohouse/common/plugin.cfg", "res://addons/@fumohouse/config/plugin.cfg", "res://addons/@fumohouse/debug/plugin.cfg", "res://addons/@fumohouse/main/plugin.cfg", "res://addons/@fumohouse/music/plugin.cfg")
 
+[global_group]
+
+ladder="An Area climbable by a Character. Forward direction is -Z. To view the forward direction, enable \"Use Local Space\" (hotkey: T) in the editor."
+water="An Area that is water. A Character can swim in it."
+
 [gui]
 
 theme/custom="uid://bwtx8apvqhdb3"
@@ -46,3 +51,7 @@ theme/custom="uid://bwtx8apvqhdb3"
 [physics]
 
 3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+environment/defaults/default_environment="uid://bx0t0ec5dt28e"

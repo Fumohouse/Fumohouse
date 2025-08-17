@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq033aiu7nys6"]
+
+[ext_resource type="Script" uid="uid://blg5njxkosx5u" path="res://addons/@fumohouse/character/seat.gd" id="1_vi0ht"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yjj35"]
+
+[node name="Seat" type="StaticBody3D"]
+script = ExtResource("1_vi0ht")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_yjj35")
+
+[node name="Position" type="Marker3D" parent="."]

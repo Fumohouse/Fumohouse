@@ -16,7 +16,7 @@ details, and policies.
 - [Roblox](https://www.roblox.com/) and [VRChat](https://hello.vrchat.com/):
   Game frameworks/platforms that resemble Fumohouse
 - [Early iterations of Fumohouse and its web
-  infrastructure](https://codeberg.org/ksk/)
+  infrastructure](https://git.seki.pw/Fumohouse/)
 
 ## Goals
 

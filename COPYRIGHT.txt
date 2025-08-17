@@ -61,6 +61,11 @@ Comment: Bootstrap icons
 Copyright: 2019-2024, The Bootstrap Authors
 License: Expat
 
+Files: addons/@fumohouse/character/assets/textures/prototype.png
+Comment: Prototyping texture, by Kenney
+Copyright: 2020, Kenney
+License: CC0-1.0
+
 ######################
 # Expat License Text #
 ######################

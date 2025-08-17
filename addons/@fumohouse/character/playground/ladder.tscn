@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://da37x05lvkkbi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2scg4"]
+size = Vector3(2, 5, 1)
+
+[node name="Ladder" type="Area3D" groups=["ladder"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Rungs" type="CSGCombiner3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -2.5, 0)
+use_collision = true
+
+[node name="1" type="CSGBox3D" parent="Rungs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.395, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="2" type="CSGBox3D" parent="Rungs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.895, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="3" type="CSGBox3D" parent="Rungs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.395, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="4" type="CSGBox3D" parent="Rungs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.895, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="5" type="CSGBox3D" parent="Rungs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.395, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="6" type="CSGBox3D" parent="Rungs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.895, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="7" type="CSGBox3D" parent="Rungs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.395, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="8" type="CSGBox3D" parent="Rungs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.895, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="9" type="CSGBox3D" parent="Rungs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.395, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="10" type="CSGBox3D" parent="Rungs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.895, 0)
+size = Vector3(0.5, 0.2, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_2scg4")

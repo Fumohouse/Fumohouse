@@ -1,0 +1,518 @@
+[gd_scene load_steps=36 format=3 uid="uid://guxlxf4tholg"]
+
+[ext_resource type="Script" uid="uid://bfxjq1i3chu5i" path="res://addons/@fumohouse/character/playground/playground.gd" id="1_w0vfe"]
+[ext_resource type="Script" uid="uid://ck70ouuqfwjvq" path="res://addons/@fumohouse/character/camera_controller.gd" id="2_xnrk0"]
+[ext_resource type="PackedScene" uid="uid://c872jdob35ayv" path="res://addons/@fumohouse/character/character.tscn" id="3_toukj"]
+[ext_resource type="Environment" uid="uid://bx0t0ec5dt28e" path="res://addons/@fumohouse/main/resources/default_environment.tres" id="4_r7lgf"]
+[ext_resource type="FontFile" uid="uid://c4qltp4duykro" path="res://addons/@assets/clarity-city/ClarityCity-RegularItalic.woff2" id="5_b1etj"]
+[ext_resource type="Script" uid="uid://cbriawn38rjn8" path="res://addons/@fumohouse/config/nodes/config_world_environment.gd" id="5_ckt1o"]
+[ext_resource type="Script" uid="uid://ccc2egf38uchc" path="res://addons/@fumohouse/common/nodes/billboard.gd" id="5_o3drt"]
+[ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@assets/fumohouse-common/textures/logo.png" id="6_b1etj"]
+[ext_resource type="Script" uid="uid://dgrdrsb723x4l" path="res://addons/@fumohouse/character/playground/path_follower.gd" id="6_fia5t"]
+[ext_resource type="Material" uid="uid://d0b833ed41ul5" path="res://addons/@fumohouse/character/playground/resources/playground.tres" id="6_r7lgf"]
+[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@assets/clarity-city/ClarityCity-Bold.woff2" id="7_jt7kb"]
+[ext_resource type="Script" uid="uid://pqi5ly4ipxbb" path="res://addons/@fumohouse/character/playground/rotating_body.gd" id="7_rmdev"]
+[ext_resource type="PackedScene" uid="uid://dq033aiu7nys6" path="res://addons/@fumohouse/character/playground/seat.tscn" id="10_qf3vw"]
+[ext_resource type="PackedScene" uid="uid://da37x05lvkkbi" path="res://addons/@fumohouse/character/playground/ladder.tscn" id="11_ckt1o"]
+[ext_resource type="Material" uid="uid://dbc0ratgleys3" path="res://addons/@fumohouse/common/resources/materials/water.tres" id="15_2usgv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xnrk0"]
+friction = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_toukj"]
+size = Vector3(4, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ubf58"]
+size = Vector3(4, 4, 4)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_toukj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ubf58"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o3drt"]
+radius = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xnrk0"]
+top_radius = 5.0
+bottom_radius = 5.0
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_toukj"]
+height = 1.0
+radius = 5.0
+
+[sub_resource type="Curve3D" id="Curve3D_b1etj"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 2.832, 0.711, -0.225, 0, 0, 0, -5.437, -2.325, 0.065, 5.437, 2.325, -0.065, 10.421, 4.955, 2.121, 1.527, 2.431, -2.845, -1.527, -2.431, 2.845, 17.747, 5.453, 8.896, 3.33, 0.321, 2.311, -3.33, -0.321, -2.311, -0.672, -0.173, 7.43, -2.832, -0.711, 0.225, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="BoxMesh" id="BoxMesh_fia5t"]
+size = Vector3(4, 0.25, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rmdev"]
+size = Vector3(4, 0.25, 4)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kajri"]
+top_radius = 2.0
+bottom_radius = 1.75
+height = 0.25
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_r7lgf"]
+height = 0.25
+radius = 2.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jt7kb"]
+size = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tfp15"]
+size = Vector3(5, 5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_auc1j"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.0980392)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kajri"]
+size = Vector3(0.5, 4, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r7lgf"]
+size = Vector3(0.5, 4, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ahxc0"]
+size = Vector3(15, 3.8, 15)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b8l81"]
+material = ExtResource("15_2usgv")
+size = Vector2(15.5, 15.5)
+subdivide_width = 24
+subdivide_depth = 24
+
+[node name="Playground" type="Node3D"]
+script = ExtResource("1_w0vfe")
+
+[node name="TEMP_RUNTIME" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="TEMP_RUNTIME" node_paths=PackedStringArray("world_env")]
+environment = ExtResource("4_r7lgf")
+script = ExtResource("5_ckt1o")
+world_env = NodePath(".")
+
+[node name="Character" type="Node3D" parent="TEMP_RUNTIME"]
+
+[node name="Camera3D" type="Camera3D" parent="TEMP_RUNTIME/Character"]
+
+[node name="CameraController" type="Node3D" parent="TEMP_RUNTIME/Character/Camera3D" node_paths=PackedStringArray("camera")]
+unique_name_in_owner = true
+script = ExtResource("2_xnrk0")
+camera = NodePath("..")
+metadata/_custom_type_script = "uid://ck70ouuqfwjvq"
+
+[node name="Character" parent="TEMP_RUNTIME/Character" instance=ExtResource("3_toukj")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+use_collision = true
+size = Vector3(100, 0.5, 100)
+material = ExtResource("6_r7lgf")
+
+[node name="Rooves" type="CSGCombiner3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 4.75, -6.5)
+use_collision = true
+
+[node name="Roof1" type="CSGBox3D" parent="Map/Rooves"]
+size = Vector3(3, 0.5, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Roof2" type="CSGBox3D" parent="Map/Rooves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+size = Vector3(3, 0.5, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Roof3" type="CSGBox3D" parent="Map/Rooves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -3)
+size = Vector3(3, 0.5, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Roof4" type="CSGBox3D" parent="Map/Rooves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 0)
+size = Vector3(3, 0.5, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Roof5" type="CSGBox3D" parent="Map/Rooves"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 6, 2, -3)
+size = Vector3(3, 0.5, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Interactables" type="Node3D" parent="Map"]
+
+[node name="Box" type="RigidBody3D" parent="Map/Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, -5)
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_xnrk0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/Box"]
+mesh = SubResource("BoxMesh_toukj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/Box"]
+shape = SubResource("BoxShape3D_ubf58")
+
+[node name="Ball" type="RigidBody3D" parent="Map/Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 0)
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_toukj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/Ball"]
+mesh = SubResource("SphereMesh_ubf58")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/Ball"]
+shape = SubResource("SphereShape3D_o3drt")
+
+[node name="SpinningPlatform" type="StaticBody3D" parent="Map/Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+constant_angular_velocity = Vector3(0, 3.14159, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/SpinningPlatform"]
+mesh = SubResource("CylinderMesh_xnrk0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/SpinningPlatform"]
+shape = SubResource("CylinderShape3D_toukj")
+
+[node name="Path3D" type="Path3D" parent="Map/Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2, -24)
+curve = SubResource("Curve3D_b1etj")
+
+[node name="Rotating" type="PathFollow3D" parent="Map/Interactables/Path3D"]
+transform = Transform3D(0.0791997, -0.24202, -0.967033, 0, 0.970081, -0.242783, 0.996859, 0.0192283, 0.0768301, 0, 0, 0)
+rotation_mode = 2
+script = ExtResource("6_fia5t")
+speed = 4.0
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Map/Interactables/Path3D/Rotating"]
+sync_to_physics = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/Path3D/Rotating/AnimatableBody3D"]
+mesh = SubResource("BoxMesh_fia5t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/Path3D/Rotating/AnimatableBody3D"]
+shape = SubResource("BoxShape3D_rmdev")
+
+[node name="NoRotating" type="PathFollow3D" parent="Map/Interactables/Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8027, 4.07629, 10.0067)
+progress = 27.0
+rotation_mode = 0
+script = ExtResource("6_fia5t")
+speed = 4.0
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Map/Interactables/Path3D/NoRotating"]
+sync_to_physics = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/Path3D/NoRotating/AnimatableBody3D"]
+mesh = SubResource("CylinderMesh_kajri")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/Path3D/NoRotating/AnimatableBody3D"]
+shape = SubResource("CylinderShape3D_r7lgf")
+
+[node name="SpecialZone" type="Node3D" parent="Map/Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -15)
+
+[node name="Label3D" type="Label3D" parent="Map/Interactables/SpecialZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+pixel_size = 0.01
+billboard = 1
+text = "special zone"
+font = ExtResource("5_b1etj")
+
+[node name="Area3D" type="Area3D" parent="Map/Interactables/SpecialZone"]
+metadata/playlist = &"special"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/SpecialZone/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_jt7kb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/SpecialZone/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("BoxMesh_tfp15")
+surface_material_override/0 = SubResource("StandardMaterial3D_auc1j")
+
+[node name="RotatingWall" type="AnimatableBody3D" parent="Map/Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -24)
+script = ExtResource("7_rmdev")
+rotation_speed = 45.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/RotatingWall"]
+mesh = SubResource("BoxMesh_kajri")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/RotatingWall"]
+shape = SubResource("BoxShape3D_r7lgf")
+
+[node name="Seat" parent="Map/Interactables" instance=ExtResource("10_qf3vw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 5, 6)
+
+[node name="Label3D" type="Label3D" parent="Map/Interactables/Seat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+billboard = 1
+text = "seat"
+font = ExtResource("5_b1etj")
+font_size = 40
+
+[node name="Platform" type="CSGCombiner3D" parent="Map"]
+layers = 3
+use_collision = true
+
+[node name="Platform" type="CSGBox3D" parent="Map/Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2.5, 14)
+size = Vector3(20, 5, 20)
+material = ExtResource("6_r7lgf")
+
+[node name="Slope30" type="CSGPolygon3D" parent="Map/Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 9)
+polygon = PackedVector2Array(-5, 0, 5, 0, 5, 5)
+depth = 5.0
+material = ExtResource("6_r7lgf")
+
+[node name="Slope45" type="CSGPolygon3D" parent="Map/Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 14)
+polygon = PackedVector2Array(0, 0, 5, 0, 5, 5)
+depth = 5.0
+material = ExtResource("6_r7lgf")
+
+[node name="Slope60" type="CSGPolygon3D" parent="Map/Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 19)
+polygon = PackedVector2Array(2.5, 0, 5, 0, 5, 5)
+depth = 5.0
+material = ExtResource("6_r7lgf")
+
+[node name="Decal" type="Decal" parent="Map/Platform"]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 8.5, 1.5, 4)
+size = Vector3(2, 0.25, 2)
+texture_albedo = ExtResource("6_b1etj")
+cull_mask = 1048574
+
+[node name="Jump" type="CSGCombiner3D" parent="Map/Platform"]
+
+[node name="Jump05" type="CSGBox3D" parent="Map/Platform/Jump"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0.25, 2.5)
+size = Vector3(3, 0.5, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Jump1" type="CSGBox3D" parent="Map/Platform/Jump"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0.5, 2.5)
+size = Vector3(3, 1, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Jump2" type="CSGBox3D" parent="Map/Platform/Jump"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 1, 2.5)
+size = Vector3(3, 2, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Jump3" type="CSGBox3D" parent="Map/Platform/Jump"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 1.5, 2.5)
+size = Vector3(3, 3, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Jump4" type="CSGBox3D" parent="Map/Platform/Jump"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 2, 2.5)
+size = Vector3(3, 4, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Jump5" type="CSGBox3D" parent="Map/Platform/Jump"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 2.5, 2.5)
+size = Vector3(3, 5, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Jump6" type="CSGBox3D" parent="Map/Platform/Jump"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 3, 2.5)
+size = Vector3(3, 6, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Jump7" type="CSGBox3D" parent="Map/Platform/Jump"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 3.5, 5.5)
+size = Vector3(3, 7, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Jump8" type="CSGBox3D" parent="Map/Platform/Jump"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 4, 8.5)
+size = Vector3(3, 8, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Jump9" type="CSGBox3D" parent="Map/Platform/Jump"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 4.5, 11.5)
+size = Vector3(3, 9, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Jump10" type="CSGBox3D" parent="Map/Platform/Jump"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 5, 14.5)
+size = Vector3(3, 10, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="SlopeIn" type="CSGPolygon3D" parent="Map/Platform"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 27, 5, 11)
+polygon = PackedVector2Array(-3, 0, 3, 0, 3, 6)
+depth = 5.0
+material = ExtResource("6_r7lgf")
+
+[node name="NormalStairs" type="CSGCombiner3D" parent="Map"]
+use_collision = true
+
+[node name="Step1" type="CSGBox3D" parent="Map/NormalStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.2, -3.5)
+size = Vector3(1, 0.4, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Step2" type="CSGBox3D" parent="Map/NormalStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.6, -3.5)
+size = Vector3(1, 0.4, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Step3" type="CSGBox3D" parent="Map/NormalStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, -3.5)
+size = Vector3(1, 0.4, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Step4" type="CSGBox3D" parent="Map/NormalStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.4, -3.5)
+size = Vector3(1, 0.4, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="WorstCaseStairs" type="CSGCombiner3D" parent="Map"]
+use_collision = true
+
+[node name="Step1" type="CSGBox3D" parent="Map/WorstCaseStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.3, -0.5)
+size = Vector3(0.5, 0.2, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Step2" type="CSGBox3D" parent="Map/WorstCaseStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0.7, -0.5)
+size = Vector3(0.5, 0.2, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Step3" type="CSGBox3D" parent="Map/WorstCaseStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1.1, -0.5)
+size = Vector3(0.5, 0.2, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Step4" type="CSGBox3D" parent="Map/WorstCaseStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 1.5, -0.5)
+size = Vector3(0.5, 0.2, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Step5" type="CSGBox3D" parent="Map/WorstCaseStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1.9, -0.5)
+size = Vector3(0.5, 0.2, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Step6" type="CSGBox3D" parent="Map/WorstCaseStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 2.3, -0.5)
+size = Vector3(0.5, 0.2, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Step7" type="CSGBox3D" parent="Map/WorstCaseStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2.7, -0.5)
+size = Vector3(0.5, 0.2, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Step8" type="CSGBox3D" parent="Map/WorstCaseStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 3.1, -0.5)
+size = Vector3(0.5, 0.2, 3)
+material = ExtResource("6_r7lgf")
+
+[node name="Ladder" parent="Map" instance=ExtResource("11_ckt1o")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 2.5, 22)
+
+[node name="Billboard" type="Sprite3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("5_o3drt")
+accept_mouse_input = false
+accept_keyboard_input = false
+metadata/_custom_type_script = "uid://ccc2egf38uchc"
+
+[node name="Control" type="Control" parent="Map/Billboard"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="TextureRect" parent="Map/Billboard/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.5
+offset_top = -190.5
+offset_right = 107.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_b1etj")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Map/Billboard/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.5
+offset_top = 28.6875
+offset_right = 182.5
+offset_bottom = 59.3125
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_jt7kb")
+theme_override_font_sizes/font_size = 30
+text = "Playground Testing Map"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pool" type="CSGCombiner3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 20)
+use_collision = true
+
+[node name="Ladder" parent="Map/Pool" instance=ExtResource("11_ckt1o")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5, 1.5, 0)
+
+[node name="Water" type="Area3D" parent="Map/Pool" groups=["water"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Pool/Water"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+shape = SubResource("BoxShape3D_ahxc0")
+
+[node name="Surface" type="MeshInstance3D" parent="Map/Pool"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+mesh = SubResource("PlaneMesh_b8l81")
+
+[node name="Walls" type="CSGBox3D" parent="Map/Pool"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+size = Vector3(16, 4, 16)
+material = ExtResource("6_r7lgf")
+
+[node name="Negate" type="CSGBox3D" parent="Map/Pool"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+operation = 2
+size = Vector3(15, 4, 15)
+
+[node name="Slope" type="CSGPolygon3D" parent="Map/Pool"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 7.5)
+polygon = PackedVector2Array(0, 0, 5, 0, 5, 4)
+depth = 5.0
+material = ExtResource("6_r7lgf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866026, 0.286788, 0.409576, -7.16126e-08, -0.819152, 0.573577, 0.5, -0.496732, -0.709407, 0, 10, 0)
+shadow_enabled = true
+shadow_normal_bias = 5.0
+shadow_blur = 2.5
