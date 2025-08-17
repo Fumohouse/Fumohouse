@@ -86,13 +86,19 @@ func _process(_delta: float):
 		ctx.area_intersections.size(),
 	])
 
-	var velocity_str := "Total: %s m/s" % [CommonUtils.format_vector3(ctx.velocity)]
+	var velocity_str := "Total: %s m/s (norm: %.2f m/s)" % [
+		CommonUtils.format_vector3(ctx.velocity),
+		ctx.velocity.length(),
+	]
 
 	for processor in state._motion_processors:
 		var velocity: Variant = processor._get_velocity()
 		if velocity != null:
-			velocity_str += "\n%s: %s m/s" % [
-					processor.id, CommonUtils.format_vector3(velocity)]
+			velocity_str += "\n%s: %s m/s (norm: %.2f m/s)" % [
+				processor.id,
+				CommonUtils.format_vector3(velocity),
+				velocity.length(),
+			]
 
 	_tbl.set_val(&"velocity", velocity_str)
 

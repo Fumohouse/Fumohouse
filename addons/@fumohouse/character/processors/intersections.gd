@@ -11,7 +11,7 @@ func _init():
 
 
 func _process(_delta: float, _cancelled: bool):
-	const MARGIN := 0.1
+	const MARGIN := 0.15
 
 	# Walls
 	var wall_params := PhysicsTestMotionParameters3D.new()

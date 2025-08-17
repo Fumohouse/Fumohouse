@@ -90,6 +90,7 @@ func initialize():
 	_motion_processors.append(CharacterGroundingMotionProcessor.new())
 
 	_motion_processors.append(CharacterRagdollMotionProcessor.new())
+	_motion_processors.append(CharacterLadderMotionProcessor.new())
 
 	_motion_processors.append(CharacterHorizontalMotionProcessor.new())
 	_motion_processors.append(CharacterPhysicalMotionProcessor.new())
