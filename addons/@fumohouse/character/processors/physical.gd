@@ -33,11 +33,11 @@ var falling_altitude := 2.0
 var terminal_velocity := 48.0
 
 ## Velocity induced by this processor.
-var velocity := Vector3.ZERO
+var _velocity := Vector3.ZERO
 ## Current time (seconds) airborne.
-var airborne_time := 0.0
+var _airborne_time := 0.0
 ## Whether to block jumping, reset until the character is grounded.
-var cancel_jump := false
+var _cancel_jump := false
 
 
 func _init():
@@ -52,57 +52,57 @@ func _initialize():
 
 func _process(delta: float, cancelled: bool):
 	if cancelled:
-		velocity = Vector3.ZERO
-		airborne_time = 0.0
+		_velocity = Vector3.ZERO
+		_airborne_time = 0.0
 		return
 
 	var was_jumping := state.is_state(CharacterMotionState.CharacterState.JUMPING)
 	var jump_msg := ctx.messages.get(JUMP_FLAG)
 
 	if ctx.is_grounded and not was_jumping or state.is_ragdoll:
-		velocity = Vector3.ZERO
-		cancel_jump = jump_msg == 0
+		_velocity = Vector3.ZERO
+		_cancel_jump = jump_msg == 0
 	else:
-		velocity += Vector3.DOWN * gravity * delta
-		velocity = velocity.limit_length(terminal_velocity)
+		_velocity += Vector3.DOWN * gravity * delta
+		_velocity = _velocity.limit_length(terminal_velocity)
 
 	if DRAG in ctx.messages:
-		velocity = CommonUtils.apply_drag(velocity, ctx.messages[DRAG], delta)
+		_velocity = CommonUtils.apply_drag(_velocity, ctx.messages[DRAG], delta)
 
 	if (jump_msg or
 			(ctx.motion.jump and
-			airborne_time < jump_forgiveness and
-			not cancel_jump and
+			_airborne_time < jump_forgiveness and
+			not _cancel_jump and
 			not was_jumping)):
-		velocity = Vector3.UP * _get_jump_velocity(jump_msg if jump_msg else jump_height)
-		cancel_jump = true
+		_velocity = Vector3.UP * _get_jump_velocity(jump_msg if jump_msg else jump_height)
+		_cancel_jump = true
 		ctx.set_state(CharacterMotionState.CharacterState.JUMPING)
 
 		state.set_ragdoll(false)
-	elif was_jumping and velocity.y >= 0.0 and not state.is_ragdoll:
+	elif was_jumping and _velocity.y >= 0.0 and not state.is_ragdoll:
 		# Persist jump state until falling
 		ctx.set_state(CharacterMotionState.CharacterState.JUMPING)
 
 		# Hit detection
 		var roof_params := PhysicsTestMotionParameters3D.new()
 		roof_params.from = state.node.global_transform
-		roof_params.motion = Vector3.UP * velocity.y * delta
+		roof_params.motion = Vector3.UP * _velocity.y * delta
 		roof_params.margin = state.margin
 
 		var roof_result := PhysicsTestMotionResult3D.new()
 
 		if state.test_motion(roof_params, roof_result):
-			velocity = velocity.bounce(roof_result.get_collision_normal()) * jump_bounce_factor
+			_velocity = _velocity.bounce(roof_result.get_collision_normal()) * jump_bounce_factor
 
-	ctx.add_offset(velocity * delta)
+	ctx.add_offset(_velocity * delta)
 
 	# Decide whether character is falling
 	if ctx.is_grounded:
-		airborne_time = 0.0
+		_airborne_time = 0.0
 	else:
-		airborne_time += delta
+		_airborne_time += delta
 
-		if airborne_time > falling_time and velocity.y < 0.0:
+		if _airborne_time > falling_time and _velocity.y < 0.0:
 			if state.is_state(CharacterMotionState.CharacterState.FALLING):
 				ctx.set_state(CharacterMotionState.CharacterState.FALLING)
 			else:
@@ -116,7 +116,7 @@ func _process(delta: float, cancelled: bool):
 
 
 func _get_velocity() -> Variant:
-	return velocity
+	return _velocity
 
 
 func _get_jump_velocity(height: float) -> float:

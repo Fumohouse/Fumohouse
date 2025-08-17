@@ -20,7 +20,7 @@ var run_speed := 12.0
 var movement_acceleration := 50.0
 
 ## Velocity induced by this processor.
-var velocity := Vector3.ZERO
+var _velocity := Vector3.ZERO
 
 
 func _init():
@@ -29,7 +29,7 @@ func _init():
 
 func _process(delta: float, cancelled: bool):
 	if cancelled or state.is_ragdoll:
-		velocity = Vector3.ZERO
+		_velocity = Vector3.ZERO
 		return
 
 	var direction_flat: Vector3 = ctx.cam_basis_flat * ctx.input_direction
@@ -49,14 +49,14 @@ func _process(delta: float, cancelled: bool):
 
 	if not direction.is_zero_approx():
 		# Handle transition between different ground (normals)
-		velocity = velocity.length() * direction
+		_velocity = _velocity.length() * direction
 		# Update state
 		ctx.set_state(CharacterMotionState.CharacterState.WALKING)
 
-	velocity = velocity.move_toward(target_velocity, delta * movement_acceleration)
+	_velocity = _velocity.move_toward(target_velocity, delta * movement_acceleration)
 
 	if DRAG in ctx.messages:
-		velocity = CommonUtils.apply_drag(velocity, ctx.messages[DRAG], delta)
+		_velocity = CommonUtils.apply_drag(_velocity, ctx.messages[DRAG], delta)
 
 	if not ctx.messages.get(CANCEL_ORIENT, false):
 		# Update rotation
@@ -73,8 +73,8 @@ func _process(delta: float, cancelled: bool):
 			# which would be too quick.
 			ctx.messages[CharacterMoveMotionProcessor.CANCEL_UPRIGHTING] = true
 
-	ctx.add_offset(velocity * delta)
+	ctx.add_offset(_velocity * delta)
 
 
 func _get_velocity() -> Variant:
-	return velocity
+	return _velocity
