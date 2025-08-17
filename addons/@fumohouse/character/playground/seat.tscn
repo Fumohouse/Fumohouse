@@ -4,8 +4,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yjj35"]
 
-[node name="Seat" type="StaticBody3D"]
+[node name="Seat" type="StaticBody3D" node_paths=PackedStringArray("marker")]
 script = ExtResource("1_vi0ht")
+marker = NodePath("Position")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_yjj35")

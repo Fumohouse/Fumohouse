@@ -120,7 +120,7 @@ func _debug_draw():
 	var ctx := state.ctx
 
 	var pos := character.global_position
-	var eye_pos := pos + Vector3.UP * character.camera.camera_offset
+	var eye_pos := pos + character.global_basis.y * character.camera.camera_offset
 
 	# Bottom point
 	_dd.draw_marker(state.get_bottom_position(), Color.WHITE)

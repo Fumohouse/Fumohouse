@@ -88,26 +88,12 @@ func _move(motion: Vector3) -> Dictionary:
 		var projected_motion := motion_normal * travel.dot(motion_normal)
 
 		var actual_motion := projected_motion
-		var this_recovery := travel - projected_motion
+		var builtin_recovery := travel - projected_motion
 
-		const MIN_CUSTOM_RECOVERY := 0.05
-		if this_recovery.length_squared() > MIN_CUSTOM_RECOVERY * MIN_CUSTOM_RECOVERY:
-			# Godot determined recovery was necessary, take advantage of thei
-			# checks to perform custom recovery when necessary.
-			var custom_recovery := _custom_recovery(offset)
-
-			if not (remaining - projected_motion).is_zero_approx():
-				# If we are trying to move, passing recovery on to the slow,
-				# interpolated handler is a bad idea. It may cause important
-				# motion (e.g. gravity) to get stuck. So, perform full recovery
-				# immediately.
-				actual_motion += custom_recovery
-				recovery = Vector3.ZERO
-			else:
-				recovery = custom_recovery
-		else:
-			# Apply minimal recovery instantly
-			actual_motion += this_recovery
+		# Limit possible builtin recovery. Custom routine is run at the end.
+		const MAX_BUILTIN_RECOVERY := 0.05
+		if builtin_recovery.length_squared() <= MAX_BUILTIN_RECOVERY * MAX_BUILTIN_RECOVERY:
+			actual_motion += builtin_recovery
 
 		if (not state.is_ragdoll and
 				not (ctx.is_grounded and rid == ctx.ground_rid) and
@@ -131,9 +117,11 @@ func _move(motion: Vector3) -> Dictionary:
 
 		slides += 1
 
-	# In case Godot completely fails to see recovery is needed
-	if slides == MAX_SLIDES:
-		offset += _custom_recovery(offset)
+	#if slides == MAX_SLIDES:
+	#	offset += _custom_recovery(offset)
+	# Jolt allows movement inside of a collider. Disregard slides == MAX_SLIDES
+	# and always run recovery.
+	recovery += _custom_recovery(offset)
 
 	return {
 		"offset": offset,

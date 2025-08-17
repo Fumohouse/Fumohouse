@@ -69,7 +69,7 @@ func _get_motion() -> CharacterMotionState.Motion:
 		_motion.direction = Input.get_vector(&"move_left", &"move_right", &"move_forward", &"move_backward")
 		_motion.jump = Input.is_action_pressed(&"move_jump")
 		_motion.run = Input.is_action_pressed(&"move_run")
-		_motion.sit = Input.is_action_pressed(&"move_sit")
+		_motion.sit = Input.is_action_just_pressed(&"move_sit")
 	else:
 		_motion.direction = Vector2.ZERO
 		_motion.jump = false
