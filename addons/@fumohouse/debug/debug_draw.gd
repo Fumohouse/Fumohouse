@@ -96,7 +96,7 @@ func draw_aabb(aabb: AABB, color: Color, lifetime := 0.0):
 ## Draw a marker shaped like an "x" at [param position] with color
 ## [param color]. It stays on screen for [param lifetime] seconds. The size of
 ## each arm of the "x" is [param size] units.
-func draw_marker(pos: Vector3, color: Color, lifetime := 0.0, size := 0.5):
+func draw_marker(pos: Vector3, color: Color, lifetime := 0.0, size := 0.05):
 	var camera := get_viewport().get_camera_3d()
 	var cam_basis := camera.global_basis
 	var cam_x := cam_basis.x

@@ -86,6 +86,10 @@ var _motion_processors: Array[CharacterMotionProcessor] = []
 ## managed configuration variables such as [member node] and [member rid].
 func initialize():
 	# TODO: Add processors.
+	_motion_processors.append(CharacterIntersectionsMotionProcessor.new())
+	_motion_processors.append(CharacterGroundingMotionProcessor.new())
+
+	_motion_processors.append(CharacterMoveMotionProcessor.new())
 
 	set_ragdoll(false)
 
@@ -113,7 +117,7 @@ func update(motion: Motion, delta: float):
 
 	# Process
 	for processor in _motion_processors:
-		processor._process(delta, ctx.cancelled_processors[processor.ID])
+		processor._process(delta, ctx.cancelled_processors.get(processor.ID, false))
 
 	# Update state
 	state = ctx.get_final_state()

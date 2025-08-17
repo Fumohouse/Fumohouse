@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://guxlxf4tholg"]
+[gd_scene load_steps=37 format=3 uid="uid://guxlxf4tholg"]
 
 [ext_resource type="Script" uid="uid://bfxjq1i3chu5i" path="res://addons/@fumohouse/character/playground/playground.gd" id="1_w0vfe"]
 [ext_resource type="Script" uid="uid://ck70ouuqfwjvq" path="res://addons/@fumohouse/character/camera_controller.gd" id="2_xnrk0"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://c4qltp4duykro" path="res://addons/@assets/clarity-city/ClarityCity-RegularItalic.woff2" id="5_b1etj"]
 [ext_resource type="Script" uid="uid://cbriawn38rjn8" path="res://addons/@fumohouse/config/nodes/config_world_environment.gd" id="5_ckt1o"]
 [ext_resource type="Script" uid="uid://ccc2egf38uchc" path="res://addons/@fumohouse/common/nodes/billboard.gd" id="5_o3drt"]
+[ext_resource type="PackedScene" uid="uid://dcjefyuix0jjw" path="res://addons/@fumohouse/character/debug_character.tscn" id="6_ahxc0"]
 [ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@assets/fumohouse-common/textures/logo.png" id="6_b1etj"]
 [ext_resource type="Script" uid="uid://dgrdrsb723x4l" path="res://addons/@fumohouse/character/playground/path_follower.gd" id="6_fia5t"]
 [ext_resource type="Material" uid="uid://d0b833ed41ul5" path="res://addons/@fumohouse/character/playground/resources/playground.tres" id="6_r7lgf"]
@@ -113,6 +114,9 @@ metadata/_custom_type_script = "uid://ck70ouuqfwjvq"
 [node name="Character" parent="TEMP_RUNTIME/Character" instance=ExtResource("3_toukj")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="DebugCharacter" parent="TEMP_RUNTIME" node_paths=PackedStringArray("character") instance=ExtResource("6_ahxc0")]
+character = NodePath("../Character/Character")
 
 [node name="Map" type="Node3D" parent="."]
 
