@@ -26,6 +26,8 @@ const _STATE_NAMES: Array[String] = [
 var _character: Character
 @export var character: Character : set = _set_character, get = _get_character
 
+var _physical_processor: CharacterPhysicalMotionProcessor
+
 var _state: RichTextLabel
 
 @onready var _tbl: DebugInfoTable = %DebugInfoTable
@@ -67,7 +69,17 @@ func _process(_delta: float):
 	# Other
 	_tbl.set_val(&"position", CommonUtils.format_vector3(state.get_bottom_position()))
 	_tbl.set_val(&"ragdoll", "Yes" if state.is_ragdoll else "No")
-	_tbl.set_val(&"grounded", "Yes" if ctx.is_grounded else "No")
+
+	var grounded_str: String
+	if ctx.is_grounded:
+		grounded_str = "Yes"
+	elif _physical_processor != null:
+		grounded_str = "Airborne %.2fs" % [_physical_processor._airborne_time]
+	else:
+		grounded_str = "No"
+	_tbl.set_val(&"grounded", grounded_str)
+
+
 	_tbl.set_val(&"collisions", "Walls: %d, Bodies: %d, Areas: %d" % [
 		ctx.walls.size(),
 		ctx.body_intersections.size(),
@@ -91,7 +103,7 @@ func _update_character():
 	if not is_inside_tree() or not character:
 		return
 
-	# TODO: Store motion processors here
+	_physical_processor = character.state.get_motion_processor(CharacterPhysicalMotionProcessor.ID)
 
 
 func _set_character(new_character: Character):
