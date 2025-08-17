@@ -22,3 +22,8 @@ static func basis_upright(basis: Basis) -> Basis:
 ## Format the given vector as a string (2 decimal places).
 static func format_vector3(vec: Vector3) -> String:
 	return "(%.2f %.2f %.2f)" % [vec.x, vec.y, vec.z]
+
+
+## Apply drag to a velocity vector.
+static func apply_drag(vec: Vector3, coeff: float, delta: float) -> Vector3:
+	return vec.move_toward(Vector3.ZERO, coeff * vec.length() * delta)

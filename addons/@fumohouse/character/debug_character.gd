@@ -41,6 +41,7 @@ func _ready():
 
 	_state = _tbl.add_entry(&"state", "State").contents
 
+	_tbl.add_entry(&"position", "Position")
 	_tbl.add_entry(&"ragdoll", "Is Ragdoll")
 	_tbl.add_entry(&"grounded", "Is Grounded")
 	_tbl.add_entry(&"collisions", "Collisions")
@@ -64,6 +65,7 @@ func _process(_delta: float):
 			_state.newline()
 
 	# Other
+	_tbl.set_val(&"position", CommonUtils.format_vector3(state.get_bottom_position()))
 	_tbl.set_val(&"ragdoll", "Yes" if state.is_ragdoll else "No")
 	_tbl.set_val(&"grounded", "Yes" if ctx.is_grounded else "No")
 	_tbl.set_val(&"collisions", "Walls: %d, Bodies: %d, Areas: %d" % [
@@ -76,8 +78,8 @@ func _process(_delta: float):
 
 	for processor in state._motion_processors:
 		var velocity: Variant = processor._get_velocity()
-		if velocity:
-			velocity_str += "%s: %s m/s" % [
+		if velocity != null:
+			velocity_str += "\n%s: %s m/s" % [
 					processor.id, CommonUtils.format_vector3(velocity)]
 
 	_tbl.set_val(&"velocity", velocity_str)

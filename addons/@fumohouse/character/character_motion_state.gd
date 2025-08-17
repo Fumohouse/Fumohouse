@@ -89,6 +89,9 @@ func initialize():
 	_motion_processors.append(CharacterIntersectionsMotionProcessor.new())
 	_motion_processors.append(CharacterGroundingMotionProcessor.new())
 
+	_motion_processors.append(CharacterHorizontalMotionProcessor.new())
+	_motion_processors.append(CharacterPhysicalMotionProcessor.new())
+
 	_motion_processors.append(CharacterMoveMotionProcessor.new())
 
 	set_ragdoll(false)
