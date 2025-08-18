@@ -99,8 +99,7 @@ func _process(delta: float, cancelled: bool):
 		ctx.add_offset(_velocity * delta)
 
 	ctx.cancel_processor(CharacterPhysicalMotionProcessor.ID)
-	# TODO
-	#ctx.cancel_processor(CharacterStairsMotionProcessor.ID)
+	ctx.cancel_processor(CharacterStairsMotionProcessor.ID)
 
 	ctx.cancel_state(CharacterMotionState.CharacterState.WALKING)
 	ctx.set_state(CharacterMotionState.CharacterState.CLIMBING)

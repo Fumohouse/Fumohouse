@@ -85,7 +85,9 @@ var _motion_processors: Array[CharacterMotionProcessor] = []
 ## Initialize this state. Prior to calling this function, set all externally
 ## managed configuration variables such as [member node] and [member rid].
 func initialize():
-	# TODO: Add processors.
+	# Overrides ground normal
+	_motion_processors.append(CharacterStairsMotionProcessor.new())
+
 	_motion_processors.append(CharacterIntersectionsMotionProcessor.new())
 	_motion_processors.append(CharacterGroundingMotionProcessor.new())
 
