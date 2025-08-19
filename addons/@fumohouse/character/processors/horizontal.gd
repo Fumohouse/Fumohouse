@@ -67,8 +67,9 @@ func _process(delta: float, cancelled: bool):
 		elif not direction.is_zero_approx():
 			var movement_basis := Basis(Quaternion(Vector3.FORWARD, direction_flat))
 			ctx.new_basis = ctx.new_basis.slerp(
-					movement_basis,
-					CommonUtils.lerp_weight(delta, CharacterMoveMotionProcessor.UPRIGHTING_FACTOR))
+				movement_basis,
+				CommonUtils.lerp_weight(delta, CharacterMoveMotionProcessor.UPRIGHTING_FACTOR)
+			)
 			# Uprighting is implied in the above code. Avoid double uprighting,
 			# which would be too quick.
 			ctx.messages[CharacterMoveMotionProcessor.CANCEL_UPRIGHTING] = true

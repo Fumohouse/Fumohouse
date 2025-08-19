@@ -45,50 +45,40 @@ func _on_config_value_changed(key: StringName):
 
 
 func _apply_ssr():
-	var opt: Dictionary = GraphicsConfigManager.SSR_OPTIONS[
-			cm.get_opt(&"graphics/ssr")
-	]
+	var opt: Dictionary = GraphicsConfigManager.SSR_OPTIONS[cm.get_opt(&"graphics/ssr")]
 
 	world_env.environment.ssr_enabled = opt["enabled"]
 	world_env.environment.ssr_max_steps = opt["steps"]
 
 
 func _apply_ssao():
-	var opt: Dictionary = GraphicsConfigManager.SSAO_OPTIONS[
-			cm.get_opt(&"graphics/ssao")
-	]
+	var opt: Dictionary = GraphicsConfigManager.SSAO_OPTIONS[cm.get_opt(&"graphics/ssao")]
 
 	world_env.environment.ssao_enabled = opt["enabled"]
 
 
 func _apply_ssil():
-	var opt: Dictionary = GraphicsConfigManager.SSIL_OPTIONS[
-			cm.get_opt(&"graphics/ssil")
-	]
+	var opt: Dictionary = GraphicsConfigManager.SSIL_OPTIONS[cm.get_opt(&"graphics/ssil")]
 
 	world_env.environment.ssil_enabled = opt["enabled"]
 
 
 func _apply_sdfgi():
-	var opt: Dictionary = GraphicsConfigManager.SDFGI_OPTIONS[
-			cm.get_opt(&"graphics/sdfgi")
-	]
+	var opt: Dictionary = GraphicsConfigManager.SDFGI_OPTIONS[cm.get_opt(&"graphics/sdfgi")]
 
 	world_env.environment.sdfgi_enabled = opt["enabled"]
 
 
 func _apply_glow():
-	var opt: Dictionary = GraphicsConfigManager.GLOW_OPTIONS[
-			cm.get_opt(&"graphics/glow")
-	]
+	var opt: Dictionary = GraphicsConfigManager.GLOW_OPTIONS[cm.get_opt(&"graphics/glow")]
 
 	world_env.environment.glow_enabled = opt["enabled"]
 
 
 func _apply_fog():
-	var opt: Dictionary = GraphicsConfigManager.VOLUMETRIC_FOG_OPTIONS[
-			cm.get_opt(&"graphics/volumetric_fog")
-	]
+	var opt: Dictionary = GraphicsConfigManager.VOLUMETRIC_FOG_OPTIONS[cm.get_opt(
+		&"graphics/volumetric_fog"
+	)]
 
 	world_env.environment.volumetric_fog_enabled = opt["enabled"]
 

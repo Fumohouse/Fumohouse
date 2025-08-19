@@ -10,7 +10,7 @@ signal camera_updated(new_camera: CameraController)
 
 var _camera: CameraController
 ## The current camera controller focused on this character.
-var camera: CameraController :
+var camera: CameraController:
 	set = set_camera,
 	get = get_camera
 
@@ -66,7 +66,9 @@ func _update_camera():
 
 func _get_motion() -> CharacterMotionState.Motion:
 	if CommonUtils.do_game_input(self) and not state.is_dead():
-		_motion.direction = Input.get_vector(&"move_left", &"move_right", &"move_forward", &"move_backward")
+		_motion.direction = Input.get_vector(
+			&"move_left", &"move_right", &"move_forward", &"move_backward"
+		)
 		_motion.jump = Input.is_action_pressed(&"move_jump")
 		_motion.run = Input.is_action_pressed(&"move_run")
 		_motion.sit = Input.is_action_just_pressed(&"move_sit")

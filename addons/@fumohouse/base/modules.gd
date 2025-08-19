@@ -15,8 +15,7 @@ func _enter_tree():
 	# This step must run before _ready of the main scene, otherwise everything
 	# will explode
 	var scene_path: String = get_tree().current_scene.scene_file_path
-	var scene_path_split: PackedStringArray = \
-			scene_path.substr(_MODULES_DIR.length()).split("/")
+	var scene_path_split: PackedStringArray = scene_path.substr(_MODULES_DIR.length()).split("/")
 	var scene_module: String = "/".join(scene_path_split.slice(0, 2))
 	print("[Modules] Detected main scene in module '%s'!" % scene_module)
 

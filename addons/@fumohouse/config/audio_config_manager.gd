@@ -24,6 +24,8 @@ func add_audio_bus(bus: StringName):
 		push_error("Could not find audio bus '%s'." % bus)
 		return
 
-	ConfigManager.get_singleton() \
-			.add_opt("audio/bus/%s/volume" % bus, 80.0, func(value: float):
-				AudioServer.set_bus_volume_db(idx, linear_to_db(value / 100.0)))
+	ConfigManager.get_singleton().add_opt(
+		"audio/bus/%s/volume" % bus,
+		80.0,
+		func(value: float): AudioServer.set_bus_volume_db(idx, linear_to_db(value / 100.0))
+	)

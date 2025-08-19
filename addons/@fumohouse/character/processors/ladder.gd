@@ -49,11 +49,13 @@ func _process(delta: float, cancelled: bool):
 
 	var char_transform := state.node.global_transform
 	var char_fwd := -char_transform.basis.z
-	var char_fwd_alt := char_transform.basis.y # e.g., swimming
+	var char_fwd_alt := char_transform.basis.y  # e.g., swimming
 
 	var max_angle_rad := deg_to_rad(max_angle)
-	if (char_fwd.angle_to(ladder_fwd) > max_angle_rad and
-			char_fwd_alt.angle_to(ladder_fwd) > max_angle_rad):
+	if (
+		char_fwd.angle_to(ladder_fwd) > max_angle_rad
+		and char_fwd_alt.angle_to(ladder_fwd) > max_angle_rad
+	):
 		return
 
 	# Wall check (descendant of area, normal alignment)
@@ -62,9 +64,11 @@ func _process(delta: float, cancelled: bool):
 	for wall in ctx.walls:
 		const ANGLE_MARGIN := 0.01
 		var compare_normal := Vector3(-wall.normal.x, 0, -wall.normal.z).normalized()
-		if (wall.collider is Node3D and
-				ladder.is_ancestor_of(wall.collider as Node3D) and
-				compare_normal.angle_to(ladder_fwd) < ANGLE_MARGIN):
+		if (
+			wall.collider is Node3D
+			and ladder.is_ancestor_of(wall.collider as Node3D)
+			and compare_normal.angle_to(ladder_fwd) < ANGLE_MARGIN
+		):
 			wall_found = true
 			break
 
@@ -90,9 +94,14 @@ func _process(delta: float, cancelled: bool):
 			ground_params.from = char_transform.origin
 			ground_params.to = ground_params.from + Vector3.DOWN * break_height
 
-			var ground_result: Dictionary = state.node.get_world_3d().direct_space_state.intersect_ray(ground_params)
+			var ground_result: Dictionary = (
+				state.node.get_world_3d().direct_space_state.intersect_ray(ground_params)
+			)
 
-			if ground_result.is_empty() or not state.is_stable_ground(ground_result["normal"] as Vector3):
+			if (
+				ground_result.is_empty()
+				or not state.is_stable_ground(ground_result["normal"] as Vector3)
+			):
 				ctx.cancel_processor(CharacterHorizontalMotionProcessor.ID)
 
 		is_moving = true

@@ -7,7 +7,7 @@ signal song_changed(song: Song)
 
 const BUS := "Music"
 
-var current_song: Song :
+var current_song: Song:
 	get:
 		return _current_song
 
@@ -30,8 +30,7 @@ static func get_singleton() -> MusicPlayer:
 func _ready():
 	bus = BUS
 	_volume = volume_db
-	finished.connect(func():
-		advance_playlist(1))
+	finished.connect(func(): advance_playlist(1))
 
 
 ## Switch to the given playlist ID.
@@ -75,8 +74,9 @@ func load_playlists(playlists: Array[Playlist]):
 	_saved_positions = {}
 
 	for playlist in playlists:
-		assert(not _playlists.has(playlist.id),
-				"A playlist with id %s already exists." % playlist.id)
+		assert(
+			not _playlists.has(playlist.id), "A playlist with id %s already exists." % playlist.id
+		)
 
 		_playlists[playlist.id] = playlist
 
@@ -165,6 +165,7 @@ func _continue_playlist(playlist_id: StringName):
 		await _play(playlist.songs[0], true, false, 0)
 
 
-class PlaylistPosition extends RefCounted:
+class PlaylistPosition:
+	extends RefCounted
 	var position := 0
 	var time := 0.0

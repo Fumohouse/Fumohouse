@@ -4,7 +4,9 @@ extends StaticBody3D
 
 var _occupant_internal: RigidBody3D
 ## The rigidbody currently occupying this seat.
-@export var occupant: RigidBody3D: set = _set_occupant, get = _get_occupant
+@export var occupant: RigidBody3D:
+	set = _set_occupant,
+	get = _get_occupant
 ## A marker (probably [Marker3D]) that indicates where the character will be
 ## seated.
 @export var marker: Node3D

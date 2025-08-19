@@ -5,6 +5,8 @@ pkgs.mkShell {
     nodePackages.svgo
     mdbook
 
+    gdtoolkit_4
+
     python312
 
     # Ordered dithering

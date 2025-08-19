@@ -15,13 +15,16 @@ signal selection_changed
 
 ## The currently selected button. Only valid if [member multi_selection] is
 ## [code]false[/code].
-var selected_button: Button: set = _set_selection, get = _get_selection
+var selected_button: Button:
+	set = _set_selection,
+	get = _get_selection
 
 ## The currently selected buttons. When [member allow_none] is
 ## [code]true[/code], the array may be empty. When [member multi_selection] is
 ## [code]false[/code], the array can have at most 1 item.
-@export var selected_buttons: Array[Button]: set = _set_multiple_selection, \
-		get = _get_multiple_selection
+@export var selected_buttons: Array[Button]:
+	set = _set_multiple_selection,
+	get = _get_multiple_selection
 
 var _selected_buttons: Array[Button] = []
 

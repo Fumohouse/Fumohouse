@@ -36,12 +36,15 @@ func nav_transition(vis: bool):
 	var tween := MenuUtils.common_tween(self, vis)
 	var target_modulate := Color.WHITE if vis else Color.TRANSPARENT
 
-	tween.parallel().tween_property(_non_navigation, "modulate",
-			target_modulate, MenuUtils.TRANSITION_DURATION)
-	tween.parallel().tween_property(_top_bar, "position:y",
-			_top_bar_target_y(vis), MenuUtils.TRANSITION_DURATION)
-	tween.parallel().tween_property(_version_label, "position:x",
-			_version_label_target_x(vis), MenuUtils.TRANSITION_DURATION)
+	tween.parallel().tween_property(
+		_non_navigation, "modulate", target_modulate, MenuUtils.TRANSITION_DURATION
+	)
+	tween.parallel().tween_property(
+		_top_bar, "position:y", _top_bar_target_y(vis), MenuUtils.TRANSITION_DURATION
+	)
+	tween.parallel().tween_property(
+		_version_label, "position:x", _version_label_target_x(vis), MenuUtils.TRANSITION_DURATION
+	)
 
 	_main_buttons.nav_transition(vis)
 

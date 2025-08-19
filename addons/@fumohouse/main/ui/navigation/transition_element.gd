@@ -12,14 +12,10 @@ func nav_show():
 
 
 func nav_transition(vis: bool) -> Tween:
-	var tween := (
-			create_tween()
-			.set_ease(Tween.EASE_OUT)
-			.set_trans(Tween.TRANS_QUAD)
-	)
+	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 
-	tween.tween_property(self, "modulate",
-			Color.WHITE if vis else Color.TRANSPARENT,
-			MenuUtils.TRANSITION_DURATION)
+	tween.tween_property(
+		self, "modulate", Color.WHITE if vis else Color.TRANSPARENT, MenuUtils.TRANSITION_DURATION
+	)
 
 	return tween

@@ -74,8 +74,7 @@ func _process(delta: float):
 	# Reference: window.cpp
 	_viewport.size = Vector2i(viewport_size)
 	_viewport.size_2d_override = Vector2i(_orig_size)
-	_viewport.canvas_transform = Transform2D.IDENTITY.scaled(
-			viewport_size / _orig_size)
+	_viewport.canvas_transform = Transform2D.IDENTITY.scaled(viewport_size / _orig_size)
 
 	# Must adjust the pixel size in order to update texture size, etc.
 	pixel_size = target_pixel_size * _orig_size.x / screen_size.x
@@ -86,8 +85,7 @@ func _unhandled_mouse(event: InputEventMouse):
 	if not camera:
 		return
 
-	var pressed := event is InputEventMouseButton and \
-			(event as InputEventMouseButton).pressed
+	var pressed := event is InputEventMouseButton and (event as InputEventMouseButton).pressed
 
 	var plane := Plane(global_basis.z, global_position)
 	var camera_ray_orig := camera.project_ray_origin(event.position)
@@ -176,21 +174,15 @@ func _get_corners() -> Array[Vector3]:
 	var world_size: Vector2 = _orig_size * target_pixel_size
 	var world_offset: Vector2 = offset * target_pixel_size
 	var world_origin: Vector3 = (
-			global_position
-			+ global_basis.x * world_offset.x
-			+ global_basis.y * world_offset.y
+		global_position + global_basis.x * world_offset.x + global_basis.y * world_offset.y
 	)
 
 	var top_left: Vector3 = (
-			world_origin
-			- global_basis.x * world_size.x / 2
-			+ global_basis.y * world_size.y / 2
+		world_origin - global_basis.x * world_size.x / 2 + global_basis.y * world_size.y / 2
 	)
 
 	var bottom_right: Vector3 = (
-			world_origin
-			+ global_basis.x * world_size.x / 2
-			- global_basis.y * world_size.y / 2
+		world_origin + global_basis.x * world_size.x / 2 - global_basis.y * world_size.y / 2
 	)
 
 	return [top_left, bottom_right]

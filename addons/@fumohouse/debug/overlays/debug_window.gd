@@ -100,6 +100,5 @@ func _update_layout(new_position: Vector2, new_size: Vector2):
 
 	# Keep position within viewport
 	position = new_position.clamp(
-		Vector2.ZERO,
-		Vector2(viewport_rect.size.x - size.x, viewport_rect.size.y - size.y)
+		Vector2.ZERO, Vector2(viewport_rect.size.x - size.x, viewport_rect.size.y - size.y)
 	)

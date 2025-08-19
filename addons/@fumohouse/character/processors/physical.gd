@@ -69,11 +69,15 @@ func _process(delta: float, cancelled: bool):
 	if DRAG in ctx.messages:
 		_velocity = CommonUtils.apply_drag(_velocity, ctx.messages[DRAG], delta)
 
-	if (jump_msg or
-			(ctx.motion.jump and
-			_airborne_time < jump_forgiveness and
-			not _cancel_jump and
-			not was_jumping)):
+	if (
+		jump_msg
+		or (
+			ctx.motion.jump
+			and _airborne_time < jump_forgiveness
+			and not _cancel_jump
+			and not was_jumping
+		)
+	):
 		_velocity = Vector3.UP * _get_jump_velocity(jump_msg if jump_msg else jump_height)
 		_cancel_jump = true
 		ctx.set_state(CharacterMotionState.CharacterState.JUMPING)
@@ -110,7 +114,9 @@ func _process(delta: float, cancelled: bool):
 				fall_ray_params.from = state.node.global_position
 				fall_ray_params.to = fall_ray_params.from + Vector3.DOWN * falling_altitude
 
-				var fall_ray_result: Dictionary = state.node.get_world_3d().direct_space_state.intersect_ray(fall_ray_params)
+				var fall_ray_result: Dictionary = (
+					state.node.get_world_3d().direct_space_state.intersect_ray(fall_ray_params)
+				)
 				if fall_ray_result.is_empty():
 					ctx.set_state(CharacterMotionState.CharacterState.FALLING)
 

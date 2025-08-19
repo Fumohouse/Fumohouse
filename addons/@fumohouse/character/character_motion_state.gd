@@ -29,7 +29,6 @@ enum CharacterState {
 	SITTING = 32,
 	## Character is swimming.
 	SWIMMING = 64,
-
 	## Character is dead and will be freed soon.
 	DEAD = 32768,
 }
@@ -44,7 +43,7 @@ var rid := RID()
 ## The main (non-ragdoll) collider. Must have a [CapsuleShape3D] as its shape.
 var main_collider: CollisionShape3D
 ## The shape of [member main_collider].
-var main_collision_shape: CapsuleShape3D :
+var main_collision_shape: CapsuleShape3D:
 	get:
 		return main_collider.shape as CapsuleShape3D
 
@@ -63,7 +62,7 @@ var ragdoll_collision_layer := 4
 # OPTIONS #
 ## The maximum angle between the ground normal and vertical that is considered
 ## stable.
-var max_ground_angle := 45.0 # degrees
+var max_ground_angle := 45.0  # degrees
 ## A generic margin value used to account for floating point errors.
 var margin := 0.001
 
@@ -144,7 +143,10 @@ func get_bottom_position() -> Vector3:
 	if is_ragdoll:
 		var collider_transform := ragdoll_collider.global_transform
 		# basis.y incorporates the scale of the collider
-		return collider_transform.origin - 0.5 * ragdoll_collision_shape.size.y * collider_transform.basis.y
+		return (
+			collider_transform.origin
+			- 0.5 * ragdoll_collision_shape.size.y * collider_transform.basis.y
+		)
 	else:
 		return node.global_transform.origin
 
@@ -168,7 +170,9 @@ func set_body_mode(mode: PhysicsServer3D.BodyMode):
 
 ## Set the ragdoll mode of this character.
 func set_ragdoll(ragdoll: bool):
-	set_body_mode(PhysicsServer3D.BODY_MODE_RIGID if ragdoll else PhysicsServer3D.BODY_MODE_KINEMATIC)
+	set_body_mode(
+		PhysicsServer3D.BODY_MODE_RIGID if ragdoll else PhysicsServer3D.BODY_MODE_KINEMATIC
+	)
 	main_collider.disabled = ragdoll
 	ragdoll_collider.disabled = not ragdoll
 
@@ -210,14 +214,16 @@ func die(timeout_s: float, callback: Variant):
 
 
 ## A class representing a point of contact with a wall-like object.
-class WallInfo extends RefCounted:
+class WallInfo:
+	extends RefCounted
 	var point: Vector3
 	var normal: Vector3
 	var collider: Object
 
 
 ## A class representing the player's current motion inputs.
-class Motion extends RefCounted:
+class Motion:
+	extends RefCounted
 	var direction := Vector2.ZERO
 	var jump := false
 	var run := false
@@ -228,7 +234,8 @@ class Motion extends RefCounted:
 
 
 ## A class representing the inputs and outputs of [CharacterMotionProcessor].
-class Context extends RefCounted:
+class Context:
+	extends RefCounted
 	# Input
 	var motion := Motion.new()
 	var input_direction := Vector3.ZERO
@@ -255,7 +262,6 @@ class Context extends RefCounted:
 
 	var velocity := Vector3.ZERO
 
-
 	## Reset the temporary components of this context. Run between frames.
 	func reset():
 		cancelled_processors.clear()
@@ -271,27 +277,22 @@ class Context extends RefCounted:
 
 		# The rest are reset externally.
 
-
 	## Add a movement offset to this context.
 	func add_offset(ofs: Vector3):
 		offset += ofs
-
 
 	## Add a state flag to this context.
 	func set_state(state: CharacterState):
 		new_state |= state
 
-
 	## Cancel a future processor.
 	func cancel_processor(id: StringName):
 		cancelled_processors[id] = true
-
 
 	## Cancel a state that doesn't make sense in this situation (e.g., WALKING
 	## while CLIMBING).
 	func cancel_state(state: CharacterState):
 		cancelled_states |= state
-
 
 	## Get the final state based on [member new_state] and
 	## [member cancelled_states].

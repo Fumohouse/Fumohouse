@@ -64,12 +64,12 @@ func get_opt_features(key: StringName):
 
 ## Add a config option.
 func add_opt(
-		key: StringName,
-		default: Variant,
-		handler := func(value: Variant): pass,
-		restart_required := false,
-		features: PackedStringArray = [],
-		obj_class_override: StringName = "",
+	key: StringName,
+	default: Variant,
+	handler := func(value: Variant): pass,
+	restart_required := false,
+	features: PackedStringArray = [],
+	obj_class_override: StringName = "",
 ):
 	if _options.has(key):
 		push_error("[ConfigManager] Option already exists: '%s'" % key)
@@ -98,8 +98,12 @@ func set_opt(key: StringName, value: Variant, is_init := false):
 
 	var opt := _options[key]
 	if not opt.type_matches(value):
-		push_error("[ConfigManager] Config value %s is the wrong type (got %d, expected %d)" %
-				[key, typeof(value), opt.type])
+		push_error(
+			(
+				"[ConfigManager] Config value %s is the wrong type (got %d, expected %d)"
+				% [key, typeof(value), opt.type]
+			)
+		)
 		return
 
 	var split := _split_key(key)
@@ -124,8 +128,9 @@ func load_file():
 	print("[ConfigManager] Loading from file...")
 	var err = _config.load(CONFIG_LOCATION)
 	if err != OK and err != ERR_FILE_NOT_FOUND:
-		push_warning("[ConfigManager] Failed to load config file at %s (error %d)." %
-				[CONFIG_LOCATION, err])
+		push_warning(
+			"[ConfigManager] Failed to load config file at %s (error %d)." % [CONFIG_LOCATION, err]
+		)
 
 	# Initialize values
 	for key in _options:
@@ -133,7 +138,7 @@ func load_file():
 		if has_opt(key):
 			var val: Variant = get_opt(key)
 			if opt.type_matches(val):
-				opt.handler.call_deferred(val) # defer e.g. due to UI scale
+				opt.handler.call_deferred(val)  # defer e.g. due to UI scale
 				continue
 
 		# Fall back to default value if current one is missing or invalid.
@@ -148,14 +153,21 @@ func save_file():
 	if err == OK:
 		_autosave_timeout = 0.0
 	else:
-		push_error("[ConfigManager] Failed to save config file to %s (error %d)." %
-				[CONFIG_LOCATION, err])
+		push_error(
+			"[ConfigManager] Failed to save config file to %s (error %d)." % [CONFIG_LOCATION, err]
+		)
 
-	var override_path := ProjectSettings.get("application/config/project_settings_override") as String
+	var override_path := (
+		ProjectSettings.get("application/config/project_settings_override") as String
+	)
 	err = _override_config.save(override_path)
 	if err != OK:
-		push_error("[ConfigManager] Failed to save project settings override file to %s (error %d)." %
-				[override_path, err])
+		push_error(
+			(
+				"[ConfigManager] Failed to save project settings override file to %s (error %d)."
+				% [override_path, err]
+			)
+		)
 
 
 func _split_key(key: StringName) -> Array[StringName]:
@@ -169,7 +181,8 @@ func _on_before_quit():
 		save_file()
 
 
-class ConfigOption extends RefCounted:
+class ConfigOption:
+	extends RefCounted
 	var type: Variant.Type
 	var obj_class := ""
 	var default: Variant = null
@@ -180,9 +193,7 @@ class ConfigOption extends RefCounted:
 	func type_matches(value: Variant):
 		if type == TYPE_OBJECT:
 			return (
-					value is Object and (
-							obj_class.is_empty() or
-							(value as Object).is_class(obj_class))
+				value is Object and (obj_class.is_empty() or (value as Object).is_class(obj_class))
 			)
 
 		return typeof(value) == type

@@ -12,7 +12,7 @@ var id := &"INVALID"
 ## The [CharacterMotionState] managing this processor.
 var state: CharacterMotionState
 ## Convenience access to the context of [member state].
-var ctx: CharacterMotionState.Context :
+var ctx: CharacterMotionState.Context:
 	get:
 		return state.ctx
 

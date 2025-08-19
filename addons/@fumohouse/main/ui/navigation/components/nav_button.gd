@@ -13,17 +13,15 @@ func _ready():
 
 
 func _on_mouse_entered():
-	create_tween() \
-			.set_ease(Tween.EASE_OUT) \
-			.set_trans(Tween.TRANS_BACK) \
-			.tween_property(self, "size:x", orig_width + EXPAND, 0.2)
+	create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK).tween_property(
+		self, "size:x", orig_width + EXPAND, 0.2
+	)
 
 
 func _on_mouse_exited():
-	create_tween() \
-			.set_ease(Tween.EASE_OUT) \
-			.set_trans(Tween.TRANS_QUAD) \
-			.tween_property(self, "size:x", orig_width, 0.25)
+	create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD).tween_property(
+		self, "size:x", orig_width, 0.25
+	)
 
 
 func nav_hide():
@@ -39,13 +37,13 @@ func nav_show():
 func nav_transition(vis: bool):
 	var tween := MenuUtils.common_tween(self, vis)
 
-	tween.tween_property(self, "modulate",
-			Color.WHITE if vis else Color.TRANSPARENT,
-			MenuUtils.TRANSITION_DURATION)
+	tween.tween_property(
+		self, "modulate", Color.WHITE if vis else Color.TRANSPARENT, MenuUtils.TRANSITION_DURATION
+	)
 
-	tween.parallel().tween_property(self, "position:x",
-			_target_pos(vis),
-			MenuUtils.TRANSITION_DURATION)
+	tween.parallel().tween_property(
+		self, "position:x", _target_pos(vis), MenuUtils.TRANSITION_DURATION
+	)
 
 
 func _target_pos(vis: bool):

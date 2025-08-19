@@ -45,7 +45,10 @@ func _process(delta: float, cancelled: bool):
 
 		# https://github.com/godotengine/godot/blob/a311a4b162364d032b03ddf2a0e603ba40615ad7/servers/physics_3d/godot_body_3d.h#L227-L230
 		_velocity += impulse * _direct_body_state.inverse_mass
-		_angular_velocity += _direct_body_state.inverse_inertia * (position - _direct_body_state.center_of_mass).cross(impulse)
+		_angular_velocity += (
+			_direct_body_state.inverse_inertia
+			* (position - _direct_body_state.center_of_mass).cross(impulse)
+		)
 
 	ctx.add_offset(_velocity * delta)
 	ctx.new_basis = Basis.from_euler(_angular_velocity * delta) * ctx.new_basis

@@ -35,22 +35,21 @@ func _enter_tree():
 func add_action(action: StringName, default: InputEvent):
 	InputMap.add_action(action)
 	ConfigManager.get_singleton().add_opt(
-			&"input/action/%s/bind" % action,
-			default,
-			func(value: InputEvent):
-				InputMap.action_erase_events(action)
-				InputMap.action_add_event(action, value),
-			false,
-			[],
-			&"InputEvent")
+		&"input/action/%s/bind" % action,
+		default,
+		func(value: InputEvent):
+			InputMap.action_erase_events(action)
+			InputMap.action_add_event(action, value),
+		false,
+		[],
+		&"InputEvent"
+	)
 
 
 ## Construct a [InputEventKey] for [method add_action].
-static func kb_event(key: Key,
-		ctrl := false,
-		shift := false,
-		alt := false,
-		meta := false) -> InputEvent:
+static func kb_event(
+	key: Key, ctrl := false, shift := false, alt := false, meta := false
+) -> InputEvent:
 	var ev := InputEventKey.new()
 	ev.physical_keycode = key
 	ev.ctrl_pressed = ctrl

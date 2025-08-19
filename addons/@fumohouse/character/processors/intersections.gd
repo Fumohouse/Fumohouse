@@ -26,8 +26,10 @@ func _process(_delta: float, _cancelled: bool):
 
 	for i in wall_result.get_collision_count():
 		var normal := wall_result.get_collision_normal(i)
-		if (not state.is_stable_ground(normal) and
-				not state.should_push(wall_result.get_collider_rid(i))):
+		if (
+			not state.is_stable_ground(normal)
+			and not state.should_push(wall_result.get_collider_rid(i))
+		):
 			var wall := CharacterMotionState.WallInfo.new()
 			wall.point = wall_result.get_collision_point(i)
 			wall.normal = wall_result.get_collision_normal(i)
@@ -44,7 +46,9 @@ func _process(_delta: float, _cancelled: bool):
 	intersect_params.margin = MARGIN
 	intersect_params.exclude = [state.rid]
 
-	var intersect_result: Array[Dictionary] = state.node.get_world_3d().direct_space_state.intersect_shape(intersect_params)
+	var intersect_result: Array[Dictionary] = (
+		state.node.get_world_3d().direct_space_state.intersect_shape(intersect_params)
+	)
 
 	for data in intersect_result:
 		var collider := data["collider"] as Object

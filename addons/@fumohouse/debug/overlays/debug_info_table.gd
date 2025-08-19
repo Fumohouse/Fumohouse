@@ -54,7 +54,8 @@ func _create_label() -> RichTextLabel:
 	return label
 
 
-class Entry extends RefCounted:
+class Entry:
+	extends RefCounted
 	var root: Control
 	var label: RichTextLabel
 	var contents: RichTextLabel

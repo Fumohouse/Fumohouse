@@ -51,26 +51,18 @@ func _process(_delta: float):
 			var freq_low := FREQ_LOW + RANGE_LEN * i
 			var freq_high := freq_low + RANGE_LEN
 
-			var magnitude := _spectrum \
-					.get_magnitude_for_frequency_range(freq_low, freq_high) \
-					.length()
-
-			factor = clampf(
-					(linear_to_db(magnitude) - MIN_DB) / (MAX_DB - MIN_DB),
-					0,
-					1
+			var magnitude := (
+				_spectrum.get_magnitude_for_frequency_range(freq_low, freq_high).length()
 			)
 
+			factor = clampf((linear_to_db(magnitude) - MIN_DB) / (MAX_DB - MIN_DB), 0, 1)
+
 		var smoothing_factor := 0.1 if factor == 0 else 0.7
-		_histogram[i] = factor * smoothing_factor \
-				+ _histogram[i] * (1 - smoothing_factor)
+		_histogram[i] = factor * smoothing_factor + _histogram[i] * (1 - smoothing_factor)
 
 	queue_redraw()
 
 
 func _get_point(i: int) -> Vector2:
 	var factor := maxf(_histogram[i], 0.01)
-	return Vector2(
-			i / float(POINTS) * self.size.x,
-			self.size.y - factor * self.size.y
-	)
+	return Vector2(i / float(POINTS) * self.size.x, self.size.y - factor * self.size.y)

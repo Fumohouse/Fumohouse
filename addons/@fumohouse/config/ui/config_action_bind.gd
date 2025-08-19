@@ -22,8 +22,10 @@ func _input(event: InputEvent):
 		handle_event = true
 	elif event is InputEventMouseButton:
 		var emb := event as InputEventMouseButton
-		if emb.button_index == MOUSE_BUTTON_LEFT and \
-				Rect2(Vector2.ZERO, _btn.size).has_point(_btn.get_local_mouse_position()):
+		if (
+			emb.button_index == MOUSE_BUTTON_LEFT
+			and Rect2(Vector2.ZERO, _btn.size).has_point(_btn.get_local_mouse_position())
+		):
 			return
 
 		handle_event = true
@@ -49,8 +51,10 @@ func _approx_equal(a: Variant, b: Variant):
 	var ekb := b as InputEventKey
 	if eka and ekb:
 		# Defaults are always physical keycodes so this is ok
-		return eka.physical_keycode == ekb.physical_keycode and \
-				eka.get_modifiers_mask() == ekb.get_modifiers_mask()
+		return (
+			eka.physical_keycode == ekb.physical_keycode
+			and eka.get_modifiers_mask() == ekb.get_modifiers_mask()
+		)
 
 	var emba := a as InputEventMouseButton
 	var embb := b as InputEventMouseButton
@@ -90,11 +94,7 @@ func _display_event(event: InputEvent):
 
 		if ek.physical_keycode == 0:
 			# Physical not supported?
-			return (
-					modifier_str +
-					OS.get_keycode_string(ek.keycode) +
-					" (Layout specific)"
-			)
+			return modifier_str + OS.get_keycode_string(ek.keycode) + " (Layout specific)"
 
 		var keycode: Key = DisplayServer.keyboard_get_keycode_from_physical(ek.physical_keycode)
 		return modifier_str + OS.get_keycode_string(keycode)

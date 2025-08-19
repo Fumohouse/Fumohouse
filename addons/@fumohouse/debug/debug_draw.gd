@@ -2,7 +2,6 @@ class_name DebugDraw
 extends MeshInstance3D
 ## 3D debug drawing singleton.
 
-
 var _mesh := ImmediateMesh.new()
 var _lines: Array[LineInfo] = []
 
@@ -105,17 +104,22 @@ func draw_marker(pos: Vector3, color: Color, lifetime := 0.0, size := 0.05):
 	draw_line(
 		pos + (cam_x + cam_y).normalized() * size,
 		pos + (-cam_x - cam_y).normalized() * size,
-		color, color, lifetime
+		color,
+		color,
+		lifetime
 	)
 	draw_line(
 		pos + (-cam_x + cam_y).normalized() * size,
 		pos + (cam_x - cam_y).normalized() * size,
-		color, color, lifetime
+		color,
+		color,
+		lifetime
 	)
 
 
 ## Class representing line data.
-class LineInfo extends RefCounted:
+class LineInfo:
+	extends RefCounted
 	## Time the line has been displayed.
 	var time_alive := 0.0
 	## Time elapsed before line is destroyed.

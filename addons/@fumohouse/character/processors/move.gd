@@ -63,9 +63,11 @@ func _move(motion: Vector3) -> Dictionary:
 
 	const MAX_SLIDES := 5
 
-	while ((slides < MAX_SLIDES and remaining.length_squared() > 1e-3) or
-			# Add an extra slide when not ragdolling for recovery
-			(not state.is_ragdoll and slides == 0)):
+	while (
+		(slides < MAX_SLIDES and remaining.length_squared() > 1e-3)
+		# Add an extra slide when not ragdolling for recovery
+		or (not state.is_ragdoll and slides == 0)
+	):
 		params.from = orig_transform.translated(offset)
 		params.motion = remaining
 
@@ -95,9 +97,11 @@ func _move(motion: Vector3) -> Dictionary:
 		if builtin_recovery.length_squared() <= MAX_BUILTIN_RECOVERY * MAX_BUILTIN_RECOVERY:
 			actual_motion += builtin_recovery
 
-		if (not state.is_ragdoll and
-				not (ctx.is_grounded and rid == ctx.ground_rid) and
-				state.should_push(rid)):
+		if (
+			not state.is_ragdoll
+			and not (ctx.is_grounded and rid == ctx.ground_rid)
+			and state.should_push(rid)
+		):
 			var body_state := PhysicsServer3D.body_get_direct_state(rid)
 			body_state.apply_force(
 				motion_normal * push_force,
@@ -145,7 +149,9 @@ func _custom_recovery(offset: Vector3) -> Vector3:
 	params.exclude = [state.rid]
 
 	var MAX_PAIRS := 16
-	var result: Array[Vector3] = state.node.get_world_3d().direct_space_state.collide_shape(params, MAX_PAIRS)
+	var result: Array[Vector3] = state.node.get_world_3d().direct_space_state.collide_shape(
+		params, MAX_PAIRS
+	)
 	if result.is_empty():
 		return Vector3.ZERO
 
@@ -154,11 +160,12 @@ func _custom_recovery(offset: Vector3) -> Vector3:
 	var capsule_transform := state.main_collider.global_transform.translated(offset)
 	var capsule_cyl_height := capsule_shape.height - 2 * capsule_shape.radius
 	var capsule_cyl_base_pos := (
-			capsule_transform.origin - capsule_transform.basis.y * capsule_cyl_height / 2)
+		capsule_transform.origin - capsule_transform.basis.y * capsule_cyl_height / 2
+	)
 	var capsule_cyl_transform := Transform3D(capsule_transform.basis, capsule_cyl_base_pos)
 	var capsule_cyl_transform_inv := capsule_cyl_transform.inverse()
 
-	var is_inside_cylinder := func (cyl_pos: Vector3) -> bool:
+	var is_inside_cylinder := func(cyl_pos: Vector3) -> bool:
 		if cyl_pos.y < 0 or cyl_pos.y > capsule_cyl_height:
 			return false
 
@@ -180,12 +187,15 @@ func _custom_recovery(offset: Vector3) -> Vector3:
 		# Recompute points if necessary
 		# Mainly addresses (1) and (2) above
 		var min_len := capsule_shape.radius / 2
-		if (is_inside_cylinder.call(cyl_a) and is_inside_cylinder.call(cyl_b) and
-				is_equal_approx(cyl_a.y, cyl_b.y) and
-				# When the points are close together, the player is close to the
-				# edge of the intersecting body. In that case, it's most likely
-				# that the horizontal movement is correct.
-				(b - a).length_squared() > min_len * min_len):
+		if (
+			is_inside_cylinder.call(cyl_a)
+			and is_inside_cylinder.call(cyl_b)
+			and is_equal_approx(cyl_a.y, cyl_b.y)
+			# When the points are close together, the player is close to the
+			# edge of the intersecting body. In that case, it's most likely
+			# that the horizontal movement is correct.
+			and (b - a).length_squared() > min_len * min_len
+		):
 			# Recompute the pair to be vertical
 			# Assume this pair lies pretty much exactly on the ground
 			const RAY_MARGIN := 0.01
@@ -194,7 +204,9 @@ func _custom_recovery(offset: Vector3) -> Vector3:
 			ray_params.to = b + Vector3.DOWN * RAY_MARGIN
 			ray_params.exclude = [state.rid]
 
-			var ray_result: Dictionary = state.node.get_world_3d().direct_space_state.intersect_ray(ray_params)
+			var ray_result: Dictionary = state.node.get_world_3d().direct_space_state.intersect_ray(
+				ray_params
+			)
 			if not ray_result.is_empty():
 				var hit_normal := ray_result["normal"] as Vector3
 				# If zero then the ray was inside the body it hit (happens often

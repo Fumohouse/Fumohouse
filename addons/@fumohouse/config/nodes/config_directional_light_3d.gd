@@ -19,6 +19,7 @@ func _on_config_value_changed(key: StringName):
 
 
 func _apply_bias():
-	light.shadow_bias = GraphicsConfigManager.SHADOW_QUALITY_OPTIONS[
-			cm.get_opt(&"graphics/shadows/quality")
-	]["directional_bias"]
+	light.shadow_bias = (
+		GraphicsConfigManager
+		. SHADOW_QUALITY_OPTIONS[cm.get_opt(&"graphics/shadows/quality")]["directional_bias"]
+	)

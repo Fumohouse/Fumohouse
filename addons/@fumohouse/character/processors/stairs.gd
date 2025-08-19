@@ -65,8 +65,13 @@ func _reset():
 func _handle_stairs(delta: float) -> bool:
 	# Don't look for new stair unless player is moving and recently on the
 	# ground
-	if (not _found_stair and (ctx.input_direction.is_zero_approx() or
-			state.is_state(CharacterMotionState.CharacterState.FALLING))):
+	if (
+		not _found_stair
+		and (
+			ctx.input_direction.is_zero_approx()
+			or state.is_state(CharacterMotionState.CharacterState.FALLING)
+		)
+	):
 		return false
 
 	var step_up := _find_step_up()
@@ -120,15 +125,21 @@ func _find_step_up() -> Variant:
 	ray_params.from = highest_point - wall_normal * RAY_MARGIN + Vector3.UP * RAY_DISTANCE
 	ray_params.to = ray_params.from + Vector3.DOWN * (RAY_DISTANCE + RAY_MARGIN)
 
-	var ray_result: Dictionary = state.node.get_world_3d().direct_space_state.intersect_ray(ray_params)
+	var ray_result: Dictionary = state.node.get_world_3d().direct_space_state.intersect_ray(
+		ray_params
+	)
 	if ray_result.is_empty() or not _is_valid_stair(ray_result["normal"] as Vector3):
 		return
 
-	var target_point := Vector3(highest_point.x, (ray_result["position"] as Vector3).y, highest_point.z)
+	var target_point := Vector3(
+		highest_point.x, (ray_result["position"] as Vector3).y, highest_point.z
+	)
 
 	# "Straighten" to wall normal
 	var motion := target_point - char_transform.origin
-	target_point = char_transform.origin + wall_normal * motion.dot(wall_normal) + Vector3.UP * motion.y
+	target_point = (
+		char_transform.origin + wall_normal * motion.dot(wall_normal) + Vector3.UP * motion.y
+	)
 
 	return {
 		"target": target_point,
@@ -148,7 +159,7 @@ func _find_step_down() -> Variant:
 	var ray_motion := Vector3.DOWN * (max_step_height + MAX_STEP_MARGIN)
 
 	const STEP_SIZE := 0.1
-	const MIN_STEP_MARGIN := 0.1 # Account for grounding distance
+	const MIN_STEP_MARGIN := 0.1  # Account for grounding distance
 
 	var target_position: Variant
 
@@ -159,7 +170,10 @@ func _find_step_down() -> Variant:
 		check_ray_params.to = check_ray_params.from + ray_motion
 
 		var check_ray_result: Dictionary = dss.intersect_ray(check_ray_params)
-		if check_ray_result.is_empty() or not _is_valid_stair(check_ray_result["normal"] as Vector3):
+		if (
+			check_ray_result.is_empty()
+			or not _is_valid_stair(check_ray_result["normal"] as Vector3)
+		):
 			break
 
 		var pos := check_ray_result["position"] as Vector3
@@ -193,9 +207,11 @@ func _find_step_down() -> Variant:
 		return null
 
 	# Straighten, fix size of slope to maximum size
-	target_position = (char_transform.origin
-			+ wall_normal * minf(motion.dot(wall_normal), slope_distance)
-			+ Vector3.UP * motion.y)
+	target_position = (
+		char_transform.origin
+		+ wall_normal * minf(motion.dot(wall_normal), slope_distance)
+		+ Vector3.UP * motion.y
+	)
 
 	return {
 		"target": target_position,
@@ -210,8 +226,13 @@ func _apply_motion(delta: float, target_point: Vector3, stair_normal: Vector3):
 
 	var total_motion := _end_position - _begin_position
 	# total_motion as components of DOWN and stair_normal (no side-to-side)
-	_motion_vector = (stair_normal * total_motion.dot(stair_normal)
-			+ Vector3.DOWN * total_motion.dot(Vector3.DOWN)).normalized()
+	_motion_vector = (
+		(
+			stair_normal * total_motion.dot(stair_normal)
+			+ Vector3.DOWN * total_motion.dot(Vector3.DOWN)
+		)
+		. normalized()
+	)
 
 	# Points "RIGHT"
 	_wall_tangent = Vector3.UP.cross(-stair_normal)

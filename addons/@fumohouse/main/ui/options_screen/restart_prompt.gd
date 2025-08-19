@@ -9,9 +9,11 @@ func _ready():
 
 	config_manager.restart_required.connect(func(): nav_transition(true))
 	%Cancel.pressed.connect(func(): nav_transition(false))
-	%Restart.pressed.connect(func():
-		OS.set_restart_on_exit(true, OS.get_cmdline_args())
-		quit_manager.quit())
+	%Restart.pressed.connect(
+		func():
+			OS.set_restart_on_exit(true, OS.get_cmdline_args())
+			quit_manager.quit()
+	)
 
 
 func nav_hide():
@@ -28,8 +30,7 @@ func nav_transition(vis: bool):
 	visible = true
 
 	var tween := MenuUtils.common_tween(self, vis)
-	tween.tween_property(self, "position:y", _target_y(vis),
-			MenuUtils.TRANSITION_DURATION)
+	tween.tween_property(self, "position:y", _target_y(vis), MenuUtils.TRANSITION_DURATION)
 
 	if not vis:
 		tween.finished.connect(func(): visible = false, CONNECT_ONE_SHOT)

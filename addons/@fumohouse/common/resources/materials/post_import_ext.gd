@@ -58,8 +58,7 @@ func _iterate(node: Node):
 		var material := mesh.surface_get_material(i)
 		if material is StandardMaterial3D:
 			mesh_inst.set_surface_override_material(
-					i,
-					_convert_material(material as StandardMaterial3D)
+				i, _convert_material(material as StandardMaterial3D)
 			)
 		else:
 			mesh_inst.set_surface_override_material(i, material)
@@ -74,12 +73,11 @@ func _convert_material(mat: StandardMaterial3D) -> ShaderMaterial:
 	for key in _PROPERTY_MAP.keys():
 		new_mat.set_shader_parameter(_PROPERTY_MAP[key], mat.get(key))
 
-	new_mat.set_shader_parameter(
-			"ao_texture_channel", _TEXTURE_MASKS[mat.ao_texture_channel])
+	new_mat.set_shader_parameter("ao_texture_channel", _TEXTURE_MASKS[mat.ao_texture_channel])
 
 	new_mat.set_shader_parameter(
-			"metallic_texture_channel",
-			_TEXTURE_MASKS[mat.metallic_texture_channel])
+		"metallic_texture_channel", _TEXTURE_MASKS[mat.metallic_texture_channel]
+	)
 
 	new_mat.resource_local_to_scene = true
 

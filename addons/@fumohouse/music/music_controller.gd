@@ -41,8 +41,7 @@ func _process(_delta: float):
 
 	if _mp.stream:
 		if not _is_seeking:
-			_seek_bar.value = \
-					_mp.get_playback_position() / _mp.stream.get_length()
+			_seek_bar.value = _mp.get_playback_position() / _mp.stream.get_length()
 	else:
 		_seek_bar.value = 0
 
@@ -85,16 +84,12 @@ func _update_paused():
 func _update_song(song: Song):
 	if song:
 		var artist_name := (
-				song.artist.name_romanized
-				if song.artist.name_unicode.is_empty()
-				else song.artist.name_unicode
+			song.artist.name_romanized
+			if song.artist.name_unicode.is_empty()
+			else song.artist.name_unicode
 		)
 
-		var song_name := (
-				song.name_romanized
-				if song.name_unicode.is_empty()
-				else song.name_unicode
-		)
+		var song_name := song.name_romanized if song.name_unicode.is_empty() else song.name_unicode
 
 		_marquee.label.text = "%s - %s" % [artist_name, song_name]
 		_marquee.reset_position()
@@ -114,14 +109,12 @@ func nav_transition(vis: bool):
 
 	visible = true
 
-	var tween := create_tween() \
-			.set_ease(Tween.EASE_OUT) \
-			.set_trans(Tween.TRANS_QUAD)
+	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 
-	tween.tween_property(self, "scale", Vector2.ONE if vis else Vector2(0, 1),
-			TRANSITION_DURATION)
-	tween.parallel().tween_property(self, "modulate",
-			Color.WHITE if vis else Color.TRANSPARENT, TRANSITION_DURATION)
+	tween.tween_property(self, "scale", Vector2.ONE if vis else Vector2(0, 1), TRANSITION_DURATION)
+	tween.parallel().tween_property(
+		self, "modulate", Color.WHITE if vis else Color.TRANSPARENT, TRANSITION_DURATION
+	)
 
 	_tween = tween
 

@@ -24,7 +24,9 @@ const _STATE_NAMES: Array[String] = [
 ]
 
 var _character: Character
-@export var character: Character : set = _set_character, get = _get_character
+@export var character: Character:
+	set = _set_character,
+	get = _get_character
 
 var _physical_processor: CharacterPhysicalMotionProcessor
 var _stairs_processor: CharacterStairsMotionProcessor
@@ -80,26 +82,40 @@ func _process(_delta: float):
 		grounded_str = "No"
 	_tbl.set_val(&"grounded", grounded_str)
 
+	(
+		_tbl
+		. set_val(
+			&"collisions",
+			(
+				"Walls: %d, Bodies: %d, Areas: %d"
+				% [
+					ctx.walls.size(),
+					ctx.body_intersections.size(),
+					ctx.area_intersections.size(),
+				]
+			)
+		)
+	)
 
-	_tbl.set_val(&"collisions", "Walls: %d, Bodies: %d, Areas: %d" % [
-		ctx.walls.size(),
-		ctx.body_intersections.size(),
-		ctx.area_intersections.size(),
-	])
-
-	var velocity_str := "Total: %s m/s (norm: %.2f m/s)" % [
-		CommonUtils.format_vector3(ctx.velocity),
-		ctx.velocity.length(),
-	]
+	var velocity_str := (
+		"Total: %s m/s (norm: %.2f m/s)"
+		% [
+			CommonUtils.format_vector3(ctx.velocity),
+			ctx.velocity.length(),
+		]
+	)
 
 	for processor in state._motion_processors:
 		var velocity: Variant = processor._get_velocity()
 		if velocity != null:
-			velocity_str += "\n%s: %s m/s (norm: %.2f m/s)" % [
-				processor.id,
-				CommonUtils.format_vector3(velocity),
-				velocity.length(),
-			]
+			velocity_str += (
+				"\n%s: %s m/s (norm: %.2f m/s)"
+				% [
+					processor.id,
+					CommonUtils.format_vector3(velocity),
+					velocity.length(),
+				]
+			)
 
 	_tbl.set_val(&"velocity", velocity_str)
 
@@ -159,19 +175,13 @@ func _debug_draw():
 		_dd.draw_marker(target, Color.AQUA)
 
 		_dd.draw_line(
-			target,
-			target + _stairs_processor._wall_tangent * STAIRS_AXIS_LENGTH,
-			Color.RED
+			target, target + _stairs_processor._wall_tangent * STAIRS_AXIS_LENGTH, Color.RED
 		)
 
 		_dd.draw_line(
-			target,
-			target + _stairs_processor._slope_normal * STAIRS_AXIS_LENGTH,
-			Color.GREEN
+			target, target + _stairs_processor._slope_normal * STAIRS_AXIS_LENGTH, Color.GREEN
 		)
 
 		_dd.draw_line(
-			target,
-			target + _stairs_processor._motion_vector * STAIRS_AXIS_LENGTH,
-			Color.BLUE
+			target, target + _stairs_processor._motion_vector * STAIRS_AXIS_LENGTH, Color.BLUE
 		)

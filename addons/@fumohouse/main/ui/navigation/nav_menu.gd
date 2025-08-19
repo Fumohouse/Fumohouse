@@ -7,7 +7,7 @@ const NavButton := preload("components/nav_button.gd")
 
 var inhibit_back := false
 
-var _current_screen: TransitionElement # also: _screen_in
+var _current_screen: TransitionElement  # also: _screen_in
 var _tween_in: Tween
 var _screen_out: TransitionElement
 var _tween_out: Tween
@@ -17,7 +17,7 @@ var _tween_out: Tween
 
 
 func _ready():
-	_back_button.visible = true # hidden in editor
+	_back_button.visible = true  # hidden in editor
 	_back_button.nav_hide()
 	_back_button.pressed.connect(_on_back_button_pressed)
 
@@ -28,10 +28,7 @@ func _ready():
 func _unhandled_input(event: InputEvent):
 	if not inhibit_back and Input.is_action_pressed("menu_back"):
 		var focus: Control = get_viewport().gui_get_focus_owner()
-		if (
-				focus and focus.has_meta("block_dismiss") and
-				focus.get_meta("block_dismiss") == true
-		):
+		if focus and focus.has_meta("block_dismiss") and focus.get_meta("block_dismiss") == true:
 			return
 
 		if _current_screen != main_screen:

@@ -20,7 +20,7 @@ enum CameraMode {
 @export var camera: Camera3D
 
 ## The vertical offset of the camera's focal point from [member focus_node].
-@export var camera_offset := 2.5;
+@export var camera_offset := 2.5
 
 ## The minimum distance the camera can be from [member focus_node].
 @export_range(0.0, 200.0) var min_focus_distance := 0.0
@@ -71,8 +71,7 @@ func _process(delta: float):
 	# "Tween" focal distance
 	if mode != CameraMode.MODE_FLOATING:
 		if absf(focus_distance - _focus_distance) >= 1e-2:
-			_focus_distance = lerpf(_focus_distance, focus_distance,
-					CommonUtils.lerp_weight(delta))
+			_focus_distance = lerpf(_focus_distance, focus_distance, CommonUtils.lerp_weight(delta))
 		else:
 			_focus_distance = focus_distance
 
@@ -81,11 +80,11 @@ func _process(delta: float):
 	if not focus_node:
 		mode = CameraMode.MODE_FLOATING
 
-		var direction := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-		var speed := move_speed_fast if Input.is_action_pressed("move_run") \
-				else move_speed
-		camera.position += speed * delta * \
-				(camera.basis * Vector3(direction.x, 0, direction.y))
+		var direction := Input.get_vector(
+			"move_left", "move_right", "move_forward", "move_backward"
+		)
+		var speed := move_speed_fast if Input.is_action_pressed("move_run") else move_speed
+		camera.position += speed * delta * (camera.basis * Vector3(direction.x, 0, direction.y))
 
 		_process_first_person()
 	elif focus_distance == 0.0:
@@ -128,28 +127,28 @@ func _unhandled_input(event: InputEvent):
 
 			# Estimate a scroll tick is around 2% of the screen height?
 			const SCROLL_TICK_FRAC := 0.02
-			var delta := _zoom_sens * epg.delta.y / \
-					(viewport_height * SCROLL_TICK_FRAC)
+			var delta := _zoom_sens * epg.delta.y / (viewport_height * SCROLL_TICK_FRAC)
 
-			focus_distance = clampf(focus_distance + delta,
-					min_focus_distance, max_focus_distance)
+			focus_distance = clampf(focus_distance + delta, min_focus_distance, max_focus_distance)
 		elif event is InputEventMagnifyGesture:
 			var emg := event as InputEventMagnifyGesture
-			focus_distance = clampf(focus_distance / emg.factor,
-					min_focus_distance, max_focus_distance)
+			focus_distance = clampf(
+				focus_distance / emg.factor, min_focus_distance, max_focus_distance
+			)
 		else:
 			handle_input = false
 
 	# Rotate
 	if event is InputEventMouseMotion and _rotating:
 		var relative := (event as InputEventMouseMotion).relative
-		var rot_delta := relative * (_sens_first_person
-				if mode == CameraMode.MODE_FIRST_PERSON
-				else _sens_third_person)
+		var rot_delta := (
+			relative
+			* (_sens_first_person if mode == CameraMode.MODE_FIRST_PERSON else _sens_third_person)
+		)
 
 		camera_rotation = Vector2(
-				clampf(camera_rotation.x - rot_delta.y, -CAMERA_MAX_X_ROT, CAMERA_MAX_X_ROT),
-				fmod(camera_rotation.y - rot_delta.x, TAU)
+			clampf(camera_rotation.x - rot_delta.y, -CAMERA_MAX_X_ROT, CAMERA_MAX_X_ROT),
+			fmod(camera_rotation.y - rot_delta.x, TAU)
 		)
 
 		handle_input = true
@@ -167,8 +166,7 @@ func _unhandled_input(event: InputEvent):
 ## [member focus_node].
 func get_focal_point() -> Vector3:
 	if focus_node:
-		return focus_node.global_position + \
-				focus_node.global_basis.y * camera_offset
+		return focus_node.global_position + focus_node.global_basis.y * camera_offset
 
 	return Vector3.ZERO
 
@@ -195,10 +193,7 @@ func _set_camera_rotating(rotating: bool):
 
 func _process_first_person():
 	if focus_node:
-		camera.global_transform = Transform3D(
-				Basis.IDENTITY,
-				get_focal_point()
-		)
+		camera.global_transform = Transform3D(Basis.IDENTITY, get_focal_point())
 
 	camera.rotation.x = camera_rotation.x
 	camera.rotation.y = camera_rotation.y
@@ -206,9 +201,9 @@ func _process_first_person():
 
 func _process_third_person():
 	var focal_point := get_focal_point()
-	var cam_basis := Basis.IDENTITY \
-			.rotated(Vector3.RIGHT, camera_rotation.x) \
-			.rotated(Vector3.UP, camera_rotation.y)
+	var cam_basis := Basis.IDENTITY.rotated(Vector3.RIGHT, camera_rotation.x).rotated(
+		Vector3.UP, camera_rotation.y
+	)
 
 	var pos := focal_point + cam_basis * Vector3(0, 0, _focus_distance)
 
@@ -220,11 +215,9 @@ func _process_third_person():
 	if not result.is_empty():
 		# Minimize clipping into walls, etc.
 		const HIT_MARGIN := 0.05
-		pos = (result["position"] as Vector3) + \
-				(result["normal"] as Vector3) * HIT_MARGIN
+		pos = (result["position"] as Vector3) + (result["normal"] as Vector3) * HIT_MARGIN
 
-	camera.global_transform = Transform3D(Basis.IDENTITY, pos) \
-			.looking_at(focal_point, Vector3.UP)
+	camera.global_transform = Transform3D(Basis.IDENTITY, pos).looking_at(focal_point, Vector3.UP)
 
 
 func _on_config_value_changed(key: StringName):
@@ -243,13 +236,11 @@ func _apply_fov():
 
 
 func _apply_sens_first_person():
-	_sens_first_person = deg_to_rad(
-			_cm.get_opt(&"input/sens/camera/first_person"))
+	_sens_first_person = deg_to_rad(_cm.get_opt(&"input/sens/camera/first_person"))
 
 
 func _apply_sens_third_person():
-	_sens_third_person = deg_to_rad(
-			_cm.get_opt(&"input/sens/camera/third_person"))
+	_sens_third_person = deg_to_rad(_cm.get_opt(&"input/sens/camera/third_person"))
 
 
 func _apply_zoom_sens():

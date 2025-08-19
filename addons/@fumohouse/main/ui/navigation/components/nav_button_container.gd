@@ -44,17 +44,17 @@ func nav_transition(vis: bool):
 		var button: NavButton = get_child(i)
 		button.disabled = not vis
 
-		var mod_tweener: PropertyTweener = \
-				tween.parallel().tween_property(button, "modulate",
-				target_modulate, MenuUtils.TRANSITION_DURATION)
+		var mod_tweener: PropertyTweener = tween.parallel().tween_property(
+			button, "modulate", target_modulate, MenuUtils.TRANSITION_DURATION
+		)
 
 		if i == _button_idx and not vis:
 			mod_tweener.set_delay(0.1)
 			continue
 
-		var pos_tweener: PropertyTweener = \
-				tween.parallel().tween_property(button, "position:x",
-				_button_target_x(vis, button), MenuUtils.TRANSITION_DURATION)
+		var pos_tweener: PropertyTweener = tween.parallel().tween_property(
+			button, "position:x", _button_target_x(vis, button), MenuUtils.TRANSITION_DURATION
+		)
 
 		if _button_idx == -1 or vis:
 			mod_tweener.set_delay(0.03 * i)

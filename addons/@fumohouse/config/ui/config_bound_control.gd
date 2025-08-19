@@ -66,8 +66,7 @@ func _update_from_config():
 	var value: Variant = config_manager.get_opt(key)
 
 	if revert_button:
-		revert_button.visible = not _approx_equal(value,
-				config_manager.get_default(key))
+		revert_button.visible = not _approx_equal(value, config_manager.get_default(key))
 
 	if not _updating_config:
 		_set_value(value)

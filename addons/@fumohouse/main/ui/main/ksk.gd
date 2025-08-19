@@ -23,8 +23,7 @@ func _on_mouse_entered():
 		_tween.kill()
 
 	_tween = _begin_tween()
-	_tween.tween_property(_logo_mat, "shader_parameter/progress", 1.0,
-			TRANSITION_DURATION)
+	_tween.tween_property(_logo_mat, "shader_parameter/progress", 1.0, TRANSITION_DURATION)
 
 
 func _on_mouse_exited():
@@ -32,8 +31,7 @@ func _on_mouse_exited():
 		_tween.kill()
 
 	_tween = _begin_tween()
-	_tween.tween_property(_logo_mat, "shader_parameter/progress", 0.0,
-			TRANSITION_DURATION)
+	_tween.tween_property(_logo_mat, "shader_parameter/progress", 0.0, TRANSITION_DURATION)
 
 
 func _on_pressed():
