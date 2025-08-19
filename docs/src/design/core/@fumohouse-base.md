@@ -3,14 +3,12 @@
 1. [x] All of Fumohouse's/Fumofas' game code/tooling/assets is organized into
    modules.
 1. [x] The module system is based on Godot's addon/plugin system. Each module is
-   a Godot plugin and therefore must contain a `plugin.cfg`.
-1. [x] By convention, a module's plugin script should be named `plugin.gd`.
+   a Godot plugin and therefore must contain a `plugin.cfg`. By convention, a
+   module's plugin script should be named `plugin.gd`.
 1. [x] Modules should be named like `res://addons/@<scope>/<module_name>`.
-1. [x] Module scopes are dedicated to one person or group. Several scopes may be
-   reserved by Fumohouse for first-party use.
+1. [x] Module scopes are typically dedicated to a person or group.
    1. The `@fumohouse` scope is reserved for official Fumohouse modules.
-   1. The `@assets` scope should be used for permissively-licensed asset
-      collections.
+   1. The `@assets` scope should be used for asset collections.
 1. [x] Modules must declare dependencies on other modules, if any. Cyclic
    dependency between modules is forbidden.
 1. [x] Modules must not depend on any files external to themselves and their
@@ -21,7 +19,8 @@
    `plugin.cfg`. The manifest stores dependencies, entry point scene, autoloads,
    restricted API usage, etc.
 1. [ ] Each module may contain a Debian-format `COPYRIGHT.txt` next to its
-   `plugin.cfg` to declare copyright information.
+   `plugin.cfg` to declare copyright information. Core modules use the
+   `COPYRIGHT.txt` at the root of the Fumohouse repository.
 1. [x] Autoload classes/scenes are registered per-module and managed by one
    Godot autoload that loads all module autoloads and and exposes them similar
    to Roblox's `game:GetService()`.[^autoload]
@@ -50,7 +49,7 @@ addition to special files mentioned elsewhere):
 
 ## Security
 
-1. **Modules are not strongly sandboxed or restricted from running dangerous
+1. **Modules are not robustly sandboxed or restricted from running dangerous
    code.**
 1. Officially distributed modules must be managed or have their source code
    audited regularly by a trusted community member. Static analysis tools may

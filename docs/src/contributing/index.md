@@ -3,8 +3,7 @@
 Thank you for your interest in contributing to Fumohouse!
 
 1. Contributions are welcome to all Fumohouse projects.
-1. Contributors should discuss their plan with the maintainers before starting
-   work.
+1. Please discuss your plan with maintainers before starting work.
 1. Contributions must be provided under the licenses described in
    [Licensing](#licensing) unless otherwise stated.
 1. Contributions must not violate others' intellectual property (see
@@ -13,9 +12,8 @@ Thank you for your interest in contributing to Fumohouse!
 1. The use of generative AI in any contribution is prohibited.
 1. Contributors should expect feedback from maintainers indicating a) the
    changes that would be required for the contribution to be accepted or b) that
-   their contribution will not be accepted.
-1. It is up to the maintainers' discretion as to whether to accept a
-   contribution.
+   their contribution will not be accepted. It is up to the maintainers'
+   discretion as to whether to accept a contribution.
 
 ## Licensing
 
@@ -25,8 +23,6 @@ Thank you for your interest in contributing to Fumohouse!
    license](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
    1. Attribution guidelines: Provide the name of the asset's original creator
       (provided in `COPYRIGHT.txt`) or consult with a maintainer.
-1. The copyright owner of Fumohouse should be displayed as "voided_etc & co."
-   and/or "Fumohouse contributors."
 1. All external intellectual property used by Fumohouse should be used within
    the guidelines provided by its creator.
 
@@ -49,11 +45,12 @@ Thank you for your interest in contributing to Fumohouse!
    | `snake_case` | files,[^filenames] folders, animations         |
    | `PascalCase` | classes, autoloads, nodes (incl. in 3D models) |
 1. Public interfaces should be documented.
-1. Do not use Godot's binary resource formats `.res` or `.scn` unless otherwise
-   stated.
+1. Do not use Godot's binary resource formats `.res` or `.scn` unless necessary.
 
-### Asset optimization
+### Formatting and optimization
 
+1. GDScript: Use `gdformat`. For simplicity, always keep the formatter result
+   even if it looks bad.
 1. SVG: Use `svgo --multipass`.
 
 [^filenames]:
