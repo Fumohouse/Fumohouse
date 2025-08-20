@@ -266,6 +266,10 @@ text = "seat"
 font = ExtResource("5_b1etj")
 font_size = 40
 
+[node name="Dummy" parent="Map/Interactables" instance=ExtResource("3_toukj")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 5)
+
 [node name="Platform" type="CSGCombiner3D" parent="Map"]
 layers = 3
 use_collision = true

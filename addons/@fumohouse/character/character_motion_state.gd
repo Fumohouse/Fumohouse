@@ -90,6 +90,8 @@ func initialize():
 	_motion_processors.append(CharacterIntersectionsMotionProcessor.new())
 	_motion_processors.append(CharacterGroundingMotionProcessor.new())
 
+	_motion_processors.append(CharacterSeparatorMotionProcessor.new())
+
 	_motion_processors.append(CharacterRagdollMotionProcessor.new())
 	_motion_processors.append(CharacterLadderMotionProcessor.new())
 
