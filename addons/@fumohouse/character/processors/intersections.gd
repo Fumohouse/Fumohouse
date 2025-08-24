@@ -11,13 +11,13 @@ func _init():
 
 
 func _process(_delta: float, _cancelled: bool):
-	const MARGIN := 0.15
+	const WALL_MARGIN := 0.15
 
 	# Walls
 	var wall_params := PhysicsTestMotionParameters3D.new()
 	wall_params.from = state.node.global_transform
 	wall_params.motion = Vector3.ZERO
-	wall_params.margin = MARGIN
+	wall_params.margin = WALL_MARGIN
 	wall_params.recovery_as_collision = true
 	wall_params.max_collisions = 4
 
@@ -43,7 +43,7 @@ func _process(_delta: float, _cancelled: bool):
 	intersect_params.transform = state.main_collider.global_transform
 	intersect_params.collide_with_areas = true
 	intersect_params.collide_with_bodies = true
-	intersect_params.margin = MARGIN
+	intersect_params.margin = state.margin
 	intersect_params.exclude = [state.rid]
 
 	var intersect_result: Array[Dictionary] = (
