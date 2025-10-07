@@ -53,5 +53,13 @@ Thank you for your interest in contributing to Fumohouse!
    even if it looks bad.
 1. SVG: Use `svgo --multipass`.
 
+### 3D modeling
+
+1. Fumohouse uses `.glb` as the main export format for Blender. Use other
+   formats only as necessary.
+1. For duplicated meshes, try to avoid duplicate mesh data and facilitate mesh
+   reuse by exporting the duplciated mesh only once and creating its instances
+   in Godot.
+
 [^filenames]:
     Exceptions: For fonts, use the original name from the author.

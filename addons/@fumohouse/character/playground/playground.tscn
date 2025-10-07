@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://guxlxf4tholg"]
+[gd_scene load_steps=39 format=3 uid="uid://guxlxf4tholg"]
 
 [ext_resource type="Script" uid="uid://bfxjq1i3chu5i" path="res://addons/@fumohouse/character/playground/playground.gd" id="1_w0vfe"]
 [ext_resource type="Script" uid="uid://ck70ouuqfwjvq" path="res://addons/@fumohouse/character/camera_controller.gd" id="2_xnrk0"]
@@ -16,6 +16,13 @@
 [ext_resource type="PackedScene" uid="uid://dq033aiu7nys6" path="res://addons/@fumohouse/character/playground/seat.tscn" id="10_qf3vw"]
 [ext_resource type="PackedScene" uid="uid://da37x05lvkkbi" path="res://addons/@fumohouse/character/playground/ladder.tscn" id="11_ckt1o"]
 [ext_resource type="Material" uid="uid://dbc0ratgleys3" path="res://addons/@fumohouse/common/resources/materials/water.tres" id="15_2usgv"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ahxc0"]
+height = 3.4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_b8l81"]
+radius = 0.2
+height = 0.8
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xnrk0"]
 friction = 0.5
@@ -115,6 +122,18 @@ metadata/_custom_type_script = "uid://ck70ouuqfwjvq"
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
+[node name="PrototypeModel" type="Node3D" parent="TEMP_RUNTIME/Character/Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="Capsule" type="MeshInstance3D" parent="TEMP_RUNTIME/Character/Character/PrototypeModel"]
+mesh = SubResource("CapsuleMesh_ahxc0")
+skeleton = NodePath("../..")
+
+[node name="Eyes" type="MeshInstance3D" parent="TEMP_RUNTIME/Character/Character/PrototypeModel"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.95, -0.4)
+mesh = SubResource("CapsuleMesh_b8l81")
+skeleton = NodePath("../Capsule")
+
 [node name="DebugCharacter" parent="TEMP_RUNTIME" node_paths=PackedStringArray("character") instance=ExtResource("6_ahxc0")]
 character = NodePath("../Character/Character")
 
@@ -193,7 +212,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2, -24)
 curve = SubResource("Curve3D_b1etj")
 
 [node name="Rotating" type="PathFollow3D" parent="Map/Interactables/Path3D"]
-transform = Transform3D(0.0791997, -0.24202, -0.967033, 0, 0.970081, -0.242783, 0.996859, 0.0192283, 0.0768301, 0, 0, 0)
+transform = Transform3D(0.07919971, -0.24202019, -0.9670331, 0, 0.9700809, -0.24278268, 0.996859, 0.019228322, 0.07683006, 0, 0, 0)
 rotation_mode = 2
 script = ExtResource("6_fia5t")
 speed = 4.0
@@ -208,7 +227,7 @@ mesh = SubResource("BoxMesh_fia5t")
 shape = SubResource("BoxShape3D_rmdev")
 
 [node name="NoRotating" type="PathFollow3D" parent="Map/Interactables/Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8027, 4.07629, 10.0067)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.802731, 4.0762877, 10.006701)
 progress = 27.0
 rotation_mode = 0
 script = ExtResource("6_fia5t")

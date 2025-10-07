@@ -6,17 +6,17 @@
 fractal_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a4seb"]
+noise = SubResource("FastNoiseLite_xjol7")
 seamless = true
 as_normal_map = true
-noise = SubResource("FastNoiseLite_xjol7")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fepdj"]
 fractal_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8yist"]
+noise = SubResource("FastNoiseLite_fepdj")
 seamless = true
 as_normal_map = true
-noise = SubResource("FastNoiseLite_fepdj")
 
 [resource]
 render_priority = 0

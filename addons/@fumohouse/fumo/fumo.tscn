@@ -1,0 +1,327 @@
+[gd_scene load_steps=47 format=3 uid="uid://bnic23uqggm8j"]
+
+[ext_resource type="PackedScene" uid="uid://c872jdob35ayv" path="res://addons/@fumohouse/character/character.tscn" id="1_6g54x"]
+[ext_resource type="PackedScene" uid="uid://bwtelncgka6g3" path="res://addons/@fumohouse/fumo/assets/rig.glb" id="2_6pbm6"]
+[ext_resource type="Texture2D" uid="uid://o8m4jm13vq10" path="res://addons/@fumohouse/fumo/assets/triangle_particles.svg" id="3_31wo1"]
+[ext_resource type="Animation" uid="uid://df6ce63rh8s3f" path="res://addons/@fumohouse/fumo/assets/anims/base.tres" id="4_x1x5v"]
+[ext_resource type="Animation" uid="uid://dm4cvy102ao3i" path="res://addons/@fumohouse/fumo/assets/anims/climb.tres" id="5_w1fxq"]
+[ext_resource type="Animation" uid="uid://disirvncdrtom" path="res://addons/@fumohouse/fumo/assets/anims/death1.tres" id="6_sgryk"]
+[ext_resource type="Animation" uid="uid://6dwxigmlgs7s" path="res://addons/@fumohouse/fumo/assets/anims/emote_spin.tres" id="7_oqyim"]
+[ext_resource type="Animation" uid="uid://enn5l57pmphm" path="res://addons/@fumohouse/fumo/assets/anims/fall.tres" id="8_07qxe"]
+[ext_resource type="Animation" uid="uid://nvnuor1jxgyn" path="res://addons/@fumohouse/fumo/assets/anims/idle.tres" id="9_xnl8h"]
+[ext_resource type="Animation" uid="uid://jk11ynwqe3sm" path="res://addons/@fumohouse/fumo/assets/anims/jump.tres" id="10_icnyf"]
+[ext_resource type="Animation" uid="uid://brm45ibumtkf1" path="res://addons/@fumohouse/fumo/assets/anims/run.tres" id="11_nudxu"]
+[ext_resource type="Animation" uid="uid://dk3kjecbk76am" path="res://addons/@fumohouse/fumo/assets/anims/sit.tres" id="12_p0ohh"]
+[ext_resource type="Animation" uid="uid://2b765j1r65bm" path="res://addons/@fumohouse/fumo/assets/anims/swim.tres" id="13_xu4tw"]
+[ext_resource type="Animation" uid="uid://brv87ke4qdvnq" path="res://addons/@fumohouse/fumo/assets/anims/swim_idle.tres" id="14_8001h"]
+[ext_resource type="Animation" uid="uid://cthcdwgiq646f" path="res://addons/@fumohouse/fumo/assets/anims/walk.tres" id="15_u1gid"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j7mor"]
+resource_local_to_scene = true
+height = 3.4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_66toj"]
+resource_local_to_scene = true
+size = Vector3(0.7, 1, 0.45)
+
+[sub_resource type="Gradient" id="Gradient_vwc6k"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d2qm8"]
+gradient = SubResource("Gradient_vwc6k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5tkov"]
+lifetime_randomness = 0.25
+emission_shape = 1
+emission_sphere_radius = 0.25
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 179.99998
+gravity = Vector3(0, 8, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 15.999997
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = 15.999997
+scale_min = 0.049999997
+color_ramp = SubResource("GradientTexture1D_d2qm8")
+anim_offset_max = 1.0
+turbulence_enabled = true
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4jkug"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_31wo1")
+emission_enabled = true
+emission = Color(0, 0.6666667, 1, 1)
+emission_energy_multiplier = 5.0
+billboard_mode = 3
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sv13b"]
+material = SubResource("StandardMaterial3D_4jkug")
+size = Vector2(0.3, 0.3)
+orientation = 2
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vwc6k"]
+animation = &"base"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d2qm8"]
+animation = &"climb"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5tkov"]
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_vwc6k"]
+input_0/name = "idle"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "death1"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5tkov"]
+animation = &"death1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sv13b"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4jkug"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_sv13b"]
+xfade_time = 0.2
+input_0/name = "walk"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "run"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8qeim"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0ht7m"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_s700b"]
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_n2t60"]
+xfade_time = 0.2
+input_0/name = "base"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "idle"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+input_2/name = "sit"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = true
+input_3/name = "horizontal"
+input_3/auto_advance = false
+input_3/break_loop_at_end = false
+input_3/reset = true
+input_4/name = "vertical"
+input_4/auto_advance = false
+input_4/break_loop_at_end = false
+input_4/reset = true
+input_5/name = "swim"
+input_5/auto_advance = false
+input_5/break_loop_at_end = false
+input_5/reset = true
+input_6/name = "dead"
+input_6/auto_advance = false
+input_6/break_loop_at_end = false
+input_6/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_124la"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_0vsfh"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vjabu"]
+animation = &"sit"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s700b"]
+animation = &"swim"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n2t60"]
+animation = &"swim_idle"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_124la"]
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_afey1"]
+xfade_time = 0.2
+input_0/name = "idle"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "swim"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_ji0op"]
+input_0/name = "fall"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "climb"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bxbqv"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_b6hbt"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_mgvk1"]
+graph_offset = Vector2(-591.145, -204.10135)
+nodes/output/position = Vector2(640, 128)
+nodes/jump_oneshot/node = SubResource("AnimationNodeOneShot_s700b")
+nodes/jump_oneshot/position = Vector2(432, 160)
+nodes/jump/node = SubResource("AnimationNodeAnimation_0ht7m")
+nodes/jump/position = Vector2(192, 368)
+nodes/main/node = SubResource("AnimationNodeTransition_n2t60")
+nodes/main/position = Vector2(192, -144)
+nodes/base/node = SubResource("AnimationNodeAnimation_vwc6k")
+nodes/base/position = Vector2(-496, -784)
+nodes/idle/node = SubResource("AnimationNodeAnimation_8qeim")
+nodes/idle/position = Vector2(-496, -624)
+nodes/sit/node = SubResource("AnimationNodeAnimation_vjabu")
+nodes/sit/position = Vector2(-496, -464)
+nodes/horizontal/node = SubResource("AnimationNodeTransition_sv13b")
+nodes/horizontal/position = Vector2(-496, -304)
+nodes/walk_speed/node = SubResource("AnimationNodeTimeScale_b6hbt")
+nodes/walk_speed/position = Vector2(-704, -368)
+nodes/walk/node = SubResource("AnimationNodeAnimation_bxbqv")
+nodes/walk/position = Vector2(-880, -368)
+nodes/run_speed/node = SubResource("AnimationNodeTimeScale_0vsfh")
+nodes/run_speed/position = Vector2(-704, -192)
+nodes/run/node = SubResource("AnimationNodeAnimation_124la")
+nodes/run/position = Vector2(-880, -176)
+nodes/vertical/node = SubResource("AnimationNodeTransition_ji0op")
+nodes/vertical/position = Vector2(-496, 16)
+nodes/fall/node = SubResource("AnimationNodeAnimation_4jkug")
+nodes/fall/position = Vector2(-880, 0)
+nodes/climb_speed/node = SubResource("AnimationNodeTimeScale_5tkov")
+nodes/climb_speed/position = Vector2(-704, 160)
+nodes/climb/node = SubResource("AnimationNodeAnimation_d2qm8")
+nodes/climb/position = Vector2(-880, 192)
+nodes/swimming/node = SubResource("AnimationNodeTransition_afey1")
+nodes/swimming/position = Vector2(-496, 448)
+nodes/swim_idle/node = SubResource("AnimationNodeAnimation_n2t60")
+nodes/swim_idle/position = Vector2(-720, 400)
+nodes/swim/node = SubResource("AnimationNodeAnimation_s700b")
+nodes/swim/position = Vector2(-864, 560)
+nodes/swim_speed/node = SubResource("AnimationNodeTimeScale_124la")
+nodes/swim_speed/position = Vector2(-720, 576)
+nodes/dead/node = SubResource("AnimationNodeTransition_vwc6k")
+nodes/dead/position = Vector2(-496, 752)
+nodes/death_idle/node = SubResource("AnimationNodeAnimation_sv13b")
+nodes/death_idle/position = Vector2(-768, 784)
+nodes/death1/node = SubResource("AnimationNodeAnimation_5tkov")
+nodes/death1/position = Vector2(-768, 960)
+node_connections = [&"output", 0, &"jump_oneshot", &"jump_oneshot", 0, &"main", &"jump_oneshot", 1, &"jump", &"main", 0, &"base", &"main", 1, &"idle", &"main", 2, &"sit", &"main", 3, &"horizontal", &"main", 4, &"vertical", &"main", 5, &"swimming", &"main", 6, &"dead", &"horizontal", 0, &"walk_speed", &"horizontal", 1, &"run_speed", &"walk_speed", 0, &"walk", &"run_speed", 0, &"run", &"vertical", 0, &"fall", &"vertical", 1, &"climb_speed", &"climb_speed", 0, &"climb", &"swimming", 0, &"swim_idle", &"swimming", 1, &"swim_speed", &"swim_speed", 0, &"swim", &"dead", 0, &"death_idle", &"dead", 1, &"death1"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ji0op"]
+_data = {
+&"base": ExtResource("4_x1x5v"),
+&"climb": ExtResource("5_w1fxq"),
+&"death1": ExtResource("6_sgryk"),
+&"emote_spin": ExtResource("7_oqyim"),
+&"fall": ExtResource("8_07qxe"),
+&"idle": ExtResource("9_xnl8h"),
+&"jump": ExtResource("10_icnyf"),
+&"run": ExtResource("11_nudxu"),
+&"sit": ExtResource("12_p0ohh"),
+&"swim": ExtResource("13_xu4tw"),
+&"swim_idle": ExtResource("14_8001h"),
+&"walk": ExtResource("15_u1gid")
+}
+
+[node name="Character" instance=ExtResource("1_6g54x")]
+
+[node name="MainCollider" parent="." index="0"]
+shape = SubResource("CapsuleShape3D_j7mor")
+
+[node name="RagdollCollider" parent="." index="1"]
+shape = SubResource("BoxShape3D_66toj")
+
+[node name="Rig" parent="." index="2" instance=ExtResource("2_6pbm6")]
+
+[node name="Skeleton3D" parent="Rig/Armature" index="0"]
+bones/0/position = Vector3(-2.4415677e-08, 0.9055685, 0.015589586)
+bones/0/rotation = Quaternion(-0.021063676, -9.617788e-09, -9.61779e-09, 0.99977815)
+bones/1/position = Vector3(0.20190851, 1.0273482, 0.03863787)
+bones/1/rotation = Quaternion(0.81846786, 0.374048, 0.39014828, -0.19489178)
+bones/3/position = Vector3(-0.20191115, 1.0273482, 0.038637597)
+bones/3/rotation = Quaternion(0.81846786, -0.37404794, -0.39014837, -0.19489175)
+bones/5/rotation = Quaternion(0.026975343, 9.895496e-09, 1.0060812e-08, 0.9996361)
+bones/6/position = Vector3(0.21390347, 0.1867918, 0.015920125)
+bones/6/rotation = Quaternion(0.99348205, 0.07610068, 0.07937632, -0.030025514)
+bones/8/position = Vector3(-0.21390305, 0.18679196, 0.01592017)
+bones/8/rotation = Quaternion(0.99398017, -0.073023796, -0.07616751, -0.029488051)
+
+[node name="TorsoAttachment" type="BoneAttachment3D" parent="Rig/Armature/Skeleton3D" index="6"]
+transform = Transform3D(1, 1.9636484e-08, -1.8826135e-08, -1.882614e-08, 0.9991126, 0.042118, 1.9636483e-08, -0.042118, 0.9991126, -2.4415677e-08, 0.9055685, 0.015589586)
+bone_name = "Torso"
+bone_idx = 0
+
+[node name="DeathParticles" type="GPUParticles3D" parent="Rig/Armature/Skeleton3D/TorsoAttachment" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.637, 0.027)
+emitting = false
+amount = 48
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_5tkov")
+draw_pass_1 = SubResource("PlaneMesh_sv13b")
+
+[node name="AnimationTree" type="AnimationTree" parent="Rig/Armature" index="1"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeBlendTree_mgvk1")
+anim_player = NodePath("../AnimationPlayer")
+parameters/jump_oneshot/active = false
+parameters/jump_oneshot/internal_active = false
+parameters/jump_oneshot/request = 0
+parameters/main/current_state = "base"
+parameters/main/transition_request = ""
+parameters/main/current_index = 0
+parameters/horizontal/current_state = ""
+parameters/horizontal/transition_request = ""
+parameters/horizontal/current_index = -1
+parameters/walk_speed/scale = 1.0
+parameters/run_speed/scale = 1.0
+parameters/vertical/current_state = ""
+parameters/vertical/transition_request = ""
+parameters/vertical/current_index = -1
+parameters/climb_speed/scale = 1.0
+parameters/swimming/current_state = ""
+parameters/swimming/transition_request = ""
+parameters/swimming/current_index = -1
+parameters/swim_speed/scale = 1.0
+parameters/dead/current_state = ""
+parameters/dead/transition_request = ""
+parameters/dead/current_index = -1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rig/Armature" index="2"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_ji0op")
+}
+
+[editable path="Rig"]
