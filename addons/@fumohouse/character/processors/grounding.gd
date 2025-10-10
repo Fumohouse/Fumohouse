@@ -41,7 +41,11 @@ func _process(_delta: float, _cancelled: bool):
 				ctx.ground_rid = result.get_collider_rid(i)
 				ctx.ground_normal = normal
 
-		var should_snap = not state.is_ragdoll and is_zero_approx(state.ctx.offset.y)
+		var should_snap = (
+			not state.is_ragdoll
+			and is_zero_approx(state.ctx.offset.y)
+			and not state.is_state(CharacterMotionState.CharacterState.SWIMMING)
+		)
 		if found_ground and should_snap:
 			const MAX_UP_SNAP := 0.01
 

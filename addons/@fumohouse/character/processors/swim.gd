@@ -134,9 +134,8 @@ func _process(delta: float, cancelled: bool):
 			CharacterMotionState.CharacterState.SWIMMING | CharacterMotionState.CharacterState.IDLE
 		)
 
-	if target_basis != null:
-		ctx.messages[CharacterMoveMotionProcessor.CANCEL_UPRIGHTING] = true
-		ctx.messages[CharacterHorizontalMotionProcessor.CANCEL_ORIENT] = true
+	ctx.messages[CharacterMoveMotionProcessor.CANCEL_UPRIGHTING] = true
+	ctx.messages[CharacterHorizontalMotionProcessor.CANCEL_ORIENT] = true
 
 	# Do uprighting but slower
 	ctx.new_basis = ctx.new_basis.slerp(
