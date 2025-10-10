@@ -186,8 +186,6 @@ metadata/_custom_type_script = "uid://ck70ouuqfwjvq"
 
 [node name="Fumo" parent="TEMP_RUNTIME/Character" instance=ExtResource("5_b8l81")]
 unique_name_in_owner = true
-camera_fade_begin = 1.5
-camera_fade_end = 0.25
 
 [node name="Appearance" parent="TEMP_RUNTIME/Character/Fumo" index="0"]
 appearance = SubResource("Resource_d205u")
@@ -216,7 +214,8 @@ surface_material_override/0 = SubResource("ShaderMaterial_6faox")
 [node name="TorsoModel" parent="TEMP_RUNTIME/Character/Fumo/Rig/Armature/Skeleton3D" index="5"]
 surface_material_override/0 = SubResource("ShaderMaterial_6faox")
 
-[node name="DebugCharacter" parent="TEMP_RUNTIME" instance=ExtResource("6_ahxc0")]
+[node name="DebugCharacter" parent="TEMP_RUNTIME" node_paths=PackedStringArray("character") instance=ExtResource("6_ahxc0")]
+character = NodePath("../Character/Fumo")
 
 [node name="Map" type="Node3D" parent="."]
 
@@ -368,8 +367,6 @@ font_size = 40
 
 [node name="Dummy" parent="Map/Interactables" instance=ExtResource("5_b8l81")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 5)
-camera_fade_begin = 1.5
-camera_fade_end = 0.25
 
 [node name="Platform" type="CSGCombiner3D" parent="Map"]
 layers = 3

@@ -294,6 +294,8 @@ _data = {
 script = ExtResource("2_31wo1")
 appearance_manager = NodePath("Appearance")
 rig = NodePath("Rig")
+camera_fade_begin = 1.5
+camera_fade_end = 0.25
 
 [node name="Appearance" type="Node3D" parent="." index="0" node_paths=PackedStringArray("fumo", "rig", "main_collider", "ragdoll_collider")]
 script = ExtResource("3_w1fxq")
