@@ -40,7 +40,7 @@ more information.
 ### For assets
 
 [![licensebuttons
-by-nc-sa](https://licensebuttons.net/l/by-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/)
+by-sa](https://licensebuttons.net/l/by-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/)
 
 This project's original assets are licensed under CC BY-SA 4.0. To provide
 attribution, use the copyright owner provided in `COPYRIGHT.txt`.

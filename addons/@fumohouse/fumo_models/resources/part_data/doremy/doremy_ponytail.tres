@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SinglePart" load_steps=2 format=3 uid="uid://bdt3epabjw762"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_txtxp"]
+
+[resource]
+script = ExtResource("1_txtxp")
+scene_path = "uid://c82ag8jefk8j8"
+transform = Transform3D(-4.325428e-08, 9.933157e-10, 1, -0.011826491, 0.99993014, -1.5047898e-09, -0.99993014, -0.011826491, -4.3239513e-08, 0.0015343612, 0.36816382, 0.8155202)
+bone = "Head"
+display_name = "Doremy Ponytail"
+id = &"doremy_ponytail"
+scope = 8
+default_config = Dictionary[StringName, Variant]({
+&"color": Color(1, 1, 1, 1)
+})

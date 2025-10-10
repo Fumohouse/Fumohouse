@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dpwurkbi521ib"]
+
+[ext_resource type="Shader" uid="uid://xkvur3ki8adh" path="res://addons/@fumohouse/fumo/resources/face_material.gdshader" id="1_wueyp"]
+[ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="2_0baxp"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_frmoa"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ow05p"]
+noise = SubResource("FastNoiseLite_frmoa")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_wueyp")
+shader_parameter/skin_color = Color(0.9882353, 0.91764706, 0.83137256, 1)
+shader_parameter/eye_tint = Color(1, 1, 1, 1)
+shader_parameter/dither_texture = ExtResource("2_0baxp")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ow05p")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.007843138, 0.3882353, 0.9607843, 1)
+shader_parameter/dissolve_emission_energy = 4.0

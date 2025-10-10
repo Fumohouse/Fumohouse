@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SinglePart" load_steps=2 format=3 uid="uid://d24cs3fcplnl0"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_f6mca"]
+
+[resource]
+script = ExtResource("1_f6mca")
+scene_path = "uid://3ddr7qdfk13p"
+transform = Transform3D(-4.325428e-08, 9.933157e-10, 1, -0.011826491, 0.99993014, -1.5047898e-09, -0.99993014, -0.011826491, -4.3239513e-08, 7.7742676e-05, 0.93372965, 0.27460143)
+bone = "Head"
+display_name = "Doremy Hair (Back)"
+id = &"doremy_hair_back"
+scope = 7
+default_config = Dictionary[StringName, Variant]({
+&"color": Color(1, 1, 1, 1)
+})

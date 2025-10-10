@@ -6,13 +6,19 @@ extends Node
 func _enter_tree():
 	var cm := ConfigManager.get_singleton()
 
-	cm.add_opt(&"audio/output_device", "Default", func(value: String):
-		var devices: PackedStringArray = AudioServer.get_output_device_list()
-		if devices.has(value):
-			AudioServer.output_device = value
-		else:
-			push_warning("Requested audio output device '%s' not found. Falling back to default." % value)
-			AudioServer.output_device = "Default")
+	cm.add_opt(
+		&"audio/output_device",
+		"Default",
+		func(value: String):
+			var devices: PackedStringArray = AudioServer.get_output_device_list()
+			if devices.has(value):
+				AudioServer.output_device = value
+			else:
+				push_warning(
+					"Requested audio output device '%s' not found. Falling back to default." % value
+				)
+				AudioServer.output_device = "Default"
+	)
 
 	add_audio_bus(&"Master")
 	add_audio_bus(&"Music")

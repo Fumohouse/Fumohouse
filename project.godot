@@ -31,7 +31,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/@assets/bootstrap-icons/plugin.cfg", "res://addons/@assets/clarity-city/plugin.cfg", "res://addons/@assets/fumohouse-common/plugin.cfg", "res://addons/@assets/overpass-mono/plugin.cfg", "res://addons/@fumohouse/base/plugin.cfg", "res://addons/@fumohouse/character/plugin.cfg", "res://addons/@fumohouse/common/plugin.cfg", "res://addons/@fumohouse/config/plugin.cfg", "res://addons/@fumohouse/debug/plugin.cfg", "res://addons/@fumohouse/fumo/plugin.cfg", "res://addons/@fumohouse/main/plugin.cfg", "res://addons/@fumohouse/music/plugin.cfg")
+enabled=PackedStringArray("res://addons/@assets/bootstrap_icons/plugin.cfg", "res://addons/@assets/clarity_city/plugin.cfg", "res://addons/@assets/fumohouse_common/plugin.cfg", "res://addons/@assets/overpass_mono/plugin.cfg", "res://addons/@fumohouse/base/plugin.cfg", "res://addons/@fumohouse/character/plugin.cfg", "res://addons/@fumohouse/character_appearance/plugin.cfg", "res://addons/@fumohouse/common/plugin.cfg", "res://addons/@fumohouse/config/plugin.cfg", "res://addons/@fumohouse/debug/plugin.cfg", "res://addons/@fumohouse/fumo/plugin.cfg", "res://addons/@fumohouse/fumo_models/plugin.cfg", "res://addons/@fumohouse/main/plugin.cfg", "res://addons/@fumohouse/music/plugin.cfg")
 
 [global_group]
 

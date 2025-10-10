@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cnhpap8tim3hh" path="res://addons/@fumohouse/debug/overlays/debug_window.tscn" id="1_vsbpw"]
 [ext_resource type="Script" uid="uid://dl46el4r4634o" path="res://addons/@fumohouse/debug/overlays/debug_platform_info.gd" id="2_c36ks"]
-[ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@assets/fumohouse-common/textures/logo.png" id="2_ldhgs"]
+[ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@assets/fumohouse_common/textures/logo.png" id="2_ldhgs"]
 [ext_resource type="Script" uid="uid://bpfn17p03x4rq" path="res://addons/@fumohouse/debug/overlays/debug_info_table.gd" id="4_055pr"]
 
 [node name="DebugPlatformInfo" instance=ExtResource("1_vsbpw")]

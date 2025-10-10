@@ -1,9 +1,13 @@
-[gd_scene load_steps=47 format=3 uid="uid://bnic23uqggm8j"]
+[gd_scene load_steps=54 format=3 uid="uid://bnic23uqggm8j"]
 
 [ext_resource type="PackedScene" uid="uid://c872jdob35ayv" path="res://addons/@fumohouse/character/character.tscn" id="1_6g54x"]
 [ext_resource type="PackedScene" uid="uid://bwtelncgka6g3" path="res://addons/@fumohouse/fumo/assets/rig.glb" id="2_6pbm6"]
+[ext_resource type="Script" uid="uid://cpw0w5ldg7b3i" path="res://addons/@fumohouse/fumo/fumo.gd" id="2_31wo1"]
 [ext_resource type="Texture2D" uid="uid://o8m4jm13vq10" path="res://addons/@fumohouse/fumo/assets/triangle_particles.svg" id="3_31wo1"]
+[ext_resource type="Script" uid="uid://bsokmtjsus6uj" path="res://addons/@fumohouse/fumo/fumo_appearance_manager.gd" id="3_w1fxq"]
+[ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="4_w1fxq"]
 [ext_resource type="Animation" uid="uid://df6ce63rh8s3f" path="res://addons/@fumohouse/fumo/assets/anims/base.tres" id="4_x1x5v"]
+[ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="5_sgryk"]
 [ext_resource type="Animation" uid="uid://dm4cvy102ao3i" path="res://addons/@fumohouse/fumo/assets/anims/climb.tres" id="5_w1fxq"]
 [ext_resource type="Animation" uid="uid://disirvncdrtom" path="res://addons/@fumohouse/fumo/assets/anims/death1.tres" id="6_sgryk"]
 [ext_resource type="Animation" uid="uid://6dwxigmlgs7s" path="res://addons/@fumohouse/fumo/assets/anims/emote_spin.tres" id="7_oqyim"]
@@ -23,6 +27,40 @@ height = 3.4
 [sub_resource type="BoxShape3D" id="BoxShape3D_66toj"]
 resource_local_to_scene = true
 size = Vector3(0.7, 1, 0.45)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yrlyc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
+noise = SubResource("FastNoiseLite_yrlyc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqyim"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_w1fxq")
+shader_parameter/albedo = Color(0.9882353, 0.91764724, 0.8313727, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("5_sgryk")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_x1kjk")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
 
 [sub_resource type="Gradient" id="Gradient_vwc6k"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -252,15 +290,67 @@ _data = {
 &"walk": ExtResource("15_u1gid")
 }
 
-[node name="Character" instance=ExtResource("1_6g54x")]
+[node name="Fumo" node_paths=PackedStringArray("appearance_manager", "rig") instance=ExtResource("1_6g54x")]
+script = ExtResource("2_31wo1")
+appearance_manager = NodePath("Appearance")
+rig = NodePath("Rig")
 
-[node name="MainCollider" parent="." index="0"]
+[node name="Appearance" type="Node3D" parent="." index="0" node_paths=PackedStringArray("fumo", "rig", "main_collider", "ragdoll_collider")]
+script = ExtResource("3_w1fxq")
+fumo = NodePath("..")
+rig = NodePath("../Rig")
+main_collider = NodePath("../MainCollider")
+ragdoll_collider = NodePath("../RagdollCollider")
+
+[node name="Head" type="BoneAttachment3D" parent="Appearance" index="0"]
+transform = Transform3D(1, -9.878401e-10, 4.68825e-10, 9.93313e-10, 0.99993, -0.011826489, -4.5710635e-10, 0.011826489, 0.99993, -2.3520617e-09, 1.9605855, -0.03173432)
+bone_name = "Head"
+bone_idx = 5
+use_external_skeleton = true
+external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
+
+[node name="LArm" type="BoneAttachment3D" parent="Appearance" index="1"]
+transform = Transform3D(0.41574475, -0.7643659, -0.49285, -0.4928499, -0.644783, 0.5842551, -0.76436585, 6.519258e-08, -0.64478266, -0.20191117, 1.8660433, 0.010923042)
+bone_name = "LArm"
+bone_idx = 3
+use_external_skeleton = true
+external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
+
+[node name="RArm" type="BoneAttachment3D" parent="Appearance" index="2"]
+transform = Transform3D(0.41574472, 0.7643658, 0.49284983, 0.49284998, -0.6447826, 0.584255, 0.7643657, 2.7939677e-08, -0.64478266, 0.2019085, 1.8660433, 0.010923321)
+bone_name = "RArm"
+bone_idx = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
+
+[node name="LLeg" type="BoneAttachment3D" parent="Appearance" index="3"]
+transform = Transform3D(0.9777373, -0.1496605, -0.14711139, -0.14711112, -0.98872024, 0.028127223, -0.14966221, -0.005859278, -0.9887205, -0.21390308, 1.0252763, 0.02362832)
+bone_name = "LLeg"
+bone_idx = 8
+use_external_skeleton = true
+external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
+
+[node name="RLeg" type="BoneAttachment3D" parent="Appearance" index="4"]
+transform = Transform3D(0.97581255, 0.15597586, 0.1531479, 0.15314735, -0.9877423, 0.030165792, 0.15597534, -0.0059819818, -0.98774207, 0.21390344, 1.0252761, 0.02362829)
+bone_name = "RLeg"
+bone_idx = 6
+use_external_skeleton = true
+external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
+
+[node name="Torso" type="BoneAttachment3D" parent="Appearance" index="5"]
+transform = Transform3D(1, 1.9636484e-08, -1.8826135e-08, -1.882614e-08, 0.9991126, 0.042118, 1.9636483e-08, -0.042118, 0.9991126, -2.4415677e-08, 0.83797956, 0.015589586)
+bone_name = "Torso"
+bone_idx = 0
+use_external_skeleton = true
+external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
+
+[node name="MainCollider" parent="." index="1"]
 shape = SubResource("CapsuleShape3D_j7mor")
 
-[node name="RagdollCollider" parent="." index="1"]
+[node name="RagdollCollider" parent="." index="2"]
 shape = SubResource("BoxShape3D_66toj")
 
-[node name="Rig" parent="." index="2" instance=ExtResource("2_6pbm6")]
+[node name="Rig" parent="." index="3" instance=ExtResource("2_6pbm6")]
 
 [node name="Skeleton3D" parent="Rig/Armature" index="0"]
 bones/0/position = Vector3(-2.4415677e-08, 0.9055685, 0.015589586)
@@ -274,6 +364,24 @@ bones/6/position = Vector3(0.21390347, 0.1867918, 0.015920125)
 bones/6/rotation = Quaternion(0.99348205, 0.07610068, 0.07937632, -0.030025514)
 bones/8/position = Vector3(-0.21390305, 0.18679196, 0.01592017)
 bones/8/rotation = Quaternion(0.99398017, -0.073023796, -0.07616751, -0.029488051)
+
+[node name="HeadModel" parent="Rig/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_oqyim")
+
+[node name="LArmModel" parent="Rig/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_oqyim")
+
+[node name="LLegModel" parent="Rig/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_oqyim")
+
+[node name="RArmModel" parent="Rig/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_oqyim")
+
+[node name="RLegModel" parent="Rig/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = SubResource("ShaderMaterial_oqyim")
+
+[node name="TorsoModel" parent="Rig/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = SubResource("ShaderMaterial_oqyim")
 
 [node name="TorsoAttachment" type="BoneAttachment3D" parent="Rig/Armature/Skeleton3D" index="6"]
 transform = Transform3D(1, 1.9636484e-08, -1.8826135e-08, -1.882614e-08, 0.9991126, 0.042118, 1.9636483e-08, -0.042118, 0.9991126, -2.4415677e-08, 0.9055685, 0.015589586)

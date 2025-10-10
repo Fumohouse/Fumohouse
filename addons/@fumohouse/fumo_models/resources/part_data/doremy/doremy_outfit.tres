@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="MultiPart" load_steps=8 format=3 uid="uid://cjqguoqnnotml"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_g218c"]
+[ext_resource type="Script" uid="uid://dgvlk6ce324r2" path="res://addons/@fumohouse/character_appearance/multi_part.gd" id="2_vs3ab"]
+
+[sub_resource type="Resource" id="Resource_g218c"]
+script = ExtResource("1_g218c")
+scene_path = "res://addons/@fumohouse/fumo_models/assets/doremy/doremy_outfit_torso.tscn"
+transform = Transform3D(1, -1.8826139e-08, 1.9636477e-08, 1.9636483e-08, 0.9991127, -0.042118, -1.8826137e-08, 0.042118, 0.9991127, 3.9885474e-08, -0.8365795, -0.05086978)
+id = &"doremy_outfit_torso"
+
+[sub_resource type="Resource" id="Resource_vs3ab"]
+script = ExtResource("1_g218c")
+scene_path = "res://addons/@fumohouse/fumo_models/assets/doremy/doremy_sleeve.glb"
+transform = Transform3D(0.64478064, 0.0016814321, -0.76436603, 0.002607733, -0.9999964, 7.8069654e-08, -0.7643635, -0.0019933158, -0.6447827, -0.00058686733, 0.17779338, 0.0006953478)
+bone = "LArm"
+id = &"doremy_lsleeve"
+
+[sub_resource type="Resource" id="Resource_etgtq"]
+script = ExtResource("1_g218c")
+scene_path = "res://addons/@fumohouse/fumo_models/assets/doremy/doremy_pom_white.glb"
+transform = Transform3D(0.016690714, -0.07751963, -0.027715098, 0.05571193, -0.01018402, 0.062035978, -0.060610227, -0.03070819, 0.049390364, -0.09458256, 0.36429805, 0.11177349)
+bone = "LArm"
+id = &"doremy_lsleeve_pom"
+
+[sub_resource type="Resource" id="Resource_5ujc3"]
+script = ExtResource("1_g218c")
+scene_path = "res://addons/@fumohouse/fumo_models/assets/doremy/doremy_sleeve.glb"
+transform = Transform3D(0.6447806, -0.001681267, 0.76436603, -0.0026073754, -0.99999666, 1.07872054e-07, 0.7643634, -0.001993006, -0.64478296, 0.00058722496, 0.17779517, 0.0006966591)
+bone = "RArm"
+id = &"doremy_rsleeve"
+
+[sub_resource type="Resource" id="Resource_me14p"]
+script = ExtResource("1_g218c")
+scene_path = "res://addons/@fumohouse/fumo_models/assets/doremy/doremy_pom_white.glb"
+transform = Transform3D(0.054161567, -0.00014122845, 0.06420675, -0.00021902844, -0.08399971, 1.1609373e-08, 0.06420651, -0.0001674213, -0.054161772, 0.094583035, 0.36430037, 0.11177528)
+bone = "RArm"
+id = &"doremy_rsleeve_pom"
+
+[resource]
+script = ExtResource("2_vs3ab")
+parts = Array[ExtResource("1_g218c")]([SubResource("Resource_g218c"), SubResource("Resource_vs3ab"), SubResource("Resource_etgtq"), SubResource("Resource_5ujc3"), SubResource("Resource_me14p")])
+display_name = "Doremy Outfit"
+id = &"doremy_outfit"
+scope = 2
+metadata/_custom_type_script = "uid://dgvlk6ce324r2"

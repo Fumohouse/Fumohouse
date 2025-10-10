@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://3ddr7qdfk13p"]
+
+[ext_resource type="PackedScene" uid="uid://caqet5nenduli" path="res://addons/@fumohouse/fumo_models/assets/doremy/doremy_hair_back.glb" id="1_came5"]
+[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/fumo_models/customization/color_customizer.gd" id="2_vvgbk"]
+
+[node name="doremy_hair_back" node_paths=PackedStringArray("mesh") instance=ExtResource("1_came5")]
+script = ExtResource("2_vvgbk")
+mesh = NodePath("doremy_hair_back")

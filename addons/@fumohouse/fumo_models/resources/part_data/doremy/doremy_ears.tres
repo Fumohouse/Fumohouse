@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SinglePart" load_steps=2 format=3 uid="uid://8d6k0ekmg5cy"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_7rr2w"]
+
+[resource]
+script = ExtResource("1_7rr2w")
+scene_path = "res://addons/@fumohouse/fumo_models/assets/doremy/doremy_ears.glb"
+transform = Transform3D(-0.9833016, 0.18198358, -3.7051112e-08, -0.18197086, -0.9832329, 0.011826496, 0.0021521915, 0.011629018, 0.99993014, 1.2292432e-07, 1.2766485, -0.21721846)
+bone = "Head"
+display_name = "Doremy Ears"
+id = &"doremy_ears"
+scope = 11

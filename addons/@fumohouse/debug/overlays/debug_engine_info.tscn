@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cnhpap8tim3hh" path="res://addons/@fumohouse/debug/overlays/debug_window.tscn" id="1_csdy7"]
 [ext_resource type="Script" uid="uid://cdn1xftc1b5qy" path="res://addons/@fumohouse/debug/overlays/debug_engine_info.gd" id="2_peou7"]
 [ext_resource type="Script" uid="uid://bpfn17p03x4rq" path="res://addons/@fumohouse/debug/overlays/debug_info_table.gd" id="3_h8mqi"]
-[ext_resource type="Texture2D" uid="uid://i3bxly1l6ve5" path="res://addons/@assets/fumohouse-common/textures/godot_logo.svg" id="3_o0qfn"]
+[ext_resource type="Texture2D" uid="uid://i3bxly1l6ve5" path="res://addons/@assets/fumohouse_common/textures/godot_logo.svg" id="3_o0qfn"]
 
 [node name="DebugEngineInfo" instance=ExtResource("1_csdy7")]
 script = ExtResource("2_peou7")

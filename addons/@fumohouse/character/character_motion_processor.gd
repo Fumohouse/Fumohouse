@@ -1,4 +1,4 @@
-class_name CharacterMotionProcessor
+@abstract class_name CharacterMotionProcessor
 extends RefCounted
 ## An abstract type that represents a component of a character's motion.
 ##

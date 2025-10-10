@@ -11,5 +11,6 @@
 1. `@fumohouse/coin`: Fumocoin, an in-game currency that isn't worth anything.
 1. `@fumohouse/character`: A modular, networked character controller.
 1. `@fumohouse/character_appearance`: A generic character customization system
-   for various rigs. UI components for editing the character are also provided.
+   for various rigs. Blender/Godot tooling and UI components for editing the
+   character are also provided.
 1. `@fumohouse/main`: The main menu and navigation.

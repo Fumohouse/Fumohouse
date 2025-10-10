@@ -9,6 +9,7 @@
 - [Implementation notes](devnotes/index.md)
   - [Blender tips](devnotes/blender-tips.md)
   - [Rig export/import procedure](devnotes/rig-export.md)
+  - [Character export/import procedure](devnotes/character-export.md)
 
 # Design
 

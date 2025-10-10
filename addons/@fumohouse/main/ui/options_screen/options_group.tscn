@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://3pgovqemhie4"]
 
-[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@assets/clarity-city/ClarityCity-Bold.woff2" id="1_dogjp"]
+[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@assets/clarity_city/ClarityCity-Bold.woff2" id="1_dogjp"]
 
 [node name="OptionsGroup" type="VBoxContainer"]
 offset_right = 40.0

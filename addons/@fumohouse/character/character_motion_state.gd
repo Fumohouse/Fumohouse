@@ -84,30 +84,33 @@ var _motion_processors: Array[CharacterMotionProcessor] = []
 ## Initialize this state. Prior to calling this function, set all externally
 ## managed configuration variables such as [member node] and [member rid].
 func initialize():
-	# Overrides ground normal
-	_motion_processors.append(CharacterStairsMotionProcessor.new())
-
-	_motion_processors.append(CharacterIntersectionsMotionProcessor.new())
-	_motion_processors.append(CharacterGroundingMotionProcessor.new())
-
-	_motion_processors.append(CharacterSeparatorMotionProcessor.new())
-
-	_motion_processors.append(CharacterRagdollMotionProcessor.new())
-	_motion_processors.append(CharacterLadderMotionProcessor.new())
-	_motion_processors.append(CharacterSwimMotionProcessor.new())
-
-	_motion_processors.append(CharacterHorizontalMotionProcessor.new())
-	_motion_processors.append(CharacterPhysicalMotionProcessor.new())
-	_motion_processors.append(CharacterPlatformMotionProcessor.new())
-	_motion_processors.append(CharacterCollisionMotionProcessor.new())
-
-	_motion_processors.append(CharacterMoveMotionProcessor.new())
-
 	set_ragdoll(false)
 
-	for processor in _motion_processors:
-		processor.state = self
-		processor._initialize()
+	# Overrides ground normal
+	add_processor(CharacterStairsMotionProcessor.new())
+
+	add_processor(CharacterIntersectionsMotionProcessor.new())
+	add_processor(CharacterGroundingMotionProcessor.new())
+
+	add_processor(CharacterSeparatorMotionProcessor.new())
+
+	add_processor(CharacterRagdollMotionProcessor.new())
+	add_processor(CharacterLadderMotionProcessor.new())
+	add_processor(CharacterSwimMotionProcessor.new())
+
+	add_processor(CharacterHorizontalMotionProcessor.new())
+	add_processor(CharacterPhysicalMotionProcessor.new())
+	add_processor(CharacterPlatformMotionProcessor.new())
+	add_processor(CharacterCollisionMotionProcessor.new())
+
+	add_processor(CharacterMoveMotionProcessor.new())
+
+
+## Add [param processor] to this motion state.
+func add_processor(processor: CharacterMotionProcessor):
+	_motion_processors.append(processor)
+	processor.state = self
+	processor._initialize()
 
 
 ## Update this character's motion.

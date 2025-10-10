@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Appearance" load_steps=2 format=3 uid="uid://b5b5n2po4w5vw"]
+
+[ext_resource type="Script" uid="uid://ckfcdw3j0qb6k" path="res://addons/@fumohouse/character_appearance/appearance.gd" id="1_71dpy"]
+
+[resource]
+script = ExtResource("1_71dpy")
+display_name = "Doremy"
+config = Dictionary[StringName, Variant]({
+&"eyebrows": &"straight",
+&"eyes": &"straight",
+&"eyes_color": Color(0.17254902, 0.3529412, 0.7647059, 1),
+&"mouth": &"3",
+&"scale": 1.0
+})
+attached_parts = Dictionary[StringName, Variant]({
+&"doremy_hair_back": {
+&"color": Color(0.11372549, 0.2, 0.5372549, 1)
+},
+&"doremy_hair_front": {
+&"color": Color(0.11372549, 0.2, 0.5372549, 1)
+},
+&"doremy_hat": null,
+&"doremy_outfit": null,
+&"doremy_shoes": null,
+&"doremy_tail": null
+})
+metadata/_custom_type_script = "uid://ckfcdw3j0qb6k"

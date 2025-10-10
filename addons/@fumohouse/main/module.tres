@@ -16,7 +16,7 @@ metadata/_custom_type_script = ExtResource("1_u056h")
 
 [sub_resource type="Resource" id="Resource_yci67"]
 script = ExtResource("1_u056h")
-name = &"@assets/clarity-city"
+name = &"@assets/clarity_city"
 metadata/_custom_type_script = ExtResource("1_u056h")
 
 [sub_resource type="Resource" id="Resource_n7scs"]
@@ -26,7 +26,7 @@ metadata/_custom_type_script = "uid://cyriemmrcefgc"
 
 [sub_resource type="Resource" id="Resource_du5l7"]
 script = ExtResource("1_u056h")
-name = &"@assets/fumohouse-common"
+name = &"@assets/fumohouse_common"
 metadata/_custom_type_script = "uid://cyriemmrcefgc"
 
 [sub_resource type="Resource" id="Resource_huq3x"]
