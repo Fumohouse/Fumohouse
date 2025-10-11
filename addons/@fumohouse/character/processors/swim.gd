@@ -134,8 +134,11 @@ func _process(delta: float, cancelled: bool):
 			CharacterMotionState.CharacterState.SWIMMING | CharacterMotionState.CharacterState.IDLE
 		)
 
+	# If not trying to change direction, allow orienting with WASD but not fast
+	# uprighting
 	ctx.messages[CharacterMoveMotionProcessor.CANCEL_UPRIGHTING] = true
-	ctx.messages[CharacterHorizontalMotionProcessor.CANCEL_ORIENT] = true
+	if target_basis != null:
+		ctx.messages[CharacterHorizontalMotionProcessor.CANCEL_ORIENT] = true
 
 	# Do uprighting but slower
 	ctx.new_basis = ctx.new_basis.slerp(
