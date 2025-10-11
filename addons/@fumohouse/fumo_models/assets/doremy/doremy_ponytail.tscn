@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://casgc0slo0dl1" path="res://addons/@fumohouse/fumo_models/assets/doremy/doremy_ponytail.glb" id="1_dgba2"]
 [ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="2_umpxs"]
-[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/fumo_models/customization/color_customizer.gd" id="2_wous2"]
+[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="2_wous2"]
 [ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="3_wous2"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yrlyc"]

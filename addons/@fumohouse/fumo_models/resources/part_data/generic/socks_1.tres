@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="MultiPart" load_steps=5 format=3 uid="uid://7p8l850l1knm"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_0o6vt"]
+[ext_resource type="Script" uid="uid://dgvlk6ce324r2" path="res://addons/@fumohouse/character_appearance/multi_part.gd" id="2_ghct7"]
+
+[sub_resource type="Resource" id="Resource_0o6vt"]
+script = ExtResource("1_0o6vt")
+scene_path = "uid://caswtxfadle3"
+transform = Transform3D(0.9877479, -0.04410337, -0.14966063, -0.04549122, -0.9989474, -0.00585928, -0.14924541, 0.012595792, -0.98871934, -0.043797195, 0.4822168, 0.01231017)
+bone = "LLeg"
+id = &"lsock_1"
+
+[sub_resource type="Resource" id="Resource_ghct7"]
+script = ExtResource("1_0o6vt")
+scene_path = "uid://caswtxfadle3"
+transform = Transform3D(0.98648256, 0.050308637, 0.15597656, 0.051874243, -0.9986362, -0.0059819906, 0.1554623, 0.013992246, -0.98774344, 0.040682346, 0.48249608, 0.012048788)
+bone = "RLeg"
+id = &"rsock_1"
+
+[resource]
+script = ExtResource("2_ghct7")
+parts = Array[ExtResource("1_0o6vt")]([SubResource("Resource_0o6vt"), SubResource("Resource_ghct7")])
+display_name = "Socks 1"
+id = &"socks_1"
+scope = 1
+metadata/_custom_type_script = "uid://dgvlk6ce324r2"

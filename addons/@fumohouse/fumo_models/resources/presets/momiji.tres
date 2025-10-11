@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Appearance" load_steps=2 format=3 uid="uid://bptlpeby3tjl8"]
+
+[ext_resource type="Script" uid="uid://ckfcdw3j0qb6k" path="res://addons/@fumohouse/character_appearance/appearance.gd" id="1_4gm3p"]
+
+[resource]
+script = ExtResource("1_4gm3p")
+display_name = "Momiji"
+config = Dictionary[StringName, Variant]({
+&"eyebrows": &"curved",
+&"eyes": &"curved_hooks",
+&"eyes_color": Color(0.90588236, 0, 0.019607844, 1),
+&"mouth": &"smile",
+&"scale": 1.0
+})
+attached_parts = Dictionary[StringName, Variant]({
+&"momiji_ears": {
+&"color": Color(0.91764706, 0.91764706, 0.91764706, 1)
+},
+&"momiji_hair_back": {
+&"color": Color(0.91764706, 0.91764706, 0.91764706, 1)
+},
+&"momiji_hair_front": {
+&"color": Color(0.91764706, 0.91764706, 0.91764706, 1)
+},
+&"momiji_hat": null,
+&"momiji_outfit_top": null,
+&"momiji_skirt": null,
+&"momiji_tail": null,
+&"shoes_1": {
+&"color": Color(0.90588236, 0, 0.019607844, 1)
+},
+&"socks_1": {
+&"color": Color(1, 1, 1, 1)
+}
+})
+metadata/_custom_type_script = "uid://ckfcdw3j0qb6k"

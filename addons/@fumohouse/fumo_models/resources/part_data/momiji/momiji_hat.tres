@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SinglePart" load_steps=2 format=3 uid="uid://bf71dsnihw2gm"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_3u071"]
+
+[resource]
+script = ExtResource("1_3u071")
+scene_path = "uid://ciwrwd5xsast7"
+transform = Transform3D(-1, 9.933157e-10, -3.8895726e-07, 5.593243e-09, 0.99993014, -0.011826491, 3.8891835e-07, -0.011826491, -0.99993014, 0.00079208927, 0.79043555, 0.017908819)
+bone = "Head"
+display_name = "Momiji Hat"
+id = &"momiji_hat"

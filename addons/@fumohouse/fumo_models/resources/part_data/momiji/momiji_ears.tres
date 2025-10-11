@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SinglePart" load_steps=2 format=3 uid="uid://ct5ct0kb8uyl6"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_o5m01"]
+
+[resource]
+script = ExtResource("1_o5m01")
+scene_path = "uid://vfp4no1rrsuh"
+transform = Transform3D(1, 9.933157e-10, -4.5710954e-10, -9.878376e-10, 0.99993014, 0.011826491, 4.688218e-10, -0.011826491, 0.99993014, 4.207791e-07, 1.2782555, 0.14554948)
+bone = "Head"
+display_name = "Momiji Ears"
+id = &"momiji_ears"
+scope = 11
+default_config = Dictionary[StringName, Variant]({
+&"color": Color(1, 1, 1, 1)
+})

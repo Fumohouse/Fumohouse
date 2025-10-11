@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SinglePart" load_steps=2 format=3 uid="uid://dwwmnhynpdkg"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_ivghq"]
+
+[resource]
+script = ExtResource("1_ivghq")
+scene_path = "uid://cuckf2e1ehf0x"
+transform = Transform3D(1, 9.933157e-10, -4.5710954e-10, -9.878376e-10, 0.99993014, 0.011826491, 4.688218e-10, -0.011826491, 0.99993014, 0.0010263014, 1.4440978, 0.010052286)
+bone = "Head"
+display_name = "Momiji Hair (Back)"
+id = &"momiji_hair_back"
+scope = 7
+default_config = Dictionary[StringName, Variant]({
+&"color": Color(1, 1, 1, 1)
+})

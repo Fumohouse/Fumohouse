@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SinglePart" load_steps=2 format=3 uid="uid://b2a1re4glb7ar"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_3vpjo"]
+
+[resource]
+script = ExtResource("1_3vpjo")
+scene_path = "res://addons/@fumohouse/fumo_models/assets/momiji/momiji_tail.glb"
+transform = Transform3D(1.3951865e-07, -2.7609342e-08, -1.4665428, -0.061767858, 1.4652417, -3.346109e-08, 1.4652417, 0.061767858, 1.38232e-07, -0.008590443, 0.7880353, 0.66229975)
+display_name = "Momiji Tail"
+id = &"momiji_tail"
+scope = 12
