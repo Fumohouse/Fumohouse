@@ -37,6 +37,28 @@ Comment: Fumohouse assets
 Copyright: 2021-present, voided_etc & co.
 License: CC-BY-SA-4.0
 
+######################
+# Contributed Assets #
+######################
+
+Files: addons/@fumohouse/fumo/assets/rig.glb
+Comment: Fumo rig
+Copyright: 2021-2022, PoliticalCirno
+ 2021-2025, voided_etc
+License: CC-BY-SA-4.0
+
+Files: addons/@fumohouse/fumo_models/assets/shanghai/shanghai_hair.glb
+Comment: Shanghai Doll's hair
+Copyright: 2021-2022, PoliticalCirno
+ 2021-2025, voided_etc
+License: CC-BY-SA-4.0
+
+Files: addons/@fumohouse/fumo/assets/anims/*.tres
+Comment: Fumo animations
+Copyright: 2021-2023, voided_etc
+ 2022-2023, lefortune
+License: CC-BY-SA-4.0
+
 ###################
 # External assets #
 ###################
