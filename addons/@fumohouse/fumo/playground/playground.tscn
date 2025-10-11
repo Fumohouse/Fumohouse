@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://ccc2egf38uchc" path="res://addons/@fumohouse/common/nodes/billboard.gd" id="5_o3drt"]
 [ext_resource type="PackedScene" uid="uid://dcjefyuix0jjw" path="res://addons/@fumohouse/character/debug_character.tscn" id="6_ahxc0"]
 [ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@assets/fumohouse_common/textures/logo.png" id="6_b1etj"]
-[ext_resource type="Resource" uid="uid://bptlpeby3tjl8" path="res://addons/@fumohouse/fumo_models/resources/presets/momiji.tres" id="6_f6wyg"]
+[ext_resource type="Resource" uid="uid://ddcypcjjupprd" path="res://addons/@fumohouse/fumo_models/resources/presets/shanghai.tres" id="6_f6wyg"]
 [ext_resource type="Script" uid="uid://dgrdrsb723x4l" path="res://addons/@fumohouse/fumo/playground/path_follower.gd" id="6_fia5t"]
 [ext_resource type="Material" uid="uid://d0b833ed41ul5" path="res://addons/@fumohouse/fumo/playground/resources/playground.tres" id="6_r7lgf"]
 [ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="7_dw0el"]

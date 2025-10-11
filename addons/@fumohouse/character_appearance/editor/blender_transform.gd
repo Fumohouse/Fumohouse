@@ -51,20 +51,17 @@ func _parse_transforms(str: String) -> Dictionary:
 		[12] [13] [14] [15]
 		"""
 
-		var origin := Vector3(float(nums[3]), float(nums[11]), -float(nums[7]))
+		var origin := Vector3(float(nums[3]), float(nums[7]), float(nums[11]))
 
 		var basis_orig := Basis(
 			Vector3(float(nums[0]), float(nums[4]), float(nums[8])),
-			Vector3(float(nums[1]), float(nums[5]), float(nums[9])),
-			Vector3(float(nums[2]), float(nums[6]), float(nums[10]))
+			Vector3(float(nums[2]), float(nums[6]), float(nums[10])),
+			-Vector3(float(nums[1]), float(nums[5]), float(nums[9])),
 		)
 
-		var euler_orig := basis_orig.get_euler()
-		var euler_act := Vector3(euler_orig.x, euler_orig.z, -euler_orig.y)
-
-		var scale_orig := basis_orig.get_scale()
-		var scale_act := Vector3(scale_orig.x, scale_orig.z, scale_orig.y)
-
-		transforms[node_name] = Transform3D(Basis.from_euler(euler_act).scaled(scale_act), origin)
+		# No idea
+		transforms[node_name] = Transform3D(basis_orig, Vector3.ZERO).rotated(
+			Vector3.RIGHT, -PI / 2.0
+		)
 
 	return transforms

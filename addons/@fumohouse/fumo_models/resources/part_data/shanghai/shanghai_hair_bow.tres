@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SinglePart" load_steps=2 format=3 uid="uid://cvvj6es6rkobl"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_f7dfm"]
+
+[resource]
+script = ExtResource("1_f7dfm")
+scene_path = "res://addons/@fumohouse/fumo_models/assets/shanghai/shanghai_hair_bow.glb"
+transform = Transform3D(-1, 1.2303325e-06, -3.9017485e-07, 1.882147e-07, 0.43806088, 0.89894533, 1.276922e-06, 0.89894533, -0.43806088, 0.00047779438, 1.4750688, 0.5256418)
+bone = "Head"
+display_name = "Shanghai Hair Bow"
+id = &"shanghai_hair_bow"
+scope = 1
