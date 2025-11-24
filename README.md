@@ -34,7 +34,7 @@ on the copyrights and licenses of all project files can be found in
 
 ### For code
 
-This project's code is licensed under the MIT license. See `LICENSE.txt` for
+This project's code is licensed under the MPL 2.0 license. See `LICENSE.txt` for
 more information.
 
 ### For assets

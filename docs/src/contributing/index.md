@@ -17,8 +17,8 @@ Thank you for your interest in contributing to Fumohouse!
 
 ## Licensing
 
-1. Fumohouse's code is licensed under the [MIT
-   license](https://spdx.org/licenses/MIT.html).
+1. Fumohouse's code is licensed under the [MPL 2.0
+   license](https://spdx.org/licenses/MPL-2.0.html).
 1. Fumohouse's original assets are licensed under the [CC BY-SA 4.0
    license](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
    1. Attribution guidelines: Provide the name of the asset's original creator
