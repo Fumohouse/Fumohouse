@@ -36,12 +36,9 @@ func load_appearance():
 		if appearance.attached_parts.has(id):
 			var config: Variant = appearance.attached_parts[id]
 
-			if config != null:
-				for node in attached_parts[id].nodes:
-					if node is PartCustomizer:
-						node._update(
-							config if config else attached_parts[id].part_data.default_config
-						)
+			for node in attached_parts[id].nodes:
+				if node is PartCustomizer:
+					node._update(config if config else attached_parts[id].part_data.default_config)
 		else:
 			_detach(id)
 

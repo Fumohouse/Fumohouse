@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="SinglePart" load_steps=2 format=3 uid="uid://bkem6fkms35m"]
+[gd_resource type="Resource" script_class="SinglePart" load_steps=2 format=3 uid="uid://dknfybqvvgvsa"]
 
-[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_g5ix1"]
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_r883g"]
 
 [resource]
-script = ExtResource("1_g5ix1")
-scene_path = "uid://fn2thbrkglxv"
-transform = Transform3D(-4.325428e-08, 9.933157e-10, 1, -0.011826491, 0.99993014, -1.5047898e-09, -0.99993014, -0.011826491, -4.3239513e-08, 0.033143464, 1.0316005, -0.23849267)
+script = ExtResource("1_r883g")
+scene_path = "res://addons/@fumohouse/fumo_models/assets/doremy/doremy_hair_front.tscn"
+transform = Transform3D(-4.325428e-08, 9.933157e-10, 1, -0.011826535, 0.99993014, -1.5047918e-09, -0.99993014, -0.011826535, -4.3239513e-08, -0.016990807, 1.0105786, -0.23371401)
 bone = "Head"
 display_name = "Doremy Hair (Front)"
 id = &"doremy_hair_front"

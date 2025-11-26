@@ -10,7 +10,7 @@
 [node name="doremy_outfit_torso" type="Node3D"]
 
 [node name="doremy_dress_inner" parent="." instance=ExtResource("1_umi0u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.859567e-09, 1.5093048, -0.009617288)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.517, -0.01)
 
 [node name="doremy_dress_lower" parent="." instance=ExtResource("2_drrly")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9541425e-07, 0.873685, -0.014439677)
