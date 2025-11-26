@@ -151,6 +151,8 @@ animation = &"idle"
 animation = &"jump"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_s700b"]
+fadein_time = 0.1
+fadeout_time = 0.2
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_n2t60"]
 xfade_time = 0.2
@@ -226,7 +228,7 @@ animation = &"walk"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_b6hbt"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_mgvk1"]
-graph_offset = Vector2(-591.145, -204.10135)
+graph_offset = Vector2(-96.888626, 101.94316)
 nodes/output/position = Vector2(640, 128)
 nodes/jump_oneshot/node = SubResource("AnimationNodeOneShot_s700b")
 nodes/jump_oneshot/position = Vector2(432, 160)

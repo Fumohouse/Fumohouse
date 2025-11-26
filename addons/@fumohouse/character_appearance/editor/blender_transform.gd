@@ -60,8 +60,6 @@ func _parse_transforms(str: String) -> Dictionary:
 		)
 
 		# No idea
-		transforms[node_name] = Transform3D(basis_orig, Vector3.ZERO).rotated(
-			Vector3.RIGHT, -PI / 2.0
-		)
+		transforms[node_name] = Transform3D(basis_orig, origin).rotated(Vector3.RIGHT, -PI / 2.0)
 
 	return transforms

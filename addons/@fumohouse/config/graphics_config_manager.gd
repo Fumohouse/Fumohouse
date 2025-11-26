@@ -12,7 +12,7 @@ const SHADOW_QUALITY_OPTIONS: Array[Dictionary] = [
 		positional_size = 0,
 	},
 	{
-		directionalSize = 1024,
+		directional_size = 1024,
 		directional_bias = 0.04,
 		positional_size = 1024,
 	},
