@@ -1,4 +1,4 @@
-extends "./transition_element.gd"
+extends "transition_element.gd"
 
 @export var tabs: RadioButtonContainer
 @export var tab_content: Control

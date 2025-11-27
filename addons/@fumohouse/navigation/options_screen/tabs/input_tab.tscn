@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://r0g4ywp4thny"]
 
-[ext_resource type="PackedScene" uid="uid://dx1sp5c0awg1f" path="res://addons/@fumohouse/main/ui/options_screen/options_tab.tscn" id="1_gv0pu"]
-[ext_resource type="PackedScene" uid="uid://3pgovqemhie4" path="res://addons/@fumohouse/main/ui/options_screen/options_group.tscn" id="2_bey3n"]
+[ext_resource type="PackedScene" uid="uid://dx1sp5c0awg1f" path="res://addons/@fumohouse/navigation/options_screen/options_tab.tscn" id="1_gv0pu"]
+[ext_resource type="PackedScene" uid="uid://3pgovqemhie4" path="res://addons/@fumohouse/navigation/options_screen/options_group.tscn" id="2_bey3n"]
 [ext_resource type="PackedScene" uid="uid://dkc1c5664nsdq" path="res://addons/@fumohouse/config/ui/config_range.tscn" id="3_0jmwj"]
 [ext_resource type="PackedScene" uid="uid://d3trtaukoxstd" path="res://addons/@fumohouse/config/ui/config_action_bind.tscn" id="4_0jmwj"]
 

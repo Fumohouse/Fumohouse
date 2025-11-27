@@ -1,6 +1,4 @@
-extends "../navigation/nav_menu.gd"
-
-const MenuUtils := preload("../navigation/menu_utils.gd")
+extends "res://addons/@fumohouse/navigation/nav_menu.gd"
 
 var transition_in := true
 

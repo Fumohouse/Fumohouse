@@ -1,4 +1,4 @@
-extends "../navigation/transition_element.gd"
+extends "res://addons/@fumohouse/navigation/transition_element.gd"
 
 @onready var config_manager := ConfigManager.get_singleton()
 @onready var quit_manager := QuitManager.get_singleton()

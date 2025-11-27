@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://c55ax8y8twfnj"]
 
-[ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/main/ui/navigation/screen_base_layout.tscn" id="1_5m4yv"]
+[ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/navigation/screen_base_layout.tscn" id="1_5m4yv"]
 [ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="3_0eq8h"]
-[ext_resource type="PackedScene" uid="uid://c246gir0epl0y" path="res://addons/@fumohouse/main/ui/options_screen/tabs/graphics_tab.tscn" id="4_gb75b"]
-[ext_resource type="PackedScene" uid="uid://d2u1fw2dlkujn" path="res://addons/@fumohouse/main/ui/options_screen/tabs/audio_tab.tscn" id="5_3c6qe"]
-[ext_resource type="PackedScene" uid="uid://r0g4ywp4thny" path="res://addons/@fumohouse/main/ui/options_screen/tabs/input_tab.tscn" id="6_hp4et"]
-[ext_resource type="PackedScene" uid="uid://62pkyk82rvkj" path="res://addons/@fumohouse/main/ui/options_screen/restart_prompt.tscn" id="8_3c6qe"]
+[ext_resource type="PackedScene" uid="uid://c246gir0epl0y" path="res://addons/@fumohouse/navigation/options_screen/tabs/graphics_tab.tscn" id="4_gb75b"]
+[ext_resource type="PackedScene" uid="uid://d2u1fw2dlkujn" path="res://addons/@fumohouse/navigation/options_screen/tabs/audio_tab.tscn" id="5_3c6qe"]
+[ext_resource type="PackedScene" uid="uid://r0g4ywp4thny" path="res://addons/@fumohouse/navigation/options_screen/tabs/input_tab.tscn" id="6_hp4et"]
+[ext_resource type="PackedScene" uid="uid://62pkyk82rvkj" path="res://addons/@fumohouse/navigation/options_screen/restart_prompt.tscn" id="8_3c6qe"]
 
 [node name="OptionsScreen" node_paths=PackedStringArray("tabs", "tab_content") instance=ExtResource("1_5m4yv")]
 tabs = NodePath("TopBar/Tabs")

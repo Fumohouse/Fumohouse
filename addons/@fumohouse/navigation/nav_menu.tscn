@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctxaywfcdgbmw"]
 
-[ext_resource type="PackedScene" uid="uid://bwfpt2e5bsunh" path="res://addons/@fumohouse/main/ui/navigation/components/back_button.tscn" id="1_8l6fq"]
-[ext_resource type="Script" uid="uid://bec53rur1matv" path="res://addons/@fumohouse/main/ui/navigation/nav_menu.gd" id="1_fpjh4"]
+[ext_resource type="PackedScene" uid="uid://bwfpt2e5bsunh" path="res://addons/@fumohouse/navigation/components/back_button.tscn" id="1_8l6fq"]
+[ext_resource type="Script" uid="uid://bec53rur1matv" path="res://addons/@fumohouse/navigation/nav_menu.gd" id="1_fpjh4"]
 
 [node name="NavMenu" type="Control"]
 layout_mode = 3

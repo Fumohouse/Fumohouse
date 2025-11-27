@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ModuleManifest" load_steps=6 format=3 uid="uid://d1u5fvuqsj17m"]
+
+[ext_resource type="Script" uid="uid://bv6m4s88g0oi6" path="res://addons/@fumohouse/base/module_autoload.gd" id="1_vwot4"]
+[ext_resource type="Script" uid="uid://cyriemmrcefgc" path="res://addons/@fumohouse/base/module_dependency.gd" id="2_2mwwu"]
+[ext_resource type="Script" uid="uid://c5kqgift21f1k" path="res://addons/@fumohouse/base/module_manifest.gd" id="3_7m0pi"]
+
+[sub_resource type="Resource" id="Resource_vwot4"]
+script = ExtResource("2_2mwwu")
+name = &"@fumohouse/common"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[sub_resource type="Resource" id="Resource_2mwwu"]
+script = ExtResource("2_2mwwu")
+name = &"@fumohouse/config"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[resource]
+script = ExtResource("3_7m0pi")
+dependencies = Array[ExtResource("2_2mwwu")]([SubResource("Resource_vwot4"), SubResource("Resource_2mwwu")])
+metadata/_custom_type_script = "uid://c5kqgift21f1k"

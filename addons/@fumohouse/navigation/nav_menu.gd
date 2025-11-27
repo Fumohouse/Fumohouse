@@ -1,5 +1,6 @@
 extends Control
 
+const MenuUtils := preload("menu_utils.gd")
 const TransitionElement := preload("transition_element.gd")
 const NavButton := preload("components/nav_button.gd")
 

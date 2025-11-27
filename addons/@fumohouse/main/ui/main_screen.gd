@@ -1,7 +1,9 @@
-extends "../navigation/transition_element.gd"
+extends "res://addons/@fumohouse/navigation/transition_element.gd"
 
 const MusicController = preload("res://addons/@fumohouse/music/music_controller.gd")
-const NavButtonContainer = preload("../navigation/components/nav_button_container.gd")
+const NavButtonContainer = preload(
+	"res://addons/@fumohouse/navigation/components/nav_button_container.gd"
+)
 
 @onready var _non_navigation: Control = $NonNavigation
 @onready var _main_buttons: NavButtonContainer = $MainButtons

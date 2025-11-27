@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://62pkyk82rvkj"]
 
-[ext_resource type="Script" uid="uid://d3r42veqqkgya" path="res://addons/@fumohouse/main/ui/options_screen/restart_prompt.gd" id="1_orkif"]
+[ext_resource type="Script" uid="uid://d3r42veqqkgya" path="res://addons/@fumohouse/navigation/options_screen/restart_prompt.gd" id="1_orkif"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvtl1"]
 content_margin_left = 32.0

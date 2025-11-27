@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dmk1xv60inwsy"]
 
-[ext_resource type="Script" uid="uid://7my83ojk5ayr" path="res://addons/@fumohouse/main/ui/navigation/screen_base.gd" id="1_v6r22"]
+[ext_resource type="Script" uid="uid://7my83ojk5ayr" path="res://addons/@fumohouse/navigation/screen_base.gd" id="1_v6r22"]
 
 [node name="ScreenBaseLayout" type="Control"]
 layout_mode = 3

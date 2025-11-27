@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dr32entbvcc4"]
 
-[ext_resource type="Script" uid="uid://po351v810l2i" path="res://addons/@fumohouse/main/ui/navigation/components/nav_button.gd" id="1_bowp7"]
+[ext_resource type="Script" uid="uid://po351v810l2i" path="res://addons/@fumohouse/navigation/components/nav_button.gd" id="1_bowp7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upxgy"]
 bg_color = Color(0.08, 0.245333, 0.4, 0)
