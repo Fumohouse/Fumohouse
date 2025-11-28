@@ -1,14 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://di6y2krc1ti44"]
+[gd_scene load_steps=12 format=3 uid="uid://di6y2krc1ti44"]
 
+[ext_resource type="Script" uid="uid://boaw28xhoxx4d" path="res://addons/@fumohouse/world/runtime.gd" id="1_34n3o"]
 [ext_resource type="Environment" uid="uid://bx0t0ec5dt28e" path="res://addons/@fumohouse/main/resources/default_environment.tres" id="1_i4nth"]
 [ext_resource type="Script" uid="uid://cbriawn38rjn8" path="res://addons/@fumohouse/config/nodes/config_world_environment.gd" id="2_pk70q"]
 [ext_resource type="Script" uid="uid://ck70ouuqfwjvq" path="res://addons/@fumohouse/character/camera_controller.gd" id="3_pk70q"]
 [ext_resource type="PackedScene" uid="uid://bjlyq7kguqj6c" path="res://addons/@fumohouse/world/game_menu/game_menu.tscn" id="4_ayhuy"]
 [ext_resource type="PackedScene" uid="uid://8e0rdqic34kn" path="res://addons/@fumohouse/debug/overlays/debug_engine_info.tscn" id="4_sr5u4"]
+[ext_resource type="PackedScene" uid="uid://cxbmruffw23h5" path="res://addons/@fumohouse/world/nodes/crosshair.tscn" id="5_8cdle"]
+[ext_resource type="Script" uid="uid://31d03pclahet" path="res://addons/@fumohouse/world/nodes/water_overlay.gd" id="5_a2cmo"]
 [ext_resource type="PackedScene" uid="uid://doaikbfuqcjah" path="res://addons/@fumohouse/debug/overlays/debug_platform_info.tscn" id="5_ayhuy"]
 [ext_resource type="PackedScene" uid="uid://dcjefyuix0jjw" path="res://addons/@fumohouse/character/debug_character.tscn" id="6_34n3o"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_a2cmo"]
+
 [node name="WorldRuntime" type="Node3D"]
+script = ExtResource("1_34n3o")
 
 [node name="Players" type="Node3D" parent="."]
 
@@ -32,6 +38,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="WaterOverlay" type="ColorRect" parent="HUD" node_paths=PackedStringArray("camera")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.09019608, 0.35686275, 0.6392157, 0.3137255)
+script = ExtResource("5_a2cmo")
+camera = NodePath("../../Camera3D")
+camera_shape = SubResource("SphereShape3D_a2cmo")
+
+[node name="Crosshair" parent="HUD" node_paths=PackedStringArray("camera_controller") instance=ExtResource("5_8cdle")]
+layout_mode = 1
+camera_controller = NodePath("../../Camera3D/CameraController")
 
 [node name="GameMenu" parent="HUD" instance=ExtResource("4_ayhuy")]
 layout_mode = 1
