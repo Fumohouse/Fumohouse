@@ -5,7 +5,6 @@ const _MODULES_DIR := "res://addons/"
 const _MANIFEST_NAME := "module.tres"
 
 var _modules: Dictionary[StringName, ModuleManifest] = {}
-var _configs: Dictionary[StringName, ConfigFile] = {}
 var _autoloads: Dictionary[StringName, Object] = {}
 
 
@@ -29,6 +28,11 @@ func get_singleton(name: StringName) -> Object:
 	return _autoloads[name]
 
 
+## Get the list of currently detected modules.
+func get_modules() -> Array[ModuleManifest]:
+	return _modules.values()
+
+
 func _index_module(path: String):
 	var manifest := load(path.path_join(_MANIFEST_NAME)) as ModuleManifest
 	if not manifest:
@@ -41,9 +45,13 @@ func _index_module(path: String):
 		push_error("[Modules] Failed to load plugin configuration for '%s'." % path)
 		return
 
+	manifest.name = cfg.get_value("plugin", "name", "")
+	manifest.description = cfg.get_value("plugin", "description", "")
+	manifest.author = cfg.get_value("plugin", "author", "")
+	manifest.version = cfg.get_value("plugin", "version", "")
+
 	var module_name := StringName(path.substr(_MODULES_DIR.length()))
 	_modules[module_name] = manifest
-	_configs[module_name] = cfg
 	print("[Modules] Indexed module '%s'." % module_name)
 
 

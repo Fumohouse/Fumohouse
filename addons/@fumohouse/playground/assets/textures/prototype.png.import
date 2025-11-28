@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mi58m8r4mphu"
-path.s3tc="res://.godot/imported/prototype.png-884ba8629d6d3bbebdc9ba552b414fc2.s3tc.ctex"
+path.s3tc="res://.godot/imported/prototype.png-08571baed2c5c58595faddbfaba2d0ad.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/@fumohouse/fumo/playground/assets/textures/prototype.png"
-dest_files=["res://.godot/imported/prototype.png-884ba8629d6d3bbebdc9ba552b414fc2.s3tc.ctex"]
+source_file="res://addons/@fumohouse/playground/assets/textures/prototype.png"
+dest_files=["res://.godot/imported/prototype.png-08571baed2c5c58595faddbfaba2d0ad.s3tc.ctex"]
 
 [params]
 

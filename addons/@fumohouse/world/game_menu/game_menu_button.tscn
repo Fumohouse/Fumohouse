@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://ds5d313nse56r"]
+
+[ext_resource type="PackedScene" uid="uid://dr32entbvcc4" path="res://addons/@fumohouse/navigation/components/nav_button.tscn" id="1_by5n8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_by5n8"]
+content_margin_left = 48.0
+bg_color = Color(0.101960786, 0.30588236, 0.5019608, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cejka"]
+content_margin_left = 48.0
+bg_color = Color(0.07058824, 0.21568628, 0.34901962, 1)
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.101960786, 0.30588236, 0.5019608, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ptnd3"]
+content_margin_left = 48.0
+bg_color = Color(0.078431375, 0.24705882, 0.4, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0cpga"]
+content_margin_left = 48.0
+bg_color = Color(0.101960786, 0.30588236, 0.5019608, 1)
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.12, 0.36800003, 0.6, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2r65c"]
+bg_color = Color(0.08, 0.245333, 0.4, 0)
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.25882354, 0.4627451, 0.6509804, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[node name="GameMenuButton" instance=ExtResource("1_by5n8")]
+theme_override_styles/normal = SubResource("StyleBoxFlat_by5n8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cejka")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ptnd3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_0cpga")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2r65c")

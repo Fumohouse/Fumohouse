@@ -173,7 +173,7 @@ func get_focal_point() -> Vector3:
 
 ## Call when popup (e.g., in-game menu) opens.
 func handle_popup():
-	if mode == CameraMode.MODE_THIRD_PERSON:
+	if mode == CameraMode.MODE_THIRD_PERSON or mode == CameraMode.MODE_FLOATING:
 		_set_camera_rotating(false)
 
 

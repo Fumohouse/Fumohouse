@@ -69,7 +69,7 @@ func switch_screen(screen: TransitionElement):
 	if screen:
 		_tween_in = _transition_screen(screen, true)
 
-	if not inhibit_back:
+	if screen and not inhibit_back:
 		_back_button.nav_transition(screen != main_screen)
 		if screen != main_screen:
 			_back_button.grab_focus()

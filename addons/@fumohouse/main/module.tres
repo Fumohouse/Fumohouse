@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ModuleManifest" load_steps=10 format=3 uid="uid://d1kinh043krwh"]
+[gd_resource type="Resource" script_class="ModuleManifest" load_steps=11 format=3 uid="uid://d1kinh043krwh"]
 
 [ext_resource type="Script" uid="uid://bv6m4s88g0oi6" path="res://addons/@fumohouse/base/module_autoload.gd" id="1_ikpyo"]
 [ext_resource type="Script" uid="uid://c5kqgift21f1k" path="res://addons/@fumohouse/base/module_manifest.gd" id="1_n5nu5"]
@@ -34,8 +34,13 @@ script = ExtResource("1_u056h")
 name = &"@fumohouse/debug"
 metadata/_custom_type_script = "uid://cyriemmrcefgc"
 
+[sub_resource type="Resource" id="Resource_cmul5"]
+script = ExtResource("1_u056h")
+name = &"@fumohouse/world"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
 [resource]
 script = ExtResource("1_n5nu5")
-dependencies = Array[ExtResource("1_u056h")]([SubResource("Resource_k1pyv"), SubResource("Resource_ikpyo"), SubResource("Resource_yci67"), SubResource("Resource_n7scs"), SubResource("Resource_du5l7"), SubResource("Resource_huq3x")])
+dependencies = Array[ExtResource("1_u056h")]([SubResource("Resource_k1pyv"), SubResource("Resource_ikpyo"), SubResource("Resource_yci67"), SubResource("Resource_n7scs"), SubResource("Resource_du5l7"), SubResource("Resource_huq3x"), SubResource("Resource_cmul5")])
 entry_scene = "uid://r3htqql86m4u"
 metadata/_custom_type_script = "uid://c5kqgift21f1k"

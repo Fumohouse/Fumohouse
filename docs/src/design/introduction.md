@@ -35,7 +35,6 @@ Fumohouse is organized into the following components:
 
 - [Fumohouse Core](core/index.md): The main user interface and various modules
   and tools that are used to build games for Fumohouse.
-- [Fumohouse games ("Fumofa's")](fumofas/index.md): The games that utilize the
-  core components.
+- [Worlds](worlds/index.md): The games that utilize the core components.
 - Business logic: Server components that manage game servers, player sessions,
   moderation, chat, etc.

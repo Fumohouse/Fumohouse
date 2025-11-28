@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="ModuleManifest" load_steps=10 format=3 uid="uid://b6yxnsqimgyo4"]
+
+[ext_resource type="Script" uid="uid://bv6m4s88g0oi6" path="res://addons/@fumohouse/base/module_autoload.gd" id="1_ou7jc"]
+[ext_resource type="Script" uid="uid://cyriemmrcefgc" path="res://addons/@fumohouse/base/module_dependency.gd" id="2_q47l1"]
+[ext_resource type="Script" uid="uid://c5kqgift21f1k" path="res://addons/@fumohouse/base/module_manifest.gd" id="3_1akqj"]
+
+[sub_resource type="Resource" id="Resource_q47l1"]
+script = ExtResource("1_ou7jc")
+name = &"WorldManager"
+path = "uid://bfa2coia110gs"
+metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
+
+[sub_resource type="Resource" id="Resource_ou7jc"]
+script = ExtResource("2_q47l1")
+name = &"@fumohouse/music"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[sub_resource type="Resource" id="Resource_1akqj"]
+script = ExtResource("2_q47l1")
+name = &"@fumohouse/config"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[sub_resource type="Resource" id="Resource_qdj6x"]
+script = ExtResource("2_q47l1")
+name = &"@fumohouse/character"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[sub_resource type="Resource" id="Resource_pljcs"]
+script = ExtResource("2_q47l1")
+name = &"@fumohouse/debug"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[sub_resource type="Resource" id="Resource_b502f"]
+script = ExtResource("2_q47l1")
+name = &"@fumohouse/navigation"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[resource]
+script = ExtResource("3_1akqj")
+dependencies = Array[ExtResource("2_q47l1")]([SubResource("Resource_ou7jc"), SubResource("Resource_1akqj"), SubResource("Resource_qdj6x"), SubResource("Resource_pljcs"), SubResource("Resource_b502f")])
+autoloads = Array[ExtResource("1_ou7jc")]([SubResource("Resource_q47l1")])
+metadata/_custom_type_script = "uid://c5kqgift21f1k"

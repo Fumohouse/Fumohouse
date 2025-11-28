@@ -1,0 +1,187 @@
+[gd_scene load_steps=16 format=3 uid="uid://bjlyq7kguqj6c"]
+
+[ext_resource type="PackedScene" uid="uid://ctxaywfcdgbmw" path="res://addons/@fumohouse/navigation/nav_menu.tscn" id="1_tge01"]
+[ext_resource type="Script" uid="uid://b83el535hlsj4" path="res://addons/@fumohouse/world/game_menu/game_menu.gd" id="2_8xol2"]
+[ext_resource type="Shader" uid="uid://cfejetqo4tpot" path="res://addons/@fumohouse/common/resources/materials/ui_blur.gdshader" id="3_ccw7w"]
+[ext_resource type="PackedScene" uid="uid://c55ax8y8twfnj" path="res://addons/@fumohouse/navigation/options_screen/options_screen.tscn" id="4_itoxh"]
+[ext_resource type="Script" uid="uid://b08p3vh3shv1n" path="res://addons/@fumohouse/navigation/transition_element.gd" id="5_tvd1v"]
+[ext_resource type="Script" uid="uid://dyygcwyhv7iek" path="res://addons/@fumohouse/world/game_menu/menu_screen.gd" id="6_4uur8"]
+[ext_resource type="PackedScene" uid="uid://by5n53kx2tkhx" path="res://addons/@fumohouse/navigation/components/nav_button_container.tscn" id="7_cpy6s"]
+[ext_resource type="PackedScene" uid="uid://ds5d313nse56r" path="res://addons/@fumohouse/world/game_menu/game_menu_button.tscn" id="8_uvyrv"]
+[ext_resource type="PackedScene" uid="uid://croenlf3yyt7h" path="res://addons/@fumohouse/music/music_controller.tscn" id="9_bsq5a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_itoxh"]
+resource_local_to_scene = true
+shader = ExtResource("3_ccw7w")
+shader_parameter/blur = 1.0
+shader_parameter/dim = 0.3
+
+[sub_resource type="LabelSettings" id="LabelSettings_4uur8"]
+font_size = 18
+
+[sub_resource type="Gradient" id="Gradient_4uur8"]
+colors = PackedColorArray(0.039215688, 0.12156863, 0.2, 1, 0.039215688, 0.12156863, 0.2, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cpy6s"]
+gradient = SubResource("Gradient_4uur8")
+
+[sub_resource type="LabelSettings" id="LabelSettings_cpy6s"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_uvyrv"]
+font_size = 18
+
+[node name="GameMenu" node_paths=PackedStringArray("main_screen") instance=ExtResource("1_tge01")]
+focus_mode = 2
+script = ExtResource("2_8xol2")
+main_screen = NodePath("Screens/MenuScreen")
+
+[node name="Blur" type="ColorRect" parent="." index="0"]
+material = SubResource("ShaderMaterial_itoxh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="OptionsScreen" parent="Screens" index="0" instance=ExtResource("4_itoxh")]
+visible = false
+layout_mode = 1
+
+[node name="LeaveScreen" type="PanelContainer" parent="Screens" index="1"]
+visible = false
+custom_minimum_size = Vector2(280, 70)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_tvd1v")
+
+[node name="Label" type="Label" parent="Screens/LeaveScreen" index="0"]
+layout_mode = 2
+text = "Please wait…"
+label_settings = SubResource("LabelSettings_4uur8")
+horizontal_alignment = 1
+
+[node name="MenuScreen" type="Control" parent="Screens" index="2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_4uur8")
+
+[node name="GradientBackground" type="TextureRect" parent="Screens/MenuScreen" index="0"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_cpy6s")
+
+[node name="Contents" type="VBoxContainer" parent="Screens/MenuScreen" index="1"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -151.0
+offset_right = 450.0
+offset_bottom = 151.0
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="MarginContainer" parent="Screens/MenuScreen/Contents" index="0"]
+layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Screens/MenuScreen/Contents/Title" index="0"]
+layout_mode = 2
+text = "Game Menu"
+label_settings = SubResource("LabelSettings_cpy6s")
+
+[node name="NavButtonContainer" parent="Screens/MenuScreen/Contents" index="1" instance=ExtResource("7_cpy6s")]
+layout_mode = 2
+
+[node name="ContinueButton" parent="Screens/MenuScreen/Contents/NavButtonContainer" index="0" instance=ExtResource("8_uvyrv")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Continue"
+
+[node name="InfoButton" parent="Screens/MenuScreen/Contents/NavButtonContainer" index="1" instance=ExtResource("8_uvyrv")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Credits/Info"
+
+[node name="OptionsButton" parent="Screens/MenuScreen/Contents/NavButtonContainer" index="2" instance=ExtResource("8_uvyrv")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Options"
+
+[node name="LeaveButton" parent="Screens/MenuScreen/Contents/NavButtonContainer" index="3" instance=ExtResource("8_uvyrv")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(225, 48)
+layout_mode = 2
+text = "Leave"
+
+[node name="BottomBar" type="Control" parent="Screens/MenuScreen" index="2"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Background" type="ColorRect" parent="Screens/MenuScreen/BottomBar" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.09803922, 0.30588236, 0.49803922, 1)
+
+[node name="MapName" type="Label" parent="Screens/MenuScreen/BottomBar" index="1"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -10.208
+offset_right = 124.0
+offset_bottom = 10.208664
+grow_vertical = 2
+text = "Map Name"
+label_settings = SubResource("LabelSettings_uvyrv")
+vertical_alignment = 1
+
+[node name="MusicController" parent="Screens/MenuScreen" index="3" instance=ExtResource("9_bsq5a")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -298.0
+offset_top = -180.0
+offset_right = -48.0
+offset_bottom = -96.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(250, 0)

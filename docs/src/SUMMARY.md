@@ -20,6 +20,6 @@
   - [[FUTURE] `@fumohouse/doll`: "Doll"
     character](design/core/@fumohouse-doll.md)
   - [Other modules](design/core/misc.md)
-- [Fumofa's](design/fumofas/index.md)
+- [Worlds](design/worlds/index.md)
   - [`@fumohouse/playground`: The Playground
-    map](design/fumofas/@fumohouse-playground.md)
+    map](design/worlds/@fumohouse-playground.md)

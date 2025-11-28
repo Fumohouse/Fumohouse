@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://di6y2krc1ti44"]
+
+[ext_resource type="Environment" uid="uid://bx0t0ec5dt28e" path="res://addons/@fumohouse/main/resources/default_environment.tres" id="1_i4nth"]
+[ext_resource type="Script" uid="uid://cbriawn38rjn8" path="res://addons/@fumohouse/config/nodes/config_world_environment.gd" id="2_pk70q"]
+[ext_resource type="Script" uid="uid://ck70ouuqfwjvq" path="res://addons/@fumohouse/character/camera_controller.gd" id="3_pk70q"]
+[ext_resource type="PackedScene" uid="uid://bjlyq7kguqj6c" path="res://addons/@fumohouse/world/game_menu/game_menu.tscn" id="4_ayhuy"]
+[ext_resource type="PackedScene" uid="uid://8e0rdqic34kn" path="res://addons/@fumohouse/debug/overlays/debug_engine_info.tscn" id="4_sr5u4"]
+[ext_resource type="PackedScene" uid="uid://doaikbfuqcjah" path="res://addons/@fumohouse/debug/overlays/debug_platform_info.tscn" id="5_ayhuy"]
+[ext_resource type="PackedScene" uid="uid://dcjefyuix0jjw" path="res://addons/@fumohouse/character/debug_character.tscn" id="6_34n3o"]
+
+[node name="WorldRuntime" type="Node3D"]
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." node_paths=PackedStringArray("world_env")]
+environment = ExtResource("1_i4nth")
+script = ExtResource("2_pk70q")
+world_env = NodePath(".")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="CameraController" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("camera")]
+script = ExtResource("3_pk70q")
+camera = NodePath("..")
+metadata/_custom_type_script = "uid://ck70ouuqfwjvq"
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="GameMenu" parent="HUD" instance=ExtResource("4_ayhuy")]
+layout_mode = 1
+
+[node name="DebugMenus" type="Control" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DebugEngineInfo" parent="HUD/DebugMenus" instance=ExtResource("4_sr5u4")]
+layout_mode = 0
+
+[node name="DebugPlatformInfo" parent="HUD/DebugMenus" instance=ExtResource("5_ayhuy")]
+layout_mode = 0
+
+[node name="DebugCharacter" parent="HUD/DebugMenus" instance=ExtResource("6_34n3o")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -328.0
+offset_right = 0.0
+grow_horizontal = 0
+
+[connection signal="opened" from="HUD/GameMenu" to="Camera3D/CameraController" method="handle_popup"]

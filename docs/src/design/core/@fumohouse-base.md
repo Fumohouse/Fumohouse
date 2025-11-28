@@ -1,6 +1,6 @@
 # `@fumohouse/base`: Module system
 
-1. [x] All of Fumohouse's/Fumofas' game code/tooling/assets is organized into
+1. [x] All of Fumohouse's/worlds' game code/tooling/assets is organized into
    modules.
 1. [x] The module system is based on Godot's addon/plugin system. Each module is
    a Godot plugin and therefore must contain a `plugin.cfg`. By convention, a

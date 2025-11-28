@@ -13,3 +13,13 @@ extends Resource
 
 ## The scenes/scripts to automatically load as singletons.
 @export var autoloads: Array[ModuleAutoload] = []
+
+## Name of this module (e.g., [code]@fumohouse/base[/code]), populated by the
+## module manager.
+var name := &""
+## Description of this module, populated by the module manager.
+var description := ""
+## Author of this module, populated by the module manager.
+var author := ""
+## Version of this module, populated by the module manager.
+var version := ""
