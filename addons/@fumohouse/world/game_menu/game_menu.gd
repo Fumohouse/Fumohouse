@@ -112,4 +112,4 @@ func _on_leave_button_pressed():
 	inhibit_back = true
 	switch_screen(_leave_screen)
 	await get_tree().create_timer(0.5).timeout
-	# TODO: LEAVE
+	WorldManager.get_singleton().leave()

@@ -22,7 +22,8 @@ func _ready():
 	super._ready()
 	part_database = FumoPartDatabase.get_singleton()
 
-	_on_fumo_camera_updated(fumo.camera)
+	# Requires parent attributes to be present
+	_on_fumo_camera_updated.call_deferred(fumo.camera)
 	fumo.camera_updated.connect(_on_fumo_camera_updated)
 
 	_base_ragdoll_collider_position = ragdoll_collider.position

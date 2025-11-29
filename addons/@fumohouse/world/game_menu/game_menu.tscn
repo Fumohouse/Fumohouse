@@ -157,7 +157,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.09803922, 0.30588236, 0.49803922, 1)
 
-[node name="MapName" type="Label" parent="Screens/MenuScreen/BottomBar" index="1"]
+[node name="WorldName" type="Label" parent="Screens/MenuScreen/BottomBar" index="1"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -167,7 +168,7 @@ offset_top = -10.208
 offset_right = 124.0
 offset_bottom = 10.208664
 grow_vertical = 2
-text = "Map Name"
+text = "World Name"
 label_settings = SubResource("LabelSettings_uvyrv")
 vertical_alignment = 1
 

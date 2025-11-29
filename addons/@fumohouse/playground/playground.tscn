@@ -1,93 +1,18 @@
-[gd_scene load_steps=46 format=3 uid="uid://guxlxf4tholg"]
+[gd_scene load_steps=34 format=3 uid="uid://guxlxf4tholg"]
 
-[ext_resource type="Script" uid="uid://bfxjq1i3chu5i" path="res://addons/@fumohouse/playground/playground.gd" id="1_w0vfe"]
-[ext_resource type="Script" uid="uid://ck70ouuqfwjvq" path="res://addons/@fumohouse/character/camera_controller.gd" id="2_xnrk0"]
-[ext_resource type="Environment" uid="uid://bx0t0ec5dt28e" path="res://addons/@fumohouse/main/resources/default_environment.tres" id="4_r7lgf"]
+[ext_resource type="Script" uid="uid://ds2i8jbnratt0" path="res://addons/@fumohouse/world/nodes/character_manager.gd" id="1_wbq40"]
+[ext_resource type="Script" uid="uid://rs1pafyfthr8" path="res://addons/@fumohouse/world/nodes/spawnpoint.gd" id="2_cv6sy"]
 [ext_resource type="FontFile" uid="uid://c4qltp4duykro" path="res://addons/@assets/clarity_city/ClarityCity-RegularItalic.woff2" id="5_b1etj"]
 [ext_resource type="PackedScene" uid="uid://bnic23uqggm8j" path="res://addons/@fumohouse/fumo/fumo.tscn" id="5_b8l81"]
-[ext_resource type="Script" uid="uid://cbriawn38rjn8" path="res://addons/@fumohouse/config/nodes/config_world_environment.gd" id="5_ckt1o"]
 [ext_resource type="Script" uid="uid://ccc2egf38uchc" path="res://addons/@fumohouse/common/nodes/billboard.gd" id="5_o3drt"]
-[ext_resource type="PackedScene" uid="uid://dcjefyuix0jjw" path="res://addons/@fumohouse/character/debug_character.tscn" id="6_ahxc0"]
 [ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@assets/fumohouse_common/textures/logo.png" id="6_b1etj"]
-[ext_resource type="Script" uid="uid://ckfcdw3j0qb6k" path="res://addons/@fumohouse/character_appearance/appearance.gd" id="6_f6wyg"]
 [ext_resource type="Script" uid="uid://dgrdrsb723x4l" path="res://addons/@fumohouse/playground/path_follower.gd" id="6_fia5t"]
 [ext_resource type="Material" uid="uid://d0b833ed41ul5" path="res://addons/@fumohouse/playground/resources/playground.tres" id="6_r7lgf"]
-[ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="7_dw0el"]
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@assets/clarity_city/ClarityCity-Bold.woff2" id="7_jt7kb"]
 [ext_resource type="Script" uid="uid://pqi5ly4ipxbb" path="res://addons/@fumohouse/playground/rotating_body.gd" id="7_rmdev"]
-[ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="8_unehi"]
 [ext_resource type="PackedScene" uid="uid://dq033aiu7nys6" path="res://addons/@fumohouse/playground/seat.tscn" id="10_qf3vw"]
 [ext_resource type="PackedScene" uid="uid://da37x05lvkkbi" path="res://addons/@fumohouse/playground/ladder.tscn" id="11_ckt1o"]
 [ext_resource type="Material" uid="uid://dbc0ratgleys3" path="res://addons/@fumohouse/common/resources/materials/water.tres" id="15_2usgv"]
-
-[sub_resource type="Resource" id="Resource_d205u"]
-script = ExtResource("6_f6wyg")
-display_name = "Doremy"
-config = Dictionary[StringName, Variant]({
-&"eyebrows": &"straight",
-&"eyes": &"straight",
-&"eyes_color": Color(0.17254902, 0.3529412, 0.7647059, 1),
-&"mouth": &"3",
-&"scale": 1.0
-})
-attached_parts = Dictionary[StringName, Variant]({
-&"doremy_ears": null,
-&"doremy_hair_back": {
-&"color": Color(0.11372549, 0.2, 0.5372549, 1)
-},
-&"doremy_hair_front": {
-&"color": Color(0.11372549, 0.2, 0.5372549, 1)
-},
-&"doremy_outfit": null,
-&"doremy_ponytail": {
-&"color": Color(0.11372549, 0.2, 0.5372549, 1)
-},
-&"doremy_shoes": null,
-&"doremy_tail": null
-})
-metadata/_custom_type_script = "uid://ckfcdw3j0qb6k"
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sdt6k"]
-resource_local_to_scene = true
-height = 3.4
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_gdxbo"]
-resource_local_to_scene = true
-size = Vector3(0.7, 1, 0.45)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_yrlyc"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
-noise = SubResource("FastNoiseLite_yrlyc")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6faox"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("7_dw0el")
-shader_parameter/albedo = Color(0.9882353, 0.91764724, 0.8313727, 1)
-shader_parameter/albedo_texture_size = Vector2i(0, 0)
-shader_parameter/point_size = 1.0
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/specular = 0.5
-shader_parameter/metallic = 0.0
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy = 0.0
-shader_parameter/normal_scale = 1.0
-shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/ao_light_affect = 0.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/dither_texture = ExtResource("8_unehi")
-shader_parameter/dither_scale = 8.0
-shader_parameter/alpha = 1.0
-shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_x1kjk")
-shader_parameter/dissolve = 0.0
-shader_parameter/dissolve_border = 0.05
-shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
-shader_parameter/dissolve_emission_energy = 4.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xnrk0"]
 friction = 0.5
@@ -164,58 +89,28 @@ subdivide_width = 24
 subdivide_depth = 24
 
 [node name="Playground" type="Node3D"]
-script = ExtResource("1_w0vfe")
 
-[node name="TEMP_RUNTIME" type="Node3D" parent="."]
+[node name="CharacterManager" type="Node3D" parent="." node_paths=PackedStringArray("spawnpoints")]
+script = ExtResource("1_wbq40")
+spawnpoints = NodePath("../Spawnpoints")
+metadata/_custom_type_script = "uid://ds2i8jbnratt0"
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="TEMP_RUNTIME" node_paths=PackedStringArray("world_env")]
-environment = ExtResource("4_r7lgf")
-script = ExtResource("5_ckt1o")
-world_env = NodePath(".")
+[node name="Spawnpoints" type="Node3D" parent="."]
 
-[node name="Character" type="Node3D" parent="TEMP_RUNTIME"]
+[node name="Spawnpoint1" type="Node3D" parent="Spawnpoints" node_paths=PackedStringArray("point")]
+script = ExtResource("2_cv6sy")
+point = NodePath("Marker3D")
+metadata/_custom_type_script = "uid://rs1pafyfthr8"
 
-[node name="Camera3D" type="Camera3D" parent="TEMP_RUNTIME/Character"]
+[node name="Marker3D" type="Marker3D" parent="Spawnpoints/Spawnpoint1"]
 
-[node name="CameraController" type="Node3D" parent="TEMP_RUNTIME/Character/Camera3D" node_paths=PackedStringArray("camera", "focus_node")]
-unique_name_in_owner = true
-script = ExtResource("2_xnrk0")
-camera = NodePath("..")
-focus_node = NodePath("../../Fumo")
-metadata/_custom_type_script = "uid://ck70ouuqfwjvq"
+[node name="Spawnpoint2" type="Node3D" parent="Spawnpoints" node_paths=PackedStringArray("point")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 5, 10)
+script = ExtResource("2_cv6sy")
+point = NodePath("Marker3D")
+metadata/_custom_type_script = "uid://rs1pafyfthr8"
 
-[node name="Fumo" parent="TEMP_RUNTIME/Character" instance=ExtResource("5_b8l81")]
-unique_name_in_owner = true
-
-[node name="Appearance" parent="TEMP_RUNTIME/Character/Fumo" index="0"]
-appearance = SubResource("Resource_d205u")
-
-[node name="MainCollider" parent="TEMP_RUNTIME/Character/Fumo" index="1"]
-shape = SubResource("CapsuleShape3D_sdt6k")
-
-[node name="RagdollCollider" parent="TEMP_RUNTIME/Character/Fumo" index="2"]
-shape = SubResource("BoxShape3D_gdxbo")
-
-[node name="HeadModel" parent="TEMP_RUNTIME/Character/Fumo/Rig/Armature/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_6faox")
-
-[node name="LArmModel" parent="TEMP_RUNTIME/Character/Fumo/Rig/Armature/Skeleton3D" index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_6faox")
-
-[node name="LLegModel" parent="TEMP_RUNTIME/Character/Fumo/Rig/Armature/Skeleton3D" index="2"]
-surface_material_override/0 = SubResource("ShaderMaterial_6faox")
-
-[node name="RArmModel" parent="TEMP_RUNTIME/Character/Fumo/Rig/Armature/Skeleton3D" index="3"]
-surface_material_override/0 = SubResource("ShaderMaterial_6faox")
-
-[node name="RLegModel" parent="TEMP_RUNTIME/Character/Fumo/Rig/Armature/Skeleton3D" index="4"]
-surface_material_override/0 = SubResource("ShaderMaterial_6faox")
-
-[node name="TorsoModel" parent="TEMP_RUNTIME/Character/Fumo/Rig/Armature/Skeleton3D" index="5"]
-surface_material_override/0 = SubResource("ShaderMaterial_6faox")
-
-[node name="DebugCharacter" parent="TEMP_RUNTIME" node_paths=PackedStringArray("character") instance=ExtResource("6_ahxc0")]
-character = NodePath("../Character/Fumo")
+[node name="Marker3D" type="Marker3D" parent="Spawnpoints/Spawnpoint2"]
 
 [node name="Map" type="Node3D" parent="."]
 
@@ -622,6 +517,3 @@ transform = Transform3D(0.866026, 0.286788, 0.409576, -7.16126e-08, -0.819152, 0
 shadow_enabled = true
 shadow_normal_bias = 5.0
 shadow_blur = 2.5
-
-[editable path="TEMP_RUNTIME/Character/Fumo"]
-[editable path="TEMP_RUNTIME/Character/Fumo/Rig"]

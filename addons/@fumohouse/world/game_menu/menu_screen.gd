@@ -10,7 +10,15 @@ const MusicController = preload("res://addons/@fumohouse/music/music_controller.
 @onready var _title: Control = $Contents/Title
 @onready var _nav_buttons: NavButtonContainer = $Contents/NavButtonContainer
 @onready var _bottom_bar: Control = $BottomBar
+@onready var _world_name: Label = %WorldName
 @onready var _music_controller: MusicController = $MusicController
+
+
+func _ready():
+	var current_world: WorldManifest = WorldManager.get_singleton().get_current_world()
+	if not current_world:
+		return
+	_world_name.text = "%s • %s" % [current_world.display_name, current_world.author]
 
 
 func nav_hide():

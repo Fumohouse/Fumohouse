@@ -1,3 +1,4 @@
+class_name DebugCharacter  # provide for CharacterManager
 extends DebugWindow
 ## [Character] debug window.
 

@@ -13,10 +13,10 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a2cmo"]
 
-[node name="WorldRuntime" type="Node3D"]
+[node name="WorldRuntime" type="Node3D" node_paths=PackedStringArray("camera", "debug_character")]
 script = ExtResource("1_34n3o")
-
-[node name="Players" type="Node3D" parent="."]
+camera = NodePath("Camera3D/CameraController")
+debug_character = NodePath("HUD/DebugMenus/DebugCharacter")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." node_paths=PackedStringArray("world_env")]
 environment = ExtResource("1_i4nth")
