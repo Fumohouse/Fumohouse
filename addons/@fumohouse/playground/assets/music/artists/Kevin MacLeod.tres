@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SongArtist" load_steps=2 format=3 uid="uid://ccob01ekqgh62"]
+
+[ext_resource type="Script" uid="uid://drxjddt4tyoj3" path="res://addons/@fumohouse/music/song_artist.gd" id="1_2bl2j"]
+
+[resource]
+script = ExtResource("1_2bl2j")
+name_unicode = "Kevin MacLeod"
+url = "https://incompetech.com/"
+metadata/_custom_type_script = "uid://drxjddt4tyoj3"

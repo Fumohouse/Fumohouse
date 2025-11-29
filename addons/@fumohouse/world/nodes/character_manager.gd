@@ -52,6 +52,9 @@ func _spawn_character(appearance: Appearance, char_transform: Variant) -> Node3D
 	_local_character = character
 
 	add_child(character)
+	# Add after ready
+	character.state.add_processor(CharacterAreaHandlerProcessor.new())
+
 	debug_character.character = character
 
 	return character

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SongArtist" load_steps=2 format=3 uid="uid://sajg5v5bejnx"]
+
+[ext_resource type="Script" uid="uid://drxjddt4tyoj3" path="res://addons/@fumohouse/music/song_artist.gd" id="1_gy2wo"]
+
+[resource]
+script = ExtResource("1_gy2wo")
+name_unicode = "flowerhead"
+url = "https://flowerheads.bandcamp.com/"
+metadata/_custom_type_script = "uid://drxjddt4tyoj3"

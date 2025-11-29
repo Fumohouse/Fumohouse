@@ -207,6 +207,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_hcfsd")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation/TopBar" index="0"]
 layout_mode = 2
+theme_override_constants/separation = 12
 alignment = 1
 
 [node name="MusicButton" parent="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer" index="0" instance=ExtResource("13_vcadt")]

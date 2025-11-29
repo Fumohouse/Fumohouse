@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Playlist" load_steps=4 format=3 uid="uid://c8h0klwey11wb"]
+
+[ext_resource type="Script" uid="uid://bofg6uksrpe4f" path="res://addons/@fumohouse/music/playlist.gd" id="1_6ibj3"]
+[ext_resource type="Script" uid="uid://bham328jwfrr8" path="res://addons/@fumohouse/music/song.gd" id="2_s3bq6"]
+[ext_resource type="Resource" uid="uid://cjb2gwri2swkx" path="res://addons/@fumohouse/playground/assets/music/songs/Gymnopedie No 1.tres" id="3_s3bq6"]
+
+[resource]
+script = ExtResource("1_6ibj3")
+id = &"main"
+songs = Array[ExtResource("2_s3bq6")]([ExtResource("3_s3bq6")])
+metadata/_custom_type_script = "uid://bofg6uksrpe4f"

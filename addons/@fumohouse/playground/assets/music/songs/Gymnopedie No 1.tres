@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://cjb2gwri2swkx"]
+
+[ext_resource type="Resource" uid="uid://ccob01ekqgh62" path="res://addons/@fumohouse/playground/assets/music/artists/Kevin MacLeod.tres" id="1_1faxy"]
+[ext_resource type="Script" uid="uid://bham328jwfrr8" path="res://addons/@fumohouse/music/song.gd" id="1_uc373"]
+
+[resource]
+script = ExtResource("1_uc373")
+id = &"gymnopedie1"
+name_unicode = "Gymnopedie No 1"
+url = "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100787"
+artist = ExtResource("1_1faxy")
+path = "uid://c6nh76j2pqfu3"
+metadata/_custom_type_script = "uid://bham328jwfrr8"

@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="WorldManifest" load_steps=6 format=3 uid="uid://cvgbwbj8473ye"]
+[gd_resource type="Resource" script_class="WorldManifest" load_steps=8 format=3 uid="uid://cvgbwbj8473ye"]
 
 [ext_resource type="Script" uid="uid://bv6m4s88g0oi6" path="res://addons/@fumohouse/base/module_autoload.gd" id="1_gr7ck"]
 [ext_resource type="Script" uid="uid://cyriemmrcefgc" path="res://addons/@fumohouse/base/module_dependency.gd" id="2_pjviq"]
 [ext_resource type="Script" uid="uid://bofg6uksrpe4f" path="res://addons/@fumohouse/music/playlist.gd" id="3_vjbyp"]
 [ext_resource type="Script" uid="uid://d4eillkguq46g" path="res://addons/@fumohouse/world/world_manifest.gd" id="4_d6ilg"]
+[ext_resource type="Resource" uid="uid://c8h0klwey11wb" path="res://addons/@fumohouse/playground/assets/music/playlists/main.tres" id="4_vjbyp"]
+[ext_resource type="Resource" uid="uid://bqcja7h5yg7yp" path="res://addons/@fumohouse/playground/assets/music/playlists/special.tres" id="5_d6ilg"]
 
 [sub_resource type="Resource" id="Resource_gr7ck"]
 script = ExtResource("2_pjviq")
@@ -13,6 +15,9 @@ metadata/_custom_type_script = "uid://cyriemmrcefgc"
 [resource]
 script = ExtResource("4_d6ilg")
 display_name = "Playground"
+playlists = Array[ExtResource("3_vjbyp")]([ExtResource("4_vjbyp"), ExtResource("5_d6ilg")])
+title_playlist = &"special"
+default_playlist = &"main"
 dependencies = Array[ExtResource("2_pjviq")]([SubResource("Resource_gr7ck")])
 entry_scene = "uid://guxlxf4tholg"
 metadata/_custom_type_script = "uid://d4eillkguq46g"

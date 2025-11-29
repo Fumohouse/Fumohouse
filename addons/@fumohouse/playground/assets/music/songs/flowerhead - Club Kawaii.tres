@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://b5p37s2nf7q03"]
+
+[ext_resource type="Script" uid="uid://bham328jwfrr8" path="res://addons/@fumohouse/music/song.gd" id="1_gdvgb"]
+[ext_resource type="Resource" uid="uid://sajg5v5bejnx" path="res://addons/@fumohouse/playground/assets/music/artists/flowerhead.tres" id="1_t3e6k"]
+
+[resource]
+script = ExtResource("1_gdvgb")
+id = &"clubkawaii"
+name_unicode = "Club Kawaii"
+url = "https://somewhatgoodroyaltyfreemusic.bandcamp.com/track/club-kawaii"
+artist = ExtResource("1_t3e6k")
+path = "uid://bpme6ba1cyuhw"
+metadata/_custom_type_script = "uid://bham328jwfrr8"

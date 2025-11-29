@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c6nh76j2pqfu3"
+path="res://.godot/imported/Gymnopedie No 1.ogg-27a4793f22cd2d0e9038de5373f0095a.oggvorbisstr"
+
+[deps]
+
+source_file="res://addons/@fumohouse/playground/assets/music/songs/Gymnopedie No 1.ogg"
+dest_files=["res://.godot/imported/Gymnopedie No 1.ogg-27a4793f22cd2d0e9038de5373f0095a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
