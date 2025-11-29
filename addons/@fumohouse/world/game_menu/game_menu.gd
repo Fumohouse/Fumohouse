@@ -24,7 +24,7 @@ var _tween: Tween
 
 
 func _ready():
-	super._ready()
+	super()
 
 	_continue_button.pressed.connect(func(): nav_transition(false))
 	_options_button.pressed.connect(func(): switch_screen(_options_screen))
@@ -39,11 +39,11 @@ func _unhandled_input(event: InputEvent):
 		get_viewport().set_input_as_handled()
 		return
 
-	super._unhandled_input(event)
+	super(event)
 
 
 func nav_hide():
-	super.nav_hide()
+	super()
 
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_blur_background.visible = false
@@ -104,7 +104,7 @@ func switch_screen(screen: TransitionElement):
 	if screen == _main_screen:
 		grab_focus()
 
-	super.switch_screen(screen)
+	super(screen)
 
 
 func _on_leave_button_pressed():

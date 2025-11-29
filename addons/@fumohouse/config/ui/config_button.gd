@@ -5,7 +5,7 @@ extends "./config_bound_control.gd"
 
 
 func _ready():
-	super._ready()
+	super()
 	_btn.toggled.connect(_on_toggled)
 
 

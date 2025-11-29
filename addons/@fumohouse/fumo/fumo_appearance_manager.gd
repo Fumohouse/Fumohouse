@@ -19,7 +19,7 @@ var _base_camera_offset := 0.0
 
 
 func _ready():
-	super._ready()
+	super()
 	part_database = FumoPartDatabase.get_singleton()
 
 	# Requires parent attributes to be present

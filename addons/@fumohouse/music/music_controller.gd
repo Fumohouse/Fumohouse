@@ -103,6 +103,11 @@ func nav_hide():
 	visible = false
 
 
+func nav_show():
+	scale = Vector2.ONE
+	visible = true
+
+
 func nav_transition(vis: bool):
 	if _tween:
 		_tween.kill()

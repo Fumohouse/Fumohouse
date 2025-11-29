@@ -5,7 +5,7 @@ extends "./config_bound_control.gd"
 
 
 func _ready():
-	super._ready()
+	super()
 	btn.item_selected.connect(_on_item_selected)
 
 

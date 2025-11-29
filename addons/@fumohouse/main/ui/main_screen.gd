@@ -16,7 +16,6 @@ const NavButtonContainer = preload(
 
 
 func _ready():
-	_music_controller.nav_hide()
 	_music_button.pressed.connect(_on_music_button_pressed)
 
 
@@ -25,6 +24,7 @@ func nav_hide():
 	_main_buttons.nav_hide()
 	_top_bar.position.y = _top_bar_target_y(false)
 	_version_label.position.x = _version_label_target_x(false)
+	_music_controller.nav_hide()
 
 
 func nav_show():
@@ -32,6 +32,7 @@ func nav_show():
 	_main_buttons.nav_show()
 	_top_bar.position.y = _top_bar_target_y(true)
 	_version_label.position.x = _version_label_target_x(true)
+	_music_controller.nav_show()
 
 
 func nav_transition(vis: bool):
@@ -49,6 +50,8 @@ func nav_transition(vis: bool):
 	)
 
 	_main_buttons.nav_transition(vis)
+	if not vis:
+		_music_controller.nav_transition(false)
 
 	return tween
 

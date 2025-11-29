@@ -7,7 +7,7 @@ var event: InputEvent
 
 
 func _ready():
-	super._ready()
+	super()
 	_on_toggled(_btn.button_pressed)
 	_btn.toggled.connect(_on_toggled)
 
@@ -61,7 +61,7 @@ func _approx_equal(a: Variant, b: Variant):
 	if emba and embb:
 		return emba.button_index == embb.button_index
 
-	return super._approx_equal(a, b)
+	return super(a, b)
 
 
 func _on_toggled(is_pressed: bool):

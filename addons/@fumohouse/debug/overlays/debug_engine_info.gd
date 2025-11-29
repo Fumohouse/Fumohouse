@@ -16,7 +16,7 @@ func _init():
 
 
 func _ready():
-	super._ready()
+	super()
 
 	_tbl.add_entry(&"fps", "FPS")
 	_tbl.add_entry(&"process", "Process Time")

@@ -33,7 +33,7 @@ func _init():
 
 
 func _ready():
-	super._ready()
+	super()
 
 	var build_contents := _tbl.add_entry(&"build").contents
 	build_contents.meta_clicked.connect(_on_meta_clicked)

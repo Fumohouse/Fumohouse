@@ -9,7 +9,7 @@ func _ready():
 	for device in _devices:
 		btn.add_item(device)
 
-	super._ready()
+	super()
 
 
 func _set_value(value: Variant):

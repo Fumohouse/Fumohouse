@@ -43,7 +43,7 @@ func _init():
 
 
 func _ready():
-	super._ready()
+	super()
 
 	_state = _tbl.add_entry(&"state", "State").contents
 

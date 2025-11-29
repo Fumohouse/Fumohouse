@@ -10,7 +10,7 @@ var _is_dragging := false
 
 
 func _ready():
-	super._ready()
+	super()
 	if on_release:
 		var slider := _range as Slider
 		slider.drag_started.connect(_on_drag_started)

@@ -25,7 +25,7 @@ var _rig_alpha := 1.0
 
 
 func _ready():
-	super._ready()
+	super()
 	state.add_processor(FumoAnimatorMotionProcessor.new())
 
 	face_material = _FACE_MAT.duplicate() as ShaderMaterial
