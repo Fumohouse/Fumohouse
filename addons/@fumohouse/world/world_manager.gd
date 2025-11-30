@@ -30,6 +30,17 @@ func _ready():
 	_runtime_scene = load("res://addons/@fumohouse/world/runtime.tscn")
 
 
+## Get the list of currently detected worlds.
+func get_worlds() -> Array[WorldManifest]:
+	var worlds: Array[WorldManifest] = []
+
+	for module in Modules.get_modules():
+		if module is WorldManifest:
+			worlds.push_back(module as WorldManifest)
+
+	return worlds
+
+
 ## Get the currently loaded world, or [code]null[/code] if no world is loaded.
 func get_current_world() -> WorldManifest:
 	return _current_world
@@ -38,9 +49,9 @@ func get_current_world() -> WorldManifest:
 ## Load the given world into the scene tree.
 func load_world(id: String) -> WorldManifest:
 	var world: WorldManifest = null
-	for module in Modules.get_modules():
-		if module is WorldManifest and module.name == id:
-			world = module as WorldManifest
+	for check_world in get_worlds():
+		if check_world.name == id:
+			world = check_world
 			break
 	if not world:
 		return null
@@ -113,15 +124,13 @@ func leave():
 
 ## Get the world that should be used for the title screen.
 func get_title_world() -> WorldManifest:
-	for module in Modules.get_modules():
-		if module is WorldManifest and module.name == _DEFAULT_WORLD:
-			return module
+	var worlds := get_worlds()
 
-	for module in Modules.get_modules():
-		if module is WorldManifest:
-			return module
+	for world in worlds:
+		if world.name == _DEFAULT_WORLD:
+			return world
 
-	return null
+	return worlds[0] if worlds.size() > 0 else null
 
 
 ## Play the title screen playlist.

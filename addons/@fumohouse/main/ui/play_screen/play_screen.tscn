@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cce2lc4hx05ok"]
+
+[ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/navigation/screen_base_layout.tscn" id="1_ykkn8"]
+[ext_resource type="Script" uid="uid://ckhaormv8jl70" path="res://addons/@fumohouse/main/ui/play_screen/play_screen.gd" id="2_pe716"]
+[ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="3_j1rdh"]
+
+[node name="PlayScreen" node_paths=PackedStringArray("tabs", "tab_content") instance=ExtResource("1_ykkn8")]
+script = ExtResource("2_pe716")
+tabs = NodePath("TopBar/RadioButtonContainer")
+tab_content = NodePath("Contents/MarginContainer/Tabs")
+
+[node name="Title" parent="TopBar" index="0"]
+text = "Play"
+
+[node name="RadioButtonContainer" type="HBoxContainer" parent="TopBar" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 16
+script = ExtResource("3_j1rdh")
+
+[node name="Worlds" type="Button" parent="TopBar/RadioButtonContainer" index="0"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Worlds"
+
+[node name="Tabs" type="Control" parent="Contents/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="Worlds" type="ScrollContainer" parent="Contents/MarginContainer/Tabs" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorldList" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Worlds" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12

@@ -9,6 +9,7 @@ var transition_in := true
 @onready var _options_button: Button = %OptionsButton
 @onready var _exit_button: Button = %ExitButton
 
+@onready var _play_screen: TransitionElement = $Screens/PlayScreen
 @onready var _options_screen: TransitionElement = $Screens/OptionsScreen
 
 @onready var _wm := WorldManager.get_singleton()
@@ -46,9 +47,7 @@ func _ready():
 		dim(false)
 		switch_screen(main_screen)
 
-	_play_button.pressed.connect(
-		func(): WorldManager.get_singleton().start_singleplayer("@fumohouse/playground")
-	)
+	_play_button.pressed.connect(func(): switch_screen(_play_screen))
 	_options_button.pressed.connect(func(): switch_screen(_options_screen))
 	_exit_button.pressed.connect(_on_exit_button_pressed)
 

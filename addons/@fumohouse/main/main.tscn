@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://r3htqql86m4u"]
+[gd_scene load_steps=21 format=3 uid="uid://r3htqql86m4u"]
 
 [ext_resource type="PackedScene" uid="uid://ctxaywfcdgbmw" path="res://addons/@fumohouse/navigation/nav_menu.tscn" id="1_emt38"]
-[ext_resource type="Script" uid="uid://donqdlntewiwc" path="res://addons/@fumohouse/main/ui/main_menu.gd" id="2_3w01d"]
+[ext_resource type="Script" uid="uid://donqdlntewiwc" path="res://addons/@fumohouse/main/main.gd" id="2_3w01d"]
 [ext_resource type="Texture2D" uid="uid://cdxg2w1khoiq4" path="res://addons/@assets/fumohouse_common/textures/faces_bg.svg" id="3_lqqwp"]
+[ext_resource type="PackedScene" uid="uid://cce2lc4hx05ok" path="res://addons/@fumohouse/main/ui/play_screen/play_screen.tscn" id="4_3w01d"]
 [ext_resource type="PackedScene" uid="uid://c55ax8y8twfnj" path="res://addons/@fumohouse/navigation/options_screen/options_screen.tscn" id="4_eq6r0"]
 [ext_resource type="Script" uid="uid://beubs5pgskp1y" path="res://addons/@fumohouse/main/ui/main_screen.gd" id="5_qhi0j"]
 [ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@assets/fumohouse_common/textures/logo.png" id="6_utajb"]
@@ -34,7 +35,7 @@ bg_color = Color(0, 0.333333, 0.647059, 1)
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="MainMenu" node_paths=PackedStringArray("main_screen") instance=ExtResource("1_emt38")]
+[node name="Main" node_paths=PackedStringArray("main_screen") instance=ExtResource("1_emt38")]
 script = ExtResource("2_3w01d")
 main_screen = NodePath("Screens/MainScreen")
 
@@ -67,11 +68,15 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.313726)
 
-[node name="OptionsScreen" parent="Screens" index="0" instance=ExtResource("4_eq6r0")]
+[node name="PlayScreen" parent="Screens" index="0" instance=ExtResource("4_3w01d")]
 visible = false
 layout_mode = 1
 
-[node name="MainScreen" type="Control" parent="Screens" index="1"]
+[node name="OptionsScreen" parent="Screens" index="1" instance=ExtResource("4_eq6r0")]
+visible = false
+layout_mode = 1
+
+[node name="MainScreen" type="Control" parent="Screens" index="2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
