@@ -10,7 +10,8 @@ const _PRESET_DIR = "res://addons/@fumohouse/fumo_models/resources/presets"
 
 
 func _ready():
-	#_item_template.reparent(null)
+	# making it invisible here seems comfier to edit with
+	_item_template.visible = false
 
 	# TODO: not a good idea to get_node like this
 	var char_manager := get_node("/root/Playground/CharacterManager") as CharacterManagerBase
@@ -36,6 +37,7 @@ func _ready():
 
 		var item := _item_template.duplicate()
 		item.text = preset.display_name
+		item.visible = true
 		# TODO: change fumos without going back to a spawnpoint
 		item.pressed.connect(func(): char_manager._spawn_character(preset, null))
 
