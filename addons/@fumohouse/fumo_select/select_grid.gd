@@ -29,8 +29,7 @@ func _ready():
 		var preset_filepath := preset_dir.get_next()
 		if preset_filepath == "":
 			break
-		# not sure if gdscript has a Path type or a join() utility function
-		var preset := load(preset_dir.get_current_dir() + "/" + preset_filepath) as Appearance
+		var preset := load(preset_dir.get_current_dir().path_join(preset_filepath)) as Appearance
 		if not preset:
 			push_warning("Unrecognized preset: " + preset_filepath)
 			continue
