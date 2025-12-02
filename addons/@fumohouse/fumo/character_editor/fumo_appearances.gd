@@ -7,12 +7,20 @@ signal staging_changed(Appearance: Appearance)
 
 var _current: Appearance
 
+var _staging: Appearance
+
 
 static func get_singleton() -> FumoAppearances:
 	return Modules.get_singleton(&"FumoAppearances") as FumoAppearances
 
 
-# TODO: remove, kept for compatibility at the moment
-func apply(appearance: Appearance):
-	_current = appearance
+# Modify staging Appearance with [param fn] with staging as parameter and returning the new value
+func change_staging(fn: Callable):
+	_staging = fn.call(_staging)
+	staging_changed.emit(_staging)
+
+
+# Apply current Appearance by copying current staging
+func apply():
+	_current = _staging.duplicate()
 	current_changed.emit(_current)
