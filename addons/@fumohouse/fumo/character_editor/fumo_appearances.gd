@@ -22,5 +22,5 @@ func change_staging(fn: Callable):
 
 # Apply current Appearance by copying current staging
 func apply():
-	_current = _staging.duplicate()
+	_current = _staging.duplicate(true)
 	current_changed.emit(_current)
