@@ -21,17 +21,17 @@ func scan_dir(path: String):
 
 	dir.list_dir_begin()
 	while true:
-		var filepath := dir.get_next()
-		if filepath == "":
+		var file_name := dir.get_next()
+		if file_name.is_empty():
 			break
 
 		if dir.current_is_dir():
-			scan_dir(path.path_join(filepath))
+			scan_dir(path.path_join(file_name))
 			continue
 
-		var preset := load(path.path_join(filepath)) as Appearance
+		var preset := load(path.path_join(file_name)) as Appearance
 		if not preset:
-			push_warning("Unrecognized preset: " + filepath)
+			push_warning("Unrecognized preset: '%s'." % file_name)
 			continue
 
 		var item := _item_template.duplicate()
@@ -40,4 +40,4 @@ func scan_dir(path: String):
 		# TODO: change fumos without going back to a spawnpoint
 		item.pressed.connect(func(): fumo_appearances.apply(preset))
 
-		self.add_child(item)
+		add_child(item)
