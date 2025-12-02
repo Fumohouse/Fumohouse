@@ -15,6 +15,11 @@ func _ready():
 	# making it invisible here seems comfier to edit with
 	_item_template.visible = false
 
+	fumo_appearances.staging_changed.connect(
+		func(staging: Appearance): _current_label.text = staging.display_name
+	)
+	_apply_btn.pressed.connect(fumo_appearances.apply)
+
 	scan_dir("res://addons/@fumohouse/fumo_models/resources/presets")
 
 
@@ -44,12 +49,10 @@ func scan_dir(path: String):
 		item.text = preset.display_name
 		item.visible = true
 		# TODO: change fumos without going back to a spawnpoint
-		item.pressed.connect(func(): _stage_appearance(preset.display_name, preset))
+		item.pressed.connect(_stage_appearance.bind(preset))
 
 		_grid.add_child(item)
 
 
-# TODO: does not actually stage anything
-func _stage_appearance(display_name: String, appearance: Appearance):
-	_current_label.text = display_name
-	fumo_appearances.apply(appearance)
+func _stage_appearance(appearance: Appearance):
+	fumo_appearances.change_staging(func(staging: Appearance): return appearance)
