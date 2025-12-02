@@ -1,17 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlfabcmi881o"]
+[gd_scene load_steps=2 format=3 uid="uid://dlfabcmi881o"]
 
-[ext_resource type="Script" uid="uid://b8twh8hujumqe" path="res://addons/@fumohouse/fumo/character_editor/character_editor_grid.gd" id="1_hq5ep"]
-
-[sub_resource type="GDScript" id="GDScript_rie8b"]
-script/source = "extends Control
-"
+[ext_resource type="Script" uid="uid://b8twh8hujumqe" path="res://addons/@fumohouse/fumo/character_editor/character_editor.gd" id="1_hq5ep"]
 
 [node name="CharacterEditor" type="PanelContainer"]
 offset_left = 854.0
 offset_top = 70.0
 offset_right = 1104.0
 offset_bottom = 455.0
-script = SubResource("GDScript_rie8b")
+script = ExtResource("1_hq5ep")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -21,7 +17,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 columns = 2
-script = ExtResource("1_hq5ep")
 
 [node name="FumoGridItem" type="Button" parent="VBoxContainer/Grid"]
 unique_name_in_owner = true
