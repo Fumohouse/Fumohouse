@@ -12,12 +12,14 @@ extends PanelContainer
 
 
 func _ready():
-	# making it invisible here seems comfier to edit with
+	# TODO: remove
 	_item_template.visible = false
 
+	# TODO: perform this during initialization also
 	fumo_appearances.staging_changed.connect(
 		func(staging: Appearance): _current_label.text = staging.display_name
 	)
+	# TODO: crashes if no current fumo is set (setting a default would work just fine)
 	_apply_btn.pressed.connect(fumo_appearances.apply)
 
 	scan_dir("res://addons/@fumohouse/fumo_models/resources/presets")
@@ -48,7 +50,6 @@ func scan_dir(path: String):
 		var item := _item_template.duplicate()
 		item.text = preset.display_name
 		item.visible = true
-		# TODO: change fumos without going back to a spawnpoint
 		item.pressed.connect(_stage_appearance.bind(preset))
 
 		_grid.add_child(item)
