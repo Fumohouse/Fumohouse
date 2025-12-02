@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bjlyq7kguqj6c"]
+[gd_scene load_steps=17 format=3 uid="uid://bjlyq7kguqj6c"]
 
 [ext_resource type="PackedScene" uid="uid://ctxaywfcdgbmw" path="res://addons/@fumohouse/navigation/nav_menu.tscn" id="1_tge01"]
 [ext_resource type="Script" uid="uid://b83el535hlsj4" path="res://addons/@fumohouse/world/game_menu/game_menu.gd" id="2_8xol2"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://by5n53kx2tkhx" path="res://addons/@fumohouse/navigation/components/nav_button_container.tscn" id="7_cpy6s"]
 [ext_resource type="PackedScene" uid="uid://ds5d313nse56r" path="res://addons/@fumohouse/world/game_menu/game_menu_button.tscn" id="8_uvyrv"]
 [ext_resource type="PackedScene" uid="uid://croenlf3yyt7h" path="res://addons/@fumohouse/music/music_controller.tscn" id="9_bsq5a"]
+[ext_resource type="PackedScene" uid="uid://dlfabcmi881o" path="res://addons/@fumohouse/fumo/character_editor/character_editor.tscn" id="10_rie8b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_itoxh"]
 resource_local_to_scene = true
@@ -186,3 +187,10 @@ offset_bottom = -96.0
 grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(250, 0)
+
+[node name="CharacterEditor" parent="Screens/MenuScreen" index="4" instance=ExtResource("10_rie8b")]
+layout_mode = 0
+offset_left = 858.0
+offset_top = 74.0
+offset_right = 1100.0
+offset_bottom = 451.0

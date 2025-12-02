@@ -13,6 +13,33 @@ const _FALL_LIMIT := -128.0
 var _local_character: Fumo
 
 
+func _ready():
+	FumoAppearances.get_singleton().current_changed.connect(
+		func(appearance):
+			# TODO: when changing to Shanghai from a bigger fumo camera moves down (doll size?)
+			_spawn_character(
+				appearance,
+				_local_character.global_transform if _local_character else null
+			)
+			# TODO: load_appearance() attaches new parts instead of replacing them,
+			# so you can get two or more fumos overlapping eachother
+			# Working around it by setting it to null first didn't seem to work either
+			# Using the transform property (above) worked well enough however
+			#
+			# This does complicate the design for a load_character() method here,
+			# if a utility function load_character() is desired it may be worth defining its users,
+			# if it's just here it may make sense to just use the code above
+			# I'm not sure if it makes sense to expose load_appearance() with this quirk
+			#if _local_character:
+				#_local_character.appearance_manager.appearance = null
+				#_local_character.appearance_manager.load_appearance()
+				#_local_character.appearance_manager.appearance = appearance
+				#_local_character.appearance_manager.load_appearance()
+			#else:
+				#_spawn_character(appearance, null)
+	)
+
+
 func _process(delta: float):
 	if (
 		_local_character
