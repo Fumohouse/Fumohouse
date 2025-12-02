@@ -98,7 +98,7 @@ func start_singleplayer(id: String):
 	if not world:
 		return
 
-	# TODO
+	# TODO: move to FumoAppearances (to populate current and staging appearances)
 	const DEFAULT_APPEARANCE := preload(
 		"res://addons/@fumohouse/fumo_models/resources/presets/doremy.tres"
 	)
