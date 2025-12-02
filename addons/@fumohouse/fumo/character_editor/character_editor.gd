@@ -1,6 +1,12 @@
-extends GridContainer
+extends PanelContainer
 
 @onready var fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
+
+@onready var _grid: GridContainer = %Grid
+
+@onready var _current_label: Label = %CurrentLabel
+
+@onready var _apply_btn: Button = %ApplyButton
 
 @onready var _item_template: Button = %FumoGridItem
 
@@ -38,6 +44,12 @@ func scan_dir(path: String):
 		item.text = preset.display_name
 		item.visible = true
 		# TODO: change fumos without going back to a spawnpoint
-		item.pressed.connect(func(): fumo_appearances.apply(preset))
+		item.pressed.connect(func(): _stage_appearance(preset.display_name, preset))
 
-		add_child(item)
+		_grid.add_child(item)
+
+
+# TODO: does not actually stage anything
+func _stage_appearance(display_name: String, appearance: Appearance):
+	_current_label.text = display_name
+	fumo_appearances.apply(appearance)
