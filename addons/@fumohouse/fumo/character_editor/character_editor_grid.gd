@@ -12,7 +12,7 @@ func _ready():
 	scan_dir("res://addons/@fumohouse/fumo_models/resources/presets")
 
 
-## Scan [param dir] for model presets.
+## Scan [param dir] recursively for model presets.
 func scan_dir(path: String):
 	var dir := DirAccess.open(path)
 	if not dir:
@@ -24,7 +24,12 @@ func scan_dir(path: String):
 		var filepath := dir.get_next()
 		if filepath == "":
 			break
-		var preset := load(dir.get_current_dir().path_join(filepath)) as Appearance
+
+		if dir.current_is_dir():
+			scan_dir(path.path_join(filepath))
+			continue
+
+		var preset := load(path.path_join(filepath)) as Appearance
 		if not preset:
 			push_warning("Unrecognized preset: " + filepath)
 			continue
