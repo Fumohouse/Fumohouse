@@ -1,11 +1,5 @@
 extends GridContainer
 
-# TODO: does not work well (i.e at all) with the modules design
-# closest I can think to the current architecture is to add autoloads?
-# to allow organizing fumo files however the author wishes instead of hardcoding a path
-# that does require designing loading the other parts in the database (not handled at all)
-const _PRESET_DIR = "res://addons/@fumohouse/fumo_models/resources/presets"
-
 @onready var fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
 
 @onready var _item_template: Button = %FumoGridItem
@@ -15,19 +9,24 @@ func _ready():
 	# making it invisible here seems comfier to edit with
 	_item_template.visible = false
 
-	var preset_dir := DirAccess.open(_PRESET_DIR)
-	if not preset_dir:
+	scan_dir("res://addons/@fumohouse/fumo_models/resources/presets")
+
+
+## Scan [param dir] for model presets.
+func scan_dir(path: String):
+	var dir := DirAccess.open(path)
+	if not dir:
 		push_error("Failed to open presets directory.")
 		return
 
-	preset_dir.list_dir_begin()
+	dir.list_dir_begin()
 	while true:
-		var preset_filepath := preset_dir.get_next()
-		if preset_filepath == "":
+		var filepath := dir.get_next()
+		if filepath == "":
 			break
-		var preset := load(preset_dir.get_current_dir().path_join(preset_filepath)) as Appearance
+		var preset := load(dir.get_current_dir().path_join(filepath)) as Appearance
 		if not preset:
-			push_warning("Unrecognized preset: " + preset_filepath)
+			push_warning("Unrecognized preset: " + filepath)
 			continue
 
 		var item := _item_template.duplicate()
