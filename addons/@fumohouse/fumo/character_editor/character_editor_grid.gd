@@ -6,18 +6,14 @@ extends GridContainer
 # that does require designing loading the other parts in the database (not handled at all)
 const _PRESET_DIR = "res://addons/@fumohouse/fumo_models/resources/presets"
 
+@onready var fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
+
 @onready var _item_template: Button = %FumoGridItem
 
 
 func _ready():
 	# making it invisible here seems comfier to edit with
 	_item_template.visible = false
-
-	# TODO: not a good idea to get_node like this
-	var char_manager := get_node("/root/Playground/CharacterManager") as CharacterManagerBase
-	if not char_manager:
-		push_error("No character manager found.")
-		return
 
 	var preset_dir := DirAccess.open(_PRESET_DIR)
 	if not preset_dir:
@@ -38,6 +34,6 @@ func _ready():
 		item.text = preset.display_name
 		item.visible = true
 		# TODO: change fumos without going back to a spawnpoint
-		item.pressed.connect(func(): char_manager._spawn_character(preset, null))
+		item.pressed.connect(func(): fumo_appearances.apply(preset))
 
 		self.add_child(item)

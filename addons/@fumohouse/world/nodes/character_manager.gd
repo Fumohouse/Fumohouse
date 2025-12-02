@@ -13,6 +13,12 @@ const _FALL_LIMIT := -128.0
 var _local_character: Fumo
 
 
+func _ready():
+	FumoAppearances.get_singleton().current_changed.connect(
+		func(appearance): _spawn_character(appearance, null)
+	)
+
+
 func _process(delta: float):
 	if (
 		_local_character
