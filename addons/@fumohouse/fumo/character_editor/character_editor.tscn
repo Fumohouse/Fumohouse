@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlfabcmi881o"]
+
+[ext_resource type="Script" uid="uid://b8twh8hujumqe" path="res://addons/@fumohouse/fumo/character_editor/character_editor_grid.gd" id="1_hq5ep"]
+
+[sub_resource type="GDScript" id="GDScript_rie8b"]
+script/source = "extends Control
+"
+
+[node name="CharacterEditor" type="PanelContainer"]
+offset_left = 854.0
+offset_top = 70.0
+offset_right = 1104.0
+offset_bottom = 455.0
+script = SubResource("GDScript_rie8b")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+script = ExtResource("1_hq5ep")
+
+[node name="FumoGridItem" type="Button" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "(Template)"
