@@ -5,7 +5,9 @@ signal current_changed(Appearance: Appearance)
 
 signal staging_changed(Appearance: Appearance)
 
-var _current: Appearance
+var _current: Appearance = preload(
+	"res://addons/@fumohouse/fumo_models/resources/presets/doremy.tres"
+)
 
 var _staging: Appearance
 
