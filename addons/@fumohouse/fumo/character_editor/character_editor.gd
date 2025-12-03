@@ -15,13 +15,15 @@ func _ready():
 	# TODO: remove
 	_item_template.visible = false
 
-	# TODO: perform this during initialization also
-	fumo_appearances.staging_changed.connect(
-		func(staging: Appearance): _current_label.text = staging.display_name
-	)
+	_update_label(fumo_appearances._staging)
+	fumo_appearances.staging_changed.connect(_update_label)
 	_apply_btn.pressed.connect(fumo_appearances.apply)
 
 	scan_dir("res://addons/@fumohouse/fumo_models/resources/presets")
+
+
+func _update_label(appearance: Appearance):
+	_current_label.text = appearance.display_name
 
 
 ## Scan [param dir] recursively for model presets.
