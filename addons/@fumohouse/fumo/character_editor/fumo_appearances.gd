@@ -9,7 +9,7 @@ var _active: Appearance = preload(
 	"res://addons/@fumohouse/fumo_models/resources/presets/doremy.tres"
 )
 
-var _staging: Appearance
+var _staging: Appearance = _active.duplicate(true)
 
 
 static func get_singleton() -> FumoAppearances:

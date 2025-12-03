@@ -19,7 +19,6 @@ func _ready():
 	fumo_appearances.staging_changed.connect(
 		func(staging: Appearance): _current_label.text = staging.display_name
 	)
-	# TODO: crashes if no current fumo is set (setting a default would work just fine)
 	_apply_btn.pressed.connect(fumo_appearances.apply)
 
 	scan_dir("res://addons/@fumohouse/fumo_models/resources/presets")
