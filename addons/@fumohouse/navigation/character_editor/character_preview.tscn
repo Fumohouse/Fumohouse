@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4h8y2vq573ow"]
+
+[ext_resource type="Script" uid="uid://dile6cj36yd5k" path="res://addons/@fumohouse/fumo/character_editor/character_preview.gd" id="1_p3kp7"]
+
+[node name="CharacterPreview" type="VBoxContainer"]
+offset_left = 854.0
+offset_top = 412.0
+offset_right = 1104.0
+offset_bottom = 452.0
+script = ExtResource("1_p3kp7")
+
+[node name="EditButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Edit"
