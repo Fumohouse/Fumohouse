@@ -4,9 +4,7 @@ extends PanelContainer
 
 @onready var _grid: GridContainer = %Grid
 
-@onready var _current_label: Label = %CurrentLabel
-
-@onready var _apply_btn: Button = %ApplyButton
+@onready var _active_label: Label = %ActiveLabel
 
 @onready var _item_template: Button = %FumoGridItem
 
@@ -17,13 +15,13 @@ func _ready():
 
 	_update_label(fumo_appearances._staging)
 	fumo_appearances.staging_changed.connect(_update_label)
-	_apply_btn.pressed.connect(fumo_appearances.apply)
+	%ApplyButton.pressed.connect(fumo_appearances.apply)
 
 	scan_dir("res://addons/@fumohouse/fumo_models/resources/presets")
 
 
 func _update_label(appearance: Appearance):
-	_current_label.text = appearance.display_name
+	_active_label.text = appearance.display_name
 
 
 ## Scan [param dir] recursively for model presets.
