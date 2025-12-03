@@ -6,20 +6,21 @@ const _CHARACTER_SCENE := preload("res://addons/@fumohouse/fumo/fumo.tscn")
 const _DEATH_TIMEOUT := 5.0
 const _FALL_LIMIT := -128.0
 
+var _local_character: Fumo
+
+@onready var fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
+
 ## Node containing [Spawnpoint]s that will be selected randomly for newly spawning
 ## characters.
 @export var spawnpoints: Node3D
 
-var _local_character: Fumo
-
 
 func _ready():
-	FumoAppearances.get_singleton().current_changed.connect(
+	fumo_appearances.current_changed.connect(
 		func(appearance):
 			# TODO: when changing to Shanghai from a bigger fumo camera moves down (doll size?)
 			_spawn_character(
-				appearance,
-				_local_character.global_transform if _local_character else null
+				appearance, _local_character.global_transform if _local_character else null
 			)
 			# TODO: load_appearance() attaches new parts instead of replacing them,
 			# so you can get two or more fumos overlapping eachother
@@ -54,7 +55,9 @@ func _process(delta: float):
 		_delete_character(true, func(): _spawn_character(appearance, null))
 
 
-func _spawn_character(appearance: Appearance, char_transform: Variant) -> Node3D:
+func _spawn_character(
+	appearance: Appearance = fumo_appearances._current, char_transform: Variant = null
+) -> Node3D:
 	var character: Fumo = _CHARACTER_SCENE.instantiate()
 
 	if char_transform == null:
@@ -68,9 +71,8 @@ func _spawn_character(appearance: Appearance, char_transform: Variant) -> Node3D
 	else:
 		character.global_transform = char_transform
 
-	if appearance:
-		character.appearance_manager.appearance = appearance
-		# Loaded on ready
+	character.appearance_manager.appearance = appearance
+	# Loaded on ready
 
 	character.camera = camera
 
