@@ -32,12 +32,12 @@ func _ready():
 			# if it's just here it may make sense to just use the code above
 			# I'm not sure if it makes sense to expose load_appearance() with this quirk
 			#if _local_character:
-				#_local_character.appearance_manager.appearance = null
-				#_local_character.appearance_manager.load_appearance()
-				#_local_character.appearance_manager.appearance = appearance
-				#_local_character.appearance_manager.load_appearance()
+			#_local_character.appearance_manager.appearance = null
+			#_local_character.appearance_manager.load_appearance()
+			#_local_character.appearance_manager.appearance = appearance
+			#_local_character.appearance_manager.load_appearance()
 			#else:
-				#_spawn_character(appearance, null)
+			#_spawn_character(appearance, null)
 	)
 
 
