@@ -1,4 +1,4 @@
-extends PanelContainer
+extends VBoxContainer
 
 @onready var fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
 
