@@ -1,44 +1,84 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlfabcmi881o"]
+[gd_scene load_steps=4 format=3 uid="uid://c65lput3717mw"]
 
 [ext_resource type="Script" uid="uid://b8twh8hujumqe" path="res://addons/@fumohouse/navigation/character_editor/character_editor.gd" id="1_hq5ep"]
 [ext_resource type="Script" uid="uid://7my83ojk5ayr" path="res://addons/@fumohouse/navigation/screen_base.gd" id="1_x2c3d"]
+[ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="2_nwhkr"]
 
 [node name="CharacterEditor" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 854.0
-offset_top = 70.0
-offset_right = 1104.0
-offset_bottom = 455.0
+offset_right = 1152.0
+offset_bottom = 648.0
 script = ExtResource("1_x2c3d")
 
-[node name="PresetView" type="VBoxContainer" parent="."]
+[node name="TopBar" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 246.0
-offset_bottom = 381.0
+offset_left = 184.0
+offset_top = 36.0
+offset_right = 761.0
+offset_bottom = 76.0
+theme_override_constants/separation = 48
+
+[node name="Title" type="Label" parent="TopBar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Character Editor"
+vertical_alignment = 1
+
+[node name="Tabs" type="HBoxContainer" parent="TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 16
+script = ExtResource("2_nwhkr")
+
+[node name="Graphics" type="Button" parent="TopBar/Tabs"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Graphics"
+
+[node name="Audio" type="Button" parent="TopBar/Tabs"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Audio"
+
+[node name="Input" type="Button" parent="TopBar/Tabs"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Input"
+
+[node name="Contents" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.109375
+anchor_top = 0.154321
+anchor_right = 0.890625
+anchor_bottom = 0.95679
+offset_top = -4.0
+offset_bottom = -4.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PresetView" type="VBoxContainer" parent="Contents"]
+layout_mode = 2
 script = ExtResource("1_hq5ep")
 
-[node name="Grid" type="GridContainer" parent="PresetView"]
+[node name="Grid" type="GridContainer" parent="Contents/PresetView"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 columns = 2
 
-[node name="FumoGridItem" type="Button" parent="PresetView/Grid"]
+[node name="FumoGridItem" type="Button" parent="Contents/PresetView/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "(Template)"
 
-[node name="ActiveLabel" type="Label" parent="PresetView"]
+[node name="ActiveLabel" type="Label" parent="Contents/PresetView"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "(current)"
 horizontal_alignment = 1
 
-[node name="ApplyButton" type="Button" parent="PresetView"]
+[node name="ApplyButton" type="Button" parent="Contents/PresetView"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Apply"

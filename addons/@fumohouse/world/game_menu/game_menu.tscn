@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://by5n53kx2tkhx" path="res://addons/@fumohouse/navigation/components/nav_button_container.tscn" id="7_cpy6s"]
 [ext_resource type="PackedScene" uid="uid://ds5d313nse56r" path="res://addons/@fumohouse/world/game_menu/game_menu_button.tscn" id="8_uvyrv"]
 [ext_resource type="PackedScene" uid="uid://croenlf3yyt7h" path="res://addons/@fumohouse/music/music_controller.tscn" id="9_bsq5a"]
-[ext_resource type="PackedScene" path="res://addons/@fumohouse/navigation/character_editor/character_editor.tscn" id="10_rie8b"]
+[ext_resource type="PackedScene" uid="uid://c65lput3717mw" path="res://addons/@fumohouse/navigation/character_editor/character_editor.tscn" id="10_rie8b"]
 [ext_resource type="PackedScene" uid="uid://d4h8y2vq573ow" path="res://addons/@fumohouse/navigation/character_editor/character_preview.tscn" id="11_bbkib"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_itoxh"]
@@ -55,10 +55,6 @@ layout_mode = 1
 [node name="CharacterEditorScreen" parent="Screens" index="1" instance=ExtResource("10_rie8b")]
 visible = false
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 1152.0
-offset_bottom = 648.0
 
 [node name="LeaveScreen" type="PanelContainer" parent="Screens" index="2"]
 visible = false
