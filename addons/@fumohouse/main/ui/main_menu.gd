@@ -9,7 +9,10 @@ var transition_in := true
 @onready var _options_button: Button = %OptionsButton
 @onready var _exit_button: Button = %ExitButton
 
+@onready var _char_preview: Node = %CharacterPreview
+
 @onready var _options_screen: TransitionElement = $Screens/OptionsScreen
+@onready var _char_edit_screen: TransitionElement = $Screens/CharacterEditorScreen
 
 @onready var _wm := WorldManager.get_singleton()
 
@@ -51,6 +54,8 @@ func _ready():
 	)
 	_options_button.pressed.connect(func(): switch_screen(_options_screen))
 	_exit_button.pressed.connect(_on_exit_button_pressed)
+
+	_char_preview.edit_pressed.connect(switch_screen.bind(_char_edit_screen))
 
 	_wm.get_main_scene = _get_main_scene
 	_wm.prepare_main_scene = _prepare_main_scene
