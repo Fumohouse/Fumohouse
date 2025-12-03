@@ -16,7 +16,7 @@ var _local_character: Fumo
 
 
 func _ready():
-	fumo_appearances.current_changed.connect(
+	fumo_appearances.active_changed.connect(
 		func(appearance):
 			# TODO: when changing to Shanghai from a bigger fumo camera moves down (doll size?)
 			_spawn_character(
@@ -56,7 +56,7 @@ func _process(delta: float):
 
 
 func _spawn_character(
-	appearance: Appearance = fumo_appearances._current, char_transform: Variant = null
+	appearance: Appearance = fumo_appearances._active, char_transform: Variant = null
 ) -> Node3D:
 	var character: Fumo = _CHARACTER_SCENE.instantiate()
 
