@@ -17,35 +17,15 @@ func _ready():
 	fumo_appearances.staging_changed.connect(_update_label)
 	%ApplyButton.pressed.connect(fumo_appearances.apply)
 
-	scan_dir("res://addons/@fumohouse/fumo_models/resources/presets")
+	_update_presets()
+	fumo_appearances.entries_updated.connect(_update_presets)
 
 
 func _update_label(appearance: Appearance):
 	_active_label.text = appearance.display_name
 
-
-## Scan [param dir] recursively for model presets.
-func scan_dir(path: String):
-	var dir := DirAccess.open(path)
-	if not dir:
-		push_error("Failed to open presets directory.")
-		return
-
-	dir.list_dir_begin()
-	while true:
-		var file_name := dir.get_next()
-		if file_name.is_empty():
-			break
-
-		if dir.current_is_dir():
-			scan_dir(path.path_join(file_name))
-			continue
-
-		var preset := load(path.path_join(file_name)) as Appearance
-		if not preset:
-			push_warning("Unrecognized preset: '%s'." % file_name)
-			continue
-
+func _update_presets():
+	for preset in fumo_appearances.entries:
 		var item := _item_template.duplicate()
 		item.text = preset.display_name
 		item.visible = true
