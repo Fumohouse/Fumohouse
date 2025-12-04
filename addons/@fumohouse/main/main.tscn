@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cdxg2w1khoiq4" path="res://addons/@fumohouse/base/assets/textures/faces_bg.svg" id="3_lqqwp"]
 [ext_resource type="PackedScene" uid="uid://cce2lc4hx05ok" path="res://addons/@fumohouse/main/ui/play_screen/play_screen.tscn" id="4_3w01d"]
 [ext_resource type="PackedScene" uid="uid://c55ax8y8twfnj" path="res://addons/@fumohouse/navigation/options_screen/options_screen.tscn" id="4_eq6r0"]
-[ext_resource type="PackedScene" uid="uid://c65lput3717mw" path="res://addons/@fumohouse/navigation/character_editor/character_editor.tscn" id="5_eq6r0"]
+[ext_resource type="PackedScene" uid="uid://bdohqbssyckea" path="res://addons/@fumohouse/navigation/character_editor/character_editor_screen.tscn" id="5_eq6r0"]
 [ext_resource type="Script" uid="uid://beubs5pgskp1y" path="res://addons/@fumohouse/main/ui/main_screen.gd" id="5_qhi0j"]
 [ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@fumohouse/base/assets/textures/logo.png" id="6_utajb"]
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="7_vrsnp"]
@@ -74,11 +74,11 @@ color = Color(0, 0, 0, 0.313726)
 visible = false
 layout_mode = 1
 
-[node name="CharacterEditorScreen" parent="Screens" index="1" instance=ExtResource("5_eq6r0")]
+[node name="OptionsScreen" parent="Screens" index="1" instance=ExtResource("4_eq6r0")]
 visible = false
-layout_mode = 0
+layout_mode = 1
 
-[node name="OptionsScreen" parent="Screens" index="2" instance=ExtResource("4_eq6r0")]
+[node name="CharacterEditorScreen" parent="Screens" index="2" instance=ExtResource("5_eq6r0")]
 visible = false
 layout_mode = 1
 
