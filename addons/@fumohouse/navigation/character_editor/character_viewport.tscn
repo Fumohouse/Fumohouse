@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbuv4db04va1"]
+
+[ext_resource type="Script" uid="uid://de12x0b5vb43n" path="res://addons/@fumohouse/navigation/character_editor/character_viewport.gd" id="1_hbyoh"]
+[ext_resource type="Script" uid="uid://ds2i8jbnratt0" path="res://addons/@fumohouse/world/nodes/character_manager.gd" id="2_phe1h"]
+[ext_resource type="Script" uid="uid://ck70ouuqfwjvq" path="res://addons/@fumohouse/character/camera_controller.gd" id="3_phe1h"]
+[ext_resource type="Script" uid="uid://rs1pafyfthr8" path="res://addons/@fumohouse/world/nodes/spawnpoint.gd" id="4_60dxu"]
+[ext_resource type="Material" uid="uid://d0b833ed41ul5" path="res://addons/@fumohouse/playground/resources/playground.tres" id="5_su1g7"]
+
+[node name="CharacterViewport" type="SubViewport"]
+own_world_3d = true
+transparent_bg = true
+gui_disable_input = true
+size = Vector2i(292, 434)
+script = ExtResource("1_hbyoh")
+
+[node name="CharacterManager" type="Node3D" parent="." node_paths=PackedStringArray("spawnpoints", "camera")]
+unique_name_in_owner = true
+script = ExtResource("2_phe1h")
+spawnpoints = NodePath("../Spawnpoints")
+camera = NodePath("../CameraController")
+metadata/_custom_type_script = "uid://ds2i8jbnratt0"
+
+[node name="CameraController" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("3_phe1h")
+camera = NodePath("Camera3D")
+metadata/_custom_type_script = "uid://ck70ouuqfwjvq"
+
+[node name="Camera3D" type="Camera3D" parent="CameraController"]
+
+[node name="Spawnpoints" type="Node3D" parent="."]
+
+[node name="Spawnpoint1" type="Node3D" parent="Spawnpoints" node_paths=PackedStringArray("point")]
+script = ExtResource("4_60dxu")
+point = NodePath("Marker3D")
+metadata/_custom_type_script = "uid://rs1pafyfthr8"
+
+[node name="Marker3D" type="Marker3D" parent="Spawnpoints/Spawnpoint1"]
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+visible = false
+use_collision = true
+size = Vector3(100, 0.5, 100)
+material = ExtResource("5_su1g7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866026, 0.286788, 0.409576, -7.16126e-08, -0.819152, 0.573577, 0.5, -0.496732, -0.709407, 0, 10, 0)
+shadow_enabled = true
+shadow_normal_bias = 5.0
+shadow_blur = 2.5
+sky_mode = 1
