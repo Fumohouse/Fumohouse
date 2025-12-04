@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdohqbssyckea"]
+[gd_scene load_steps=5 format=3 uid="uid://bdohqbssyckea"]
 
 [ext_resource type="Script" uid="uid://b8twh8hujumqe" path="res://addons/@fumohouse/navigation/character_editor/character_editor_grid.gd" id="1_hq5ep"]
 [ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/navigation/screen_base_layout.tscn" id="1_nwhkr"]
 [ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="2_nwhkr"]
+[ext_resource type="PackedScene" uid="uid://cbuv4db04va1" path="res://addons/@fumohouse/navigation/character_editor/character_viewport.tscn" id="3_87xhq"]
 
 [node name="CharacterEditorScreen" node_paths=PackedStringArray("tabs", "tab_content") instance=ExtResource("1_nwhkr")]
 tabs = NodePath("TopBar/Tabs")
@@ -43,11 +44,20 @@ layout_mode = 2
 [node name="ActiveLabel" type="Label" parent="Contents/MarginContainer/TabContent/Editor/HBoxContainer/VBoxContainer" index="0"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 1
 text = "(current)"
 horizontal_alignment = 1
 
-[node name="ApplyButton" type="Button" parent="Contents/MarginContainer/TabContent/Editor/HBoxContainer/VBoxContainer" index="1"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Contents/MarginContainer/TabContent/Editor/HBoxContainer/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="CharacterViewport" parent="Contents/MarginContainer/TabContent/Editor/HBoxContainer/VBoxContainer/SubViewportContainer" index="0" instance=ExtResource("3_87xhq")]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="ApplyButton" type="Button" parent="Contents/MarginContainer/TabContent/Editor/HBoxContainer/VBoxContainer" index="2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Apply"
