@@ -16,12 +16,7 @@ var _local_character: Fumo
 
 
 func _ready():
-	fumo_appearances.active_changed.connect(
-		func(appearance):
-			if _local_character:
-				_local_character.appearance_manager.appearance = appearance
-				_local_character.appearance_manager.load_appearance()
-	)
+	fumo_appearances.active_changed.connect(load_appearance)
 
 
 func _process(delta: float):
@@ -36,6 +31,12 @@ func _process(delta: float):
 	if _local_character and _local_character.global_position.y < _FALL_LIMIT:
 		var appearance := _local_character.appearance_manager.appearance
 		_delete_character(true, func(): _spawn_character(appearance, null))
+
+
+func load_appearance(appearance: Appearance):
+	if _local_character:
+		_local_character.appearance_manager.appearance = appearance
+		_local_character.appearance_manager.load_appearance()
 
 
 func _spawn_character(
