@@ -25,8 +25,7 @@ func _process(delta: float):
 		and CommonUtils.do_game_input(self)
 		and Input.is_action_just_pressed("reset_character")
 	):
-		var appearance := _local_character.appearance_manager.appearance
-		_delete_character(true, func(): _spawn_character(appearance, null))
+		_delete_character(true, _spawn_character)
 
 	if _local_character and _local_character.global_position.y < _FALL_LIMIT:
 		var appearance := _local_character.appearance_manager.appearance
