@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdohqbssyckea"]
+[gd_scene load_steps=5 format=3 uid="uid://bdohqbssyckea"]
 
 [ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/navigation/screen_base_layout.tscn" id="1_nwhkr"]
 [ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="2_nwhkr"]
-[ext_resource type="PackedScene" uid="uid://cbuv4db04va1" path="res://addons/@fumohouse/fumo/character_editor/character_viewport.tscn" id="3_87xhq"]
-[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@assets/clarity_city/ClarityCity-Bold.woff2" id="3_gyx0o"]
+[ext_resource type="PackedScene" uid="uid://b8w13u5smtchn" path="res://addons/@fumohouse/fumo/character_editor/character_editor_left_panel.tscn" id="3_87xhq"]
 [ext_resource type="PackedScene" uid="uid://4gntby41idbe" path="res://addons/@fumohouse/fumo/character_editor/character_editor_presets.tscn" id="5_gyx0o"]
 
 [node name="CharacterEditorScreen" node_paths=PackedStringArray("tabs", "tab_content") instance=ExtResource("1_nwhkr")]
@@ -35,98 +34,15 @@ metadata/_edit_use_anchors_ = true
 [node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer/Container" index="0"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/Container/HBoxContainer" index="0"]
-custom_minimum_size = Vector2(292, 0)
+[node name="LeftPanel" parent="Contents/MarginContainer/Container/HBoxContainer" index="0" instance=ExtResource("3_87xhq")]
 layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer/Container/HBoxContainer/VBoxContainer" index="0"]
-layout_mode = 2
-
-[node name="ActiveLabel" type="Label" parent="Contents/MarginContainer/Container/HBoxContainer/VBoxContainer/HBoxContainer" index="0"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("3_gyx0o")
-theme_override_font_sizes/font_size = 20
-text = "Active"
-
-[node name="ApplyButton" type="Button" parent="Contents/MarginContainer/Container/HBoxContainer/VBoxContainer/HBoxContainer" index="1"]
-unique_name_in_owner = true
-layout_mode = 2
-tooltip_text = "Apply"
-text = ""
-
-[node name="SubViewport" type="SubViewportContainer" parent="Contents/MarginContainer/Container/HBoxContainer/VBoxContainer" index="1"]
-layout_mode = 2
-size_flags_vertical = 3
-stretch = true
-
-[node name="CharacterViewport" parent="Contents/MarginContainer/Container/HBoxContainer/VBoxContainer/SubViewport" index="0" instance=ExtResource("3_87xhq")]
-handle_input_locally = false
-size = Vector2i(292, 371)
-render_target_update_mode = 4
-
-[node name="Scale" type="VBoxContainer" parent="Contents/MarginContainer/Container/HBoxContainer/VBoxContainer" index="2"]
-layout_mode = 2
-
-[node name="Title" type="HBoxContainer" parent="Contents/MarginContainer/Container/HBoxContainer/VBoxContainer/Scale" index="0"]
-layout_mode = 2
-
-[node name="ScaleLabel" type="Label" parent="Contents/MarginContainer/Container/HBoxContainer/VBoxContainer/Scale/Title" index="0"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("3_gyx0o")
-text = "Character Scale"
-
-[node name="SizeLabel" type="Label" parent="Contents/MarginContainer/Container/HBoxContainer/VBoxContainer/Scale/Title" index="1"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
-text = "0%"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="ScaleSlider" type="HSlider" parent="Contents/MarginContainer/Container/HBoxContainer/VBoxContainer/Scale" index="1"]
-layout_mode = 2
-min_value = 0.5
-max_value = 2.0
-step = 0.05
-value = 1.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer/Container/HBoxContainer/VBoxContainer/Scale" index="2"]
-layout_mode = 2
-
-[node name="Doll" type="Button" parent="Contents/MarginContainer/Container/HBoxContainer/VBoxContainer/Scale/HBoxContainer" index="0"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Doll"
-
-[node name="Shinmy" type="Button" parent="Contents/MarginContainer/Container/HBoxContainer/VBoxContainer/Scale/HBoxContainer" index="1"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Shinmy
-"
-
-[node name="Regular" type="Button" parent="Contents/MarginContainer/Container/HBoxContainer/VBoxContainer/Scale/HBoxContainer" index="2"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Regular"
-
-[node name="Deka" type="Button" parent="Contents/MarginContainer/Container/HBoxContainer/VBoxContainer/Scale/HBoxContainer" index="3"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Deka"
 
 [node name="TabContent" type="Control" parent="Contents/MarginContainer/Container/HBoxContainer" index="1"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Presets" parent="Contents/MarginContainer/Container/HBoxContainer/TabContent" index="0" instance=ExtResource("5_gyx0o")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
 
 [node name="Customize" type="PanelContainer" parent="Contents/MarginContainer/Container/HBoxContainer/TabContent" index="1"]
 visible = false
