@@ -1,0 +1,86 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8w13u5smtchn"]
+
+[ext_resource type="Script" uid="uid://dvryl7jn8lghl" path="res://addons/@fumohouse/fumo/character_editor/character_editor_left_panel.gd" id="1_eik25"]
+[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="2_5hlcs"]
+[ext_resource type="PackedScene" uid="uid://cbuv4db04va1" path="res://addons/@fumohouse/fumo/character_editor/character_viewport.tscn" id="3_6ouxl"]
+
+[node name="LeftPanel" type="VBoxContainer"]
+custom_minimum_size = Vector2(292, 0)
+script = ExtResource("1_eik25")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ActiveLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_5hlcs")
+theme_override_font_sizes/font_size = 20
+text = "Active"
+
+[node name="ApplyButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Apply"
+text = ""
+
+[node name="SubViewport" type="SubViewportContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="CharacterViewport" parent="SubViewport" instance=ExtResource("3_6ouxl")]
+handle_input_locally = false
+size = Vector2i(292, 2)
+render_target_update_mode = 4
+
+[node name="Scale" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Title" type="HBoxContainer" parent="Scale"]
+layout_mode = 2
+
+[node name="ScaleLabel" type="Label" parent="Scale/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_5hlcs")
+text = "Character Scale"
+
+[node name="SizeLabel" type="Label" parent="Scale/Title"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+text = "0%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScaleSlider" type="HSlider" parent="Scale"]
+layout_mode = 2
+min_value = 0.5
+max_value = 2.0
+step = 0.05
+value = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Scale"]
+layout_mode = 2
+
+[node name="Doll" type="Button" parent="Scale/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Doll"
+
+[node name="Shinmy" type="Button" parent="Scale/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shinmy
+"
+
+[node name="Regular" type="Button" parent="Scale/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Regular"
+
+[node name="Deka" type="Button" parent="Scale/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Deka"
