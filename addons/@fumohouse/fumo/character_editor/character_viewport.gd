@@ -17,6 +17,6 @@ func _ready() -> void:
 	#_character.state.ctx.motion = _character._get_motion()
 
 
-func load_appearance(appearance: Appearance = fumo_appearances._staging):
+func load_appearance(appearance: Appearance = fumo_appearances.staging):
 	_character.appearance_manager.appearance = appearance
 	_character.appearance_manager.load_appearance()

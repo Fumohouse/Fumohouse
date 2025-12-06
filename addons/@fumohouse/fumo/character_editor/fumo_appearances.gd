@@ -1,5 +1,7 @@
 class_name FumoAppearances
 extends Node
+## Class for Fumo appearances for the local character
+## Keeps track of active and staging appearances, to use in-game and when editing respectively
 
 signal active_changed(Appearance: Appearance)
 
@@ -11,7 +13,12 @@ var _active: Appearance = preload(
 	"res://addons/@fumohouse/fumo_models/resources/presets/doremy.tres"
 )
 
-var _staging: Appearance = _active.duplicate(true)
+## Appearance to be applied, can be set to notify listeners
+## Prefer to use [method with_staging] to set fields, or [method staging_emit] after editing
+var staging: Appearance = _active.duplicate(true):
+	set(new):
+		staging = new
+		staging_emit()
 
 var entries: Array[Appearance]
 
@@ -50,13 +57,18 @@ func scan_dir(path: String):
 		entries.push_front(preset)
 
 
-# Modify staging Appearance with [param fn], which takes staging as parameter and returns the modified value
+## Modify staging Appearance with [param fn], which takes staging as parameter
 func with_staging(fn: Callable):
-	_staging = fn.call(_staging)
-	staging_changed.emit(_staging)
+	fn.call(staging)
+	staging_emit()
 
 
-# Apply active Appearance by copying from staging
+## Notify of changes to [member staging], when modifying fields directly
+func staging_emit():
+	staging_changed.emit(staging)
+
+
+## Apply active Appearance by copying from staging
 func apply():
-	_active = _staging.duplicate(true)
+	_active = staging.duplicate(true)
 	active_changed.emit(_active)
