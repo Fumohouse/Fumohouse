@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxnqhmrjoe0t"]
 
-[ext_resource type="Script" uid="uid://c3rj5wnpqslrk" path="res://addons/@fumohouse/navigation/character_editor/character_editor_grid_item.gd" id="1_edtmo"]
+[ext_resource type="Script" uid="uid://c3rj5wnpqslrk" path="res://addons/@fumohouse/fumo/character_editor/character_editor_grid_item.gd" id="1_edtmo"]
 
 [node name="CharaterEditorGridItem" type="Button"]
 anchors_preset = 15
