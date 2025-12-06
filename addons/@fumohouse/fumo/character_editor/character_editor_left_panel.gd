@@ -12,17 +12,21 @@ extends VBoxContainer
 
 
 func _ready():
-	_update_label(fumo_appearances.staging)
-	fumo_appearances.staging_changed.connect(_update_label)
+	_update_panel(fumo_appearances.staging)
+	fumo_appearances.staging_changed.connect(_update_panel)
 
 	_apply_button.pressed.connect(fumo_appearances.apply)
 
 	_scale_slider.value_changed.connect(_update_scale)
 
 
-func _update_label(appearance: Appearance):
+func _update_panel(appearance: Appearance):
 	_active_label.text = appearance.display_name
-	_scale_label.text = "%.f%%" % (appearance.config.get(&"scale") * 100)
+
+	var scale = appearance.config.get(&"scale")
+	_scale_label.text = "%.f%%" % (scale * 100)
+	# does not appear to cause a circular dependency as value_changed doesn't fire back to this
+	_scale_slider.value = scale
 
 
 func _update_scale(scale: float):
