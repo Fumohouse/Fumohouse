@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bdohqbssyckea"]
 
-[ext_resource type="Script" uid="uid://b8twh8hujumqe" path="res://addons/@fumohouse/navigation/character_editor/character_editor_grid.gd" id="1_hq5ep"]
 [ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/navigation/screen_base_layout.tscn" id="1_nwhkr"]
 [ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="2_nwhkr"]
-[ext_resource type="PackedScene" uid="uid://cbuv4db04va1" path="res://addons/@fumohouse/navigation/character_editor/character_viewport.tscn" id="3_87xhq"]
+[ext_resource type="PackedScene" uid="uid://cbuv4db04va1" path="res://addons/@fumohouse/fumo/character_editor/character_viewport.tscn" id="3_87xhq"]
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@assets/clarity_city/ClarityCity-Bold.woff2" id="3_gyx0o"]
+[ext_resource type="PackedScene" uid="uid://4gntby41idbe" path="res://addons/@fumohouse/fumo/character_editor/character_editor_presets.tscn" id="5_gyx0o"]
 
 [node name="CharacterEditorScreen" node_paths=PackedStringArray("tabs", "tab_content") instance=ExtResource("1_nwhkr")]
 tabs = NodePath("TopBar/Tabs")
@@ -120,30 +120,13 @@ text = "Deka"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Presets" type="PanelContainer" parent="Contents/MarginContainer/Container/HBoxContainer/TabContent" index="0"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/Container/HBoxContainer/TabContent/Presets" index="0"]
-layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("1_hq5ep")
-
-[node name="SearchEdit" type="LineEdit" parent="Contents/MarginContainer/Container/HBoxContainer/TabContent/Presets/VBoxContainer" index="0"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "Search..."
-
-[node name="Grid" type="GridContainer" parent="Contents/MarginContainer/Container/HBoxContainer/TabContent/Presets/VBoxContainer" index="1"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-columns = 2
+[node name="Presets" parent="Contents/MarginContainer/Container/HBoxContainer/TabContent" index="0" instance=ExtResource("5_gyx0o")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Customize" type="PanelContainer" parent="Contents/MarginContainer/Container/HBoxContainer/TabContent" index="1"]
 visible = false
