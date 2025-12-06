@@ -34,6 +34,7 @@ stretch = true
 handle_input_locally = false
 size = Vector2i(292, 2)
 render_target_update_mode = 4
+appearance_provider = "Staging"
 
 [node name="Scale" type="VBoxContainer" parent="."]
 layout_mode = 2
