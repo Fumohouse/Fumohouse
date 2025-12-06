@@ -14,9 +14,7 @@ func _ready():
 
 func _update_presets():
 	for preset in fumo_appearances.entries:
-		var item := CharacterEditorGridItem.new(preset)
-		item.pressed.connect(_stage_appearance.bind(preset))
-		_grid.add_child(item)
+		_grid.add_child(CharacterEditorGridItem.new(preset))
 
 
 func _filter_presets(query: String):
@@ -26,7 +24,3 @@ func _filter_presets(query: String):
 			push_warning("Unknown grid item: '%s'" % child.name)
 			continue
 		preset.visible = query.is_empty() or preset.text.containsn(query)
-
-
-func _stage_appearance(appearance: Appearance):
-	fumo_appearances.with_staging(func(staging: Appearance): return appearance)
