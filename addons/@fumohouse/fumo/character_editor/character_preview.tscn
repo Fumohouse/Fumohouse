@@ -1,15 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4h8y2vq573ow"]
+[gd_scene load_steps=3 format=3 uid="uid://d4h8y2vq573ow"]
 
 [ext_resource type="Script" uid="uid://dile6cj36yd5k" path="res://addons/@fumohouse/fumo/character_editor/character_preview.gd" id="1_p3kp7"]
+[ext_resource type="PackedScene" uid="uid://cbuv4db04va1" path="res://addons/@fumohouse/fumo/character_editor/character_viewport.tscn" id="2_vu4gi"]
 
 [node name="CharacterPreview" type="VBoxContainer"]
-offset_left = 854.0
-offset_top = 412.0
-offset_right = 1104.0
-offset_bottom = 452.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -902.0
+offset_bottom = -348.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_p3kp7")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="CharacterViewport" parent="SubViewportContainer" instance=ExtResource("2_vu4gi")]
+handle_input_locally = false
+size = Vector2i(250, 259)
+render_target_update_mode = 4
 
 [node name="EditButton" type="Button" parent="."]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Edit"
