@@ -9,7 +9,7 @@ func _ready():
 
 
 func _stage_appearance(appearance: Appearance):
-	fumo_appearances.with_staging(func(staging: Appearance): return appearance)
+	fumo_appearances.staging = appearance
 
 
 func _init(appearance: Appearance):

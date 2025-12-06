@@ -8,7 +8,7 @@ extends VBoxContainer
 
 
 func _ready():
-	_update_label(fumo_appearances._staging)
+	_update_label(fumo_appearances.staging)
 	fumo_appearances.staging_changed.connect(_update_label)
 	_apply_button.pressed.connect(fumo_appearances.apply)
 
