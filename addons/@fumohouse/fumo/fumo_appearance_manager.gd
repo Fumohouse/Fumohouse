@@ -14,8 +14,11 @@ const FACE_DATABASE: FumoFaceDatabase = preload("./resources/face_database.tres"
 ## The ragdoll collider.
 @export var ragdoll_collider: CollisionShape3D
 
+## The base camera offset, to be multiplied by the the appearance scale and
+## assigned to the camera on apply.
+@export var base_camera_offset := 2.5
+
 var _base_ragdoll_collider_position := Vector3.ZERO
-var _base_camera_offset := 0.0
 
 
 func _ready():
@@ -104,11 +107,10 @@ func _load_scale():
 	ragdoll_collider.position = _base_ragdoll_collider_position * act_scale
 
 	if fumo.camera:
-		fumo.camera.camera_offset = _base_camera_offset * act_scale
+		fumo.camera.camera_offset = base_camera_offset * act_scale
 
 
 func _on_fumo_camera_updated(new_camera: CameraController):
 	if not new_camera:
 		return
-	_base_camera_offset = new_camera.camera_offset
 	_load_scale()
