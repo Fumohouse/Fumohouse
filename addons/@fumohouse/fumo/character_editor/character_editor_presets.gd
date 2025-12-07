@@ -11,6 +11,8 @@ func _ready():
 	_update_presets()
 	fumo_appearances.entries_updated.connect(_update_presets)
 
+	_search_edit.text_changed.connect(_filter_presets)
+
 
 func _update_presets():
 	for preset in fumo_appearances.entries:
