@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b83el535hlsj4" path="res://addons/@fumohouse/world/game_menu/game_menu.gd" id="2_8xol2"]
 [ext_resource type="Shader" uid="uid://cfejetqo4tpot" path="res://addons/@fumohouse/common/resources/materials/ui_blur.gdshader" id="3_ccw7w"]
 [ext_resource type="PackedScene" uid="uid://c55ax8y8twfnj" path="res://addons/@fumohouse/navigation/options_screen/options_screen.tscn" id="4_itoxh"]
-[ext_resource type="PackedScene" uid="uid://bdohqbssyckea" path="res://addons/@fumohouse/navigation/character_editor/character_editor_screen.tscn" id="5_bbkib"]
+[ext_resource type="PackedScene" uid="uid://bdohqbssyckea" path="res://addons/@fumohouse/navigation/character_editor/character_editor.tscn" id="5_bbkib"]
 [ext_resource type="Script" uid="uid://b08p3vh3shv1n" path="res://addons/@fumohouse/navigation/transition_element.gd" id="5_tvd1v"]
 [ext_resource type="Script" uid="uid://dyygcwyhv7iek" path="res://addons/@fumohouse/world/game_menu/menu_screen.gd" id="6_4uur8"]
 [ext_resource type="PackedScene" uid="uid://by5n53kx2tkhx" path="res://addons/@fumohouse/navigation/components/nav_button_container.tscn" id="7_cpy6s"]
