@@ -6,11 +6,17 @@ const _CHARACTER_SCENE := preload("res://addons/@fumohouse/fumo/fumo.tscn")
 const _DEATH_TIMEOUT := 5.0
 const _FALL_LIMIT := -128.0
 
+var _local_character: Fumo
+
+@onready var fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
+
 ## Node containing [Spawnpoint]s that will be selected randomly for newly spawning
 ## characters.
 @export var spawnpoints: Node3D
 
-var _local_character: Fumo
+
+func _ready():
+	fumo_appearances.active_changed.connect(load_appearance)
 
 
 func _process(delta: float):
@@ -19,15 +25,22 @@ func _process(delta: float):
 		and CommonUtils.do_game_input(self)
 		and Input.is_action_just_pressed("reset_character")
 	):
-		var appearance := _local_character.appearance_manager.appearance
-		_delete_character(true, func(): _spawn_character(appearance, null))
+		_delete_character(true, _spawn_character)
 
 	if _local_character and _local_character.global_position.y < _FALL_LIMIT:
 		var appearance := _local_character.appearance_manager.appearance
 		_delete_character(true, func(): _spawn_character(appearance, null))
 
 
-func _spawn_character(appearance: Appearance, char_transform: Variant) -> Node3D:
+func load_appearance(appearance: Appearance):
+	if _local_character:
+		_local_character.appearance_manager.appearance = appearance
+		_local_character.appearance_manager.load_appearance()
+
+
+func _spawn_character(
+	appearance: Appearance = fumo_appearances._active, char_transform: Variant = null
+) -> Node3D:
 	var character: Fumo = _CHARACTER_SCENE.instantiate()
 
 	if char_transform == null:
@@ -41,9 +54,8 @@ func _spawn_character(appearance: Appearance, char_transform: Variant) -> Node3D
 	else:
 		character.global_transform = char_transform
 
-	if appearance:
-		character.appearance_manager.appearance = appearance
-		# Loaded on ready
+	character.appearance_manager.appearance = appearance
+	# Loaded on ready
 
 	character.camera = camera
 
