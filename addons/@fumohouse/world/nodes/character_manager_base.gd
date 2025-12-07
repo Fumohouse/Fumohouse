@@ -17,6 +17,12 @@ func _spawn_character(
 	return null
 
 
+## Loads [param appearance] into the loaded character, does nothing if no
+## local character is present.
+func load_appearance(appearance: Appearance):
+	return null
+
+
 ## Delete a character. If [param died] is [code]true[/code], kill the character
 ## (e.g., play the death animation). The given [param callback] (if not
 ## [code]null[/code]) is called after the character is killed.
