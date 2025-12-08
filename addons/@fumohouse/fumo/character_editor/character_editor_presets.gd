@@ -14,14 +14,22 @@ func _ready():
 	_search_edit.text_changed.connect(_filter_presets)
 
 
+func _stage_appearance(appearance: Appearance):
+	fumo_appearances.staging = appearance
+
+
 func _update_presets():
-	for preset in fumo_appearances.entries:
-		_grid.add_child(CharacterEditorGridItem.new(preset))
+	for appearance in fumo_appearances.entries:
+		var button := Button.new()
+		button.text = appearance.display_name
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.pressed.connect(_stage_appearance.bind(appearance))
+		_grid.add_child(button)
 
 
 func _filter_presets(query: String):
 	for child in _grid.get_children():
-		var preset := child as CharacterEditorGridItem
+		var preset := child as Button
 		if preset == null:
 			push_warning("Unknown grid item: '%s'" % child.name)
 			continue
