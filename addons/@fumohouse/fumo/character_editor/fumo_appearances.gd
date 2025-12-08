@@ -1,7 +1,8 @@
 class_name FumoAppearances
 extends Node
 ## Class for Fumo appearances for the local character
-## Keeps track of active and staging appearances, to use in-game and when editing respectively
+## Keeps track of active and staging appearances, to use in-game and when
+## editing respectively
 
 signal active_changed(Appearance: Appearance)
 
@@ -10,7 +11,8 @@ signal staging_changed(Appearance: Appearance)
 signal entries_updated
 
 ## Appearance to be applied, can be set to notify listeners
-## Prefer to use [method with_staging] to set fields, or [method staging_emit] after editing
+## Prefer to use [method with_staging] to set fields, or [method staging_emit]
+## after editing
 var staging: Appearance = preload(
 	"res://addons/@fumohouse/fumo_models/resources/presets/doremy.tres"
 ):
@@ -33,7 +35,8 @@ func _ready():
 
 
 ## Scan [param dir] recursively for model presets.
-# Remember to call [code]entries_updated.emit()[/code], after scanning multiple directories
+## Remember to call [code]entries_updated.emit()[/code], after scanning
+## multiple directories
 func scan_dir(path: String):
 	var dir := DirAccess.open(path)
 	if not dir:
