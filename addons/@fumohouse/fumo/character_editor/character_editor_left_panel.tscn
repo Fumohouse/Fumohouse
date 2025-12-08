@@ -21,6 +21,7 @@ text = "Active"
 
 [node name="ApplyButton" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(39, 39)
 layout_mode = 2
 tooltip_text = "Apply"
 text = ""
