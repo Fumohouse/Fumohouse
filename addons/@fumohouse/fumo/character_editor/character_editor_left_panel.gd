@@ -30,6 +30,4 @@ func _update_panel(appearance: Appearance):
 
 
 func _update_scale(scale: float):
-	fumo_appearances.with_staging(func(staging: Appearance):
-		staging.config.set(&"scale", scale)
-	)
+	fumo_appearances.with_staging(func(staging: Appearance): staging.config.set(&"scale", scale))

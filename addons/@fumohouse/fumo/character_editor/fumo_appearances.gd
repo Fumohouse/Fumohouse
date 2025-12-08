@@ -9,22 +9,23 @@ signal staging_changed(Appearance: Appearance)
 
 signal entries_updated
 
-var _active: Appearance = preload(
-	"res://addons/@fumohouse/fumo_models/resources/presets/doremy.tres"
-)
-
 ## Appearance to be applied, can be set to notify listeners
 ## Prefer to use [method with_staging] to set fields, or [method staging_emit] after editing
-var staging: Appearance = _active.duplicate(true):
+var staging: Appearance = preload(
+	"res://addons/@fumohouse/fumo_models/resources/presets/doremy.tres"
+):
 	set(new):
 		staging = new
 		staging_emit()
 
 var entries: Array[Appearance]
 
+var _active: Appearance = staging.duplicate(true)
+
 
 static func get_singleton() -> FumoAppearances:
 	return Modules.get_singleton(&"FumoAppearances") as FumoAppearances
+
 
 func _ready():
 	scan_dir("res://addons/@fumohouse/fumo_models/resources/presets")

@@ -1,18 +1,13 @@
 extends SubViewport
 
+## Underlying Appearance to display
+@export_enum(&"Active", &"Staging") var appearance_provider: String
+
+@onready var fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
 
 @onready var _character: Fumo = %Fumo
 
 @onready var _camera_controller: CameraController = %CameraController
-
-@onready var fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
-
-## Underlying Appearance to display
-@export_enum(
-	&"Active",
-	&"Staging"
-)
-var appearance_provider: String
 
 
 func _ready() -> void:

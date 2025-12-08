@@ -4,13 +4,13 @@ const SECTION_SCENE := preload(
 	"res://addons/@fumohouse/fumo/character_editor/character_editor_custom_section.tscn"
 )
 
+var sorted_parts: Array[PartData]
+
 @onready var _part_database: FumoPartDatabase = FumoPartDatabase.get_singleton()
 
 @onready var _sections: Container = %Sections
 
 @onready var _scopes: OptionButton = %Scopes
-
-var sorted_parts: Array[PartData]
 
 
 func _ready():
