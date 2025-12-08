@@ -2,7 +2,7 @@ extends VBoxContainer
 
 @onready var fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
 
-@onready var _active_label: Label = %ActiveLabel
+@onready var _character_name: LineEdit = %CharacterName
 
 @onready var _apply_button: Button = %ApplyButton
 
@@ -21,7 +21,7 @@ func _ready():
 
 
 func _update_panel(appearance: Appearance):
-	_active_label.text = appearance.display_name
+	_character_name.text = appearance.display_name
 
 	var scale = appearance.config.get(&"scale")
 	_scale_label.text = "%.f%%" % (scale * 100)
