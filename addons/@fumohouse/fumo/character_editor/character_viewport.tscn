@@ -14,18 +14,19 @@ gui_disable_input = true
 size = Vector2i(292, 434)
 script = ExtResource("1_hbyoh")
 
-[node name="CameraController" type="Node3D" parent="." node_paths=PackedStringArray("camera", "focus_node")]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.75, -3)
+
+[node name="CameraController" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("camera", "focus_node")]
 unique_name_in_owner = true
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.6226832e-07, -1.75, -3)
 script = ExtResource("3_phe1h")
-camera = NodePath("Camera3D")
+camera = NodePath("..")
 camera_offset = 1.75
 min_focus_distance = 1.0
 focus_distance = 3.0
-focus_node = NodePath("../Fumo")
+focus_node = NodePath("../../Fumo")
 metadata/_custom_type_script = "uid://ck70ouuqfwjvq"
-
-[node name="Camera3D" type="Camera3D" parent="CameraController"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.75, -3)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866026, 0.286788, 0.409576, -7.16126e-08, -0.819152, 0.573577, 0.5, -0.496732, -0.709407, 0, 10, 0)
