@@ -25,5 +25,5 @@ func _set_part(part: PartData):
 	fumo_appearances.with_staging(
 		func(staging: Appearance):
 			if not staging.attached_parts.erase(part.id):
-				staging.attached_parts[part.id] = part
+				staging.attached_parts[part.id] = part.default_config
 	)
