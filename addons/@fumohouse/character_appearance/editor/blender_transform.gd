@@ -1,15 +1,13 @@
 @tool
 extends Button
 
-@onready var _selection: EditorSelection = $"../../".plugin.get_editor_interface().get_selection()
-
 
 func _ready():
 	pressed.connect(_on_pressed)
 
 
 func _on_pressed():
-	var selected := _selection.get_selected_nodes()
+	var selected := EditorInterface.get_selection().get_selected_nodes()
 	if selected.is_empty():
 		return
 

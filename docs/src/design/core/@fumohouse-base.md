@@ -63,7 +63,7 @@ addition to special files mentioned elsewhere):
 
 1. [ ] The module system should include tools for creating, packaging, and
    inspecting modules.
-1. [ ] Creating: Provide the basic structure of a new module.[^mkplugin]
+1. [x] Creating: Provide the basic structure of a new module.[^mkplugin]
 1. [ ] Packaging: Save all unsaved changes, copy the project directory to a
    temporary folder, and export all modules individually as PCKs by overriding
    `export_presets.cfg`. Then, all PCKs should have outside files be trimmed

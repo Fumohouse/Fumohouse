@@ -2,7 +2,6 @@
 extends Control
 
 @onready var _folder_field: LineEdit = $Folder
-@onready var _selection: EditorSelection = $"../../".plugin.get_editor_interface().get_selection()
 
 
 func _ready():
@@ -10,7 +9,7 @@ func _ready():
 
 
 func _on_save_pressed():
-	var selected := _selection.get_selected_nodes()
+	var selected := EditorInterface.get_selection().get_selected_nodes()
 	if selected.is_empty():
 		return
 

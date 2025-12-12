@@ -1,20 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://4635wkbqjeix"]
+[gd_scene load_steps=3 format=3 uid="uid://4635wkbqjeix"]
 
-[ext_resource type="Script" uid="uid://cul7bmfnrk7rf" path="res://addons/@fumohouse/character_appearance/editor/dock.gd" id="1_s5x0n"]
 [ext_resource type="Script" uid="uid://7cgstjcju2ks" path="res://addons/@fumohouse/character_appearance/editor/blender_transform.gd" id="1_ubocm"]
 [ext_resource type="Script" uid="uid://bipeyc2dvgswc" path="res://addons/@fumohouse/character_appearance/editor/appearance_saver.gd" id="3_35rx5"]
 
-[node name="Character Appearance" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_s5x0n")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
+[node name="Character Appearance" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,19 +11,19 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
 
-[node name="BlenderTransform" type="Button" parent="VBoxContainer"]
+[node name="BlenderTransform" type="Button" parent="."]
 layout_mode = 2
 text = "Paste Scene Transforms (From Blender)"
 script = ExtResource("1_ubocm")
 
-[node name="AppearanceSaver" type="VBoxContainer" parent="VBoxContainer"]
+[node name="AppearanceSaver" type="VBoxContainer" parent="."]
 layout_mode = 2
 script = ExtResource("3_35rx5")
 
-[node name="Folder" type="LineEdit" parent="VBoxContainer/AppearanceSaver"]
+[node name="Folder" type="LineEdit" parent="AppearanceSaver"]
 layout_mode = 2
 placeholder_text = "Save Folder"
 
-[node name="Save" type="Button" parent="VBoxContainer/AppearanceSaver"]
+[node name="Save" type="Button" parent="AppearanceSaver"]
 layout_mode = 2
 text = "Save Appearance Data to .tres"

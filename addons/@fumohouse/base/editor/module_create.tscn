@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck44ymqj2q3gw"]
+
+[ext_resource type="Script" uid="uid://lvrps45l66p" path="res://addons/@fumohouse/base/editor/module_create.gd" id="1_g0h24"]
+
+[node name="Create" type="FoldableContainer"]
+title = "Create"
+script = ExtResource("1_g0h24")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+columns = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Name"
+
+[node name="NameField" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="At" type="Label" parent="VBoxContainer/GridContainer/NameField"]
+layout_mode = 2
+text = "@"
+
+[node name="NameScope" type="LineEdit" parent="VBoxContainer/GridContainer/NameField"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "scope"
+
+[node name="Slash" type="Label" parent="VBoxContainer/GridContainer/NameField"]
+layout_mode = 2
+text = "/"
+
+[node name="NameMain" type="LineEdit" parent="VBoxContainer/GridContainer/NameField"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "name"
+
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Description"
+
+[node name="Description" type="TextEdit" parent="VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+size_flags_horizontal = 3
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
+[node name="AuthorLabel" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Author"
+
+[node name="Author" type="LineEdit" parent="VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VersionLabel" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Version"
+
+[node name="VersionField" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/VersionField"]
+layout_mode = 2
+text = "v"
+
+[node name="Version" type="LineEdit" parent="VBoxContainer/GridContainer/VersionField"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CreateButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Create"
