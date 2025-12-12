@@ -1,6 +1,6 @@
 extends PanelContainer
 
-@onready var fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
+@onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
 
 @onready var _grid: GridContainer = %Grid
 
@@ -9,18 +9,18 @@ extends PanelContainer
 
 func _ready():
 	_update_presets()
-	fumo_appearances.entries_updated.connect(_update_presets)
+	_fumo_appearances.entries_updated.connect(_update_presets)
 
 	_search_edit.text_changed.connect(_filter_presets)
 
 
 func _stage_appearance(appearance: Appearance):
-	fumo_appearances.staging = appearance
-	fumo_appearances.staging_emit()
+	_fumo_appearances.staging = appearance
+	_fumo_appearances.staging_emit()
 
 
 func _update_presets():
-	for appearance in fumo_appearances.entries:
+	for appearance in _fumo_appearances.entries:
 		var button := Button.new()
 		button.text = appearance.display_name
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL

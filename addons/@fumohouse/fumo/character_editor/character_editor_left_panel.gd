@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-@onready var fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
+@onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
 
 @onready var _character_name: LineEdit = %CharacterName
 
@@ -12,10 +12,10 @@ extends VBoxContainer
 
 
 func _ready():
-	_update_panel(fumo_appearances.staging)
-	fumo_appearances.staging_changed.connect(_update_panel)
+	_update_panel(_fumo_appearances.staging)
+	_fumo_appearances.staging_changed.connect(_update_panel)
 
-	_apply_button.pressed.connect(fumo_appearances.apply)
+	_apply_button.pressed.connect(_fumo_appearances.apply)
 
 	_scale_slider.value_changed.connect(_update_scale)
 
@@ -30,4 +30,4 @@ func _update_panel(appearance: Appearance):
 
 
 func _update_scale(scale: float):
-	fumo_appearances.with_staging(func(staging: Appearance): staging.config.set(&"scale", scale))
+	_fumo_appearances.with_staging(func(staging: Appearance): staging.config.set(&"scale", scale))

@@ -3,7 +3,7 @@ extends MarginContainer
 
 @export var scope: String
 
-@onready var fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
+@onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
 
 @onready var _grid: GridContainer = %Grid
 
@@ -22,7 +22,7 @@ func add_item(part: PartData):
 
 
 func _set_part(part: PartData):
-	fumo_appearances.with_staging(
+	_fumo_appearances.with_staging(
 		func(staging: Appearance):
 			if not staging.attached_parts.erase(part.id):
 				staging.attached_parts[part.id] = part.default_config
