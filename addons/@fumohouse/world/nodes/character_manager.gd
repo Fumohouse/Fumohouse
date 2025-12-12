@@ -39,7 +39,7 @@ func load_appearance(appearance: Appearance):
 
 
 func _spawn_character(
-	appearance: Appearance = fumo_appearances._active, char_transform: Variant = null
+	appearance: Appearance = fumo_appearances.active, char_transform: Variant = null
 ) -> Node3D:
 	var character: Fumo = _CHARACTER_SCENE.instantiate()
 

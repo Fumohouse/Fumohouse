@@ -16,6 +16,7 @@ func _ready():
 
 func _stage_appearance(appearance: Appearance):
 	fumo_appearances.staging = appearance
+	fumo_appearances.staging_emit()
 
 
 func _update_presets():

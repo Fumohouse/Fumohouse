@@ -13,7 +13,7 @@ extends SubViewport
 func _ready() -> void:
 	match appearance_provider:
 		&"Active":
-			load_appearance(fumo_appearances._active)
+			load_appearance(fumo_appearances.active)
 			fumo_appearances.active_changed.connect(load_appearance)
 		&"Staging":
 			load_appearance(fumo_appearances.staging)
@@ -24,7 +24,6 @@ func _ready() -> void:
 
 	_camera_controller.camera_rotation.y = PI
 	_character.camera = _camera_controller
-	#_character.state.ctx.motion = _character._get_motion()
 
 
 func load_appearance(appearance: Appearance):
