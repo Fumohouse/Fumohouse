@@ -21,6 +21,10 @@ func add_part(part: PartData):
 	_grid.add_child(button)
 
 
+func show_title(vis: bool):
+	_title.visible = vis
+
+
 func _set_part(part: PartData):
 	_fumo_appearances.with_staging(
 		func(staging: Appearance):
