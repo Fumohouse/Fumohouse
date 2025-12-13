@@ -4,7 +4,7 @@ const SECTION_SCENE := preload(
 	"res://addons/@fumohouse/fumo/character_editor/character_editor_custom_section.tscn"
 )
 
-var sorted_parts: Array[PartData]
+var scope_parts: Dictionary
 
 @onready var _part_database: FumoPartDatabase = FumoPartDatabase.get_singleton()
 
@@ -22,21 +22,24 @@ func _ready():
 
 
 func scan_parts():
-	sorted_parts = _part_database.parts.values().duplicate(true)
+	for child in _sections.get_children():
+		child.queue_free()
 
-	sorted_parts.sort_custom(
-		func(a: PartData, b: PartData) -> bool:
-			return a.scope < b.scope && a.display_name < b.display_name
-	)
+	scope_parts.clear()
+	for part in _part_database.parts.values().duplicate():
+		(scope_parts.get_or_add(part.Scope.keys()[part.scope], []) as Array).append(part)
+	scope_parts.sort()
 
-	var section: CharacterEditorCustomSection
+	for scope in scope_parts.keys():
+		var parts: Array = scope_parts[scope]
+		if parts.is_empty():
+			continue
 
-	for part in sorted_parts:
-		var scope = part.Scope.keys()[part.scope]
+		var section = SECTION_SCENE.instantiate()
+		section.scope = scope
+		_sections.add_child(section)
 
-		if not section or section.scope != scope:
-			section = SECTION_SCENE.instantiate()
-			section.scope = scope
-			_sections.add_child(section)
-
-		section.add_item(part)
+		parts.sort_custom(
+			func(a: PartData, b: PartData) -> bool: return a.display_name < b.display_name
+		)
+		parts.map(section.add_part)

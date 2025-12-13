@@ -14,7 +14,7 @@ func _ready():
 	_title.text = scope
 
 
-func add_item(part: PartData):
+func add_part(part: PartData):
 	var button := Button.new()
 	button.text = part.display_name
 	button.pressed.connect(_set_part.bind(part))
