@@ -20,8 +20,8 @@ func _ready():
 func add_part(part: PartData):
 	var button: PartPreviewButton = BUTTON_SCENE.instantiate()
 	button.part = part
-	_grid.add_child(button)
 	button.pressed.connect(_set_part.bind(part))
+	_grid.add_child(button)
 
 
 func show_title(vis: bool):
