@@ -1,5 +1,27 @@
 class_name PartPreviewButton
 extends Button
 
+var part: PartData
+
 @onready var character_viewport: PartViewport = %CharacterViewport
 @onready var indicator: Panel = %Indicator
+
+
+func _ready():
+	# FIXME: Assertion failed: color is a required key in the part configuration.
+	# ...even though the same function picks a default, asset bug though?
+	if part.id == "socks_1":
+		return
+
+	await self.draw
+
+	var appearance := Appearance.new()
+	appearance.attached_parts[part.id] = part.default_config
+	# FIXME: huh, set null defaults on appearance.config definition instead?
+	appearance.config[&"eyebrows"] = null
+	appearance.config[&"eyes"] = null
+	appearance.config[&"mouth"] = null
+
+	character_viewport.character.appearance_manager.appearance = appearance
+	character_viewport.character.appearance_manager.load_appearance()
+	character_viewport.character.rig.visible = false
