@@ -23,14 +23,6 @@ func _ready():
 	_scopes.item_selected.connect(_filter_section)
 
 
-func _filter_section(index: int):
-	var scope: Variant = _scopes.get_item_metadata(index)
-
-	for section: CharacterEditorCustomSection in _part_selectors.get_children():
-		section.visible = not scope or section.scope == scope
-		section.show_title(scope == null)
-
-
 func scan_parts():
 	for child in _part_selectors.get_children():
 		child.queue_free()
@@ -56,3 +48,11 @@ func scan_parts():
 		)
 		parts.map(part_selector.add_part)
 		part_selector.update_indicators()
+
+
+func _filter_section(index: int):
+	var scope: Variant = _scopes.get_item_metadata(index)
+
+	for section: CharacterEditorCustomSection in _part_selectors.get_children():
+		section.visible = not scope or section.scope == scope
+		section.show_title(scope == null)
