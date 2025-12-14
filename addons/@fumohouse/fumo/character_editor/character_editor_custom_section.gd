@@ -36,6 +36,12 @@ func update_indicators():
 func _set_part(part: PartData):
 	_fumo_appearances.with_staging(
 		func(staging: Appearance):
+			for button: PartPreviewButton in _grid.get_children():
+				if button.part.id == part.id:
+					continue
+
+				staging.attached_parts.erase(button.part.id)
+
 			if not staging.attached_parts.erase(part.id):
 				staging.attached_parts[part.id] = part.default_config
 	)
