@@ -6,14 +6,14 @@
 
 [sub_resource type="World3D" id="World3D_nu2qa"]
 
-[node name="SubViewportContainer" type="SubViewportContainer"]
+[node name="CharacterViewport" type="SubViewportContainer"]
 custom_minimum_size = Vector2(240, 240)
 size_flags_vertical = 3
 stretch = true
-mouse_target = true
 script = ExtResource("1_hbyoh")
 
-[node name="CharacterViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
 own_world_3d = true
 world_3d = SubResource("World3D_nu2qa")
 transparent_bg = true
@@ -21,11 +21,11 @@ handle_input_locally = false
 size = Vector2i(240, 240)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="CharacterViewport"]
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -3)
 current = true
 
-[node name="CameraController" type="Node3D" parent="CharacterViewport/Camera3D" node_paths=PackedStringArray("camera", "focus_node")]
+[node name="CameraController" type="Node3D" parent="SubViewport/Camera3D" node_paths=PackedStringArray("camera", "focus_node")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.6226832e-07, -1.75, -3)
 script = ExtResource("3_phe1h")
@@ -38,11 +38,11 @@ move_speed_fast = 24.0
 focus_node = NodePath("../../Fumo")
 metadata/_custom_type_script = "uid://ck70ouuqfwjvq"
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CharacterViewport"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport"]
 transform = Transform3D(0.86602557, 0.28678808, 0.4095758, -1.2368851e-07, -0.81915194, 0.5735765, 0.49999973, -0.49673203, -0.70940644, 0, 0, 0)
 light_color = Color(1, 0.99607843, 0.92941177, 1)
 
-[node name="Fumo" parent="CharacterViewport" instance=ExtResource("6_hjhjk")]
+[node name="Fumo" parent="SubViewport" instance=ExtResource("6_hjhjk")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75, 0)
 disabled = true
