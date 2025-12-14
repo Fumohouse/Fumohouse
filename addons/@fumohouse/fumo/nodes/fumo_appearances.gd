@@ -1,44 +1,54 @@
 class_name FumoAppearances
 extends Node
-## Class for Fumo appearances for the local character
+## Singleton to keep track of Fumo appearance presets and to manage presets
+## for the local character.
 ##
 ## Keeps track of active and staging appearances, to use in-game and when
-## editing respectively
+## editing respectively.
 
+## Emitted after [property active] changes.
 signal active_changed(Appearance: Appearance)
+## Emitted after [property active] changes.
 signal staging_changed(Appearance: Appearance)
-signal entries_updated
+## Emitted after [property presets] is updated.
+signal presets_updated
 
 ## Current appearance for local character
+##
+## After modifying this value or its fields, it is recommended to call
+## [method active_emit] to notify listeners.
 var active: Appearance = preload(
 	"res://addons/@fumohouse/fumo_models/resources/presets/doremy.tres"
 )
 
-## Appearance to be applied.
+## Preview appearance to be applied.
 ##
-## Prefer to use [method with_staging] to set fields and to automatically emit
-## [signal staging_changed]
+## After modifying this value or its fields, it is recommended to call
+## [method staging_emit] to notify listeners.
 var staging: Appearance = active.duplicate(true)
 
-var entries: Array[Appearance]
+## List of presets available.
+var presets: Array[Appearance]
 
 
+## Get the singleton instance for this node.
 static func get_singleton() -> FumoAppearances:
 	return Modules.get_singleton(&"FumoAppearances") as FumoAppearances
 
 
 func _ready():
 	scan_dir("res://addons/@fumohouse/fumo_models/resources/presets")
-	entries_updated.emit()
 
 
 ## Scan [param dir] recursively for model presets.
 ## Remember to call [code]entries_updated.emit()[/code], after scanning
 ## multiple directories
 func scan_dir(path: String):
+	var updated: bool = false
+
 	var dir := DirAccess.open(path)
 	if not dir:
-		push_error("Failed to open presets directory.")
+		push_error("Failed to open presets directory: '%'." % DirAccess.get_open_error())
 		return
 
 	dir.list_dir_begin()
@@ -56,21 +66,24 @@ func scan_dir(path: String):
 			push_warning("Unrecognized preset: '%s'." % file_name)
 			continue
 
-		entries.push_front(preset)
+		presets.push_front(preset)
+		updated = true
+
+	if updated:
+		presets_updated.emit()
 
 
-## Modify staging Appearance with [param fn], which takes staging as parameter
-func with_staging(fn: Callable):
-	fn.call(staging)
-	staging_emit()
+## Notify of changes to [member active].
+func active_emit():
+	active_changed.emit(staging)
 
 
-## Notify of changes to [member staging], when modifying fields directly
+## Notify of changes to [member staging].
 func staging_emit():
 	staging_changed.emit(staging)
 
 
-## Apply active Appearance by copying from staging
+## Apply active Appearance by copying from staging.
 func apply():
 	active = staging.duplicate(true)
 	active_changed.emit(active)

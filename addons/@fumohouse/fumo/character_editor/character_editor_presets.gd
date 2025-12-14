@@ -8,7 +8,7 @@ extends PanelContainer
 
 func _ready():
 	_update_presets()
-	_fumo_appearances.entries_updated.connect(_update_presets)
+	_fumo_appearances.presets_updated.connect(_update_presets)
 
 	_search_edit.text_changed.connect(_filter_presets)
 
@@ -19,7 +19,7 @@ func _stage_appearance(appearance: Appearance):
 
 
 func _update_presets():
-	for appearance in _fumo_appearances.entries:
+	for appearance in _fumo_appearances.presets:
 		var button := Button.new()
 		button.text = appearance.display_name
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
