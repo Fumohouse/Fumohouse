@@ -6,6 +6,7 @@ extends VBoxContainer
 @onready var _apply_button: Button = %ApplyButton
 @onready var _scale_slider: HSlider = %ScaleSlider
 @onready var _scale_label: Label = %ScaleLabel
+@onready var _scale_presets: Node = %ScalePresets
 
 
 func _ready():
@@ -15,6 +16,13 @@ func _ready():
 	_apply_button.pressed.connect(_fumo_appearances.apply)
 
 	_scale_slider.value_changed.connect(_update_scale)
+
+	for button: Button in _scale_presets.get_children():
+		var scale: float = button.get_meta("scale_preset")
+		if not scale:
+			continue
+
+		button.pressed.connect(_update_scale.bind(scale))
 
 
 func _update_panel(appearance: Appearance):

@@ -6,6 +6,8 @@
 
 [node name="CharacterEditorPreview" type="VBoxContainer"]
 custom_minimum_size = Vector2(292, 0)
+offset_right = 292.0
+offset_bottom = 365.0
 script = ExtResource("1_eik25")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -28,6 +30,7 @@ text = ""
 
 [node name="CharacterViewport" parent="." instance=ExtResource("3_6ouxl")]
 layout_mode = 2
+size_flags_horizontal = 4
 appearance_provider = "Staging"
 
 [node name="Scale" type="VBoxContainer" parent="."]
@@ -58,26 +61,37 @@ max_value = 3.0
 step = 0.05
 value = 1.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Scale"]
+[node name="ScalePresets" type="HBoxContainer" parent="Scale"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Doll" type="Button" parent="Scale/HBoxContainer"]
+[node name="Doll" type="Button" parent="Scale/ScalePresets"]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 15
 text = "Doll"
+metadata/scale_preset = 0.5
 
-[node name="Shinmy" type="Button" parent="Scale/HBoxContainer"]
+[node name="Shinmy" type="Button" parent="Scale/ScalePresets"]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Shinmy
-"
+theme_override_font_sizes/font_size = 14
+text = "Shinmy"
+metadata/scale_preset = 0.75
 
-[node name="Regular" type="Button" parent="Scale/HBoxContainer"]
+[node name="Base" type="Button" parent="Scale/ScalePresets"]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Regular"
+theme_override_font_sizes/font_size = 15
+text = "Base"
+metadata/scale_preset = 1.0
 
-[node name="Deka" type="Button" parent="Scale/HBoxContainer"]
+[node name="Deka" type="Button" parent="Scale/ScalePresets"]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 15
 text = "Deka"
+metadata/scale_preset = 2.0
