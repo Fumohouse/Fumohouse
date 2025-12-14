@@ -7,26 +7,28 @@
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -902.0
-offset_bottom = -348.0
+offset_right = -912.0
+offset_bottom = -367.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(240, 140.5)
 script = ExtResource("1_p3kp7")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+custom_minimum_size = Vector2(240, 240)
 layout_mode = 2
 size_flags_vertical = 3
 stretch = true
 
 [node name="CharacterViewport" parent="SubViewportContainer" instance=ExtResource("2_vu4gi")]
 handle_input_locally = false
-size = Vector2i(250, 259)
+size = Vector2i(240, 240)
 render_target_update_mode = 4
 appearance_provider = "Active"
 
 [node name="EditButton" type="Button" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Edit"
