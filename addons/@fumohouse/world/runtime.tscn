@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://di6y2krc1ti44"]
 
 [ext_resource type="Script" uid="uid://boaw28xhoxx4d" path="res://addons/@fumohouse/world/runtime.gd" id="1_34n3o"]
-[ext_resource type="Environment" uid="uid://bx0t0ec5dt28e" path="res://addons/@fumohouse/main/resources/default_environment.tres" id="1_i4nth"]
+[ext_resource type="Environment" uid="uid://bx0t0ec5dt28e" path="res://addons/@fumohouse/base/resources/default_environment.tres" id="1_i4nth"]
 [ext_resource type="Script" uid="uid://cbriawn38rjn8" path="res://addons/@fumohouse/config/nodes/config_world_environment.gd" id="2_pk70q"]
 [ext_resource type="Script" uid="uid://ck70ouuqfwjvq" path="res://addons/@fumohouse/character/camera_controller.gd" id="3_pk70q"]
 [ext_resource type="PackedScene" uid="uid://bjlyq7kguqj6c" path="res://addons/@fumohouse/world/game_menu/game_menu.tscn" id="4_ayhuy"]

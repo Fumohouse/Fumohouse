@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://bajx1ku8c4beo"]
+
+[ext_resource type="Script" uid="uid://crh3oxw2lfxoj" path="res://addons/@fumohouse/base/editor/module_export.gd" id="1_0uy1q"]
+
+[node name="Export" type="FoldableContainer"]
+title = "Export"
+script = ExtResource("1_0uy1q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Refresh" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Refresh"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
+[node name="ModuleList" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Platform" type="OptionButton" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Linux"
+popup/item_0/id = 0
+popup/item_1/text = "Windows Desktop"
+popup/item_1/id = 1
+popup/item_2/text = "macOS"
+popup/item_2/id = 2
+
+[node name="ExportPath" type="LineEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Export Directory"
+
+[node name="ExportModules" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Export Modules"

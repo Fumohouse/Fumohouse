@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cce2lc4hx05ok" path="res://addons/@fumohouse/main/ui/play_screen/play_screen.tscn" id="4_3w01d"]
 [ext_resource type="PackedScene" uid="uid://c55ax8y8twfnj" path="res://addons/@fumohouse/navigation/options_screen/options_screen.tscn" id="4_eq6r0"]
 [ext_resource type="Script" uid="uid://beubs5pgskp1y" path="res://addons/@fumohouse/main/ui/main_screen.gd" id="5_qhi0j"]
-[ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@assets/fumohouse_common/textures/logo.png" id="6_utajb"]
+[ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@fumohouse/base/assets/logo.png" id="6_utajb"]
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@assets/clarity_city/ClarityCity-Bold.woff2" id="7_vrsnp"]
 [ext_resource type="PackedScene" uid="uid://cxuayqoo84sm7" path="res://addons/@fumohouse/main/ui/version_label.tscn" id="8_skxed"]
 [ext_resource type="Script" uid="uid://c8kh3mwukbfrf" path="res://addons/@fumohouse/main/ui/ksk.gd" id="9_lruml"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://jo7on2cmb37i"]
+[gd_scene load_steps=3 format=3 uid="uid://jo7on2cmb37i"]
 
 [ext_resource type="PackedScene" uid="uid://ck44ymqj2q3gw" path="res://addons/@fumohouse/base/editor/module_create.tscn" id="1_wxtsf"]
+[ext_resource type="PackedScene" uid="uid://bajx1ku8c4beo" path="res://addons/@fumohouse/base/editor/module_export.tscn" id="2_qmeyx"]
 
 [node name="Modules" type="ScrollContainer"]
 anchors_preset = 15
@@ -14,4 +15,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Create" parent="VBoxContainer" instance=ExtResource("1_wxtsf")]
+layout_mode = 2
+
+[node name="Export" parent="VBoxContainer" instance=ExtResource("2_qmeyx")]
 layout_mode = 2
