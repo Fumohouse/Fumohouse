@@ -22,7 +22,7 @@ Thank you for your interest in contributing to Fumohouse!
 1. Fumohouse's original assets are licensed under the [CC BY-SA 4.0
    license](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
    1. Attribution guidelines: Provide the name of the asset's original creator
-      (provided in `COPYRIGHT.txt`) or consult with a maintainer.
+      (provided in the relevant `COPYRIGHT.txt`) or consult with a maintainer.
 1. All external intellectual property used by Fumohouse should be used within
    the guidelines provided by its creator.
 
@@ -58,7 +58,7 @@ Thank you for your interest in contributing to Fumohouse!
 1. Fumohouse uses `.glb` as the main export format for Blender. Use other
    formats only as necessary.
 1. For duplicated meshes, try to avoid duplicate mesh data and facilitate mesh
-   reuse by exporting the duplciated mesh only once and creating its instances
+   reuse by exporting the duplicated mesh only once and creating its instances
    in Godot.
 
 [^filenames]:

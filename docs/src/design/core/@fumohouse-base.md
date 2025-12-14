@@ -1,29 +1,31 @@
 # `@fumohouse/base`: Module system
 
-1. [x] All of Fumohouse's/worlds' game code/tooling/assets is organized into
+1. All of Fumohouse's/worlds' game code/tooling/assets is organized into
    modules.
-1. [x] The module system is based on Godot's addon/plugin system. Each module is
-   a Godot plugin and therefore must contain a `plugin.cfg`. By convention, a
+1. The module system is based on Godot's addon/plugin system. Each module is a
+   Godot plugin and therefore must contain a `plugin.cfg`. By convention, a
    module's plugin script should be named `plugin.gd`.
-1. [x] Modules should be named like `res://addons/@<scope>/<module_name>`.
-1. [x] Module scopes are typically dedicated to a person or group.
+1. Modules should be named like `res://addons/@<scope>/<module_name>`.
+1. Module scopes are typically dedicated to a person or group.
    1. The `@fumohouse` scope is reserved for official Fumohouse modules.
    1. The `@assets` scope should be used for asset collections.
-1. [x] Modules must declare dependencies on other modules, if any. Cyclic
-   dependency between modules is forbidden.
-1. [x] Modules must not depend on any files external to themselves and their
+1. Modules must declare dependencies on other modules, if any. Cyclic dependency
+   between modules is forbidden.
+1. Modules must not depend on any files external to themselves and their
    dependencies.
-1. [x] The order in which modules are loaded is determined by a topological
-   ordering of the dependency graph.
-1. [x] Each module must contain a module manifest `module.tres` next to its
+1. The order in which modules are loaded is determined by a topological ordering
+   of the dependency graph.
+1. Each module must contain a module manifest `module.tres` next to its
    `plugin.cfg`. The manifest stores dependencies, entry point scene, autoloads,
    restricted API usage, etc.
-1. [ ] Each module may contain a Debian-format `COPYRIGHT.txt` next to its
-   `plugin.cfg` to declare copyright information. Core modules use the
-   `COPYRIGHT.txt` at the root of the Fumohouse repository.
-1. [x] Autoload classes/scenes are registered per-module and managed by one
-   Godot autoload that loads all module autoloads and and exposes them similar
-   to Roblox's `game:GetService()`.[^autoload]
+1. Each module may contain a Debian-format `COPYRIGHT.txt` next to its
+   `plugin.cfg` to declare copyright information. A `COPYRIGHT.txt` is also
+   present at the root of the Fumohouse repository.
+   - If a license text is included in the main Fumohouse `COPYRIGHT.txt` file,
+     it need not be repeated in per-module copyright files.
+1. Autoload classes/scenes are registered per-module and managed by one Godot
+   autoload that loads all module autoloads and and exposes them similar to
+   Roblox's `game:GetService()`.[^autoload]
    1. For type safety, module autoloads should have a global class name and
       return their instance through a `get_singleton` static function.
    1. Autoloads are not available earlier than `_ready`.

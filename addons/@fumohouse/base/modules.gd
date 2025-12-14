@@ -4,11 +4,17 @@ extends Node
 const _MODULES_DIR := "res://addons/"
 const _MANIFEST_NAME := "module.tres"
 
+## Copyright information of the base Fumohouse components.
+var base_copyright: CopyrightFile = null
+
 var _modules: Dictionary[StringName, ModuleManifest] = {}
 var _autoloads: Dictionary[StringName, Object] = {}
 
 
 func _enter_tree():
+	base_copyright = CopyrightFile.new()
+	base_copyright.parse("res://COPYRIGHT.txt")
+
 	_scan_modules()
 
 	# This step must run before _ready of the main scene, otherwise everything
@@ -49,6 +55,12 @@ func _index_module(path: String):
 	manifest.description = cfg.get_value("plugin", "description", "")
 	manifest.author = cfg.get_value("plugin", "author", "")
 	manifest.version = cfg.get_value("plugin", "version", "")
+
+	var copyright_path := path.path_join("COPYRIGHT.txt")
+	if FileAccess.file_exists(copyright_path):
+		var copyright := CopyrightFile.new()
+		if copyright.parse(path.path_join("COPYRIGHT.txt")):
+			manifest.copyright = copyright
 
 	var module_name := StringName(path.substr(_MODULES_DIR.length()))
 	_modules[module_name] = manifest

@@ -23,3 +23,6 @@ var description := ""
 var author := ""
 ## Version of this module, populated by the module manager.
 var version := ""
+## Copyright information for this module, if any, populated by the module
+## manager.
+var copyright: CopyrightFile = null

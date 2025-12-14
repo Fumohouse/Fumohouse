@@ -30,7 +30,7 @@ Fumohouse is not affiliated with source or inspiration works.
 
 Third-party content is *not* covered under these licenses. Detailed information
 on the copyrights and licenses of all project files can be found in
-`COPYRIGHT.txt`.
+various `COPYRIGHT.txt` files.
 
 ### For code
 

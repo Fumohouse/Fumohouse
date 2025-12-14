@@ -1,0 +1,15 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Fumohouse Common Assets
+Upstream-Contact: voided_etc <contact@seki.pw>
+Source: https://git.seki.pw/Fumohouse/Fumohouse/src/branch/main/addons/@assets/fumohouse_common
+
+Files: *
+Comment: Fumohouse common assets
+Copyright: 2021-present, voided_etc
+ 2025-present, Fumohouse contributors
+License: CC-BY-SA-4.0
+
+Files: textures/godot_logo.svg
+Comment: Godot Engine logo
+Copyright: 2017, Andrea Calabró
+License: CC-BY-4.0

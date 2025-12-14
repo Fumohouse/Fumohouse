@@ -1,0 +1,28 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Fumohouse Fumo Rig
+Upstream-Contact: voided_etc <contact@seki.pw>
+Source: https://git.seki.pw/Fumohouse/Fumohouse/src/branch/main/addons/@fumohouse/fumo
+
+Files: *
+Comment: Fumohouse source code
+Copyright: 2025-present, voided_etc & co.
+ 2025-present, Fumohouse contributors
+License: MPL-2.0
+
+Files:
+ */assets/*
+Comment: Fumohouse assets
+Copyright: 2021-present, voided_etc & co.
+License: CC-BY-SA-4.0
+
+Files: assets/rig.glb
+Comment: Fumo rig
+Copyright: 2021-2022, PoliticalCirno
+ 2021-2025, voided_etc
+License: CC-BY-SA-4.0
+
+Files: assets/anims/*.tres
+Comment: Fumo animations
+Copyright: 2021-2023, voided_etc
+ 2022-2023, lefortune
+License: CC-BY-SA-4.0

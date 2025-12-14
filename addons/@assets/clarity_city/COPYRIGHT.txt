@@ -1,0 +1,9 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Clarity City Font
+Upstream-Contact: voided_etc <contact@seki.pw>
+Source: https://git.seki.pw/Fumohouse/Fumohouse/src/branch/main/addons/@assets/clarity_city
+
+Files: *.woff2
+Comment: Clarity City font
+Copyright: 2019 VMWare, Inc.
+License: OFL-1.1
