@@ -6,17 +6,17 @@ const _CHARACTER_SCENE := preload("res://addons/@fumohouse/fumo/fumo.tscn")
 const _DEATH_TIMEOUT := 5.0
 const _FALL_LIMIT := -128.0
 
-var _local_character: Fumo
-
-@onready var fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
-
 ## Node containing [Spawnpoint]s that will be selected randomly for newly spawning
 ## characters.
 @export var spawnpoints: Node3D
 
+var _local_character: Fumo
+
+@onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
+
 
 func _ready():
-	fumo_appearances.active_changed.connect(load_appearance)
+	_fumo_appearances.active_changed.connect(load_appearance)
 
 
 func _process(delta: float):
@@ -39,7 +39,7 @@ func load_appearance(appearance: Appearance):
 
 
 func _spawn_character(
-	appearance: Appearance = fumo_appearances.active, char_transform: Variant = null
+	appearance: Appearance = _fumo_appearances.active, char_transform: Variant = null
 ) -> Node3D:
 	var character: Fumo = _CHARACTER_SCENE.instantiate()
 
