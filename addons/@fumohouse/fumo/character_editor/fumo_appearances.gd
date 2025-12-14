@@ -6,9 +6,7 @@ extends Node
 ## editing respectively
 
 signal active_changed(Appearance: Appearance)
-
 signal staging_changed(Appearance: Appearance)
-
 signal entries_updated
 
 ## Current appearance for local character

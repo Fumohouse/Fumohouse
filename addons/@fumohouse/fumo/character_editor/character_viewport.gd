@@ -6,7 +6,6 @@ extends SubViewport
 @onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
 
 @onready var _character: Fumo = %Fumo
-
 @onready var _camera_controller: CameraController = %CameraController
 
 

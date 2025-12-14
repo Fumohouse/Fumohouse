@@ -3,11 +3,8 @@ extends VBoxContainer
 @onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
 
 @onready var _character_name: LineEdit = %CharacterName
-
 @onready var _apply_button: Button = %ApplyButton
-
 @onready var _scale_slider: HSlider = %ScaleSlider
-
 @onready var _scale_label: Label = %ScaleLabel
 
 

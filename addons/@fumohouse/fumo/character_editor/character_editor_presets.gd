@@ -3,7 +3,6 @@ extends PanelContainer
 @onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
 
 @onready var _grid: GridContainer = %Grid
-
 @onready var _search_edit: LineEdit = %SearchEdit
 
 

@@ -9,7 +9,6 @@ var scope_parts: Dictionary[String, Array]
 @onready var _part_database: FumoPartDatabase = FumoPartDatabase.get_singleton()
 
 @onready var _sections: Container = %Sections
-
 @onready var _scopes: OptionButton = %Scopes
 
 
