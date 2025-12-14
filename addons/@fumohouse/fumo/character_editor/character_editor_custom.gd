@@ -1,8 +1,6 @@
 extends PanelContainer
 
-const SECTION_SCENE := preload(
-	"res://addons/@fumohouse/fumo/character_editor/part_selector.tscn"
-)
+const SECTION_SCENE := preload("res://addons/@fumohouse/fumo/character_editor/part_selector.tscn")
 
 @onready var _part_database: FumoPartDatabase = FumoPartDatabase.get_singleton()
 
