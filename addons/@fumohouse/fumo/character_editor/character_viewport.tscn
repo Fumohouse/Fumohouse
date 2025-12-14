@@ -50,4 +50,6 @@ light_color = Color(1, 0.99607843, 0.92941177, 1)
 [node name="Fumo" parent="SubViewport" instance=ExtResource("6_hjhjk")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75, 0)
+camera_fade_begin = 0.0
+camera_fade_end = 0.0
 disabled = true
