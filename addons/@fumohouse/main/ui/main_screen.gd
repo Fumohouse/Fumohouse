@@ -8,6 +8,7 @@ const NavButtonContainer = preload(
 @onready var _non_navigation: Control = $NonNavigation
 @onready var _main_buttons: NavButtonContainer = $MainButtons
 @onready var _music_controller: MusicController = $MusicController
+@onready var _char_preview: CharacterPreview = $CharacterPreview
 
 @onready var _top_bar: Control = $NonNavigation/TopBar
 @onready var _version_label: Control = $NonNavigation/VersionLabel
@@ -25,6 +26,7 @@ func nav_hide():
 	_top_bar.position.y = _top_bar_target_y(false)
 	_version_label.position.x = _version_label_target_x(false)
 	_music_controller.nav_hide()
+	_char_preview.nav_hide()
 
 
 func nav_show():
@@ -33,6 +35,7 @@ func nav_show():
 	_top_bar.position.y = _top_bar_target_y(true)
 	_version_label.position.x = _version_label_target_x(true)
 	_music_controller.nav_show()
+	_char_preview.nav_show()
 
 
 func nav_transition(vis: bool):
@@ -52,6 +55,7 @@ func nav_transition(vis: bool):
 	_main_buttons.nav_transition(vis)
 	if not vis:
 		_music_controller.nav_transition(false)
+	_char_preview.nav_transition(vis)
 
 	return tween
 
