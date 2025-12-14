@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/navigation/screen_base_layout.tscn" id="1_nwhkr"]
 [ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="2_nwhkr"]
-[ext_resource type="PackedScene" uid="uid://b8w13u5smtchn" path="res://addons/@fumohouse/fumo/character_editor/character_editor_left_panel.tscn" id="3_87xhq"]
+[ext_resource type="PackedScene" uid="uid://b8w13u5smtchn" path="res://addons/@fumohouse/fumo/character_editor/character_editor_preview.tscn" id="3_87xhq"]
 [ext_resource type="PackedScene" uid="uid://4gntby41idbe" path="res://addons/@fumohouse/fumo/character_editor/character_editor_presets.tscn" id="5_gyx0o"]
 [ext_resource type="PackedScene" uid="uid://bofgx233q1y7y" path="res://addons/@fumohouse/fumo/character_editor/character_editor_custom.tscn" id="5_rkn1g"]
 
@@ -35,7 +35,7 @@ metadata/_edit_use_anchors_ = true
 [node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer/PanelContainer" index="0"]
 layout_mode = 2
 
-[node name="LeftPanel" parent="Contents/MarginContainer/PanelContainer/HBoxContainer" index="0" instance=ExtResource("3_87xhq")]
+[node name="Preview" parent="Contents/MarginContainer/PanelContainer/HBoxContainer" index="0" instance=ExtResource("3_87xhq")]
 layout_mode = 2
 
 [node name="TabContent" type="Control" parent="Contents/MarginContainer/PanelContainer/HBoxContainer" index="1"]
