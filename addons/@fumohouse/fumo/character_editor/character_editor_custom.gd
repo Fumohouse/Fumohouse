@@ -4,8 +4,6 @@ const SECTION_SCENE := preload(
 	"res://addons/@fumohouse/fumo/character_editor/part_selector.tscn"
 )
 
-var scope_parts: Dictionary[String, Array]
-
 @onready var _part_database: FumoPartDatabase = FumoPartDatabase.get_singleton()
 
 @onready var _part_selectors: Container = %PartSelectors
@@ -37,7 +35,7 @@ func scan_parts():
 	for child in _part_selectors.get_children():
 		child.queue_free()
 
-	scope_parts.clear()
+	var scope_parts: Dictionary[StringName, Array] = {}
 	for key in PartData.Scope.keys():
 		scope_parts[key] = []
 
