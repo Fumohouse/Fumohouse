@@ -28,11 +28,6 @@ func show_title(vis: bool):
 	_title.visible = vis
 
 
-func update_indicators():
-	for button: PartPreviewButton in _grid.get_children():
-		button.indicator.visible = _fumo_appearances.staging.attached_parts.has(button.part.id)
-
-
 func _set_part(part_data: PartData):
 	for button: PartPreviewButton in _grid.get_children():
 		if button.part.id == part_data.id:
@@ -43,5 +38,4 @@ func _set_part(part_data: PartData):
 	if not _fumo_appearances.staging.attached_parts.erase(part_data.id):
 		_fumo_appearances.staging.attached_parts[part_data.id] = part_data.default_config
 
-	update_indicators()
 	_fumo_appearances.staging_emit()

@@ -45,7 +45,6 @@ func scan_parts():
 			func(a: PartData, b: PartData) -> bool: return a.display_name < b.display_name
 		)
 		parts.map(part_selector.add_part)
-		part_selector.update_indicators()
 
 
 func _filter_section(index: int):

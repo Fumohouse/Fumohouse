@@ -6,6 +6,8 @@ var part: PartData
 @onready var character_viewport: PartViewport = %CharacterViewport
 @onready var indicator: Panel = %Indicator
 
+@onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
+
 
 func _ready():
 	var appearance := Appearance.new()
@@ -28,3 +30,10 @@ func _ready():
 	appearance.attached_parts[part.id] = part.default_config
 	character_viewport.character.appearance_manager.load_appearance()
 	character_viewport.character.rig.visible = false
+
+	update_indicator(_fumo_appearances.staging)
+	_fumo_appearances.staging_changed.connect(update_indicator)
+
+
+func update_indicator(appearance: Appearance):
+	indicator.visible = appearance.attached_parts.has(part.id)
