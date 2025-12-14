@@ -1,14 +1,14 @@
 extends PanelContainer
 
 const SECTION_SCENE := preload(
-	"res://addons/@fumohouse/fumo/character_editor/character_editor_custom_section.tscn"
+	"res://addons/@fumohouse/fumo/character_editor/part_selector.tscn"
 )
 
 var scope_parts: Dictionary[String, Array]
 
 @onready var _part_database: FumoPartDatabase = FumoPartDatabase.get_singleton()
 
-@onready var _sections: Container = %Sections
+@onready var _part_selectors: Container = %PartSelectors
 @onready var _scopes: OptionButton = %Scopes
 
 
@@ -28,13 +28,13 @@ func _ready():
 func _filter_section(index: int):
 	var scope: Variant = _scopes.get_item_metadata(index)
 
-	for section: CharacterEditorCustomSection in _sections.get_children():
+	for section: CharacterEditorCustomSection in _part_selectors.get_children():
 		section.visible = not scope or section.scope == scope
 		section.show_title(scope == null)
 
 
 func scan_parts():
-	for child in _sections.get_children():
+	for child in _part_selectors.get_children():
 		child.queue_free()
 
 	scope_parts.clear()
@@ -49,12 +49,12 @@ func scan_parts():
 		if parts.is_empty():
 			continue
 
-		var section = SECTION_SCENE.instantiate()
-		section.scope = scope
-		_sections.add_child(section)
+		var part_selector = SECTION_SCENE.instantiate()
+		part_selector.scope = scope
+		_part_selectors.add_child(part_selector)
 
 		parts.sort_custom(
 			func(a: PartData, b: PartData) -> bool: return a.display_name < b.display_name
 		)
-		parts.map(section.add_part)
-		section.update_indicators()
+		parts.map(part_selector.add_part)
+		part_selector.update_indicators()

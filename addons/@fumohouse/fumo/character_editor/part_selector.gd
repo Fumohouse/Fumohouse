@@ -1,5 +1,5 @@
 class_name CharacterEditorCustomSection
-extends MarginContainer
+extends VBoxContainer
 
 const BUTTON_SCENE := preload(
 	"res://addons/@fumohouse/fumo/character_editor/part_preview_button.tscn"
