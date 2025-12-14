@@ -1,4 +1,4 @@
-extends SubViewport
+extends SubViewportContainer
 
 ## Underlying Appearance to display
 @export_enum(&"Active", &"Staging") var appearance_provider: String

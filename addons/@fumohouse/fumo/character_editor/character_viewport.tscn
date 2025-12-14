@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbuv4db04va1"]
+[gd_scene load_steps=5 format=3 uid="uid://d4hwbq0e54jt4"]
 
 [ext_resource type="Script" uid="uid://de12x0b5vb43n" path="res://addons/@fumohouse/fumo/character_editor/character_viewport.gd" id="1_hbyoh"]
 [ext_resource type="Script" uid="uid://ck70ouuqfwjvq" path="res://addons/@fumohouse/character/camera_controller.gd" id="3_phe1h"]
@@ -6,18 +6,25 @@
 
 [sub_resource type="World3D" id="World3D_nu2qa"]
 
-[node name="CharacterViewport" type="SubViewport"]
+[node name="SubViewportContainer" type="SubViewportContainer"]
+custom_minimum_size = Vector2(240, 240)
+size_flags_vertical = 3
+stretch = true
+script = ExtResource("1_hbyoh")
+
+[node name="CharacterViewport" type="SubViewport" parent="."]
 own_world_3d = true
 world_3d = SubResource("World3D_nu2qa")
 transparent_bg = true
+handle_input_locally = false
 gui_disable_input = true
-size = Vector2i(292, 434)
-script = ExtResource("1_hbyoh")
+size = Vector2i(240, 240)
+render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="CharacterViewport"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.75, -3)
 
-[node name="CameraController" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("camera", "focus_node")]
+[node name="CameraController" type="Node3D" parent="CharacterViewport/Camera3D" node_paths=PackedStringArray("camera", "focus_node")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.6226832e-07, -1.75, -3)
 script = ExtResource("3_phe1h")
@@ -28,12 +35,12 @@ focus_distance = 3.0
 focus_node = NodePath("../../Fumo")
 metadata/_custom_type_script = "uid://ck70ouuqfwjvq"
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CharacterViewport"]
 transform = Transform3D(0.866026, 0.286788, 0.409576, -7.16126e-08, -0.819152, 0.573577, 0.5, -0.496732, -0.709407, 0, 10, 0)
 shadow_normal_bias = 5.0
 shadow_blur = 2.5
 sky_mode = 1
 
-[node name="Fumo" parent="." instance=ExtResource("6_hjhjk")]
+[node name="Fumo" parent="CharacterViewport" instance=ExtResource("6_hjhjk")]
 unique_name_in_owner = true
 disabled = true

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dvryl7jn8lghl" path="res://addons/@fumohouse/fumo/character_editor/character_editor_left_panel.gd" id="1_eik25"]
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="2_5hlcs"]
-[ext_resource type="PackedScene" uid="uid://cbuv4db04va1" path="res://addons/@fumohouse/fumo/character_editor/character_viewport.tscn" id="3_6ouxl"]
+[ext_resource type="PackedScene" uid="uid://d4hwbq0e54jt4" path="res://addons/@fumohouse/fumo/character_editor/character_viewport.tscn" id="3_6ouxl"]
 
 [node name="LeftPanel" type="VBoxContainer"]
 custom_minimum_size = Vector2(292, 0)
@@ -26,15 +26,8 @@ layout_mode = 2
 tooltip_text = "Apply"
 text = ""
 
-[node name="SubViewport" type="SubViewportContainer" parent="."]
+[node name="CharacterViewport" parent="." instance=ExtResource("3_6ouxl")]
 layout_mode = 2
-size_flags_vertical = 3
-stretch = true
-
-[node name="CharacterViewport" parent="SubViewport" instance=ExtResource("3_6ouxl")]
-handle_input_locally = false
-size = Vector2i(292, 2)
-render_target_update_mode = 4
 appearance_provider = "Staging"
 
 [node name="Scale" type="VBoxContainer" parent="."]

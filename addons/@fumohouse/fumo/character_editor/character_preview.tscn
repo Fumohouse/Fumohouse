@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d4h8y2vq573ow"]
 
 [ext_resource type="Script" uid="uid://dile6cj36yd5k" path="res://addons/@fumohouse/fumo/character_editor/character_preview.gd" id="1_p3kp7"]
-[ext_resource type="PackedScene" uid="uid://cbuv4db04va1" path="res://addons/@fumohouse/fumo/character_editor/character_viewport.tscn" id="2_vu4gi"]
+[ext_resource type="PackedScene" uid="uid://d4hwbq0e54jt4" path="res://addons/@fumohouse/fumo/character_editor/character_viewport.tscn" id="2_vu4gi"]
 
 [node name="CharacterPreview" type="VBoxContainer"]
 anchors_preset = 15
@@ -14,16 +14,8 @@ grow_vertical = 2
 pivot_offset = Vector2(240, 140.5)
 script = ExtResource("1_p3kp7")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-custom_minimum_size = Vector2(240, 240)
+[node name="SubViewportContainer" parent="." instance=ExtResource("2_vu4gi")]
 layout_mode = 2
-size_flags_vertical = 3
-stretch = true
-
-[node name="CharacterViewport" parent="SubViewportContainer" instance=ExtResource("2_vu4gi")]
-handle_input_locally = false
-size = Vector2i(240, 240)
-render_target_update_mode = 4
 appearance_provider = "Active"
 
 [node name="EditButton" type="Button" parent="."]
