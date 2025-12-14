@@ -28,9 +28,5 @@ func _update_presets():
 
 
 func _filter_presets(query: String):
-	for child in _grid.get_children():
-		var preset := child as Button
-		if preset == null:
-			push_warning("Unknown grid item: '%s'" % child.name)
-			continue
-		preset.visible = query.is_empty() or preset.text.containsn(query)
+	for button: Button in _grid.get_children():
+		button.visible = query.is_empty() or button.text.containsn(query)
