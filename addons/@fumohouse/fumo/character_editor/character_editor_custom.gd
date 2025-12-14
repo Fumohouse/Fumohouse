@@ -57,3 +57,4 @@ func scan_parts():
 			func(a: PartData, b: PartData) -> bool: return a.display_name < b.display_name
 		)
 		parts.map(section.add_part)
+		section.update_indicators()
