@@ -14,10 +14,16 @@ environment = SubResource("Environment_nu2qa")
 
 [node name="CharacterViewport" type="SubViewportContainer"]
 custom_minimum_size = Vector2(240, 240)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
 script = ExtResource("1_hbyoh")
+appearance_provider = "Active"
 
 [node name="SubViewport" type="SubViewport" parent="."]
 unique_name_in_owner = true
@@ -25,7 +31,7 @@ own_world_3d = true
 world_3d = SubResource("World3D_nu2qa")
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(240, 240)
+size = Vector2i(1152, 648)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -3)
