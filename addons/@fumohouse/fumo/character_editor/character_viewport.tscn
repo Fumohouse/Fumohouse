@@ -14,6 +14,7 @@ environment = SubResource("Environment_nu2qa")
 
 [node name="CharacterViewport" type="SubViewportContainer"]
 custom_minimum_size = Vector2(240, 240)
+size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
 script = ExtResource("1_hbyoh")

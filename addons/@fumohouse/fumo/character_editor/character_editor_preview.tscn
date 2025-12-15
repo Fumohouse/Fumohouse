@@ -30,7 +30,6 @@ text = ""
 
 [node name="CharacterViewport" parent="." instance=ExtResource("3_6ouxl")]
 layout_mode = 2
-size_flags_horizontal = 4
 appearance_provider = "Staging"
 
 [node name="Scale" type="VBoxContainer" parent="."]
