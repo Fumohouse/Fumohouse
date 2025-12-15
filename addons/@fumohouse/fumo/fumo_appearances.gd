@@ -6,11 +6,11 @@ extends Node
 ## Keeps track of active and staging appearances, to use in-game and when
 ## editing respectively.
 
-## Emitted after [property active] changes.
-signal active_changed(Appearance: Appearance)
-## Emitted after [property active] changes.
-signal staging_changed(Appearance: Appearance)
-## Emitted after [property presets] is updated.
+## Emitted after [member active] changes.
+signal active_changed(new_active: Appearance)
+## Emitted after [member staging] changes.
+signal staging_changed(new_staging: Appearance)
+## Emitted after [member presets] is updated.
 signal presets_updated
 
 ## Current appearance for local character
