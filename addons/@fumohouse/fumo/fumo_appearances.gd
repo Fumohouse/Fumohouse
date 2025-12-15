@@ -70,6 +70,9 @@ func scan_dir(path: String):
 		updated = true
 
 	if updated:
+		presets.sort_custom(
+			func(a: Appearance, b: Appearance): return a.display_name < b.display_name
+		)
 		presets_updated.emit()
 
 
