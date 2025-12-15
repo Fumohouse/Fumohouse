@@ -37,6 +37,30 @@ Copyright: 2021-present, voided_etc & co.
  2025-present, Fumohouse contributors
 License: CC-BY-SA-4.0
 
+#######################
+# Base Package Assets #
+#######################
+
+Files: addons/@fumohouse/base/assets/fonts/clarity_city/*.woff2
+Comment: Clarity City font
+Copyright: 2019 VMWare, Inc.
+License: OFL-1.1
+
+Files: addons/@fumohouse/base/assets/fonts/overpass_mono/*.woff2
+Comment: Overpass Mono font
+Copyright: 2021 The Overpass Project Authors
+License: OFL-1.1
+
+Files: addons/@fumohouse/base/assets/fonts/bootstrap_icons/*.woff2
+Comment: Bootstrap icons
+Copyright: 2019-2024, The Bootstrap Authors
+License: Expat
+
+Files: addons/@fumohouse/base/assets/textures/godot_logo.svg
+Comment: Godot Engine logo
+Copyright: 2017, Andrea Calabró
+License: CC-BY-4.0
+
 ########################
 # MPL 2.0 License Text #
 ########################

@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://bgh3a51yiv504"]
 
-[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@assets/clarity_city/ClarityCity-Bold.woff2" id="1_fcqrd"]
+[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="1_fcqrd"]
 [ext_resource type="Script" uid="uid://4yetmdtp0nam" path="res://addons/@fumohouse/main/ui/play_screen/world_card.gd" id="1_lx25b"]
-[ext_resource type="FontFile" uid="uid://dy1lesqssmhwm" path="res://addons/@assets/overpass_mono/overpass-mono-regular.woff2" id="2_lx25b"]
+[ext_resource type="FontFile" uid="uid://dy1lesqssmhwm" path="res://addons/@fumohouse/base/assets/fonts/overpass_mono/overpass-mono-regular.woff2" id="2_lx25b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ppidy"]
 font = ExtResource("1_fcqrd")

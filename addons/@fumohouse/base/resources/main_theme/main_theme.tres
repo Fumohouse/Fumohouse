@@ -1,0 +1,71 @@
+[gd_resource type="Theme" load_steps=24 format=3 uid="uid://bwtx8apvqhdb3"]
+
+[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="1_64law"]
+[ext_resource type="StyleBox" uid="uid://bikux3espg13i" path="res://addons/@fumohouse/base/resources/styleboxes/button/disabled.tres" id="1_gbuug"]
+[ext_resource type="Texture2D" uid="uid://cjwe1coxwsqua" path="res://addons/@fumohouse/base/assets/textures/ui/slider_grabber.svg" id="1_ponq8"]
+[ext_resource type="StyleBox" uid="uid://su7e0vh2xqbd" path="res://addons/@fumohouse/base/resources/styleboxes/button/focus.tres" id="2_fatdi"]
+[ext_resource type="FontFile" uid="uid://cy7dvil6s4ebc" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-BoldItalic.woff2" id="2_wtyyj"]
+[ext_resource type="Texture2D" uid="uid://bwtlfs2mbovsi" path="res://addons/@fumohouse/base/assets/textures/ui/slider_grabber_disabled.svg" id="2_xk7gw"]
+[ext_resource type="StyleBox" uid="uid://c1paknlk70k7p" path="res://addons/@fumohouse/base/resources/styleboxes/button/hover.tres" id="3_2j2a2"]
+[ext_resource type="FontFile" uid="uid://c4qltp4duykro" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-RegularItalic.woff2" id="3_q4g4c"]
+[ext_resource type="Texture2D" uid="uid://ddjwffvhr4ma7" path="res://addons/@fumohouse/base/assets/textures/ui/slider_grabber_highlight.svg" id="3_x51nx"]
+[ext_resource type="StyleBox" uid="uid://cbkdsiqaqi5gc" path="res://addons/@fumohouse/base/resources/styleboxes/button/normal.tres" id="4_jxpjs"]
+[ext_resource type="FontFile" uid="uid://dy1lesqssmhwm" path="res://addons/@fumohouse/base/assets/fonts/overpass_mono/overpass-mono-regular.woff2" id="4_ponq8"]
+[ext_resource type="StyleBox" uid="uid://bnt3h5sfaoa6w" path="res://addons/@fumohouse/base/resources/styleboxes/panel_0.tres" id="4_x51nx"]
+[ext_resource type="StyleBox" uid="uid://b4qwto3daj57o" path="res://addons/@fumohouse/base/resources/styleboxes/panel_1.tres" id="5_cm2td"]
+[ext_resource type="StyleBox" uid="uid://df6263hava71u" path="res://addons/@fumohouse/base/resources/styleboxes/button/pressed.tres" id="5_tix5y"]
+[ext_resource type="StyleBox" uid="uid://dm250cteme3e6" path="res://addons/@fumohouse/base/resources/styleboxes/button_accent/disabled.tres" id="6_rii2k"]
+[ext_resource type="StyleBox" uid="uid://biup6r3rs0rw2" path="res://addons/@fumohouse/base/resources/styleboxes/button_accent/focus.tres" id="7_v6ea5"]
+[ext_resource type="StyleBox" uid="uid://bonllsu4as70f" path="res://addons/@fumohouse/base/resources/styleboxes/button_accent/hover.tres" id="8_nwphw"]
+[ext_resource type="StyleBox" uid="uid://bcsf7lrldvdxf" path="res://addons/@fumohouse/base/resources/styleboxes/slider.tres" id="9_0pr56"]
+[ext_resource type="StyleBox" uid="uid://dxtixcenekol6" path="res://addons/@fumohouse/base/resources/styleboxes/grabber_area.tres" id="9_gbuug"]
+[ext_resource type="StyleBox" uid="uid://ct3x56wu5i3l6" path="res://addons/@fumohouse/base/resources/styleboxes/button_accent/normal.tres" id="9_q76uc"]
+[ext_resource type="StyleBox" uid="uid://duipaicy43tuf" path="res://addons/@fumohouse/base/resources/styleboxes/button_accent/pressed.tres" id="10_f2jtf"]
+[ext_resource type="FontVariation" uid="uid://dunlfet4wbyp3" path="res://addons/@fumohouse/base/resources/fonts/clarity_bootstrap_regular.tres" id="17_gbuug"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rii2k"]
+
+[resource]
+default_font = ExtResource("17_gbuug")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/styles/disabled = ExtResource("1_gbuug")
+Button/styles/focus = ExtResource("2_fatdi")
+Button/styles/hover = ExtResource("3_2j2a2")
+Button/styles/normal = ExtResource("4_jxpjs")
+Button/styles/pressed = ExtResource("5_tix5y")
+ButtonAccent/base_type = &"Button"
+ButtonAccent/styles/disabled = ExtResource("6_rii2k")
+ButtonAccent/styles/focus = ExtResource("7_v6ea5")
+ButtonAccent/styles/hover = ExtResource("8_nwphw")
+ButtonAccent/styles/normal = ExtResource("9_q76uc")
+ButtonAccent/styles/pressed = ExtResource("10_f2jtf")
+CheckBox/styles/hover_pressed = ExtResource("5_tix5y")
+CheckButton/styles/hover_pressed = ExtResource("5_tix5y")
+FlatButton/colors/font_hover_color = Color(0.8, 0.8, 0.8, 1)
+FlatButton/colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+FlatButton/styles/disabled = SubResource("StyleBoxEmpty_rii2k")
+FlatButton/styles/focus = SubResource("StyleBoxEmpty_rii2k")
+FlatButton/styles/hover = SubResource("StyleBoxEmpty_rii2k")
+FlatButton/styles/normal = SubResource("StyleBoxEmpty_rii2k")
+FlatButton/styles/pressed = SubResource("StyleBoxEmpty_rii2k")
+HSlider/icons/grabber = ExtResource("1_ponq8")
+HSlider/icons/grabber_disabled = ExtResource("2_xk7gw")
+HSlider/icons/grabber_highlight = ExtResource("3_x51nx")
+HSlider/styles/grabber_area = ExtResource("9_gbuug")
+HSlider/styles/grabber_area_highlight = ExtResource("9_gbuug")
+HSlider/styles/slider = ExtResource("9_0pr56")
+LineEdit/styles/focus = ExtResource("2_fatdi")
+LineEdit/styles/normal = ExtResource("4_jxpjs")
+LineEdit/styles/read_only = ExtResource("1_gbuug")
+Panel/styles/panel = ExtResource("4_x51nx")
+Panel1/base_type = &"Panel"
+Panel1/styles/panel = ExtResource("5_cm2td")
+PanelContainer/styles/panel = ExtResource("4_x51nx")
+PopupMenu/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+PopupMenu/styles/hover = ExtResource("3_2j2a2")
+PopupMenu/styles/panel = ExtResource("5_cm2td")
+RichTextLabel/constants/line_separation = 3
+RichTextLabel/fonts/bold_font = ExtResource("1_64law")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_wtyyj")
+RichTextLabel/fonts/italics_font = ExtResource("3_q4g4c")
+RichTextLabel/fonts/mono_font = ExtResource("4_ponq8")

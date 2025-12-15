@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxuayqoo84sm7"]
 
-[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@assets/clarity_city/ClarityCity-Bold.woff2" id="1_otnlh"]
+[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="1_otnlh"]
 [ext_resource type="Script" uid="uid://cc8mbcuhhslh" path="res://addons/@fumohouse/main/ui/version_label.gd" id="1_tnpqh"]
 
 [node name="VersionLabel" type="Control"]

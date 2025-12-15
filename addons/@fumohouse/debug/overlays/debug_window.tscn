@@ -3,11 +3,11 @@
 [ext_resource type="Theme" uid="uid://c2qkyos0u3k4c" path="res://addons/@fumohouse/debug/overlays/debug_theme.tres" id="1_5h3vn"]
 [ext_resource type="Shader" uid="uid://cfejetqo4tpot" path="res://addons/@fumohouse/common/resources/materials/ui_blur.gdshader" id="1_hkifj"]
 [ext_resource type="Script" uid="uid://ccx2n6cri1sdl" path="res://addons/@fumohouse/debug/overlays/debug_window.gd" id="2_3m2j5"]
-[ext_resource type="FontFile" uid="uid://clifouy6vdsx0" path="res://addons/@assets/clarity_city/ClarityCity-Regular.woff2" id="3_jh73a"]
-[ext_resource type="FontFile" uid="uid://c4qltp4duykro" path="res://addons/@assets/clarity_city/ClarityCity-RegularItalic.woff2" id="4_0mp2w"]
-[ext_resource type="FontFile" uid="uid://cy7dvil6s4ebc" path="res://addons/@assets/clarity_city/ClarityCity-BoldItalic.woff2" id="5_3m2j5"]
-[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@assets/clarity_city/ClarityCity-Bold.woff2" id="6_jyni0"]
-[ext_resource type="FontFile" uid="uid://dixpl8yc7hcke" path="res://addons/@assets/bootstrap_icons/bootstrap-icons.woff2" id="7_0mp2w"]
+[ext_resource type="FontFile" uid="uid://clifouy6vdsx0" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Regular.woff2" id="3_jh73a"]
+[ext_resource type="FontFile" uid="uid://c4qltp4duykro" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-RegularItalic.woff2" id="4_0mp2w"]
+[ext_resource type="FontFile" uid="uid://cy7dvil6s4ebc" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-BoldItalic.woff2" id="5_3m2j5"]
+[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="6_jyni0"]
+[ext_resource type="FontFile" uid="uid://dixpl8yc7hcke" path="res://addons/@fumohouse/base/assets/fonts/bootstrap_icons/bootstrap-icons.woff2" id="7_0mp2w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5h3vn"]
 shader = ExtResource("1_hkifj")

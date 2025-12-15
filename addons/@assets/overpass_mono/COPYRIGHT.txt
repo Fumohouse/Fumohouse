@@ -1,9 +1,0 @@
-Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: Overpass Mono Font
-Upstream-Contact: voided_etc <contact@seki.pw>
-Source: https://git.seki.pw/Fumohouse/Fumohouse/src/branch/main/addons/@assets/overpass_mono
-
-Files: *.woff2
-Comment: Overpass Mono font
-Copyright: 2021 The Overpass Project Authors
-License: OFL-1.1

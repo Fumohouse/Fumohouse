@@ -1,9 +1,0 @@
-Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: Bootstrap Icons
-Upstream-Contact: voided_etc <contact@seki.pw>
-Source: https://git.seki.pw/Fumohouse/Fumohouse/src/branch/main/addons/@assets/bootstrap_icons
-
-Files: *.woff2
-Comment: Bootstrap icons
-Copyright: 2019-2024, The Bootstrap Authors
-License: Expat
