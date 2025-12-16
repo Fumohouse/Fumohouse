@@ -1,22 +1,22 @@
 extends PanelContainer
 
-const SECTION_SCENE := preload("res://addons/@fumohouse/fumo/character_editor/part_selector.tscn")
+const _SECTION_SCENE := preload("res://addons/@fumohouse/fumo/character_editor/part_selector.tscn")
 
 @onready var _part_selectors: Container = %PartSelectors
 @onready var _scopes: OptionButton = %Scopes
 
 
 func _ready():
-	scan_parts()
+	_scan_parts()
 	_setup_scopes()
 
 
-func scan_parts():
+func _scan_parts():
 	for child in _part_selectors.get_children():
 		child.queue_free()
 
 	for scope in PartData.Scope.values():
-		var part_selector = SECTION_SCENE.instantiate()
+		var part_selector := _SECTION_SCENE.instantiate()
 		part_selector.scope = scope
 		_part_selectors.add_child(part_selector)
 

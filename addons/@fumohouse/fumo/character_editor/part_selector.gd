@@ -1,7 +1,7 @@
 class_name PartSelector
 extends VBoxContainer
 
-const BUTTON_SCENE := preload(
+const _BUTTON_SCENE := preload(
 	"res://addons/@fumohouse/fumo/character_editor/part_preview_button.tscn"
 )
 
@@ -21,7 +21,7 @@ func _ready():
 		if part.scope != scope:
 			continue
 
-		var button: PartPreviewButton = BUTTON_SCENE.instantiate()
+		var button: PartPreviewButton = _BUTTON_SCENE.instantiate()
 		button.part = part
 		button.pressed.connect(_set_part.bind(part))
 		_grid.add_child(button)
