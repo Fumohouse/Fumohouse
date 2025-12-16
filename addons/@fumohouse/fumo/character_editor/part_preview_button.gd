@@ -1,7 +1,7 @@
 class_name PartPreviewButton
 extends Button
 
-var part: PartData
+@export var part: PartData
 
 @onready var character_viewport: PartViewport = %CharacterViewport
 @onready var indicator: Panel = %Indicator
@@ -29,7 +29,7 @@ func _ready():
 
 	appearance.attached_parts[part.id] = part.default_config
 	character_viewport.character.appearance_manager.load_appearance()
-	character_viewport.character.rig.visible = false
+	call_deferred("_hide_rig")
 
 	update_indicator(_fumo_appearances.staging)
 	_fumo_appearances.staging_changed.connect(update_indicator)
@@ -37,3 +37,7 @@ func _ready():
 
 func update_indicator(appearance: Appearance):
 	indicator.visible = appearance.attached_parts.has(part.id)
+
+
+func _hide_rig():
+	character_viewport.character.rig.visible = false
