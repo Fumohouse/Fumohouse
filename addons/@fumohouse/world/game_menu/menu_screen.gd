@@ -1,10 +1,12 @@
 extends "res://addons/@fumohouse/navigation/transition_element.gd"
 
+const MusicController = preload("res://addons/@fumohouse/music/music_controller.gd")
 const NavButtonContainer = preload(
 	"res://addons/@fumohouse/navigation/components/nav_button_container.gd"
 )
-
-const MusicController = preload("res://addons/@fumohouse/music/music_controller.gd")
+const CharacterPreview := preload(
+	"res://addons/@fumohouse/fumo/character_editor/character_preview.gd"
+)
 
 @onready var _gradient_background: Control = $GradientBackground
 @onready var _title: Control = $Contents/Title
@@ -12,7 +14,7 @@ const MusicController = preload("res://addons/@fumohouse/music/music_controller.
 @onready var _bottom_bar: Control = $BottomBar
 @onready var _world_name: Label = %WorldName
 @onready var _music_controller: MusicController = $MusicController
-@onready var _char_preview = $CharacterPreview
+@onready var _char_preview: CharacterPreview = $CharacterPreview
 
 
 func _ready():
