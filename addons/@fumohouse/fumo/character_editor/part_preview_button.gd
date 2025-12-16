@@ -3,7 +3,7 @@ extends Button
 
 @export var part: PartData
 
-@onready var character_viewport: PartViewport = %CharacterViewport
+@onready var character_viewport: CharacterViewport = %CharacterViewport
 @onready var indicator: Panel = %Indicator
 
 @onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
