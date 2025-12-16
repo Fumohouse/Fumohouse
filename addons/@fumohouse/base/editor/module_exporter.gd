@@ -4,7 +4,7 @@ extends RefCounted
 
 
 ## Exports the given [param modules] as PCKs. The resulting PCKs will be placed
-## in [param out_path] as [code]@scope/name.pck[/code].
+## in [param out_path] as [code]modules/@scope/name.pck[/code].
 static func export(modules: PackedStringArray, platform: String, out_path: String):
 	var temp_dir_hnd := DirAccess.create_temp("fumohouse_export")
 	var temp_dir := temp_dir_hnd.get_current_dir()
@@ -22,22 +22,69 @@ static func export(modules: PackedStringArray, platform: String, out_path: Strin
 
 	for module in modules:
 		var name_split: PackedStringArray = module.split("/")
-		var out_dir := out_path.path_join(name_split[0])
+		var out_dir := out_path.path_join("modules").path_join(name_split[0])
 		DirAccess.make_dir_recursive_absolute(out_dir)
 		_export_module_from_zip(module, zip, temp_dir, out_dir.path_join(name_split[1]) + ".pck")
 
 
-## Export everything in the project to a temporary ZIP file. The files can then
-## be used to create individual module PCKs.
-static func _export_master_zip(platform: String, zip_path: String) -> Error:
+## Exports the base package ([code]@fumohouse/base[/code] and the Godot
+## executable). The resulting executable and PCK will be placed in
+## [param out_path].
+static func export_base_package(platform: String, out_path: String):
+	var files := _scan_resources("res://addons/@fumohouse/base")
+
 	# Construct export configuration, leaving most things default
 	# https://github.com/godotengine/godot/blob/master/editor/export/editor_export.cpp
 	var export_cfg := ConfigFile.new()
 	export_cfg.set_value("preset.0", "name", platform)
 	export_cfg.set_value("preset.0", "platform", platform)
 	export_cfg.set_value("preset.0", "runnable", false)
+	export_cfg.set_value("preset.0", "export_filter", "resources")
+	export_cfg.set_value("preset.0", "export_files", files)
+	export_cfg.set_value(
+		"preset.0", "include_filter", "COPYRIGHT.txt, addons/@fumohouse/base/plugin.cfg"
+	)
+	export_cfg.set_value("preset.0", "exclude_filter", "")
+	export_cfg.set_value("preset.0.options", "DUMMY", "DUMMY")
+
+	var err := export_cfg.save("res://export_presets.cfg")
+	if err != OK:
+		push_error("Failed to save export preset configuration.")
+		return err
+
+	# Remove reference to all modules from the exported project.binary
+	var plugins_backup: PackedStringArray = ProjectSettings.get_setting("editor_plugins/enabled")
+	ProjectSettings.set_setting("editor_plugins/enabled", null)
+	ProjectSettings.save()
+
+	var exe_name := "Fumohouse.exe" if platform.contains("Windows") else "Fumohouse"
+
+	# Run export command to ZIP
+	var exit_code: int = OS.execute(
+		OS.get_executable_path(),
+		["--headless", "--export-release", platform, out_path.path_join(exe_name)]
+	)
+
+	# Restore project settings
+	ProjectSettings.set_setting("editor_plugins/enabled", plugins_backup)
+	ProjectSettings.save()
+
+	if exit_code != 0:
+		push_error("Godot exited with error code %d." % [exit_code])
+		return FAILED
+
+	return OK
+
+
+## Export everything in the project to a temporary ZIP file. The files can then
+## be used to create individual module PCKs.
+static func _export_master_zip(platform: String, zip_path: String) -> Error:
+	var export_cfg := ConfigFile.new()
+	export_cfg.set_value("preset.0", "name", platform)
+	export_cfg.set_value("preset.0", "platform", platform)
+	export_cfg.set_value("preset.0", "runnable", false)
 	export_cfg.set_value("preset.0", "export_filter", "all_resources")
-	export_cfg.set_value("preset.0", "include_filter", "COPYRIGHT.txt")
+	export_cfg.set_value("preset.0", "include_filter", "COPYRIGHT.txt, */plugin.cfg")
 	export_cfg.set_value("preset.0", "exclude_filter", "")
 	export_cfg.set_value("preset.0.options", "DUMMY", "DUMMY")
 
@@ -95,9 +142,11 @@ static func _export_module_from_zip(
 			var cfg := ConfigFile.new()
 			cfg.parse(zip.read_file(file).get_string_from_utf8())
 
-			var remap_path: String = cfg.get_value("remap", "path", "")
-			if not remap_path.is_empty() and not remap_path.begins_with(zip_module_prefix):
-				add_file.call(remap_path.trim_prefix("res://"))
+			var remap_names: PackedStringArray = ["path", "path.s3tc", "path.etc2"]
+			for key in remap_names:
+				var remap_path: String = cfg.get_value("remap", key, "")
+				if not remap_path.is_empty() and not remap_path.begins_with(zip_module_prefix):
+					add_file.call(remap_path.trim_prefix("res://"))
 
 	# Force exported files:
 	# https://github.com/godotengine/godot/blob/08e6cd181f98f9ca3f58d89af0a54ce3768552d3/editor/export/editor_export_platform.cpp#L1053-L1077
@@ -164,3 +213,26 @@ static func _export_module_from_zip(
 	# TODO: Extension list
 
 	pak.flush()
+
+
+static func _scan_resources(path: String) -> PackedStringArray:
+	var res: PackedStringArray = []
+	var dir := DirAccess.open(path)
+	if not dir:
+		push_error("Failed to read directory: %s." % [path])
+		return res
+
+	dir.list_dir_begin()
+
+	var file_name: String = dir.get_next()
+	while not file_name.is_empty():
+		var full_path := path.path_join(file_name)
+
+		if dir.current_is_dir():
+			res.append_array(_scan_resources(full_path))
+		elif ResourceLoader.exists(full_path):
+			res.push_back(full_path)
+
+		file_name = dir.get_next()
+
+	return res

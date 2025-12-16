@@ -25,7 +25,8 @@ func _ready():
 			visible = false
 			return
 
-	_update_from_config()
+	# Wait for ConfigManager to load (e.g., when starting main scene directly)
+	_update_from_config.call_deferred()
 
 	if revert_button:
 		revert_button.pressed.connect(_on_revert_button_pressed)

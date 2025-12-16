@@ -27,7 +27,9 @@ static func get_singleton() -> ConfigManager:
 
 
 func _ready():
-	load_file()
+	# Necessary when this is not loaded as a part of the initial run (e.g., in
+	# export builds)
+	load_file.call_deferred()
 	QuitManager.get_singleton().before_quit.connect(_on_before_quit)
 
 

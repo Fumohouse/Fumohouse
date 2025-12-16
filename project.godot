@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Fumohouse"
-run/main_scene="uid://r3htqql86m4u"
+run/main_scene="uid://y6e7gfvh3kep"
 config/project_settings_override="user://override.godot"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://cly828ija347l"

@@ -43,3 +43,8 @@ placeholder_text = "Export Directory"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Export Modules"
+
+[node name="ExportBase" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Export Base Package"

@@ -15,6 +15,9 @@ func _enter_tree():
 	base_copyright = CopyrightFile.new()
 	base_copyright.parse("res://COPYRIGHT.txt")
 
+	if not OS.is_debug_build():
+		_mount_paks(OS.get_executable_path().get_base_dir().path_join("modules"))
+
 	_scan_modules()
 
 	# This step must run before _ready of the main scene, otherwise everything
@@ -24,9 +27,7 @@ func _enter_tree():
 	var scene_module: String = "/".join(scene_path_split.slice(0, 2))
 	print("[Modules] Detected main scene in module '%s'!" % scene_module)
 
-	var ordering: Array[StringName] = _walk_dependencies(scene_module)
-	print("[Modules] Determined module load order: %s" % " -> ".join(ordering))
-	_load_autoloads(ordering)
+	prepare_module(scene_module)
 
 
 ## Get the singleton instance given by [param name].
@@ -37,6 +38,20 @@ func get_singleton(name: StringName) -> Object:
 ## Get the list of currently detected modules.
 func get_modules() -> Array[ModuleManifest]:
 	return _modules.values()
+
+
+## Get the module with the given [param name], or [code]null[/code] if it is not
+## present.
+func get_module(name: StringName) -> ModuleManifest:
+	return _modules.get(name)
+
+
+## Prepare the main scene of the given [param module] to be run (e.g., load
+## dependent autoloads).
+func prepare_module(module: StringName):
+	var ordering: Array[StringName] = _walk_dependencies(module)
+	print("[Modules] Determined module load order: %s" % " -> ".join(ordering))
+	_load_autoloads(ordering)
 
 
 func _index_module(path: String):
@@ -102,6 +117,29 @@ func _scan_modules():
 			scope_file = scope_dir.get_next()
 
 		mod_file = mods_dir.get_next()
+
+
+func _mount_paks(path: String):
+	var dir := DirAccess.open(path)
+	if not dir:
+		push_error("[Modules] Failed to read directory: %s." % [path])
+		return
+
+	dir.list_dir_begin()
+
+	var file_name: String = dir.get_next()
+	while not file_name.is_empty():
+		var full_path := path.path_join(file_name)
+
+		if dir.current_is_dir():
+			_mount_paks(full_path)
+		elif file_name.ends_with(".pck"):
+			print("[Modules] Loading PCK %s..." % [full_path])
+			if not ProjectSettings.load_resource_pack(full_path, false):
+				push_error("[Modules] Failed to load PCK.")
+				return
+
+		file_name = dir.get_next()
 
 
 func _walk_dependencies_internal(from: StringName, out: Array[StringName]):

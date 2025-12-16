@@ -10,11 +10,13 @@ var _selected_modules: PackedStringArray = []
 @onready var _platform: OptionButton = %Platform
 @onready var _export_path: LineEdit = %ExportPath
 @onready var _export_modules_btn: Button = %ExportModules
+@onready var _export_base_btn: Button = %ExportBase
 
 
 func _ready():
 	_refresh_button.pressed.connect(_refresh)
 	_export_modules_btn.pressed.connect(_on_export_modules_pressed)
+	_export_base_btn.pressed.connect(_on_export_base_pressed)
 
 
 func _refresh():
@@ -76,4 +78,13 @@ func _on_export_modules_pressed():
 
 	ModuleExporter.export(
 		_selected_modules, _platform.get_item_text(_platform.selected), _export_path.text
+	)
+
+
+func _on_export_base_pressed():
+	if _export_path.text.is_empty():
+		return
+
+	ModuleExporter.export_base_package(
+		_platform.get_item_text(_platform.selected), _export_path.text
 	)
