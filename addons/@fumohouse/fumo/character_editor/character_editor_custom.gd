@@ -15,7 +15,7 @@ func _scan_parts():
 	for child in _part_selectors.get_children():
 		child.queue_free()
 
-	for scope in PartData.Scope.values():
+	for scope in PartData.Scope.values().slice(1):
 		var part_selector := _SECTION_SCENE.instantiate()
 		part_selector.scope = scope
 		_part_selectors.add_child(part_selector)
@@ -24,7 +24,7 @@ func _scan_parts():
 func _setup_scopes():
 	_scopes.add_item("All", 0)
 
-	for scope: PartData.Scope in PartData.Scope.values():
+	for scope: PartData.Scope in PartData.Scope.values().slice(1):
 		# TODO: can't seem to read human-readable names from @export_enum
 		_scopes.add_item(PartData.Scope.keys()[scope])
 		_scopes.set_item_metadata(_scopes.item_count - 1, scope)
