@@ -25,8 +25,7 @@ func _setup_scopes():
 	_scopes.add_item("All", 0)
 
 	for scope: PartData.Scope in PartData.Scope.values():
-		# TODO: can't seem to read from @export_enum and it doesn't take an external
-		# Array[String] either (godot docs say it does but it throws an error?)
+		# TODO: can't seem to read human-readable names from @export_enum
 		_scopes.add_item(PartData.Scope.keys()[scope])
 		_scopes.set_item_metadata(_scopes.item_count - 1, scope)
 
