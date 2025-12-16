@@ -18,7 +18,6 @@ func _ready():
 	appearance.config[&"mouth"] = null
 
 	character_viewport.character.appearance_manager.appearance = appearance
-	character_viewport.character.appearance_manager.load_appearance()
 
 	# FIXME: Assertion failed: color is a required key in the part configuration.
 	# ...even though the same function picks a default, asset bug though?
