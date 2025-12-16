@@ -36,6 +36,6 @@ func _setup_scopes():
 func _filter_section(index: int):
 	var scope: Variant = _scopes.get_item_metadata(index)
 
-	for section: CharacterEditorCustomSection in _part_selectors.get_children():
+	for section: PartSelector in _part_selectors.get_children():
 		section.visible = scope == null or section.scope == scope
 		section.show_title(scope == null)

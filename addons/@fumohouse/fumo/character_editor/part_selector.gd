@@ -1,4 +1,4 @@
-class_name CharacterEditorCustomSection
+class_name PartSelector
 extends VBoxContainer
 
 const BUTTON_SCENE := preload(
