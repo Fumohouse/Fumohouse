@@ -1,11 +1,7 @@
 extends VBoxContainer
 
-const PartPreviewButton := preload(
-	"res://addons/@fumohouse/fumo/character_editor/part_preview_button.gd"
-)
-const _BUTTON_SCENE := preload(
-	"res://addons/@fumohouse/fumo/character_editor/part_preview_button.tscn"
-)
+const PartPreviewButton := preload("part_preview_button.gd")
+const _BUTTON_SCENE := preload("part_preview_button.tscn")
 
 @export var scope: PartData.Scope
 

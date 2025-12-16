@@ -1,8 +1,6 @@
 extends Button
 
-const CharacterViewport := preload(
-	"res://addons/@fumohouse/fumo/character_editor/character_viewport.gd"
-)
+const CharacterViewport := preload("character_viewport.gd")
 
 @export var part: PartData
 

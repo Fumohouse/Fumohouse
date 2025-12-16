@@ -1,7 +1,7 @@
 extends PanelContainer
 
-const PartSelector := preload("res://addons/@fumohouse/fumo/character_editor/part_selector.gd")
-const _SELECTOR_SCENE := preload("res://addons/@fumohouse/fumo/character_editor/part_selector.tscn")
+const PartSelector := preload("part_selector.gd")
+const _SELECTOR_SCENE := preload("part_selector.tscn")
 
 @onready var _part_selectors: Container = %PartSelectors
 @onready var _scopes: OptionButton = %Scopes
