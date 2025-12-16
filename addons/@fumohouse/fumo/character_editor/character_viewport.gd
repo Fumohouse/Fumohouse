@@ -25,13 +25,9 @@ func _ready() -> void:
 	_subviewport.gui_disable_input = disable_input
 
 	_camera_controller.camera_rotation.y = PI
-	call_deferred("_set_camera")
+	character.camera = _camera_controller
 
 
 func load_appearance(appearance: Appearance):
 	character.appearance_manager.appearance = appearance
 	character.appearance_manager.load_appearance()
-
-
-func _set_camera():
-	character.camera = _camera_controller
