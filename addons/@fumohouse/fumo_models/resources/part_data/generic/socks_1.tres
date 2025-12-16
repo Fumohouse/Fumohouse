@@ -23,4 +23,7 @@ parts = Array[ExtResource("1_0o6vt")]([SubResource("Resource_0o6vt"), SubResourc
 display_name = "Socks 1"
 id = &"socks_1"
 scope = 1
+default_config = Dictionary[StringName, Variant]({
+&"color": Color(1, 1, 1, 1)
+})
 metadata/_custom_type_script = "uid://dgvlk6ce324r2"

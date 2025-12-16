@@ -22,11 +22,6 @@ func _ready():
 
 	character_viewport.character.appearance_manager.appearance = appearance
 
-	# FIXME: Assertion failed: color is a required key in the part configuration.
-	# ...even though the same function picks a default, asset bug though?
-	if part.id == "socks_1":
-		return
-
 	await draw
 
 	appearance.attached_parts[part.id] = part.default_config
