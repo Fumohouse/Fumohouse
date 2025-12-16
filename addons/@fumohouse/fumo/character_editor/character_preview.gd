@@ -1,4 +1,3 @@
-class_name CharacterPreview
 extends VBoxContainer
 
 signal edit_pressed

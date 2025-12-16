@@ -8,7 +8,7 @@ const NavButtonContainer = preload(
 @onready var _non_navigation: Control = $NonNavigation
 @onready var _main_buttons: NavButtonContainer = $MainButtons
 @onready var _music_controller: MusicController = $MusicController
-@onready var _char_preview: CharacterPreview = $CharacterPreview
+@onready var _char_preview = $CharacterPreview
 
 @onready var _top_bar: Control = $NonNavigation/TopBar
 @onready var _version_label: Control = $NonNavigation/VersionLabel

@@ -1,4 +1,3 @@
-class_name PartSelector
 extends VBoxContainer
 
 const _BUTTON_SCENE := preload(
@@ -21,7 +20,7 @@ func _ready():
 		if part.scope != scope:
 			continue
 
-		var button: PartPreviewButton = _BUTTON_SCENE.instantiate()
+		var button := _BUTTON_SCENE.instantiate()
 		button.part = part
 		button.pressed.connect(_set_part.bind(part))
 		_grid.add_child(button)
@@ -32,7 +31,7 @@ func show_title(vis: bool):
 
 
 func _set_part(part_data: PartData):
-	for button: PartPreviewButton in _grid.get_children():
+	for button in _grid.get_children():
 		if button.part.id == part_data.id:
 			continue
 

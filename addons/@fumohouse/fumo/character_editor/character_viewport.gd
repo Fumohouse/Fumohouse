@@ -1,4 +1,3 @@
-class_name CharacterViewport
 extends SubViewportContainer
 
 ## Underlying Appearance to display
