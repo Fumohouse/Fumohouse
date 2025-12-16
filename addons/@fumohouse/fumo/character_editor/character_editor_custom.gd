@@ -2,8 +2,6 @@ extends PanelContainer
 
 const SECTION_SCENE := preload("res://addons/@fumohouse/fumo/character_editor/part_selector.tscn")
 
-@onready var _part_database: FumoPartDatabase = FumoPartDatabase.get_singleton()
-
 @onready var _part_selectors: Container = %PartSelectors
 @onready var _scopes: OptionButton = %Scopes
 
@@ -25,26 +23,10 @@ func scan_parts():
 	for child in _part_selectors.get_children():
 		child.queue_free()
 
-	var scope_parts: Dictionary[StringName, Array] = {}
-	for key in PartData.Scope.keys():
-		scope_parts[key] = []
-
-	for part in _part_database.parts.values().duplicate():
-		scope_parts.get(part.Scope.keys()[part.scope]).append(part)
-
-	for scope in scope_parts.keys():
-		var parts: Array = scope_parts[scope]
-		if parts.is_empty():
-			continue
-
+	for scope in PartData.Scope.values():
 		var part_selector = SECTION_SCENE.instantiate()
 		part_selector.scope = scope
 		_part_selectors.add_child(part_selector)
-
-		parts.sort_custom(
-			func(a: PartData, b: PartData) -> bool: return a.display_name < b.display_name
-		)
-		parts.map(part_selector.add_part)
 
 
 func _filter_section(index: int):
