@@ -8,15 +8,7 @@ const SECTION_SCENE := preload("res://addons/@fumohouse/fumo/character_editor/pa
 
 func _ready():
 	scan_parts()
-
-	_scopes.add_item("All", 0)
-	# no way to read from export_enum annotations? to read from PartData.scope (lowercase property)
-	for part_data in PartData.Scope.keys().slice(1):
-		var value: int = PartData.Scope[part_data]
-		_scopes.add_item(part_data, value)
-		_scopes.set_item_metadata(value, part_data)
-
-	_scopes.item_selected.connect(_filter_section)
+	_setup_scopes()
 
 
 func scan_parts():
@@ -29,9 +21,21 @@ func scan_parts():
 		_part_selectors.add_child(part_selector)
 
 
+func _setup_scopes():
+	_scopes.add_item("All", 0)
+
+	for scope: PartData.Scope in PartData.Scope.values():
+		# TODO: can't seem to read from @export_enum and it doesn't take an external
+		# Array[String] either (godot docs say it does but it throws an error?)
+		_scopes.add_item(PartData.Scope.keys()[scope])
+		_scopes.set_item_metadata(_scopes.item_count - 1, scope)
+
+	_scopes.item_selected.connect(_filter_section)
+
+
 func _filter_section(index: int):
 	var scope: Variant = _scopes.get_item_metadata(index)
 
 	for section: CharacterEditorCustomSection in _part_selectors.get_children():
-		section.visible = not scope or section.scope == scope
+		section.visible = scope == null or section.scope == scope
 		section.show_title(scope == null)
