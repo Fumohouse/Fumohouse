@@ -22,14 +22,12 @@ func _ready():
 func _process(delta: float):
 	if (
 		_local_character
-		and CommonUtils.do_game_input(self)
-		and Input.is_action_just_pressed("reset_character")
+		and (
+			(CommonUtils.do_game_input(self) and Input.is_action_just_pressed("reset_character"))
+			or _local_character.global_position.y < _FALL_LIMIT
+		)
 	):
 		_delete_character(true, _spawn_character)
-
-	if _local_character and _local_character.global_position.y < _FALL_LIMIT:
-		var appearance := _local_character.appearance_manager.appearance
-		_delete_character(true, func(): _spawn_character(appearance, null))
 
 
 func load_appearance(appearance: Appearance):
