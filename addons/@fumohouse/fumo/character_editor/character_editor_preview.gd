@@ -10,8 +10,8 @@ extends VBoxContainer
 
 
 func _ready():
-	_update_panel(_fumo_appearances.staging)
-	_fumo_appearances.staging_changed.connect(_update_panel)
+	_update()
+	_fumo_appearances.staging_changed.connect(_update)
 
 	_apply_button.pressed.connect(_fumo_appearances.apply)
 
@@ -25,7 +25,8 @@ func _ready():
 		button.pressed.connect(_update_scale.bind(scale))
 
 
-func _update_panel(appearance: Appearance):
+func _update():
+	var appearance := _fumo_appearances.staging
 	_character_name.text = appearance.display_name
 
 	var scale = appearance.config.get(&"scale")
