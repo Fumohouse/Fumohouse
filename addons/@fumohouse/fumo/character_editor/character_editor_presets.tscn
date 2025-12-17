@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b8twh8hujumqe" path="res://addons/@fumohouse/fumo/character_editor/character_editor_presets.gd" id="1_oycch"]
 
-[node name="Presets" type="PanelContainer"]
+[node name="Presets" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -10,17 +10,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oycch")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SearchEdit" type="LineEdit" parent="VBoxContainer"]
+[node name="SearchEdit" type="LineEdit" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Search..."
 
-[node name="Grid" type="GridContainer" parent="VBoxContainer"]
+[node name="Grid" type="GridContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3

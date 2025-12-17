@@ -1,4 +1,4 @@
-extends PanelContainer
+extends Control
 
 const PartSelector := preload("part_selector.gd")
 const _SELECTOR_SCENE := preload("part_selector.tscn")

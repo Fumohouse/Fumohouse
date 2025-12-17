@@ -1,4 +1,4 @@
-extends PanelContainer
+extends Control
 
 @onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
 
