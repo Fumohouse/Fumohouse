@@ -47,7 +47,6 @@ text = "Character Scale"
 [node name="ScaleLabel" type="Label" parent="Scale/Title"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
 text = "0%"
 horizontal_alignment = 2
 vertical_alignment = 1
