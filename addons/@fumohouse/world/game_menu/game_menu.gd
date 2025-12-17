@@ -15,7 +15,7 @@ var _tween: Tween
 @onready var _options_button: Button = %OptionsButton
 @onready var _leave_button: Button = %LeaveButton
 
-@onready var _char_preview: Node = %CharacterPreview
+@onready var _nav_character: Node = %NavCharacter
 
 @onready var _main_screen: TransitionElement = $Screens/MenuScreen
 @onready var _options_screen: TransitionElement = $Screens/OptionsScreen
@@ -33,7 +33,7 @@ func _ready():
 	_options_button.pressed.connect(func(): switch_screen(_options_screen))
 	_leave_button.pressed.connect(_on_leave_button_pressed)
 
-	_char_preview.edit_pressed.connect(switch_screen.bind(_char_edit_screen))
+	_nav_character.edit_pressed.connect(switch_screen.bind(_char_edit_screen))
 
 	nav_hide()
 

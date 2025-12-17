@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://by5n53kx2tkhx" path="res://addons/@fumohouse/navigation/components/nav_button_container.tscn" id="14_tgh4f"]
 [ext_resource type="PackedScene" uid="uid://dr32entbvcc4" path="res://addons/@fumohouse/navigation/components/nav_button.tscn" id="15_b6v57"]
 [ext_resource type="PackedScene" uid="uid://croenlf3yyt7h" path="res://addons/@fumohouse/music/music_controller.tscn" id="16_v08wt"]
-[ext_resource type="PackedScene" uid="uid://d4h8y2vq573ow" path="res://addons/@fumohouse/fumo/character_editor/character_preview.tscn" id="18_lqqwp"]
+[ext_resource type="PackedScene" uid="uid://d4h8y2vq573ow" path="res://addons/@fumohouse/navigation/character_editor/nav_character.tscn" id="18_lqqwp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ujcgd"]
 
@@ -270,7 +270,7 @@ offset_bottom = 148.0
 grow_horizontal = 0
 pivot_offset = Vector2(250, 42)
 
-[node name="CharacterPreview" parent="Screens/MainScreen" index="3" instance=ExtResource("18_lqqwp")]
+[node name="NavCharacter" parent="Screens/MainScreen" index="3" instance=ExtResource("18_lqqwp")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
