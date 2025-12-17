@@ -1,6 +1,10 @@
 class_name MainMenu  # for typing of _get_main_scene etc.
 extends "res://addons/@fumohouse/navigation/nav_menu.gd"
 
+const NavCharacter := preload(
+	"res://addons/@fumohouse/navigation/character_editor/nav_character.gd"
+)
+
 var transition_in := true
 
 @onready var _dim: ColorRect = $Dim
@@ -9,7 +13,7 @@ var transition_in := true
 @onready var _options_button: Button = %OptionsButton
 @onready var _exit_button: Button = %ExitButton
 
-@onready var _nav_character: Node = %NavCharacter
+@onready var _nav_character: NavCharacter = %NavCharacter
 
 @onready var _play_screen: TransitionElement = $Screens/PlayScreen
 @onready var _options_screen: TransitionElement = $Screens/OptionsScreen
