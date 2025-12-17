@@ -17,9 +17,7 @@ func load_appearance(appearance: Appearance):
 ## Spawn a character with the given [param appearance] (or [code]null[/code] for the default), and
 ## [param char_transform] (either a [Transform3D] or [code]null[/code]), where
 ## the default position or spawnpoint(s) should be used.
-func _spawn_character(
-	appearance: Appearance = null, char_transform: Variant = null
-) -> Node3D:
+func _spawn_character(appearance: Appearance = null, char_transform: Variant = null) -> Node3D:
 	return null
 
 

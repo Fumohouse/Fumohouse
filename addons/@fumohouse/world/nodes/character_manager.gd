@@ -38,10 +38,11 @@ func load_appearance(appearance: Appearance):
 		_local_character.appearance_manager.load_appearance()
 
 
-func _spawn_character(
-	appearance: Appearance = _fumo_appearances.active, char_transform: Variant = null
-) -> Node3D:
+func _spawn_character(appearance: Appearance = null, char_transform: Variant = null) -> Node3D:
 	var character: Fumo = _CHARACTER_SCENE.instantiate()
+
+	if not appearance:
+		appearance = _fumo_appearances.active
 
 	if char_transform == null:
 		if spawnpoints.get_child_count() == 0:
