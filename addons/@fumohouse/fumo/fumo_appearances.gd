@@ -66,7 +66,7 @@ func scan_dir(path: String):
 			push_warning("Unrecognized preset: '%s'." % file_name)
 			continue
 
-		presets.push_front(preset)
+		presets.push_back(preset)
 		updated = true
 
 	if updated:
