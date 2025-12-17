@@ -2,7 +2,7 @@ extends VBoxContainer
 
 signal edit_pressed
 
-const TRANSITION_DURATION := 0.35
+const MenuUtils := preload("../menu_utils.gd")
 
 var _tween: Tween
 
@@ -29,11 +29,13 @@ func nav_transition(vis: bool):
 
 	visible = true
 
-	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	var tween := MenuUtils.common_tween(self, vis)
 
-	tween.tween_property(self, "scale", Vector2.ONE if vis else Vector2(0, 1), TRANSITION_DURATION)
+	tween.tween_property(
+		self, "scale", Vector2.ONE if vis else Vector2(0, 1), MenuUtils.TRANSITION_DURATION
+	)
 	tween.parallel().tween_property(
-		self, "modulate", Color.WHITE if vis else Color.TRANSPARENT, TRANSITION_DURATION
+		self, "modulate", Color.WHITE if vis else Color.TRANSPARENT, MenuUtils.TRANSITION_DURATION
 	)
 
 	_tween = tween
