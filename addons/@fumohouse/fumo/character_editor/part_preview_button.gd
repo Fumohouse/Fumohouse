@@ -12,12 +12,6 @@ const CharacterViewport := preload("character_viewport.gd")
 
 func _ready():
 	var appearance := Appearance.new()
-
-	# FIXME: huh, set null defaults on appearance.config definition instead?
-	appearance.config[&"eyebrows"] = null
-	appearance.config[&"eyes"] = null
-	appearance.config[&"mouth"] = null
-
 	character_viewport.character.appearance_manager.appearance = appearance
 
 	await draw
