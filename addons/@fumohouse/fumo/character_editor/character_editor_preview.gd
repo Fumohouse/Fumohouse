@@ -1,17 +1,23 @@
 extends VBoxContainer
 
+const CharacterViewport := preload(
+	"res://addons/@fumohouse/fumo/character_editor/character_viewport.gd"
+)
+
 @onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
 
 @onready var _character_name: LineEdit = %CharacterName
+@onready var _character_viewport: CharacterViewport = %CharacterViewport
 @onready var _apply_button: Button = %ApplyButton
+
 @onready var _scale_slider: HSlider = %ScaleSlider
 @onready var _scale_label: Label = %ScaleLabel
 @onready var _scale_presets: Node = %ScalePresets
 
 
 func _ready():
-	_update()
 	_fumo_appearances.staging_changed.connect(func(x): _update())
+	_update()
 
 	_apply_button.pressed.connect(_fumo_appearances.apply)
 
@@ -33,6 +39,9 @@ func _update():
 	_scale_label.text = "%.f%%" % (scale * 100)
 	# does not appear to cause a circular dependency as value_changed doesn't fire back to this
 	_scale_slider.value = scale
+
+	_character_viewport.character.appearance_manager.appearance = _fumo_appearances.staging
+	_character_viewport.character.appearance_manager.load_appearance()
 
 
 func _update_scale(scale: float):

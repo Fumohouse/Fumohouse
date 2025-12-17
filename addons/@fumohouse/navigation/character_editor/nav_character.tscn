@@ -14,9 +14,9 @@ grow_vertical = 2
 pivot_offset = Vector2(240, 140.5)
 script = ExtResource("1_p3kp7")
 
-[node name="SubViewportContainer" parent="." instance=ExtResource("2_vu4gi")]
+[node name="CharacterViewport" parent="." instance=ExtResource("2_vu4gi")]
+unique_name_in_owner = true
 layout_mode = 2
-appearance_provider = "Active"
 
 [node name="EditButton" type="Button" parent="."]
 unique_name_in_owner = true

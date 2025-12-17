@@ -2,15 +2,24 @@ extends VBoxContainer
 
 signal edit_pressed
 
+const CharacterViewport := preload(
+	"res://addons/@fumohouse/fumo/character_editor/character_viewport.gd"
+)
 const MenuUtils := preload("../menu_utils.gd")
 
 var _tween: Tween
 
+@onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
+
+@onready var _character_viewport: CharacterViewport = %CharacterViewport
 @onready var _edit_button: Button = %EditButton
 
 
 func _ready():
 	_edit_button.pressed.connect(edit_pressed.emit)
+
+	_load_appearance(null)
+	_fumo_appearances.active_changed.connect(_load_appearance)
 
 
 func nav_hide():
@@ -43,3 +52,8 @@ func nav_transition(vis: bool):
 	if not vis:
 		await tween.finished
 		visible = false
+
+
+func _load_appearance(_remove_arg: Appearance):
+	_character_viewport.character.appearance_manager.appearance = _fumo_appearances.active
+	_character_viewport.character.appearance_manager.load_appearance()

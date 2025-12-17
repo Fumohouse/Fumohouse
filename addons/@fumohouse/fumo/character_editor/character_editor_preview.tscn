@@ -29,8 +29,8 @@ tooltip_text = "Apply"
 text = ""
 
 [node name="CharacterViewport" parent="." instance=ExtResource("3_6ouxl")]
+unique_name_in_owner = true
 layout_mode = 2
-appearance_provider = "Staging"
 
 [node name="Scale" type="VBoxContainer" parent="."]
 layout_mode = 2
