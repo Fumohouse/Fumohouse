@@ -16,7 +16,7 @@ var _local_character: Fumo
 
 
 func _ready():
-	_fumo_appearances.active_changed.connect(load_appearance)
+	_fumo_appearances.active_changed.connect(func(): load_appearance(_fumo_appearances.active))
 
 
 func _process(delta: float):

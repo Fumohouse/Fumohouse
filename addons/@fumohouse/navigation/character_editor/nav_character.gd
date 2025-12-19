@@ -18,7 +18,7 @@ var _tween: Tween
 func _ready():
 	_edit_button.pressed.connect(edit_pressed.emit)
 
-	_load_appearance(null)
+	_load_appearance()
 	_fumo_appearances.active_changed.connect(_load_appearance)
 
 
@@ -54,6 +54,6 @@ func nav_transition(vis: bool):
 		visible = false
 
 
-func _load_appearance(_remove_arg: Appearance):
+func _load_appearance():
 	_character_viewport.character.appearance_manager.appearance = _fumo_appearances.active
 	_character_viewport.character.appearance_manager.load_appearance()

@@ -16,7 +16,7 @@ const CharacterViewport := preload(
 
 
 func _ready():
-	_fumo_appearances.staging_changed.connect(func(x): _update())
+	_fumo_appearances.staging_changed.connect(_update)
 	_update()
 
 	_apply_button.pressed.connect(_fumo_appearances.apply)
@@ -46,4 +46,4 @@ func _update():
 
 func _update_scale(scale: float):
 	_fumo_appearances.staging.config.set(&"scale", scale)
-	_fumo_appearances.staging_emit()
+	_fumo_appearances.staging_changed.emit()

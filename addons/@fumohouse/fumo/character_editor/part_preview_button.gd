@@ -20,9 +20,9 @@ func _ready():
 	character_viewport.character.appearance_manager.load_appearance()
 	character_viewport.character.rig.visible = false
 
-	update_indicator(_fumo_appearances.staging)
+	update_indicator()
 	_fumo_appearances.staging_changed.connect(update_indicator)
 
 
-func update_indicator(appearance: Appearance):
-	indicator.visible = appearance.attached_parts.has(part.id)
+func update_indicator():
+	indicator.visible = _fumo_appearances.staging.attached_parts.has(part.id)

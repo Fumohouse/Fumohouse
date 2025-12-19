@@ -15,7 +15,7 @@ func _ready():
 
 func _stage_appearance(appearance: Appearance):
 	_fumo_appearances.staging = appearance.duplicate(true)
-	_fumo_appearances.staging_emit()
+	_fumo_appearances.staging_changed.emit()
 
 
 func _update_presets():
