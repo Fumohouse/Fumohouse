@@ -16,7 +16,7 @@ var _local_character: Fumo
 
 
 func _ready():
-	_fumo_appearances.active_changed.connect(func(): load_appearance(_fumo_appearances.active))
+	_fumo_appearances.active_changed.connect(func(): _load_appearance(_fumo_appearances.active))
 
 
 func _process(delta: float):
@@ -30,7 +30,7 @@ func _process(delta: float):
 		_delete_character(true, _spawn_character)
 
 
-func load_appearance(appearance: Appearance):
+func _load_appearance(appearance: Appearance):
 	if _local_character:
 		_local_character.appearance_manager.appearance = appearance
 		_local_character.appearance_manager.load_appearance()

@@ -10,7 +10,7 @@ extends Node3D
 
 ## Loads [param appearance] into the loaded character, does nothing if no
 ## local character is present.
-func load_appearance(appearance: Appearance):
+func _load_appearance(appearance: Appearance):
 	return null
 
 
