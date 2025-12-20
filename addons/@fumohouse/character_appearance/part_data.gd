@@ -19,6 +19,23 @@ enum Scope {
 	TAIL,
 }
 
+## Human-readable names for [enum Scope] values.
+const SCOPE_NAMES: Array[StringName] = [
+	"None",
+	"Accessory",
+	"Outfit (Full)",
+	"Outfit (Top)",
+	"Outfit (Bottom)",
+	"Hair (Full)",
+	"Hair (Front)",
+	"Hair (Back)",
+	"Hair (Accessory)",
+	"Shoes",
+	"Hat",
+	"Ears",
+	"Tail",
+]
+
 ## The display name for this part.
 @export var display_name := ""
 

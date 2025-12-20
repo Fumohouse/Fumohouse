@@ -13,7 +13,7 @@ const _BUTTON_SCENE := preload("part_preview_button.tscn")
 
 
 func _ready():
-	_title.text = PartData.Scope.keys()[scope]
+	_title.text = PartData.SCOPE_NAMES[scope]
 
 	for part in _part_database.parts.values():
 		if part.scope != scope:
