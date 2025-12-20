@@ -37,6 +37,6 @@ func _set_part(part_data: PartData):
 		_fumo_appearances.staging.attached_parts.erase(button.part.id)
 
 	if not _fumo_appearances.staging.attached_parts.erase(part_data.id):
-		_fumo_appearances.staging.attached_parts[part_data.id] = part_data.default_config
+		_fumo_appearances.staging.attached_parts[part_data.id] = null
 
 	_fumo_appearances.staging_changed.emit()
