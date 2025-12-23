@@ -16,7 +16,7 @@ func _scan_parts():
 	for child in _part_selectors.get_children():
 		child.queue_free()
 
-	for scope in PartData.Scope.values().slice(1):
+	for scope: PartData.Scope in PartData.Scope.values().slice(1):
 		var part_selector: PartSelector = _SELECTOR_SCENE.instantiate()
 		part_selector.scope = scope
 		_part_selectors.add_child(part_selector)
