@@ -5,6 +5,9 @@ const _BUTTON_SCENE := preload("part_preview_button.tscn")
 
 @export var scope: PartData.Scope
 
+var _multiple: bool = false
+var _exclude: Array = []
+
 @onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
 @onready var _part_database: FumoPartDatabase = FumoPartDatabase.get_singleton()
 
@@ -14,6 +17,7 @@ const _BUTTON_SCENE := preload("part_preview_button.tscn")
 
 func _ready():
 	_title.text = PartData.SCOPE_NAMES[scope]
+	_config_slot()
 
 	for part in _part_database.parts.values():
 		if part.scope != scope:
@@ -29,12 +33,26 @@ func show_title(vis: bool):
 	_title.visible = vis
 
 
-func _set_part(part_data: PartData):
-	for button: PartPreviewButton in _grid.get_children():
-		if button.part.id == part_data.id:
-			continue
+func _config_slot():
+	var params := PartData.SLOT_PARAMS.get(scope)
 
-		_fumo_appearances.staging.attached_parts.erase(button.part.id)
+	if params:
+		_multiple = params.get("multiple", _multiple)
+		_exclude = params.get("exclude", _exclude)
+
+
+func _set_part(part_data: PartData):
+	for key in _fumo_appearances.staging.attached_parts.keys():
+		var attached := _part_database.get_part(key)
+
+		if (
+			(
+				(attached.scope == part_data.scope and not _multiple)
+				or _exclude.any(func(scope: PartData.Scope): return scope == attached.scope)
+			)
+			and attached.id != part_data.id
+		):
+			_fumo_appearances.staging.attached_parts.erase(attached.id)
 
 	if not _fumo_appearances.staging.attached_parts.erase(part_data.id):
 		_fumo_appearances.staging.attached_parts[part_data.id] = null
