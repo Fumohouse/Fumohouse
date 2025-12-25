@@ -46,24 +46,13 @@ func _ready():
 func scan_dir(path: String):
 	var updated: bool = false
 
-	var dir := DirAccess.open(path)
-	if not dir:
-		push_error("Failed to open presets directory: '%'." % DirAccess.get_open_error())
-		return
-
-	dir.list_dir_begin()
-	while true:
-		var file_name := dir.get_next()
-		if file_name.is_empty():
-			break
-
-		if dir.current_is_dir():
-			scan_dir(path.path_join(file_name))
+	for entry in ResourceLoader.list_directory(path):
+		if entry.ends_with("/"):
 			continue
 
-		var preset := load(path.path_join(file_name)) as Appearance
+		var preset := load(path.path_join(entry)) as Appearance
 		if not preset:
-			push_warning("Unrecognized preset: '%s'." % file_name)
+			push_warning("Unrecognized preset: '%s'." % entry)
 			continue
 
 		presets.push_back(preset)
