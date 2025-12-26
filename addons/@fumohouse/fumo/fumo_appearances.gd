@@ -1,7 +1,7 @@
 class_name FumoAppearances
 extends Node
-## Singleton to keep track of Fumo appearance presets and to manage presets
-## for the local character.
+## Singleton to keep track of Fumo appearance presets and to manage presets for
+## the local character.
 ##
 ## Keeps track of active and staging appearances, to use in-game and when
 ## editing respectively.
@@ -40,9 +40,7 @@ func _ready():
 	scan_dir("res://addons/@fumohouse/fumo_models/resources/presets")
 
 
-## Scan [param dir] recursively for model presets.
-## Remember to call [code]entries_updated.emit()[/code], after scanning
-## multiple directories
+## Scan [param path] recursively for model presets.
 func scan_dir(path: String):
 	var updated: bool = false
 
@@ -65,7 +63,7 @@ func scan_dir(path: String):
 		presets_updated.emit()
 
 
-## Apply active Appearance by copying from staging.
+## Apply active [Appearance] by copying from staging.
 func apply():
 	active = staging.duplicate(true)
 	active_changed.emit()

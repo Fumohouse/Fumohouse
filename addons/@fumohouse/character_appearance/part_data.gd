@@ -36,13 +36,14 @@ const SCOPE_NAMES: Array[StringName] = [
 	"Tail",
 ]
 
-## Additional parameters for part slots.[br]
+## Additional parameters for part slots. The value may contain the following
+## fields:[br]
 ##
-## The dictionary may contain the following fields:[br]
-## * [code]multiple[/code] ([code]bool[/code], defaults to [code]false[/code]):
+## [code]multiple[/code] ([code]bool[/code], defaults to [code]false[/code]):
 ## Whether selecting multiple parts for this slot should be allowed.[br]
-## * [code]exclude[/code] (Array[[enum Scope]], defaults to an empty array):
-## Array of scopes that should not be attachable if this slot is taken.[br]
+##
+## [code]exclude[/code] (Array[[enum Scope]], defaults to an empty array):
+## Array of scopes that should not be attachable if this slot is taken.
 const SLOT_PARAMS: Dictionary[Scope, Dictionary] = {
 	Scope.ACCESSORY: {"multiple": true},
 	Scope.HAIR_ACCESSORY: {"multiple": true},

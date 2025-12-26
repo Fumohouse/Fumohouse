@@ -8,15 +8,16 @@ extends Node3D
 @export var debug_character: DebugCharacter
 
 
-## Loads [param appearance] into the loaded character, does nothing if no
-## local character is present.
+## Loads [param appearance] into the loaded character, does nothing if no local
+## character is present.
 func _load_appearance(appearance: Appearance):
 	return null
 
 
-## Spawn a character with the given [param appearance] (or [code]null[/code] for the default), and
-## [param char_transform] (either a [Transform3D] or [code]null[/code]), where
-## the default position or spawnpoint(s) should be used.
+## Spawn a character with the given [param appearance] (or [code]null[/code] for
+## the default), and [param char_transform] (either a [Transform3D] or
+## [code]null[/code], where the default position or spawnpoint(s) should be
+## used).
 func _spawn_character(appearance: Appearance = null, char_transform: Variant = null) -> Node3D:
 	return null
 
