@@ -10,8 +10,6 @@ extends Node
 signal active_changed
 ## Emitted after [member staging] changes.
 signal staging_changed
-## Emitted after [member presets] is updated.
-signal presets_updated
 
 ## Current appearance for local character
 ##
@@ -61,7 +59,6 @@ func scan_dir(path: String):
 		presets.sort_custom(
 			func(a: Appearance, b: Appearance): return a.display_name < b.display_name
 		)
-		presets_updated.emit()
 
 
 ## Apply active [Appearance] by copying from staging.

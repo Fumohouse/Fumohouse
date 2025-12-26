@@ -8,8 +8,6 @@ extends Control
 
 func _ready():
 	_update_presets()
-	_fumo_appearances.presets_updated.connect(_update_presets)
-
 	_search_edit.text_changed.connect(_filter_presets)
 
 
