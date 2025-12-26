@@ -37,28 +37,25 @@ static func get_singleton() -> FumoAppearances:
 func _ready():
 	scan_dir("res://addons/@fumohouse/fumo_models/resources/presets")
 
+	presets.sort_custom(
+		func(a: Appearance, b: Appearance): return a.display_name < b.display_name
+	)
+
 
 ## Scan [param path] recursively for model presets.
 func scan_dir(path: String):
-	var updated: bool = false
-
 	for entry in ResourceLoader.list_directory(path):
+		var full_path := path.path_join(entry)
 		if entry.ends_with("/"):
-			scan_dir(entry)
+			scan_dir(full_path)
 			continue
 
-		var preset := load(path.path_join(entry)) as Appearance
+		var preset := load(path.path_join(full_path)) as Appearance
 		if not preset:
-			push_warning("Unrecognized preset: '%s'." % entry)
+			push_warning("Unrecognized preset: '%s'." % full_path)
 			continue
 
 		presets.push_back(preset)
-		updated = true
-
-	if updated:
-		presets.sort_custom(
-			func(a: Appearance, b: Appearance): return a.display_name < b.display_name
-		)
 
 
 ## Apply active [Appearance] by copying from staging.
