@@ -12,5 +12,6 @@ func _ready() -> void:
 	_subviewport.gui_disable_input = disable_input
 
 	_camera_controller.camera_rotation.y = PI
-	# TODO: breaks right now, defer if it still errors later
-	#character.camera = _camera_controller
+
+	character.appearance_manager.base_camera_offset = 2.0
+	character.camera = _camera_controller

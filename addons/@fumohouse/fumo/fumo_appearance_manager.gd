@@ -34,6 +34,9 @@ func _ready():
 
 ## Get the scale set by [member appearance].
 func get_appearance_scale() -> float:
+	if not appearance:
+		return 1.0
+
 	var scale: Variant = appearance.config.get(&"scale")
 	return scale if scale is float else 1.0
 

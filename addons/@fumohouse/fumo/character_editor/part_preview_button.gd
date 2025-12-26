@@ -19,7 +19,7 @@ func _ready():
 
 	appearance.attached_parts[part.id] = part.default_config
 	character_viewport.character.appearance_manager.load_appearance()
-	character_viewport.character.rig.visible = false
+	character_viewport.character.set_rig_alpha(0.0)
 
 	_fumo_appearances.staging_changed.connect(_update_indicator)
 	_update_indicator()
