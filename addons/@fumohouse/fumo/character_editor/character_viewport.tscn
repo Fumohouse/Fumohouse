@@ -12,7 +12,7 @@ ambient_light_energy = 0.25
 [sub_resource type="World3D" id="World3D_nu2qa"]
 environment = SubResource("Environment_nu2qa")
 
-[node name="CharacterViewport" type="SubViewportContainer"]
+[node name="CharacterViewport" type="TextureRect"]
 custom_minimum_size = Vector2(240, 240)
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-stretch = true
+expand_mode = 1
 script = ExtResource("1_hbyoh")
 
 [node name="SubViewport" type="SubViewport" parent="."]
