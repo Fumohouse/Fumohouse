@@ -273,15 +273,16 @@ pivot_offset = Vector2(250, 42)
 [node name="NavCharacter" parent="Screens/MainScreen" index="3" instance=ExtResource("18_lqqwp")]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = 6
 anchor_left = 1.0
-anchor_top = 1.0
-offset_left = -305.0
-offset_top = -474.5
-offset_right = -65.0
-offset_bottom = -193.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -293.0
+offset_top = -150.5
+offset_right = -53.0
+offset_bottom = 130.5
 grow_horizontal = 0
-grow_vertical = 0
 
 [node name="Dim" type="ColorRect" parent="." index="3"]
 visible = false
