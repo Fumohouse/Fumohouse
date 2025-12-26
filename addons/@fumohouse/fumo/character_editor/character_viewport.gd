@@ -24,13 +24,13 @@ func _ready() -> void:
 
 func _scale_viewport():
 	var window := get_window()
-	var scale: Vector2i = window.size / window.content_scale_size
+	var scale := (window.size as Vector2) / (window.content_scale_size as Vector2)
 	_subviewport.size = size * max(scale.x, scale.y)
 
 
 func _gui_input(event: InputEvent) -> void:
 	var window := get_window()
-	var scale: Vector2 = window.size / window.content_scale_size
+	var scale := (window.size as Vector2) / (window.content_scale_size as Vector2)
 
 	if event is InputEventMouse:
 		event.position *= scale
