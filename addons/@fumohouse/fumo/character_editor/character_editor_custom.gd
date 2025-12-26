@@ -27,7 +27,6 @@ func _setup_scopes():
 		_scopes.add_item(PartData.SCOPE_NAMES[scope])
 		_scopes.set_item_metadata(_scopes.item_count - 1, scope)
 
-	_scopes.select(0)
 	_scopes.item_selected.connect(_filter_section)
 
 
