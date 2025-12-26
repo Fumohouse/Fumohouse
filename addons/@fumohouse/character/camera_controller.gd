@@ -57,10 +57,12 @@ var _focus_distance := focus_distance
 
 
 func _ready():
-	_apply_fov()
-	_apply_sens_first_person()
-	_apply_sens_third_person()
-	_apply_zoom_sens()
+	# Defer to wait for ConfigManager to be ready (e.g., for the character
+	# preview in main.tscn)
+	_apply_fov.call_deferred()
+	_apply_sens_first_person.call_deferred()
+	_apply_sens_third_person.call_deferred()
+	_apply_zoom_sens.call_deferred()
 	_cm.value_changed.connect(_on_config_value_changed)
 
 
