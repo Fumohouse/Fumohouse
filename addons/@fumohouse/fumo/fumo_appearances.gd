@@ -46,6 +46,7 @@ func scan_dir(path: String):
 
 	for entry in ResourceLoader.list_directory(path):
 		if entry.ends_with("/"):
+			scan_dir(entry)
 			continue
 
 		var preset := load(path.path_join(entry)) as Appearance
