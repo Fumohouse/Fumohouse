@@ -37,9 +37,7 @@ static func get_singleton() -> FumoAppearances:
 func _ready():
 	scan_dir("res://addons/@fumohouse/fumo_models/resources/presets")
 
-	presets.sort_custom(
-		func(a: Appearance, b: Appearance): return a.display_name < b.display_name
-	)
+	presets.sort_custom(func(a: Appearance, b: Appearance): return a.display_name < b.display_name)
 
 
 ## Scan [param path] recursively for model presets.

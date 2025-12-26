@@ -21,8 +21,8 @@ func _ready():
 	character_viewport.character.appearance_manager.load_appearance()
 	character_viewport.character.set_rig_alpha(0.0)
 
-	_fumo_appearances.staging_changed.connect(_update_indicator)
 	_update_indicator()
+	_fumo_appearances.staging_changed.connect(_update_indicator)
 
 
 func _update_indicator():

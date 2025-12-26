@@ -16,8 +16,8 @@ const CharacterViewport := preload(
 
 
 func _ready():
-	_fumo_appearances.staging_changed.connect(_update)
 	_update()
+	_fumo_appearances.staging_changed.connect(_update)
 
 	_apply_button.pressed.connect(_fumo_appearances.apply)
 

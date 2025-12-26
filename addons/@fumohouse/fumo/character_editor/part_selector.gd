@@ -46,10 +46,7 @@ func _set_part(part_data: PartData):
 		var attached := _part_database.get_part(key)
 
 		if (
-			(
-				(attached.scope == part_data.scope and not _multiple)
-				or _exclude.any(func(scope: PartData.Scope): return scope == attached.scope)
-			)
+			((attached.scope == part_data.scope and not _multiple) or _exclude.has(attached.scope))
 			and attached.id != part_data.id
 		):
 			_fumo_appearances.staging.attached_parts.erase(attached.id)
