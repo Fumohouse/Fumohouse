@@ -12,11 +12,12 @@ func scan_dir(path: String):
 	var contents: PackedStringArray = ResourceLoader.list_directory(path)
 
 	for file_name in contents:
+		var full_path := path.path_join(file_name)
 		if file_name.ends_with("/"):
 			# Directory
-			scan_dir("%s/%s/" % [path, file_name])
+			scan_dir(full_path)
 		elif file_name.ends_with(".tres"):
-			var part_info = load(path + "/" + file_name)
+			var part_info = load(full_path)
 
 			if part_info is PartData:
 				if parts.has(part_info.id):
