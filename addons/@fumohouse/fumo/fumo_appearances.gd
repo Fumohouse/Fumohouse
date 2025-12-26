@@ -50,7 +50,7 @@ func scan_dir(path: String):
 			scan_dir(full_path)
 			continue
 
-		var preset := load(path.path_join(full_path)) as Appearance
+		var preset := load(full_path) as Appearance
 		if not preset:
 			push_warning("Unrecognized preset: '%s'." % full_path)
 			continue
