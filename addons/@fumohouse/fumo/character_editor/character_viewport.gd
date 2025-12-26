@@ -8,7 +8,7 @@ extends TextureRect
 @onready var _camera_controller: CameraController = %CameraController
 
 
-func _ready() -> void:
+func _ready():
 	texture = _subviewport.get_texture()
 	_subviewport.gui_disable_input = disable_input
 
@@ -28,7 +28,7 @@ func _scale_viewport():
 	_subviewport.size = size * max(scale.x, scale.y)
 
 
-func _gui_input(event: InputEvent) -> void:
+func _gui_input(event: InputEvent):
 	var window := get_window()
 	var scale := (window.size as Vector2) / (window.content_scale_size as Vector2)
 
