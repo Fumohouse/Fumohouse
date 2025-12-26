@@ -8,22 +8,11 @@ const _SELECTOR_SCENE := preload("part_selector.tscn")
 
 
 func _ready():
-	_scan_parts()
-	_setup_scopes()
-
-
-func _scan_parts():
-	for child in _part_selectors.get_children():
-		child.queue_free()
-
 	for scope: PartData.Scope in PartData.Scope.values().slice(1):
 		var part_selector: PartSelector = _SELECTOR_SCENE.instantiate()
 		part_selector.scope = scope
 		_part_selectors.add_child(part_selector)
 
-
-func _setup_scopes():
-	for scope: PartData.Scope in PartData.Scope.values().slice(1):
 		_scopes.add_item(PartData.SCOPE_NAMES[scope])
 		_scopes.set_item_metadata(_scopes.item_count - 1, scope)
 
