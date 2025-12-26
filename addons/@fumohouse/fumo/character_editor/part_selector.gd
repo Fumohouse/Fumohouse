@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends Control
 
 const PartPreviewButton := preload("part_preview_button.gd")
 const _BUTTON_SCENE := preload("part_preview_button.tscn")

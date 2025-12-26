@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends Control
 
 signal edit_pressed
 
