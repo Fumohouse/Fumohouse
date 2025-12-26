@@ -3,6 +3,9 @@ extends "res://addons/@fumohouse/navigation/nav_menu.gd"
 ## Other nodes (e.g., [CameraController]) respond to menu opening.
 signal opened
 
+const NavCharacter := preload(
+	"res://addons/@fumohouse/navigation/character_editor/nav_character.gd"
+)
 const BLUR_PARAM := "shader_parameter/blur"
 const DIM_PARAM := "shader_parameter/dim"
 
@@ -15,9 +18,12 @@ var _tween: Tween
 @onready var _options_button: Button = %OptionsButton
 @onready var _leave_button: Button = %LeaveButton
 
+@onready var _nav_character: NavCharacter = %NavCharacter
+
 @onready var _main_screen: TransitionElement = $Screens/MenuScreen
 @onready var _options_screen: TransitionElement = $Screens/OptionsScreen
 @onready var _leave_screen: TransitionElement = $Screens/LeaveScreen
+@onready var _char_edit_screen: TransitionElement = $Screens/CharacterEditorScreen
 
 @onready var _blur_background: Control = $Blur
 @onready var _blur_mat: ShaderMaterial = _blur_background.material
@@ -29,6 +35,8 @@ func _ready():
 	_continue_button.pressed.connect(func(): nav_transition(false))
 	_options_button.pressed.connect(func(): switch_screen(_options_screen))
 	_leave_button.pressed.connect(_on_leave_button_pressed)
+
+	_nav_character.edit_pressed.connect(switch_screen.bind(_char_edit_screen))
 
 	nav_hide()
 

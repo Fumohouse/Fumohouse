@@ -9,3 +9,4 @@ transform = Transform3D(-1, 9.933157e-10, -3.8895726e-07, 5.593243e-09, 0.999930
 bone = "Head"
 display_name = "Momiji Hat"
 id = &"momiji_hat"
+scope = 10

@@ -1,10 +1,12 @@
 extends "res://addons/@fumohouse/navigation/transition_element.gd"
 
+const MusicController = preload("res://addons/@fumohouse/music/music_controller.gd")
 const NavButtonContainer = preload(
 	"res://addons/@fumohouse/navigation/components/nav_button_container.gd"
 )
-
-const MusicController = preload("res://addons/@fumohouse/music/music_controller.gd")
+const NavCharacter := preload(
+	"res://addons/@fumohouse/navigation/character_editor/nav_character.gd"
+)
 
 @onready var _gradient_background: Control = $GradientBackground
 @onready var _title: Control = $Contents/Title
@@ -12,6 +14,7 @@ const MusicController = preload("res://addons/@fumohouse/music/music_controller.
 @onready var _bottom_bar: Control = $BottomBar
 @onready var _world_name: Label = %WorldName
 @onready var _music_controller: MusicController = $MusicController
+@onready var _nav_character: NavCharacter = $NavCharacter
 
 
 func _ready():
@@ -28,6 +31,7 @@ func nav_hide():
 	_bottom_bar.modulate = Color.TRANSPARENT
 	_bottom_bar.position.y = _bottom_bar_target_y(false)
 	_music_controller.nav_hide()
+	_nav_character.nav_hide()
 
 
 func nav_show():
@@ -37,6 +41,7 @@ func nav_show():
 	_bottom_bar.modulate = Color.WHITE
 	_bottom_bar.position.y = _bottom_bar_target_y(true)
 	_music_controller.nav_show()
+	_nav_character.nav_show()
 
 
 func nav_transition(vis: bool) -> Tween:
@@ -58,6 +63,7 @@ func nav_transition(vis: bool) -> Tween:
 
 	_nav_buttons.nav_transition(vis)
 	_music_controller.nav_transition(vis)
+	_nav_character.nav_transition(vis)
 
 	return tween
 
