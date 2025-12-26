@@ -21,6 +21,7 @@ func _ready():
 
 	_apply_button.pressed.connect(_fumo_appearances.apply)
 
+	_character_name.text_changed.connect(_update_name)
 	_scale_slider.value_changed.connect(_update_scale)
 
 	for button: Button in _scale_presets.get_children():
@@ -33,7 +34,9 @@ func _ready():
 
 func _update():
 	var appearance := _fumo_appearances.staging
-	_character_name.text = appearance.display_name
+	# Avoid cursor movement when setting same text
+	if _character_name.text != appearance.display_name:
+		_character_name.text = appearance.display_name
 
 	var scale = appearance.config.get(&"scale")
 	_scale_label.text = "%.f%%" % (scale * 100)
@@ -42,6 +45,11 @@ func _update():
 
 	_character_viewport.character.appearance_manager.appearance = _fumo_appearances.staging
 	_character_viewport.character.appearance_manager.load_appearance()
+
+
+func _update_name(new_name: String):
+	_fumo_appearances.staging.display_name = new_name
+	_fumo_appearances.staging_changed.emit()
 
 
 func _update_scale(scale: float):
