@@ -4,26 +4,24 @@ const CharacterViewport := preload("character_viewport.gd")
 
 @export var part: PartData
 
-@onready var character_viewport: CharacterViewport = %CharacterViewport
-@onready var indicator: Panel = %Indicator
-
-@onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
+@onready var _character_viewport: CharacterViewport = %CharacterViewport
+@onready var _indicator: Panel = %Indicator
 
 
 func _ready():
+	_on_toggled(button_pressed)
+	toggled.connect(_on_toggled)
+
 	var appearance := Appearance.new()
-	character_viewport.character.appearance_manager.appearance = appearance
+	_character_viewport.character.appearance_manager.appearance = appearance
 
 	# Wait until the preview is visible before loading any assets.
 	await draw
 
 	appearance.attached_parts[part.id] = part.default_config
-	character_viewport.character.appearance_manager.load_appearance()
-	character_viewport.character.set_rig_alpha(0.0)
-
-	_update_indicator()
-	_fumo_appearances.staging_changed.connect(_update_indicator)
+	_character_viewport.character.appearance_manager.load_appearance()
+	_character_viewport.character.set_rig_alpha(0.0)
 
 
-func _update_indicator():
-	indicator.visible = _fumo_appearances.staging.attached_parts.has(part.id)
+func _on_toggled(on: bool):
+	_indicator.visible = on

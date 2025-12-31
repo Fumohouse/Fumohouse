@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="2_nwhkr"]
 [ext_resource type="PackedScene" uid="uid://b8w13u5smtchn" path="res://addons/@fumohouse/fumo/character_editor/character_editor_preview.tscn" id="3_87xhq"]
 [ext_resource type="PackedScene" uid="uid://4gntby41idbe" path="res://addons/@fumohouse/fumo/character_editor/character_editor_presets.tscn" id="5_gyx0o"]
-[ext_resource type="PackedScene" uid="uid://bofgx233q1y7y" path="res://addons/@fumohouse/fumo/character_editor/character_editor_custom.tscn" id="5_rkn1g"]
+[ext_resource type="PackedScene" uid="uid://bofgx233q1y7y" path="res://addons/@fumohouse/fumo/character_editor/character_editor_parts.tscn" id="5_rkn1g"]
 
 [node name="CharacterEditorScreen" node_paths=PackedStringArray("tabs", "tab_content") instance=ExtResource("1_nwhkr")]
 tabs = NodePath("TopBar/Tabs")
@@ -23,10 +23,10 @@ custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Presets"
 
-[node name="Custom" type="Button" parent="TopBar/Tabs" index="1"]
+[node name="Parts" type="Button" parent="TopBar/Tabs" index="1"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
-text = "Custom"
+text = "Parts"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer" index="0"]
 layout_mode = 2
@@ -41,5 +41,5 @@ size_flags_horizontal = 3
 [node name="Presets" parent="Contents/MarginContainer/HBoxContainer/TabContent" index="0" instance=ExtResource("5_gyx0o")]
 layout_mode = 1
 
-[node name="Custom" parent="Contents/MarginContainer/HBoxContainer/TabContent" index="1" instance=ExtResource("5_rkn1g")]
+[node name="Parts" parent="Contents/MarginContainer/HBoxContainer/TabContent" index="1" instance=ExtResource("5_rkn1g")]
 layout_mode = 1

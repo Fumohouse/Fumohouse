@@ -10,7 +10,7 @@ config = Dictionary[StringName, Variant]({
 &"eyes": &"curved_hooks",
 &"eyes_color": Color(0.12941177, 0.3529412, 0.64705884, 1),
 &"mouth": &"straight",
-&"scale": 0.75
+&"scale": 0.5
 })
 attached_parts = Dictionary[StringName, Variant]({
 &"shanghai_hair": {

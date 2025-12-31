@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bofgx233q1y7y"]
 
-[ext_resource type="Script" uid="uid://dyxppsbxn5830" path="res://addons/@fumohouse/fumo/character_editor/character_editor_custom.gd" id="1_t21bu"]
+[ext_resource type="Script" uid="uid://dyxppsbxn5830" path="res://addons/@fumohouse/fumo/character_editor/character_editor_parts.gd" id="1_t21bu"]
 [ext_resource type="Script" uid="uid://c2mo31oe5hccm" path="res://addons/@fumohouse/common/nodes/option_button_offset.gd" id="2_w5cad"]
 
-[node name="Custom" type="VBoxContainer"]
+[node name="Parts" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

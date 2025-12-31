@@ -31,7 +31,6 @@ var _selected_buttons: Array[Button] = []
 
 func _init():
 	child_entered_tree.connect(_on_child_entered_tree)
-	child_exiting_tree.connect(_on_child_exiting_tree)
 
 
 func _on_child_entered_tree(child: Node):
@@ -44,18 +43,6 @@ func _on_child_entered_tree(child: Node):
 	btn.button_pressed = false
 	btn.action_mode = BaseButton.ACTION_MODE_BUTTON_PRESS
 	btn.pressed.connect(_on_button_pressed.bind(btn))
-
-
-func _on_child_exiting_tree(child: Node):
-	var btn := child as Button
-	if not btn:
-		return
-
-	btn.pressed.disconnect(_on_button_pressed.bind(btn))
-
-	if _selected_buttons.has(btn):
-		_selected_buttons.erase(btn)
-		selection_changed.emit()
 
 
 func _set_selection(selection: Button):

@@ -11,10 +11,7 @@ signal active_changed
 ## Emitted after [member staging] changes.
 signal staging_changed
 
-## Current appearance for local character
-##
-## After modifying this value or its fields, it is recommended to emit the
-## [signal active_changed] signal to notify listeners.
+## Current appearance for local character.
 var active: Appearance = preload(
 	"res://addons/@fumohouse/fumo_models/resources/presets/doremy.tres"
 )
