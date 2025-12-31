@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3nmdhmyuyk8n"]
+
+[ext_resource type="Script" uid="uid://bd3wjonch3k7i" path="res://addons/@fumohouse/fumo/character_editor/part_selector.gd" id="1_mb8im"]
+
+[node name="PartSelector" type="VBoxContainer"]
+offset_right = 67.0
+offset_bottom = 20.0
+theme_override_constants/separation = 4
+script = ExtResource("1_mb8im")
+
+[node name="Title" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "(Section)"
+
+[node name="Grid" type="GridContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 4

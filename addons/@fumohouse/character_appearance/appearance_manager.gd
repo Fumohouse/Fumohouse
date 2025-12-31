@@ -32,7 +32,7 @@ func load_appearance():
 	for id in appearance.attached_parts:
 		_attach(id)
 
-	for id in attached_parts:
+	for id in attached_parts.duplicate():
 		if appearance.attached_parts.has(id):
 			var config: Variant = appearance.attached_parts[id]
 

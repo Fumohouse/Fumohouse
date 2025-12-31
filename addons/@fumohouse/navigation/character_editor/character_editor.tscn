@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdohqbssyckea"]
+
+[ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/navigation/screen_base_layout.tscn" id="1_nwhkr"]
+[ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="2_nwhkr"]
+[ext_resource type="PackedScene" uid="uid://b8w13u5smtchn" path="res://addons/@fumohouse/fumo/character_editor/character_editor_preview.tscn" id="3_87xhq"]
+[ext_resource type="PackedScene" uid="uid://4gntby41idbe" path="res://addons/@fumohouse/fumo/character_editor/character_editor_presets.tscn" id="5_gyx0o"]
+[ext_resource type="PackedScene" uid="uid://bofgx233q1y7y" path="res://addons/@fumohouse/fumo/character_editor/character_editor_custom.tscn" id="5_rkn1g"]
+
+[node name="CharacterEditorScreen" node_paths=PackedStringArray("tabs", "tab_content") instance=ExtResource("1_nwhkr")]
+tabs = NodePath("TopBar/Tabs")
+tab_content = NodePath("Contents/MarginContainer/HBoxContainer/TabContent")
+
+[node name="Title" parent="TopBar" index="0"]
+text = "Character Editor"
+
+[node name="Tabs" type="HBoxContainer" parent="TopBar" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 16
+script = ExtResource("2_nwhkr")
+
+[node name="Presets" type="Button" parent="TopBar/Tabs" index="0"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Presets"
+
+[node name="Custom" type="Button" parent="TopBar/Tabs" index="1"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Custom"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="Preview" parent="Contents/MarginContainer/HBoxContainer" index="0" instance=ExtResource("3_87xhq")]
+layout_mode = 2
+
+[node name="TabContent" type="Control" parent="Contents/MarginContainer/HBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Presets" parent="Contents/MarginContainer/HBoxContainer/TabContent" index="0" instance=ExtResource("5_gyx0o")]
+layout_mode = 1
+
+[node name="Custom" parent="Contents/MarginContainer/HBoxContainer/TabContent" index="1" instance=ExtResource("5_rkn1g")]
+layout_mode = 1

@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8w13u5smtchn"]
+
+[ext_resource type="Script" uid="uid://dvryl7jn8lghl" path="res://addons/@fumohouse/fumo/character_editor/character_editor_preview.gd" id="1_eik25"]
+[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="2_5hlcs"]
+[ext_resource type="PackedScene" uid="uid://d4hwbq0e54jt4" path="res://addons/@fumohouse/fumo/character_editor/character_viewport.tscn" id="3_6ouxl"]
+
+[node name="CharacterEditorPreview" type="VBoxContainer"]
+custom_minimum_size = Vector2(292, 0)
+offset_right = 292.0
+offset_bottom = 365.0
+script = ExtResource("1_eik25")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="CharacterName" type="LineEdit" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_5hlcs")
+theme_override_font_sizes/font_size = 20
+text = "Character"
+
+[node name="ApplyButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(41, 41)
+layout_mode = 2
+tooltip_text = "Apply"
+text = ""
+
+[node name="CharacterViewport" parent="." instance=ExtResource("3_6ouxl")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Scale" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Title" type="HBoxContainer" parent="Scale"]
+layout_mode = 2
+
+[node name="ScaleTitle" type="Label" parent="Scale/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_5hlcs")
+text = "Character Scale"
+
+[node name="ScaleLabel" type="Label" parent="Scale/Title"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScaleSlider" type="HSlider" parent="Scale"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.5
+max_value = 3.0
+step = 0.05
+value = 1.0
+
+[node name="ScalePresets" type="HBoxContainer" parent="Scale"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Doll" type="Button" parent="Scale/ScalePresets"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Doll"
+metadata/scale_preset = 0.5
+
+[node name="Shinmy" type="Button" parent="Scale/ScalePresets"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Shinmy"
+metadata/scale_preset = 0.75
+
+[node name="Base" type="Button" parent="Scale/ScalePresets"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 15
+text = "Base"
+metadata/scale_preset = 1.0
+
+[node name="Deka" type="Button" parent="Scale/ScalePresets"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 15
+text = "Deka"
+metadata/scale_preset = 2.0

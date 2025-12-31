@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://nrt2nygsisgy"]
+
+[ext_resource type="PackedScene" uid="uid://d4hwbq0e54jt4" path="res://addons/@fumohouse/fumo/character_editor/character_viewport.tscn" id="1_anwhb"]
+[ext_resource type="Script" uid="uid://c1yow7f6dajs0" path="res://addons/@fumohouse/fumo/character_editor/part_preview_button.gd" id="1_gxlyi"]
+[ext_resource type="Resource" uid="uid://cjqguoqnnotml" path="res://addons/@fumohouse/fumo_models/resources/part_data/doremy/doremy_outfit.tres" id="2_7nr2o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_anwhb"]
+bg_color = Color(0.44705883, 0.9607843, 0.35686275, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="PartPreviewButton" type="Button"]
+custom_minimum_size = Vector2(150, 150)
+offset_right = 150.0
+offset_bottom = 150.0
+script = ExtResource("1_gxlyi")
+part = ExtResource("2_7nr2o")
+
+[node name="CharacterViewport" parent="." instance=ExtResource("1_anwhb")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 1
+grow_vertical = 1
+disable_input = true
+
+[node name="Indicator" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -22.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 22.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_anwhb")

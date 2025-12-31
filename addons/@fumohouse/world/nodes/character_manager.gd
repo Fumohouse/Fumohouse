@@ -12,23 +12,35 @@ const _FALL_LIMIT := -128.0
 
 var _local_character: Fumo
 
+@onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
+
+
+func _ready():
+	_fumo_appearances.active_changed.connect(func(): _load_appearance(_fumo_appearances.active))
+
 
 func _process(delta: float):
 	if (
 		_local_character
-		and CommonUtils.do_game_input(self)
-		and Input.is_action_just_pressed("reset_character")
+		and (
+			(CommonUtils.do_game_input(self) and Input.is_action_just_pressed("reset_character"))
+			or _local_character.global_position.y < _FALL_LIMIT
+		)
 	):
-		var appearance := _local_character.appearance_manager.appearance
-		_delete_character(true, func(): _spawn_character(appearance, null))
-
-	if _local_character and _local_character.global_position.y < _FALL_LIMIT:
-		var appearance := _local_character.appearance_manager.appearance
-		_delete_character(true, func(): _spawn_character(appearance, null))
+		_delete_character(true, _spawn_character)
 
 
-func _spawn_character(appearance: Appearance, char_transform: Variant) -> Node3D:
+func _load_appearance(appearance: Appearance):
+	if _local_character:
+		_local_character.appearance_manager.appearance = appearance
+		_local_character.appearance_manager.load_appearance()
+
+
+func _spawn_character(appearance: Appearance = null, char_transform: Variant = null) -> Node3D:
 	var character: Fumo = _CHARACTER_SCENE.instantiate()
+
+	if not appearance:
+		appearance = _fumo_appearances.active
 
 	if char_transform == null:
 		if spawnpoints.get_child_count() == 0:
@@ -41,9 +53,8 @@ func _spawn_character(appearance: Appearance, char_transform: Variant) -> Node3D
 	else:
 		character.global_transform = char_transform
 
-	if appearance:
-		character.appearance_manager.appearance = appearance
-		# Loaded on ready
+	character.appearance_manager.appearance = appearance
+	# Loaded on ready
 
 	character.camera = camera
 

@@ -98,11 +98,7 @@ func start_singleplayer(id: String):
 	if not world:
 		return
 
-	# TODO
-	const DEFAULT_APPEARANCE := preload(
-		"res://addons/@fumohouse/fumo_models/resources/presets/doremy.tres"
-	)
-	_current_char_manager._spawn_character(DEFAULT_APPEARANCE, null)
+	_current_char_manager._spawn_character()
 
 
 ## Leave the current world.

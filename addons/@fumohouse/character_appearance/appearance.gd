@@ -7,9 +7,9 @@ extends Resource
 
 ## Global appearance configuration, such as facial appearance.
 @export var config: Dictionary[StringName, Variant] = {
-	&"eyebrows": &"",
-	&"eyes": &"",
-	&"mouth": &"",
+	&"eyebrows": null,
+	&"eyes": null,
+	&"mouth": null,
 	&"eyes_color": Color.WHITE,
 	&"scale": 1.0,
 }

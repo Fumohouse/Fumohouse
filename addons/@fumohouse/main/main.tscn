@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://r3htqql86m4u"]
+[gd_scene load_steps=23 format=3 uid="uid://r3htqql86m4u"]
 
 [ext_resource type="PackedScene" uid="uid://ctxaywfcdgbmw" path="res://addons/@fumohouse/navigation/nav_menu.tscn" id="1_emt38"]
 [ext_resource type="Script" uid="uid://donqdlntewiwc" path="res://addons/@fumohouse/main/main.gd" id="2_3w01d"]
 [ext_resource type="Texture2D" uid="uid://cdxg2w1khoiq4" path="res://addons/@fumohouse/base/assets/textures/faces_bg.svg" id="3_lqqwp"]
 [ext_resource type="PackedScene" uid="uid://cce2lc4hx05ok" path="res://addons/@fumohouse/main/ui/play_screen/play_screen.tscn" id="4_3w01d"]
 [ext_resource type="PackedScene" uid="uid://c55ax8y8twfnj" path="res://addons/@fumohouse/navigation/options_screen/options_screen.tscn" id="4_eq6r0"]
+[ext_resource type="PackedScene" uid="uid://bdohqbssyckea" path="res://addons/@fumohouse/navigation/character_editor/character_editor.tscn" id="5_eq6r0"]
 [ext_resource type="Script" uid="uid://beubs5pgskp1y" path="res://addons/@fumohouse/main/ui/main_screen.gd" id="5_qhi0j"]
 [ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@fumohouse/base/assets/textures/logo.png" id="6_utajb"]
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="7_vrsnp"]
@@ -17,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://by5n53kx2tkhx" path="res://addons/@fumohouse/navigation/components/nav_button_container.tscn" id="14_tgh4f"]
 [ext_resource type="PackedScene" uid="uid://dr32entbvcc4" path="res://addons/@fumohouse/navigation/components/nav_button.tscn" id="15_b6v57"]
 [ext_resource type="PackedScene" uid="uid://croenlf3yyt7h" path="res://addons/@fumohouse/music/music_controller.tscn" id="16_v08wt"]
+[ext_resource type="PackedScene" uid="uid://d4h8y2vq573ow" path="res://addons/@fumohouse/navigation/character_editor/nav_character.tscn" id="18_lqqwp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ujcgd"]
 
@@ -76,7 +78,11 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="MainScreen" type="Control" parent="Screens" index="2"]
+[node name="CharacterEditorScreen" parent="Screens" index="2" instance=ExtResource("5_eq6r0")]
+visible = false
+layout_mode = 1
+
+[node name="MainScreen" type="Control" parent="Screens" index="3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -263,6 +269,21 @@ offset_right = -60.0
 offset_bottom = 148.0
 grow_horizontal = 0
 pivot_offset = Vector2(250, 42)
+
+[node name="NavCharacter" parent="Screens/MainScreen" index="3" instance=ExtResource("18_lqqwp")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -293.0
+offset_top = -150.5
+offset_right = -53.0
+offset_bottom = 130.5
+grow_horizontal = 0
+grow_vertical = 2
 
 [node name="Dim" type="ColorRect" parent="." index="3"]
 visible = false
