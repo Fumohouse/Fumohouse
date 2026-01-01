@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dalqjf74ifb73"]
+
+[ext_resource type="Script" uid="uid://tkik3eno86eh" path="res://addons/@fumohouse/common/nodes/basic_color_picker_button.gd" id="1_ogwh4"]
+[ext_resource type="Script" uid="uid://d2bpheoaywfmf" path="res://addons/@fumohouse/fumo/character_editor/components/eyes_color.gd" id="1_uh8r3"]
+
+[node name="EyesColor" type="HBoxContainer"]
+theme_override_constants/separation = 8
+script = ExtResource("1_uh8r3")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Eye Color"
+
+[node name="EyeColorPicker" type="ColorPickerButton" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+script = ExtResource("1_ogwh4")
+metadata/_custom_type_script = "uid://tkik3eno86eh"

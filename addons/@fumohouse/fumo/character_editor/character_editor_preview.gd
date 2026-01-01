@@ -1,8 +1,6 @@
 extends VBoxContainer
 
-const CharacterViewport := preload(
-	"res://addons/@fumohouse/fumo/character_editor/character_viewport.gd"
-)
+const CharacterViewport := preload("components/character_viewport.gd")
 
 @onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
 

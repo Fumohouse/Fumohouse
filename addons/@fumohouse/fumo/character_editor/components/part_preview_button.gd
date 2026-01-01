@@ -1,16 +1,16 @@
-extends Button
+extends "preview_button.gd"
 
 const CharacterViewport := preload("character_viewport.gd")
 
 @export var part: PartData
 
 @onready var _character_viewport: CharacterViewport = %CharacterViewport
-@onready var _indicator: Panel = %Indicator
 
 
 func _ready():
-	_on_toggled(button_pressed)
-	toggled.connect(_on_toggled)
+	super()
+
+	tooltip_text = part.display_name
 
 	var appearance := Appearance.new()
 	_character_viewport.character.appearance_manager.appearance = appearance
@@ -21,7 +21,3 @@ func _ready():
 	appearance.attached_parts[part.id] = part.default_config
 	_character_viewport.character.appearance_manager.load_appearance()
 	_character_viewport.character.set_rig_alpha(0.0)
-
-
-func _on_toggled(on: bool):
-	_indicator.visible = on

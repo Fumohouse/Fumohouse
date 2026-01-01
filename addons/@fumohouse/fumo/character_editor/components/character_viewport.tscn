@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d4hwbq0e54jt4"]
 
-[ext_resource type="Script" uid="uid://de12x0b5vb43n" path="res://addons/@fumohouse/fumo/character_editor/character_viewport.gd" id="1_hbyoh"]
+[ext_resource type="Script" uid="uid://de12x0b5vb43n" path="res://addons/@fumohouse/fumo/character_editor/components/character_viewport.gd" id="1_hbyoh"]
 [ext_resource type="Script" uid="uid://ck70ouuqfwjvq" path="res://addons/@fumohouse/character/camera_controller.gd" id="3_phe1h"]
 [ext_resource type="PackedScene" uid="uid://bnic23uqggm8j" path="res://addons/@fumohouse/fumo/fumo.tscn" id="6_hjhjk"]
 

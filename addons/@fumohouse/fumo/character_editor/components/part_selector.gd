@@ -17,13 +17,14 @@ var _updating := false
 @onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
 @onready var _part_database: FumoPartDatabase = FumoPartDatabase.get_singleton()
 
-@onready var _grid: RadioButtonContainer = %Grid
 @onready var _title: Label = %Title
+@onready var _grid: RadioButtonContainer = %Grid
 
 
 func _ready():
 	_title.text = PartData.SCOPE_NAMES[scope]
 
+	_grid.allow_none = true
 	_grid.multi_selection = (
 		scope == PartData.Scope.ACCESSORY or scope == PartData.Scope.HAIR_ACCESSORY
 	)
@@ -35,7 +36,6 @@ func _ready():
 
 		var button: PartPreviewButton = _BUTTON_SCENE.instantiate()
 		button.part = part
-		button.tooltip_text = part.display_name
 		_grid.add_child(button)
 
 	_update_selection()

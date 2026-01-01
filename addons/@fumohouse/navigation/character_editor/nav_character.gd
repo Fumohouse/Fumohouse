@@ -3,7 +3,7 @@ extends Control
 signal edit_pressed
 
 const CharacterViewport := preload(
-	"res://addons/@fumohouse/fumo/character_editor/character_viewport.gd"
+	"res://addons/@fumohouse/fumo/character_editor/components/character_viewport.gd"
 )
 const MenuUtils := preload("../menu_utils.gd")
 

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgs3xm6xtr1qm"]
+
+[ext_resource type="PackedScene" uid="uid://nrt2nygsisgy" path="res://addons/@fumohouse/fumo/character_editor/components/preview_button.tscn" id="1_38y3y"]
+[ext_resource type="PackedScene" uid="uid://d4hwbq0e54jt4" path="res://addons/@fumohouse/fumo/character_editor/components/character_viewport.tscn" id="1_anwhb"]
+[ext_resource type="Script" uid="uid://crfmhb8mdjeen" path="res://addons/@fumohouse/fumo/character_editor/components/part_preview_button.gd" id="1_gxlyi"]
+
+[node name="PartPreviewButton" instance=ExtResource("1_38y3y")]
+script = ExtResource("1_gxlyi")
+part = null
+
+[node name="CharacterViewport" parent="." index="0" instance=ExtResource("1_anwhb")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 1
+grow_vertical = 1
+disable_input = true

@@ -1,7 +1,7 @@
 extends Control
 
-const PartSelector := preload("part_selector.gd")
-const _SELECTOR_SCENE := preload("part_selector.tscn")
+const PartSelector := preload("components/part_selector.gd")
+const _SELECTOR_SCENE := preload("components/part_selector.tscn")
 
 @onready var _part_selectors: Container = %PartSelectors
 @onready var _scopes: OptionButton = %Scopes

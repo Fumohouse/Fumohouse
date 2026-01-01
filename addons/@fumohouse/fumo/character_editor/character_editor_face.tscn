@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://di250xjjyop8p"]
+
+[ext_resource type="PackedScene" uid="uid://b20770v785cky" path="res://addons/@fumohouse/fumo/character_editor/components/face_style_selector.tscn" id="1_qhx2k"]
+[ext_resource type="PackedScene" uid="uid://dalqjf74ifb73" path="res://addons/@fumohouse/fumo/character_editor/components/eyes_color.tscn" id="2_8uqb5"]
+
+[node name="Face" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="EyesSelector" parent="VBoxContainer" instance=ExtResource("1_qhx2k")]
+layout_mode = 2
+
+[node name="EyesColor" parent="VBoxContainer" instance=ExtResource("2_8uqb5")]
+layout_mode = 2
+
+[node name="EyebrowsSelector" parent="VBoxContainer" instance=ExtResource("1_qhx2k")]
+layout_mode = 2
+part_type = 1
+
+[node name="MouthSelector" parent="VBoxContainer" instance=ExtResource("1_qhx2k")]
+layout_mode = 2
+part_type = 2
