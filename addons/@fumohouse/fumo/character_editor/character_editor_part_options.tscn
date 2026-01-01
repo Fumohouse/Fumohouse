@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cv38xmsx2u3bh"]
+[gd_scene load_steps=2 format=3 uid="uid://cv38xmsx2u3bh"]
+
+[ext_resource type="Script" uid="uid://b3vdl3q8ptb30" path="res://addons/@fumohouse/fumo/character_editor/character_editor_part_options.gd" id="1_ab233"]
 
 [node name="PartOptions" type="ScrollContainer"]
 anchors_preset = 15
@@ -6,7 +8,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ab233")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="EditorContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 16

@@ -16,6 +16,9 @@ var active: Appearance = preload(
 	"res://addons/@fumohouse/fumo_models/resources/presets/doremy.tres"
 )
 
+## Cache of part configuration, keyed by part ID.
+var part_config_cache: Dictionary[StringName, Dictionary] = {}
+
 ## Preview appearance to be applied.
 ##
 ## After modifying this value or its fields, it is recommended to emit the

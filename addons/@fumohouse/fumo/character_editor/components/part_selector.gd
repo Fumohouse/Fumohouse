@@ -66,7 +66,7 @@ func _on_selection_changed():
 	for button: PartPreviewButton in _grid.selected_buttons:
 		selection_ids.push_back(button.part.id)
 		if not _fumo_appearances.staging.attached_parts.has(button.part.id):
-			_fumo_appearances.staging.attached_parts[button.part.id] = null
+			_attach(button.part.id)
 
 	for part_id: StringName in _fumo_appearances.staging.attached_parts.keys():
 		var part: PartData = _part_database.get_part(part_id)
@@ -79,6 +79,17 @@ func _on_selection_changed():
 	_handle_exclusions()
 
 	_fumo_appearances.staging_changed.emit()
+
+
+func _attach(part_id: StringName):
+	var config: Variant = _fumo_appearances.part_config_cache.get(part_id)
+	if not config:
+		var part: PartData = _part_database.get_part(part_id)
+		assert(part, "Part %s not found." % part_id)
+
+		config = null if part.default_config.is_empty() else part.default_config
+
+	_fumo_appearances.staging.attached_parts[part_id] = config
 
 
 func _any_attached_of_scope(search_scope: PartData.Scope) -> bool:
@@ -116,13 +127,13 @@ func _handle_exclusions():
 		):
 			_detach_parts_of_scopes([PartData.Scope.OUTFIT_TOP, PartData.Scope.OUTFIT_BOTTOM])
 			if not _any_attached_of_scope(PartData.Scope.OUTFIT_FULL):
-				_fumo_appearances.staging.attached_parts[DEFAULT_OUTFIT_FULL] = null
+				_attach(DEFAULT_OUTFIT_FULL)
 		else:
 			_detach_parts_of_scopes([PartData.Scope.OUTFIT_FULL])
 			if not _any_attached_of_scope(PartData.Scope.OUTFIT_TOP):
-				_fumo_appearances.staging.attached_parts[DEFAULT_OUTFIT_TOP] = null
+				_attach(DEFAULT_OUTFIT_TOP)
 			if not _any_attached_of_scope(PartData.Scope.OUTFIT_BOTTOM):
-				_fumo_appearances.staging.attached_parts[DEFAULT_OUTFIT_BOTTOM] = null
+				_attach(DEFAULT_OUTFIT_BOTTOM)
 	elif [PartData.Scope.HAIR_FULL, PartData.Scope.HAIR_FRONT, PartData.Scope.HAIR_BACK].has(scope):
 		if (
 			(is_empty and (scope == PartData.Scope.HAIR_FRONT or scope == PartData.Scope.HAIR_BACK))
@@ -130,10 +141,10 @@ func _handle_exclusions():
 		):
 			_detach_parts_of_scopes([PartData.Scope.HAIR_FRONT, PartData.Scope.HAIR_BACK])
 			if not _any_attached_of_scope(PartData.Scope.HAIR_FULL):
-				_fumo_appearances.staging.attached_parts[DEFAULT_HAIR_FULL] = null
+				_attach(DEFAULT_HAIR_FULL)
 		else:
 			_detach_parts_of_scopes([PartData.Scope.HAIR_FULL])
 			if not _any_attached_of_scope(PartData.Scope.HAIR_FRONT):
-				_fumo_appearances.staging.attached_parts[DEFAULT_HAIR_FRONT] = null
+				_attach(DEFAULT_HAIR_FRONT)
 			if not _any_attached_of_scope(PartData.Scope.HAIR_BACK):
-				_fumo_appearances.staging.attached_parts[DEFAULT_HAIR_BACK] = null
+				_attach(DEFAULT_HAIR_BACK)
