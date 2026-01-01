@@ -5,7 +5,11 @@
 # Development
 
 - [Getting started]()
-- [Contribution guidelines](contributing/index.md)
+- [Contributing](contributing/index.md)
+  - [Common Guidelines](contributing/common-guidelines.md)
+  - [Guidelines for Code](contributing/code-guidelines.md)
+  - [Guidelines for Assets](contributing/assets-guidelines.md)
+    - [Guidelines for Characters](contributing/character-guidelines.md)
 - [Implementation notes](devnotes/index.md)
   - [Blender tips](devnotes/blender-tips.md)
   - [Rig export/import procedure](devnotes/rig-export.md)

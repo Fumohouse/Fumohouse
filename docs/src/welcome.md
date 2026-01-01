@@ -11,5 +11,5 @@ Welcome to Fumohouse's documentation!
 
 ## Go to...
 
-- [Contribution guidelines](contributing/index.md)
+- [Contributing](contributing/index.md)
 - [Fumohouse's game design document (GDD)](design/introduction.md)
