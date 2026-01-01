@@ -11,5 +11,5 @@ display_name = "Doremy Ponytail"
 id = &"doremy_ponytail"
 scope = 8
 default_config = Dictionary[StringName, Variant]({
-&"color": Color(1, 1, 1, 1)
+&"color": Color(0.11372549, 0.2, 0.5372549, 1)
 })

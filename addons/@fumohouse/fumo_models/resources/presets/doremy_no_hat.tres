@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Appearance" load_steps=2 format=3 uid="uid://b5b5n2po4w5vw"]
+[gd_resource type="Resource" script_class="Appearance" load_steps=2 format=3 uid="uid://dlkf8dmy1q0aa"]
 
-[ext_resource type="Script" uid="uid://ckfcdw3j0qb6k" path="res://addons/@fumohouse/character_appearance/appearance.gd" id="1_71dpy"]
+[ext_resource type="Script" uid="uid://ckfcdw3j0qb6k" path="res://addons/@fumohouse/character_appearance/appearance.gd" id="1_b1gwj"]
 
 [resource]
-script = ExtResource("1_71dpy")
-display_name = "Doremy"
+script = ExtResource("1_b1gwj")
+display_name = "Doremy (No Hat)"
 config = Dictionary[StringName, Variant]({
 &"eyebrows": &"straight",
 &"eyes": &"straight",
@@ -13,10 +13,11 @@ config = Dictionary[StringName, Variant]({
 &"scale": 1.0
 })
 attached_parts = Dictionary[StringName, Variant]({
+&"doremy_ears": null,
 &"doremy_hair_back": null,
 &"doremy_hair_front": null,
-&"doremy_hat": null,
 &"doremy_outfit": null,
+&"doremy_ponytail": null,
 &"doremy_shoes": null,
 &"doremy_tail": null
 })

@@ -11,5 +11,5 @@ display_name = "Momiji Ears"
 id = &"momiji_ears"
 scope = 11
 default_config = Dictionary[StringName, Variant]({
-&"color": Color(1, 1, 1, 1)
+&"color": Color(0.91764706, 0.91764706, 0.91764706, 1)
 })

@@ -13,15 +13,9 @@ config = Dictionary[StringName, Variant]({
 &"scale": 1.0
 })
 attached_parts = Dictionary[StringName, Variant]({
-&"momiji_ears": {
-&"color": Color(0.91764706, 0.91764706, 0.91764706, 1)
-},
-&"momiji_hair_back": {
-&"color": Color(0.91764706, 0.91764706, 0.91764706, 1)
-},
-&"momiji_hair_front": {
-&"color": Color(0.91764706, 0.91764706, 0.91764706, 1)
-},
+&"momiji_ears": null,
+&"momiji_hair_back": null,
+&"momiji_hair_front": null,
 &"momiji_hat": null,
 &"momiji_outfit_top": null,
 &"momiji_skirt": null,

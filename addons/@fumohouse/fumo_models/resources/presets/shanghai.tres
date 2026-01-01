@@ -13,9 +13,7 @@ config = Dictionary[StringName, Variant]({
 &"scale": 0.5
 })
 attached_parts = Dictionary[StringName, Variant]({
-&"shanghai_hair": {
-&"color": Color(0.9411765, 0.8039216, 0.39215687, 1)
-},
+&"shanghai_hair": null,
 &"shanghai_hair_bow": null,
 &"shanghai_outfit": null,
 &"shoes_1": {

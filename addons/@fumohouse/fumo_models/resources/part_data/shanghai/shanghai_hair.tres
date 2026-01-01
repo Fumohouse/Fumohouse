@@ -11,5 +11,5 @@ display_name = "Shanghai Hair"
 id = &"shanghai_hair"
 scope = 5
 default_config = Dictionary[StringName, Variant]({
-&"color": Color(1, 1, 1, 1)
+&"color": Color(0.9411765, 0.8039216, 0.39215687, 1)
 })
