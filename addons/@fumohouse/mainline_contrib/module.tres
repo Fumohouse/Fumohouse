@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ModuleManifest" load_steps=5 format=3 uid="uid://dtmdvorujy10c"]
+
+[ext_resource type="Script" uid="uid://bv6m4s88g0oi6" path="res://addons/@fumohouse/base/module_autoload.gd" id="1_jx2l7"]
+[ext_resource type="Script" uid="uid://cyriemmrcefgc" path="res://addons/@fumohouse/base/module_dependency.gd" id="2_u17xx"]
+[ext_resource type="Script" uid="uid://c5kqgift21f1k" path="res://addons/@fumohouse/base/module_manifest.gd" id="3_du03g"]
+
+[sub_resource type="Resource" id="Resource_jx2l7"]
+script = ExtResource("1_jx2l7")
+name = &"MainlineContributorDatabase"
+path = "uid://s3pwo57ml3wr"
+metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
+
+[resource]
+script = ExtResource("3_du03g")
+autoloads = Array[ExtResource("1_jx2l7")]([SubResource("Resource_jx2l7")])

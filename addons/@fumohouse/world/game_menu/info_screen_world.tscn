@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://djiqku8ghf4co"]
+
+[ext_resource type="PackedScene" uid="uid://dcjihonkjq4ow" path="res://addons/@fumohouse/navigation/info_screen/info_screen_base.tscn" id="1_17f3n"]
+[ext_resource type="Script" uid="uid://cxk3wcp7trab4" path="res://addons/@fumohouse/world/game_menu/info_screen_world.gd" id="2_bh63t"]
+
+[node name="InfoScreenWorld" instance=ExtResource("1_17f3n")]
+script = ExtResource("2_bh63t")

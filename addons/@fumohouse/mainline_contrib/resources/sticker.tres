@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MainlineContributor" load_steps=2 format=3 uid="uid://cgft8r7bjalup"]
+
+[ext_resource type="Script" uid="uid://c51ldeir31dos" path="res://addons/@fumohouse/mainline_contrib/mainline_contributor.gd" id="1_kop3k"]
+
+[resource]
+script = ExtResource("1_kop3k")
+name = "sticker"
+category = &"contributor"
+role = "Programmer"
+description = "• Fumo character selection and customization"
+metadata/_custom_type_script = "uid://c51ldeir31dos"

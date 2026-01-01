@@ -16,3 +16,6 @@ extends ModuleManifest
 ## The ID of the music playlist to be used by default ingame (i.e., when not in
 ## any playlist region).
 @export var default_playlist := &""
+
+## Scene to place in the Info/Credits menu, or empty for the default.
+@export_file("*.tscn") var info_scene := ""

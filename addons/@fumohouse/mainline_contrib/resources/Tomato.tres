@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MainlineContributor" load_steps=2 format=3 uid="uid://qdfoltmpf6wa"]
+
+[ext_resource type="Script" uid="uid://c51ldeir31dos" path="res://addons/@fumohouse/mainline_contrib/mainline_contributor.gd" id="1_u1mlq"]
+
+[resource]
+script = ExtResource("1_u1mlq")
+name = "Tomato"
+category = &"contributor"
+description = "• Came up with the name “Fumohouse”"
+metadata/_custom_type_script = "uid://c51ldeir31dos"

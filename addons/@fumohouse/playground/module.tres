@@ -18,6 +18,7 @@ display_name = "Playground"
 playlists = Array[ExtResource("3_vjbyp")]([ExtResource("4_vjbyp"), ExtResource("5_d6ilg")])
 title_playlist = &"special"
 default_playlist = &"main"
+info_scene = "uid://dgsvsm2sj6ggp"
 dependencies = Array[ExtResource("2_pjviq")]([SubResource("Resource_gr7ck")])
 entry_scene = "uid://guxlxf4tholg"
 metadata/_custom_type_script = "uid://d4eillkguq46g"

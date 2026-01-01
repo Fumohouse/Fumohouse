@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl6dp463oxacs"]
+
+[ext_resource type="Script" uid="uid://duno1vj7rdx0e" path="res://addons/@fumohouse/main/ui/info_screen_main/info_main_contributor.gd" id="1_45mqh"]
+[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="1_wipdv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_45mqh"]
+font = ExtResource("1_wipdv")
+font_size = 11
+
+[node name="InfoMainContributor" type="VBoxContainer"]
+theme_override_constants/separation = 8
+alignment = 1
+script = ExtResource("1_45mqh")
+
+[node name="Name" type="LinkButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Name"
+
+[node name="Role" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Role"
+label_settings = SubResource("LabelSettings_45mqh")
+horizontal_alignment = 1
+uppercase = true

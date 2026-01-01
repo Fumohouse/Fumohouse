@@ -4,17 +4,11 @@ extends Node
 const _MODULES_DIR := "res://addons/"
 const _MANIFEST_NAME := "module.tres"
 
-## Copyright information of the base Fumohouse components.
-var base_copyright: CopyrightFile = null
-
 var _modules: Dictionary[StringName, ModuleManifest] = {}
 var _autoloads: Dictionary[StringName, Object] = {}
 
 
 func _enter_tree():
-	base_copyright = CopyrightFile.new()
-	base_copyright.parse("res://COPYRIGHT.txt")
-
 	if not OS.is_debug_build():
 		_mount_paks(OS.get_executable_path().get_base_dir().path_join("modules"))
 
@@ -46,10 +40,18 @@ func get_module(name: StringName) -> ModuleManifest:
 	return _modules.get(name)
 
 
+## Returns a topological ordering of the dependency graph starting from
+## [param from].
+func walk_dependencies(from: StringName) -> Array[StringName]:
+	var out: Array[StringName] = ["@fumohouse/base"]
+	_walk_dependencies_internal(from, out)
+	return out
+
+
 ## Prepare the main scene of the given [param module] to be run (e.g., load
 ## dependent autoloads).
 func prepare_module(module: StringName):
-	var ordering: Array[StringName] = _walk_dependencies(module)
+	var ordering: Array[StringName] = walk_dependencies(module)
 	print("[Modules] Determined module load order: %s" % " -> ".join(ordering))
 	_load_autoloads(ordering)
 
@@ -71,13 +73,19 @@ func _index_module(path: String):
 	manifest.author = cfg.get_value("plugin", "author", "")
 	manifest.version = cfg.get_value("plugin", "version", "")
 
-	var copyright_path := path.path_join("COPYRIGHT.txt")
-	if FileAccess.file_exists(copyright_path):
-		var copyright := CopyrightFile.new()
-		if copyright.parse(path.path_join("COPYRIGHT.txt")):
-			manifest.copyright = copyright
-
 	var module_name := StringName(path.substr(_MODULES_DIR.length()))
+
+	if module_name == &"@fumohouse/base":
+		var copyright := CopyrightFile.new()
+		if copyright.parse("res://COPYRIGHT.txt"):
+			manifest.copyright = copyright
+	else:
+		var copyright_path := path.path_join("COPYRIGHT.txt")
+		if FileAccess.file_exists(copyright_path):
+			var copyright := CopyrightFile.new()
+			if copyright.parse(path.path_join("COPYRIGHT.txt")):
+				manifest.copyright = copyright
+
 	_modules[module_name] = manifest
 	print("[Modules] Indexed module '%s'." % module_name)
 
@@ -150,14 +158,6 @@ func _walk_dependencies_internal(from: StringName, out: Array[StringName]):
 		_walk_dependencies_internal(dep.name, out)
 
 	out.push_back(from)
-
-
-## Returns a topological ordering of the dependency graph starting from
-## [param from].
-func _walk_dependencies(from: StringName) -> Array[StringName]:
-	var out: Array[StringName] = ["@fumohouse/base"]
-	_walk_dependencies_internal(from, out)
-	return out
 
 
 ## Loads the autoloads of the modules in the given [param ordering] (which

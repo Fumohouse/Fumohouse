@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcjihonkjq4ow"]
+
+[ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/navigation/screen_base_layout.tscn" id="1_nsrxb"]
+[ext_resource type="Script" uid="uid://b5fwq4smi6qwq" path="res://addons/@fumohouse/navigation/info_screen/info_screen_base.gd" id="2_vjnau"]
+[ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="3_8gbe8"]
+[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="4_vjnau"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8gbe8"]
+font = ExtResource("4_vjnau")
+
+[node name="InfoScreenBase" node_paths=PackedStringArray("tabs", "tab_content") instance=ExtResource("1_nsrxb")]
+script = ExtResource("2_vjnau")
+entry_module = &"@fumohouse/main"
+tabs = NodePath("TopBar/Tabs")
+tab_content = NodePath("Contents/MarginContainer/TabContent")
+
+[node name="Title" parent="TopBar" index="0"]
+text = "Credits/Info"
+
+[node name="Tabs" type="HBoxContainer" parent="TopBar" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 16
+script = ExtResource("3_8gbe8")
+
+[node name="Info" type="Button" parent="TopBar/Tabs" index="0"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Info"
+
+[node name="Copyright" type="Button" parent="TopBar/Tabs" index="1"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Copyright"
+
+[node name="TabContent" type="Control" parent="Contents/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="Info" type="Control" parent="Contents/MarginContainer/TabContent" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Copyright" type="ScrollContainer" parent="Contents/MarginContainer/TabContent" index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Contents/MarginContainer/TabContent/Copyright" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="CopyrightInfo" type="VBoxContainer" parent="Contents/MarginContainer/TabContent/Copyright/MarginContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="InfoPopup" type="Popup" parent="." index="2"]
+unique_name_in_owner = true
+transparent_bg = true
+oversampling_override = 1.0
+initial_position = 2
+size = Vector2i(300, 300)
+
+[node name="PanelContainer" type="PanelContainer" parent="InfoPopup" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Panel1"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="InfoPopup/PanelContainer" index="0"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoPopup/PanelContainer/ScrollContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoPopup/PanelContainer/ScrollContainer/MarginContainer" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="InfoTitle" type="Label" parent="InfoPopup/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Title"
+label_settings = SubResource("LabelSettings_8gbe8")
+
+[node name="InfoBody" type="RichTextLabel" parent="InfoPopup/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/paragraph_separation = 4
+bbcode_enabled = true
+text = "Text"
+fit_content = true
+scroll_active = false

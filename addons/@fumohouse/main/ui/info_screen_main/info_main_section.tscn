@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d251631rls86k"]
+
+[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="1_7se8t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l2bs4"]
+font = ExtResource("1_7se8t")
+
+[node name="InfoMainSection" type="VBoxContainer"]
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Label"
+label_settings = SubResource("LabelSettings_l2bs4")
+horizontal_alignment = 1

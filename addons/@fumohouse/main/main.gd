@@ -10,12 +10,14 @@ var transition_in := true
 @onready var _dim: ColorRect = $Dim
 
 @onready var _play_button: Button = %PlayButton
+@onready var _info_button: Button = %InfoButton
 @onready var _options_button: Button = %OptionsButton
 @onready var _exit_button: Button = %ExitButton
 
 @onready var _nav_character: NavCharacter = %NavCharacter
 
 @onready var _play_screen: TransitionElement = $Screens/PlayScreen
+@onready var _info_screen: TransitionElement = $Screens/InfoScreenMain
 @onready var _options_screen: TransitionElement = $Screens/OptionsScreen
 @onready var _char_edit_screen: TransitionElement = $Screens/CharacterEditorScreen
 
@@ -54,8 +56,9 @@ func _ready():
 		dim(false)
 		switch_screen(main_screen)
 
-	_play_button.pressed.connect(func(): switch_screen(_play_screen))
-	_options_button.pressed.connect(func(): switch_screen(_options_screen))
+	_play_button.pressed.connect(switch_screen.bind(_play_screen))
+	_info_button.pressed.connect(switch_screen.bind(_info_screen))
+	_options_button.pressed.connect(switch_screen.bind(_options_screen))
 	_exit_button.pressed.connect(_on_exit_button_pressed)
 
 	_nav_character.edit_pressed.connect(switch_screen.bind(_char_edit_screen))

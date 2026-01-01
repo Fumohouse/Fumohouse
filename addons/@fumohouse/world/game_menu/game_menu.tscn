@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://bjlyq7kguqj6c"]
+[gd_scene load_steps=19 format=3 uid="uid://bjlyq7kguqj6c"]
 
 [ext_resource type="PackedScene" uid="uid://ctxaywfcdgbmw" path="res://addons/@fumohouse/navigation/nav_menu.tscn" id="1_tge01"]
 [ext_resource type="Script" uid="uid://b83el535hlsj4" path="res://addons/@fumohouse/world/game_menu/game_menu.gd" id="2_8xol2"]
 [ext_resource type="Shader" uid="uid://cfejetqo4tpot" path="res://addons/@fumohouse/common/resources/materials/ui_blur.gdshader" id="3_ccw7w"]
 [ext_resource type="PackedScene" uid="uid://c55ax8y8twfnj" path="res://addons/@fumohouse/navigation/options_screen/options_screen.tscn" id="4_itoxh"]
 [ext_resource type="PackedScene" uid="uid://bdohqbssyckea" path="res://addons/@fumohouse/navigation/character_editor/character_editor.tscn" id="5_bbkib"]
+[ext_resource type="PackedScene" uid="uid://djiqku8ghf4co" path="res://addons/@fumohouse/world/game_menu/info_screen_world.tscn" id="5_bty2n"]
 [ext_resource type="Script" uid="uid://b08p3vh3shv1n" path="res://addons/@fumohouse/navigation/transition_element.gd" id="5_tvd1v"]
 [ext_resource type="Script" uid="uid://dyygcwyhv7iek" path="res://addons/@fumohouse/world/game_menu/menu_screen.gd" id="6_4uur8"]
 [ext_resource type="PackedScene" uid="uid://by5n53kx2tkhx" path="res://addons/@fumohouse/navigation/components/nav_button_container.tscn" id="7_cpy6s"]
@@ -52,11 +53,15 @@ mouse_filter = 2
 visible = false
 layout_mode = 1
 
-[node name="CharacterEditorScreen" parent="Screens" index="1" instance=ExtResource("5_bbkib")]
+[node name="InfoScreenWorld" parent="Screens" index="1" instance=ExtResource("5_bty2n")]
 visible = false
 layout_mode = 1
 
-[node name="LeaveScreen" type="PanelContainer" parent="Screens" index="2"]
+[node name="CharacterEditorScreen" parent="Screens" index="2" instance=ExtResource("5_bbkib")]
+visible = false
+layout_mode = 1
+
+[node name="LeaveScreen" type="PanelContainer" parent="Screens" index="3"]
 visible = false
 custom_minimum_size = Vector2(280, 70)
 layout_mode = 1
@@ -79,7 +84,7 @@ text = "Please wait…"
 label_settings = SubResource("LabelSettings_4uur8")
 horizontal_alignment = 1
 
-[node name="MenuScreen" type="Control" parent="Screens" index="3"]
+[node name="MenuScreen" type="Control" parent="Screens" index="4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

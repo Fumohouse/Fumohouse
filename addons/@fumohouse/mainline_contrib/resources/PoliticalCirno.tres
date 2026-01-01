@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MainlineContributor" load_steps=2 format=3 uid="uid://dn4iy61deh2ha"]
+
+[ext_resource type="Script" uid="uid://c51ldeir31dos" path="res://addons/@fumohouse/mainline_contrib/mainline_contributor.gd" id="1_cxrce"]
+
+[resource]
+script = ExtResource("1_cxrce")
+name = "PoliticalCirno"
+category = &"contributor"
+role = "Modeler"
+description = "• Fumo rig
+• Shanghai Doll's hair"
+metadata/_custom_type_script = "uid://c51ldeir31dos"

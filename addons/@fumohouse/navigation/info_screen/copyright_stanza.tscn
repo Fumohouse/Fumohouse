@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgc5ea6rknv7l"]
+
+[ext_resource type="Script" uid="uid://bkompcdsy7ofr" path="res://addons/@fumohouse/navigation/info_screen/copyright_stanza.gd" id="1_adcxo"]
+[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="2_adcxo"]
+[ext_resource type="FontFile" uid="uid://dy1lesqssmhwm" path="res://addons/@fumohouse/base/assets/fonts/overpass_mono/overpass-mono-regular.woff2" id="3_adcxo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x8w1p"]
+font = ExtResource("2_adcxo")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_o4blw"]
+font = ExtResource("2_adcxo")
+
+[sub_resource type="LabelSettings" id="LabelSettings_6v5dd"]
+font = ExtResource("3_adcxo")
+
+[node name="CopyrightStanza" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 8
+script = ExtResource("1_adcxo")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Fumohouse Component"
+label_settings = SubResource("LabelSettings_x8w1p")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="FilesLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Files:"
+label_settings = SubResource("LabelSettings_o4blw")
+
+[node name="Files" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+text = "a/b/c/*.woff2
+a/b/c/*.png"
+label_settings = SubResource("LabelSettings_6v5dd")
+
+[node name="CopyrightLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Copyright:"
+label_settings = SubResource("LabelSettings_o4blw")
+
+[node name="Copyright" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+text = "2025 voided_etc
+2025 Fumohouse contributors"
+
+[node name="LicenseLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "License:"
+label_settings = SubResource("LabelSettings_o4blw")
+
+[node name="LicenseButton" type="LinkButton" parent="MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CC-BY-SA-4.0"
+
+[node name="ExtendedComment" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Extended comment
+Goes here"

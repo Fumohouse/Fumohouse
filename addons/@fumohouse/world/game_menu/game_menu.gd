@@ -15,12 +15,14 @@ var _old_mouse_mode: Input.MouseMode = Input.MOUSE_MODE_MAX
 var _tween: Tween
 
 @onready var _continue_button: Button = %ContinueButton
+@onready var _info_button: Button = %InfoButton
 @onready var _options_button: Button = %OptionsButton
 @onready var _leave_button: Button = %LeaveButton
 
 @onready var _nav_character: NavCharacter = %NavCharacter
 
 @onready var _main_screen: TransitionElement = $Screens/MenuScreen
+@onready var _info_screen: TransitionElement = $Screens/InfoScreenWorld
 @onready var _options_screen: TransitionElement = $Screens/OptionsScreen
 @onready var _leave_screen: TransitionElement = $Screens/LeaveScreen
 @onready var _char_edit_screen: TransitionElement = $Screens/CharacterEditorScreen
@@ -33,7 +35,8 @@ func _ready():
 	super()
 
 	_continue_button.pressed.connect(func(): nav_transition(false))
-	_options_button.pressed.connect(func(): switch_screen(_options_screen))
+	_info_button.pressed.connect(switch_screen.bind(_info_screen))
+	_options_button.pressed.connect(switch_screen.bind(_options_screen))
 	_leave_button.pressed.connect(_on_leave_button_pressed)
 
 	_nav_character.edit_pressed.connect(switch_screen.bind(_char_edit_screen))
