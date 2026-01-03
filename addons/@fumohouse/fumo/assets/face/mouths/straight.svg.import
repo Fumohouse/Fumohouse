@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://k3pfm0mougaj"
 path.s3tc="res://.godot/imported/straight.svg-08b168a87ca033bd3b1b2b3b781d58b6.s3tc.ctex"
+path.etc2="res://.godot/imported/straight.svg-08b168a87ca033bd3b1b2b3b781d58b6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/@fumohouse/fumo/assets/face/mouths/straight.svg"
-dest_files=["res://.godot/imported/straight.svg-08b168a87ca033bd3b1b2b3b781d58b6.s3tc.ctex"]
+dest_files=["res://.godot/imported/straight.svg-08b168a87ca033bd3b1b2b3b781d58b6.s3tc.ctex", "res://.godot/imported/straight.svg-08b168a87ca033bd3b1b2b3b781d58b6.etc2.ctex"]
 
 [params]
 

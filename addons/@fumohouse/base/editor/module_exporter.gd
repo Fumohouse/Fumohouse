@@ -47,6 +47,13 @@ static func export_base_package(platform: String, out_path: String):
 	export_cfg.set_value("preset.0", "exclude_filter", "")
 	export_cfg.set_value("preset.0.options", "DUMMY", "DUMMY")
 
+	if platform == "macOS":
+		export_cfg.set_value(
+			"preset.0.options", "application/bundle_identifier", "house.fumo.Fumohouse"
+		)
+	else:
+		export_cfg.set_value("preset.0.options", "DUMMY", "DUMMY")
+
 	var err := export_cfg.save("res://export_presets.cfg")
 	if err != OK:
 		push_error("Failed to save export preset configuration.")
@@ -57,7 +64,13 @@ static func export_base_package(platform: String, out_path: String):
 	ProjectSettings.set_setting("editor_plugins/enabled", null)
 	ProjectSettings.save()
 
-	var exe_name := "Fumohouse.exe" if platform.contains("Windows") else "Fumohouse"
+	var exe_name: String
+	if platform.contains("Windows"):
+		exe_name = "Fumohouse.exe"
+	elif platform == "macOS":
+		exe_name = "Fumohouse.app"
+	else:
+		exe_name = "Fumohouse"
 
 	# Run export command to ZIP
 	var exit_code: int = OS.execute(

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7x1f0m2fvj1y"
 path.s3tc="res://.godot/imported/doremy_pattern.png-282e3d9742d0a7d3792a243d42249bbc.s3tc.ctex"
+path.etc2="res://.godot/imported/doremy_pattern.png-282e3d9742d0a7d3792a243d42249bbc.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://addons/@fumohouse/fumo_models/assets/doremy/doremy_pattern.png"
-dest_files=["res://.godot/imported/doremy_pattern.png-282e3d9742d0a7d3792a243d42249bbc.s3tc.ctex"]
+dest_files=["res://.godot/imported/doremy_pattern.png-282e3d9742d0a7d3792a243d42249bbc.s3tc.ctex", "res://.godot/imported/doremy_pattern.png-282e3d9742d0a7d3792a243d42249bbc.etc2.ctex"]
 
 [params]
 

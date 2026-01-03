@@ -54,4 +54,5 @@ theme/custom="uid://bwtx8apvqhdb3"
 
 [rendering]
 
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_environment="uid://bx0t0ec5dt28e"

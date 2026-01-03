@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6clllqoit4rd"
 path.s3tc="res://.godot/imported/shine.svg-5f4e38490edfef2527b1683adf2ea092.s3tc.ctex"
+path.etc2="res://.godot/imported/shine.svg-5f4e38490edfef2527b1683adf2ea092.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/@fumohouse/fumo/assets/face/eyes/straight/shine.svg"
-dest_files=["res://.godot/imported/shine.svg-5f4e38490edfef2527b1683adf2ea092.s3tc.ctex"]
+dest_files=["res://.godot/imported/shine.svg-5f4e38490edfef2527b1683adf2ea092.s3tc.ctex", "res://.godot/imported/shine.svg-5f4e38490edfef2527b1683adf2ea092.etc2.ctex"]
 
 [params]
 

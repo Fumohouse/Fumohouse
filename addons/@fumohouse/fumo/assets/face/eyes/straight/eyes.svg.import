@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://7gs4byk7dss7"
 path.s3tc="res://.godot/imported/eyes.svg-c39ecc35f9f5a04e913738b73517834f.s3tc.ctex"
+path.etc2="res://.godot/imported/eyes.svg-c39ecc35f9f5a04e913738b73517834f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/@fumohouse/fumo/assets/face/eyes/straight/eyes.svg"
-dest_files=["res://.godot/imported/eyes.svg-c39ecc35f9f5a04e913738b73517834f.s3tc.ctex"]
+dest_files=["res://.godot/imported/eyes.svg-c39ecc35f9f5a04e913738b73517834f.s3tc.ctex", "res://.godot/imported/eyes.svg-c39ecc35f9f5a04e913738b73517834f.etc2.ctex"]
 
 [params]
 
