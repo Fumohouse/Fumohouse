@@ -14,6 +14,10 @@ extends Resource
 ## The scenes/scripts to automatically load as singletons.
 @export var autoloads: Array[ModuleAutoload] = []
 
+## Whether to load this module even if it is not a direct or indirect dependency
+## of the main module.
+@export var always_load := false
+
 ## Name of this module (e.g., [code]@fumohouse/base[/code]), populated by the
 ## module manager.
 var name := &""

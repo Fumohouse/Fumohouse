@@ -54,8 +54,8 @@ dedicated to export).
 
 ## Import procedure
 
-1. Import all of the exported meshes into Godot in the `@fumohouse/fumo_models`
-   module. Place the files into `assets/generic` (for generic assets) and
+1. Import all of the exported meshes into Godot in the appropriate module. Place
+   the files into `assets/generic` (for generic assets) and
    `assets/character_name` (for character-specific assets).
 1. Edit all import configurations to use this file as the import script:
    `res://addons/@fumohouse/common/resources/materials/post_import_ext.gd` and
@@ -86,8 +86,7 @@ dedicated to export).
    For example, hats should be moved to the Head attachment, and sleeves should
    go into LArm/RArm.
 1. In the Character Appearance pane, enter the target folder for all character
-   resources:
-   `res://addons/@fumohouse/fumo_models/resources/part_data/character_name`.
+   resources: `res://addons/@fumohouse/.../resources/part_data/character_name`.
 1. Press Save Appearance Data to .tres. This will create `.tres` files for every
    node under each bone attachment, named after the node name.
 1. Go to the save folder.
@@ -102,6 +101,6 @@ dedicated to export).
 1. Ensure that the parts are correctly configured using the character editor.
 1. Delete the character scene.
 1. Create an appearance resource for the character under
-   `res://addons/@fumohouse/fumo_models/resources/presets`.
+   `res://addons/@fumohouse/.../resources/presets`.
 
 Congratulations, you're done!

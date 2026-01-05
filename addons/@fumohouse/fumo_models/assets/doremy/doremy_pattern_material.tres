@@ -1,9 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://pv0n8ildi84j"]
-
-[ext_resource type="Texture2D" uid="uid://c7x1f0m2fvj1y" path="res://addons/@fumohouse/fumo_models/assets/doremy/doremy_pattern.png" id="1_cj4na"]
-
-[resource]
-resource_name = "Hat"
-cull_mode = 2
-albedo_texture = ExtResource("1_cj4na")
-roughness = 0.8

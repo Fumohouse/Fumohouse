@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ModuleManifest" load_steps=7 format=3 uid="uid://buno7b07d8amf"]
+
+[ext_resource type="Script" uid="uid://bv6m4s88g0oi6" path="res://addons/@fumohouse/base/module_autoload.gd" id="1_4u6l7"]
+[ext_resource type="Script" uid="uid://cyriemmrcefgc" path="res://addons/@fumohouse/base/module_dependency.gd" id="2_lvyxo"]
+[ext_resource type="Script" uid="uid://c5kqgift21f1k" path="res://addons/@fumohouse/base/module_manifest.gd" id="3_215fp"]
+
+[sub_resource type="Resource" id="Resource_cypp4"]
+script = ExtResource("1_4u6l7")
+name = &"_FumoTouhouRegister"
+path = "uid://bf8y33630dh3m"
+metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
+
+[sub_resource type="Resource" id="Resource_4u6l7"]
+script = ExtResource("2_lvyxo")
+name = &"@fumohouse/character_appearance"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[sub_resource type="Resource" id="Resource_d3wyn"]
+script = ExtResource("2_lvyxo")
+name = &"@fumohouse/fumo"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[resource]
+script = ExtResource("3_215fp")
+dependencies = Array[ExtResource("2_lvyxo")]([SubResource("Resource_4u6l7"), SubResource("Resource_d3wyn")])
+autoloads = Array[ExtResource("1_4u6l7")]([SubResource("Resource_cypp4")])
+always_load = true
+metadata/_custom_type_script = "uid://c5kqgift21f1k"

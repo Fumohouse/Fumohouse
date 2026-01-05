@@ -41,10 +41,16 @@ func get_module(name: StringName) -> ModuleManifest:
 
 
 ## Returns a topological ordering of the dependency graph starting from
-## [param from].
+## [param from]. Includes any [member ModuleManifest.auto_load] modules
+## and their dependencies at the end of the list.
 func walk_dependencies(from: StringName) -> Array[StringName]:
 	var out: Array[StringName] = ["@fumohouse/base"]
 	_walk_dependencies_internal(from, out)
+
+	for module_name in _modules:
+		if _modules[module_name].always_load:
+			_walk_dependencies_internal(module_name, out)
+
 	return out
 
 

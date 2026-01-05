@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MultiPart" load_steps=6 format=3 uid="uid://nb6flc2gkvik"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_kdrpc"]
+[ext_resource type="Script" uid="uid://dgvlk6ce324r2" path="res://addons/@fumohouse/character_appearance/multi_part.gd" id="2_0flti"]
+
+[sub_resource type="Resource" id="Resource_kdrpc"]
+script = ExtResource("1_kdrpc")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/momiji/momiji_shirt.glb"
+transform = Transform3D(1, -1.882614e-08, 1.9636479e-08, 1.9636484e-08, 0.9991127, -0.042118005, -1.8826139e-08, 0.042118005, 0.9991127, 1.2783033e-08, 0.60176075, 0.009764038)
+id = &"momiji_shirt"
+
+[sub_resource type="Resource" id="Resource_0flti"]
+script = ExtResource("1_kdrpc")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/momiji/momiji_sleeve.glb"
+transform = Transform3D(0.6447806, 0.0016812086, -0.76436603, 0.0026073754, -0.9999964, 7.4505806e-08, -0.7643634, -0.00199306, -0.6447828, 0.00065732, 0.5187253, -0.0007787943)
+bone = "LArm"
+id = &"momiji_lsleeve"
+
+[sub_resource type="Resource" id="Resource_3wie7"]
+script = ExtResource("1_kdrpc")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/momiji/momiji_sleeve.glb"
+transform = Transform3D(0.6447807, -0.0016810596, 0.76436603, -0.0026071966, -0.9999967, 1.0430819e-07, 0.7643634, -0.0019928217, -0.644783, -0.0006558895, 0.5187268, -0.00077700615)
+bone = "RArm"
+id = &"momiji_rsleeve"
+
+[resource]
+script = ExtResource("2_0flti")
+parts = Array[ExtResource("1_kdrpc")]([SubResource("Resource_kdrpc"), SubResource("Resource_0flti"), SubResource("Resource_3wie7")])
+display_name = "Momiji Outfit (Top)"
+id = &"momiji_outfit_top"
+scope = 3
+metadata/_custom_type_script = "uid://dgvlk6ce324r2"

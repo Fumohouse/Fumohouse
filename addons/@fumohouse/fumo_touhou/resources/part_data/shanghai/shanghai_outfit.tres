@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="MultiPart" load_steps=14 format=3 uid="uid://btsinyrgo563o"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_rhpep"]
+[ext_resource type="Script" uid="uid://dgvlk6ce324r2" path="res://addons/@fumohouse/character_appearance/multi_part.gd" id="2_05iyr"]
+
+[sub_resource type="Resource" id="Resource_rhpep"]
+script = ExtResource("1_rhpep")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_bow.glb"
+transform = Transform3D(0.03575067, -3.030332e-09, 9.4002e-10, 1.061015e-09, 0.0025318547, 0.034914132, -9.189108e-09, -0.011497317, 0.0076885344, 0.00041390315, 0.97956645, -0.21951316)
+id = &"shanghai_bow"
+
+[sub_resource type="Resource" id="Resource_05iyr"]
+script = ExtResource("1_rhpep")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_collar.glb"
+transform = Transform3D(1, -1.882614e-08, 1.9636479e-08, 1.9636484e-08, 0.9991127, -0.04211796, -1.8826139e-08, 0.04211796, 0.9991127, -0.007450992, 0.7762084, -0.04817607)
+id = &"shanghai_collar"
+
+[sub_resource type="Resource" id="Resource_akrgs"]
+script = ExtResource("1_rhpep")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_dress_inner.glb"
+transform = Transform3D(1, -1.882614e-08, 2.5805505e-07, 2.9678189e-08, 0.9991127, -0.04211796, -2.5703318e-07, 0.04211796, 0.9991127, -1.4843696e-08, -0.15187222, -0.012347031)
+id = &"shanghai_dress_inner"
+
+[sub_resource type="Resource" id="Resource_6rntb"]
+script = ExtResource("1_rhpep")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_dress_outer.glb"
+transform = Transform3D(1, -1.882614e-08, 2.5805505e-07, 2.9678189e-08, 0.9991127, -0.04211796, -2.5703318e-07, 0.04211796, 0.9991127, 4.932982e-09, 0.73528516, 0.021168124)
+id = &"shanghai_dress_outer"
+
+[sub_resource type="Resource" id="Resource_1qx8x"]
+script = ExtResource("1_rhpep")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_dress_under.glb"
+transform = Transform3D(1, -1.882614e-08, 1.9636479e-08, 1.9636484e-08, 0.9991127, -0.04211796, -1.8826139e-08, 0.04211796, 0.9991127, -5.4065304e-06, 0.64916635, 0.008076701)
+id = &"shanghai_dress_under"
+
+[sub_resource type="Resource" id="Resource_q0sdr"]
+script = ExtResource("1_rhpep")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_sleeve_inner.glb"
+transform = Transform3D(0.64478064, 0.00168123, -0.76436603, 0.0026074052, -0.9999964, 4.632146e-08, -0.7643634, -0.0019930718, -0.6447828, -0.0053772926, 0.7121194, 0.007253766)
+bone = "LArm"
+id = &"shanghai_lsleeve_inner"
+
+[sub_resource type="Resource" id="Resource_pxr0m"]
+script = ExtResource("1_rhpep")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_sleeve_outer.glb"
+transform = Transform3D(0.64478064, 0.00168123, -0.76436603, 0.0026074052, -0.9999964, 4.632146e-08, -0.7643634, -0.0019930718, -0.6447828, -0.004812002, 0.3758523, 0.0065836906)
+bone = "LArm"
+id = &"shanghai_lsleeve_outer"
+
+[sub_resource type="Resource" id="Resource_ldxjb"]
+script = ExtResource("1_rhpep")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_sleeve_inner.glb"
+transform = Transform3D(0.64478076, -0.0016811108, 0.76436603, -0.0026072562, -0.9999967, 7.612384e-08, 0.7643634, -0.0019928333, -0.644783, 0.005378127, 0.7121218, 0.007255435)
+bone = "RArm"
+id = &"shanghai_rsleeve_inner"
+
+[sub_resource type="Resource" id="Resource_h2rbp"]
+script = ExtResource("1_rhpep")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_sleeve_outer.glb"
+transform = Transform3D(0.64478076, -0.0016811108, 0.76436603, -0.0026072562, -0.9999967, 7.612384e-08, 0.7643634, -0.0019928333, -0.644783, 0.004812956, 0.3758546, 0.0065853596)
+bone = "RArm"
+id = &"shanghai_rsleeve_outer"
+
+[sub_resource type="Resource" id="Resource_d7s6p"]
+script = ExtResource("1_rhpep")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_apron.glb"
+transform = Transform3D(1, -2.2396404e-07, 1.2956447e-07, 2.9678189e-08, 0.59673035, 0.8024419, -2.5703318e-07, -0.8024419, 0.59673035, -3.1418487e-05, 0.21614075, -0.35926428)
+id = &"shanghai_apron"
+
+[sub_resource type="Resource" id="Resource_fhm1u"]
+script = ExtResource("1_rhpep")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_back_bow.glb"
+transform = Transform3D(-1, 7.724033e-07, -5.6724485e-07, -5.26307e-07, 0.052006863, 0.9986468, 8.0085874e-07, 0.9986468, -0.052006863, -3.2658843e-08, 0.25722635, 0.40269247)
+id = &"shanghai_back_bow"
+
+[resource]
+script = ExtResource("2_05iyr")
+parts = Array[ExtResource("1_rhpep")]([SubResource("Resource_rhpep"), SubResource("Resource_05iyr"), SubResource("Resource_akrgs"), SubResource("Resource_6rntb"), SubResource("Resource_1qx8x"), SubResource("Resource_q0sdr"), SubResource("Resource_pxr0m"), SubResource("Resource_ldxjb"), SubResource("Resource_h2rbp"), SubResource("Resource_d7s6p"), SubResource("Resource_fhm1u")])
+display_name = "Shanghai Outfit"
+id = &"shanghai_outfit"
+scope = 2
+metadata/_custom_type_script = "uid://dgvlk6ce324r2"

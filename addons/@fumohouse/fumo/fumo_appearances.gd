@@ -11,19 +11,19 @@ signal active_changed
 ## Emitted after [member staging] changes.
 signal staging_changed
 
-## Current appearance for local character.
-var active: Appearance = preload(
-	"res://addons/@fumohouse/fumo_models/resources/presets/doremy.tres"
-)
+## Current appearance for local character. Default value is injected by
+## [code]@fumohouse/fumo_touhou[/code].
+var active: Appearance
 
 ## Cache of part configuration, keyed by part ID.
 var part_config_cache: Dictionary[StringName, Dictionary] = {}
 
-## Preview appearance to be applied.
+## Preview appearance to be applied. Default value is injected by
+## [code]@fumohouse/fumo_touhou[/code].
 ##
 ## After modifying this value or its fields, it is recommended to emit the
 ## [signal staging_changed] signal to notify listeners.
-var staging: Appearance = active.duplicate(true)
+var staging: Appearance
 
 ## List of presets available.
 var presets: Array[Appearance]
@@ -35,8 +35,6 @@ static func get_singleton() -> FumoAppearances:
 
 
 func _ready():
-	scan_dir("res://addons/@fumohouse/fumo_models/resources/presets")
-
 	presets.sort_custom(func(a: Appearance, b: Appearance): return a.display_name < b.display_name)
 
 

@@ -6,8 +6,9 @@
 
 1. [x] The module should contain the rig and animations of various builtin
    characters.
-1. [x] The part meshes and data shall be placed in a separate module,
-   `@fumohouse/fumo_models`.
+1. [x] The part meshes and data shall be placed in separate, always-loaded
+   modules (e.g., `@fumohouse/fumo_touhou`) that register their contents with
+   `@fumohouse/fumo`.
 
 ## Part breakdown
 
