@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FumoMouthStyle" load_steps=3 format=3 uid="uid://ccwt4mw52pdvp"]
+
+[ext_resource type="Script" uid="uid://tgvn0jwa684p" path="res://addons/@fumohouse/fumo/resources/mouth_style.gd" id="1_fbmht"]
+[ext_resource type="Texture2D" uid="uid://k3pfm0mougaj" path="res://addons/@fumohouse/fumo_touhou/assets/face/mouths/straight.svg" id="2_gwve7"]
+
+[resource]
+script = ExtResource("1_fbmht")
+id = &"straight"
+texture = ExtResource("2_gwve7")
+metadata/_custom_type_script = "uid://tgvn0jwa684p"

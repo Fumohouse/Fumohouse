@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ModuleManifest" load_steps=9 format=3 uid="uid://cefvip8wn7vbo"]
+[gd_resource type="Resource" script_class="ModuleManifest" load_steps=10 format=3 uid="uid://cefvip8wn7vbo"]
 
 [ext_resource type="Script" uid="uid://bv6m4s88g0oi6" path="res://addons/@fumohouse/base/module_autoload.gd" id="1_fji1f"]
 [ext_resource type="Script" uid="uid://cyriemmrcefgc" path="res://addons/@fumohouse/base/module_dependency.gd" id="2_wcwlm"]
@@ -14,6 +14,12 @@ metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
 script = ExtResource("1_fji1f")
 name = &"FumoAppearances"
 path = "uid://lyewi760b52y"
+metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
+
+[sub_resource type="Resource" id="Resource_0g7ck"]
+script = ExtResource("1_fji1f")
+name = &"FumoFaceDatabase"
+path = "uid://c4le34suflbrd"
 metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
 
 [sub_resource type="Resource" id="Resource_fji1f"]
@@ -34,5 +40,5 @@ metadata/_custom_type_script = "uid://cyriemmrcefgc"
 [resource]
 script = ExtResource("3_bvh68")
 dependencies = Array[ExtResource("2_wcwlm")]([SubResource("Resource_fji1f"), SubResource("Resource_4mx1m"), SubResource("Resource_ryamt")])
-autoloads = Array[ExtResource("1_fji1f")]([SubResource("Resource_chw3y"), SubResource("Resource_xkmxm")])
+autoloads = Array[ExtResource("1_fji1f")]([SubResource("Resource_chw3y"), SubResource("Resource_xkmxm"), SubResource("Resource_0g7ck")])
 metadata/_custom_type_script = "uid://c5kqgift21f1k"

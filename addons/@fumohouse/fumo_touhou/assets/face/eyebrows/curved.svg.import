@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq6sxfvay55ai"
-path="res://.godot/imported/smile.svg-dafc528349fa10b8c3b7a90803294d69.ctex"
+uid="uid://dly1x3hwg20sx"
+path="res://.godot/imported/curved.svg-a4355e2a256515f11f109cd5b5274bd6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/@fumohouse/fumo/assets/face/mouths/smile.svg"
-dest_files=["res://.godot/imported/smile.svg-dafc528349fa10b8c3b7a90803294d69.ctex"]
+source_file="res://addons/@fumohouse/fumo_touhou/assets/face/eyebrows/curved.svg"
+dest_files=["res://.godot/imported/curved.svg-a4355e2a256515f11f109cd5b5274bd6.ctex"]
 
 [params]
 

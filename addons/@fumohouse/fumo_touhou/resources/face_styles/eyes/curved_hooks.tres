@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FumoEyeStyle" load_steps=5 format=3 uid="uid://bu8fbengioa4f"]
+
+[ext_resource type="Texture2D" uid="uid://bxipluunlglxu" path="res://addons/@fumohouse/fumo_touhou/assets/face/eyes/curved/eyes.svg" id="1_egc7a"]
+[ext_resource type="Texture2D" uid="uid://5ykmu8aoa08o" path="res://addons/@fumohouse/fumo_touhou/assets/face/eyes/curved/hooks.svg" id="2_3e4ka"]
+[ext_resource type="Script" uid="uid://qbidnqa8ybv8" path="res://addons/@fumohouse/fumo/resources/eye_style.gd" id="2_ifh81"]
+[ext_resource type="Texture2D" uid="uid://dofhp0wr4qtwe" path="res://addons/@fumohouse/fumo_touhou/assets/face/eyes/curved/shine.svg" id="3_3e4ka"]
+
+[resource]
+script = ExtResource("2_ifh81")
+id = &"curved_hooks"
+eyes = ExtResource("1_egc7a")
+shine = ExtResource("3_3e4ka")
+overlay = ExtResource("2_3e4ka")
+metadata/_custom_type_script = "uid://qbidnqa8ybv8"

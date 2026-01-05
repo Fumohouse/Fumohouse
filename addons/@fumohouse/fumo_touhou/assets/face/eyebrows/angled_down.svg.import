@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dofhp0wr4qtwe"
-path="res://.godot/imported/shine.svg-1e114a7d15c93b6c862ced822a36840d.ctex"
+uid="uid://c683jm4r6xhbv"
+path="res://.godot/imported/angled_down.svg-202c8123c88666a38fce0787c44ba2fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/@fumohouse/fumo/assets/face/eyes/curved/shine.svg"
-dest_files=["res://.godot/imported/shine.svg-1e114a7d15c93b6c862ced822a36840d.ctex"]
+source_file="res://addons/@fumohouse/fumo_touhou/assets/face/eyebrows/angled_down.svg"
+dest_files=["res://.godot/imported/angled_down.svg-202c8123c88666a38fce0787c44ba2fe.ctex"]
 
 [params]
 

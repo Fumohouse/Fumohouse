@@ -1,6 +1,6 @@
-class_name FumoFacePartStyle
+class_name FumoMouthStyle
 extends Resource
-## Resource describing non-eye parts of the face.
+## Resource describing fumo mouth style.
 
 ## Unique ID of the style.
 @export var id := &""

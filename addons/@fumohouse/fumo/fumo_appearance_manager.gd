@@ -2,8 +2,6 @@ class_name FumoAppearanceManager
 extends AppearanceManager
 ## The appearance manager for fumo models.
 
-const FACE_DATABASE: FumoFaceDatabase = preload("./resources/face_database.tres")
-
 ## The fumo to manage the appearance of.
 @export var fumo: Fumo
 ## The rig (parent of the armature) of [member fumo].
@@ -19,6 +17,8 @@ const FACE_DATABASE: FumoFaceDatabase = preload("./resources/face_database.tres"
 @export var base_camera_offset := 2.5
 
 var _base_ragdoll_collider_position := Vector3.ZERO
+
+@onready var _face_database := FumoFaceDatabase.get_singleton()
 
 
 func _ready():
@@ -57,7 +57,7 @@ func _load_face():
 	var brow_texture: Texture2D = null
 
 	if eyebrows is StringName:
-		var st := FACE_DATABASE.get_eyebrow(eyebrows)
+		var st := _face_database.get_eyebrow(eyebrows)
 		assert(st, "Failed to load eyebrows: %s" % [eyebrows])
 		brow_texture = st.texture
 
@@ -67,7 +67,7 @@ func _load_face():
 	var mouth_texture: Texture2D = null
 
 	if mouth is StringName:
-		var st := FACE_DATABASE.get_mouth(mouth)
+		var st := _face_database.get_mouth(mouth)
 		assert(st, "Failed to load mouth: %s" % [mouth])
 		mouth_texture = st.texture
 
@@ -79,7 +79,7 @@ func _load_face():
 	var overlay_texture: Texture2D = null
 
 	if eyes is StringName and not eyes.is_empty():
-		var st := FACE_DATABASE.get_eye(eyes)
+		var st := _face_database.get_eye(eyes)
 		assert(st, "Failed to load eyes: %s" % [eyes])
 
 		eye_texture = st.eyes

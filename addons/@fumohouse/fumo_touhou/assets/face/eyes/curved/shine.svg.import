@@ -2,22 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6clllqoit4rd"
-path.s3tc="res://.godot/imported/shine.svg-5f4e38490edfef2527b1683adf2ea092.s3tc.ctex"
-path.etc2="res://.godot/imported/shine.svg-5f4e38490edfef2527b1683adf2ea092.etc2.ctex"
+uid="uid://dofhp0wr4qtwe"
+path="res://.godot/imported/shine.svg-5b14529ca9e29e4efb6cc54f06f369d1.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/@fumohouse/fumo/assets/face/eyes/straight/shine.svg"
-dest_files=["res://.godot/imported/shine.svg-5f4e38490edfef2527b1683adf2ea092.s3tc.ctex", "res://.godot/imported/shine.svg-5f4e38490edfef2527b1683adf2ea092.etc2.ctex"]
+source_file="res://addons/@fumohouse/fumo_touhou/assets/face/eyes/curved/shine.svg"
+dest_files=["res://.godot/imported/shine.svg-5b14529ca9e29e4efb6cc54f06f369d1.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -25,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -39,7 +37,7 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
 svg/scale=1.0
 editor/scale_with_editor_scale=false
 editor/convert_colors_with_editor_theme=false

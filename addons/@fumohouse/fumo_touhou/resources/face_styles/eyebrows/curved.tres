@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FumoEyebrowStyle" load_steps=3 format=3 uid="uid://mcv655ipi4ni"]
+
+[ext_resource type="Script" uid="uid://eno35452i1ce" path="res://addons/@fumohouse/fumo/resources/eyebrow_style.gd" id="1_1h2o6"]
+[ext_resource type="Texture2D" uid="uid://dly1x3hwg20sx" path="res://addons/@fumohouse/fumo_touhou/assets/face/eyebrows/curved.svg" id="2_t06fr"]
+
+[resource]
+script = ExtResource("1_1h2o6")
+id = &"curved"
+texture = ExtResource("2_t06fr")
+metadata/_custom_type_script = "uid://eno35452i1ce"

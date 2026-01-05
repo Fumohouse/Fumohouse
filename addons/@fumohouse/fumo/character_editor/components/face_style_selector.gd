@@ -7,7 +7,8 @@ const _BUTTON_SCENE := preload("face_preview_button.tscn")
 
 var _updating := false
 
-@onready var _fumo_appearances: FumoAppearances = FumoAppearances.get_singleton()
+@onready var _fumo_appearances := FumoAppearances.get_singleton()
+@onready var _face_database := FumoFaceDatabase.get_singleton()
 
 @onready var _title: Label = %Title
 @onready var _grid: RadioButtonContainer = %Grid
@@ -20,13 +21,13 @@ func _ready():
 	var list: Array
 	if part_type == 0:
 		_title.text = "Eyes"
-		list = FumoAppearanceManager.FACE_DATABASE.eye_styles
+		list = _face_database.eye_styles.values()
 	elif part_type == 1:
 		_title.text = "Eyebrows"
-		list = FumoAppearanceManager.FACE_DATABASE.eyebrow_styles
+		list = _face_database.eyebrow_styles.values()
 	elif part_type == 2:
 		_title.text = "Mouth"
-		list = FumoAppearanceManager.FACE_DATABASE.mouth_styles
+		list = _face_database.mouth_styles.values()
 
 	for style: Resource in list:
 		var button: FacePreviewButton = _BUTTON_SCENE.instantiate()

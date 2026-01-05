@@ -6,6 +6,9 @@ const _DEFAULT_PRESET := preload(
 
 
 func _ready():
+	FumoFaceDatabase.get_singleton().scan_dir(
+		"res://addons/@fumohouse/fumo_touhou/resources/face_styles"
+	)
 	FumoPartDatabase.get_singleton().scan_dir(
 		"res://addons/@fumohouse/fumo_touhou/resources/part_data"
 	)

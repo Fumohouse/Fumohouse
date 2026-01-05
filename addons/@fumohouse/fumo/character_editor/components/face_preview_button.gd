@@ -16,9 +16,12 @@ func _ready():
 
 	tooltip_text = id
 
-	if style is FumoFacePartStyle:
-		var fps := style as FumoFacePartStyle
-		_layer_1.texture = fps.texture
+	if style is FumoEyebrowStyle:
+		var ebs := style as FumoEyebrowStyle
+		_layer_1.texture = ebs.texture
+	elif style is FumoMouthStyle:
+		var ms := style as FumoMouthStyle
+		_layer_1.texture = ms.texture
 	elif style is FumoEyeStyle:
 		var es := style as FumoEyeStyle
 		_layer_1.texture = es.eyes
