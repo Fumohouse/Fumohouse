@@ -97,7 +97,7 @@ static func _export_master_zip(platform: String, zip_path: String) -> Error:
 	export_cfg.set_value("preset.0", "platform", platform)
 	export_cfg.set_value("preset.0", "runnable", false)
 	export_cfg.set_value("preset.0", "export_filter", "all_resources")
-	export_cfg.set_value("preset.0", "include_filter", "COPYRIGHT.txt, */plugin.cfg")
+	export_cfg.set_value("preset.0", "include_filter", "*/COPYRIGHT.txt, */plugin.cfg")
 	export_cfg.set_value("preset.0", "exclude_filter", "")
 	export_cfg.set_value("preset.0.options", "DUMMY", "DUMMY")
 
