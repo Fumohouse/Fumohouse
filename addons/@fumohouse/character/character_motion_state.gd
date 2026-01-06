@@ -206,16 +206,16 @@ func is_dead() -> bool:
 
 
 ## Kill this character. Free its [member node] after [param timeout_s]
-## (seconds). If [param callback] is not [code]null[/code], it is called as a
-## [Callable] after the node is freed.
-func die(timeout_s: float, callback: Variant):
+## (seconds). If [param callback] is not empty, it is called after the node is
+## freed.
+func die(timeout_s: float, callback := Callable()):
 	queue_dead = true
 	set_ragdoll(false)
 
 	await node.get_tree().create_timer(timeout_s).timeout
 	if is_instance_valid(node):
 		node.queue_free()
-		if callback != null:
+		if callback != Callable():
 			(callback as Callable).call()
 
 

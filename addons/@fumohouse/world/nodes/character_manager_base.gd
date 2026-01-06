@@ -23,7 +23,7 @@ func _spawn_character(appearance: Appearance = null, char_transform: Variant = n
 
 
 ## Delete a character. If [param died] is [code]true[/code], kill the character
-## (e.g., play the death animation). The given [param callback] (if not
-## [code]null[/code]) is called after the character is killed.
-func _delete_character(died: bool, callback: Variant):
+## (e.g., play the death animation). The given [param callback] (if not empty)
+## is called after the character is killed.
+func _delete_character(died: bool, callback := Callable()):
 	pass

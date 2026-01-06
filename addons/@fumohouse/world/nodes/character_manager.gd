@@ -59,7 +59,7 @@ func _spawn_character(appearance: Appearance = null, char_transform: Variant = n
 	character.camera = camera
 
 	if _local_character:
-		_delete_character(false, null)
+		_delete_character(false)
 	_local_character = character
 
 	add_child(character)
@@ -71,7 +71,7 @@ func _spawn_character(appearance: Appearance = null, char_transform: Variant = n
 	return character
 
 
-func _delete_character(died: bool, callback: Variant):
+func _delete_character(died: bool, callback := Callable()):
 	var character := _local_character
 	if died:
 		if character.state.is_dead():
@@ -80,7 +80,7 @@ func _delete_character(died: bool, callback: Variant):
 		character.state.die(
 			_DEATH_TIMEOUT,
 			func():
-				if callback:
+				if callback != Callable():
 					callback.call()
 
 				if character == _local_character:
