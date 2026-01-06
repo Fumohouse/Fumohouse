@@ -34,16 +34,23 @@ static func get_singleton() -> FumoAppearances:
 	return Modules.get_singleton(&"FumoAppearances") as FumoAppearances
 
 
-func _ready():
+## Scan [param path] recursively for model presets.
+func scan_dir(path: String):
+	_scan_dir_internal(path)
 	presets.sort_custom(func(a: Appearance, b: Appearance): return a.display_name < b.display_name)
 
 
-## Scan [param path] recursively for model presets.
-func scan_dir(path: String):
+## Apply active [Appearance] by copying from staging.
+func apply():
+	active = staging.duplicate(true)
+	active_changed.emit()
+
+
+func _scan_dir_internal(path: String):
 	for entry in ResourceLoader.list_directory(path):
 		var full_path := path.path_join(entry)
 		if entry.ends_with("/"):
-			scan_dir(full_path)
+			_scan_dir_internal(full_path)
 			continue
 
 		var preset := load(full_path) as Appearance
@@ -52,9 +59,3 @@ func scan_dir(path: String):
 			continue
 
 		presets.push_back(preset)
-
-
-## Apply active [Appearance] by copying from staging.
-func apply():
-	active = staging.duplicate(true)
-	active_changed.emit()
