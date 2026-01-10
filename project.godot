@@ -31,7 +31,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/@fumohouse/base/plugin.cfg", "res://addons/@fumohouse/character/plugin.cfg", "res://addons/@fumohouse/character_appearance/plugin.cfg", "res://addons/@fumohouse/common/plugin.cfg", "res://addons/@fumohouse/config/plugin.cfg", "res://addons/@fumohouse/debug/plugin.cfg", "res://addons/@fumohouse/fumo/plugin.cfg", "res://addons/@fumohouse/fumo_touhou/plugin.cfg", "res://addons/@fumohouse/main/plugin.cfg", "res://addons/@fumohouse/mainline_contrib/plugin.cfg", "res://addons/@fumohouse/music/plugin.cfg", "res://addons/@fumohouse/navigation/plugin.cfg", "res://addons/@fumohouse/playground/plugin.cfg", "res://addons/@fumohouse/world/plugin.cfg")
+enabled=PackedStringArray("res://addons/@fumohouse/base/plugin.cfg", "res://addons/@fumohouse/character/plugin.cfg", "res://addons/@fumohouse/character_appearance/plugin.cfg", "res://addons/@fumohouse/common/plugin.cfg", "res://addons/@fumohouse/config/plugin.cfg", "res://addons/@fumohouse/debug/plugin.cfg", "res://addons/@fumohouse/fumo/plugin.cfg", "res://addons/@fumohouse/fumo_touhou/plugin.cfg", "res://addons/@fumohouse/main/plugin.cfg", "res://addons/@fumohouse/mainline_contrib/plugin.cfg", "res://addons/@fumohouse/music/plugin.cfg", "res://addons/@fumohouse/navigation/plugin.cfg", "res://addons/@fumohouse/netcode/plugin.cfg", "res://addons/@fumohouse/playground/plugin.cfg", "res://addons/@fumohouse/world/plugin.cfg")
 
 [global_group]
 

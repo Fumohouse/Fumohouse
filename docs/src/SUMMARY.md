@@ -23,6 +23,8 @@
   - [`@fumohouse/fumo`: Fumo character](design/core/@fumohouse-fumo.md)
   - [[FUTURE] `@fumohouse/doll`: "Doll"
     character](design/core/@fumohouse-doll.md)
+  - [`@fumohouse/netcode`: Multiplayer
+    networking](design/core/@fumohouse-netcode.md)
   - [Other modules](design/core/misc.md)
 - [Worlds](design/worlds/index.md)
   - [`@fumohouse/playground`: The Playground

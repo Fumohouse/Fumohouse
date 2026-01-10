@@ -27,3 +27,9 @@ static func format_vector3(vec: Vector3) -> String:
 ## Apply drag to a velocity vector.
 static func apply_drag(vec: Vector3, coeff: float, delta: float) -> Vector3:
 	return vec.move_toward(Vector3.ZERO, coeff * vec.length() * delta)
+
+
+## Wait for UI to update during long-running operations.
+static func wait_for_ui_update(node: Node):
+	for i in 2:
+		await node.get_tree().process_frame
