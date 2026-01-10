@@ -25,11 +25,13 @@ signal status_update(msg: String, failure: bool)
 signal resetted
 
 enum PeerState {
+	## Peer is not connected.
+	DISCONNECTED = 0,
 	## Peer has connected but handshake has not started.
-	CONNECTED = 0,
+	CONNECTED = 1,
 	## Server-side: Awaiting client AUTH packet. Client-side: Awaiting server
 	## response to AUTH.
-	AUTH = 1,
+	AUTH = 2,
 	# All following states are post-handshake
 	## Peer has completed handshake.
 	JOINED = 10,
@@ -303,6 +305,27 @@ func send_status_update(msg: String, failure := false, ui_wait := true):
 		await CommonUtils.wait_for_ui_update(self)
 
 
+## Get a list of currently connected peer IDs.
+func get_peers() -> PackedInt64Array:
+	return _peers.keys()
+
+
+## Get the current state of the given [param peer].
+func get_peer_state(peer: int) -> PeerState:
+	var data: PeerData = _peers.get(peer)
+	if not data:
+		return PeerState.DISCONNECTED
+	return data.state
+
+
+## Get peer identity (i.e., username), or empty if the peer does not exist.
+func get_peer_identity(peer: int) -> String:
+	var data: PeerData = _peers.get(peer)
+	if not data:
+		return ""
+	return data.identity
+
+
 func _on_connected_to_server():
 	print("[Networking] Successfully connected to %s:%d" % [_addr, _port])
 
@@ -381,3 +404,8 @@ class PeerData:
 	var state := PeerState.CONNECTED
 	## Client identity (i.e., username).
 	var identity := ""
+
+	## Number of successful pings.
+	var successful_pings := 0
+	## Last round-trip ping time, in milliseconds.
+	var rtt := 0.0

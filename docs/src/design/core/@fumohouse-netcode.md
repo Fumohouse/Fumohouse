@@ -79,6 +79,12 @@ Reserved for future use:
   and leave). Only clients that have finished handshake receive `PEER` packets.
   `PEER` packets are not sent to the client they are about.
 
+### Heartbeat
+
+Both the client and server periodically send `PING` to determine if the
+connection is still alive. If the opposing side does not reply in time, the
+connection times out.
+
 ### Disconnection procedure
 
 - Disconnect without reason: The server/client terminates the connection

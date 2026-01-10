@@ -36,18 +36,14 @@ func _ready():
 func _on_server_peer_connected(peer: int):
 	# Disconnect if handshake does not proceed (expecting HELLOC)
 	_nm.disconnect_timeout(
-		peer,
-		func():
-			return (
-				peer in _nm._peers and _nm._peers[peer].state == NetworkManager.PeerState.CONNECTED
-			)
+		peer, func(): return _nm.get_peer_state(peer) == NetworkManager.PeerState.CONNECTED
 	)
 
 
 func _on_server_peer_disconnected(peer: int):
 	var psp := PeerState.new()
 	psp.peer = peer
-	psp.identity = _nm._peers[peer].identity
+	psp.identity = _nm.get_peer_identity(peer)
 	psp.status = NetworkManager.PeerStateUpdate.LEFT
 	_send_psp(psp)
 
@@ -61,8 +57,7 @@ func _on_client_connected():
 
 	# Disconnect if handshake does not proceed (expecting HELLOS)
 	_nm.disconnect_timeout(
-		1,
-		func(): return 1 in _nm._peers and _nm._peers[1].state == NetworkManager.PeerState.CONNECTED
+		1, func(): return _nm.get_peer_state(1) == NetworkManager.PeerState.CONNECTED
 	)
 
 
@@ -98,7 +93,9 @@ func _on_hello_server(peer: int, packet: HelloClient):
 
 	peer_data.state = NetworkManager.PeerState.AUTH
 	# Disconnect if handshake does not proceed (expecting AUTH)
-	_nm.disconnect_timeout(peer, func(): return peer_data.state == NetworkManager.PeerState.AUTH)
+	_nm.disconnect_timeout(
+		peer, func(): return _nm.get_peer_state(peer) == NetworkManager.PeerState.AUTH
+	)
 
 
 func _on_hello_client(packet: HelloServer):
@@ -118,7 +115,7 @@ func _on_hello_client(packet: HelloServer):
 
 	peer_data.state = NetworkManager.PeerState.AUTH
 	# Disconnect if handshake does not proceed (expecting SYNC)
-	_nm.disconnect_timeout(1, func(): return peer_data.state == NetworkManager.PeerState.AUTH)
+	_nm.disconnect_timeout(1, func(): return _nm.get_peer_state(1) == NetworkManager.PeerState.AUTH)
 
 	_nm.send_status_update("Authenticating...", false, false)
 
@@ -209,10 +206,10 @@ func _on_peer_state_client(packet: PeerState):
 
 
 func _send_psp(psp: PeerState):
-	for remote_peer in _nm._peers:
+	for remote_peer in _nm.get_peers():
 		if (
 			remote_peer == psp.peer
-			or _nm._peers[remote_peer].state < NetworkManager.PeerState.JOINED
+			or _nm.get_peer_state(remote_peer) < NetworkManager.PeerState.JOINED
 		):
 			continue
 		_nm.send_packet(remote_peer, psp)
