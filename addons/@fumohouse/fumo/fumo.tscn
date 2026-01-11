@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bnic23uqggm8j"]
+[gd_scene load_steps=53 format=3 uid="uid://bnic23uqggm8j"]
 
 [ext_resource type="PackedScene" uid="uid://c872jdob35ayv" path="res://addons/@fumohouse/character/character.tscn" id="1_6g54x"]
 [ext_resource type="PackedScene" uid="uid://bwtelncgka6g3" path="res://addons/@fumohouse/fumo/assets/rig.glb" id="2_6pbm6"]
@@ -20,11 +20,7 @@
 [ext_resource type="Animation" uid="uid://brv87ke4qdvnq" path="res://addons/@fumohouse/fumo/assets/anims/swim_idle.tres" id="14_8001h"]
 [ext_resource type="Animation" uid="uid://cthcdwgiq646f" path="res://addons/@fumohouse/fumo/assets/anims/walk.tres" id="15_u1gid"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j7mor"]
-resource_local_to_scene = true
-height = 3.4
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_66toj"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_w1fxq"]
 resource_local_to_scene = true
 size = Vector3(0.7, 1, 0.45)
 
@@ -228,7 +224,6 @@ animation = &"walk"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_b6hbt"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_mgvk1"]
-graph_offset = Vector2(-96.888626, 101.94316)
 nodes/output/position = Vector2(640, 128)
 nodes/jump_oneshot/node = SubResource("AnimationNodeOneShot_s700b")
 nodes/jump_oneshot/position = Vector2(432, 160)
@@ -299,12 +294,11 @@ rig = NodePath("Rig")
 camera_fade_begin = 1.5
 camera_fade_end = 0.25
 
-[node name="Appearance" type="Node3D" parent="." index="0" node_paths=PackedStringArray("fumo", "rig", "main_collider", "ragdoll_collider")]
+[node name="Appearance" type="Node3D" parent="." index="0" node_paths=PackedStringArray("fumo", "rig", "collider")]
 script = ExtResource("3_w1fxq")
 fumo = NodePath("..")
 rig = NodePath("../Rig")
-main_collider = NodePath("../MainCollider")
-ragdoll_collider = NodePath("../RagdollCollider")
+collider = NodePath("../Collider")
 
 [node name="Head" type="BoneAttachment3D" parent="Appearance" index="0"]
 transform = Transform3D(1, -9.878401e-10, 4.68825e-10, 9.93313e-10, 0.99993, -0.011826489, -4.5710635e-10, 0.011826489, 0.99993, -2.3520617e-09, 1.9605855, -0.03173432)
@@ -348,13 +342,10 @@ bone_idx = 0
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
-[node name="MainCollider" parent="." index="1"]
-shape = SubResource("CapsuleShape3D_j7mor")
+[node name="Collider" parent="." index="1"]
+shape = SubResource("BoxShape3D_w1fxq")
 
-[node name="RagdollCollider" parent="." index="2"]
-shape = SubResource("BoxShape3D_66toj")
-
-[node name="Rig" parent="." index="3" instance=ExtResource("2_6pbm6")]
+[node name="Rig" parent="." index="2" instance=ExtResource("2_6pbm6")]
 
 [node name="Skeleton3D" parent="Rig/Armature" index="0"]
 bones/0/position = Vector3(-2.4415677e-08, 0.9055685, 0.015589586)

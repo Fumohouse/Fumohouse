@@ -7,16 +7,19 @@ extends AppearanceManager
 ## The rig (parent of the armature) of [member fumo].
 @export var rig: Node3D
 
-## The main collider.
-@export var main_collider: CollisionShape3D
-## The ragdoll collider.
-@export var ragdoll_collider: CollisionShape3D
+## The character collider.
+@export var collider: CollisionShape3D
 
 ## The base camera offset, to be multiplied by the the appearance scale and
 ## assigned to the camera on apply.
 @export var base_camera_offset := 2.5
 
-var _base_ragdoll_collider_position := Vector3.ZERO
+var _collision_shape: BoxShape3D:
+	get:
+		return collider.shape as BoxShape3D
+
+var _base_collider_size := Vector3.ZERO
+var _base_collider_position := Vector3.ZERO
 
 @onready var _face_database := FumoFaceDatabase.get_singleton()
 
@@ -29,7 +32,8 @@ func _ready():
 	_on_fumo_camera_updated.call_deferred(fumo.camera)
 	fumo.camera_updated.connect(_on_fumo_camera_updated)
 
-	_base_ragdoll_collider_position = ragdoll_collider.position
+	_base_collider_size = _collision_shape.size
+	_base_collider_position = collider.position
 
 
 ## Get the scale set by [member appearance].
@@ -100,14 +104,15 @@ func _load_scale():
 	var act_scale := get_appearance_scale()
 	var scale_vec := Vector3.ONE * act_scale
 
+	# DON'T SCALE THE RIGIDBODY.
 	rig.scale = scale_vec
 	rig.position = Vector3.ZERO
 
-	main_collider.scale = scale_vec
-	main_collider.position = Vector3.UP * fumo.state.main_collision_shape.height * act_scale / 2.0
+	# DON'T SCALE COLLIDERS.
+	_collision_shape.size = _base_collider_size * act_scale
+	collider.position = _base_collider_position * act_scale
 
-	ragdoll_collider.scale = scale_vec
-	ragdoll_collider.position = _base_ragdoll_collider_position * act_scale
+	# DON'T SCALE ANYTHING RELATED TO PHYSICS OR YOU WILL DIE
 
 	if fumo.camera:
 		fumo.camera.camera_offset = base_camera_offset * act_scale

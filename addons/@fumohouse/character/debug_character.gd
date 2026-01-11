@@ -30,7 +30,6 @@ var _character: Character
 	get = _get_character
 
 var _physical_processor: CharacterPhysicalMotionProcessor
-var _stairs_processor: CharacterStairsMotionProcessor
 
 var _state: RichTextLabel
 
@@ -71,7 +70,7 @@ func _process(_delta: float):
 			_state.newline()
 
 	# Other
-	_tbl.set_val(&"position", CommonUtils.format_vector3(state.get_bottom_position()))
+	_tbl.set_val(&"position", CommonUtils.format_vector3(state.node.global_position))
 	_tbl.set_val(&"ragdoll", "Yes" if state.is_ragdoll else "No")
 
 	var grounded_str: String
@@ -128,7 +127,6 @@ func _update_character():
 		return
 
 	_physical_processor = character.state.get_motion_processor(CharacterPhysicalMotionProcessor.ID)
-	_stairs_processor = character.state.get_motion_processor(CharacterStairsMotionProcessor.ID)
 
 
 func _set_character(new_character: Character):
@@ -165,24 +163,3 @@ func _debug_draw():
 	# Velocities
 	const VELOCITY_SCALE := 8.0
 	_dd.draw_line(pos, pos + ctx.velocity / VELOCITY_SCALE, Color.BLUE)
-
-	# Stairs
-	if _stairs_processor and _stairs_processor._found_stair:
-		const STAIRS_AXIS_LENGTH := 0.25
-
-		var target := _stairs_processor._end_position
-
-		_dd.draw_marker(_stairs_processor._begin_position, Color.AQUA)
-		_dd.draw_marker(target, Color.AQUA)
-
-		_dd.draw_line(
-			target, target + _stairs_processor._wall_tangent * STAIRS_AXIS_LENGTH, Color.RED
-		)
-
-		_dd.draw_line(
-			target, target + _stairs_processor._slope_normal * STAIRS_AXIS_LENGTH, Color.GREEN
-		)
-
-		_dd.draw_line(
-			target, target + _stairs_processor._motion_vector * STAIRS_AXIS_LENGTH, Color.BLUE
-		)

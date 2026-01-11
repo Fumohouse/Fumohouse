@@ -1,13 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c872jdob35ayv"]
+[gd_scene load_steps=4 format=3 uid="uid://c872jdob35ayv"]
 
 [ext_resource type="Script" uid="uid://bxy81qrbdf53i" path="res://addons/@fumohouse/character/character.gd" id="1_p0xte"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p0xte"]
 bounce = 0.2
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p0xte"]
-resource_local_to_scene = true
-height = 3.4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gnrb6"]
 resource_local_to_scene = true
@@ -15,16 +11,11 @@ size = Vector3(0.7, 1, 0.45)
 
 [node name="Character" type="RigidBody3D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 3
 mass = 60.0
 physics_material_override = SubResource("PhysicsMaterial_p0xte")
 script = ExtResource("1_p0xte")
 
-[node name="MainCollider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
-shape = SubResource("CapsuleShape3D_p0xte")
-
-[node name="RagdollCollider" type="CollisionShape3D" parent="."]
+[node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 shape = SubResource("BoxShape3D_gnrb6")
-disabled = true

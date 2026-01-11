@@ -8,15 +8,11 @@ const ID := &"swim"
 ## [CharacterPhysicalMotionProcessor].
 var drag_coeff := 8.0
 
-## The minimum approximate distance (meters) of the player's head above the
+## The minimum approximate distance (meters) of the player's collider above the
 ## water to allow jumping out of the water.
 var min_jump_dist_above := 0.2
 ## The height (meters) of the jump applied when exiting the water.
 var jump_out_height := 7.25
-
-## Maximum approximate distance (meters) of the player's head above the water to
-## be considered submerged.
-var submerged_threshold := 0.3
 
 
 func _init():
@@ -101,19 +97,13 @@ func _process(delta: float, cancelled: bool):
 				# Any other direction
 				target_basis = movement_basis * Basis(Vector3.RIGHT, -PI / 2.0)
 
-			# Do a separate ray-based ground check which is more lenient and accounts for capsule
+			# Do a separate ray-based ground check which is more lenient and accounts for collider
 			# shape causing undesired normal output
-			var capsule_transform := state.main_collider.global_transform
-			var capsule_shape := state.main_collision_shape
-			var head_pos := (
-				capsule_transform.origin
-				+ capsule_transform.basis.y * (capsule_shape.height / 2.0 - capsule_shape.radius)
-			)
-
-			var check_dist := capsule_shape.radius * 3.0
+			var check_dist := state.collision_shape.size.y
 			var ground_ray_params := PhysicsRayQueryParameters3D.new()
-			ground_ray_params.from = head_pos
-			ground_ray_params.to = head_pos + Vector3.DOWN * check_dist
+			ground_ray_params.from = state.collider.global_position + Vector3.UP * check_dist / 2.0
+			ground_ray_params.to = ground_ray_params.from + Vector3.DOWN * check_dist
+			ground_ray_params.exclude = [state.rid]
 
 			var ground_result := state.node.get_world_3d().direct_space_state.intersect_ray(
 				ground_ray_params
@@ -160,26 +150,17 @@ func _is_in_water() -> Dictionary:
 
 	# Check depth with ray
 	const MARGIN := 0.5
-	var height := state.main_collision_shape.height
+	var height := state.collision_shape.size.y
 
 	var ray_params := PhysicsRayQueryParameters3D.new()
-	ray_params.from = state.main_collider.global_position + Vector3.UP * height / 2.0
+	ray_params.from = state.collider.global_position + Vector3.UP * height / 2.0
 	ray_params.to = ray_params.from + Vector3.DOWN * (height + MARGIN)
 	ray_params.collide_with_bodies = false
 	ray_params.collide_with_areas = true
 
 	var ray_result := state.node.get_world_3d().direct_space_state.intersect_ray(ray_params)
-	if not ray_result.is_empty():
-		# Distance from top of character to surface
+	if not ray_result.is_empty() and ray_result["collider"] == water_collider:
 		var dist_above := (ray_params.from - ray_result["position"] as Vector3).y
-		if dist_above > height:
-			return {"in_water": false}
-
-		if ray_result["collider"] == water_collider:
-			return {
-				"in_water": true,
-				"submerged": dist_above < submerged_threshold,
-				"dist_above": dist_above
-			}
+		return {"in_water": true, "submerged": false, "dist_above": dist_above}
 
 	return {"in_water": true, "submerged": true, "dist_above": -1.0}

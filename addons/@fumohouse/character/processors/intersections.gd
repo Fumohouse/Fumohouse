@@ -38,9 +38,9 @@ func _process(_delta: float, _cancelled: bool):
 
 	# Intersections
 	var intersect_params := PhysicsShapeQueryParameters3D.new()
-	intersect_params.shape = state.main_collision_shape
+	intersect_params.shape = state.collision_shape
 	intersect_params.collision_mask = state.node.collision_mask
-	intersect_params.transform = state.main_collider.global_transform
+	intersect_params.transform = state.collider.global_transform
 	intersect_params.collide_with_areas = true
 	intersect_params.collide_with_bodies = true
 	intersect_params.margin = state.margin

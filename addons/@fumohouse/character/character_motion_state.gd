@@ -5,11 +5,12 @@ extends RefCounted
 ##
 ## The forward direction is -Z.
 ##
-## The character uses two colliders: a capsule for normal mode, and a box for
-## ragdoll mode. The colliders should be made local to scene.
+## The origin of the character body should be at the bottom middle of its model
+## (e.g., between its feet).
 ##
-## The origin of the character body should be at the bottom center of its
-## collider.
+## The character uses one box collider for the torso and separates it from the
+## ground using the distance between the collider's bottom face and the
+## ground. The collider should be local to scene.
 
 ## A bit field enum representing the current state of the character.
 enum CharacterState {
@@ -40,24 +41,12 @@ var node: RigidBody3D
 ## The [RID] of [member node].
 var rid := RID()
 
-## The main (non-ragdoll) collider. Must have a [CapsuleShape3D] as its shape.
-var main_collider: CollisionShape3D
-## The shape of [member main_collider].
-var main_collision_shape: CapsuleShape3D:
+## The character collider. Must have a [BoxShape3D] as its shape.
+var collider: CollisionShape3D
+## The shape of [member collider].
+var collision_shape: BoxShape3D:
 	get:
-		return main_collider.shape as CapsuleShape3D
-
-## The ragdoll collider. Must have a [BoxShape3D] as its shape.
-var ragdoll_collider: CollisionShape3D
-## The shape of [member ragdoll_collider].
-var ragdoll_collision_shape: BoxShape3D:
-	get:
-		return ragdoll_collider.shape as BoxShape3D
-
-## The collision layer for non-ragdoll mode.
-var normal_collision_layer := 2
-## The collision layer for ragdoll mode.
-var ragdoll_collision_layer := 4
+		return collider.shape as BoxShape3D
 
 # OPTIONS #
 ## The maximum angle between the ground normal and vertical that is considered
@@ -86,13 +75,8 @@ var _motion_processors: Array[CharacterMotionProcessor] = []
 func initialize():
 	set_ragdoll(false)
 
-	# Overrides ground normal
-	add_processor(CharacterStairsMotionProcessor.new())
-
 	add_processor(CharacterIntersectionsMotionProcessor.new())
 	add_processor(CharacterGroundingMotionProcessor.new())
-
-	add_processor(CharacterSeparatorMotionProcessor.new())
 
 	add_processor(CharacterRagdollMotionProcessor.new())
 	add_processor(CharacterLadderMotionProcessor.new())
@@ -144,17 +128,11 @@ func should_push(rid: RID) -> bool:
 	return mode == PhysicsServer3D.BODY_MODE_RIGID or mode == PhysicsServer3D.BODY_MODE_RIGID_LINEAR
 
 
-## Get the bottom-middle position of this character.
+## Get the bottom-middle position of this character's collider.
 func get_bottom_position() -> Vector3:
-	if is_ragdoll:
-		var collider_transform := ragdoll_collider.global_transform
-		# basis.y incorporates the scale of the collider
-		return (
-			collider_transform.origin
-			- 0.5 * ragdoll_collision_shape.size.y * collider_transform.basis.y
-		)
-	else:
-		return node.global_transform.origin
+	var collider_transform := collider.global_transform
+	# basis.y incorporates the scale of the collider
+	return collider_transform.origin - 0.5 * collision_shape.size.y * collider_transform.basis.y
 
 
 ## Get whether the ground with the given [param normal] is considered stable. A
@@ -176,13 +154,11 @@ func set_body_mode(mode: PhysicsServer3D.BodyMode):
 
 ## Set the ragdoll mode of this character.
 func set_ragdoll(ragdoll: bool):
+	# FIXME: Something about this results in residual velocity.
+	# Move, sit, stand -> character drifts
 	set_body_mode(
 		PhysicsServer3D.BODY_MODE_RIGID if ragdoll else PhysicsServer3D.BODY_MODE_KINEMATIC
 	)
-	main_collider.disabled = ragdoll
-	ragdoll_collider.disabled = not ragdoll
-
-	node.collision_layer = ragdoll_collision_layer if ragdoll else normal_collision_layer
 
 	is_ragdoll = ragdoll
 

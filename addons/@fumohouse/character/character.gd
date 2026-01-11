@@ -18,16 +18,14 @@ var camera: CameraController:
 var state := CharacterMotionState.new()
 var _motion := CharacterMotionState.Motion.new()
 
-@onready var _main_collider: CollisionShape3D = $MainCollider
-@onready var _ragdoll_collider: CollisionShape3D = $RagdollCollider
+@onready var _collider: CollisionShape3D = $Collider
 
 
 func _ready():
 	state.node = self
 	state.rid = get_rid()
 
-	state.main_collider = _main_collider
-	state.ragdoll_collider = _ragdoll_collider
+	state.collider = _collider
 
 	state.initialize()
 
