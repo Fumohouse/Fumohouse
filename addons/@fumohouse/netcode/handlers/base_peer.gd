@@ -80,7 +80,17 @@ func _on_hello_server(peer: int, packet: HelloClient):
 		)
 		return
 
-	peer_data.identity = packet.identity
+	var requested_identity: String = packet.identity.strip_edges()
+	if requested_identity.is_empty():
+		_nm.disconnect_with_reason(peer, "Invalid username")
+		return
+
+	for remote_peer in _nm.get_peers():
+		if requested_identity == _nm.get_peer_identity(remote_peer):
+			_nm.disconnect_with_reason(peer, "Duplicate username")
+			return
+
+	peer_data.identity = requested_identity
 
 	var auth_type: NetworkManager.AuthType = NetworkManager.AuthType.NONE
 	if not _nm._auth.is_empty():
