@@ -5,6 +5,12 @@ extends Node
 
 signal before_quit
 
+## Indicates whether a quit is in progress.
+var is_quitting: bool:
+	get:
+		return _is_quitting
+
+var _is_quitting := false
 var _quit_inhibitors: Array[Callable] = []
 
 
@@ -30,6 +36,8 @@ func register_quit_inhibitor(inhibitor: Callable):
 
 
 func quit():
+	_is_quitting = true
+
 	for inhibitor in _quit_inhibitors:
 		if inhibitor.call():
 			return

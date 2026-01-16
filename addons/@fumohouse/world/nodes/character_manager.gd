@@ -80,7 +80,7 @@ func _delete_character(died: bool, callback := Callable()):
 		character.state.die(
 			_DEATH_TIMEOUT,
 			func():
-				if callback != Callable():
+				if callback.is_valid():
 					callback.call()
 
 				if character == _local_character:

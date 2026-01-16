@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cce2lc4hx05ok"]
+[gd_scene load_steps=5 format=3 uid="uid://cce2lc4hx05ok"]
 
 [ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/navigation/screen_base_layout.tscn" id="1_ykkn8"]
 [ext_resource type="Script" uid="uid://ckhaormv8jl70" path="res://addons/@fumohouse/main/ui/play_screen/play_screen.gd" id="2_pe716"]
 [ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="3_j1rdh"]
+[ext_resource type="PackedScene" uid="uid://bpdb7ma7vmfp3" path="res://addons/@fumohouse/navigation/components/status_popup.tscn" id="4_6sdiv"]
 
 [node name="PlayScreen" node_paths=PackedStringArray("tabs", "tab_content") instance=ExtResource("1_ykkn8")]
 script = ExtResource("2_pe716")
@@ -22,6 +23,11 @@ custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Worlds"
 
+[node name="Multiplayer" type="Button" parent="TopBar/RadioButtonContainer" index="1"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Multiplayer"
+
 [node name="Tabs" type="Control" parent="Contents/MarginContainer" index="0"]
 layout_mode = 2
 
@@ -38,3 +44,56 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 12
+
+[node name="Multiplayer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs" index="1"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer" index="0"]
+layout_mode = 2
+
+[node name="Address" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer/HBoxContainer" index="0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+placeholder_text = "Address"
+
+[node name="Port" type="SpinBox" parent="Contents/MarginContainer/Tabs/Multiplayer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 65535.0
+value = 50103.0
+
+[node name="Username" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Username"
+
+[node name="Password" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer" index="2"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Password"
+secret = true
+
+[node name="JoinButton" type="Button" parent="Contents/MarginContainer/Tabs/Multiplayer" index="3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Join"
+
+[node name="StatusPopup" parent="." index="2" instance=ExtResource("4_6sdiv")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -60.0
+offset_right = 140.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2

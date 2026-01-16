@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bjlyq7kguqj6c"]
+[gd_scene load_steps=20 format=3 uid="uid://bjlyq7kguqj6c"]
 
 [ext_resource type="PackedScene" uid="uid://ctxaywfcdgbmw" path="res://addons/@fumohouse/navigation/nav_menu.tscn" id="1_tge01"]
 [ext_resource type="Script" uid="uid://b83el535hlsj4" path="res://addons/@fumohouse/world/game_menu/game_menu.gd" id="2_8xol2"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ds5d313nse56r" path="res://addons/@fumohouse/world/game_menu/game_menu_button.tscn" id="8_uvyrv"]
 [ext_resource type="PackedScene" uid="uid://croenlf3yyt7h" path="res://addons/@fumohouse/music/music_controller.tscn" id="9_bsq5a"]
 [ext_resource type="PackedScene" uid="uid://d4h8y2vq573ow" path="res://addons/@fumohouse/navigation/character_editor/nav_character.tscn" id="11_bbkib"]
+[ext_resource type="PackedScene" uid="uid://bpdb7ma7vmfp3" path="res://addons/@fumohouse/navigation/components/status_popup.tscn" id="13_qv0xc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_itoxh"]
 resource_local_to_scene = true
@@ -211,4 +212,20 @@ offset_top = -150.5
 offset_right = -53.0
 offset_bottom = 130.5
 grow_horizontal = 0
+grow_vertical = 2
+
+[node name="StatusPopup" parent="Screens/MenuScreen" index="5" instance=ExtResource("13_qv0xc")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -60.0
+offset_right = 140.0
+offset_bottom = 60.0
+grow_horizontal = 2
 grow_vertical = 2

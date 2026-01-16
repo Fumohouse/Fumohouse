@@ -6,6 +6,7 @@ signal opened
 const NavCharacter := preload(
 	"res://addons/@fumohouse/navigation/character_editor/nav_character.gd"
 )
+const StatusPopup := preload("res://addons/@fumohouse/navigation/components/status_popup.gd")
 const BLUR_PARAM := "shader_parameter/blur"
 const DIM_PARAM := "shader_parameter/dim"
 
@@ -30,6 +31,8 @@ var _tween: Tween
 @onready var _blur_background: Control = $Blur
 @onready var _blur_mat: ShaderMaterial = _blur_background.material
 
+@onready var _status_popup: StatusPopup = %StatusPopup
+
 
 func _ready():
 	super()
@@ -40,6 +43,8 @@ func _ready():
 	_leave_button.pressed.connect(_on_leave_button_pressed)
 
 	_nav_character.edit_pressed.connect(switch_screen.bind(_char_edit_screen))
+
+	NetworkManager.get_singleton().status_update.connect(_on_nm_status_update)
 
 	nav_hide()
 
@@ -124,3 +129,13 @@ func _on_leave_button_pressed():
 	switch_screen(_leave_screen)
 	await get_tree().create_timer(0.5).timeout
 	WorldManager.get_singleton().leave()
+
+
+func _on_nm_status_update(msg: String, failure: bool):
+	if not failure or _is_leaving or QuitManager.get_singleton().is_quitting:
+		return
+
+	_status_popup.show()
+	_status_popup.heading_text = "Disconnected"
+	_status_popup.details_text = msg
+	nav_transition(true)

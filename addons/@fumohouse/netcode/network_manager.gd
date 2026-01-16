@@ -68,6 +68,18 @@ var local_peer_id: int:
 	get:
 		return _peer.get_unique_id() if _peer else 0
 
+## Getter for custom payload for [code]HELLOS[/code]. If non-empty, this
+## function is called when the server sends [code]HELLOS[/code] and its output
+## is injected into the packet payload. Function should take no arguments and
+## return a string.
+var get_negotiation_payload := Callable()
+## Handler for custom negotiation payload. If non-empty, this function is called
+## when the client receives the [code]HELLOS[/code] packet. Function should take
+## in a string and return [code]true[/code] if the handshake should continue,
+## and [code]false[/code] otherwise. The function may be asynchronous. When
+## canceling the handshake, use [method disconnect_with_reason].
+var handle_negotiation_payload := Callable()
+
 ## Increments on [method reset]. Used to detect in delayed functions whether
 ## the networking session was terminated.
 var _generation := 0
@@ -124,9 +136,10 @@ func _ready():
 ## enter [param password] to join.
 func serve(port: int, password := "") -> Error:
 	if _peer and _peer.get_connection_status() != MultiplayerPeer.CONNECTION_DISCONNECTED:
+		send_status_update("Server is already running", true, false)
 		return ERR_ALREADY_EXISTS
 
-	await send_status_update("Starting server...")
+	await send_status_update("Starting server…")
 
 	var crypto := Crypto.new()
 	var key: CryptoKey = crypto.generate_rsa(4096)
@@ -143,6 +156,7 @@ func serve(port: int, password := "") -> Error:
 	_peer = WebSocketMultiplayerPeer.new()
 	var err := _peer.create_server(port, "*", tls)
 	if err != OK:
+		send_status_update("Failed to start server", true, false)
 		return err
 
 	_mp.multiplayer_peer = _peer
@@ -158,7 +172,7 @@ func join(addr: String, port: int, identity: String, auth := "") -> Error:
 	if _peer and _peer.get_connection_status() != MultiplayerPeer.CONNECTION_DISCONNECTED:
 		return ERR_ALREADY_EXISTS
 
-	await send_status_update("Connecting...")
+	await send_status_update("Connecting…")
 
 	_auth = auth
 	_addr = addr
@@ -168,6 +182,7 @@ func join(addr: String, port: int, identity: String, auth := "") -> Error:
 	_peer = WebSocketMultiplayerPeer.new()
 	var err := _peer.create_client("wss://%s:%d" % [addr, port], TLSOptions.client_unsafe())
 	if err != OK:
+		send_status_update("Failed to create client", true, false)
 		return err
 
 	_mp.multiplayer_peer = _peer
@@ -197,7 +212,7 @@ func disconnect_timeout(peer: int, predicate := Callable(), timeout := 10.0):
 	var generation: int = _generation
 	await get_tree().create_timer(timeout).timeout
 
-	if (predicate != Callable() and not predicate.call()) or _generation != generation:
+	if (predicate.is_valid() and not predicate.call()) or _generation != generation:
 		return
 
 	if is_server:

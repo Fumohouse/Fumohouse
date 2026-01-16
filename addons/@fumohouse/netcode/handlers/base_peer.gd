@@ -89,6 +89,8 @@ func _on_hello_server(peer: int, packet: HelloClient):
 	# HANDSHAKE: 2) Server HELLO
 	var hello := HelloServer.new()
 	hello.auth_type = auth_type
+	if _nm.get_negotiation_payload.is_valid():
+		hello.userdata = _nm.get_negotiation_payload.call()
 	_nm.send_packet(peer, hello)
 
 	peer_data.state = NetworkManager.PeerState.AUTH
@@ -107,6 +109,12 @@ func _on_hello_client(packet: HelloServer):
 		_nm.disconnect_with_reason(1, "Incorrect stage for handshake begin")
 		return
 
+	if (
+		_nm.handle_negotiation_payload.is_valid()
+		and not await _nm.handle_negotiation_payload.call(packet.userdata)
+	):
+		return
+
 	# HANDSHAKE: 3) Client AUTH
 	var auth := Auth.new()
 	if packet.auth_type == NetworkManager.AuthType.PASSWORD:
@@ -117,7 +125,7 @@ func _on_hello_client(packet: HelloServer):
 	# Disconnect if handshake does not proceed (expecting SYNC)
 	_nm.disconnect_timeout(1, func(): return _nm.get_peer_state(1) == NetworkManager.PeerState.AUTH)
 
-	_nm.send_status_update("Authenticating...", false, false)
+	_nm.send_status_update("Authenticating…", false, false)
 
 
 func _on_auth_server(peer: int, packet: Auth):

@@ -191,7 +191,7 @@ func die(timeout_s: float, callback := Callable()):
 	await node.get_tree().create_timer(timeout_s).timeout
 	if is_instance_valid(node):
 		node.queue_free()
-		if callback != Callable():
+		if callback.is_valid():
 			(callback as Callable).call()
 
 

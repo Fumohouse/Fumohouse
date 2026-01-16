@@ -54,9 +54,9 @@ func register_packet_handler(
 	if not pre:
 		return
 
-	if handler_server != Callable():
+	if handler_server.is_valid():
 		pre.handlers_server.push_back(handler_server)
-	if handler_client != Callable():
+	if handler_client.is_valid():
 		pre.handlers_client.push_back(handler_client)
 
 
@@ -76,14 +76,14 @@ func handle_packets(peer: int, data: PackedByteArray):
 		var packet: NetworkPacket
 		if peer == 1:
 			# On the client -> server-origin
-			if pre.ctor_server == Callable():
+			if not pre.ctor_server.is_valid():
 				de.seek(next_pos)
 				continue
 
 			packet = pre.ctor_server.call()
 		else:
 			# On the server -> client-origin
-			if pre.ctor_client == Callable():
+			if not pre.ctor_client.is_valid():
 				de.seek(next_pos)
 				continue
 

@@ -64,10 +64,10 @@ func switch_screen(screen: TransitionElement):
 
 	_screen_out = _current_screen
 	if _current_screen:
-		_tween_out = _transition_screen(_current_screen, false)
+		_tween_out = await _transition_screen(_current_screen, false)
 
 	if screen:
-		_tween_in = _transition_screen(screen, true)
+		_tween_in = await _transition_screen(screen, true)
 
 	if screen and not inhibit_back:
 		_back_button.nav_transition(screen != main_screen)
@@ -101,7 +101,7 @@ func _hide_screen(screen: TransitionElement):
 func _transition_screen(screen: TransitionElement, vis: bool) -> Tween:
 	screen.visible = true
 
-	var tween := screen.nav_transition(vis)
+	var tween := await screen.nav_transition(vis)
 	if tween and not vis:
 		tween.finished.connect(func(): _hide_screen(screen), CONNECT_ONE_SHOT)
 

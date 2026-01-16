@@ -15,3 +15,6 @@ func _ready():
 	%SingleplayerButton.pressed.connect(
 		func(): WorldManager.get_singleton().start_singleplayer(world.name)
 	)
+	%MultiplayerButton.pressed.connect(
+		func(): WorldManager.get_singleton().start_multiplayer_server(world.name)
+	)

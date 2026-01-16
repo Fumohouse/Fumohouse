@@ -15,6 +15,7 @@ const NavCharacter := preload(
 @onready var _world_name: Label = %WorldName
 @onready var _music_controller: MusicController = $MusicController
 @onready var _nav_character: NavCharacter = $NavCharacter
+@onready var _status_popup: Control = %StatusPopup
 
 
 func _ready():
@@ -58,12 +59,17 @@ func nav_transition(vis: bool) -> Tween:
 		_bottom_bar, "modulate", target_modulate, MenuUtils.TRANSITION_DURATION
 	)
 	tween.parallel().tween_property(
+		_status_popup, "modulate", target_modulate, MenuUtils.TRANSITION_DURATION
+	)
+	tween.parallel().tween_property(
 		_bottom_bar, "position:y", _bottom_bar_target_y(vis), MenuUtils.TRANSITION_DURATION
 	)
 
-	_nav_buttons.nav_transition(vis)
+	await _nav_buttons.nav_transition(vis)  # wait for buttons to be enabled
 	_music_controller.nav_transition(vis)
 	_nav_character.nav_transition(vis)
+
+	%ContinueButton.disabled = _status_popup.visible
 
 	return tween
 

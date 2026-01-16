@@ -5,6 +5,8 @@ const ID: PackedByteArray = [0x00]
 
 ## Authentication type requested from the client.
 var auth_type: NetworkManager.AuthType = NetworkManager.AuthType.NONE
+## Custom payload to include for the handshake process.
+var userdata := ""
 
 
 func _init():
@@ -14,3 +16,4 @@ func _init():
 
 func _serde(serde: SerDe):
 	auth_type = serde.varuint(auth_type)
+	userdata = serde.str(userdata)

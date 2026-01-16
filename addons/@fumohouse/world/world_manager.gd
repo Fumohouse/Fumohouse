@@ -5,6 +5,9 @@ extends Node
 ## Fires when the world changes, or with [code]null[/code] when leaving a map.
 signal world_changed(world: WorldManifest)
 
+## Generic status update (for use with UI, etc.)
+signal status_update(msg: String, failure: bool)
+
 const _DEFAULT_WORLD := "@fumohouse/fumohouse"
 
 ## Callback to get the main scene when leaving. Should return a [Node].
@@ -19,6 +22,8 @@ var _runtime_scene: PackedScene
 var _current_world: WorldManifest
 var _current_runtime: WorldRuntime
 var _current_char_manager: CharacterManagerBase
+
+@onready var _nm := NetworkManager.get_singleton()
 
 
 static func get_singleton() -> WorldManager:
@@ -55,6 +60,8 @@ func load_world(id: String) -> WorldManifest:
 			break
 	if not world:
 		return null
+
+	await _send_status_update("Loading world…")
 
 	var scene = load(world.entry_scene) as PackedScene
 	if not scene:
@@ -94,18 +101,46 @@ func load_world(id: String) -> WorldManifest:
 
 ## Start a singleplayer session using the given world.
 func start_singleplayer(id: String):
-	var world := load_world(id)
+	var world := await load_world(id)
 	if not world:
 		return
 
 	_current_char_manager._spawn_character()
 
 
+## Start a multiplayer server using the given world.
+func start_multiplayer_server(id: String) -> Error:
+	_nm.get_negotiation_payload = func(): return id
+	# TODO: server configuration
+	var err := await _nm.serve(50103)
+	if err != OK:
+		return err
+	var world := await load_world(id)
+	if not world:
+		return ERR_FILE_NOT_FOUND
+	return OK
+
+
+## Join a multiplayer server started by [method start_multiplayer_server].
+## See [method NetworkManager.join].
+func join_multiplayer_server(addr: String, port: int, identity: String, auth := "") -> Error:
+	_nm.handle_negotiation_payload = _handle_negotiation_payload
+	return await _nm.join(addr, port, identity, auth)
+
+
 ## Leave the current world.
 func leave():
+	if _nm.is_active:
+		if _nm.is_server:
+			_nm.close_server()
+		else:
+			_nm.disconnect_with_reason(1, "Disconnected")
+
 	_current_world = null
 	_current_runtime = null
 	_current_char_manager = null
+
+	await _send_status_update("Loading main scene…")
 
 	var main_scene: Node = get_main_scene.call()
 	get_tree().root.add_child(main_scene)
@@ -134,3 +169,18 @@ func play_title_playlist():
 	var title_world := get_title_world()
 	MusicPlayer.get_singleton().load_playlists(title_world.playlists)
 	MusicPlayer.get_singleton().switch_playlist(title_world.title_playlist)
+
+
+func _send_status_update(msg: String, failure := false, ui_wait := true):
+	status_update.emit(msg, failure)
+	if ui_wait:
+		await CommonUtils.wait_for_ui_update(self)
+
+
+func _handle_negotiation_payload(payload: String):
+	var world := await load_world(payload)
+	if not world:
+		_nm.disconnect_with_reason(1, "Client doesn't have requested map")
+		return false
+
+	return true

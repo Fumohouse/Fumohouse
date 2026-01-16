@@ -63,8 +63,12 @@ Reserved for future use:
 1. The client sends `HELLOC` to the server.
 1. The server responds with `HELLOS`, providing the required method of
    authentication.
+   - The world is negotiated at this stage (logic implemented in
+     `@fumohouse/world`).
 1. The client acknowledges `HELLOS` with `AUTH`, providing authentication
    details if necessary.
+   - The client will disconnect if it does not have the required world (logic
+     implemented in `@fumohouse/world`).
 1. If authentication fails, the server kicks the client. Otherwise, the server
    acknowledges the client join by sending it a `SYNC` packet containing other
    joined peers' information.
