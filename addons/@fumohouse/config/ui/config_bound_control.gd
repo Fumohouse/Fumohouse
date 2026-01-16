@@ -22,7 +22,7 @@ var _updating_config := false
 func _ready():
 	for feature in config_manager.get_opt_features(key):
 		if not OS.has_feature(feature):
-			visible = false
+			hide()
 			return
 
 	# Wait for ConfigManager to load (e.g., when starting main scene directly)

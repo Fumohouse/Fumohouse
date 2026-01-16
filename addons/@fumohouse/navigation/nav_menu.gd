@@ -18,7 +18,7 @@ var _tween_out: Tween
 
 
 func _ready():
-	_back_button.visible = true  # hidden in editor
+	_back_button.show()  # hidden in editor
 	_back_button.nav_hide()
 	_back_button.pressed.connect(_on_back_button_pressed)
 
@@ -84,7 +84,7 @@ func set_screen(screen: TransitionElement):
 	_current_screen = screen
 
 	if screen:
-		screen.visible = true
+		screen.show()
 		screen.nav_show()
 
 		if screen and screen != main_screen:
@@ -95,11 +95,11 @@ func set_screen(screen: TransitionElement):
 
 func _hide_screen(screen: TransitionElement):
 	screen.nav_hide()
-	screen.visible = false
+	screen.hide()
 
 
 func _transition_screen(screen: TransitionElement, vis: bool) -> Tween:
-	screen.visible = true
+	screen.show()
 
 	var tween := await screen.nav_transition(vis)
 	if tween and not vis:

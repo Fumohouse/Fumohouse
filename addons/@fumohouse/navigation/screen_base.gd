@@ -9,7 +9,7 @@ var _current_tab: Control
 func _ready():
 	if tabs and tab_content:
 		for child in tab_content.get_children():
-			child.visible = false
+			child.hide()
 
 		tabs.selected_button = tabs.get_child(0) as Button
 		_on_selection_changed()
@@ -21,7 +21,7 @@ func _on_selection_changed():
 		return
 
 	if _current_tab:
-		_current_tab.visible = false
+		_current_tab.hide()
 
 	var tab := tabs.selected_button
 	if not tab:
@@ -29,5 +29,5 @@ func _on_selection_changed():
 		return
 
 	var tab_contents := tab_content.get_child(tab.get_index())
-	tab_contents.visible = true
+	tab_contents.show()
 	_current_tab = tab_contents

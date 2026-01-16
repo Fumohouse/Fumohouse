@@ -66,12 +66,12 @@ func _set_alpha(alpha: float, force: bool = false):
 	_alpha = alpha
 
 	if alpha == 0.0:
-		rig.visible = false
-		visible = false
+		rig.hide()
+		hide()
 		return
 
-	rig.visible = true
-	visible = true
+	rig.show()
+	show()
 
 	_set_rig_shader_parameter(&"alpha", _rig_alpha * alpha)
 	_set_attachment_shader_parameter(&"alpha", alpha)

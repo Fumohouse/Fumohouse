@@ -36,7 +36,7 @@ func nav_transition(vis: bool):
 	if _tween:
 		_tween.kill()
 
-	visible = true
+	show()
 
 	var tween := MenuUtils.common_tween(self, vis)
 
@@ -51,7 +51,7 @@ func nav_transition(vis: bool):
 
 	if not vis:
 		await tween.finished
-		visible = false
+		hide()
 
 
 func _load_appearance():

@@ -17,23 +17,24 @@ func _ready():
 
 
 func nav_hide():
-	visible = false
+	hide()
 	position.y = _target_y(false)
 
 
 func nav_show():
-	visible = true
+	show()
 	position.y = _target_y(true)
 
 
 func nav_transition(vis: bool):
-	visible = true
+	show()
 
 	var tween := MenuUtils.common_tween(self, vis)
 	tween.tween_property(self, "position:y", _target_y(vis), MenuUtils.TRANSITION_DURATION)
 
 	if not vis:
-		tween.finished.connect(func(): visible = false, CONNECT_ONE_SHOT)
+		await tween.finished
+		hide()
 
 
 func _target_y(vis: bool):

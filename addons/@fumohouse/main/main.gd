@@ -69,7 +69,7 @@ func _ready():
 
 
 func dim(vis: bool) -> Tween:
-	_dim.visible = true
+	_dim.show()
 
 	var duration := (
 		1.5 * MenuUtils.TRANSITION_DURATION if vis else 0.5 * MenuUtils.TRANSITION_DURATION
@@ -79,7 +79,7 @@ func dim(vis: bool) -> Tween:
 	tween.tween_property(_dim, "modulate", Color.WHITE if vis else Color.TRANSPARENT, duration)
 
 	if not vis:
-		tween.finished.connect(func(): _dim.visible = false, CONNECT_ONE_SHOT)
+		tween.finished.connect(func(): _dim.hide(), CONNECT_ONE_SHOT)
 
 	return tween
 

@@ -167,7 +167,7 @@ func _reparent_controls():
 	_orig_size = contents.size
 	contents.reparent(_viewport)
 	# Visible is false in editor to not clutter 2D view.
-	contents.visible = true
+	contents.show()
 
 
 func _get_corners() -> Array[Vector3]:

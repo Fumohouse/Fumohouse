@@ -100,19 +100,19 @@ func _update_song(song: Song):
 
 func nav_hide():
 	scale = Vector2(0, 1)
-	visible = false
+	hide()
 
 
 func nav_show():
 	scale = Vector2.ONE
-	visible = true
+	show()
 
 
 func nav_transition(vis: bool):
 	if _tween:
 		_tween.kill()
 
-	visible = true
+	show()
 
 	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 
@@ -125,4 +125,4 @@ func nav_transition(vis: bool):
 
 	if not vis:
 		await tween.finished
-		visible = false
+		hide()

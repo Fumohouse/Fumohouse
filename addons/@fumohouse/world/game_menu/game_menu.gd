@@ -62,7 +62,7 @@ func nav_hide():
 	super()
 
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_blur_background.visible = false
+	_blur_background.hide()
 
 	# Godot dislikes tweening from 0 very much
 	_blur_mat.set_shader_parameter(BLUR_PARAM, 0.001)
@@ -93,7 +93,7 @@ func nav_transition(vis: bool) -> Tween:
 		_tween.kill()
 
 	mouse_filter = Control.MOUSE_FILTER_STOP if vis else Control.MOUSE_FILTER_IGNORE
-	_blur_background.visible = true
+	_blur_background.show()
 	switch_screen(_main_screen if vis else null)
 
 	var tween := MenuUtils.common_tween(self, vis)
@@ -106,7 +106,7 @@ func nav_transition(vis: bool) -> Tween:
 
 	if not vis:
 		await tween.finished
-		_blur_background.visible = false
+		_blur_background.hide()
 
 	return tween
 

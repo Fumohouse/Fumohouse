@@ -20,7 +20,7 @@ func _process(_delta: float):
 
 	var intersect_result: Array[Dictionary] = direct_space_state.intersect_shape(intersect_params)
 	if intersect_result.is_empty():
-		visible = false
+		hide()
 		return
 
 	var water_collider: Area3D = null
@@ -31,7 +31,7 @@ func _process(_delta: float):
 			break
 
 	if not water_collider:
-		visible = false
+		hide()
 		return
 
 	# Check depth with ray
@@ -44,7 +44,7 @@ func _process(_delta: float):
 	var ray_result: Dictionary = direct_space_state.intersect_ray(ray_params)
 	if not ray_result.is_empty() and ray_result["collider"] == water_collider:
 		# Not underwater
-		visible = false
+		hide()
 		return
 
-	visible = true
+	show()
