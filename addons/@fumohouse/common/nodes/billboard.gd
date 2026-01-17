@@ -82,7 +82,7 @@ func _process(delta: float):
 
 func _unhandled_mouse(event: InputEventMouse):
 	var camera := get_viewport().get_camera_3d()
-	if not camera:
+	if not camera or camera.is_position_behind(global_position):
 		return
 
 	var pressed := event is InputEventMouseButton and (event as InputEventMouseButton).pressed
@@ -118,7 +118,8 @@ func _unhandled_mouse(event: InputEventMouse):
 	_viewport.push_input(viewport_evt, true)
 	if pressed:
 		is_focused = true
-	get_viewport().set_input_as_handled()
+	if _viewport.is_input_handled():
+		get_viewport().set_input_as_handled()
 
 
 func _unhandled_key(event: InputEventKey):
@@ -126,7 +127,8 @@ func _unhandled_key(event: InputEventKey):
 		return
 
 	_viewport.push_input(event)
-	get_viewport().set_input_as_handled()
+	if _viewport.is_input_handled():
+		get_viewport().set_input_as_handled()
 
 
 func _unhandled_input(event: InputEvent):
