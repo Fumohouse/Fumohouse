@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://yrkw3gddj5da"]
+
+[ext_resource type="Script" uid="uid://dgsofkv1csrx8" path="res://addons/@fumohouse/fumo/nametag/nametag.gd" id="1_2u0ao"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnlvm"]
+bg_color = Color(0, 0, 0, 0.3137255)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_2u0ao"]
+font_size = 18
+
+[node name="Nametag" type="Sprite3D"]
+script = ExtResource("1_2u0ao")
+metadata/_custom_type_script = "uid://ccc2egf38uchc"
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dnlvm")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Name" type="Label" parent="Control/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "voided_etc"
+label_settings = SubResource("LabelSettings_2u0ao")

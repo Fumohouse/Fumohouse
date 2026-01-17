@@ -33,3 +33,27 @@ static func apply_drag(vec: Vector3, coeff: float, delta: float) -> Vector3:
 static func wait_for_ui_update(node: Node):
 	for i in 2:
 		await node.get_tree().process_frame
+
+
+## Get the [AABB] in world space of the given [param node]. Optionally exclude
+## nodes from the interior search.
+## https://www.reddit.com/r/godot/comments/18bfn0n/comment/mcvw7cl/
+static func get_aabb(node: Node3D, exclude: Array[Node] = [], do_transform := false) -> AABB:
+	var bounds := AABB()
+
+	if node is VisualInstance3D:
+		bounds = (node as VisualInstance3D).get_aabb()
+
+	for child in node.get_children():
+		if child is not Node3D or exclude.has(child):
+			continue
+		var child_bounds := get_aabb(child, exclude, true)
+		if bounds.size == Vector3.ZERO:
+			bounds = child_bounds
+		else:
+			bounds = bounds.merge(child_bounds)
+
+	if do_transform:
+		bounds = node.transform * bounds
+
+	return bounds

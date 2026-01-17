@@ -21,6 +21,7 @@ var _dissolve := 0.0
 var _alpha := 1.0
 var _rig_alpha := 1.0
 
+@onready var animation_tree: AnimationTree = %AnimationTree
 @onready var _head: MeshInstance3D = $Rig/Armature/Skeleton3D/HeadModel
 
 

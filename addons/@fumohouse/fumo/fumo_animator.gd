@@ -43,11 +43,13 @@ var min_running_time := 0.15
 var _running_time := 0.0
 
 var _fumo: Fumo
+var _animator: AnimationTree:
+	get:
+		return _fumo.animation_tree
 
 var _horizontal_motion: CharacterHorizontalMotionProcessor
 var _ladder_motion: CharacterLadderMotionProcessor
 
-var _animator: AnimationTree
 var _death_particles: GPUParticles3D
 
 var _state: Variant = null
@@ -133,7 +135,6 @@ func _initialize():
 	_horizontal_motion = _fumo.state.get_motion_processor(CharacterHorizontalMotionProcessor.ID)
 	_ladder_motion = _fumo.state.get_motion_processor(CharacterLadderMotionProcessor.ID)
 
-	_animator = _fumo.get_node("Rig/Armature/AnimationTree")
 	_death_particles = _fumo.get_node("%DeathParticles")
 
 

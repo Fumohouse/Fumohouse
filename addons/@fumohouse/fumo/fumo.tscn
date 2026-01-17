@@ -1,9 +1,10 @@
-[gd_scene load_steps=53 format=3 uid="uid://bnic23uqggm8j"]
+[gd_scene load_steps=54 format=3 uid="uid://bnic23uqggm8j"]
 
 [ext_resource type="PackedScene" uid="uid://c872jdob35ayv" path="res://addons/@fumohouse/character/character.tscn" id="1_6g54x"]
 [ext_resource type="PackedScene" uid="uid://bwtelncgka6g3" path="res://addons/@fumohouse/fumo/assets/rig.glb" id="2_6pbm6"]
 [ext_resource type="Script" uid="uid://cpw0w5ldg7b3i" path="res://addons/@fumohouse/fumo/fumo.gd" id="2_31wo1"]
 [ext_resource type="Texture2D" uid="uid://o8m4jm13vq10" path="res://addons/@fumohouse/fumo/assets/triangle_particles.svg" id="3_31wo1"]
+[ext_resource type="PackedScene" uid="uid://yrkw3gddj5da" path="res://addons/@fumohouse/fumo/nametag/nametag.tscn" id="3_sgryk"]
 [ext_resource type="Script" uid="uid://bsokmtjsus6uj" path="res://addons/@fumohouse/fumo/fumo_appearance_manager.gd" id="3_w1fxq"]
 [ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="4_w1fxq"]
 [ext_resource type="Animation" uid="uid://df6ce63rh8s3f" path="res://addons/@fumohouse/fumo/assets/anims/base.tres" id="4_x1x5v"]
@@ -307,6 +308,10 @@ bone_idx = 5
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
+[node name="Nametag" parent="Appearance/Head" index="0" node_paths=PackedStringArray("fumo") instance=ExtResource("3_sgryk")]
+transform = Transform3D(1, 9.933157e-10, -4.5710954e-10, -9.878376e-10, 0.99993014, 0.011826491, 4.688218e-10, -0.011826491, 0.99993014, 3.9007542e-10, -1.9600732, 0.054918952)
+fumo = NodePath("../../..")
+
 [node name="LArm" type="BoneAttachment3D" parent="Appearance" index="1"]
 transform = Transform3D(0.41574475, -0.7643659, -0.49285, -0.4928499, -0.644783, 0.5842551, -0.76436585, 6.519258e-08, -0.64478266, -0.20191117, 1.8660433, 0.010923042)
 bone_name = "LArm"
@@ -395,6 +400,7 @@ process_material = SubResource("ParticleProcessMaterial_5tkov")
 draw_pass_1 = SubResource("PlaneMesh_sv13b")
 
 [node name="AnimationTree" type="AnimationTree" parent="Rig/Armature" index="1"]
+unique_name_in_owner = true
 root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeBlendTree_mgvk1")
 anim_player = NodePath("../AnimationPlayer")

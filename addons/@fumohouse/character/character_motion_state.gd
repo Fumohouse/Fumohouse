@@ -34,8 +34,22 @@ enum CharacterState {
 	DEAD = 32768,
 }
 
+## Represents what type of multiplayer character this is.
+enum MultiplayerMode {
+	## Singleplayer mode.
+	SINGLEPLAYER = 0,
+	## Multiplayer: This Godot instance is acting as server.
+	MULTIPLAYER_SERVER = 1,
+	## Multiplayer: This is the local character.
+	MULTIPLAYER_LOCAL = 2,
+	## Multiplayer: This is not the local character.
+	MULTIPLAYER_REMOTE = 3,
+}
+
 # MANAGED EXTERNALLY #
 # All of these properties must be set externally prior to [method initialize].
+## This character's multiplayer mode.
+var multiplayer_mode: MultiplayerMode = MultiplayerMode.SINGLEPLAYER
 ## The [Node] representing this character.
 var node: RigidBody3D
 ## The [RID] of [member node].
@@ -75,17 +89,25 @@ var _motion_processors: Array[CharacterMotionProcessor] = []
 func initialize():
 	set_ragdoll(false)
 
-	add_processor(CharacterIntersectionsMotionProcessor.new())
-	add_processor(CharacterGroundingMotionProcessor.new())
+	var is_remote := multiplayer_mode == MultiplayerMode.MULTIPLAYER_REMOTE
+	var is_server := multiplayer_mode == MultiplayerMode.MULTIPLAYER_SERVER
+
+	if not is_remote:
+		add_processor(CharacterIntersectionsMotionProcessor.new())
+		add_processor(CharacterGroundingMotionProcessor.new())
+
+	# TODO: interpolator
 
 	add_processor(CharacterRagdollMotionProcessor.new())
 	add_processor(CharacterLadderMotionProcessor.new())
-	add_processor(CharacterSwimMotionProcessor.new())
+	if not is_remote:
+		add_processor(CharacterSwimMotionProcessor.new())
 
 	add_processor(CharacterHorizontalMotionProcessor.new())
-	add_processor(CharacterPhysicalMotionProcessor.new())
-	add_processor(CharacterPlatformMotionProcessor.new())
-	add_processor(CharacterCollisionMotionProcessor.new())
+	if not is_remote:
+		add_processor(CharacterPhysicalMotionProcessor.new())
+		add_processor(CharacterPlatformMotionProcessor.new())
+		add_processor(CharacterCollisionMotionProcessor.new())
 
 	add_processor(CharacterMoveMotionProcessor.new())
 

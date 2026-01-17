@@ -8,6 +8,11 @@ signal camera_updated(new_camera: CameraController)
 ## If [code]true[/code], processing for this character is disabled.
 @export var disabled := false
 
+## This character's multiplayer mode.
+@export var multiplayer_mode: CharacterMotionState.MultiplayerMode = (
+	CharacterMotionState.MultiplayerMode.SINGLEPLAYER
+)
+
 var _camera: CameraController
 ## The current camera controller focused on this character.
 var camera: CameraController:
@@ -22,6 +27,7 @@ var _motion := CharacterMotionState.Motion.new()
 
 
 func _ready():
+	state.multiplayer_mode = multiplayer_mode
 	state.node = self
 	state.rid = get_rid()
 

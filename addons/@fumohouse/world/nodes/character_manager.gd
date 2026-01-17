@@ -89,6 +89,15 @@ func _spawn_character(
 ) -> Node3D:
 	peer = _get_real_id(peer)
 	var fumo: Fumo = _CHARACTER_SCENE.instantiate()
+	if _nm.is_active:
+		if _nm.is_server:
+			fumo.multiplayer_mode = CharacterMotionState.MultiplayerMode.MULTIPLAYER_SERVER
+		elif peer == 0:
+			fumo.multiplayer_mode = CharacterMotionState.MultiplayerMode.MULTIPLAYER_LOCAL
+		else:
+			fumo.multiplayer_mode = CharacterMotionState.MultiplayerMode.MULTIPLAYER_REMOTE
+	else:
+		fumo.multiplayer_mode = CharacterMotionState.MultiplayerMode.SINGLEPLAYER
 
 	if not appearance:
 		if peer == 0:
