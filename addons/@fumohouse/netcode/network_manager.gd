@@ -71,11 +71,11 @@ var local_peer_id: int:
 ## Getter for custom payload for [code]HELLOS[/code]. If non-empty, this
 ## function is called when the server sends [code]HELLOS[/code] and its output
 ## is injected into the packet payload. Function should take no arguments and
-## return a string.
+## return a buffer.
 var get_negotiation_payload := Callable()
 ## Handler for custom negotiation payload. If non-empty, this function is called
 ## when the client receives the [code]HELLOS[/code] packet. Function should take
-## in a string and return [code]true[/code] if the handshake should continue,
+## in a buffer and return [code]true[/code] if the handshake should continue,
 ## and [code]false[/code] otherwise. The function may be asynchronous. When
 ## canceling the handshake, use [method disconnect_with_reason].
 var handle_negotiation_payload := Callable()

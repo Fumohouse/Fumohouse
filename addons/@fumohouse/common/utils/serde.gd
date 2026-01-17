@@ -37,6 +37,14 @@ func buffer(buf: PackedByteArray) -> PackedByteArray:
 	return []
 
 
+## Encode/decode a raw buffer. Size is stored in the input/output buffer.
+## On deserialize, writes data into the input buffer.
+func sized_buffer(buf: PackedByteArray) -> PackedByteArray:
+	buf.resize(varuint(buf.size()))
+	buffer(buf)
+	return buf
+
+
 ## Encode/decode a variable-length unsigned integer, where the most significant
 ## bit of each byte is 1 if and only if there is another byte to consider, and
 ## the least significant 7 bits encode the value. The least significant bits are

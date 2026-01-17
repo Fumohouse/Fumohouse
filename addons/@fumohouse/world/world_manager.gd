@@ -110,7 +110,7 @@ func start_singleplayer(id: String):
 
 ## Start a multiplayer server using the given world.
 func start_multiplayer_server(id: String) -> Error:
-	_nm.get_negotiation_payload = func(): return id
+	_nm.get_negotiation_payload = func(): return id.to_utf8_buffer()
 	# TODO: server configuration
 	var err := await _nm.serve(50103)
 	if err != OK:
@@ -177,8 +177,8 @@ func _send_status_update(msg: String, failure := false, ui_wait := true):
 		await CommonUtils.wait_for_ui_update(self)
 
 
-func _handle_negotiation_payload(payload: String):
-	var world := await load_world(payload)
+func _handle_negotiation_payload(payload: PackedByteArray):
+	var world := await load_world(payload.get_string_from_utf8())
 	if not world:
 		_nm.disconnect_with_reason(1, "Client doesn't have requested map")
 		return false
