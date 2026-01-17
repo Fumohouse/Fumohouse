@@ -17,6 +17,7 @@ script = ExtResource("1_2u0ao")
 metadata/_custom_type_script = "uid://ccc2egf38uchc"
 
 [node name="Control" type="Control" parent="."]
+visible = false
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 3
 anchors_preset = 0

@@ -55,7 +55,7 @@ func _process(delta: float):
 		global_transform = Transform3D(camera.global_basis, global_position)
 
 	var screen_size: Vector2 = get_screen_size(camera)
-	var max_size: Vector2 = get_window().size * 4
+	var max_size: Vector2 = get_window().size
 
 	var viewport_size: Vector2
 	if screen_size.x > max_size.x or screen_size.y > max_size.y:
@@ -148,7 +148,11 @@ func get_screen_size(camera: Camera3D) -> Vector2:
 	var screen_tl: Vector2 = camera.unproject_position(corners[0])
 	var screen_br: Vector2 = camera.unproject_position(corners[1])
 
-	return screen_br - screen_tl
+	# Scaling necessary; output coord space seems to be same as all CanvasItems
+	var window := get_window()
+	var scale := (window.size as Vector2) / (window.content_scale_size as Vector2)
+
+	return (screen_br - screen_tl) * max(scale.x, scale.y)
 
 
 func _reparent_controls():
