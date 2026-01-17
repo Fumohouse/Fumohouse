@@ -17,6 +17,16 @@ var get_main_scene: Callable = func(): return null
 ## and the previous scene. This function must free the previous scene (if any).
 var prepare_main_scene: Callable = func(scene, prev_scene): pass
 
+## The currently loaded world, or [code]null[/code] if no world is loaded.
+var current_world: WorldManifest:
+	get:
+		return _current_world
+
+## The current character manager, or [code]null[/code] if no world is loaded.
+var current_char_manager: CharacterManagerBase:
+	get:
+		return _current_char_manager
+
 var _runtime_scene: PackedScene
 
 var _current_world: WorldManifest
@@ -44,11 +54,6 @@ func get_worlds() -> Array[WorldManifest]:
 			worlds.push_back(module as WorldManifest)
 
 	return worlds
-
-
-## Get the currently loaded world, or [code]null[/code] if no world is loaded.
-func get_current_world() -> WorldManifest:
-	return _current_world
 
 
 ## Load the given world into the scene tree.
@@ -105,7 +110,7 @@ func start_singleplayer(id: String):
 	if not world:
 		return
 
-	_current_char_manager._spawn_character()
+	_current_char_manager._spawn_character(0)
 
 
 ## Start a multiplayer server using the given world.

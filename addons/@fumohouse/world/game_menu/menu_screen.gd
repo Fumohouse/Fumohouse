@@ -19,7 +19,7 @@ const NavCharacter := preload(
 
 
 func _ready():
-	var current_world: WorldManifest = WorldManager.get_singleton().get_current_world()
+	var current_world: WorldManifest = WorldManager.get_singleton().current_world
 	if not current_world:
 		return
 	_world_name.text = "%s • %s" % [current_world.display_name, current_world.author]

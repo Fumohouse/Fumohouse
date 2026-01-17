@@ -9,6 +9,10 @@ signal server_started
 signal client_connected
 ## Fired after the client completes the handshake.
 signal client_joined
+## Fired after a remote peer completes the handshake.
+signal client_peer_joined(id: int)
+## Fired after a remote peer disconnects from the server.
+signal client_peer_disconnected(id: int)
 
 ## Fired after a peer connects to the server (prior to handshake).
 signal server_peer_connected(id: int)
@@ -67,6 +71,11 @@ var is_server: bool:
 var local_peer_id: int:
 	get:
 		return _peer.get_unique_id() if _peer else 0
+
+## Local player identity.
+var local_identity: String:
+	get:
+		return _identity
 
 ## Getter for custom payload for [code]HELLOS[/code]. If non-empty, this
 ## function is called when the server sends [code]HELLOS[/code] and its output

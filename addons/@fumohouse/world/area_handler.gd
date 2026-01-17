@@ -15,7 +15,7 @@ func _process(delta: float, cancelled: bool):
 		mp.switch_playlist(&"")
 		return
 
-	var current_world: WorldManifest = WorldManager.get_singleton().get_current_world()
+	var current_world: WorldManifest = WorldManager.get_singleton().current_world
 	if not current_world:
 		return
 

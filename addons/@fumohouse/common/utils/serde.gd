@@ -116,6 +116,21 @@ func f64(value: float) -> float:
 	return 0.0
 
 
+## Encode/decode a [Vector3].
+func vector3(value: Vector3) -> Vector3:
+	return Vector3(f64(value.x), f64(value.y), f64(value.z))
+
+
+## Encode/decode a [Basis].
+func basis(value: Basis) -> Basis:
+	return Basis(vector3(value.x), vector3(value.y), vector3(value.z))
+
+
+## Encode/decode a [Transform3D].
+func transform_3d(value: Transform3D) -> Transform3D:
+	return Transform3D(basis(value.basis), vector3(value.origin))
+
+
 ## Encode/decode a UTF-8 string.
 func str(value: String) -> String:
 	return ""

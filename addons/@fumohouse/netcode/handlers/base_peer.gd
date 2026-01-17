@@ -218,8 +218,10 @@ func _on_peer_state_client(packet: PeerState):
 		remote_peer_data.state = NetworkManager.PeerState.JOINED
 		remote_peer_data.identity = packet.identity
 		_nm._peers[packet.peer] = remote_peer_data
+		_nm.client_peer_joined.emit(packet.peer)
 	elif packet.status == NetworkManager.PeerStateUpdate.LEFT:
 		print("[Networking] Peer %d (%s) left the game" % [packet.peer, packet.identity])
+		_nm.client_peer_disconnected.emit(packet.peer)
 		_nm._peers.erase(packet.peer)
 
 

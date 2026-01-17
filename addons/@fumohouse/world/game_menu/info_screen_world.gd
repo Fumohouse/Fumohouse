@@ -4,7 +4,7 @@ extends "res://addons/@fumohouse/navigation/info_screen/info_screen_base.gd"
 
 
 func _ready():
-	var world: WorldManifest = WorldManager.get_singleton().get_current_world()
+	var world: WorldManifest = WorldManager.get_singleton().current_world
 	if world:
 		entry_module = world.name
 

@@ -40,13 +40,17 @@ This section only covers the packet structure introduced in Fumohouse, not
 
 Identifier allocation:
 
-| ID     | Server-bound/Client-origin               | Client-bound/Server-origin |
-|--------|------------------------------------------|----------------------------|
-| `0x00` | `HELLOC`: Request to join                | `HELLOS`: Handshake reply  |
-| `0x01` | `GOODBYE`: Disconnect with reason        | *Same as server-bound*     |
-| `0x02` | `AUTH`: Continue handshake, authenticate | `SYNC`: Sync peer status   |
-| `0x03` |                                          | `PEER`: Peer status        |
-| `0x04` | `PING`: Latency test                     | *Same as server-bound*     |
+| ID     | Server-bound/Client-origin               | Client-bound/Server-origin     |
+|--------|------------------------------------------|--------------------------------|
+| `0x00` | `HELLOC`: Request to join                | `HELLOS`: Handshake reply      |
+| `0x01` | `GOODBYE`: Disconnect with reason        | *Same as server-bound*         |
+| `0x02` | `AUTH`: Continue handshake, authenticate | `SYNC`: Sync peer status       |
+| `0x03` |                                          | `PEER`: Peer status            |
+| `0x04` | `PING`: Latency test                     | *Same as server-bound*         |
+| `0x40` | `CHRSPAWN`: Character spawn request      | Remote character spawn         |
+| `0x41` | `CHRDEL`: Character delete request       | Remote character delete        |
+| `0x42` |                                          | `CHRSYN`: Character state sync |
+| `0x43` | `CHRAPR`: Character appearance request   | Remote appearance change       |
 
 Reserved for future use:
 
