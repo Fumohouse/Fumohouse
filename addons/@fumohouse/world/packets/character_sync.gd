@@ -24,6 +24,7 @@ func _serde(serde: SerDe):
 			char_state.appearance = Appearance.new()
 			char_state.appearance.serde(serde)
 			char_state.transform = serde.transform_3d(Transform3D.IDENTITY)
+			char_state.motion_state = serde.sized_buffer([])
 
 			state[peer_id] = char_state
 	else:
@@ -33,3 +34,4 @@ func _serde(serde: SerDe):
 
 			char_state.appearance.serde(serde)
 			serde.transform_3d(char_state.transform)
+			serde.sized_buffer(char_state.motion_state)

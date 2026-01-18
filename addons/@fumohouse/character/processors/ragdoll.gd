@@ -17,6 +17,10 @@ func _init():
 
 
 func _process(delta: float, _cancelled: bool):
+	# Keep this processor so seats are synced
+	if state.is_remote:
+		return
+
 	_handle_state(ctx.motion.sit, CharacterMotionState.CharacterState.SITTING)
 
 	# Seat handling
@@ -50,6 +54,33 @@ func _process(delta: float, _cancelled: bool):
 
 						seat.occupant = state.node
 						_current_seat = seat
+
+
+func _state_serde(serde: SerDe):
+	var curr_seat_path: String = String(_current_seat.get_path()) if _current_seat else ""
+	var seat_path := serde.str(curr_seat_path)
+	if curr_seat_path != seat_path:
+		if _current_seat:
+			_current_seat.occupant = null
+			_current_seat = null
+			state.set_ragdoll(false)
+		if not seat_path.is_empty():
+			var seat_node := state.node.get_node_or_null(seat_path) as Seat
+			_current_seat = seat_node
+			state.set_ragdoll(true)
+			if seat_node:
+				state.state = state.state | CharacterMotionState.CharacterState.SITTING
+				seat_node.occupant = state.node
+
+	_seat_debounce_left = serde.f64(_seat_debounce_left)
+
+	var curr_last_seat_path: String = String(_last_seat.get_path()) if _last_seat else ""
+	var last_seat_path := serde.str(curr_last_seat_path)
+	if curr_last_seat_path != last_seat_path:
+		if last_seat_path.is_empty():
+			_last_seat = null
+		else:
+			_last_seat = state.node.get_node_or_null(last_seat_path) as Seat
 
 
 func _handle_state(action: bool, char_state: CharacterMotionState.CharacterState):

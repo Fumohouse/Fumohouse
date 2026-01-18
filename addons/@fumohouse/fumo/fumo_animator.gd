@@ -139,7 +139,7 @@ func _initialize():
 
 
 func _process(delta: float, cancelled: bool):
-	if cancelled:
+	if cancelled or ctx.is_replay:
 		return
 
 	for state_info in _STATES:

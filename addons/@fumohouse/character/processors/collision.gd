@@ -60,3 +60,8 @@ func _process(delta: float, cancelled: bool):
 
 func _get_velocity() -> Variant:
 	return _velocity
+
+
+func _state_serde(serde: SerDe):
+	_velocity = serde.vector3(_velocity)
+	_angular_velocity = serde.vector3(_angular_velocity)

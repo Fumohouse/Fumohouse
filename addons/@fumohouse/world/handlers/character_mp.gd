@@ -8,6 +8,9 @@ const CharacterDelete := preload("../packets/character_delete.gd")
 const CharacterSync := preload("../packets/character_sync.gd")
 const CharacterAppearance := preload("../packets/character_appearance.gd")
 
+const CharacterMoved := preload("../packets/character_moved.gd")
+const CharacterMove := preload("../packets/character_move.gd")
+
 var _client_did_sync := false
 
 @onready var _nm := NetworkManager.get_singleton()
@@ -22,6 +25,7 @@ func _ready():
 	_nmr.register_packet(CharacterDelete.ID, CharacterDelete.new, CharacterDelete.new)
 	_nmr.register_packet(CharacterSync.ID, CharacterSync.new)
 	_nmr.register_packet(CharacterAppearance.ID, CharacterAppearance.new, CharacterAppearance.new)
+	_nmr.register_packet(CharacterMoved.ID, CharacterMoved.new, CharacterMove.new)
 
 	_nmr.register_packet_handler(
 		CharacterSpawn.ID, _on_character_spawn_server, _on_character_spawn_client
@@ -32,6 +36,9 @@ func _ready():
 	_nmr.register_packet_handler(CharacterSync.ID, Callable(), _on_character_sync_client)
 	_nmr.register_packet_handler(
 		CharacterAppearance.ID, _on_character_appearance_server, _on_character_appearance_client
+	)
+	_nmr.register_packet_handler(
+		CharacterMoved.ID, _on_character_move_server, _on_character_moved_client
 	)
 
 
@@ -80,3 +87,15 @@ func _on_character_appearance_client(packet: CharacterAppearance):
 	if not _client_did_sync or not _wm.current_char_manager:
 		return
 	_wm.current_char_manager._load_appearance(packet.peer, packet.appearance)
+
+
+func _on_character_move_server(peer: int, packet: CharacterMove):
+	if not _wm.current_char_manager:
+		return
+	_wm.current_char_manager._handle_move_request(peer, packet.motion)
+
+
+func _on_character_moved_client(packet: CharacterMoved):
+	if not _client_did_sync or not _wm.current_char_manager:
+		return
+	_wm.current_char_manager._handle_moved(packet.peer, packet.state, packet.movement_ack)

@@ -7,9 +7,13 @@ const CharacterDelete := preload("../packets/character_delete.gd")
 const CharacterSync := preload("../packets/character_sync.gd")
 const CharacterAppearance := preload("../packets/character_appearance.gd")
 
+const CharacterMoved := preload("../packets/character_moved.gd")
+const CharacterMove := preload("../packets/character_move.gd")
+
 const _CHARACTER_SCENE := preload("res://addons/@fumohouse/fumo/fumo.tscn")
 const _DEATH_TIMEOUT := 5.0
 const _FALL_LIMIT := -128.0
+const _STATE_UPDATE_FREQ := 4
 
 ## Node containing [Spawnpoint]s that will be selected randomly for newly spawning
 ## characters.
@@ -127,13 +131,19 @@ func _spawn_character(
 	_characters[peer] = fumo
 
 	add_child(fumo)
+
 	if peer == 0:
 		fumo.camera = camera
 		debug_character.character = fumo
 		# Add after ready
 		fumo.state.add_processor(CharacterAreaHandlerProcessor.new())
 
+		if _nm.is_active:
+			fumo.state.movement_request.connect(_on_fumo_movement_request)
+
 	if _nm.is_active and _nm.is_server:
+		fumo.state.movement_update.connect(_on_fumo_movement_update.bind(peer))
+
 		var spawn := CharacterSpawn.new()
 		spawn.peer = peer
 		spawn.transform = fumo.global_transform
@@ -177,8 +187,27 @@ func _delete_character(peer: int, died: bool, callback := Callable()):
 func _sync_characters(state: Dictionary[int, CharacterState]):
 	for remote_peer in state:
 		var char_state: CharacterState = state[remote_peer]
-		_spawn_character(remote_peer, char_state.appearance, char_state.transform)
-		# TODO: other state
+		var fumo := (
+			_spawn_character(remote_peer, char_state.appearance, char_state.transform) as Fumo
+		)
+		if not fumo:
+			continue
+
+		fumo.state.load_state(char_state.motion_state)
+
+
+func _handle_move_request(peer: int, motion: CharacterMotionState.NetworkedMotion):
+	var fumo: Fumo = _get_character(peer)
+	if not fumo:
+		return
+	fumo.state.queue_motion(motion)
+
+
+func _handle_moved(peer: int, state: CharacterState, ack: int):
+	var fumo: Fumo = _get_character(peer)
+	if not fumo:
+		return
+	fumo.state.queue_update(state.transform, state.motion_state, ack)
 
 
 func _get_real_id(peer: int):
@@ -209,7 +238,7 @@ func _on_server_peer_joined(peer: int):
 		var char_state := CharacterState.new()
 		char_state.appearance = fumo.appearance_manager.appearance
 		char_state.transform = fumo.global_transform
-		# TODO: other state
+		char_state.motion_state = fumo.state.get_state()
 
 		state[remote_peer] = char_state
 
@@ -236,3 +265,32 @@ func _on_active_appearance_changed():
 		_nm.send_packet(1, chr_appearance)
 	else:
 		_load_appearance(0, _fumo_appearances.active)
+
+
+func _on_fumo_movement_request(motion: CharacterMotionState.NetworkedMotion):
+	var move := CharacterMove.new()
+	move.motion = motion
+	_nm.send_packet(1, move)
+
+
+func _on_fumo_movement_update(ack: int, peer: int):
+	if Engine.get_physics_frames() % _STATE_UPDATE_FREQ != 0:
+		return
+
+	var fumo: Fumo = _get_character(peer)
+	if not fumo:
+		return
+
+	var moved := CharacterMoved.new()
+	moved.peer = peer
+	moved.state.transform = fumo.global_transform
+	moved.state.motion_state = fumo.state.get_state()
+
+	moved.movement_ack = ack
+	_nm.send_packet(peer, moved)
+
+	moved.movement_ack = 0
+	for remote_peer in _nm.get_peers():
+		if remote_peer == peer:
+			continue
+		_nm.send_packet(remote_peer, moved)

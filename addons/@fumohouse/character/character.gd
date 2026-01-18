@@ -21,7 +21,6 @@ var camera: CameraController:
 
 ## This character's motion state.
 var state := CharacterMotionState.new()
-var _motion := CharacterMotionState.Motion.new()
 
 @onready var _collider: CollisionShape3D = $Collider
 
@@ -40,9 +39,6 @@ func _ready():
 
 func _physics_process(delta: float):
 	if disabled:
-		return
-
-	if not _camera:
 		return
 
 	state.update(_get_motion(), delta)
@@ -69,20 +65,24 @@ func _update_camera():
 
 
 func _get_motion() -> CharacterMotionState.Motion:
+	if not _camera:
+		return null
+
+	var motion := CharacterMotionState.Motion.new()
 	if CommonUtils.do_game_input(self) and not state.is_dead():
-		_motion.direction = Input.get_vector(
+		motion.direction = Input.get_vector(
 			&"move_left", &"move_right", &"move_forward", &"move_backward"
 		)
-		_motion.jump = Input.is_action_pressed(&"move_jump")
-		_motion.run = Input.is_action_pressed(&"move_run")
-		_motion.sit = Input.is_action_just_pressed(&"move_sit")
+		motion.jump = Input.is_action_pressed(&"move_jump")
+		motion.run = Input.is_action_pressed(&"move_run")
+		motion.sit = Input.is_action_just_pressed(&"move_sit")
 	else:
-		_motion.direction = Vector2.ZERO
-		_motion.jump = false
-		_motion.run = false
-		_motion.sit = false
+		motion.direction = Vector2.ZERO
+		motion.jump = false
+		motion.run = false
+		motion.sit = false
 
-	_motion.camera_rotation = camera.camera_rotation
-	_motion.camera_mode = camera.mode
+	motion.camera_rotation = camera.camera_rotation
+	motion.camera_mode = camera.mode
 
-	return _motion
+	return motion

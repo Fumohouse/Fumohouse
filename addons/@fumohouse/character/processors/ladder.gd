@@ -26,6 +26,10 @@ func _init():
 
 
 func _process(delta: float, cancelled: bool):
+	# Keep this processor so animators function
+	if state.is_remote:
+		return
+
 	_velocity = Vector3.ZERO
 	is_moving = false
 
@@ -115,3 +119,7 @@ func _process(delta: float, cancelled: bool):
 
 func _get_velocity() -> Variant:
 	return _velocity
+
+
+func _state_serde(serde: SerDe):
+	is_moving = serde.boolean(is_moving)

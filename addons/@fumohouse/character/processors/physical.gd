@@ -125,6 +125,12 @@ func _get_velocity() -> Variant:
 	return _velocity
 
 
+func _state_serde(serde: SerDe):
+	_velocity = serde.vector3(_velocity)
+	_airborne_time = serde.f64(_airborne_time)
+	_cancel_jump = serde.boolean(_cancel_jump)
+
+
 func _get_jump_velocity(height: float) -> float:
 	# Kinematics
 	return sqrt(2 * gravity * height)

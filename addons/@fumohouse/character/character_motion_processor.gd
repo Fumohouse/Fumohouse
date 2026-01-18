@@ -31,3 +31,8 @@ func _process(_delta: float, _cancelled: bool):
 ## [code]null[/code] if not applicable at this time.
 func _get_velocity() -> Variant:
 	return null
+
+
+## Encode/decode the state of this processor to the given [param serde].
+func _state_serde(serde: SerDe):
+	pass

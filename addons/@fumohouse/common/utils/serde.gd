@@ -116,6 +116,11 @@ func f64(value: float) -> float:
 	return 0.0
 
 
+## Encode/decode a [Vector2].
+func vector2(value: Vector2) -> Vector2:
+	return Vector2(f64(value.x), f64(value.y))
+
+
 ## Encode/decode a [Vector3].
 func vector3(value: Vector3) -> Vector3:
 	return Vector3(f64(value.x), f64(value.y), f64(value.z))

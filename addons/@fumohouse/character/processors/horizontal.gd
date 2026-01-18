@@ -28,6 +28,10 @@ func _init():
 
 
 func _process(delta: float, cancelled: bool):
+	# Keep this processor so animators function
+	if state.is_remote:
+		return
+
 	if cancelled or state.is_ragdoll:
 		_velocity = Vector3.ZERO
 		return
@@ -79,3 +83,7 @@ func _process(delta: float, cancelled: bool):
 
 func _get_velocity() -> Variant:
 	return _velocity
+
+
+func _state_serde(serde: SerDe):
+	_velocity = serde.vector3(_velocity)

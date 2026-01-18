@@ -39,8 +39,18 @@ func _sync_characters(state: Dictionary[int, CharacterState]):
 	pass
 
 
+## Handle character move request for the given [param peer].
+func _handle_move_request(peer: int, motion: CharacterMotionState.NetworkedMotion):
+	pass
+
+
+## Handle remote character motion for the given [param peer].
+func _handle_moved(peer: int, state: CharacterState, ack: int):
+	pass
+
+
 class CharacterState:
 	extends RefCounted
 	var appearance: Appearance
 	var transform: Transform3D
-	# TODO: include CharacterMotionState state
+	var motion_state: PackedByteArray

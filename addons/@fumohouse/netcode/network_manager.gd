@@ -305,7 +305,8 @@ func reset():
 ## Send the given [param packet] to the given [param peer], immediately.
 func send_packet(peer: int, packet: NetworkPacket):
 	if (
-		_peer.get_connection_status() != MultiplayerPeer.CONNECTION_CONNECTED
+		not _peer
+		or _peer.get_connection_status() != MultiplayerPeer.CONNECTION_CONNECTED
 		or (peer > 0 and not _mp.get_peers().has(peer))
 	):
 		return

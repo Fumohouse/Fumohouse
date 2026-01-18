@@ -12,6 +12,15 @@ extends RefCounted
 ## ground using the distance between the collider's bottom face and the
 ## ground. The collider should be local to scene.
 
+## Fired when this character should make a request to the server to move. The
+## networking logic is not implemented here.
+signal movement_request(motion: NetworkedMotion)
+
+## Fired every time a movement update is available from the server. Should
+## eventually result in updated information for the client this character
+## belongs to and all other peers.
+signal movement_update(ack: int)
+
 ## A bit field enum representing the current state of the character.
 enum CharacterState {
 	## Placeholder none state. Never actually set as a value of [member state].
@@ -45,6 +54,11 @@ enum MultiplayerMode {
 	## Multiplayer: This is not the local character.
 	MULTIPLAYER_REMOTE = 3,
 }
+
+## Get whether this is a multiplayer character that isn't the local one.
+var is_remote: bool:
+	get:
+		return multiplayer_mode == MultiplayerMode.MULTIPLAYER_REMOTE
 
 # MANAGED EXTERNALLY #
 # All of these properties must be set externally prior to [method initialize].
@@ -83,20 +97,27 @@ var ctx := Context.new()
 
 var _motion_processors: Array[CharacterMotionProcessor] = []
 
+# MULTIPLAYER #
+var _motion_queue: Array[NetworkedMotion] = []
+var _queued_valid := false
+var _queued_transform := Transform3D.IDENTITY
+var _queued_state := PackedByteArray()
+var _queued_ack := 0
+
 
 ## Initialize this state. Prior to calling this function, set all externally
 ## managed configuration variables such as [member node] and [member rid].
 func initialize():
 	set_ragdoll(false)
 
-	var is_remote := multiplayer_mode == MultiplayerMode.MULTIPLAYER_REMOTE
 	var is_server := multiplayer_mode == MultiplayerMode.MULTIPLAYER_SERVER
 
 	if not is_remote:
 		add_processor(CharacterIntersectionsMotionProcessor.new())
 		add_processor(CharacterGroundingMotionProcessor.new())
 
-	# TODO: interpolator
+	if not is_server:
+		add_processor(CharacterInterpolatorMotionProcessor.new())
 
 	add_processor(CharacterRagdollMotionProcessor.new())
 	add_processor(CharacterLadderMotionProcessor.new())
@@ -119,8 +140,79 @@ func add_processor(processor: CharacterMotionProcessor):
 	processor._initialize()
 
 
-## Update this character's motion.
+## Perform the given motion, with behavior defined by [member multiplayer_mode].
+## Call during physics process. On server, [param motion] is ignored.
 func update(motion: Motion, delta: float):
+	_handle_queued_update(delta)
+
+	if multiplayer_mode == MultiplayerMode.SINGLEPLAYER:
+		if not motion:
+			return
+
+		motion_update(motion, delta)
+	elif multiplayer_mode == MultiplayerMode.MULTIPLAYER_LOCAL:
+		if not motion:
+			return
+
+		var net_motion := NetworkedMotion.new()
+		net_motion.motion = motion
+		net_motion.ack = Engine.get_physics_frames()
+		_motion_queue.push_back(net_motion)
+
+		# Client side prediction
+		motion_update(motion, delta)
+		movement_request.emit(net_motion)
+	elif multiplayer_mode == MultiplayerMode.MULTIPLAYER_SERVER:
+		const MAX_QUEUE_SIZE := 4  # leave some buffer
+
+		while true:
+			var q_motion: NetworkedMotion = _motion_queue.pop_front()
+			if not q_motion:
+				break
+
+			var actual_motion: Motion = q_motion.motion
+
+			if is_dead():
+				# Client sends nothing, but reset anyway in case hacking
+				actual_motion.direction = Vector2.ZERO
+				actual_motion.jump = false
+				actual_motion.run = false
+				actual_motion.sit = false
+
+			motion_update(actual_motion, delta)
+			movement_update.emit(q_motion.ack)
+
+			if _motion_queue.size() <= MAX_QUEUE_SIZE:
+				break
+	elif multiplayer_mode == MultiplayerMode.MULTIPLAYER_REMOTE:
+		motion_update(Motion.new(), delta, false, true)
+
+
+## Queue a motion request for this character (for server processing).
+func queue_motion(motion: NetworkedMotion):
+	_motion_queue.push_back(motion)
+
+
+## Queue a state update for this character (for client processing). The update
+## will be applied during physics process using [method update].
+func queue_update(transform: Transform3D, state: PackedByteArray, ack: int):
+	if (
+		multiplayer_mode == MultiplayerMode.MULTIPLAYER_LOCAL
+		and (_motion_queue.is_empty() or ack < _motion_queue[0].ack)
+	):
+		return
+
+	_queued_transform = transform
+	_queued_state = state
+	_queued_ack = ack
+	_queued_valid = true
+
+
+## Update this character's motion. If [param is_replay] is [code]true[/code],
+## this is a replay of a previous motion (e.g., for server reconciliation). If
+## [param persist_state] is [code]true[/code], persist the last known state
+## (e.g., for remote characters).
+func motion_update(motion: Motion, delta: float, is_replay := false, persist_state := false):
 	var orig_transform := node.global_transform
 
 	# Reset and initialize context
@@ -131,10 +223,15 @@ func update(motion: Motion, delta: float):
 
 	ctx.new_basis = orig_transform.basis
 
+	ctx.is_replay = is_replay
+
 	# Persist death
 	if queue_dead or is_state(CharacterState.DEAD):
 		ctx.set_state(CharacterState.DEAD)
 		queue_dead = false
+
+	if persist_state:
+		ctx.new_state = state
 
 	# Process
 	for processor in _motion_processors:
@@ -217,6 +314,94 @@ func die(timeout_s: float, callback := Callable()):
 			(callback as Callable).call()
 
 
+## Encode this object's state and its processors' state to a buffer.
+func get_state() -> PackedByteArray:
+	var ser := Serializer.new([])
+	_serde_state(ser)
+
+	var proc_states: Dictionary[StringName, PackedByteArray] = {}
+
+	var ser2 := Serializer.new([])
+	for processor in _motion_processors:
+		ser2.seek(0)
+		processor._state_serde(ser2)
+		if ser2.pos == 0:
+			continue
+
+		proc_states[processor.id] = ser2.to_buffer()
+
+	ser.varuint(proc_states.size())
+	for proc_name in proc_states:
+		ser.str(proc_name)
+		ser.sized_buffer(proc_states[proc_name])
+
+	return ser.to_buffer()
+
+
+## Load this object's state and its processors' state from a buffer.
+func load_state(buf: PackedByteArray):
+	var de := Deserializer.new(buf)
+	_serde_state(de)
+
+	var num_procs: int = de.varuint()
+	for i in num_procs:
+		var proc: CharacterMotionProcessor = get_motion_processor(de.str())
+		var proc_state_buf: PackedByteArray = de.sized_buffer([])
+		if not proc:
+			continue
+
+		proc._state_serde(Deserializer.new(proc_state_buf))
+
+
+func _serde_state(serde: SerDe):
+	state = serde.varuint(state)
+	# something about this code is demonic
+	var ragdoll: bool = serde.boolean(is_ragdoll)
+	if ragdoll != is_ragdoll:
+		set_ragdoll(ragdoll)
+	if is_ragdoll:
+		node.linear_velocity = serde.vector3(node.linear_velocity)
+		node.angular_velocity = serde.vector3(node.angular_velocity)
+
+
+func _ack_queue(ack: int):
+	var i := 0
+	while i < _motion_queue.size() and _motion_queue[i].ack <= ack:
+		i += 1
+
+	_motion_queue = _motion_queue.slice(i)
+
+
+func _handle_queued_update(delta: float):
+	if not _queued_valid:
+		return
+
+	load_state(_queued_state)
+
+	var interpolator: CharacterInterpolatorMotionProcessor = get_motion_processor(
+		CharacterInterpolatorMotionProcessor.ID
+	)
+
+	if multiplayer_mode == MultiplayerMode.MULTIPLAYER_LOCAL:
+		# Perform rollback
+		var initial_transform := node.global_transform
+		node.global_transform = _queued_transform
+
+		_ack_queue(_queued_ack)
+
+		for motion in _motion_queue:
+			motion_update(motion.motion, delta, true)
+
+		var target_transform := node.global_transform
+		node.global_transform = initial_transform
+
+		interpolator.set_target(target_transform)
+	else:
+		interpolator.set_target(_queued_transform)
+
+	_queued_valid = false
+
+
 ## A class representing a point of contact with a wall-like object.
 class WallInfo:
 	extends RefCounted
@@ -237,6 +422,14 @@ class Motion:
 	var camera_mode := CameraController.CameraMode.MODE_FIRST_PERSON
 
 
+## A class representing a single networked motion request (for client side
+## prediction and server reconciliation).
+class NetworkedMotion:
+	extends RefCounted
+	var motion := Motion.new()
+	var ack := 0
+
+
 ## A class representing the inputs and outputs of [CharacterMotionProcessor].
 class Context:
 	extends RefCounted
@@ -244,6 +437,7 @@ class Context:
 	var motion := Motion.new()
 	var input_direction := Vector3.ZERO
 	var cam_basis_flat := Basis.IDENTITY
+	var is_replay := false
 
 	# State
 	var cancelled_processors: Dictionary[StringName, bool] = {}
