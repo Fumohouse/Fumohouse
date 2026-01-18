@@ -17,8 +17,8 @@ extends RefCounted
 signal movement_request(motion: NetworkedMotion)
 
 ## Fired every time a movement update is available from the server. Should
-## eventually result in updated information for the client this character
-## belongs to and all other peers.
+## result in a state update for the client this character belongs to and all
+## other peers.
 signal movement_update(ack: int)
 
 ## A bit field enum representing the current state of the character.
@@ -55,6 +55,8 @@ enum MultiplayerMode {
 	MULTIPLAYER_REMOTE = 3,
 }
 
+const _NET_QUEUE_SIZE := 8  # leave some buffer
+
 ## Get whether this is a multiplayer character that isn't the local one.
 var is_remote: bool:
 	get:
@@ -83,6 +85,9 @@ var max_ground_angle := 45.0  # degrees
 ## A generic margin value used to account for floating point errors.
 var margin := 0.001
 
+## How many frames elapse between each multiplayer state update.
+var state_update_freq := 4
+
 # STATE #
 ## [code]true[/code] if this character is in ragdoll mode.
 var is_ragdoll := false
@@ -99,10 +104,7 @@ var _motion_processors: Array[CharacterMotionProcessor] = []
 
 # MULTIPLAYER #
 var _motion_queue: Array[NetworkedMotion] = []
-var _queued_valid := false
-var _queued_transform := Transform3D.IDENTITY
-var _queued_state := PackedByteArray()
-var _queued_ack := 0
+var _update_queue: Array[NetworkedStateUpdate] = []
 
 
 ## Initialize this state. Prior to calling this function, set all externally
@@ -163,8 +165,6 @@ func update(motion: Motion, delta: float):
 		motion_update(motion, delta)
 		movement_request.emit(net_motion)
 	elif multiplayer_mode == MultiplayerMode.MULTIPLAYER_SERVER:
-		const MAX_QUEUE_SIZE := 4  # leave some buffer
-
 		while true:
 			var q_motion: NetworkedMotion = _motion_queue.pop_front()
 			if not q_motion:
@@ -180,9 +180,10 @@ func update(motion: Motion, delta: float):
 				actual_motion.sit = false
 
 			motion_update(actual_motion, delta)
-			movement_update.emit(q_motion.ack)
+			if Engine.get_physics_frames() % state_update_freq == 0:
+				movement_update.emit(q_motion.ack)
 
-			if _motion_queue.size() <= MAX_QUEUE_SIZE:
+			if _motion_queue.size() <= _NET_QUEUE_SIZE:
 				break
 	elif multiplayer_mode == MultiplayerMode.MULTIPLAYER_REMOTE:
 		motion_update(Motion.new(), delta, false, true)
@@ -195,17 +196,14 @@ func queue_motion(motion: NetworkedMotion):
 
 ## Queue a state update for this character (for client processing). The update
 ## will be applied during physics process using [method update].
-func queue_update(transform: Transform3D, state: PackedByteArray, ack: int):
+func queue_update(update: NetworkedStateUpdate):
 	if (
 		multiplayer_mode == MultiplayerMode.MULTIPLAYER_LOCAL
-		and (_motion_queue.is_empty() or ack < _motion_queue[0].ack)
+		and (_motion_queue.is_empty() or update.ack < _motion_queue[0].ack)
 	):
 		return
 
-	_queued_transform = transform
-	_queued_state = state
-	_queued_ack = ack
-	_queued_valid = true
+	_update_queue.push_back(update)
 
 
 ## Update this character's motion. If [param is_replay] is [code]true[/code],
@@ -372,11 +370,8 @@ func _ack_queue(ack: int):
 	_motion_queue = _motion_queue.slice(i)
 
 
-func _handle_queued_update(delta: float):
-	if not _queued_valid:
-		return
-
-	load_state(_queued_state)
+func _apply_update(delta: float, upd: NetworkedStateUpdate):
+	load_state(upd.state)
 
 	var interpolator: CharacterInterpolatorMotionProcessor = get_motion_processor(
 		CharacterInterpolatorMotionProcessor.ID
@@ -385,9 +380,9 @@ func _handle_queued_update(delta: float):
 	if multiplayer_mode == MultiplayerMode.MULTIPLAYER_LOCAL:
 		# Perform rollback
 		var initial_transform := node.global_transform
-		node.global_transform = _queued_transform
+		node.global_transform = upd.transform
 
-		_ack_queue(_queued_ack)
+		_ack_queue(upd.ack)
 
 		for motion in _motion_queue:
 			motion_update(motion.motion, delta, true)
@@ -397,9 +392,26 @@ func _handle_queued_update(delta: float):
 
 		interpolator.set_target(target_transform)
 	else:
-		interpolator.set_target(_queued_transform)
+		interpolator.set_target(upd.transform)
 
-	_queued_valid = false
+
+func _handle_queued_update(delta: float):
+	# Apply updates as they are received
+	if multiplayer_mode == MultiplayerMode.MULTIPLAYER_LOCAL:
+		if _update_queue.is_empty():
+			return
+
+		_apply_update(delta, _update_queue.pop_back())
+		_update_queue.clear()
+		return
+
+	# Allow some bufferng for smoother remote character movement
+	if Engine.get_physics_frames() % state_update_freq != 0 or _update_queue.is_empty():
+		return
+	if _update_queue.size() > _NET_QUEUE_SIZE:
+		_update_queue = _update_queue.slice(_update_queue.size() - _NET_QUEUE_SIZE - 1)
+
+	_apply_update(delta, _update_queue.pop_front())
 
 
 ## A class representing a point of contact with a wall-like object.
@@ -427,6 +439,15 @@ class Motion:
 class NetworkedMotion:
 	extends RefCounted
 	var motion := Motion.new()
+	var ack := 0
+
+
+## A class representing a single networked state update from the server (for
+## remote peers and server reconciliation).
+class NetworkedStateUpdate:
+	extends RefCounted
+	var transform := Transform3D.IDENTITY
+	var state := PackedByteArray()
 	var ack := 0
 
 

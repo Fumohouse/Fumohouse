@@ -13,7 +13,6 @@ const CharacterMove := preload("../packets/character_move.gd")
 const _CHARACTER_SCENE := preload("res://addons/@fumohouse/fumo/fumo.tscn")
 const _DEATH_TIMEOUT := 5.0
 const _FALL_LIMIT := -128.0
-const _STATE_UPDATE_FREQ := 4
 
 ## Node containing [Spawnpoint]s that will be selected randomly for newly spawning
 ## characters.
@@ -207,7 +206,12 @@ func _handle_moved(peer: int, state: CharacterState, ack: int):
 	var fumo: Fumo = _get_character(peer)
 	if not fumo:
 		return
-	fumo.state.queue_update(state.transform, state.motion_state, ack)
+
+	var upd := CharacterMotionState.NetworkedStateUpdate.new()
+	upd.transform = state.transform
+	upd.state = state.motion_state
+	upd.ack = ack
+	fumo.state.queue_update(upd)
 
 
 func _get_real_id(peer: int):
@@ -274,9 +278,6 @@ func _on_fumo_movement_request(motion: CharacterMotionState.NetworkedMotion):
 
 
 func _on_fumo_movement_update(ack: int, peer: int):
-	if Engine.get_physics_frames() % _STATE_UPDATE_FREQ != 0:
-		return
-
 	var fumo: Fumo = _get_character(peer)
 	if not fumo:
 		return
