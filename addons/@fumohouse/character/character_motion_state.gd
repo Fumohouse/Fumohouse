@@ -353,10 +353,10 @@ func load_state(buf: PackedByteArray):
 
 func _serde_state(serde: SerDe):
 	state = serde.varuint(state)
-	# something about this code is demonic
 	var ragdoll: bool = serde.boolean(is_ragdoll)
 	if ragdoll != is_ragdoll:
 		set_ragdoll(ragdoll)
+	set_body_mode(serde.varuint(PhysicsServer3D.body_get_mode(rid)))  # seat, etc.
 	if is_ragdoll:
 		node.linear_velocity = serde.vector3(node.linear_velocity)
 		node.angular_velocity = serde.vector3(node.angular_velocity)
