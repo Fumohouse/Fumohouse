@@ -5,6 +5,8 @@ const NavCharacter := preload(
 	"res://addons/@fumohouse/navigation/character_editor/nav_character.gd"
 )
 
+static var _did_init := false
+
 var transition_in := true
 
 @onready var _dim: ColorRect = $Dim
@@ -50,6 +52,10 @@ static func _prepare_main_scene(node: Node, prev_scene: Node):
 
 func _ready():
 	super()
+
+	if not _did_init:
+		Log.info("Loaded Fumohouse Mainline - %s" % DistConfig.get_build_string())
+		_did_init = true
 
 	if transition_in:
 		await get_tree().create_timer(0.05).timeout

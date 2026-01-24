@@ -25,6 +25,10 @@ buses/default_bus_layout="uid://d3dmrtth2yhtv"
 Log="*res://addons/@fumohouse/base/logger.gd"
 Modules="*res://addons/@fumohouse/base/modules.gd"
 
+[debug]
+
+file_logging/enable_file_logging.pc=false
+
 [display]
 
 window/stretch/mode="canvas_items"
