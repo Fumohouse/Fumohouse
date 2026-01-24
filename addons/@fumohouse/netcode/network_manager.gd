@@ -77,6 +77,18 @@ var local_identity: String:
 	get:
 		return _identity
 
+## Get number of low-level packets received in this session. Does not include
+## Godot high-level multiplayer constructs.
+var packets_received: int:
+	get:
+		return _packets_received
+
+## Get number of low-level packets sent in this session. Does not include Godot
+## high-level multiplayer constructs.
+var packets_sent: int:
+	get:
+		return _packets_sent
+
 ## Getter for custom payload for [code]HELLOS[/code]. If non-empty, this
 ## function is called when the server sends [code]HELLOS[/code] and its output
 ## is injected into the packet payload. Function should take no arguments and
@@ -99,6 +111,9 @@ var _is_quitting := false
 ## used to authenticate with the server depending on what authentication method
 ## is requested.
 var _auth := ""
+
+var _packets_received := 0
+var _packets_sent := 0
 
 # Client state
 var _addr := ""
@@ -290,6 +305,8 @@ func reset():
 	_peers.clear()
 
 	_auth = ""
+	_packets_received = 0
+	_packets_sent = 0
 	_addr = ""
 	_port = 0
 	_identity = ""
@@ -321,6 +338,7 @@ func send_packet(peer: int, packet: NetworkPacket):
 	_ser.ser(_body_ser)
 
 	_mp.send_bytes(_ser.to_buffer(), peer, packet.mode, packet.channel)
+	_packets_sent += 1
 
 
 ## Send a status update message (e.g., to display in UI).
@@ -351,6 +369,14 @@ func get_peer_identity(peer: int) -> String:
 	return data.identity
 
 
+## Get last round-trip ping time to this peer, or -1 if the peer does not exist.
+func get_peer_rtt(peer: int) -> int:
+	var data: PeerData = _peers.get(peer)
+	if not data:
+		return -1
+	return data.rtt
+
+
 func _on_connected_to_server():
 	print("[Networking] Successfully connected to %s:%d" % [_addr, _port])
 
@@ -371,6 +397,7 @@ func _on_connection_failed():
 func _on_server_disconnected():
 	print("[Networking] Disconnected from server")
 	reset()
+	send_status_update("Lost connection to server", true, false)
 
 
 func _on_peer_connected(id: int):
@@ -402,7 +429,7 @@ func _on_peer_disconnected(id: int):
 
 
 func _on_peer_packet(id: int, data: PackedByteArray):
-	_nmr.handle_packets(id, data)
+	_packets_received += _nmr.handle_packets(id, data)
 
 
 func _on_quitting():

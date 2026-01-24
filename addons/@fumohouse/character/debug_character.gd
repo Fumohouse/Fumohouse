@@ -1,4 +1,3 @@
-class_name DebugCharacter  # provide for CharacterManager
 extends DebugWindow
 ## [Character] debug window.
 
@@ -38,7 +37,7 @@ var _state: RichTextLabel
 
 
 func _init():
-	action = &"debug_3"
+	action = &"debug_4"
 
 
 func _ready():
@@ -56,6 +55,15 @@ func _ready():
 
 
 func _process(_delta: float):
+	if not character:
+		_tbl.set_val(&"state", "No character")
+		_tbl.set_val(&"position", "-")
+		_tbl.set_val(&"ragdoll", "-")
+		_tbl.set_val(&"grounded", "-")
+		_tbl.set_val(&"collisions", "-")
+		_tbl.set_val(&"velocity", "-")
+		return
+
 	var state := character.state
 	var ctx := state.ctx
 

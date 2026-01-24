@@ -28,6 +28,7 @@ func _enter_tree():
 	add_action(&"debug_1", kb_event(KEY_F1))
 	add_action(&"debug_2", kb_event(KEY_F2))
 	add_action(&"debug_3", kb_event(KEY_F3))
+	add_action(&"debug_4", kb_event(KEY_F4))
 
 
 ## Add a new action that will be added to [InputMap] and registered as a

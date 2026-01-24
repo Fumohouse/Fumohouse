@@ -5,6 +5,8 @@ extends Node3D
 ## For the purpose of this class, a peer ID of [code]0[/code] should be
 ## interpreted as the local character.
 
+const DebugCharacter := preload("res://addons/@fumohouse/character/debug_character.gd")
+
 ## Camera to use for the local character.
 @export var camera: CameraController
 ## Debug overlay to bind to the local character.

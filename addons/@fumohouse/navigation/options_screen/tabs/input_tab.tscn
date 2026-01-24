@@ -178,6 +178,13 @@ key = &"input/action/debug_3/bind"
 [node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Debug3" index="0"]
 text = "Debug 3"
 
+[node name="Debug4" parent="MarginContainer/VBoxContainer/UI/Options" index="4" instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/debug_4/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Debug4" index="0"]
+text = "Debug 4"
+
 [editable path="MarginContainer/VBoxContainer/Camera"]
 [editable path="MarginContainer/VBoxContainer/Camera/Options/Sens1P"]
 [editable path="MarginContainer/VBoxContainer/Camera/Options/Sens1P/LabeledSlider"]
@@ -202,3 +209,4 @@ text = "Debug 3"
 [editable path="MarginContainer/VBoxContainer/UI/Options/Debug1"]
 [editable path="MarginContainer/VBoxContainer/UI/Options/Debug2"]
 [editable path="MarginContainer/VBoxContainer/UI/Options/Debug3"]
+[editable path="MarginContainer/VBoxContainer/UI/Options/Debug4"]

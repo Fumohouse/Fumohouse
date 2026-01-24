@@ -27,6 +27,7 @@ popup/item_1/text = "Mobile"
 popup/item_1/id = 1
 popup/item_2/text = "Compatibility"
 popup/item_2/id = 2
+metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
 [node name="WindowMode" parent="MarginContainer/VBoxContainer/General/Options" index="1" instance=ExtResource("3_0p1jq")]
 custom_minimum_size = Vector2(300, 0)
@@ -46,6 +47,7 @@ popup/item_2/text = "Fullscreen"
 popup/item_2/id = 3
 popup/item_3/text = "Exclusive Fullscreen"
 popup/item_3/id = 4
+metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
 [node name="VSyncMode" parent="MarginContainer/VBoxContainer/General/Options" index="2" instance=ExtResource("3_0p1jq")]
 custom_minimum_size = Vector2(300, 0)
@@ -65,6 +67,7 @@ popup/item_2/text = "Adaptive"
 popup/item_2/id = 2
 popup/item_3/text = "Mailbox"
 popup/item_3/id = 3
+metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
 [node name="FOV" parent="MarginContainer/VBoxContainer/General/Options" index="3" instance=ExtResource("4_lqpwh")]
 layout_mode = 2
@@ -118,6 +121,7 @@ popup/item_1/text = "AMD FSR"
 popup/item_1/id = 1
 popup/item_2/text = "AMD FSR 2"
 popup/item_2/id = 2
+metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
 [node name="Scale" parent="MarginContainer/VBoxContainer/3DScaling/Options" index="1" instance=ExtResource("4_lqpwh")]
 layout_mode = 2
@@ -166,10 +170,14 @@ popup/item_2/text = "4x"
 popup/item_2/id = 2
 popup/item_3/text = "8x"
 popup/item_3/id = 3
+metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
 [node name="TAA" parent="MarginContainer/VBoxContainer/AntiAliasing/Options" index="1" instance=ExtResource("5_0p1jq")]
 layout_mode = 2
 key = &"graphics/taa"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/AntiAliasing/Options/TAA" index="0"]
+text = "TAA"
 
 [node name="ScreenSpaceAA" parent="MarginContainer/VBoxContainer/AntiAliasing/Options" index="2" instance=ExtResource("3_0p1jq")]
 layout_mode = 2
@@ -184,6 +192,7 @@ popup/item_0/text = "Disabled"
 popup/item_0/id = 0
 popup/item_1/text = "FXAA"
 popup/item_1/id = 1
+metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
 [node name="Quality" parent="MarginContainer/VBoxContainer" index="3" instance=ExtResource("2_lqpwh")]
 layout_mode = 2
@@ -212,6 +221,7 @@ popup/item_4/text = "High"
 popup/item_4/id = 4
 popup/item_5/text = "Ultra"
 popup/item_5/id = 5
+metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
 [node name="ShadowFilter" parent="MarginContainer/VBoxContainer/Quality/Options" index="1" instance=ExtResource("3_0p1jq")]
 layout_mode = 2
@@ -234,6 +244,7 @@ popup/item_4/text = "High"
 popup/item_4/id = 4
 popup/item_5/text = "Very High"
 popup/item_5/id = 5
+metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
 [node name="LOD" parent="MarginContainer/VBoxContainer/Quality/Options" index="2" instance=ExtResource("3_0p1jq")]
 layout_mode = 2
@@ -254,6 +265,7 @@ popup/item_3/text = "High"
 popup/item_3/id = 3
 popup/item_4/text = "Ultra (LODs off)"
 popup/item_4/id = 4
+metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
 [node name="Environment" parent="MarginContainer/VBoxContainer" index="4" instance=ExtResource("2_lqpwh")]
 layout_mode = 2
@@ -278,6 +290,7 @@ popup/item_2/text = "Medium"
 popup/item_2/id = 2
 popup/item_3/text = "High"
 popup/item_3/id = 3
+metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
 [node name="SSAO" parent="MarginContainer/VBoxContainer/Environment/Options" index="1" instance=ExtResource("3_0p1jq")]
 layout_mode = 2
@@ -300,6 +313,7 @@ popup/item_4/text = "High"
 popup/item_4/id = 4
 popup/item_5/text = "Ultra"
 popup/item_5/id = 5
+metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
 [node name="SSIL" parent="MarginContainer/VBoxContainer/Environment/Options" index="2" instance=ExtResource("3_0p1jq")]
 layout_mode = 2
@@ -322,6 +336,7 @@ popup/item_4/text = "High"
 popup/item_4/id = 4
 popup/item_5/text = "Ultra"
 popup/item_5/id = 5
+metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
 [node name="SDFGI" parent="MarginContainer/VBoxContainer/Environment/Options" index="3" instance=ExtResource("3_0p1jq")]
 layout_mode = 2
@@ -338,6 +353,7 @@ popup/item_1/text = "Low"
 popup/item_1/id = 1
 popup/item_2/text = "High"
 popup/item_2/id = 2
+metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
 [node name="Glow" parent="MarginContainer/VBoxContainer/Environment/Options" index="4" instance=ExtResource("3_0p1jq")]
 layout_mode = 2
@@ -354,6 +370,7 @@ popup/item_1/text = "Low"
 popup/item_1/id = 1
 popup/item_2/text = "High"
 popup/item_2/id = 2
+metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
 [node name="Fog" parent="MarginContainer/VBoxContainer/Environment/Options" index="5" instance=ExtResource("3_0p1jq")]
 layout_mode = 2
@@ -370,6 +387,7 @@ popup/item_1/text = "Low"
 popup/item_1/id = 1
 popup/item_2/text = "High"
 popup/item_2/id = 2
+metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
 [node name="Adjustment" parent="MarginContainer/VBoxContainer" index="5" instance=ExtResource("2_lqpwh")]
 layout_mode = 2
@@ -426,6 +444,7 @@ step = 0.1
 [editable path="MarginContainer/VBoxContainer/3DScaling/Options/FSRSharpness/LabeledSlider"]
 [editable path="MarginContainer/VBoxContainer/AntiAliasing"]
 [editable path="MarginContainer/VBoxContainer/AntiAliasing/Options/MSAA3D"]
+[editable path="MarginContainer/VBoxContainer/AntiAliasing/Options/TAA"]
 [editable path="MarginContainer/VBoxContainer/AntiAliasing/Options/ScreenSpaceAA"]
 [editable path="MarginContainer/VBoxContainer/Quality"]
 [editable path="MarginContainer/VBoxContainer/Quality/Options/ShadowQuality"]

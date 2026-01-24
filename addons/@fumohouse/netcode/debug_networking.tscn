@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7u8sulgtcigq"]
+
+[ext_resource type="PackedScene" uid="uid://cnhpap8tim3hh" path="res://addons/@fumohouse/debug/overlays/debug_window.tscn" id="1_1lo5n"]
+[ext_resource type="Script" uid="uid://bgupd37xum16s" path="res://addons/@fumohouse/netcode/debug_networking.gd" id="2_6vxco"]
+[ext_resource type="Script" uid="uid://bpfn17p03x4rq" path="res://addons/@fumohouse/debug/overlays/debug_info_table.gd" id="3_pvb71"]
+
+[node name="DebugNetworking" instance=ExtResource("1_1lo5n")]
+script = ExtResource("2_6vxco")
+
+[node name="Title" parent="Foreground/VBoxContainer/TopBar" index="1"]
+text = "Networking"
+
+[node name="DebugInfoTable" type="VBoxContainer" parent="Foreground/VBoxContainer/Contents" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("3_pvb71")
+metadata/_custom_type_script = "uid://bpfn17p03x4rq"

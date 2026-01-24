@@ -62,8 +62,10 @@ func register_packet_handler(
 
 ## Handle incoming packets in the given [param data] buffer. If [param peer] is
 ## [code]1[/code], use clientside handling. Otherwise, use serverside handling.
-## Multiple contiguous packets are supported.
-func handle_packets(peer: int, data: PackedByteArray):
+## Multiple contiguous packets are supported. Returns number of packets
+## received.
+func handle_packets(peer: int, data: PackedByteArray) -> int:
+	var count := 0
 	var de := Deserializer.new(data)
 	while not de.eof():
 		var length: int = de.varuint()
@@ -94,7 +96,7 @@ func handle_packets(peer: int, data: PackedByteArray):
 
 		if de.pos != next_pos:
 			push_error("Failed to parse packet: Declared length does not match parsed length")
-			return
+			return count
 
 		if peer == 1:
 			# On the client -> client handlers
@@ -108,6 +110,10 @@ func handle_packets(peer: int, data: PackedByteArray):
 				if not handler.is_valid():
 					continue
 				handler.call(peer, packet)
+
+		count += 1
+
+	return count
 
 
 func _get_packet_registry_entry(id: PackedByteArray, ofs := 0) -> PacketRegistryEntry:
