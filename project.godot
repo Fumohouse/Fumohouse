@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://d3dmrtth2yhtv"
 
 [autoload]
 
+Log="*res://addons/@fumohouse/base/logger.gd"
 Modules="*res://addons/@fumohouse/base/modules.gd"
 
 [display]

@@ -2,6 +2,8 @@ extends Node
 ## Handles handshake and peer status. This class is an extension of
 ## [NetworkManager] and accesses its private variables.
 
+const LOG_SCOPE := "Net:Base"
+
 const HelloServer := preload("../packets/hello_server.gd")
 const HelloClient := preload("../packets/hello_client.gd")
 
@@ -153,7 +155,7 @@ func _on_auth_server(peer: int, packet: Auth):
 			return
 
 	peer_data.state = NetworkManager.PeerState.JOINED
-	print("[Networking] Peer %d joined as %s" % [peer, peer_data.identity])
+	Log.info("Peer %d joined as %s" % [peer, peer_data.identity], LOG_SCOPE)
 
 	# HANDSHAKE: 4) Server SYNC
 	var sync := Sync.new()
@@ -190,7 +192,7 @@ func _on_sync_client(packet: Sync):
 		return
 
 	peer_data.state = NetworkManager.PeerState.JOINED
-	print("[Networking] Successfully joined as %s" % _nm._identity)
+	Log.info("Successfully joined as %s" % _nm._identity, LOG_SCOPE)
 
 	for remote_peer in packet.peers:
 		var remote_peer_data: NetworkManager.PeerData = packet.peers[remote_peer]
@@ -201,26 +203,26 @@ func _on_sync_client(packet: Sync):
 
 
 func _on_goodbye_server(peer: int, packet: Goodbye):
-	print("[Networking] Peer %d disconnected: %s" % [peer, packet.reason])
+	Log.info("Peer %d disconnected: %s" % [peer, packet.reason], LOG_SCOPE)
 	_nm.disconnect_no_reason(peer)
 
 
 func _on_goodbye_client(packet: Goodbye):
-	print("[Networking] Disconnected by server: %s" % packet.reason)
+	Log.info("Disconnected by server: %s" % packet.reason, LOG_SCOPE)
 	_nm.reset()
 	_nm.send_status_update("Disconnected: " + packet.reason, true, false)
 
 
 func _on_peer_state_client(packet: PeerState):
 	if packet.status == NetworkManager.PeerStateUpdate.JOINED:
-		print("[Networking] Peer %d (%s) joined the game" % [packet.peer, packet.identity])
+		Log.info("Peer %d (%s) joined the game" % [packet.peer, packet.identity], LOG_SCOPE)
 		var remote_peer_data := NetworkManager.PeerData.new()
 		remote_peer_data.state = NetworkManager.PeerState.JOINED
 		remote_peer_data.identity = packet.identity
 		_nm._peers[packet.peer] = remote_peer_data
 		_nm.client_peer_joined.emit(packet.peer)
 	elif packet.status == NetworkManager.PeerStateUpdate.LEFT:
-		print("[Networking] Peer %d (%s) left the game" % [packet.peer, packet.identity])
+		Log.info("Peer %d (%s) left the game" % [packet.peer, packet.identity], LOG_SCOPE)
 		_nm.client_peer_disconnected.emit(packet.peer)
 		_nm._peers.erase(packet.peer)
 

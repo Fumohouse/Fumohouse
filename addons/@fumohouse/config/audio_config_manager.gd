@@ -2,6 +2,8 @@ class_name AudioConfigManager
 extends Node
 ## Autoload for adding audio options to [ConfigManager].
 
+const LOG_SCOPE := "Config:Audio"
+
 
 func _enter_tree():
 	var cm := ConfigManager.get_singleton()
@@ -14,8 +16,12 @@ func _enter_tree():
 			if devices.has(value):
 				AudioServer.output_device = value
 			else:
-				push_warning(
-					"Requested audio output device '%s' not found. Falling back to default." % value
+				Log.warn(
+					(
+						"Requested audio output device '%s' not found. Falling back to default."
+						% value
+					),
+					LOG_SCOPE
 				)
 				AudioServer.output_device = "Default"
 	)
@@ -27,7 +33,7 @@ func _enter_tree():
 func add_audio_bus(bus: StringName):
 	var idx := AudioServer.get_bus_index(bus)
 	if idx < 0:
-		push_error("Could not find audio bus '%s'." % bus)
+		Log.error("Could not find audio bus '%s'." % bus, LOG_SCOPE)
 		return
 
 	ConfigManager.get_singleton().add_opt(

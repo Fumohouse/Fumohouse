@@ -2,6 +2,8 @@ class_name Billboard
 extends Sprite3D
 ## A [Sprite3D] that displays a [Control] and takes in input.
 
+const LOG_SCOPE := "Billboard"
+
 ## The target size of a pixel in meters.
 @export_range(0.001, 0.1, 0.01, "suffix:m") var target_pixel_size := 0.01
 
@@ -167,7 +169,7 @@ func _reparent_controls():
 			break
 
 	if not contents:
-		push_error("Billboard must have a Control child.")
+		Log.error("Billboard must have a Control child.", LOG_SCOPE)
 		return
 
 	_orig_size = contents.size

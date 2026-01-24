@@ -2,6 +2,8 @@ class_name NetworkManagerRegistry
 extends Node
 ## Manages packets and packet handlers for [NetworkManager].
 
+const LOG_SCOPE := "Net:Registry"
+
 ## Registry of packet constructors and handlers. Nested array where each index
 ## is a packet ID byte (each layer is 256 in size). Terminal is a
 ## [PacketRegistryEntry], or null.
@@ -42,7 +44,7 @@ func register_packet(id: PackedByteArray, ctor_server := Callable(), ctor_client
 
 		curr = curr[byte]
 
-	push_error("Invalid packet ID %s." % id)
+	Log.error("Invalid packet ID %s." % id, LOG_SCOPE)
 
 
 ## Register a packet handler. Server-side handlers take two arguments, peer ID
@@ -95,7 +97,9 @@ func handle_packets(peer: int, data: PackedByteArray) -> int:
 		packet._serde(de)
 
 		if de.pos != next_pos:
-			push_error("Failed to parse packet: Declared length does not match parsed length")
+			Log.error(
+				"Failed to parse packet: Declared length does not match parsed length", LOG_SCOPE
+			)
 			return count
 
 		if peer == 1:
@@ -128,7 +132,7 @@ func _get_packet_registry_entry(id: PackedByteArray, ofs := 0) -> PacketRegistry
 		else:
 			curr = curr[byte]
 
-	push_error("Invalid packet ID %s." % id)
+	Log.error("Invalid packet ID %s." % id, LOG_SCOPE)
 	return null
 
 

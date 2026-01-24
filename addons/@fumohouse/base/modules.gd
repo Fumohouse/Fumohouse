@@ -1,6 +1,8 @@
 extends Node
 ## A singleton for managing modules.
 
+const LOG_SCOPE := "Modules"
+
 const _MODULES_DIR := "res://addons/"
 const _MANIFEST_NAME := "module.tres"
 
@@ -19,7 +21,7 @@ func _enter_tree():
 	var scene_path: String = get_tree().current_scene.scene_file_path
 	var scene_path_split: PackedStringArray = scene_path.trim_prefix(_MODULES_DIR).split("/")
 	var scene_module: String = "/".join(scene_path_split.slice(0, 2))
-	print("[Modules] Detected main scene in module '%s'!" % scene_module)
+	Log.info("Detected main scene in module '%s'!" % scene_module, LOG_SCOPE)
 
 	prepare_module(scene_module)
 
@@ -58,20 +60,20 @@ func walk_dependencies(from: StringName) -> Array[StringName]:
 ## dependent autoloads).
 func prepare_module(module: StringName):
 	var ordering: Array[StringName] = walk_dependencies(module)
-	print("[Modules] Determined module load order: %s" % " -> ".join(ordering))
+	Log.info("Determined module load order: %s" % " -> ".join(ordering), LOG_SCOPE)
 	_load_autoloads(ordering)
 
 
 func _index_module(path: String):
 	var manifest := load(path.path_join(_MANIFEST_NAME)) as ModuleManifest
 	if not manifest:
-		push_error("[Modules] Invalid manifest at '%s'." % path)
+		Log.error("Invalid manifest at '%s'." % path, LOG_SCOPE)
 		return
 
 	var cfg := ConfigFile.new()
 	var err: Error = cfg.load(path.path_join("plugin.cfg"))
 	if err != OK:
-		push_error("[Modules] Failed to load plugin configuration for '%s'." % path)
+		Log.error("Failed to load plugin configuration for '%s'." % path, LOG_SCOPE)
 		return
 
 	manifest.name = cfg.get_value("plugin", "name", "")
@@ -93,15 +95,15 @@ func _index_module(path: String):
 				manifest.copyright = copyright
 
 	_modules[module_name] = manifest
-	print("[Modules] Indexed module '%s'." % module_name)
+	Log.debug("Indexed module '%s'." % module_name, LOG_SCOPE)
 
 
 func _scan_modules():
-	print("[Modules] Scanning for modules...")
+	Log.info("Scanning for modules...", LOG_SCOPE)
 
 	var mods_dir := DirAccess.open(_MODULES_DIR)
 	if not mods_dir:
-		push_error("[Modules] Failed to open modules directory.")
+		Log.error("Failed to open modules directory.", LOG_SCOPE)
 		return
 
 	mods_dir.list_dir_begin()
@@ -115,7 +117,7 @@ func _scan_modules():
 		var scope_path: String = _MODULES_DIR.path_join(mod_file)
 		var scope_dir := DirAccess.open(scope_path)
 		if not scope_dir:
-			push_error("[Modules] Failed to open scope directory '%s'." % mod_file)
+			Log.error("Failed to open scope directory '%s'." % mod_file, LOG_SCOPE)
 			continue
 
 		scope_dir.list_dir_begin()
@@ -136,7 +138,7 @@ func _scan_modules():
 func _mount_paks(path: String):
 	var dir := DirAccess.open(path)
 	if not dir:
-		push_error("[Modules] Failed to read directory: %s." % [path])
+		Log.error("Failed to read directory: %s." % [path], LOG_SCOPE)
 		return
 
 	dir.list_dir_begin()
@@ -148,9 +150,9 @@ func _mount_paks(path: String):
 		if dir.current_is_dir():
 			_mount_paks(full_path)
 		elif file_name.ends_with(".pck"):
-			print("[Modules] Loading PCK %s..." % [full_path])
+			Log.info("Loading PCK %s..." % [full_path], LOG_SCOPE)
 			if not ProjectSettings.load_resource_pack(full_path, false):
-				push_error("[Modules] Failed to load PCK.")
+				Log.error("Failed to load PCK.", LOG_SCOPE)
 				return
 
 		file_name = dir.get_next()
@@ -169,7 +171,7 @@ func _walk_dependencies_internal(from: StringName, out: Array[StringName]):
 ## Loads the autoloads of the modules in the given [param ordering] (which
 ## should be found by [method _walk_dependencies]).
 func _load_autoloads(ordering: Array[StringName]):
-	print("[Modules] Loading autoloads...")
+	Log.info("Loading autoloads...", LOG_SCOPE)
 	for mod in ordering:
 		var manifest := _modules[mod]
 		for autoload in manifest.autoloads:
@@ -183,9 +185,9 @@ func _load_autoloads(ordering: Array[StringName]):
 					obj.name = autoload.name
 					add_child(obj as Node)
 				_autoloads[autoload.name] = obj
-				print("[Modules] Loaded autoload class '%s'." % autoload.name)
+				Log.info("Loaded autoload class '%s'." % autoload.name, LOG_SCOPE)
 			elif res is PackedScene:
 				var node: Node = (res as PackedScene).instantiate()
 				add_child(node)
 				_autoloads[autoload.name] = node
-				print("[Modules] Loaded autoload scene '%s'." % autoload.name)
+				Log.info("Loaded autoload scene '%s'." % autoload.name, LOG_SCOPE)

@@ -1,12 +1,13 @@
 extends Node
 
+const LOG_SCOPE := "Entry"
 const _MAIN_MODULE := "@fumohouse/main"
 
 
 func _ready():
 	var mod: ModuleManifest = Modules.get_module(_MAIN_MODULE)
 	if not mod:
-		push_error("Could not find main module %s." % [_MAIN_MODULE])
+		Log.error("Could not find main module %s." % [_MAIN_MODULE], LOG_SCOPE)
 		return
 
 	Modules.prepare_module(_MAIN_MODULE)

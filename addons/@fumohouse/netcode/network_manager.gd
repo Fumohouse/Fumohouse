@@ -55,6 +55,8 @@ enum AuthType {
 	PASSWORD = 1,
 }
 
+const LOG_SCOPE := "Net"
+
 const Goodbye := preload("packets/goodbye.gd")
 
 ## Currently in multiplayer? (i.e., not singleplayer)
@@ -187,7 +189,7 @@ func serve(port: int, password := "") -> Error:
 
 	_is_active = true
 	server_started.emit()
-	print("[Networking] Started server at port %d" % port)
+	Log.info("Started server at port %d" % port, LOG_SCOPE)
 	return OK
 
 
@@ -212,7 +214,7 @@ func join(addr: String, port: int, identity: String, auth := "") -> Error:
 	_mp.multiplayer_peer = _peer
 
 	_is_active = true
-	print("[Networking] Connecting to server at %s:%d..." % [addr, port])
+	Log.info("Connecting to server at %s:%d..." % [addr, port], LOG_SCOPE)
 	return OK
 
 
@@ -245,10 +247,10 @@ func disconnect_timeout(peer: int, predicate := Callable(), timeout := 10.0):
 			# Already disconnected
 			return
 
-		print("[Networking] Disconnecting peer %d after timeout" % peer)
+		Log.info("Disconnecting peer %d after timeout" % peer, LOG_SCOPE)
 		disconnect_no_reason(peer)
 	else:
-		print("[Networking] Disconnecting from server after timeout")
+		Log.info("Disconnecting from server after timeout", LOG_SCOPE)
 		reset()
 		send_status_update("Timed out", true, false)
 
@@ -274,7 +276,7 @@ func close_server():
 	if not _peer or _peer.get_connection_status() != MultiplayerPeer.CONNECTION_CONNECTED:
 		return
 
-	print("[Networking] Closing server...")
+	Log.info("Closing server...", LOG_SCOPE)
 
 	_mp.refuse_new_connections = true
 	disconnect_with_reason(0, "Server closed")
@@ -285,7 +287,7 @@ func close_server():
 
 	for i in ATTEMPTS:
 		if _mp.get_peers().is_empty():
-			print("[Networking] All clients disconnected!")
+			Log.info("All clients disconnected!", LOG_SCOPE)
 			break
 
 		await get_tree().create_timer(MAX_WAIT / ATTEMPTS).timeout
@@ -315,7 +317,7 @@ func reset():
 	resetted.emit()
 
 	if _is_quitting:
-		print("[NetworkManager] Continuing quit process...")
+		Log.info("Continuing quit process...", LOG_SCOPE)
 		QuitManager.get_singleton().quit()
 
 
@@ -378,7 +380,7 @@ func get_peer_rtt(peer: int) -> int:
 
 
 func _on_connected_to_server():
-	print("[Networking] Successfully connected to %s:%d" % [_addr, _port])
+	Log.info("Successfully connected to %s:%d" % [_addr, _port], LOG_SCOPE)
 
 	var peer_data := PeerData.new()
 	peer_data.identity = "SERVER"
@@ -389,13 +391,13 @@ func _on_connected_to_server():
 
 
 func _on_connection_failed():
-	print("[Networking] Connection to %s:%d failed" % [_addr, _port])
+	Log.info("Connection to %s:%d failed" % [_addr, _port], LOG_SCOPE)
 	reset()
 	send_status_update("Connection failed", true, false)
 
 
 func _on_server_disconnected():
-	print("[Networking] Disconnected from server")
+	Log.info("Disconnected from server", LOG_SCOPE)
 	reset()
 	send_status_update("Lost connection to server", true, false)
 
@@ -404,11 +406,8 @@ func _on_peer_connected(id: int):
 	if not is_server:
 		return
 
-	print(
-		(
-			"[Networking] New peer %d @ %s:%d"
-			% [id, _peer.get_peer_address(id), _peer.get_peer_port(id)]
-		)
+	Log.info(
+		"New peer %d @ %s:%d" % [id, _peer.get_peer_address(id), _peer.get_peer_port(id)], LOG_SCOPE
 	)
 
 	_peers[id] = PeerData.new()
@@ -421,7 +420,7 @@ func _on_peer_disconnected(id: int):
 	if not is_server:
 		return
 
-	print("[Networking] Peer %d disconnected" % id)
+	Log.info("Peer %d disconnected" % id, LOG_SCOPE)
 
 	server_peer_disconnected.emit(id)
 	# After to preserve peer data during disconnected event
@@ -436,7 +435,7 @@ func _on_quitting():
 	if not _peer or _peer.get_connection_status() != MultiplayerPeer.CONNECTION_CONNECTED:
 		return false
 
-	print("[Networking] Preparing to quit...")
+	Log.info("Preparing to quit...", LOG_SCOPE)
 
 	_is_quitting = true
 

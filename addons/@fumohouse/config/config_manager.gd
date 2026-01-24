@@ -11,8 +11,9 @@ signal value_changed(key: StringName)
 ## Emitted when a configuration option that requires a restart changes.
 signal restart_required
 
-var CONFIG_LOCATION := "user://config.ini"
-var AUTOSAVE_TIMEOUT := 30.0
+const LOG_SCOPE := "ConfigManager"
+const CONFIG_LOCATION := "user://config.ini"
+const AUTOSAVE_TIMEOUT := 30.0
 
 var _config := ConfigFile.new()
 # Dedicated to prevent ProjectSettings.save_custom from causing outdated
@@ -74,7 +75,7 @@ func add_opt(
 	obj_class_override: StringName = "",
 ):
 	if _options.has(key):
-		push_error("[ConfigManager] Option already exists: '%s'" % key)
+		Log.error("Option already exists: '%s'" % key, LOG_SCOPE)
 		return
 
 	var opt := ConfigOption.new()
@@ -100,11 +101,12 @@ func set_opt(key: StringName, value: Variant, is_init := false):
 
 	var opt := _options[key]
 	if not opt.type_matches(value):
-		push_error(
+		Log.error(
 			(
-				"[ConfigManager] Config value %s is the wrong type (got %d, expected %d)"
+				"Config value %s is the wrong type (got %d, expected %d)"
 				% [key, typeof(value), opt.type]
-			)
+			),
+			LOG_SCOPE
 		)
 		return
 
@@ -127,12 +129,10 @@ func set_project_settings_opt(key: StringName, value: Variant):
 
 ## Load configuration from file.
 func load_file():
-	print("[ConfigManager] Loading from file...")
+	Log.info("Loading from file...", LOG_SCOPE)
 	var err = _config.load(CONFIG_LOCATION)
 	if err != OK and err != ERR_FILE_NOT_FOUND:
-		push_warning(
-			"[ConfigManager] Failed to load config file at %s (error %d)." % [CONFIG_LOCATION, err]
-		)
+		Log.warn("Failed to load config file at %s (error %d)." % [CONFIG_LOCATION, err], LOG_SCOPE)
 
 	# Initialize values
 	for key in _options:
@@ -150,13 +150,13 @@ func load_file():
 
 ## Save configuration to file.
 func save_file():
-	print("[ConfigManager] Saving...")
+	Log.info("Saving...", LOG_SCOPE)
 	var err := _config.save(CONFIG_LOCATION)
 	if err == OK:
 		_autosave_timeout = 0.0
 	else:
-		push_error(
-			"[ConfigManager] Failed to save config file to %s (error %d)." % [CONFIG_LOCATION, err]
+		Log.error(
+			"Failed to save config file to %s (error %d)." % [CONFIG_LOCATION, err], LOG_SCOPE
 		)
 
 	var override_path := (
@@ -164,11 +164,12 @@ func save_file():
 	)
 	err = _override_config.save(override_path)
 	if err != OK:
-		push_error(
+		Log.error(
 			(
-				"[ConfigManager] Failed to save project settings override file to %s (error %d)."
+				"Failed to save project settings override file to %s (error %d)."
 				% [override_path, err]
-			)
+			),
+			LOG_SCOPE
 		)
 
 

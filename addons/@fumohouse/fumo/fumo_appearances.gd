@@ -11,6 +11,8 @@ signal active_changed
 ## Emitted after [member staging] changes.
 signal staging_changed
 
+const LOG_SCOPE := "FumoAppearances"
+
 ## Current appearance for local character. Default value is injected by
 ## [code]@fumohouse/fumo_touhou[/code].
 var active: Appearance
@@ -55,7 +57,7 @@ func _scan_dir_internal(path: String):
 
 		var preset := load(full_path) as Appearance
 		if not preset:
-			push_warning("Unrecognized preset: '%s'." % full_path)
+			Log.warn("Unrecognized preset: '%s'." % full_path, LOG_SCOPE)
 			continue
 
 		presets.push_back(preset)

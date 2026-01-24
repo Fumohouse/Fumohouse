@@ -1,5 +1,7 @@
 extends "res://addons/@fumohouse/navigation/info_screen/info_screen_base.gd"
 
+const LOG_SCOPE := "InfoScreenWorld"
+
 @onready var _info_tab: Control = $Contents/MarginContainer/TabContent/Info
 
 
@@ -20,7 +22,7 @@ func _ready():
 		else:
 			var scene = load(world.info_scene) as PackedScene
 			if not scene:
-				push_error("Failed to load info scene: %s" % world.info_scene)
+				Log.error("Failed to load info scene: %s" % world.info_scene, LOG_SCOPE)
 				return
 
 			_info_tab.add_child(scene.instantiate())

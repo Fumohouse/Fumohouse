@@ -5,6 +5,8 @@ extends Control
 ## Fired when the selected buttons change.
 signal selection_changed
 
+const LOG_SCOPE := "RadioButtonContainer"
+
 ## Whether to allow an empty selection. [b]Undefined behavior if changed after
 ## instantiation.[/b]
 @export var allow_none := false
@@ -36,7 +38,7 @@ func _init():
 func _on_child_entered_tree(child: Node):
 	var btn := child as Button
 	if not btn:
-		push_error("Non-button child is present in RadioButtonContainer.")
+		Log.error("Non-button child is present in RadioButtonContainer.", LOG_SCOPE)
 		return
 
 	btn.toggle_mode = true
@@ -60,7 +62,9 @@ func _set_selection(selection: Button):
 
 func _get_selection():
 	if multi_selection:
-		push_error("Cannot get selection of a RadioButtonContainer that allows multi selection.")
+		Log.error(
+			"Cannot get selection of a RadioButtonContainer that allows multi selection.", LOG_SCOPE
+		)
 		return
 
 	return _selected_buttons[0] if not _selected_buttons.is_empty() else null
@@ -68,11 +72,11 @@ func _get_selection():
 
 func _set_multiple_selection(buttons: Array[Button]):
 	if not multi_selection and buttons.size() > 1:
-		push_error("Cannot select multiple buttons when multi_selection is false.")
+		Log.error("Cannot select multiple buttons when multi_selection is false.", LOG_SCOPE)
 		return
 
 	if not allow_none and buttons.is_empty():
-		push_error("Cannot select no buttons when allow_none is false.")
+		Log.error("Cannot select no buttons when allow_none is false.", LOG_SCOPE)
 		return
 
 	for button in _selected_buttons:

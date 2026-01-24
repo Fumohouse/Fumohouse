@@ -2,6 +2,8 @@ class_name CopyrightFile
 extends Resource
 ## Parses and stores a Debian format [code]COPYRIGHT.txt[/code] file.
 
+const LOG_SCOPE := "CopyrightFile"
+
 ## Global map of license files to licenses.
 static var licenses: Dictionary[StringName, CopyrightLicense] = {}
 
@@ -19,7 +21,7 @@ var _current_string := ""
 func parse(path: String) -> bool:
 	var file := FileAccess.open(path, FileAccess.READ)
 	if not file:
-		push_error("Failed to open COPYRIGHT file at %s." % [path])
+		Log.error("Failed to open COPYRIGHT file at %s." % [path], LOG_SCOPE)
 		return false
 
 	_current_files = null

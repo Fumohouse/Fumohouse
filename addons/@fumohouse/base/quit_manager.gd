@@ -5,6 +5,8 @@ extends Node
 
 signal before_quit
 
+const LOG_SCOPE := "QuitManager"
+
 ## Indicates whether a quit is in progress.
 var is_quitting: bool:
 	get:
@@ -43,6 +45,6 @@ func quit():
 			return
 
 	# This log might not appear in the editor. Whatever
-	print("[QuitManager] Quitting...")
+	Log.info("Quitting...", LOG_SCOPE)
 	before_quit.emit()
 	get_tree().quit()

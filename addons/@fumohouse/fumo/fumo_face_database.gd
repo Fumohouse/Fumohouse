@@ -2,6 +2,8 @@ class_name FumoFaceDatabase
 extends Node
 ## Database for fumo face styles.
 
+const LOG_SCOPE := "FumoFaceDatabase"
+
 ## Eyebrow styles.
 var eyebrow_styles: Dictionary[StringName, FumoEyebrowStyle] = {}
 
@@ -30,17 +32,17 @@ func scan_dir(path: String):
 
 			if res is FumoEyebrowStyle:
 				if eyebrow_styles.has(res.id):
-					push_error("Duplicate eyebrow ID: %s" % [res.id])
+					Log.error("Duplicate eyebrow ID: %s" % [res.id], LOG_SCOPE)
 				else:
 					eyebrow_styles[res.id] = res
 			elif res is FumoEyeStyle:
 				if eye_styles.has(res.id):
-					push_error("Duplicate eye ID: %s" % [res.id])
+					Log.error("Duplicate eye ID: %s" % [res.id], LOG_SCOPE)
 				else:
 					eye_styles[res.id] = res
 			elif res is FumoMouthStyle:
 				if mouth_styles.has(res.id):
-					push_error("Duplicate mouth ID: %s" % [res.id])
+					Log.error("Duplicate mouth ID: %s" % [res.id], LOG_SCOPE)
 				else:
 					mouth_styles[res.id] = res
 

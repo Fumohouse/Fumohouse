@@ -8,6 +8,7 @@ signal world_changed(world: WorldManifest)
 ## Generic status update (for use with UI, etc.)
 signal status_update(msg: String, failure: bool)
 
+const LOG_SCOPE := "WorldManager"
 const _DEFAULT_WORLD := "@fumohouse/fumohouse"
 
 ## Callback to get the main scene when leaving. Should return a [Node].
@@ -70,7 +71,7 @@ func load_world(id: String) -> WorldManifest:
 
 	var scene = load(world.entry_scene) as PackedScene
 	if not scene:
-		push_error("Could not load scene at path %s." % [world.entry_scene])
+		Log.error("Could not load scene at path %s." % [world.entry_scene], LOG_SCOPE)
 		return null
 
 	MusicPlayer.get_singleton().load_playlists(world.playlists)
@@ -85,7 +86,7 @@ func load_world(id: String) -> WorldManifest:
 
 	var char_manager: Node = new_scene.get_node_or_null("CharacterManager")
 	if not char_manager or char_manager is not CharacterManagerBase:
-		push_error("No character manager found.")
+		Log.error("No character manager found.", LOG_SCOPE)
 		return null
 
 	char_manager.camera = runtime.camera
