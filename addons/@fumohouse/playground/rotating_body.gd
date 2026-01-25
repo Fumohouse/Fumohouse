@@ -6,4 +6,4 @@ extends AnimatableBody3D
 
 
 func _physics_process(delta: float):
-	rotate_y(deg_to_rad(rotation_speed) * delta)
+	rotation.y = deg_to_rad(rotation_speed) * WorldClock.get_singleton().physics_time

@@ -91,6 +91,12 @@ var packets_sent: int:
 	get:
 		return _packets_sent
 
+## The current clock time (microseconds), including offset. All client clocks
+## are synchronized with the server (with some error).
+var time: int:
+	get:
+		return Time.get_ticks_usec() + _clock_offset
+
 ## Getter for custom payload for [code]HELLOS[/code]. If non-empty, this
 ## function is called when the server sends [code]HELLOS[/code] and its output
 ## is injected into the packet payload. Function should take no arguments and
@@ -116,6 +122,7 @@ var _auth := ""
 
 var _packets_received := 0
 var _packets_sent := 0
+var _clock_offset := 0
 
 # Client state
 var _addr := ""
@@ -309,6 +316,7 @@ func reset():
 	_auth = ""
 	_packets_received = 0
 	_packets_sent = 0
+	_clock_offset = 0.0
 	_addr = ""
 	_port = 0
 	_identity = ""

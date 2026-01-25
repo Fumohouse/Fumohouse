@@ -20,6 +20,7 @@ func _ready():
 	_tbl.add_entry(&"rx", "Packets Received")
 	_tbl.add_entry(&"tx", "Packets Sent")
 	_tbl.add_entry(&"ping", "Ping")
+	_tbl.add_entry(&"time", "Time")
 
 
 func _process(delta: float):
@@ -27,6 +28,7 @@ func _process(delta: float):
 		_tbl.set_val(&"tx", "-")
 		_tbl.set_val(&"rx", "-")
 		_tbl.set_val(&"ping", "-")
+		_tbl.set_val(&"time", "-")
 		return
 
 	_tbl.set_val(&"rx", str(_nm.packets_received))
@@ -41,3 +43,5 @@ func _process(delta: float):
 			_tbl.set_val(&"ping", res.strip_edges())
 	else:
 		_tbl.set_val(&"ping", "%dms" % _nm.get_peer_rtt(1))
+
+	_tbl.set_val(&"time", "%.2fs" % (_nm.time / 1e6))

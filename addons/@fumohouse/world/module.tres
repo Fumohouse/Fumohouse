@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ModuleManifest" load_steps=15 format=3 uid="uid://b6yxnsqimgyo4"]
+[gd_resource type="Resource" script_class="ModuleManifest" load_steps=16 format=3 uid="uid://b6yxnsqimgyo4"]
 
 [ext_resource type="Script" uid="uid://bv6m4s88g0oi6" path="res://addons/@fumohouse/base/module_autoload.gd" id="1_ou7jc"]
 [ext_resource type="Script" uid="uid://cyriemmrcefgc" path="res://addons/@fumohouse/base/module_dependency.gd" id="2_q47l1"]
@@ -14,6 +14,12 @@ metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
 script = ExtResource("1_ou7jc")
 name = &"_WorldCharacterMPHandler"
 path = "uid://dolt3imcupxdp"
+metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
+
+[sub_resource type="Resource" id="Resource_3synb"]
+script = ExtResource("1_ou7jc")
+name = &"WorldClock"
+path = "uid://bu782rjji55df"
 metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
 
 [sub_resource type="Resource" id="Resource_ou7jc"]
@@ -64,5 +70,5 @@ metadata/_custom_type_script = "uid://cyriemmrcefgc"
 [resource]
 script = ExtResource("3_1akqj")
 dependencies = Array[ExtResource("2_q47l1")]([SubResource("Resource_ou7jc"), SubResource("Resource_1akqj"), SubResource("Resource_qdj6x"), SubResource("Resource_pljcs"), SubResource("Resource_b502f"), SubResource("Resource_oqytb"), SubResource("Resource_tvpl8"), SubResource("Resource_lprbi"), SubResource("Resource_uat4r")])
-autoloads = Array[ExtResource("1_ou7jc")]([SubResource("Resource_q47l1"), SubResource("Resource_wrjtc")])
+autoloads = Array[ExtResource("1_ou7jc")]([SubResource("Resource_q47l1"), SubResource("Resource_wrjtc"), SubResource("Resource_3synb")])
 metadata/_custom_type_script = "uid://c5kqgift21f1k"

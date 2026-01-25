@@ -1,9 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://guxlxf4tholg"]
+[gd_scene load_steps=35 format=3 uid="uid://guxlxf4tholg"]
 
 [ext_resource type="Script" uid="uid://ds2i8jbnratt0" path="res://addons/@fumohouse/world/nodes/character_manager.gd" id="1_wbq40"]
 [ext_resource type="Script" uid="uid://rs1pafyfthr8" path="res://addons/@fumohouse/world/nodes/spawnpoint.gd" id="2_cv6sy"]
+[ext_resource type="Script" uid="uid://du0g5lc0tyxx8" path="res://addons/@fumohouse/netcode/nodes/fumohouse_multiplayer_synchronizer.gd" id="4_cv6sy"]
 [ext_resource type="FontFile" uid="uid://c4qltp4duykro" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-RegularItalic.woff2" id="5_b1etj"]
-[ext_resource type="PackedScene" uid="uid://bnic23uqggm8j" path="res://addons/@fumohouse/fumo/fumo.tscn" id="5_b8l81"]
 [ext_resource type="Script" uid="uid://ccc2egf38uchc" path="res://addons/@fumohouse/common/nodes/billboard.gd" id="5_o3drt"]
 [ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@fumohouse/base/assets/textures/logo.png" id="6_b1etj"]
 [ext_resource type="Script" uid="uid://dgrdrsb723x4l" path="res://addons/@fumohouse/playground/path_follower.gd" id="6_fia5t"]
@@ -13,6 +13,32 @@
 [ext_resource type="PackedScene" uid="uid://dq033aiu7nys6" path="res://addons/@fumohouse/playground/seat.tscn" id="10_qf3vw"]
 [ext_resource type="PackedScene" uid="uid://da37x05lvkkbi" path="res://addons/@fumohouse/playground/ladder.tscn" id="11_ckt1o"]
 [ext_resource type="Material" uid="uid://dbc0ratgleys3" path="res://addons/@fumohouse/common/resources/materials/water.tres" id="15_2usgv"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_i7yjg"]
+properties/0/path = NodePath("Box:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Box:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Box:linear_velocity")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Box:angular_velocity")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Ball:position")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Ball:rotation")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("Ball:linear_velocity")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("Ball:angular_velocity")
+properties/7/spawn = true
+properties/7/replication_mode = 1
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xnrk0"]
 friction = 0.5
@@ -150,6 +176,11 @@ material = ExtResource("6_r7lgf")
 
 [node name="Interactables" type="Node3D" parent="Map"]
 
+[node name="FumohouseMultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Map/Interactables"]
+replication_config = SubResource("SceneReplicationConfig_i7yjg")
+script = ExtResource("4_cv6sy")
+metadata/_custom_type_script = "uid://du0g5lc0tyxx8"
+
 [node name="Box" type="RigidBody3D" parent="Map/Interactables"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, -5)
 mass = 10.0
@@ -206,6 +237,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.802731, 4.0762877, 10.0067
 progress = 27.0
 rotation_mode = 0
 script = ExtResource("6_fia5t")
+offset = 27.0
 speed = 4.0
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Map/Interactables/Path3D/NoRotating"]
@@ -259,9 +291,6 @@ billboard = 1
 text = "seat"
 font = ExtResource("5_b1etj")
 font_size = 40
-
-[node name="Dummy" parent="Map/Interactables" instance=ExtResource("5_b8l81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 5)
 
 [node name="Platform" type="CSGCombiner3D" parent="Map"]
 layers = 3
@@ -437,6 +466,7 @@ metadata/_custom_type_script = "uid://ccc2egf38uchc"
 
 [node name="Control" type="Control" parent="Map/Billboard"]
 layout_mode = 3
+anchors_preset = 0
 offset_right = 500.0
 offset_bottom = 300.0
 

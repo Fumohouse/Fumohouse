@@ -28,7 +28,7 @@ func _enter_tree():
 
 ## Get the singleton instance given by [param name].
 func get_singleton(name: StringName) -> Object:
-	return _autoloads[name]
+	return _autoloads.get(name)
 
 
 ## Get the list of currently detected modules.

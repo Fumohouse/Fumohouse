@@ -7,6 +7,8 @@ const ID: PackedByteArray = [0x04]
 var pong := false
 ## Ping payload (e.g., time)
 var payload := 0
+## Clock time for synchronization.
+var time := 0
 
 
 func _init():
@@ -17,3 +19,4 @@ func _init():
 func _serde(serde: SerDe):
 	pong = serde.boolean(pong)
 	payload = serde.s64(payload)
+	time = serde.u64(time)
