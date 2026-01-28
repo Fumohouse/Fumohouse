@@ -1,6 +1,8 @@
 @tool
 extends Button
 
+const LOG_SCOPE := "BlenderTransform"
+
 
 func _ready():
 	pressed.connect(_on_pressed)
@@ -22,7 +24,7 @@ func _on_pressed():
 		if transform != null:
 			node.global_transform = transform as Transform3D
 		else:
-			push_warning("No matching Blender object found for node %s." % [node.name])
+			Log.warn("No matching Blender object found for node %s." % [node.name], LOG_SCOPE)
 
 
 func _parse_transforms(str: String) -> Dictionary:

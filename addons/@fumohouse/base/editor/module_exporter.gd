@@ -2,6 +2,8 @@
 extends RefCounted
 ## Class for exporting a module as a PCK file.
 
+const LOG_SCOPE := "Exporter"
+
 
 ## Exports the given [param modules] as PCKs. The resulting PCKs will be placed
 ## in [param out_path] as [code]modules/@scope/name.pck[/code].
@@ -17,7 +19,7 @@ static func export(modules: PackedStringArray, platform: String, out_path: Strin
 	var zip := ZIPReader.new()
 	var err := zip.open(zip_path)
 	if err != OK:
-		push_error("Failed to open master zip %s." % [zip_path])
+		Log.error("Failed to open master zip %s." % [zip_path], LOG_SCOPE)
 		return
 
 	for module in modules:
@@ -56,7 +58,7 @@ static func export_base_package(platform: String, out_path: String):
 
 	var err := export_cfg.save("res://export_presets.cfg")
 	if err != OK:
-		push_error("Failed to save export preset configuration.")
+		Log.error("Failed to save export preset configuration.", LOG_SCOPE)
 		return err
 
 	# Remove reference to all modules from the exported project.binary
@@ -83,7 +85,7 @@ static func export_base_package(platform: String, out_path: String):
 	ProjectSettings.save()
 
 	if exit_code != 0:
-		push_error("Godot exited with error code %d." % [exit_code])
+		Log.error("Godot exited with error code %d." % [exit_code], LOG_SCOPE)
 		return FAILED
 
 	return OK
@@ -109,7 +111,7 @@ static func _export_master_zip(platform: String, zip_path: String) -> Error:
 
 	var err := export_cfg.save("res://export_presets.cfg")
 	if err != OK:
-		push_error("Failed to save export preset configuration.")
+		Log.error("Failed to save export preset configuration.", LOG_SCOPE)
 		return err
 
 	# Run export command to ZIP
@@ -117,7 +119,7 @@ static func _export_master_zip(platform: String, zip_path: String) -> Error:
 		OS.get_executable_path(), ["--headless", "--export-pack", platform, zip_path]
 	)
 	if exit_code != 0:
-		push_error("Godot exited with error code %d." % [exit_code])
+		Log.error("Godot exited with error code %d." % [exit_code], LOG_SCOPE)
 		return FAILED
 
 	return OK
@@ -139,7 +141,7 @@ static func _export_module_from_zip(
 
 		var temp_file := FileAccess.open(temp_file_path, FileAccess.WRITE)
 		if not temp_file:
-			push_error("Failed to open temporary file: %s." % [temp_file_path])
+			Log.error("Failed to open temporary file: %s." % [temp_file_path], LOG_SCOPE)
 			return
 
 		# FIXME: This is braindead
@@ -238,7 +240,7 @@ static func _scan_resources(path: String) -> PackedStringArray:
 	var res: PackedStringArray = []
 	var dir := DirAccess.open(path)
 	if not dir:
-		push_error("Failed to read directory: %s." % [path])
+		Log.error("Failed to read directory: %s." % [path], LOG_SCOPE)
 		return res
 
 	dir.list_dir_begin()

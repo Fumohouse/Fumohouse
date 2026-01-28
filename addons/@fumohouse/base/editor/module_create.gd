@@ -1,6 +1,8 @@
 @tool
 extends Control
 
+const LOG_SCOPE := "ModuleCreate"
+
 @onready var _name_scope: LineEdit = %NameScope
 @onready var _name_main: LineEdit = %NameMain
 @onready var _description: TextEdit = %Description
@@ -25,15 +27,15 @@ func _create_module(
 	scope: String, name: String, description: String, author: String, version: String
 ) -> bool:
 	if scope.is_empty() or name.is_empty():
-		push_error("Scope and name are required.")
+		Log.error("Scope and name are required.", LOG_SCOPE)
 		return false
 	if author.is_empty():
-		push_error("Author is required.")
+		Log.error("Author is required.", LOG_SCOPE)
 		return false
 
 	var dir := "res://addons".path_join("@" + scope).path_join(name)
 	if DirAccess.dir_exists_absolute(dir):
-		push_error("Module directory already exists.")
+		Log.error("Module directory already exists.", LOG_SCOPE)
 		return false
 
 	var full_name := "@%s/%s" % [scope, name]

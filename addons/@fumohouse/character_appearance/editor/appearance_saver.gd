@@ -1,6 +1,8 @@
 @tool
 extends Control
 
+const LOG_SCOPE := "AppearanceSaver"
+
 @onready var _folder_field: LineEdit = $Folder
 
 
@@ -33,7 +35,7 @@ func _on_save_pressed():
 		for part in attachment.get_children():
 			var scene_path := part.scene_file_path
 			if scene_path == "":
-				push_warning("Part %s not instantiated from a scene file." % part.name)
+				Log.warn("Part %s not instantiated from a scene file." % part.name, LOG_SCOPE)
 				continue
 
 			var part_data := SinglePart.new()
