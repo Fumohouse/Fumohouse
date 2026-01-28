@@ -12,6 +12,8 @@ config_version=5
 
 config/name="Fumohouse"
 run/main_scene="uid://y6e7gfvh3kep"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Fumohouse"
 config/project_settings_override="user://override.godot"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://cly828ija347l"
