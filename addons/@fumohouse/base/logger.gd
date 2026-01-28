@@ -1,3 +1,4 @@
+@tool
 extends Node
 ## Logger class.
 
@@ -29,7 +30,8 @@ func _enter_tree():
 	if OS.has_feature("dedicated_server"):
 		_max_old_logs = -1
 
-	_init_log_file()
+	if not Engine.is_editor_hint():
+		_init_log_file()
 
 
 ## Debug log message.

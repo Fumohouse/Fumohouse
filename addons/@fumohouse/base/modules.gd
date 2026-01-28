@@ -1,3 +1,4 @@
+@tool
 extends Node
 ## A singleton for managing modules.
 
@@ -14,16 +15,17 @@ func _enter_tree():
 	if not OS.is_debug_build():
 		_mount_paks(OS.get_executable_path().get_base_dir().path_join("modules"))
 
-	_scan_modules()
+	scan_modules()
 
-	# This step must run before _ready of the main scene, otherwise everything
-	# will explode
-	var scene_path: String = get_tree().current_scene.scene_file_path
-	var scene_path_split: PackedStringArray = scene_path.trim_prefix(_MODULES_DIR).split("/")
-	var scene_module: String = "/".join(scene_path_split.slice(0, 2))
-	Log.info("Detected main scene in module '%s'!" % scene_module, LOG_SCOPE)
+	if not Engine.is_editor_hint():
+		# This step must run before _ready of the main scene, otherwise everything
+		# will explode
+		var scene_path: String = get_tree().current_scene.scene_file_path
+		var scene_path_split: PackedStringArray = scene_path.trim_prefix(_MODULES_DIR).split("/")
+		var scene_module: String = "/".join(scene_path_split.slice(0, 2))
+		Log.info("Detected main scene in module '%s'!" % scene_module, LOG_SCOPE)
 
-	prepare_module(scene_module)
+		prepare_module(scene_module)
 
 
 ## Get the singleton instance given by [param name].
@@ -98,8 +100,9 @@ func _index_module(path: String):
 	Log.debug("Indexed module '%s'." % module_name, LOG_SCOPE)
 
 
-func _scan_modules():
+func scan_modules():
 	Log.info("Scanning for modules...", LOG_SCOPE)
+	_modules.clear()
 
 	var mods_dir := DirAccess.open(_MODULES_DIR)
 	if not mods_dir:

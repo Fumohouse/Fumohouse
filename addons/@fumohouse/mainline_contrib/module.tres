@@ -13,3 +13,4 @@ metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
 [resource]
 script = ExtResource("3_du03g")
 autoloads = Array[ExtResource("1_jx2l7")]([SubResource("Resource_jx2l7")])
+additional_files = PackedStringArray()

@@ -1,3 +1,4 @@
+@tool
 class_name ModuleManifest
 extends Resource
 ## A module manifest resource that extends Godot's [code]plugin.cfg[/code].
@@ -17,6 +18,10 @@ extends Resource
 ## Whether to load this module even if it is not a direct or indirect dependency
 ## of the main module.
 @export var always_load := false
+
+## List of paths to non-resource files that should be included in the exported
+## module. The path to this module will be prepended automatically.
+@export var additional_files: PackedStringArray = []
 
 ## Name of this module (e.g., [code]@fumohouse/base[/code]), populated by the
 ## module manager.

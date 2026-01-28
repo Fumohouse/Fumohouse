@@ -92,12 +92,18 @@ static func export_base_package(platform: String, out_path: String):
 ## Export everything in the project to a temporary ZIP file. The files can then
 ## be used to create individual module PCKs.
 static func _export_master_zip(platform: String, zip_path: String) -> Error:
+	var include_filter: PackedStringArray = ["*/COPYRIGHT.txt", "*/plugin.cfg"]
+	Modules.scan_modules()
+	for module in Modules.get_modules():
+		for glob in module.additional_files:
+			include_filter.push_back("res://addons".path_join(module.name).path_join(glob))
+
 	var export_cfg := ConfigFile.new()
 	export_cfg.set_value("preset.0", "name", platform)
 	export_cfg.set_value("preset.0", "platform", platform)
 	export_cfg.set_value("preset.0", "runnable", false)
 	export_cfg.set_value("preset.0", "export_filter", "all_resources")
-	export_cfg.set_value("preset.0", "include_filter", "*/COPYRIGHT.txt, */plugin.cfg")
+	export_cfg.set_value("preset.0", "include_filter", ", ".join(include_filter))
 	export_cfg.set_value("preset.0", "exclude_filter", "")
 	export_cfg.set_value("preset.0.options", "DUMMY", "DUMMY")
 

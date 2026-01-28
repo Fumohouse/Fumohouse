@@ -71,4 +71,5 @@ metadata/_custom_type_script = "uid://cyriemmrcefgc"
 script = ExtResource("3_1akqj")
 dependencies = Array[ExtResource("2_q47l1")]([SubResource("Resource_ou7jc"), SubResource("Resource_1akqj"), SubResource("Resource_qdj6x"), SubResource("Resource_pljcs"), SubResource("Resource_b502f"), SubResource("Resource_oqytb"), SubResource("Resource_tvpl8"), SubResource("Resource_lprbi"), SubResource("Resource_uat4r")])
 autoloads = Array[ExtResource("1_ou7jc")]([SubResource("Resource_q47l1"), SubResource("Resource_wrjtc"), SubResource("Resource_3synb")])
+additional_files = PackedStringArray()
 metadata/_custom_type_script = "uid://c5kqgift21f1k"

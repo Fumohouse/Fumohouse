@@ -22,4 +22,5 @@ metadata/_custom_type_script = "uid://cyriemmrcefgc"
 [resource]
 script = ExtResource("3_54dtc")
 dependencies = Array[ExtResource("2_i47e5")]([SubResource("Resource_iruhy"), SubResource("Resource_i47e5"), SubResource("Resource_54dtc")])
+additional_files = PackedStringArray()
 metadata/_custom_type_script = "uid://c5kqgift21f1k"

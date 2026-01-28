@@ -19,4 +19,5 @@ metadata/_custom_type_script = "uid://cyriemmrcefgc"
 script = ExtResource("3_y6mjv")
 dependencies = Array[ExtResource("2_8e4ld")]([SubResource("Resource_8e4ld")])
 autoloads = Array[ExtResource("1_hgv4f")]([SubResource("Resource_hgv4f")])
+additional_files = PackedStringArray()
 metadata/_custom_type_script = "uid://c5kqgift21f1k"

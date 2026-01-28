@@ -1,3 +1,4 @@
+@tool
 class_name WorldManifest
 extends ModuleManifest
 ## A world manifest resource that extends [ModuleManifest] and marks the

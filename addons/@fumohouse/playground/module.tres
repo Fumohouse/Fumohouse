@@ -21,4 +21,5 @@ default_playlist = &"main"
 info_scene = "uid://dgsvsm2sj6ggp"
 dependencies = Array[ExtResource("2_pjviq")]([SubResource("Resource_gr7ck")])
 entry_scene = "uid://guxlxf4tholg"
+additional_files = PackedStringArray()
 metadata/_custom_type_script = "uid://d4eillkguq46g"

@@ -25,4 +25,5 @@ script = ExtResource("3_215fp")
 dependencies = Array[ExtResource("2_lvyxo")]([SubResource("Resource_4u6l7"), SubResource("Resource_d3wyn")])
 autoloads = Array[ExtResource("1_4u6l7")]([SubResource("Resource_cypp4")])
 always_load = true
+additional_files = PackedStringArray()
 metadata/_custom_type_script = "uid://c5kqgift21f1k"
