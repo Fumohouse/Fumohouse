@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8u2r8j3qr7of"]
+[gd_scene format=3 uid="uid://b8u2r8j3qr7of"]
 
 [ext_resource type="PackedScene" uid="uid://nrt2nygsisgy" path="res://addons/@fumohouse/fumo/character_editor/components/preview_button.tscn" id="1_fco87"]
 [ext_resource type="Script" uid="uid://ivui40u1btpt" path="res://addons/@fumohouse/fumo/character_editor/components/face_preview_button.gd" id="2_v2oor"]
 
-[node name="FacePreviewButton" instance=ExtResource("1_fco87")]
+[node name="FacePreviewButton" unique_id=447162212 instance=ExtResource("1_fco87")]
 script = ExtResource("2_v2oor")
 style = null
 
-[node name="CenterContainer" type="CenterContainer" parent="." index="0"]
+[node name="CenterContainer" type="CenterContainer" parent="." index="0" unique_id=1371349900]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,24 +15,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer" index="0"]
+[node name="ColorRect" type="ColorRect" parent="CenterContainer" index="0" unique_id=1135499117]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 color = Color(0.9882353, 0.91764706, 0.83137256, 1)
 
-[node name="Layer1" type="TextureRect" parent="CenterContainer" index="1"]
+[node name="Layer1" type="TextureRect" parent="CenterContainer" index="1" unique_id=1116776268]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 expand_mode = 1
 
-[node name="Layer2" type="TextureRect" parent="CenterContainer" index="2"]
+[node name="Layer2" type="TextureRect" parent="CenterContainer" index="2" unique_id=1036607942]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 expand_mode = 1
 
-[node name="Layer3" type="TextureRect" parent="CenterContainer" index="3"]
+[node name="Layer3" type="TextureRect" parent="CenterContainer" index="3" unique_id=1591427645]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2

@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dpwurkbi521ib"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dpwurkbi521ib"]
 
 [ext_resource type="Shader" uid="uid://xkvur3ki8adh" path="res://addons/@fumohouse/fumo/resources/face_material.gdshader" id="1_wueyp"]
 [ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="2_0baxp"]

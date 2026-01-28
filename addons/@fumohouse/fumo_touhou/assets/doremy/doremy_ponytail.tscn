@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c82ag8jefk8j8"]
+[gd_scene format=3 uid="uid://c82ag8jefk8j8"]
 
 [ext_resource type="PackedScene" uid="uid://casgc0slo0dl1" path="res://addons/@fumohouse/fumo_touhou/assets/doremy/doremy_ponytail.glb" id="1_dgba2"]
 [ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="2_umpxs"]
@@ -10,7 +10,7 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
 noise = SubResource("FastNoiseLite_yrlyc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymbxk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sgosx"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_umpxs")
@@ -39,7 +39,7 @@ shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_igpg5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o7jw8"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_umpxs")
@@ -68,7 +68,7 @@ shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1gleg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ngod"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_umpxs")
@@ -97,11 +97,11 @@ shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
 
-[node name="doremy_ponytail" node_paths=PackedStringArray("mesh") instance=ExtResource("1_dgba2")]
+[node name="doremy_ponytail" unique_id=1834088008 node_paths=PackedStringArray("mesh") instance=ExtResource("1_dgba2")]
 script = ExtResource("2_wous2")
 mesh = NodePath("doremy_ponytail")
 
-[node name="doremy_ponytail" parent="." index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_ymbxk")
-surface_material_override/1 = SubResource("ShaderMaterial_igpg5")
-surface_material_override/2 = SubResource("ShaderMaterial_1gleg")
+[node name="doremy_ponytail" parent="." index="0" unique_id=325476327]
+surface_material_override/0 = SubResource("ShaderMaterial_sgosx")
+surface_material_override/1 = SubResource("ShaderMaterial_o7jw8")
+surface_material_override/2 = SubResource("ShaderMaterial_7ngod")

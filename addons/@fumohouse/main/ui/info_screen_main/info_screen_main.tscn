@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1rxl7pcre3s7"]
+[gd_scene format=3 uid="uid://b1rxl7pcre3s7"]
 
 [ext_resource type="PackedScene" uid="uid://dcjihonkjq4ow" path="res://addons/@fumohouse/navigation/info_screen/info_screen_base.tscn" id="1_2xy3q"]
 [ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@fumohouse/base/assets/textures/logo.png" id="2_1snb7"]
@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://d251631rls86k" path="res://addons/@fumohouse/main/ui/info_screen_main/info_main_section.tscn" id="5_hq4jh"]
 [ext_resource type="PackedScene" uid="uid://cy0uije1v134m" path="res://addons/@fumohouse/main/ui/info_screen_main/info_main_contrib_section.tscn" id="5_kbrgb"]
 
-[node name="InfoScreenMain" instance=ExtResource("1_2xy3q")]
+[node name="InfoScreenMain" unique_id=1506385769 instance=ExtResource("1_2xy3q")]
 script = ExtResource("2_l2bs4")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/TabContent/Info" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/TabContent/Info" parent_id_path=PackedInt32Array(125878643) index="0" unique_id=2023368350]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,28 +19,28 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 24
 
-[node name="Heading" type="VBoxContainer" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer" index="0"]
+[node name="Heading" type="VBoxContainer" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer" index="0" unique_id=518953381]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Logo" type="HBoxContainer" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer/Heading" index="0"]
+[node name="Logo" type="HBoxContainer" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer/Heading" index="0" unique_id=2045362578]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 8
 
-[node name="TextureRect" type="TextureRect" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer/Heading/Logo" index="0"]
+[node name="TextureRect" type="TextureRect" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer/Heading/Logo" index="0" unique_id=920854033]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("2_1snb7")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer/Heading/Logo" index="1"]
+[node name="Label" type="Label" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer/Heading/Logo" index="1" unique_id=1293445145]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_l2bs4")
 theme_override_font_sizes/font_size = 30
 text = "Fumohouse"
 
-[node name="VersionLabel" type="RichTextLabel" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer/Heading" index="1"]
+[node name="VersionLabel" type="RichTextLabel" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer/Heading" index="1" unique_id=195819887]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/paragraph_separation = 4
@@ -50,32 +50,32 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="Rule" type="ColorRect" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer" index="1"]
+[node name="Rule" type="ColorRect" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer" index="1" unique_id=1022402308]
 custom_minimum_size = Vector2(400, 1)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Leadership" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer" index="2" instance=ExtResource("5_kbrgb")]
+[node name="Leadership" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer" index="2" unique_id=30064935 instance=ExtResource("5_kbrgb")]
 layout_mode = 2
 category = &"leadership"
 
-[node name="Label" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer/Leadership" index="0"]
+[node name="Label" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer/Leadership" index="0" unique_id=919856774]
 text = "Project Leadership"
 
-[node name="Contributors" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer" index="3" instance=ExtResource("5_kbrgb")]
+[node name="Contributors" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer" index="3" unique_id=1042667209 instance=ExtResource("5_kbrgb")]
 layout_mode = 2
 category = &"contributor"
 
-[node name="Label" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer/Contributors" index="0"]
+[node name="Label" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer/Contributors" index="0" unique_id=919856774]
 text = "Contributors"
 
-[node name="SourceInspiration" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer" index="4" instance=ExtResource("5_hq4jh")]
+[node name="SourceInspiration" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer" index="4" unique_id=685879674 instance=ExtResource("5_hq4jh")]
 layout_mode = 2
 
-[node name="Label" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer/SourceInspiration" index="0"]
+[node name="Label" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer/SourceInspiration" index="0" unique_id=919856774]
 text = "Source & Inspiration Works"
 
-[node name="Contents" type="RichTextLabel" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer/SourceInspiration" index="1"]
+[node name="Contents" type="RichTextLabel" parent="Contents/MarginContainer/TabContent/Info/VBoxContainer/SourceInspiration" index="1" unique_id=1572350143]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4

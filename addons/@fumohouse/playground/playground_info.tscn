@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgsvsm2sj6ggp"]
+[gd_scene format=3 uid="uid://dgsvsm2sj6ggp"]
 
 [ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@fumohouse/base/assets/textures/logo.png" id="1_m0lms"]
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="2_nhvnb"]
 
-[node name="PlaygroundInfo" type="Control"]
+[node name="PlaygroundInfo" type="Control" unique_id=1908182857]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Logo" type="TextureRect" parent="."]
+[node name="Logo" type="TextureRect" parent="." unique_id=1958151299]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -27,7 +27,7 @@ grow_vertical = 2
 texture = ExtResource("1_m0lms")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1026926397]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

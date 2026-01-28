@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxbmruffw23h5"]
+[gd_scene format=3 uid="uid://cxbmruffw23h5"]
 
 [ext_resource type="Shader" uid="uid://nuab6omdr3eu" path="res://addons/@fumohouse/world/nodes/crosshair.gdshader" id="1_qc83x"]
 [ext_resource type="Texture2D" uid="uid://be5lmhxdsku8w" path="res://addons/@fumohouse/world/assets/crosshair.svg" id="2_ydhht"]
@@ -8,7 +8,7 @@
 shader = ExtResource("1_qc83x")
 shader_parameter/crosshair_texture = ExtResource("2_ydhht")
 
-[node name="Crosshair" type="ColorRect"]
+[node name="Crosshair" type="ColorRect" unique_id=1461592981]
 material = SubResource("ShaderMaterial_ydhht")
 anchors_preset = 8
 anchor_left = 0.5

@@ -43,12 +43,12 @@ License: CC-BY-SA-4.0
 
 Files: addons/@fumohouse/base/assets/fonts/clarity_city/*.woff2
 Comment: Clarity City font
-Copyright: 2019 VMWare, Inc.
+Copyright: 2019, VMWare, Inc.
 License: OFL-1.1
 
 Files: addons/@fumohouse/base/assets/fonts/overpass_mono/*.woff2
 Comment: Overpass Mono font
-Copyright: 2021 The Overpass Project Authors
+Copyright: 2021, The Overpass Project Authors
 License: OFL-1.1
 
 Files: addons/@fumohouse/base/assets/fonts/bootstrap_icons/*.woff2

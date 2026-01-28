@@ -1,18 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cal3353l6slus"]
+[gd_scene format=3 uid="uid://cal3353l6slus"]
 
 [ext_resource type="Script" uid="uid://dd24wj2a086sp" path="res://addons/@fumohouse/common/nodes/labeled_slider.gd" id="1_045ln"]
 
-[node name="LabeledSlider" type="HBoxContainer"]
+[node name="LabeledSlider" type="HBoxContainer" unique_id=857691465]
 custom_minimum_size = Vector2(200, 0)
 theme_override_constants/separation = 8
 script = ExtResource("1_045ln")
 
-[node name="Slider" type="HSlider" parent="."]
+[node name="Slider" type="HSlider" parent="." unique_id=1329728360]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1925456644]
 layout_mode = 2
 text = "0.0"
 vertical_alignment = 1

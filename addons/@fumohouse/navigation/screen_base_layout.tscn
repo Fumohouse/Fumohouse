@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmk1xv60inwsy"]
+[gd_scene format=3 uid="uid://dmk1xv60inwsy"]
 
 [ext_resource type="Script" uid="uid://7my83ojk5ayr" path="res://addons/@fumohouse/navigation/screen_base.gd" id="1_v6r22"]
 
-[node name="ScreenBaseLayout" type="Control"]
+[node name="ScreenBaseLayout" type="Control" unique_id=603330543]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v6r22")
 
-[node name="TopBar" type="HBoxContainer" parent="."]
+[node name="TopBar" type="HBoxContainer" parent="." unique_id=1563143153]
 layout_mode = 0
 offset_left = 184.0
 offset_top = 36.0
@@ -19,13 +19,13 @@ offset_right = 245.0
 offset_bottom = 76.0
 theme_override_constants/separation = 48
 
-[node name="Title" type="Label" parent="TopBar"]
+[node name="Title" type="Label" parent="TopBar" unique_id=895517108]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Title"
 vertical_alignment = 1
 
-[node name="Contents" type="PanelContainer" parent="."]
+[node name="Contents" type="PanelContainer" parent="." unique_id=974069939]
 layout_mode = 0
 anchor_left = 0.109375
 anchor_top = 0.154321
@@ -35,7 +35,7 @@ offset_top = -4.0
 offset_bottom = -4.0
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="Contents"]
+[node name="MarginContainer" type="MarginContainer" parent="Contents" unique_id=1118290265]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4

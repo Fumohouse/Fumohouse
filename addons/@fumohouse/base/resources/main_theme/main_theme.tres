@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=24 format=3 uid="uid://bwtx8apvqhdb3"]
+[gd_resource type="Theme" format=3 uid="uid://bwtx8apvqhdb3"]
 
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="1_64law"]
 [ext_resource type="StyleBox" uid="uid://bikux3espg13i" path="res://addons/@fumohouse/base/resources/styleboxes/button/disabled.tres" id="1_gbuug"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bjlyq7kguqj6c"]
+[gd_scene format=3 uid="uid://bjlyq7kguqj6c"]
 
 [ext_resource type="PackedScene" uid="uid://ctxaywfcdgbmw" path="res://addons/@fumohouse/navigation/nav_menu.tscn" id="1_tge01"]
 [ext_resource type="Script" uid="uid://b83el535hlsj4" path="res://addons/@fumohouse/world/game_menu/game_menu.gd" id="2_8xol2"]
@@ -35,12 +35,12 @@ font_size = 30
 [sub_resource type="LabelSettings" id="LabelSettings_uvyrv"]
 font_size = 18
 
-[node name="GameMenu" node_paths=PackedStringArray("main_screen") instance=ExtResource("1_tge01")]
+[node name="GameMenu" unique_id=536378681 node_paths=PackedStringArray("main_screen") instance=ExtResource("1_tge01")]
 focus_mode = 2
 script = ExtResource("2_8xol2")
 main_screen = NodePath("Screens/MenuScreen")
 
-[node name="Blur" type="ColorRect" parent="." index="0"]
+[node name="Blur" type="ColorRect" parent="." index="0" unique_id=1380588526]
 material = SubResource("ShaderMaterial_itoxh")
 layout_mode = 1
 anchors_preset = 15
@@ -50,19 +50,19 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="OptionsScreen" parent="Screens" index="0" instance=ExtResource("4_itoxh")]
+[node name="OptionsScreen" parent="Screens" parent_id_path=PackedInt32Array(381545900) index="0" unique_id=1674397031 instance=ExtResource("4_itoxh")]
 visible = false
 layout_mode = 1
 
-[node name="InfoScreenWorld" parent="Screens" index="1" instance=ExtResource("5_bty2n")]
+[node name="InfoScreenWorld" parent="Screens" parent_id_path=PackedInt32Array(381545900) index="1" unique_id=1956354102 instance=ExtResource("5_bty2n")]
 visible = false
 layout_mode = 1
 
-[node name="CharacterEditorScreen" parent="Screens" index="2" instance=ExtResource("5_bbkib")]
+[node name="CharacterEditorScreen" parent="Screens" parent_id_path=PackedInt32Array(381545900) index="2" unique_id=974360230 instance=ExtResource("5_bbkib")]
 visible = false
 layout_mode = 1
 
-[node name="LeaveScreen" type="PanelContainer" parent="Screens" index="3"]
+[node name="LeaveScreen" type="PanelContainer" parent="Screens" parent_id_path=PackedInt32Array(381545900) index="3" unique_id=599834996]
 visible = false
 custom_minimum_size = Vector2(280, 70)
 layout_mode = 1
@@ -79,13 +79,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_tvd1v")
 
-[node name="Label" type="Label" parent="Screens/LeaveScreen" index="0"]
+[node name="Label" type="Label" parent="Screens/LeaveScreen" index="0" unique_id=1035331411]
 layout_mode = 2
 text = "Please wait…"
 label_settings = SubResource("LabelSettings_4uur8")
 horizontal_alignment = 1
 
-[node name="MenuScreen" type="Control" parent="Screens" index="4"]
+[node name="MenuScreen" type="Control" parent="Screens" parent_id_path=PackedInt32Array(381545900) index="4" unique_id=873465722]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,7 +94,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_4uur8")
 
-[node name="GradientBackground" type="TextureRect" parent="Screens/MenuScreen" index="0"]
+[node name="GradientBackground" type="TextureRect" parent="Screens/MenuScreen" index="0" unique_id=1075209697]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 1
 anchors_preset = 9
@@ -103,7 +103,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_cpy6s")
 
-[node name="Contents" type="VBoxContainer" parent="Screens/MenuScreen" index="1"]
+[node name="Contents" type="VBoxContainer" parent="Screens/MenuScreen" index="1" unique_id=1861833125]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -114,43 +114,43 @@ offset_bottom = 151.0
 grow_vertical = 2
 theme_override_constants/separation = 16
 
-[node name="Title" type="MarginContainer" parent="Screens/MenuScreen/Contents" index="0"]
+[node name="Title" type="MarginContainer" parent="Screens/MenuScreen/Contents" index="0" unique_id=1387042698]
 layout_mode = 2
 theme_override_constants/margin_left = 48
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 48
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="Screens/MenuScreen/Contents/Title" index="0"]
+[node name="Label" type="Label" parent="Screens/MenuScreen/Contents/Title" index="0" unique_id=1972818789]
 layout_mode = 2
 text = "Game Menu"
 label_settings = SubResource("LabelSettings_cpy6s")
 
-[node name="NavButtonContainer" parent="Screens/MenuScreen/Contents" index="1" instance=ExtResource("7_cpy6s")]
+[node name="NavButtonContainer" parent="Screens/MenuScreen/Contents" index="1" unique_id=1776542966 instance=ExtResource("7_cpy6s")]
 layout_mode = 2
 
-[node name="ContinueButton" parent="Screens/MenuScreen/Contents/NavButtonContainer" index="0" instance=ExtResource("8_uvyrv")]
+[node name="ContinueButton" parent="Screens/MenuScreen/Contents/NavButtonContainer" index="0" unique_id=208484304 instance=ExtResource("8_uvyrv")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Continue"
 
-[node name="InfoButton" parent="Screens/MenuScreen/Contents/NavButtonContainer" index="1" instance=ExtResource("8_uvyrv")]
+[node name="InfoButton" parent="Screens/MenuScreen/Contents/NavButtonContainer" index="1" unique_id=379174278 instance=ExtResource("8_uvyrv")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Credits/Info"
 
-[node name="OptionsButton" parent="Screens/MenuScreen/Contents/NavButtonContainer" index="2" instance=ExtResource("8_uvyrv")]
+[node name="OptionsButton" parent="Screens/MenuScreen/Contents/NavButtonContainer" index="2" unique_id=173833381 instance=ExtResource("8_uvyrv")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
 
-[node name="LeaveButton" parent="Screens/MenuScreen/Contents/NavButtonContainer" index="3" instance=ExtResource("8_uvyrv")]
+[node name="LeaveButton" parent="Screens/MenuScreen/Contents/NavButtonContainer" index="3" unique_id=1457169895 instance=ExtResource("8_uvyrv")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(225, 48)
 layout_mode = 2
 text = "Leave"
 
-[node name="BottomBar" type="Control" parent="Screens/MenuScreen" index="2"]
+[node name="BottomBar" type="Control" parent="Screens/MenuScreen" index="2" unique_id=1324676475]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 1
 anchors_preset = 12
@@ -160,7 +160,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Background" type="ColorRect" parent="Screens/MenuScreen/BottomBar" index="0"]
+[node name="Background" type="ColorRect" parent="Screens/MenuScreen/BottomBar" index="0" unique_id=742206027]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -169,7 +169,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.09803922, 0.30588236, 0.49803922, 1)
 
-[node name="WorldName" type="Label" parent="Screens/MenuScreen/BottomBar" index="1"]
+[node name="WorldName" type="Label" parent="Screens/MenuScreen/BottomBar" index="1" unique_id=436693472]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 4
@@ -184,7 +184,7 @@ text = "World Name"
 label_settings = SubResource("LabelSettings_uvyrv")
 vertical_alignment = 1
 
-[node name="MusicController" parent="Screens/MenuScreen" index="3" instance=ExtResource("9_bsq5a")]
+[node name="MusicController" parent="Screens/MenuScreen" index="3" unique_id=454787814 instance=ExtResource("9_bsq5a")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -199,7 +199,7 @@ grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(250, 0)
 
-[node name="NavCharacter" parent="Screens/MenuScreen" index="4" instance=ExtResource("11_bbkib")]
+[node name="NavCharacter" parent="Screens/MenuScreen" index="4" unique_id=1332326915 instance=ExtResource("11_bbkib")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 6
@@ -214,7 +214,7 @@ offset_bottom = 130.5
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="StatusPopup" parent="Screens/MenuScreen" index="5" instance=ExtResource("13_qv0xc")]
+[node name="StatusPopup" parent="Screens/MenuScreen" index="5" unique_id=707924202 instance=ExtResource("13_qv0xc")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1

@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://4gntby41idbe"]
+[gd_scene format=3 uid="uid://4gntby41idbe"]
 
 [ext_resource type="Script" uid="uid://b8twh8hujumqe" path="res://addons/@fumohouse/fumo/character_editor/character_editor_presets.gd" id="1_oycch"]
 
-[node name="Presets" type="VBoxContainer"]
+[node name="Presets" type="VBoxContainer" unique_id=583077682]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -11,18 +11,18 @@ grow_vertical = 2
 theme_override_constants/separation = 16
 script = ExtResource("1_oycch")
 
-[node name="SearchEdit" type="LineEdit" parent="."]
+[node name="SearchEdit" type="LineEdit" parent="." unique_id=1181640747]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 41)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Search…"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1293885574]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Grid" type="GridContainer" parent="ScrollContainer"]
+[node name="Grid" type="GridContainer" parent="ScrollContainer" unique_id=1707769961]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

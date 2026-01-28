@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c2qkyos0u3k4c"]
+[gd_resource type="Theme" format=3 uid="uid://c2qkyos0u3k4c"]
 
 [ext_resource type="FontFile" uid="uid://daq21nhl6r2oy" path="res://addons/@fumohouse/base/assets/fonts/overpass_mono/overpass-mono-bold.woff2" id="1_4dxe4"]
 [ext_resource type="FontFile" uid="uid://dy1lesqssmhwm" path="res://addons/@fumohouse/base/assets/fonts/overpass_mono/overpass-mono-regular.woff2" id="2_0kx3o"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cev42mdu4aisa"]
+[gd_scene format=3 uid="uid://cev42mdu4aisa"]
 
 [ext_resource type="PackedScene" uid="uid://cdxco2ngxr6w2" path="res://addons/@fumohouse/fumo_touhou/assets/momiji/momiji_hair_front.glb" id="1_lohin"]
 [ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="2_4higf"]
@@ -10,7 +10,7 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
 noise = SubResource("FastNoiseLite_yrlyc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nsl5h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bsmo3"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_4higf")
@@ -39,9 +39,9 @@ shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
 
-[node name="momiji_hair_front" node_paths=PackedStringArray("mesh") instance=ExtResource("1_lohin")]
+[node name="momiji_hair_front" unique_id=1818181063 node_paths=PackedStringArray("mesh") instance=ExtResource("1_lohin")]
 script = ExtResource("2_pcccj")
 mesh = NodePath("momiji_hair_front")
 
-[node name="momiji_hair_front" parent="." index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_nsl5h")
+[node name="momiji_hair_front" parent="." index="0" unique_id=875803096]
+surface_material_override/0 = SubResource("ShaderMaterial_bsmo3")

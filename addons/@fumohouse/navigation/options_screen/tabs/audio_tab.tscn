@@ -1,45 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2u1fw2dlkujn"]
+[gd_scene format=3 uid="uid://d2u1fw2dlkujn"]
 
 [ext_resource type="PackedScene" uid="uid://dx1sp5c0awg1f" path="res://addons/@fumohouse/navigation/options_screen/options_tab.tscn" id="1_w4bkw"]
 [ext_resource type="PackedScene" uid="uid://3pgovqemhie4" path="res://addons/@fumohouse/navigation/options_screen/options_group.tscn" id="2_576mi"]
 [ext_resource type="PackedScene" uid="uid://caqdxpy84mm0k" path="res://addons/@fumohouse/config/ui/config_audio_output_devices.tscn" id="3_da0hq"]
 [ext_resource type="PackedScene" uid="uid://dkc1c5664nsdq" path="res://addons/@fumohouse/config/ui/config_range.tscn" id="4_bue28"]
 
-[node name="Audio" instance=ExtResource("1_w4bkw")]
+[node name="Audio" unique_id=1796173313 instance=ExtResource("1_w4bkw")]
 
-[node name="Devices" parent="MarginContainer/VBoxContainer" index="0" instance=ExtResource("2_576mi")]
+[node name="Devices" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(527047334) index="0" unique_id=1322238220 instance=ExtResource("2_576mi")]
 layout_mode = 2
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Devices" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Devices" index="0" unique_id=1011672106]
 text = "Device Selection"
 
-[node name="OutputDevice" parent="MarginContainer/VBoxContainer/Devices/Options" index="0" instance=ExtResource("3_da0hq")]
+[node name="OutputDevice" parent="MarginContainer/VBoxContainer/Devices/Options" parent_id_path=PackedInt32Array(1322238220, 852454493) index="0" unique_id=2081759460 instance=ExtResource("3_da0hq")]
 layout_mode = 2
 
-[node name="Buses" parent="MarginContainer/VBoxContainer" index="1" instance=ExtResource("2_576mi")]
+[node name="Buses" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(527047334) index="1" unique_id=1851120764 instance=ExtResource("2_576mi")]
 layout_mode = 2
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Buses" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Buses" index="0" unique_id=1011672106]
 text = "Buses"
 
-[node name="Master" parent="MarginContainer/VBoxContainer/Buses/Options" index="0" instance=ExtResource("4_bue28")]
+[node name="Master" parent="MarginContainer/VBoxContainer/Buses/Options" parent_id_path=PackedInt32Array(1851120764, 852454493) index="0" unique_id=1876391567 instance=ExtResource("4_bue28")]
 layout_mode = 2
 key = &"audio/bus/Master/volume"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Buses/Options/Master" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Buses/Options/Master" index="0" unique_id=23282165]
 text = "Master Volume"
 
-[node name="LabeledSlider" parent="MarginContainer/VBoxContainer/Buses/Options/Master" index="3"]
+[node name="LabeledSlider" parent="MarginContainer/VBoxContainer/Buses/Options/Master" index="3" unique_id=2136755568]
 format_string = "%d%%"
 
-[node name="Music" parent="MarginContainer/VBoxContainer/Buses/Options" index="1" instance=ExtResource("4_bue28")]
+[node name="Music" parent="MarginContainer/VBoxContainer/Buses/Options" parent_id_path=PackedInt32Array(1851120764, 852454493) index="1" unique_id=414894939 instance=ExtResource("4_bue28")]
 layout_mode = 2
 key = &"audio/bus/Music/volume"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Buses/Options/Music" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Buses/Options/Music" index="0" unique_id=23282165]
 text = "Music Volume"
 
-[node name="LabeledSlider" parent="MarginContainer/VBoxContainer/Buses/Options/Music" index="3"]
+[node name="LabeledSlider" parent="MarginContainer/VBoxContainer/Buses/Options/Music" index="3" unique_id=2136755568]
 format_string = "%d%%"
 
 [editable path="MarginContainer/VBoxContainer/Devices"]

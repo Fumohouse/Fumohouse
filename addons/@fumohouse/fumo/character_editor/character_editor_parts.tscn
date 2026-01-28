@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bofgx233q1y7y"]
+[gd_scene format=3 uid="uid://bofgx233q1y7y"]
 
 [ext_resource type="Script" uid="uid://dyxppsbxn5830" path="res://addons/@fumohouse/fumo/character_editor/character_editor_parts.gd" id="1_t21bu"]
 [ext_resource type="Script" uid="uid://c2mo31oe5hccm" path="res://addons/@fumohouse/common/nodes/option_button_offset.gd" id="2_w5cad"]
 
-[node name="Parts" type="VBoxContainer"]
+[node name="Parts" type="VBoxContainer" unique_id=1945869086]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -12,7 +12,7 @@ grow_vertical = 2
 theme_override_constants/separation = 16
 script = ExtResource("1_t21bu")
 
-[node name="Scopes" type="OptionButton" parent="."]
+[node name="Scopes" type="OptionButton" parent="." unique_id=856760882]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 41)
 layout_mode = 2
@@ -23,12 +23,12 @@ popup/item_0/id = 0
 script = ExtResource("2_w5cad")
 metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1586397099]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="PartSelectors" type="VBoxContainer" parent="ScrollContainer"]
+[node name="PartSelectors" type="VBoxContainer" parent="ScrollContainer" unique_id=2022486881]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

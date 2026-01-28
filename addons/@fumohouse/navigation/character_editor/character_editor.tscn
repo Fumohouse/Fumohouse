@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdohqbssyckea"]
+[gd_scene format=3 uid="uid://bdohqbssyckea"]
 
 [ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/navigation/screen_base_layout.tscn" id="1_nwhkr"]
 [ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="2_nwhkr"]
@@ -8,60 +8,60 @@
 [ext_resource type="PackedScene" uid="uid://bofgx233q1y7y" path="res://addons/@fumohouse/fumo/character_editor/character_editor_parts.tscn" id="5_rkn1g"]
 [ext_resource type="PackedScene" uid="uid://cv38xmsx2u3bh" path="res://addons/@fumohouse/fumo/character_editor/character_editor_part_options.tscn" id="7_i2yxw"]
 
-[node name="CharacterEditorScreen" node_paths=PackedStringArray("tabs", "tab_content") instance=ExtResource("1_nwhkr")]
+[node name="CharacterEditorScreen" unique_id=6144290 node_paths=PackedStringArray("tabs", "tab_content") instance=ExtResource("1_nwhkr")]
 tabs = NodePath("TopBar/Tabs")
 tab_content = NodePath("Contents/MarginContainer/HBoxContainer/TabContent")
 
-[node name="Title" parent="TopBar" index="0"]
+[node name="Title" parent="TopBar" parent_id_path=PackedInt32Array(1563143153) index="0" unique_id=895517108]
 text = "Character"
 
-[node name="Tabs" type="HBoxContainer" parent="TopBar" index="1"]
+[node name="Tabs" type="HBoxContainer" parent="TopBar" parent_id_path=PackedInt32Array(1563143153) index="1" unique_id=1831562244]
 layout_mode = 2
 theme_override_constants/separation = 16
 script = ExtResource("2_nwhkr")
 
-[node name="Presets" type="Button" parent="TopBar/Tabs" index="0"]
+[node name="Presets" type="Button" parent="TopBar/Tabs" index="0" unique_id=63287037]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Presets"
 
-[node name="Face" type="Button" parent="TopBar/Tabs" index="1"]
+[node name="Face" type="Button" parent="TopBar/Tabs" index="1" unique_id=1750245751]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Face"
 
-[node name="Parts" type="Button" parent="TopBar/Tabs" index="2"]
+[node name="Parts" type="Button" parent="TopBar/Tabs" index="2" unique_id=921596658]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Parts"
 
-[node name="PartOptions" type="Button" parent="TopBar/Tabs" index="3"]
+[node name="PartOptions" type="Button" parent="TopBar/Tabs" index="3" unique_id=734189071]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Part Options"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer" index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer" parent_id_path=PackedInt32Array(1118290265) index="0" unique_id=1759893896]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Preview" parent="Contents/MarginContainer/HBoxContainer" index="0" instance=ExtResource("3_87xhq")]
+[node name="Preview" parent="Contents/MarginContainer/HBoxContainer" index="0" unique_id=1619507335 instance=ExtResource("3_87xhq")]
 layout_mode = 2
 
-[node name="TabContent" type="Control" parent="Contents/MarginContainer/HBoxContainer" index="1"]
+[node name="TabContent" type="Control" parent="Contents/MarginContainer/HBoxContainer" index="1" unique_id=805223094]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Presets" parent="Contents/MarginContainer/HBoxContainer/TabContent" index="0" instance=ExtResource("5_gyx0o")]
+[node name="Presets" parent="Contents/MarginContainer/HBoxContainer/TabContent" index="0" unique_id=96708925 instance=ExtResource("5_gyx0o")]
 layout_mode = 1
 
-[node name="Face" parent="Contents/MarginContainer/HBoxContainer/TabContent" index="1" instance=ExtResource("5_0e4lx")]
+[node name="Face" parent="Contents/MarginContainer/HBoxContainer/TabContent" index="1" unique_id=1466815982 instance=ExtResource("5_0e4lx")]
 visible = false
 layout_mode = 1
 
-[node name="Parts" parent="Contents/MarginContainer/HBoxContainer/TabContent" index="2" instance=ExtResource("5_rkn1g")]
+[node name="Parts" parent="Contents/MarginContainer/HBoxContainer/TabContent" index="2" unique_id=14003378 instance=ExtResource("5_rkn1g")]
 visible = false
 layout_mode = 1
 
-[node name="PartOptions" parent="Contents/MarginContainer/HBoxContainer/TabContent" index="3" instance=ExtResource("7_i2yxw")]
+[node name="PartOptions" parent="Contents/MarginContainer/HBoxContainer/TabContent" index="3" unique_id=442900435 instance=ExtResource("7_i2yxw")]
 visible = false
 layout_mode = 1

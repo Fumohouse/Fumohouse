@@ -1,22 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwfpt2e5bsunh"]
+[gd_scene format=3 uid="uid://bwfpt2e5bsunh"]
 
 [ext_resource type="Script" uid="uid://po351v810l2i" path="res://addons/@fumohouse/navigation/components/nav_button.gd" id="1_aw4mf"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aw4mf"]
-bg_color = Color(0.08, 0.245333, 0.4, 0)
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.9, 0.405, 0.7185, 1)
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hefmm"]
-bg_color = Color(0.65, 0.2925, 0.518917, 1)
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.74902, 0.337255, 0.6, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aekdw"]
+bg_color = Color(0.75, 0.3375, 0.59875, 1)
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 
@@ -29,18 +16,31 @@ border_color = Color(0.74902, 0.337255, 0.6, 1)
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aekdw"]
-bg_color = Color(0.75, 0.3375, 0.59875, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hefmm"]
+bg_color = Color(0.65, 0.2925, 0.518917, 1)
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.74902, 0.337255, 0.6, 1)
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 
-[node name="BackButton" type="Button"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aw4mf"]
+bg_color = Color(0.08, 0.245333, 0.4, 0)
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.9, 0.405, 0.7185, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[node name="BackButton" type="Button" unique_id=90302155]
 custom_minimum_size = Vector2(128, 48)
 offset_right = 128.0
 offset_bottom = 48.0
-theme_override_styles/focus = SubResource("StyleBoxFlat_aw4mf")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hefmm")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vc0qn")
 theme_override_styles/normal = SubResource("StyleBoxFlat_aekdw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vc0qn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hefmm")
+theme_override_styles/focus = SubResource("StyleBoxFlat_aw4mf")
 text = " Back"
 script = ExtResource("1_aw4mf")

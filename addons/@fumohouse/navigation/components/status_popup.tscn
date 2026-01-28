@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpdb7ma7vmfp3"]
+[gd_scene format=3 uid="uid://bpdb7ma7vmfp3"]
 
 [ext_resource type="Script" uid="uid://sipygl5vkmbi" path="res://addons/@fumohouse/navigation/components/status_popup.gd" id="1_u0mxb"]
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="2_qnu0d"]
@@ -7,30 +7,30 @@
 font = ExtResource("2_qnu0d")
 font_size = 18
 
-[node name="StatusPopup" type="PanelContainer"]
+[node name="StatusPopup" type="PanelContainer" unique_id=402182879]
 offset_right = 280.0
 offset_bottom = 120.0
 theme_type_variation = &"Panel1"
 script = ExtResource("1_u0mxb")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=43992144]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1755785322]
 layout_mode = 2
 
-[node name="Heading" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Heading" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1750826738]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Please wait…"
 label_settings = SubResource("LabelSettings_tyvec")
 horizontal_alignment = 1
 
-[node name="Details" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Details" type="Label" parent="MarginContainer/VBoxContainer" unique_id=836615965]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MultiPart" load_steps=5 format=3 uid="uid://b5xna3upxuja2"]
+[gd_resource type="Resource" script_class="MultiPart" format=3 uid="uid://b5xna3upxuja2"]
 
 [ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_ox5i0"]
 [ext_resource type="Script" uid="uid://dgvlk6ce324r2" path="res://addons/@fumohouse/character_appearance/multi_part.gd" id="2_kuvta"]

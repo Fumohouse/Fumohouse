@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bnic23uqggm8j"]
+[gd_scene format=3 uid="uid://bnic23uqggm8j"]
 
 [ext_resource type="PackedScene" uid="uid://c872jdob35ayv" path="res://addons/@fumohouse/character/character.tscn" id="1_6g54x"]
 [ext_resource type="PackedScene" uid="uid://bwtelncgka6g3" path="res://addons/@fumohouse/fumo/assets/rig.glb" id="2_6pbm6"]
@@ -21,7 +21,7 @@
 [ext_resource type="Animation" uid="uid://brv87ke4qdvnq" path="res://addons/@fumohouse/fumo/assets/anims/swim_idle.tres" id="14_8001h"]
 [ext_resource type="Animation" uid="uid://cthcdwgiq646f" path="res://addons/@fumohouse/fumo/assets/anims/walk.tres" id="15_u1gid"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_w1fxq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_sgryk"]
 resource_local_to_scene = true
 size = Vector3(0.7, 1, 0.45)
 
@@ -288,71 +288,71 @@ _data = {
 &"walk": ExtResource("15_u1gid")
 }
 
-[node name="Fumo" node_paths=PackedStringArray("appearance_manager", "rig") instance=ExtResource("1_6g54x")]
+[node name="Fumo" unique_id=1688818541 node_paths=PackedStringArray("appearance_manager", "rig") instance=ExtResource("1_6g54x")]
 script = ExtResource("2_31wo1")
 appearance_manager = NodePath("Appearance")
 rig = NodePath("Rig")
 camera_fade_begin = 1.5
 camera_fade_end = 0.25
 
-[node name="Appearance" type="Node3D" parent="." index="0" node_paths=PackedStringArray("fumo", "rig", "collider")]
+[node name="Appearance" type="Node3D" parent="." index="0" unique_id=1067567499 node_paths=PackedStringArray("fumo", "rig", "collider")]
 script = ExtResource("3_w1fxq")
 fumo = NodePath("..")
 rig = NodePath("../Rig")
 collider = NodePath("../Collider")
 
-[node name="Head" type="BoneAttachment3D" parent="Appearance" index="0"]
+[node name="Head" type="BoneAttachment3D" parent="Appearance" index="0" unique_id=223560218]
 transform = Transform3D(1, -9.878401e-10, 4.68825e-10, 9.93313e-10, 0.99993, -0.011826489, -4.5710635e-10, 0.011826489, 0.99993, -2.3520617e-09, 1.9605855, -0.03173432)
 bone_name = "Head"
 bone_idx = 5
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
-[node name="Nametag" parent="Appearance/Head" index="0" node_paths=PackedStringArray("fumo") instance=ExtResource("3_sgryk")]
+[node name="Nametag" parent="Appearance/Head" index="0" unique_id=1334871704 node_paths=PackedStringArray("fumo") instance=ExtResource("3_sgryk")]
 transform = Transform3D(1, 9.933157e-10, -4.5710954e-10, -9.878376e-10, 0.99993014, 0.011826491, 4.688218e-10, -0.011826491, 0.99993014, 3.9007542e-10, -1.9600732, 0.054918952)
 fumo = NodePath("../../..")
 
-[node name="LArm" type="BoneAttachment3D" parent="Appearance" index="1"]
+[node name="LArm" type="BoneAttachment3D" parent="Appearance" index="1" unique_id=180655927]
 transform = Transform3D(0.41574475, -0.7643659, -0.49285, -0.4928499, -0.644783, 0.5842551, -0.76436585, 6.519258e-08, -0.64478266, -0.20191117, 1.8660433, 0.010923042)
 bone_name = "LArm"
 bone_idx = 3
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
-[node name="RArm" type="BoneAttachment3D" parent="Appearance" index="2"]
+[node name="RArm" type="BoneAttachment3D" parent="Appearance" index="2" unique_id=811647358]
 transform = Transform3D(0.41574472, 0.7643658, 0.49284983, 0.49284998, -0.6447826, 0.584255, 0.7643657, 2.7939677e-08, -0.64478266, 0.2019085, 1.8660433, 0.010923321)
 bone_name = "RArm"
 bone_idx = 1
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
-[node name="LLeg" type="BoneAttachment3D" parent="Appearance" index="3"]
+[node name="LLeg" type="BoneAttachment3D" parent="Appearance" index="3" unique_id=1384086613]
 transform = Transform3D(0.9777373, -0.1496605, -0.14711139, -0.14711112, -0.98872024, 0.028127223, -0.14966221, -0.005859278, -0.9887205, -0.21390308, 1.0252763, 0.02362832)
 bone_name = "LLeg"
 bone_idx = 8
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
-[node name="RLeg" type="BoneAttachment3D" parent="Appearance" index="4"]
+[node name="RLeg" type="BoneAttachment3D" parent="Appearance" index="4" unique_id=563640139]
 transform = Transform3D(0.97581255, 0.15597586, 0.1531479, 0.15314735, -0.9877423, 0.030165792, 0.15597534, -0.0059819818, -0.98774207, 0.21390344, 1.0252761, 0.02362829)
 bone_name = "RLeg"
 bone_idx = 6
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
-[node name="Torso" type="BoneAttachment3D" parent="Appearance" index="5"]
+[node name="Torso" type="BoneAttachment3D" parent="Appearance" index="5" unique_id=1096598775]
 transform = Transform3D(1, 1.9636484e-08, -1.8826135e-08, -1.882614e-08, 0.9991126, 0.042118, 1.9636483e-08, -0.042118, 0.9991126, -2.4415677e-08, 0.83797956, 0.015589586)
 bone_name = "Torso"
 bone_idx = 0
 use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
-[node name="Collider" parent="." index="1"]
-shape = SubResource("BoxShape3D_w1fxq")
+[node name="Collider" parent="." index="1" unique_id=1879880518]
+shape = SubResource("BoxShape3D_sgryk")
 
-[node name="Rig" parent="." index="2" instance=ExtResource("2_6pbm6")]
+[node name="Rig" parent="." index="2" unique_id=8431624 instance=ExtResource("2_6pbm6")]
 
-[node name="Skeleton3D" parent="Rig/Armature" index="0"]
+[node name="Skeleton3D" parent="Rig/Armature" parent_id_path=PackedInt32Array(8431624, 1577447926) index="0" unique_id=1606345029]
 bones/0/position = Vector3(-2.4415677e-08, 0.9055685, 0.015589586)
 bones/0/rotation = Quaternion(-0.021063676, -9.617788e-09, -9.61779e-09, 0.99977815)
 bones/1/position = Vector3(0.20190851, 1.0273482, 0.03863787)
@@ -365,30 +365,30 @@ bones/6/rotation = Quaternion(0.99348205, 0.07610068, 0.07937632, -0.030025514)
 bones/8/position = Vector3(-0.21390305, 0.18679196, 0.01592017)
 bones/8/rotation = Quaternion(0.99398017, -0.073023796, -0.07616751, -0.029488051)
 
-[node name="HeadModel" parent="Rig/Armature/Skeleton3D" index="0"]
+[node name="HeadModel" parent="Rig/Armature/Skeleton3D" index="0" unique_id=997651095]
 surface_material_override/0 = SubResource("ShaderMaterial_oqyim")
 
-[node name="LArmModel" parent="Rig/Armature/Skeleton3D" index="1"]
+[node name="LArmModel" parent="Rig/Armature/Skeleton3D" index="1" unique_id=673397167]
 surface_material_override/0 = SubResource("ShaderMaterial_oqyim")
 
-[node name="LLegModel" parent="Rig/Armature/Skeleton3D" index="2"]
+[node name="LLegModel" parent="Rig/Armature/Skeleton3D" index="2" unique_id=603439011]
 surface_material_override/0 = SubResource("ShaderMaterial_oqyim")
 
-[node name="RArmModel" parent="Rig/Armature/Skeleton3D" index="3"]
+[node name="RArmModel" parent="Rig/Armature/Skeleton3D" index="3" unique_id=982180563]
 surface_material_override/0 = SubResource("ShaderMaterial_oqyim")
 
-[node name="RLegModel" parent="Rig/Armature/Skeleton3D" index="4"]
+[node name="RLegModel" parent="Rig/Armature/Skeleton3D" index="4" unique_id=1610903218]
 surface_material_override/0 = SubResource("ShaderMaterial_oqyim")
 
-[node name="TorsoModel" parent="Rig/Armature/Skeleton3D" index="5"]
+[node name="TorsoModel" parent="Rig/Armature/Skeleton3D" index="5" unique_id=1305227625]
 surface_material_override/0 = SubResource("ShaderMaterial_oqyim")
 
-[node name="TorsoAttachment" type="BoneAttachment3D" parent="Rig/Armature/Skeleton3D" index="6"]
+[node name="TorsoAttachment" type="BoneAttachment3D" parent="Rig/Armature/Skeleton3D" index="6" unique_id=84639422]
 transform = Transform3D(1, 1.9636484e-08, -1.8826135e-08, -1.882614e-08, 0.9991126, 0.042118, 1.9636483e-08, -0.042118, 0.9991126, -2.4415677e-08, 0.9055685, 0.015589586)
 bone_name = "Torso"
 bone_idx = 0
 
-[node name="DeathParticles" type="GPUParticles3D" parent="Rig/Armature/Skeleton3D/TorsoAttachment" index="0"]
+[node name="DeathParticles" type="GPUParticles3D" parent="Rig/Armature/Skeleton3D/TorsoAttachment" index="0" unique_id=391498770]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.637, 0.027)
 emitting = false
@@ -399,9 +399,9 @@ explosiveness = 0.5
 process_material = SubResource("ParticleProcessMaterial_5tkov")
 draw_pass_1 = SubResource("PlaneMesh_sv13b")
 
-[node name="AnimationTree" type="AnimationTree" parent="Rig/Armature" index="1"]
+[node name="AnimationTree" type="AnimationTree" parent="Rig/Armature" parent_id_path=PackedInt32Array(8431624, 1577447926) index="1" unique_id=1342839185]
 unique_name_in_owner = true
-root_node = NodePath("../..")
+root_node = NodePath("%AnimationTree/../..")
 tree_root = SubResource("AnimationNodeBlendTree_mgvk1")
 anim_player = NodePath("../AnimationPlayer")
 parameters/jump_oneshot/active = false
@@ -427,10 +427,8 @@ parameters/dead/current_state = ""
 parameters/dead/transition_request = ""
 parameters/dead/current_index = -1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Rig/Armature" index="2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rig/Armature" parent_id_path=PackedInt32Array(8431624, 1577447926) index="2" unique_id=603692781]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_ji0op")
-}
+libraries/ = SubResource("AnimationLibrary_ji0op")
 
 [editable path="Rig"]

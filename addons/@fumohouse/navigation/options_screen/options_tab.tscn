@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://dx1sp5c0awg1f"]
 
-[node name="OptionsTab" type="ScrollContainer"]
+[node name="OptionsTab" type="ScrollContainer" unique_id=968856085]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=298088187]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 12
@@ -15,6 +15,6 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=527047334]
 layout_mode = 2
 theme_override_constants/separation = 30

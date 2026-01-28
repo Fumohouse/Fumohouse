@@ -1,21 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://8e0rdqic34kn"]
+[gd_scene format=3 uid="uid://8e0rdqic34kn"]
 
 [ext_resource type="PackedScene" uid="uid://cnhpap8tim3hh" path="res://addons/@fumohouse/debug/overlays/debug_window.tscn" id="1_csdy7"]
 [ext_resource type="Script" uid="uid://cdn1xftc1b5qy" path="res://addons/@fumohouse/debug/overlays/debug_engine_info.gd" id="2_peou7"]
 [ext_resource type="Script" uid="uid://bpfn17p03x4rq" path="res://addons/@fumohouse/debug/overlays/debug_info_table.gd" id="3_h8mqi"]
 [ext_resource type="Texture2D" uid="uid://i3bxly1l6ve5" path="res://addons/@fumohouse/base/assets/textures/godot_logo.svg" id="3_o0qfn"]
 
-[node name="DebugEngineInfo" instance=ExtResource("1_csdy7")]
+[node name="DebugEngineInfo" unique_id=126826553 instance=ExtResource("1_csdy7")]
 script = ExtResource("2_peou7")
 
-[node name="Icon" parent="Foreground/VBoxContainer/TopBar" index="0"]
+[node name="Icon" parent="Foreground/VBoxContainer/TopBar" parent_id_path=PackedInt32Array(1191511869) index="0" unique_id=1523364165]
 visible = true
 texture = ExtResource("3_o0qfn")
 
-[node name="Title" parent="Foreground/VBoxContainer/TopBar" index="1"]
+[node name="Title" parent="Foreground/VBoxContainer/TopBar" parent_id_path=PackedInt32Array(1191511869) index="1" unique_id=1517508361]
 text = "Engine Info"
 
-[node name="DebugInfoTable" type="VBoxContainer" parent="Foreground/VBoxContainer/Contents" index="0"]
+[node name="DebugInfoTable" type="VBoxContainer" parent="Foreground/VBoxContainer/Contents" parent_id_path=PackedInt32Array(2057461623) index="0" unique_id=833811907]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("3_h8mqi")

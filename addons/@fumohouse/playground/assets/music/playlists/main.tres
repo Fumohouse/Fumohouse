@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Playlist" load_steps=4 format=3 uid="uid://c8h0klwey11wb"]
+[gd_resource type="Resource" script_class="Playlist" format=3 uid="uid://c8h0klwey11wb"]
 
 [ext_resource type="Script" uid="uid://bofg6uksrpe4f" path="res://addons/@fumohouse/music/playlist.gd" id="1_6ibj3"]
 [ext_resource type="Script" uid="uid://bham328jwfrr8" path="res://addons/@fumohouse/music/song.gd" id="2_s3bq6"]

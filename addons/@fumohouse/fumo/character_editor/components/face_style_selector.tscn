@@ -1,20 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://b20770v785cky"]
+[gd_scene format=3 uid="uid://b20770v785cky"]
 
 [ext_resource type="Script" uid="uid://ctrjf5d5d0x3r" path="res://addons/@fumohouse/fumo/character_editor/components/face_style_selector.gd" id="1_ocorb"]
 [ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="2_qab44"]
 
-[node name="FaceStyleSelector" type="VBoxContainer"]
+[node name="FaceStyleSelector" type="VBoxContainer" unique_id=1867228649]
 offset_right = 67.0
 offset_bottom = 20.0
 theme_override_constants/separation = 4
 script = ExtResource("1_ocorb")
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="." unique_id=655871194]
 unique_name_in_owner = true
 layout_mode = 2
 text = "(Title)"
 
-[node name="Grid" type="HFlowContainer" parent="."]
+[node name="Grid" type="HFlowContainer" parent="." unique_id=719515985]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("2_qab44")

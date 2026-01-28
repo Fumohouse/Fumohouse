@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnhpap8tim3hh"]
+[gd_scene format=3 uid="uid://cnhpap8tim3hh"]
 
 [ext_resource type="Theme" uid="uid://c2qkyos0u3k4c" path="res://addons/@fumohouse/debug/overlays/debug_theme.tres" id="1_5h3vn"]
 [ext_resource type="Shader" uid="uid://cfejetqo4tpot" path="res://addons/@fumohouse/common/resources/materials/ui_blur.gdshader" id="1_hkifj"]
@@ -14,33 +14,33 @@ shader = ExtResource("1_hkifj")
 shader_parameter/blur = 1.0
 shader_parameter/dim = 0.5
 
-[node name="DebugWindow" type="MarginContainer"]
+[node name="DebugWindow" type="MarginContainer" unique_id=795756153]
 offset_right = 328.0
 offset_bottom = 30.0
 theme = ExtResource("1_5h3vn")
 script = ExtResource("2_3m2j5")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=485345924]
 material = SubResource("ShaderMaterial_5h3vn")
 layout_mode = 2
 
-[node name="Foreground" type="MarginContainer" parent="."]
+[node name="Foreground" type="MarginContainer" parent="." unique_id=12592968]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Foreground"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground" unique_id=1335414928]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="TopBar" type="HBoxContainer" parent="Foreground/VBoxContainer"]
+[node name="TopBar" type="HBoxContainer" parent="Foreground/VBoxContainer" unique_id=1191511869]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="Foreground/VBoxContainer/TopBar"]
+[node name="Icon" type="TextureRect" parent="Foreground/VBoxContainer/TopBar" unique_id=1523364165]
 visible = false
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
@@ -49,16 +49,16 @@ size_flags_vertical = 4
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Title" type="RichTextLabel" parent="Foreground/VBoxContainer/TopBar"]
+[node name="Title" type="RichTextLabel" parent="Foreground/VBoxContainer/TopBar" unique_id=1517508361]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 mouse_filter = 2
 theme_override_constants/line_separation = -1
 theme_override_fonts/normal_font = ExtResource("3_jh73a")
-theme_override_fonts/italics_font = ExtResource("4_0mp2w")
-theme_override_fonts/bold_italics_font = ExtResource("5_3m2j5")
 theme_override_fonts/bold_font = ExtResource("6_jyni0")
+theme_override_fonts/bold_italics_font = ExtResource("5_3m2j5")
+theme_override_fonts/italics_font = ExtResource("4_0mp2w")
 bbcode_enabled = true
 text = "Title"
 fit_content = true
@@ -67,12 +67,12 @@ autowrap_mode = 0
 shortcut_keys_enabled = false
 vertical_alignment = 1
 
-[node name="Spacer" type="Control" parent="Foreground/VBoxContainer/TopBar"]
+[node name="Spacer" type="Control" parent="Foreground/VBoxContainer/TopBar" unique_id=1564383647]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="CloseButton" type="Button" parent="Foreground/VBoxContainer/TopBar"]
+[node name="CloseButton" type="Button" parent="Foreground/VBoxContainer/TopBar" unique_id=434168340]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -81,20 +81,20 @@ theme_override_fonts/font = ExtResource("7_0mp2w")
 theme_override_font_sizes/font_size = 13
 text = ""
 
-[node name="Spacer" type="ColorRect" parent="Foreground/VBoxContainer"]
+[node name="Spacer" type="ColorRect" parent="Foreground/VBoxContainer" unique_id=1353911890]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 
-[node name="Contents" type="MarginContainer" parent="Foreground/VBoxContainer"]
+[node name="Contents" type="MarginContainer" parent="Foreground/VBoxContainer" unique_id=2057461623]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_top = 4
 
-[node name="Overlay" type="Control" parent="."]
+[node name="Overlay" type="Control" parent="." unique_id=2102206470]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="ResizeHandle" type="Control" parent="Overlay"]
+[node name="ResizeHandle" type="Control" parent="Overlay" unique_id=1926064985]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
@@ -108,7 +108,7 @@ grow_horizontal = 0
 grow_vertical = 0
 mouse_default_cursor_shape = 12
 
-[node name="HandleIcon" type="ColorRect" parent="Overlay/ResizeHandle"]
+[node name="HandleIcon" type="ColorRect" parent="Overlay/ResizeHandle" unique_id=1990241280]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

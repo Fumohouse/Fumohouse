@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ds5d313nse56r"]
+[gd_scene format=3 uid="uid://ds5d313nse56r"]
 
 [ext_resource type="PackedScene" uid="uid://dr32entbvcc4" path="res://addons/@fumohouse/navigation/components/nav_button.tscn" id="1_by5n8"]
 
@@ -43,7 +43,7 @@ border_color = Color(0.25882354, 0.4627451, 0.6509804, 1)
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 
-[node name="GameMenuButton" instance=ExtResource("1_by5n8")]
+[node name="GameMenuButton" unique_id=1755400122 instance=ExtResource("1_by5n8")]
 theme_override_styles/normal = SubResource("StyleBoxFlat_by5n8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_cejka")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ptnd3")

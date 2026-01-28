@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://caswtxfadle3"]
+[gd_scene format=3 uid="uid://caswtxfadle3"]
 
 [ext_resource type="PackedScene" uid="uid://dtw5x5ygkwbx" path="res://addons/@fumohouse/fumo_touhou/assets/generic/sock_1.glb" id="1_610ao"]
 [ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="2_2kbqt"]
@@ -10,7 +10,7 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
 noise = SubResource("FastNoiseLite_yrlyc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_brx1m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgymm"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_otm0g")
@@ -39,9 +39,9 @@ shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
 
-[node name="sock_1" node_paths=PackedStringArray("mesh") instance=ExtResource("1_610ao")]
+[node name="sock_1" unique_id=2104914056 node_paths=PackedStringArray("mesh") instance=ExtResource("1_610ao")]
 script = ExtResource("2_2kbqt")
 mesh = NodePath("sock_1")
 
-[node name="sock_1" parent="." index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_brx1m")
+[node name="sock_1" parent="." index="0" unique_id=1273466691]
+surface_material_override/0 = SubResource("ShaderMaterial_pgymm")

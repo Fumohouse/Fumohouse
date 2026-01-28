@@ -1,28 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://bajx1ku8c4beo"]
+[gd_scene format=3 uid="uid://bajx1ku8c4beo"]
 
 [ext_resource type="Script" uid="uid://crh3oxw2lfxoj" path="res://addons/@fumohouse/base/editor/module_export.gd" id="1_0uy1q"]
 
-[node name="Export" type="FoldableContainer"]
+[node name="Export" type="FoldableContainer" unique_id=268164183]
 title = "Export"
 script = ExtResource("1_0uy1q")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=872254415]
 layout_mode = 2
 
-[node name="Refresh" type="Button" parent="VBoxContainer"]
+[node name="Refresh" type="Button" parent="VBoxContainer" unique_id=425928431]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Refresh"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=470439970]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 
-[node name="ModuleList" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+[node name="ModuleList" type="VBoxContainer" parent="VBoxContainer/ScrollContainer" unique_id=837407725]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Platform" type="OptionButton" parent="VBoxContainer"]
+[node name="Platform" type="OptionButton" parent="VBoxContainer" unique_id=639858215]
 unique_name_in_owner = true
 layout_mode = 2
 selected = 0
@@ -34,17 +34,17 @@ popup/item_1/id = 1
 popup/item_2/text = "macOS"
 popup/item_2/id = 2
 
-[node name="ExportPath" type="LineEdit" parent="VBoxContainer"]
+[node name="ExportPath" type="LineEdit" parent="VBoxContainer" unique_id=1786787758]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Export Directory"
 
-[node name="ExportModules" type="Button" parent="VBoxContainer"]
+[node name="ExportModules" type="Button" parent="VBoxContainer" unique_id=992316187]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Export Modules"
 
-[node name="ExportBase" type="Button" parent="VBoxContainer"]
+[node name="ExportBase" type="Button" parent="VBoxContainer" unique_id=153053882]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Export Base Package"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://croenlf3yyt7h"]
+[gd_scene format=3 uid="uid://croenlf3yyt7h"]
 
 [ext_resource type="Script" uid="uid://b0udmharl0p74" path="res://addons/@fumohouse/music/music_controller.gd" id="1_my832"]
 [ext_resource type="PackedScene" uid="uid://cmqn140kecnvi" path="res://addons/@fumohouse/common/nodes/marquee.tscn" id="1_y1la7"]
@@ -15,63 +15,63 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="MusicController" type="PanelContainer"]
+[node name="MusicController" type="PanelContainer" unique_id=1774989003]
 clip_children = 2
 custom_minimum_size = Vector2(250, 84)
 theme_override_styles/panel = SubResource("StyleBoxFlat_my832")
 script = ExtResource("1_my832")
 
-[node name="Visualizer" type="Control" parent="."]
+[node name="Visualizer" type="Control" parent="." unique_id=1845462581]
 unique_name_in_owner = true
 modulate = Color(0, 0.152941, 0.34902, 1)
 layout_mode = 2
 script = ExtResource("2_7lyuo")
 
-[node name="Layout" type="MarginContainer" parent="."]
+[node name="Layout" type="MarginContainer" parent="." unique_id=1728821609]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Layout"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Layout" unique_id=1646054456]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Marquee" parent="Layout/VBoxContainer" instance=ExtResource("1_y1la7")]
+[node name="Marquee" parent="Layout/VBoxContainer" unique_id=1085156684 instance=ExtResource("1_y1la7")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Label" parent="Layout/VBoxContainer/Marquee" index="0"]
+[node name="Label" parent="Layout/VBoxContainer/Marquee" index="0" unique_id=982448821]
 theme_override_font_sizes/font_size = 14
 
-[node name="SeekBar" type="HSlider" parent="Layout/VBoxContainer"]
+[node name="SeekBar" type="HSlider" parent="Layout/VBoxContainer" unique_id=59714017]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
 step = 0.001
 
-[node name="Controls" type="HBoxContainer" parent="Layout/VBoxContainer"]
+[node name="Controls" type="HBoxContainer" parent="Layout/VBoxContainer" unique_id=1230590167]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 24
 
-[node name="Previous" type="Button" parent="Layout/VBoxContainer/Controls"]
+[node name="Previous" type="Button" parent="Layout/VBoxContainer/Controls" unique_id=150448882]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 20
 text = ""
 
-[node name="Play" type="Button" parent="Layout/VBoxContainer/Controls"]
+[node name="Play" type="Button" parent="Layout/VBoxContainer/Controls" unique_id=1692187609]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 20
 text = ""
 
-[node name="Next" type="Button" parent="Layout/VBoxContainer/Controls"]
+[node name="Next" type="Button" parent="Layout/VBoxContainer/Controls" unique_id=912946107]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"FlatButton"

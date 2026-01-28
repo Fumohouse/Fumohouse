@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MainlineContributor" load_steps=2 format=3 uid="uid://cgft8r7bjalup"]
+[gd_resource type="Resource" script_class="MainlineContributor" format=3 uid="uid://cgft8r7bjalup"]
 
 [ext_resource type="Script" uid="uid://c51ldeir31dos" path="res://addons/@fumohouse/mainline_contrib/mainline_contributor.gd" id="1_kop3k"]
 

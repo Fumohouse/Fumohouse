@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgh3a51yiv504"]
+[gd_scene format=3 uid="uid://bgh3a51yiv504"]
 
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="1_fcqrd"]
 [ext_resource type="Script" uid="uid://4yetmdtp0nam" path="res://addons/@fumohouse/main/ui/play_screen/world_card.gd" id="1_lx25b"]
@@ -72,7 +72,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="WorldCard" type="PanelContainer"]
+[node name="WorldCard" type="PanelContainer" unique_id=4456299]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 32.0
@@ -80,39 +80,39 @@ grow_horizontal = 2
 theme_type_variation = &"Panel1"
 script = ExtResource("1_lx25b")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2036505254]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="Layout" type="HBoxContainer" parent="MarginContainer"]
+[node name="Layout" type="HBoxContainer" parent="MarginContainer" unique_id=2098911323]
 layout_mode = 2
 
-[node name="Info" type="VBoxContainer" parent="MarginContainer/Layout"]
+[node name="Info" type="VBoxContainer" parent="MarginContainer/Layout" unique_id=471452823]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Layout/Info"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Layout/Info" unique_id=1788505840]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Name" type="Label" parent="MarginContainer/Layout/Info/HBoxContainer"]
+[node name="Name" type="Label" parent="MarginContainer/Layout/Info/HBoxContainer" unique_id=1711687270]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 text = "Test World"
 label_settings = SubResource("LabelSettings_ppidy")
 
-[node name="Version" type="Label" parent="MarginContainer/Layout/Info/HBoxContainer"]
+[node name="Version" type="Label" parent="MarginContainer/Layout/Info/HBoxContainer" unique_id=1176522573]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 text = "v0.1.2"
 label_settings = SubResource("LabelSettings_8sedn")
 
-[node name="Description" type="RichTextLabel" parent="MarginContainer/Layout/Info"]
+[node name="Description" type="RichTextLabel" parent="MarginContainer/Layout/Info" unique_id=1639049880]
 unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
@@ -120,12 +120,12 @@ text = "This is a test world."
 fit_content = true
 scroll_active = false
 
-[node name="Buttons" type="HBoxContainer" parent="MarginContainer/Layout"]
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/Layout" unique_id=1402332447]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 8
 
-[node name="MultiplayerButton" type="Button" parent="MarginContainer/Layout/Buttons"]
+[node name="MultiplayerButton" type="Button" parent="MarginContainer/Layout/Buttons" unique_id=1207192869]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
@@ -138,7 +138,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_8sedn")
 theme_override_styles/focus = SubResource("StyleBoxFlat_a8r8r")
 text = ""
 
-[node name="SingleplayerButton" type="Button" parent="MarginContainer/Layout/Buttons"]
+[node name="SingleplayerButton" type="Button" parent="MarginContainer/Layout/Buttons" unique_id=53039121]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2

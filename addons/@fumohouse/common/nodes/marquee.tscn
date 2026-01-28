@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmqn140kecnvi"]
+[gd_scene format=3 uid="uid://cmqn140kecnvi"]
 
 [ext_resource type="Script" uid="uid://bew6f3flbgmw5" path="res://addons/@fumohouse/common/nodes/marquee.gd" id="1_i1cmg"]
 
-[node name="Marquee" type="Control" node_paths=PackedStringArray("label")]
+[node name="Marquee" type="Control" unique_id=876125917 node_paths=PackedStringArray("label")]
 clip_contents = true
 layout_mode = 3
 anchors_preset = 15
@@ -13,7 +13,7 @@ grow_vertical = 2
 script = ExtResource("1_i1cmg")
 label = NodePath("Label")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=982448821]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 16.3333

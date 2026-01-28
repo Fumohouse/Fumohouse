@@ -1,4 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://1iygih3bhie5"]
+[gd_scene format=3 uid="uid://1iygih3bhie5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rils5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h3te8"]
+bg_color = Color(0, 0.258824, 0.501961, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_514dr"]
+bg_color = Color(0, 0.282353, 0.54902, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3m8qd"]
 bg_color = Color(0, 0.284167, 0.55, 0)
@@ -12,28 +28,12 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_514dr"]
-bg_color = Color(0, 0.282353, 0.54902, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h3te8"]
-bg_color = Color(0, 0.258824, 0.501961, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rils5"]
-
-[node name="Button" type="Button"]
+[node name="Button" type="Button" unique_id=1016464921]
 custom_minimum_size = Vector2(30, 30)
 offset_right = 20.0
 offset_bottom = 20.0
 size_flags_vertical = 4
-theme_override_styles/focus = SubResource("StyleBoxFlat_3m8qd")
-theme_override_styles/hover = SubResource("StyleBoxFlat_514dr")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_h3te8")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rils5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h3te8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_514dr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_3m8qd")

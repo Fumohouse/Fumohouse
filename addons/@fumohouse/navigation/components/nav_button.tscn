@@ -1,29 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dr32entbvcc4"]
+[gd_scene format=3 uid="uid://dr32entbvcc4"]
 
 [ext_resource type="Script" uid="uid://po351v810l2i" path="res://addons/@fumohouse/navigation/components/nav_button.gd" id="1_bowp7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upxgy"]
-bg_color = Color(0.08, 0.245333, 0.4, 0)
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.16, 0.490667, 0.8, 1)
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4c0c"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aekdw"]
 content_margin_left = 48.0
-bg_color = Color(0, 0.282353, 0.54902, 1)
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0.333333, 0.647059, 1)
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bowp7"]
-content_margin_left = 48.0
-bg_color = Color(0, 0.333333, 0.647059, 1)
+bg_color = Color(0, 0.258333, 0.5, 1)
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 
@@ -37,22 +18,41 @@ border_color = Color(0, 0.335833, 0.65, 1)
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aekdw"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bowp7"]
 content_margin_left = 48.0
-bg_color = Color(0, 0.258333, 0.5, 1)
+bg_color = Color(0, 0.333333, 0.647059, 1)
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 
-[node name="NavButton" type="Button"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4c0c"]
+content_margin_left = 48.0
+bg_color = Color(0, 0.282353, 0.54902, 1)
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0.333333, 0.647059, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upxgy"]
+bg_color = Color(0.08, 0.245333, 0.4, 0)
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.16, 0.490667, 0.8, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[node name="NavButton" type="Button" unique_id=1541930478]
 custom_minimum_size = Vector2(450, 48)
 offset_right = 128.0
 offset_bottom = 48.0
 size_flags_horizontal = 0
-theme_override_styles/focus = SubResource("StyleBoxFlat_upxgy")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_l4c0c")
-theme_override_styles/hover = SubResource("StyleBoxFlat_bowp7")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o6an4")
 theme_override_styles/normal = SubResource("StyleBoxFlat_aekdw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o6an4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bowp7")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_l4c0c")
+theme_override_styles/focus = SubResource("StyleBoxFlat_upxgy")
 text = "Play"
 alignment = 0
 script = ExtResource("1_bowp7")

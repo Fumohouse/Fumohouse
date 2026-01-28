@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcmyneanwu1f3"]
+[gd_scene format=3 uid="uid://bcmyneanwu1f3"]
 
 [ext_resource type="Script" uid="uid://c2mo31oe5hccm" path="res://addons/@fumohouse/common/nodes/option_button_offset.gd" id="1_fhdb4"]
 
-[node name="Preview" type="PanelContainer"]
+[node name="Preview" type="PanelContainer" unique_id=802918586]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -10,23 +10,23 @@ offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=139180089]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="VFlowContainer" type="VFlowContainer" parent="MarginContainer"]
+[node name="VFlowContainer" type="VFlowContainer" parent="MarginContainer" unique_id=1144259068]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VFlowContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VFlowContainer" unique_id=670155891]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Whereas disregard and contempt for human rights have resulted"
 autowrap_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VFlowContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VFlowContainer" unique_id=1278544629]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 bbcode_enabled = true
@@ -35,45 +35,45 @@ text = "Whereas [b]disregard[/b] and [i]contempt[/i] for human rights have resul
 fit_content = true
 scroll_active = false
 
-[node name="Panel1" type="PanelContainer" parent="MarginContainer/VFlowContainer"]
+[node name="Panel1" type="PanelContainer" parent="MarginContainer/VFlowContainer" unique_id=751122596]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_type_variation = &"Panel1"
 
-[node name="Label" type="Label" parent="MarginContainer/VFlowContainer/Panel1"]
+[node name="Label" type="Label" parent="MarginContainer/VFlowContainer/Panel1" unique_id=2080393279]
 layout_mode = 2
 text = "Panel1"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/VFlowContainer"]
+[node name="Button" type="Button" parent="MarginContainer/VFlowContainer" unique_id=841422003]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Button"
 
-[node name="ButtonAccent" type="Button" parent="MarginContainer/VFlowContainer"]
+[node name="ButtonAccent" type="Button" parent="MarginContainer/VFlowContainer" unique_id=1381108403]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_type_variation = &"ButtonAccent"
 text = "Button"
 
-[node name="ButtonDisabled" type="Button" parent="MarginContainer/VFlowContainer"]
+[node name="ButtonDisabled" type="Button" parent="MarginContainer/VFlowContainer" unique_id=411659824]
 layout_mode = 2
 size_flags_horizontal = 0
 disabled = true
 text = "Button"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/VFlowContainer"]
+[node name="HSlider" type="HSlider" parent="MarginContainer/VFlowContainer" unique_id=1427861824]
 layout_mode = 2
 value = 50.0
 tick_count = 5
 
-[node name="HSliderDisabled" type="HSlider" parent="MarginContainer/VFlowContainer"]
+[node name="HSliderDisabled" type="HSlider" parent="MarginContainer/VFlowContainer" unique_id=405907301]
 layout_mode = 2
 value = 50.0
 editable = false
 
-[node name="OptionButtonOffset" type="OptionButton" parent="MarginContainer/VFlowContainer"]
+[node name="OptionButtonOffset" type="OptionButton" parent="MarginContainer/VFlowContainer" unique_id=1653114052]
 layout_mode = 2
 item_count = 3
 popup/item_0/text = "Option 1"
@@ -86,44 +86,44 @@ popup/item_2/id = 2
 script = ExtResource("1_fhdb4")
 metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="CheckButton" type="CheckButton" parent="MarginContainer/VFlowContainer"]
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VFlowContainer" unique_id=2097574367]
 layout_mode = 2
 text = "Toggle"
 
-[node name="CheckButtonFlat" type="CheckButton" parent="MarginContainer/VFlowContainer"]
+[node name="CheckButtonFlat" type="CheckButton" parent="MarginContainer/VFlowContainer" unique_id=878316361]
 layout_mode = 2
 text = "Toggle Flat"
 flat = true
 
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/VFlowContainer"]
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VFlowContainer" unique_id=1417364663]
 layout_mode = 2
 text = "Checkbox"
 
-[node name="CheckBoxFlat" type="CheckBox" parent="MarginContainer/VFlowContainer"]
+[node name="CheckBoxFlat" type="CheckBox" parent="MarginContainer/VFlowContainer" unique_id=85113315]
 layout_mode = 2
 text = "Checkbox Flat"
 flat = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VFlowContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VFlowContainer" unique_id=1516430428]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/VFlowContainer/ScrollContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VFlowContainer/ScrollContainer" unique_id=751781385]
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VFlowContainer"]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VFlowContainer" unique_id=597726305]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 
-[node name="ColorPicker" type="ColorPicker" parent="MarginContainer/VFlowContainer"]
+[node name="ColorPicker" type="ColorPicker" parent="MarginContainer/VFlowContainer" unique_id=1875662042]
 layout_mode = 2
 picker_shape = 1
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VFlowContainer"]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VFlowContainer" unique_id=350125177]
 layout_mode = 2
 
-[node name="LineEditDisabled" type="LineEdit" parent="MarginContainer/VFlowContainer"]
+[node name="LineEditDisabled" type="LineEdit" parent="MarginContainer/VFlowContainer" unique_id=698878456]
 layout_mode = 2
 text = "Disabled"
 editable = false

@@ -1,17 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cy0uije1v134m"]
+[gd_scene format=3 uid="uid://cy0uije1v134m"]
 
 [ext_resource type="PackedScene" uid="uid://d251631rls86k" path="res://addons/@fumohouse/main/ui/info_screen_main/info_main_section.tscn" id="1_q1tab"]
 [ext_resource type="Script" uid="uid://d12huqcmg3nam" path="res://addons/@fumohouse/main/ui/info_screen_main/info_main_contrib_section.gd" id="2_yhklh"]
 
-[node name="InfoMainContribSection" instance=ExtResource("1_q1tab")]
+[node name="InfoMainContribSection" unique_id=1224657224 instance=ExtResource("1_q1tab")]
 script = ExtResource("2_yhklh")
 
-[node name="MarginContainer" type="MarginContainer" parent="." index="1"]
+[node name="MarginContainer" type="MarginContainer" parent="." index="1" unique_id=645850893]
 layout_mode = 2
 theme_override_constants/margin_left = 240
 theme_override_constants/margin_right = 240
 
-[node name="ContributorFlow" type="HFlowContainer" parent="MarginContainer" index="0"]
+[node name="ContributorFlow" type="HFlowContainer" parent="MarginContainer" index="0" unique_id=1259814844]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 16

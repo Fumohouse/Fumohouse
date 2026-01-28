@@ -1,4 +1,4 @@
-[gd_resource type="FontVariation" load_steps=3 format=3 uid="uid://dunlfet4wbyp3"]
+[gd_resource type="FontVariation" format=3 uid="uid://dunlfet4wbyp3"]
 
 [ext_resource type="FontFile" uid="uid://clifouy6vdsx0" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Regular.woff2" id="1_8tupa"]
 [ext_resource type="FontVariation" uid="uid://cmmsm1wvu0m3l" path="res://addons/@fumohouse/base/resources/fonts/bootstrap_text_baseline.tres" id="2_8tupa"]

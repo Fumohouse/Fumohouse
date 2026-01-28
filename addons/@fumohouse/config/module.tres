@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ModuleManifest" load_steps=9 format=3 uid="uid://cs54dh8jbinac"]
+[gd_resource type="Resource" script_class="ModuleManifest" format=3 uid="uid://cs54dh8jbinac"]
 
 [ext_resource type="Script" uid="uid://bv6m4s88g0oi6" path="res://addons/@fumohouse/base/module_autoload.gd" id="1_6cgqi"]
 [ext_resource type="Script" uid="uid://c5kqgift21f1k" path="res://addons/@fumohouse/base/module_manifest.gd" id="1_f5utd"]
@@ -36,6 +36,5 @@ metadata/_custom_type_script = ExtResource("1_jlwx5")
 [resource]
 script = ExtResource("1_f5utd")
 dependencies = Array[ExtResource("1_jlwx5")]([SubResource("Resource_6cgqi")])
-entry_scene = ""
 autoloads = Array[ExtResource("1_6cgqi")]([SubResource("Resource_yca8t"), SubResource("Resource_5j7fo"), SubResource("Resource_le0lr"), SubResource("Resource_2klw6")])
 metadata/_custom_type_script = ExtResource("1_f5utd")

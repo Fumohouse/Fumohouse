@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctxaywfcdgbmw"]
+[gd_scene format=3 uid="uid://ctxaywfcdgbmw"]
 
 [ext_resource type="PackedScene" uid="uid://bwfpt2e5bsunh" path="res://addons/@fumohouse/navigation/components/back_button.tscn" id="1_8l6fq"]
 [ext_resource type="Script" uid="uid://bec53rur1matv" path="res://addons/@fumohouse/navigation/nav_menu.gd" id="1_fpjh4"]
 
-[node name="NavMenu" type="Control"]
+[node name="NavMenu" type="Control" unique_id=1801240672]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_fpjh4")
 
-[node name="Screens" type="Control" parent="."]
+[node name="Screens" type="Control" parent="." unique_id=381545900]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="BackButton" parent="." instance=ExtResource("1_8l6fq")]
+[node name="BackButton" parent="." unique_id=1265244730 instance=ExtResource("1_8l6fq")]
 visible = false
 layout_mode = 0
 offset_top = 30.0

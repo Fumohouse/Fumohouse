@@ -1,37 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://cce2lc4hx05ok"]
+[gd_scene format=3 uid="uid://cce2lc4hx05ok"]
 
 [ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/navigation/screen_base_layout.tscn" id="1_ykkn8"]
 [ext_resource type="Script" uid="uid://ckhaormv8jl70" path="res://addons/@fumohouse/main/ui/play_screen/play_screen.gd" id="2_pe716"]
 [ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="3_j1rdh"]
 [ext_resource type="PackedScene" uid="uid://bpdb7ma7vmfp3" path="res://addons/@fumohouse/navigation/components/status_popup.tscn" id="4_6sdiv"]
 
-[node name="PlayScreen" node_paths=PackedStringArray("tabs", "tab_content") instance=ExtResource("1_ykkn8")]
+[node name="PlayScreen" unique_id=1519114844 node_paths=PackedStringArray("tabs", "tab_content") instance=ExtResource("1_ykkn8")]
 script = ExtResource("2_pe716")
 tabs = NodePath("TopBar/RadioButtonContainer")
 tab_content = NodePath("Contents/MarginContainer/Tabs")
 
-[node name="Title" parent="TopBar" index="0"]
+[node name="Title" parent="TopBar" parent_id_path=PackedInt32Array(1563143153) index="0" unique_id=895517108]
 text = "Play"
 
-[node name="RadioButtonContainer" type="HBoxContainer" parent="TopBar" index="1"]
+[node name="RadioButtonContainer" type="HBoxContainer" parent="TopBar" parent_id_path=PackedInt32Array(1563143153) index="1" unique_id=1208753038]
 layout_mode = 2
 theme_override_constants/separation = 16
 script = ExtResource("3_j1rdh")
 
-[node name="Worlds" type="Button" parent="TopBar/RadioButtonContainer" index="0"]
+[node name="Worlds" type="Button" parent="TopBar/RadioButtonContainer" index="0" unique_id=22858964]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Worlds"
 
-[node name="Multiplayer" type="Button" parent="TopBar/RadioButtonContainer" index="1"]
+[node name="Multiplayer" type="Button" parent="TopBar/RadioButtonContainer" index="1" unique_id=71672929]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Multiplayer"
 
-[node name="Tabs" type="Control" parent="Contents/MarginContainer" index="0"]
+[node name="Tabs" type="Control" parent="Contents/MarginContainer" parent_id_path=PackedInt32Array(1118290265) index="0" unique_id=2026668325]
 layout_mode = 2
 
-[node name="Worlds" type="ScrollContainer" parent="Contents/MarginContainer/Tabs" index="0"]
+[node name="Worlds" type="ScrollContainer" parent="Contents/MarginContainer/Tabs" index="0" unique_id=2006174121]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,50 +39,50 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="WorldList" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Worlds" index="0"]
+[node name="WorldList" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Worlds" index="0" unique_id=1039659731]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
-[node name="Multiplayer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs" index="1"]
+[node name="Multiplayer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs" index="1" unique_id=1242335067]
 visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer" index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer" index="0" unique_id=2027764533]
 layout_mode = 2
 
-[node name="Address" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer/HBoxContainer" index="0"]
+[node name="Address" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer/HBoxContainer" index="0" unique_id=691063151]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 placeholder_text = "Address"
 
-[node name="Port" type="SpinBox" parent="Contents/MarginContainer/Tabs/Multiplayer/HBoxContainer" index="1"]
+[node name="Port" type="SpinBox" parent="Contents/MarginContainer/Tabs/Multiplayer/HBoxContainer" index="1" unique_id=757647173]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 65535.0
 value = 50103.0
 
-[node name="Username" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer" index="1"]
+[node name="Username" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer" index="1" unique_id=555655640]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Username"
 
-[node name="Password" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer" index="2"]
+[node name="Password" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer" index="2" unique_id=331042693]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Password"
 secret = true
 
-[node name="JoinButton" type="Button" parent="Contents/MarginContainer/Tabs/Multiplayer" index="3"]
+[node name="JoinButton" type="Button" parent="Contents/MarginContainer/Tabs/Multiplayer" index="3" unique_id=1557578714]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Join"
 
-[node name="StatusPopup" parent="." index="2" instance=ExtResource("4_6sdiv")]
+[node name="StatusPopup" parent="." index="2" unique_id=1606265617 instance=ExtResource("4_6sdiv")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1

@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://dbc0ratgleys3"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dbc0ratgleys3"]
 
 [ext_resource type="Shader" uid="uid://du45i2xkuj4fb" path="res://addons/@fumohouse/common/resources/materials/water.gdshader" id="1_8wiho"]
 

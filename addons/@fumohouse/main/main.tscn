@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://r3htqql86m4u"]
+[gd_scene format=3 uid="uid://r3htqql86m4u"]
 
 [ext_resource type="PackedScene" uid="uid://ctxaywfcdgbmw" path="res://addons/@fumohouse/navigation/nav_menu.tscn" id="1_emt38"]
 [ext_resource type="Script" uid="uid://donqdlntewiwc" path="res://addons/@fumohouse/main/main.gd" id="2_3w01d"]
@@ -38,11 +38,11 @@ bg_color = Color(0, 0.333333, 0.647059, 1)
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="Main" node_paths=PackedStringArray("main_screen") instance=ExtResource("1_emt38")]
+[node name="Main" unique_id=1021144755 node_paths=PackedStringArray("main_screen") instance=ExtResource("1_emt38")]
 script = ExtResource("2_3w01d")
 main_screen = NodePath("Screens/MainScreen")
 
-[node name="Background" type="Control" parent="." index="0"]
+[node name="Background" type="Control" parent="." index="0" unique_id=564165349]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,7 +50,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Background" index="0"]
+[node name="TextureRect" type="TextureRect" parent="Background" index="0" unique_id=1697583010]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 4.0
@@ -62,7 +62,7 @@ texture = ExtResource("3_lqqwp")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="Dim" type="ColorRect" parent="Background" index="1"]
+[node name="Dim" type="ColorRect" parent="Background" index="1" unique_id=1629812861]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,23 +71,23 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.313726)
 
-[node name="PlayScreen" parent="Screens" index="0" instance=ExtResource("4_3w01d")]
+[node name="PlayScreen" parent="Screens" parent_id_path=PackedInt32Array(381545900) index="0" unique_id=396151904 instance=ExtResource("4_3w01d")]
 visible = false
 layout_mode = 1
 
-[node name="InfoScreenMain" parent="Screens" index="1" instance=ExtResource("5_utajb")]
+[node name="InfoScreenMain" parent="Screens" parent_id_path=PackedInt32Array(381545900) index="1" unique_id=1083844824 instance=ExtResource("5_utajb")]
 visible = false
 layout_mode = 1
 
-[node name="OptionsScreen" parent="Screens" index="2" instance=ExtResource("4_eq6r0")]
+[node name="OptionsScreen" parent="Screens" parent_id_path=PackedInt32Array(381545900) index="2" unique_id=580970510 instance=ExtResource("4_eq6r0")]
 visible = false
 layout_mode = 1
 
-[node name="CharacterEditorScreen" parent="Screens" index="3" instance=ExtResource("5_eq6r0")]
+[node name="CharacterEditorScreen" parent="Screens" parent_id_path=PackedInt32Array(381545900) index="3" unique_id=1001495844 instance=ExtResource("5_eq6r0")]
 visible = false
 layout_mode = 1
 
-[node name="MainScreen" type="Control" parent="Screens" index="4"]
+[node name="MainScreen" type="Control" parent="Screens" parent_id_path=PackedInt32Array(381545900) index="4" unique_id=209160470]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,7 +96,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_qhi0j")
 
-[node name="NonNavigation" type="Control" parent="Screens/MainScreen" index="0"]
+[node name="NonNavigation" type="Control" parent="Screens/MainScreen" index="0" unique_id=976953507]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,26 +104,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Logo" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation" index="0"]
+[node name="Logo" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation" index="0" unique_id=176478960]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 48.0
 offset_right = 88.0
 offset_bottom = 88.0
 
-[node name="TextureRect" type="TextureRect" parent="Screens/MainScreen/NonNavigation/Logo" index="0"]
+[node name="TextureRect" type="TextureRect" parent="Screens/MainScreen/NonNavigation/Logo" index="0" unique_id=74099467]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("6_utajb")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Screens/MainScreen/NonNavigation/Logo" index="1"]
+[node name="Label" type="Label" parent="Screens/MainScreen/NonNavigation/Logo" index="1" unique_id=1888381621]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_vrsnp")
 theme_override_font_sizes/font_size = 24
 text = "Fumohouse"
 
-[node name="VersionLabel" parent="Screens/MainScreen/NonNavigation" index="1" instance=ExtResource("8_skxed")]
+[node name="VersionLabel" parent="Screens/MainScreen/NonNavigation" index="1" unique_id=1445019150 instance=ExtResource("8_skxed")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -137,7 +137,7 @@ offset_bottom = -60.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="LowerLeft" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation" index="2"]
+[node name="LowerLeft" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation" index="2" unique_id=1350742703]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -149,7 +149,7 @@ offset_bottom = -48.0
 grow_vertical = 0
 theme_override_constants/separation = 16
 
-[node name="ksk" type="Button" parent="Screens/MainScreen/NonNavigation/LowerLeft" index="0"]
+[node name="ksk" type="Button" parent="Screens/MainScreen/NonNavigation/LowerLeft" index="0" unique_id=1783420368]
 custom_minimum_size = Vector2(90, 65)
 layout_mode = 2
 size_flags_vertical = 4
@@ -158,7 +158,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ujcgd")
 flat = true
 script = ExtResource("9_lruml")
 
-[node name="Logo" type="ColorRect" parent="Screens/MainScreen/NonNavigation/LowerLeft/ksk" index="0"]
+[node name="Logo" type="ColorRect" parent="Screens/MainScreen/NonNavigation/LowerLeft/ksk" index="0" unique_id=401751723]
 material = SubResource("ShaderMaterial_o1m3j")
 layout_mode = 1
 anchors_preset = 15
@@ -168,12 +168,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="Separator" type="ColorRect" parent="Screens/MainScreen/NonNavigation/LowerLeft" index="1"]
+[node name="Separator" type="ColorRect" parent="Screens/MainScreen/NonNavigation/LowerLeft" index="1" unique_id=1354251504]
 custom_minimum_size = Vector2(2, 50)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Screens/MainScreen/NonNavigation/LowerLeft" index="2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Screens/MainScreen/NonNavigation/LowerLeft" index="2" unique_id=409988873]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 theme_override_constants/line_separation = 0
@@ -186,7 +186,7 @@ scroll_active = false
 shortcut_keys_enabled = false
 vertical_alignment = 1
 
-[node name="BottomButtons" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation" index="3"]
+[node name="BottomButtons" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation" index="3" unique_id=1783704861]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -198,18 +198,16 @@ offset_bottom = -64.0
 grow_vertical = 0
 theme_override_constants/separation = 16
 
-[node name="Website" parent="Screens/MainScreen/NonNavigation/BottomButtons" index="0" instance=ExtResource("12_rjxf4")]
+[node name="Website" parent="Screens/MainScreen/NonNavigation/BottomButtons" index="0" unique_id=1224344469 instance=ExtResource("12_rjxf4")]
 layout_mode = 2
 text = ""
-metadata/_custom_type_script = "uid://cqlbcm8gbadrr"
 
-[node name="Forgejo" parent="Screens/MainScreen/NonNavigation/BottomButtons" index="1" instance=ExtResource("12_rjxf4")]
+[node name="Forgejo" parent="Screens/MainScreen/NonNavigation/BottomButtons" index="1" unique_id=1869915001 instance=ExtResource("12_rjxf4")]
 layout_mode = 2
 text = ""
 link = "https://git.seki.pw/Fumohouse/Fumohouse"
-metadata/_custom_type_script = "uid://cqlbcm8gbadrr"
 
-[node name="TopBar" type="PanelContainer" parent="Screens/MainScreen/NonNavigation" index="4"]
+[node name="TopBar" type="PanelContainer" parent="Screens/MainScreen/NonNavigation" index="4" unique_id=423029525]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 1
 anchors_preset = 1
@@ -221,49 +219,49 @@ offset_bottom = 48.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hcfsd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation/TopBar" index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation/TopBar" index="0" unique_id=927446712]
 layout_mode = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="MusicButton" parent="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer" index="0" instance=ExtResource("13_vcadt")]
+[node name="MusicButton" parent="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer" index="0" unique_id=347699553 instance=ExtResource("13_vcadt")]
 unique_name_in_owner = true
 layout_mode = 2
 text = ""
 
-[node name="NotificationButton" parent="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer" index="1" instance=ExtResource("13_vcadt")]
+[node name="NotificationButton" parent="Screens/MainScreen/NonNavigation/TopBar/HBoxContainer" index="1" unique_id=788522746 instance=ExtResource("13_vcadt")]
 unique_name_in_owner = true
 layout_mode = 2
 text = ""
 
-[node name="MainButtons" parent="Screens/MainScreen" index="1" instance=ExtResource("14_tgh4f")]
+[node name="MainButtons" parent="Screens/MainScreen" index="1" unique_id=739795644 instance=ExtResource("14_tgh4f")]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 grow_vertical = 2
 
-[node name="PlayButton" parent="Screens/MainScreen/MainButtons" index="0" instance=ExtResource("15_b6v57")]
+[node name="PlayButton" parent="Screens/MainScreen/MainButtons" index="0" unique_id=285198957 instance=ExtResource("15_b6v57")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="InfoButton" parent="Screens/MainScreen/MainButtons" index="1" instance=ExtResource("15_b6v57")]
+[node name="InfoButton" parent="Screens/MainScreen/MainButtons" index="1" unique_id=1246959002 instance=ExtResource("15_b6v57")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Credits/Info"
 
-[node name="OptionsButton" parent="Screens/MainScreen/MainButtons" index="2" instance=ExtResource("15_b6v57")]
+[node name="OptionsButton" parent="Screens/MainScreen/MainButtons" index="2" unique_id=1664496364 instance=ExtResource("15_b6v57")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
 
-[node name="ExitButton" parent="Screens/MainScreen/MainButtons" index="3" instance=ExtResource("15_b6v57")]
+[node name="ExitButton" parent="Screens/MainScreen/MainButtons" index="3" unique_id=1885468116 instance=ExtResource("15_b6v57")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(225, 48)
 layout_mode = 2
 text = "Exit"
 
-[node name="MusicController" parent="Screens/MainScreen" index="2" instance=ExtResource("16_v08wt")]
+[node name="MusicController" parent="Screens/MainScreen" index="2" unique_id=1869642454 instance=ExtResource("16_v08wt")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -275,7 +273,7 @@ offset_bottom = 148.0
 grow_horizontal = 0
 pivot_offset = Vector2(250, 42)
 
-[node name="NavCharacter" parent="Screens/MainScreen" index="3" instance=ExtResource("18_lqqwp")]
+[node name="NavCharacter" parent="Screens/MainScreen" index="3" unique_id=1496319091 instance=ExtResource("18_lqqwp")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 6
@@ -290,7 +288,7 @@ offset_bottom = 130.5
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Dim" type="ColorRect" parent="." index="3"]
+[node name="Dim" type="ColorRect" parent="." index="3" unique_id=2128921783]
 visible = false
 layout_mode = 1
 anchors_preset = 15

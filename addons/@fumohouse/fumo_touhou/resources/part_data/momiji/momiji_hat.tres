@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SinglePart" load_steps=2 format=3 uid="uid://bf71dsnihw2gm"]
+[gd_resource type="Resource" script_class="SinglePart" format=3 uid="uid://bf71dsnihw2gm"]
 
 [ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_3u071"]
 

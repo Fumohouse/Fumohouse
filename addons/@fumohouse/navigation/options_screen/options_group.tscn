@@ -1,18 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://3pgovqemhie4"]
+[gd_scene format=3 uid="uid://3pgovqemhie4"]
 
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="1_dogjp"]
 
-[node name="OptionsGroup" type="VBoxContainer"]
+[node name="OptionsGroup" type="VBoxContainer" unique_id=1103344323]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 4
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1011672106]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_dogjp")
 theme_override_font_sizes/font_size = 20
 text = "General"
 
-[node name="Options" type="VBoxContainer" parent="."]
+[node name="Options" type="VBoxContainer" parent="." unique_id=852454493]
 layout_mode = 2
 theme_override_constants/separation = 8

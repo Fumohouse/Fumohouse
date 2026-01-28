@@ -1,19 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4h8y2vq573ow"]
+[gd_scene format=3 uid="uid://d4h8y2vq573ow"]
 
 [ext_resource type="Script" uid="uid://dile6cj36yd5k" path="res://addons/@fumohouse/navigation/character_editor/nav_character.gd" id="1_p3kp7"]
 [ext_resource type="PackedScene" uid="uid://d4hwbq0e54jt4" path="res://addons/@fumohouse/fumo/character_editor/components/character_viewport.tscn" id="2_vu4gi"]
 
-[node name="NavCharacter" type="VBoxContainer"]
+[node name="NavCharacter" type="VBoxContainer" unique_id=1386682874]
 offset_right = 240.0
 offset_bottom = 281.0
 pivot_offset = Vector2(240, 140.5)
 script = ExtResource("1_p3kp7")
 
-[node name="CharacterViewport" parent="." instance=ExtResource("2_vu4gi")]
+[node name="CharacterViewport" parent="." unique_id=2101829452 instance=ExtResource("2_vu4gi")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="EditButton" type="Button" parent="."]
+[node name="EditButton" type="Button" parent="." unique_id=1205982845]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2

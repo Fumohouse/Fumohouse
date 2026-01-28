@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Appearance" load_steps=2 format=3 uid="uid://ddcypcjjupprd"]
+[gd_resource type="Resource" script_class="Appearance" format=3 uid="uid://ddcypcjjupprd"]
 
 [ext_resource type="Script" uid="uid://ckfcdw3j0qb6k" path="res://addons/@fumohouse/character_appearance/appearance.gd" id="1_ur4s6"]
 

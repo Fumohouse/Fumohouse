@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FumoEyebrowStyle" load_steps=3 format=3 uid="uid://k8o2xri2y6xm"]
+[gd_resource type="Resource" script_class="FumoEyebrowStyle" format=3 uid="uid://k8o2xri2y6xm"]
 
 [ext_resource type="Script" uid="uid://eno35452i1ce" path="res://addons/@fumohouse/fumo/resources/eyebrow_style.gd" id="1_enmox"]
 [ext_resource type="Texture2D" uid="uid://bfn013fksexi6" path="res://addons/@fumohouse/fumo_touhou/assets/face/eyebrows/straight.svg" id="2_cf6jn"]

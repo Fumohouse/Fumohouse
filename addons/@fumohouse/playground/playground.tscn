@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://guxlxf4tholg"]
+[gd_scene format=3 uid="uid://guxlxf4tholg"]
 
 [ext_resource type="Script" uid="uid://ds2i8jbnratt0" path="res://addons/@fumohouse/world/nodes/character_manager.gd" id="1_wbq40"]
 [ext_resource type="Script" uid="uid://rs1pafyfthr8" path="res://addons/@fumohouse/world/nodes/spawnpoint.gd" id="2_cv6sy"]
@@ -114,125 +114,125 @@ size = Vector2(15.5, 15.5)
 subdivide_width = 24
 subdivide_depth = 24
 
-[node name="Playground" type="Node3D"]
+[node name="Playground" type="Node3D" unique_id=528508943]
 
-[node name="CharacterManager" type="Node3D" parent="." node_paths=PackedStringArray("spawnpoints")]
+[node name="CharacterManager" type="Node3D" parent="." unique_id=1054963895 node_paths=PackedStringArray("spawnpoints")]
 script = ExtResource("1_wbq40")
 spawnpoints = NodePath("../Spawnpoints")
 metadata/_custom_type_script = "uid://ds2i8jbnratt0"
 
-[node name="Spawnpoints" type="Node3D" parent="."]
+[node name="Spawnpoints" type="Node3D" parent="." unique_id=454192618]
 
-[node name="Spawnpoint1" type="Node3D" parent="Spawnpoints" node_paths=PackedStringArray("point")]
+[node name="Spawnpoint1" type="Node3D" parent="Spawnpoints" unique_id=2018532933 node_paths=PackedStringArray("point")]
 script = ExtResource("2_cv6sy")
 point = NodePath("Marker3D")
 metadata/_custom_type_script = "uid://rs1pafyfthr8"
 
-[node name="Marker3D" type="Marker3D" parent="Spawnpoints/Spawnpoint1"]
+[node name="Marker3D" type="Marker3D" parent="Spawnpoints/Spawnpoint1" unique_id=1610149652]
 
-[node name="Spawnpoint2" type="Node3D" parent="Spawnpoints" node_paths=PackedStringArray("point")]
+[node name="Spawnpoint2" type="Node3D" parent="Spawnpoints" unique_id=1046519772 node_paths=PackedStringArray("point")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 5, 10)
 script = ExtResource("2_cv6sy")
 point = NodePath("Marker3D")
 metadata/_custom_type_script = "uid://rs1pafyfthr8"
 
-[node name="Marker3D" type="Marker3D" parent="Spawnpoints/Spawnpoint2"]
+[node name="Marker3D" type="Marker3D" parent="Spawnpoints/Spawnpoint2" unique_id=1458272537]
 
-[node name="Map" type="Node3D" parent="."]
+[node name="Map" type="Node3D" parent="." unique_id=854296838]
 
-[node name="Floor" type="CSGBox3D" parent="Map"]
+[node name="Floor" type="CSGBox3D" parent="Map" unique_id=196835731]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 use_collision = true
 size = Vector3(100, 0.5, 100)
 material = ExtResource("6_r7lgf")
 
-[node name="Rooves" type="CSGCombiner3D" parent="Map"]
+[node name="Rooves" type="CSGCombiner3D" parent="Map" unique_id=1277285287]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 4.75, -6.5)
 use_collision = true
 
-[node name="Roof1" type="CSGBox3D" parent="Map/Rooves"]
+[node name="Roof1" type="CSGBox3D" parent="Map/Rooves" unique_id=639071399]
 size = Vector3(3, 0.5, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Roof2" type="CSGBox3D" parent="Map/Rooves"]
+[node name="Roof2" type="CSGBox3D" parent="Map/Rooves" unique_id=1064811130]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
 size = Vector3(3, 0.5, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Roof3" type="CSGBox3D" parent="Map/Rooves"]
+[node name="Roof3" type="CSGBox3D" parent="Map/Rooves" unique_id=1988010990]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -3)
 size = Vector3(3, 0.5, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Roof4" type="CSGBox3D" parent="Map/Rooves"]
+[node name="Roof4" type="CSGBox3D" parent="Map/Rooves" unique_id=1716513664]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 0)
 size = Vector3(3, 0.5, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Roof5" type="CSGBox3D" parent="Map/Rooves"]
+[node name="Roof5" type="CSGBox3D" parent="Map/Rooves" unique_id=318502664]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 6, 2, -3)
 size = Vector3(3, 0.5, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Interactables" type="Node3D" parent="Map"]
+[node name="Interactables" type="Node3D" parent="Map" unique_id=229572910]
 
-[node name="FumohouseMultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Map/Interactables"]
+[node name="FumohouseMultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Map/Interactables" unique_id=674593847]
 replication_config = SubResource("SceneReplicationConfig_i7yjg")
 script = ExtResource("4_cv6sy")
 metadata/_custom_type_script = "uid://du0g5lc0tyxx8"
 
-[node name="Box" type="RigidBody3D" parent="Map/Interactables"]
+[node name="Box" type="RigidBody3D" parent="Map/Interactables" unique_id=1515273106]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, -5)
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_xnrk0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/Box"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/Box" unique_id=972475682]
 mesh = SubResource("BoxMesh_toukj")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/Box"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/Box" unique_id=2095561494]
 shape = SubResource("BoxShape3D_ubf58")
 
-[node name="Ball" type="RigidBody3D" parent="Map/Interactables"]
+[node name="Ball" type="RigidBody3D" parent="Map/Interactables" unique_id=491208859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 0)
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_toukj")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/Ball"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/Ball" unique_id=1472016843]
 mesh = SubResource("SphereMesh_ubf58")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/Ball"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/Ball" unique_id=2079666037]
 shape = SubResource("SphereShape3D_o3drt")
 
-[node name="SpinningPlatform" type="StaticBody3D" parent="Map/Interactables"]
+[node name="SpinningPlatform" type="StaticBody3D" parent="Map/Interactables" unique_id=1401398047]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 constant_angular_velocity = Vector3(0, 3.14159, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/SpinningPlatform"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/SpinningPlatform" unique_id=1219848514]
 mesh = SubResource("CylinderMesh_xnrk0")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/SpinningPlatform"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/SpinningPlatform" unique_id=94113399]
 shape = SubResource("CylinderShape3D_toukj")
 
-[node name="Path3D" type="Path3D" parent="Map/Interactables"]
+[node name="Path3D" type="Path3D" parent="Map/Interactables" unique_id=1192778179]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2, -24)
 curve = SubResource("Curve3D_b1etj")
 
-[node name="Rotating" type="PathFollow3D" parent="Map/Interactables/Path3D"]
+[node name="Rotating" type="PathFollow3D" parent="Map/Interactables/Path3D" unique_id=187044654]
 transform = Transform3D(0.07919971, -0.24202019, -0.9670331, 0, 0.9700809, -0.24278268, 0.996859, 0.019228322, 0.07683006, 0, 0, 0)
 rotation_mode = 2
 script = ExtResource("6_fia5t")
 speed = 4.0
 
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Map/Interactables/Path3D/Rotating"]
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Map/Interactables/Path3D/Rotating" unique_id=2244284]
 sync_to_physics = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/Path3D/Rotating/AnimatableBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/Path3D/Rotating/AnimatableBody3D" unique_id=1866070154]
 mesh = SubResource("BoxMesh_fia5t")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/Path3D/Rotating/AnimatableBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/Path3D/Rotating/AnimatableBody3D" unique_id=981841358]
 shape = SubResource("BoxShape3D_rmdev")
 
-[node name="NoRotating" type="PathFollow3D" parent="Map/Interactables/Path3D"]
+[node name="NoRotating" type="PathFollow3D" parent="Map/Interactables/Path3D" unique_id=190126434]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.802731, 4.0762877, 10.006701)
 progress = 27.0
 rotation_mode = 0
@@ -240,237 +240,237 @@ script = ExtResource("6_fia5t")
 offset = 27.0
 speed = 4.0
 
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Map/Interactables/Path3D/NoRotating"]
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Map/Interactables/Path3D/NoRotating" unique_id=1314742413]
 sync_to_physics = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/Path3D/NoRotating/AnimatableBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/Path3D/NoRotating/AnimatableBody3D" unique_id=1639714757]
 mesh = SubResource("CylinderMesh_kajri")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/Path3D/NoRotating/AnimatableBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/Path3D/NoRotating/AnimatableBody3D" unique_id=1542170713]
 shape = SubResource("CylinderShape3D_r7lgf")
 
-[node name="SpecialZone" type="Node3D" parent="Map/Interactables"]
+[node name="SpecialZone" type="Node3D" parent="Map/Interactables" unique_id=356229934]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -15)
 
-[node name="Label3D" type="Label3D" parent="Map/Interactables/SpecialZone"]
+[node name="Label3D" type="Label3D" parent="Map/Interactables/SpecialZone" unique_id=59295887]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 pixel_size = 0.01
 billboard = 1
 text = "special zone"
 font = ExtResource("5_b1etj")
 
-[node name="Area3D" type="Area3D" parent="Map/Interactables/SpecialZone"]
+[node name="Area3D" type="Area3D" parent="Map/Interactables/SpecialZone" unique_id=1472992768]
 metadata/playlist = &"special"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/SpecialZone/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/SpecialZone/Area3D" unique_id=859913249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 shape = SubResource("BoxShape3D_jt7kb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/SpecialZone/Area3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/SpecialZone/Area3D" unique_id=254226048]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 mesh = SubResource("BoxMesh_tfp15")
 surface_material_override/0 = SubResource("StandardMaterial3D_auc1j")
 
-[node name="RotatingWall" type="AnimatableBody3D" parent="Map/Interactables"]
+[node name="RotatingWall" type="AnimatableBody3D" parent="Map/Interactables" unique_id=1037069129]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -24)
 script = ExtResource("7_rmdev")
 rotation_speed = 45.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/RotatingWall"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Interactables/RotatingWall" unique_id=1072388837]
 mesh = SubResource("BoxMesh_kajri")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/RotatingWall"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/RotatingWall" unique_id=270110030]
 shape = SubResource("BoxShape3D_r7lgf")
 
-[node name="Seat" parent="Map/Interactables" instance=ExtResource("10_qf3vw")]
+[node name="Seat" parent="Map/Interactables" unique_id=108764543 instance=ExtResource("10_qf3vw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 5, 6)
 
-[node name="Label3D" type="Label3D" parent="Map/Interactables/Seat"]
+[node name="Label3D" type="Label3D" parent="Map/Interactables/Seat" unique_id=753347782]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 billboard = 1
 text = "seat"
 font = ExtResource("5_b1etj")
 font_size = 40
 
-[node name="Platform" type="CSGCombiner3D" parent="Map"]
+[node name="Platform" type="CSGCombiner3D" parent="Map" unique_id=1422378291]
 layers = 3
 use_collision = true
 
-[node name="Platform" type="CSGBox3D" parent="Map/Platform"]
+[node name="Platform" type="CSGBox3D" parent="Map/Platform" unique_id=1233254359]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2.5, 14)
 size = Vector3(20, 5, 20)
 material = ExtResource("6_r7lgf")
 
-[node name="Slope30" type="CSGPolygon3D" parent="Map/Platform"]
+[node name="Slope30" type="CSGPolygon3D" parent="Map/Platform" unique_id=404683244]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 9)
 polygon = PackedVector2Array(-5, 0, 5, 0, 5, 5)
 depth = 5.0
 material = ExtResource("6_r7lgf")
 
-[node name="Slope45" type="CSGPolygon3D" parent="Map/Platform"]
+[node name="Slope45" type="CSGPolygon3D" parent="Map/Platform" unique_id=825661403]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 14)
 polygon = PackedVector2Array(0, 0, 5, 0, 5, 5)
 depth = 5.0
 material = ExtResource("6_r7lgf")
 
-[node name="Slope60" type="CSGPolygon3D" parent="Map/Platform"]
+[node name="Slope60" type="CSGPolygon3D" parent="Map/Platform" unique_id=918846158]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 19)
 polygon = PackedVector2Array(2.5, 0, 5, 0, 5, 5)
 depth = 5.0
 material = ExtResource("6_r7lgf")
 
-[node name="Decal" type="Decal" parent="Map/Platform"]
+[node name="Decal" type="Decal" parent="Map/Platform" unique_id=1878242492]
 transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 8.5, 1.5, 4)
 size = Vector3(2, 0.25, 2)
 texture_albedo = ExtResource("6_b1etj")
 cull_mask = 1048574
 
-[node name="Jump" type="CSGCombiner3D" parent="Map/Platform"]
+[node name="Jump" type="CSGCombiner3D" parent="Map/Platform" unique_id=345812540]
 
-[node name="Jump05" type="CSGBox3D" parent="Map/Platform/Jump"]
+[node name="Jump05" type="CSGBox3D" parent="Map/Platform/Jump" unique_id=121124649]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0.25, 2.5)
 size = Vector3(3, 0.5, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Jump1" type="CSGBox3D" parent="Map/Platform/Jump"]
+[node name="Jump1" type="CSGBox3D" parent="Map/Platform/Jump" unique_id=1995140664]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0.5, 2.5)
 size = Vector3(3, 1, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Jump2" type="CSGBox3D" parent="Map/Platform/Jump"]
+[node name="Jump2" type="CSGBox3D" parent="Map/Platform/Jump" unique_id=1923335443]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 1, 2.5)
 size = Vector3(3, 2, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Jump3" type="CSGBox3D" parent="Map/Platform/Jump"]
+[node name="Jump3" type="CSGBox3D" parent="Map/Platform/Jump" unique_id=1549901737]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 1.5, 2.5)
 size = Vector3(3, 3, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Jump4" type="CSGBox3D" parent="Map/Platform/Jump"]
+[node name="Jump4" type="CSGBox3D" parent="Map/Platform/Jump" unique_id=856262600]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 2, 2.5)
 size = Vector3(3, 4, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Jump5" type="CSGBox3D" parent="Map/Platform/Jump"]
+[node name="Jump5" type="CSGBox3D" parent="Map/Platform/Jump" unique_id=325953665]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 2.5, 2.5)
 size = Vector3(3, 5, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Jump6" type="CSGBox3D" parent="Map/Platform/Jump"]
+[node name="Jump6" type="CSGBox3D" parent="Map/Platform/Jump" unique_id=1094649369]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 3, 2.5)
 size = Vector3(3, 6, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Jump7" type="CSGBox3D" parent="Map/Platform/Jump"]
+[node name="Jump7" type="CSGBox3D" parent="Map/Platform/Jump" unique_id=1551616478]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 3.5, 5.5)
 size = Vector3(3, 7, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Jump8" type="CSGBox3D" parent="Map/Platform/Jump"]
+[node name="Jump8" type="CSGBox3D" parent="Map/Platform/Jump" unique_id=159150230]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 4, 8.5)
 size = Vector3(3, 8, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Jump9" type="CSGBox3D" parent="Map/Platform/Jump"]
+[node name="Jump9" type="CSGBox3D" parent="Map/Platform/Jump" unique_id=1428820148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 4.5, 11.5)
 size = Vector3(3, 9, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Jump10" type="CSGBox3D" parent="Map/Platform/Jump"]
+[node name="Jump10" type="CSGBox3D" parent="Map/Platform/Jump" unique_id=1814008225]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 5, 14.5)
 size = Vector3(3, 10, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="SlopeIn" type="CSGPolygon3D" parent="Map/Platform"]
+[node name="SlopeIn" type="CSGPolygon3D" parent="Map/Platform" unique_id=905845006]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 27, 5, 11)
 polygon = PackedVector2Array(-3, 0, 3, 0, 3, 6)
 depth = 5.0
 material = ExtResource("6_r7lgf")
 
-[node name="NormalStairs" type="CSGCombiner3D" parent="Map"]
+[node name="NormalStairs" type="CSGCombiner3D" parent="Map" unique_id=1880695705]
 use_collision = true
 
-[node name="Step1" type="CSGBox3D" parent="Map/NormalStairs"]
+[node name="Step1" type="CSGBox3D" parent="Map/NormalStairs" unique_id=1346266140]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.2, -3.5)
 size = Vector3(1, 0.4, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Step2" type="CSGBox3D" parent="Map/NormalStairs"]
+[node name="Step2" type="CSGBox3D" parent="Map/NormalStairs" unique_id=1736625969]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.6, -3.5)
 size = Vector3(1, 0.4, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Step3" type="CSGBox3D" parent="Map/NormalStairs"]
+[node name="Step3" type="CSGBox3D" parent="Map/NormalStairs" unique_id=627935608]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, -3.5)
 size = Vector3(1, 0.4, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Step4" type="CSGBox3D" parent="Map/NormalStairs"]
+[node name="Step4" type="CSGBox3D" parent="Map/NormalStairs" unique_id=1693320734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.4, -3.5)
 size = Vector3(1, 0.4, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="WorstCaseStairs" type="CSGCombiner3D" parent="Map"]
+[node name="WorstCaseStairs" type="CSGCombiner3D" parent="Map" unique_id=1975726264]
 use_collision = true
 
-[node name="Step1" type="CSGBox3D" parent="Map/WorstCaseStairs"]
+[node name="Step1" type="CSGBox3D" parent="Map/WorstCaseStairs" unique_id=1526139302]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.3, -0.5)
 size = Vector3(0.5, 0.2, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Step2" type="CSGBox3D" parent="Map/WorstCaseStairs"]
+[node name="Step2" type="CSGBox3D" parent="Map/WorstCaseStairs" unique_id=1882877806]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0.7, -0.5)
 size = Vector3(0.5, 0.2, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Step3" type="CSGBox3D" parent="Map/WorstCaseStairs"]
+[node name="Step3" type="CSGBox3D" parent="Map/WorstCaseStairs" unique_id=855283729]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1.1, -0.5)
 size = Vector3(0.5, 0.2, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Step4" type="CSGBox3D" parent="Map/WorstCaseStairs"]
+[node name="Step4" type="CSGBox3D" parent="Map/WorstCaseStairs" unique_id=389955863]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 1.5, -0.5)
 size = Vector3(0.5, 0.2, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Step5" type="CSGBox3D" parent="Map/WorstCaseStairs"]
+[node name="Step5" type="CSGBox3D" parent="Map/WorstCaseStairs" unique_id=101689085]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1.9, -0.5)
 size = Vector3(0.5, 0.2, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Step6" type="CSGBox3D" parent="Map/WorstCaseStairs"]
+[node name="Step6" type="CSGBox3D" parent="Map/WorstCaseStairs" unique_id=1247161789]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 2.3, -0.5)
 size = Vector3(0.5, 0.2, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Step7" type="CSGBox3D" parent="Map/WorstCaseStairs"]
+[node name="Step7" type="CSGBox3D" parent="Map/WorstCaseStairs" unique_id=805151588]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2.7, -0.5)
 size = Vector3(0.5, 0.2, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Step8" type="CSGBox3D" parent="Map/WorstCaseStairs"]
+[node name="Step8" type="CSGBox3D" parent="Map/WorstCaseStairs" unique_id=1085709820]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 3.1, -0.5)
 size = Vector3(0.5, 0.2, 3)
 material = ExtResource("6_r7lgf")
 
-[node name="Ladder" parent="Map" instance=ExtResource("11_ckt1o")]
+[node name="Ladder" parent="Map" unique_id=1756604093 instance=ExtResource("11_ckt1o")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 2.5, 22)
 
-[node name="Billboard" type="Sprite3D" parent="Map"]
+[node name="Billboard" type="Sprite3D" parent="Map" unique_id=290028675]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("5_o3drt")
 accept_mouse_input = false
 accept_keyboard_input = false
 metadata/_custom_type_script = "uid://ccc2egf38uchc"
 
-[node name="Control" type="Control" parent="Map/Billboard"]
+[node name="Control" type="Control" parent="Map/Billboard" unique_id=1605206092]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 500.0
 offset_bottom = 300.0
 
-[node name="Logo" type="TextureRect" parent="Map/Billboard/Control"]
+[node name="Logo" type="TextureRect" parent="Map/Billboard/Control" unique_id=260647116]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -486,7 +486,7 @@ grow_vertical = 2
 texture = ExtResource("6_b1etj")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Map/Billboard/Control"]
+[node name="Label" type="Label" parent="Map/Billboard/Control" unique_id=272512745]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -505,40 +505,40 @@ text = "Playground Testing World"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Pool" type="CSGCombiner3D" parent="Map"]
+[node name="Pool" type="CSGCombiner3D" parent="Map" unique_id=427826050]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 20)
 use_collision = true
 
-[node name="Ladder" parent="Map/Pool" instance=ExtResource("11_ckt1o")]
+[node name="Ladder" parent="Map/Pool" unique_id=1762768920 instance=ExtResource("11_ckt1o")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5, 1.5, 0)
 
-[node name="Water" type="Area3D" parent="Map/Pool" groups=["water"]]
+[node name="Water" type="Area3D" parent="Map/Pool" unique_id=1879982071 groups=["water"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Pool/Water"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Pool/Water" unique_id=1699361700]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 shape = SubResource("BoxShape3D_ahxc0")
 
-[node name="Surface" type="MeshInstance3D" parent="Map/Pool"]
+[node name="Surface" type="MeshInstance3D" parent="Map/Pool" unique_id=533056188]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
 mesh = SubResource("PlaneMesh_b8l81")
 
-[node name="Walls" type="CSGBox3D" parent="Map/Pool"]
+[node name="Walls" type="CSGBox3D" parent="Map/Pool" unique_id=696410344]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 size = Vector3(16, 4, 16)
 material = ExtResource("6_r7lgf")
 
-[node name="Negate" type="CSGBox3D" parent="Map/Pool"]
+[node name="Negate" type="CSGBox3D" parent="Map/Pool" unique_id=1906413655]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 operation = 2
 size = Vector3(15, 4, 15)
 
-[node name="Slope" type="CSGPolygon3D" parent="Map/Pool"]
+[node name="Slope" type="CSGPolygon3D" parent="Map/Pool" unique_id=1675586102]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 7.5)
 polygon = PackedVector2Array(0, 0, 5, 0, 5, 4)
 depth = 5.0
 material = ExtResource("6_r7lgf")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1894644973]
 transform = Transform3D(0.866026, 0.286788, 0.409576, -7.16126e-08, -0.819152, 0.573577, 0.5, -0.496732, -0.709407, 0, 10, 0)
 shadow_enabled = true
 shadow_normal_bias = 5.0

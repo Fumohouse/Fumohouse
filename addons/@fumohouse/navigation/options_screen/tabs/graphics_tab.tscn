@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c246gir0epl0y"]
+[gd_scene format=3 uid="uid://c246gir0epl0y"]
 
 [ext_resource type="PackedScene" uid="uid://dx1sp5c0awg1f" path="res://addons/@fumohouse/navigation/options_screen/options_tab.tscn" id="1_ejtek"]
 [ext_resource type="PackedScene" uid="uid://3pgovqemhie4" path="res://addons/@fumohouse/navigation/options_screen/options_group.tscn" id="2_lqpwh"]
@@ -6,20 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://dkc1c5664nsdq" path="res://addons/@fumohouse/config/ui/config_range.tscn" id="4_lqpwh"]
 [ext_resource type="PackedScene" uid="uid://bg87aw2lxnk7r" path="res://addons/@fumohouse/config/ui/config_button.tscn" id="5_0p1jq"]
 
-[node name="Graphics" instance=ExtResource("1_ejtek")]
+[node name="Graphics" unique_id=1351188037 instance=ExtResource("1_ejtek")]
 
-[node name="General" parent="MarginContainer/VBoxContainer" index="0" instance=ExtResource("2_lqpwh")]
+[node name="General" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(527047334) index="0" unique_id=1625240470 instance=ExtResource("2_lqpwh")]
 layout_mode = 2
 
-[node name="RenderingMethod" parent="MarginContainer/VBoxContainer/General/Options" index="0" instance=ExtResource("3_0p1jq")]
+[node name="RenderingMethod" parent="MarginContainer/VBoxContainer/General/Options" parent_id_path=PackedInt32Array(1625240470, 852454493) index="0" unique_id=587757630 instance=ExtResource("3_0p1jq")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 key = &"graphics/rendering_method"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/General/Options/RenderingMethod" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/General/Options/RenderingMethod" index="0" unique_id=23282165]
 text = "Rendering Method"
 
-[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/General/Options/RenderingMethod" index="3"]
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/General/Options/RenderingMethod" index="3" unique_id=1802035358]
 item_count = 3
 popup/item_0/text = "Forward+"
 popup/item_0/id = 0
@@ -27,17 +27,16 @@ popup/item_1/text = "Mobile"
 popup/item_1/id = 1
 popup/item_2/text = "Compatibility"
 popup/item_2/id = 2
-metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="WindowMode" parent="MarginContainer/VBoxContainer/General/Options" index="1" instance=ExtResource("3_0p1jq")]
+[node name="WindowMode" parent="MarginContainer/VBoxContainer/General/Options" parent_id_path=PackedInt32Array(1625240470, 852454493) index="1" unique_id=359780407 instance=ExtResource("3_0p1jq")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 key = &"graphics/window_mode"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/General/Options/WindowMode" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/General/Options/WindowMode" index="0" unique_id=23282165]
 text = "Window Mode"
 
-[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/General/Options/WindowMode" index="3"]
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/General/Options/WindowMode" index="3" unique_id=1802035358]
 item_count = 4
 popup/item_0/text = "Windowed"
 popup/item_0/id = 0
@@ -47,17 +46,16 @@ popup/item_2/text = "Fullscreen"
 popup/item_2/id = 3
 popup/item_3/text = "Exclusive Fullscreen"
 popup/item_3/id = 4
-metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="VSyncMode" parent="MarginContainer/VBoxContainer/General/Options" index="2" instance=ExtResource("3_0p1jq")]
+[node name="VSyncMode" parent="MarginContainer/VBoxContainer/General/Options" parent_id_path=PackedInt32Array(1625240470, 852454493) index="2" unique_id=847507514 instance=ExtResource("3_0p1jq")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 key = &"graphics/vsync_mode"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/General/Options/VSyncMode" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/General/Options/VSyncMode" index="0" unique_id=23282165]
 text = "VSync"
 
-[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/General/Options/VSyncMode" index="3"]
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/General/Options/VSyncMode" index="3" unique_id=1802035358]
 item_count = 4
 popup/item_0/text = "Disabled"
 popup/item_0/id = 0
@@ -67,53 +65,52 @@ popup/item_2/text = "Adaptive"
 popup/item_2/id = 2
 popup/item_3/text = "Mailbox"
 popup/item_3/id = 3
-metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="FOV" parent="MarginContainer/VBoxContainer/General/Options" index="3" instance=ExtResource("4_lqpwh")]
+[node name="FOV" parent="MarginContainer/VBoxContainer/General/Options" parent_id_path=PackedInt32Array(1625240470, 852454493) index="3" unique_id=62524002 instance=ExtResource("4_lqpwh")]
 layout_mode = 2
 key = &"graphics/fov"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/General/Options/FOV" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/General/Options/FOV" index="0" unique_id=23282165]
 text = "FOV"
 
-[node name="LabeledSlider" parent="MarginContainer/VBoxContainer/General/Options/FOV" index="3"]
+[node name="LabeledSlider" parent="MarginContainer/VBoxContainer/General/Options/FOV" index="3" unique_id=2136755568]
 format_string = "%d°"
 
-[node name="Slider" parent="MarginContainer/VBoxContainer/General/Options/FOV/LabeledSlider" index="0"]
+[node name="Slider" parent="MarginContainer/VBoxContainer/General/Options/FOV/LabeledSlider" index="0" unique_id=1329728360]
 min_value = 50.0
 max_value = 120.0
 step = 5.0
 value = 50.0
 
-[node name="UIScale" parent="MarginContainer/VBoxContainer/General/Options" index="4" instance=ExtResource("4_lqpwh")]
+[node name="UIScale" parent="MarginContainer/VBoxContainer/General/Options" parent_id_path=PackedInt32Array(1625240470, 852454493) index="4" unique_id=1050365417 instance=ExtResource("4_lqpwh")]
 layout_mode = 2
 on_release = true
 key = &"graphics/ui_scale"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/General/Options/UIScale" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/General/Options/UIScale" index="0" unique_id=23282165]
 text = "UI Scale"
 
-[node name="Slider" parent="MarginContainer/VBoxContainer/General/Options/UIScale/LabeledSlider" index="0"]
+[node name="Slider" parent="MarginContainer/VBoxContainer/General/Options/UIScale/LabeledSlider" parent_id_path=PackedInt32Array(1050365417, 2136755568) index="0" unique_id=1329728360]
 min_value = 0.9
 max_value = 2.0
 step = 0.1
 value = 0.9
 
-[node name="3DScaling" parent="MarginContainer/VBoxContainer" index="1" instance=ExtResource("2_lqpwh")]
+[node name="3DScaling" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(527047334) index="1" unique_id=2052481281 instance=ExtResource("2_lqpwh")]
 layout_mode = 2
 
-[node name="Label" parent="MarginContainer/VBoxContainer/3DScaling" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/3DScaling" index="0" unique_id=1011672106]
 text = "3D Scaling"
 
-[node name="Mode" parent="MarginContainer/VBoxContainer/3DScaling/Options" index="0" instance=ExtResource("3_0p1jq")]
+[node name="Mode" parent="MarginContainer/VBoxContainer/3DScaling/Options" parent_id_path=PackedInt32Array(2052481281, 852454493) index="0" unique_id=2091580755 instance=ExtResource("3_0p1jq")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 key = &"graphics/scaling_3d/mode"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/3DScaling/Options/Mode" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/3DScaling/Options/Mode" index="0" unique_id=23282165]
 text = "Mode"
 
-[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/3DScaling/Options/Mode" index="3"]
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/3DScaling/Options/Mode" index="3" unique_id=1802035358]
 item_count = 3
 popup/item_0/text = "Bilinear"
 popup/item_0/id = 0
@@ -121,46 +118,45 @@ popup/item_1/text = "AMD FSR"
 popup/item_1/id = 1
 popup/item_2/text = "AMD FSR 2"
 popup/item_2/id = 2
-metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="Scale" parent="MarginContainer/VBoxContainer/3DScaling/Options" index="1" instance=ExtResource("4_lqpwh")]
+[node name="Scale" parent="MarginContainer/VBoxContainer/3DScaling/Options" parent_id_path=PackedInt32Array(2052481281, 852454493) index="1" unique_id=2000725623 instance=ExtResource("4_lqpwh")]
 layout_mode = 2
 key = &"graphics/scaling_3d/scale"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/3DScaling/Options/Scale" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/3DScaling/Options/Scale" index="0" unique_id=23282165]
 text = "Scale"
 
-[node name="Slider" parent="MarginContainer/VBoxContainer/3DScaling/Options/Scale/LabeledSlider" index="0"]
+[node name="Slider" parent="MarginContainer/VBoxContainer/3DScaling/Options/Scale/LabeledSlider" parent_id_path=PackedInt32Array(2000725623, 2136755568) index="0" unique_id=1329728360]
 min_value = 0.5
 max_value = 1.5
 step = 0.1
 value = 0.5
 
-[node name="FSRSharpness" parent="MarginContainer/VBoxContainer/3DScaling/Options" index="2" instance=ExtResource("4_lqpwh")]
+[node name="FSRSharpness" parent="MarginContainer/VBoxContainer/3DScaling/Options" parent_id_path=PackedInt32Array(2052481281, 852454493) index="2" unique_id=1148818841 instance=ExtResource("4_lqpwh")]
 layout_mode = 2
 key = &"graphics/scaling_3d/fsr_sharpness"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/3DScaling/Options/FSRSharpness" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/3DScaling/Options/FSRSharpness" index="0" unique_id=23282165]
 text = "FSR Sharpness"
 
-[node name="Slider" parent="MarginContainer/VBoxContainer/3DScaling/Options/FSRSharpness/LabeledSlider" index="0"]
+[node name="Slider" parent="MarginContainer/VBoxContainer/3DScaling/Options/FSRSharpness/LabeledSlider" parent_id_path=PackedInt32Array(1148818841, 2136755568) index="0" unique_id=1329728360]
 max_value = 2.0
 step = 0.1
 
-[node name="AntiAliasing" parent="MarginContainer/VBoxContainer" index="2" instance=ExtResource("2_lqpwh")]
+[node name="AntiAliasing" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(527047334) index="2" unique_id=63479486 instance=ExtResource("2_lqpwh")]
 layout_mode = 2
 
-[node name="Label" parent="MarginContainer/VBoxContainer/AntiAliasing" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/AntiAliasing" index="0" unique_id=1011672106]
 text = "Anti Aliasing"
 
-[node name="MSAA3D" parent="MarginContainer/VBoxContainer/AntiAliasing/Options" index="0" instance=ExtResource("3_0p1jq")]
+[node name="MSAA3D" parent="MarginContainer/VBoxContainer/AntiAliasing/Options" parent_id_path=PackedInt32Array(63479486, 852454493) index="0" unique_id=47422936 instance=ExtResource("3_0p1jq")]
 layout_mode = 2
 key = &"graphics/msaa3d"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/AntiAliasing/Options/MSAA3D" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/AntiAliasing/Options/MSAA3D" index="0" unique_id=23282165]
 text = "MSAA 3D"
 
-[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/AntiAliasing/Options/MSAA3D" index="3"]
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/AntiAliasing/Options/MSAA3D" index="3" unique_id=1802035358]
 item_count = 4
 popup/item_0/text = "Disabled"
 popup/item_0/id = 0
@@ -170,44 +166,42 @@ popup/item_2/text = "4x"
 popup/item_2/id = 2
 popup/item_3/text = "8x"
 popup/item_3/id = 3
-metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="TAA" parent="MarginContainer/VBoxContainer/AntiAliasing/Options" index="1" instance=ExtResource("5_0p1jq")]
+[node name="TAA" parent="MarginContainer/VBoxContainer/AntiAliasing/Options" parent_id_path=PackedInt32Array(63479486, 852454493) index="1" unique_id=455344941 instance=ExtResource("5_0p1jq")]
 layout_mode = 2
 key = &"graphics/taa"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/AntiAliasing/Options/TAA" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/AntiAliasing/Options/TAA" index="0" unique_id=23282165]
 text = "TAA"
 
-[node name="ScreenSpaceAA" parent="MarginContainer/VBoxContainer/AntiAliasing/Options" index="2" instance=ExtResource("3_0p1jq")]
+[node name="ScreenSpaceAA" parent="MarginContainer/VBoxContainer/AntiAliasing/Options" parent_id_path=PackedInt32Array(63479486, 852454493) index="2" unique_id=1416975432 instance=ExtResource("3_0p1jq")]
 layout_mode = 2
 key = &"graphics/screen_space_aa"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/AntiAliasing/Options/ScreenSpaceAA" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/AntiAliasing/Options/ScreenSpaceAA" index="0" unique_id=23282165]
 text = "Screen Space AA"
 
-[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/AntiAliasing/Options/ScreenSpaceAA" index="3"]
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/AntiAliasing/Options/ScreenSpaceAA" index="3" unique_id=1802035358]
 item_count = 2
 popup/item_0/text = "Disabled"
 popup/item_0/id = 0
 popup/item_1/text = "FXAA"
 popup/item_1/id = 1
-metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="Quality" parent="MarginContainer/VBoxContainer" index="3" instance=ExtResource("2_lqpwh")]
+[node name="Quality" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(527047334) index="3" unique_id=1595691960 instance=ExtResource("2_lqpwh")]
 layout_mode = 2
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Quality" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Quality" index="0" unique_id=1011672106]
 text = "Quality"
 
-[node name="ShadowQuality" parent="MarginContainer/VBoxContainer/Quality/Options" index="0" instance=ExtResource("3_0p1jq")]
+[node name="ShadowQuality" parent="MarginContainer/VBoxContainer/Quality/Options" parent_id_path=PackedInt32Array(1595691960, 852454493) index="0" unique_id=141310484 instance=ExtResource("3_0p1jq")]
 layout_mode = 2
 key = &"graphics/shadows/quality"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Quality/Options/ShadowQuality" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Quality/Options/ShadowQuality" index="0" unique_id=23282165]
 text = "Shadow Quality"
 
-[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Quality/Options/ShadowQuality" index="3"]
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Quality/Options/ShadowQuality" index="3" unique_id=1802035358]
 item_count = 6
 popup/item_0/text = "Minimal"
 popup/item_0/id = 0
@@ -221,16 +215,15 @@ popup/item_4/text = "High"
 popup/item_4/id = 4
 popup/item_5/text = "Ultra"
 popup/item_5/id = 5
-metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="ShadowFilter" parent="MarginContainer/VBoxContainer/Quality/Options" index="1" instance=ExtResource("3_0p1jq")]
+[node name="ShadowFilter" parent="MarginContainer/VBoxContainer/Quality/Options" parent_id_path=PackedInt32Array(1595691960, 852454493) index="1" unique_id=2045266050 instance=ExtResource("3_0p1jq")]
 layout_mode = 2
 key = &"graphics/shadows/filter"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Quality/Options/ShadowFilter" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Quality/Options/ShadowFilter" index="0" unique_id=23282165]
 text = "Soft Shadow Filter"
 
-[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Quality/Options/ShadowFilter" index="3"]
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Quality/Options/ShadowFilter" index="3" unique_id=1802035358]
 item_count = 6
 popup/item_0/text = "Hard (No filter)"
 popup/item_0/id = 0
@@ -244,16 +237,15 @@ popup/item_4/text = "High"
 popup/item_4/id = 4
 popup/item_5/text = "Very High"
 popup/item_5/id = 5
-metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="LOD" parent="MarginContainer/VBoxContainer/Quality/Options" index="2" instance=ExtResource("3_0p1jq")]
+[node name="LOD" parent="MarginContainer/VBoxContainer/Quality/Options" parent_id_path=PackedInt32Array(1595691960, 852454493) index="2" unique_id=406215108 instance=ExtResource("3_0p1jq")]
 layout_mode = 2
 key = &"graphics/lod_threshold"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Quality/Options/LOD" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Quality/Options/LOD" index="0" unique_id=23282165]
 text = "Level of Detail"
 
-[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Quality/Options/LOD" index="3"]
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Quality/Options/LOD" index="3" unique_id=1802035358]
 item_count = 5
 popup/item_0/text = "Very Low"
 popup/item_0/id = 0
@@ -265,22 +257,21 @@ popup/item_3/text = "High"
 popup/item_3/id = 3
 popup/item_4/text = "Ultra (LODs off)"
 popup/item_4/id = 4
-metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="Environment" parent="MarginContainer/VBoxContainer" index="4" instance=ExtResource("2_lqpwh")]
+[node name="Environment" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(527047334) index="4" unique_id=332579975 instance=ExtResource("2_lqpwh")]
 layout_mode = 2
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Environment" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Environment" index="0" unique_id=1011672106]
 text = "Environment"
 
-[node name="SSR" parent="MarginContainer/VBoxContainer/Environment/Options" index="0" instance=ExtResource("3_0p1jq")]
+[node name="SSR" parent="MarginContainer/VBoxContainer/Environment/Options" parent_id_path=PackedInt32Array(332579975, 852454493) index="0" unique_id=2132603878 instance=ExtResource("3_0p1jq")]
 layout_mode = 2
 key = &"graphics/ssr"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/SSR" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/SSR" index="0" unique_id=23282165]
 text = "SSR"
 
-[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/SSR" index="3"]
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/SSR" index="3" unique_id=1802035358]
 item_count = 4
 popup/item_0/text = "Disabled"
 popup/item_0/id = 0
@@ -290,16 +281,15 @@ popup/item_2/text = "Medium"
 popup/item_2/id = 2
 popup/item_3/text = "High"
 popup/item_3/id = 3
-metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="SSAO" parent="MarginContainer/VBoxContainer/Environment/Options" index="1" instance=ExtResource("3_0p1jq")]
+[node name="SSAO" parent="MarginContainer/VBoxContainer/Environment/Options" parent_id_path=PackedInt32Array(332579975, 852454493) index="1" unique_id=67777834 instance=ExtResource("3_0p1jq")]
 layout_mode = 2
 key = &"graphics/ssao"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/SSAO" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/SSAO" index="0" unique_id=23282165]
 text = "SSAO"
 
-[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/SSAO" index="3"]
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/SSAO" index="3" unique_id=1802035358]
 item_count = 6
 popup/item_0/text = "Disabled"
 popup/item_0/id = 0
@@ -313,16 +303,15 @@ popup/item_4/text = "High"
 popup/item_4/id = 4
 popup/item_5/text = "Ultra"
 popup/item_5/id = 5
-metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="SSIL" parent="MarginContainer/VBoxContainer/Environment/Options" index="2" instance=ExtResource("3_0p1jq")]
+[node name="SSIL" parent="MarginContainer/VBoxContainer/Environment/Options" parent_id_path=PackedInt32Array(332579975, 852454493) index="2" unique_id=85553471 instance=ExtResource("3_0p1jq")]
 layout_mode = 2
 key = &"graphics/ssil"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/SSIL" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/SSIL" index="0" unique_id=23282165]
 text = "SSIL"
 
-[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/SSIL" index="3"]
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/SSIL" index="3" unique_id=1802035358]
 item_count = 6
 popup/item_0/text = "Disabled"
 popup/item_0/id = 0
@@ -336,16 +325,15 @@ popup/item_4/text = "High"
 popup/item_4/id = 4
 popup/item_5/text = "Ultra"
 popup/item_5/id = 5
-metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="SDFGI" parent="MarginContainer/VBoxContainer/Environment/Options" index="3" instance=ExtResource("3_0p1jq")]
+[node name="SDFGI" parent="MarginContainer/VBoxContainer/Environment/Options" parent_id_path=PackedInt32Array(332579975, 852454493) index="3" unique_id=1817517967 instance=ExtResource("3_0p1jq")]
 layout_mode = 2
 key = &"graphics/sdfgi"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/SDFGI" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/SDFGI" index="0" unique_id=23282165]
 text = "SDFGI"
 
-[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/SDFGI" index="3"]
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/SDFGI" index="3" unique_id=1802035358]
 item_count = 3
 popup/item_0/text = "Disabled"
 popup/item_0/id = 0
@@ -353,16 +341,15 @@ popup/item_1/text = "Low"
 popup/item_1/id = 1
 popup/item_2/text = "High"
 popup/item_2/id = 2
-metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="Glow" parent="MarginContainer/VBoxContainer/Environment/Options" index="4" instance=ExtResource("3_0p1jq")]
+[node name="Glow" parent="MarginContainer/VBoxContainer/Environment/Options" parent_id_path=PackedInt32Array(332579975, 852454493) index="4" unique_id=2008558677 instance=ExtResource("3_0p1jq")]
 layout_mode = 2
 key = &"graphics/glow"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/Glow" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/Glow" index="0" unique_id=23282165]
 text = "Glow"
 
-[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/Glow" index="3"]
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/Glow" index="3" unique_id=1802035358]
 item_count = 3
 popup/item_0/text = "Disabled"
 popup/item_0/id = 0
@@ -370,16 +357,15 @@ popup/item_1/text = "Low"
 popup/item_1/id = 1
 popup/item_2/text = "High"
 popup/item_2/id = 2
-metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="Fog" parent="MarginContainer/VBoxContainer/Environment/Options" index="5" instance=ExtResource("3_0p1jq")]
+[node name="Fog" parent="MarginContainer/VBoxContainer/Environment/Options" parent_id_path=PackedInt32Array(332579975, 852454493) index="5" unique_id=1231955329 instance=ExtResource("3_0p1jq")]
 layout_mode = 2
 key = &"graphics/volumetric_fog"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/Fog" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Environment/Options/Fog" index="0" unique_id=23282165]
 text = "Volumetric Fog"
 
-[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/Fog" index="3"]
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/Environment/Options/Fog" index="3" unique_id=1802035358]
 item_count = 3
 popup/item_0/text = "Disabled"
 popup/item_0/id = 0
@@ -387,44 +373,43 @@ popup/item_1/text = "Low"
 popup/item_1/id = 1
 popup/item_2/text = "High"
 popup/item_2/id = 2
-metadata/_custom_type_script = "uid://c2mo31oe5hccm"
 
-[node name="Adjustment" parent="MarginContainer/VBoxContainer" index="5" instance=ExtResource("2_lqpwh")]
+[node name="Adjustment" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(527047334) index="5" unique_id=1117742988 instance=ExtResource("2_lqpwh")]
 layout_mode = 2
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Adjustment" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Adjustment" index="0" unique_id=1011672106]
 text = "Adjustment"
 
-[node name="Brightness" parent="MarginContainer/VBoxContainer/Adjustment/Options" index="0" instance=ExtResource("4_lqpwh")]
+[node name="Brightness" parent="MarginContainer/VBoxContainer/Adjustment/Options" parent_id_path=PackedInt32Array(1117742988, 852454493) index="0" unique_id=1531930597 instance=ExtResource("4_lqpwh")]
 layout_mode = 2
 key = &"graphics/brightness"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Adjustment/Options/Brightness" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Adjustment/Options/Brightness" index="0" unique_id=23282165]
 text = "Brightness"
 
-[node name="Slider" parent="MarginContainer/VBoxContainer/Adjustment/Options/Brightness/LabeledSlider" index="0"]
+[node name="Slider" parent="MarginContainer/VBoxContainer/Adjustment/Options/Brightness/LabeledSlider" parent_id_path=PackedInt32Array(1531930597, 2136755568) index="0" unique_id=1329728360]
 max_value = 4.0
 step = 0.1
 
-[node name="Saturation" parent="MarginContainer/VBoxContainer/Adjustment/Options" index="1" instance=ExtResource("4_lqpwh")]
+[node name="Saturation" parent="MarginContainer/VBoxContainer/Adjustment/Options" parent_id_path=PackedInt32Array(1117742988, 852454493) index="1" unique_id=1975804481 instance=ExtResource("4_lqpwh")]
 layout_mode = 2
 key = &"graphics/saturation"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Adjustment/Options/Saturation" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Adjustment/Options/Saturation" index="0" unique_id=23282165]
 text = "Saturation"
 
-[node name="Slider" parent="MarginContainer/VBoxContainer/Adjustment/Options/Saturation/LabeledSlider" index="0"]
+[node name="Slider" parent="MarginContainer/VBoxContainer/Adjustment/Options/Saturation/LabeledSlider" parent_id_path=PackedInt32Array(1975804481, 2136755568) index="0" unique_id=1329728360]
 max_value = 4.0
 step = 0.1
 
-[node name="Contrast" parent="MarginContainer/VBoxContainer/Adjustment/Options" index="2" instance=ExtResource("4_lqpwh")]
+[node name="Contrast" parent="MarginContainer/VBoxContainer/Adjustment/Options" parent_id_path=PackedInt32Array(1117742988, 852454493) index="2" unique_id=15628694 instance=ExtResource("4_lqpwh")]
 layout_mode = 2
 key = &"graphics/contrast"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Adjustment/Options/Contrast" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/Adjustment/Options/Contrast" index="0" unique_id=23282165]
 text = "Contrast"
 
-[node name="Slider" parent="MarginContainer/VBoxContainer/Adjustment/Options/Contrast/LabeledSlider" index="0"]
+[node name="Slider" parent="MarginContainer/VBoxContainer/Adjustment/Options/Contrast/LabeledSlider" parent_id_path=PackedInt32Array(15628694, 2136755568) index="0" unique_id=1329728360]
 max_value = 10.0
 step = 0.1
 

@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://by5n53kx2tkhx"]
+[gd_scene format=3 uid="uid://by5n53kx2tkhx"]
 
 [ext_resource type="Script" uid="uid://dr140gal784gf" path="res://addons/@fumohouse/navigation/components/nav_button_container.gd" id="1_pjt7f"]
 
-[node name="NavButtonContainer" type="VBoxContainer"]
+[node name="NavButtonContainer" type="VBoxContainer" unique_id=292366399]
 theme_override_constants/separation = 16
 script = ExtResource("1_pjt7f")

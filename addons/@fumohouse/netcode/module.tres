@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ModuleManifest" load_steps=10 format=3 uid="uid://cmpswoc00fux7"]
+[gd_resource type="Resource" script_class="ModuleManifest" format=3 uid="uid://cmpswoc00fux7"]
 
 [ext_resource type="Script" uid="uid://bv6m4s88g0oi6" path="res://addons/@fumohouse/base/module_autoload.gd" id="1_r1wpg"]
 [ext_resource type="Script" uid="uid://cyriemmrcefgc" path="res://addons/@fumohouse/base/module_dependency.gd" id="2_mbdd6"]

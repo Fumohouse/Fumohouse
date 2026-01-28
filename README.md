@@ -1,7 +1,7 @@
 # Fumohouse
 
 [![Godot
-Badge](https://img.shields.io/badge/Godot-4.5.1--stable-orange)](https://godotengine.org/)
+Badge](https://img.shields.io/badge/Godot-4.6--stable-orange)](https://godotengine.org/)
 
 > **Note**
 >

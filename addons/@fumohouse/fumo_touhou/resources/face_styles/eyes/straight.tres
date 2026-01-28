@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FumoEyeStyle" load_steps=4 format=3 uid="uid://3d3fotvh5js4"]
+[gd_resource type="Resource" script_class="FumoEyeStyle" format=3 uid="uid://3d3fotvh5js4"]
 
 [ext_resource type="Texture2D" uid="uid://7gs4byk7dss7" path="res://addons/@fumohouse/fumo_touhou/assets/face/eyes/straight/eyes.svg" id="1_u1t4j"]
 [ext_resource type="Script" uid="uid://qbidnqa8ybv8" path="res://addons/@fumohouse/fumo/resources/eye_style.gd" id="2_863ol"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FumoMouthStyle" load_steps=3 format=3 uid="uid://1moy34xhh61d"]
+[gd_resource type="Resource" script_class="FumoMouthStyle" format=3 uid="uid://1moy34xhh61d"]
 
 [ext_resource type="Script" uid="uid://tgvn0jwa684p" path="res://addons/@fumohouse/fumo/resources/mouth_style.gd" id="1_c6idw"]
 [ext_resource type="Texture2D" uid="uid://bq6sxfvay55ai" path="res://addons/@fumohouse/fumo_touhou/assets/face/mouths/smile.svg" id="2_digwu"]

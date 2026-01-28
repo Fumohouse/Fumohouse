@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://di6y2krc1ti44"]
+[gd_scene format=3 uid="uid://di6y2krc1ti44"]
 
 [ext_resource type="Script" uid="uid://boaw28xhoxx4d" path="res://addons/@fumohouse/world/runtime.gd" id="1_34n3o"]
 [ext_resource type="Environment" uid="uid://bx0t0ec5dt28e" path="res://addons/@fumohouse/base/resources/default_environment.tres" id="1_i4nth"]
@@ -14,24 +14,24 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a2cmo"]
 
-[node name="WorldRuntime" type="Node3D" node_paths=PackedStringArray("camera", "debug_character")]
+[node name="WorldRuntime" type="Node3D" unique_id=2119627357 node_paths=PackedStringArray("camera", "debug_character")]
 script = ExtResource("1_34n3o")
 camera = NodePath("Camera3D/CameraController")
 debug_character = NodePath("HUD/DebugMenus/DebugCharacter")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." node_paths=PackedStringArray("world_env")]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=663925832 node_paths=PackedStringArray("world_env")]
 environment = ExtResource("1_i4nth")
 script = ExtResource("2_pk70q")
 world_env = NodePath(".")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1538867166]
 
-[node name="CameraController" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("camera")]
+[node name="CameraController" type="Node3D" parent="Camera3D" unique_id=671527899 node_paths=PackedStringArray("camera")]
 script = ExtResource("3_pk70q")
 camera = NodePath("..")
 metadata/_custom_type_script = "uid://ck70ouuqfwjvq"
 
-[node name="HUD" type="Control" parent="."]
+[node name="HUD" type="Control" parent="." unique_id=416075252]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,7 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="WaterOverlay" type="ColorRect" parent="HUD" node_paths=PackedStringArray("camera")]
+[node name="WaterOverlay" type="ColorRect" parent="HUD" unique_id=82825584 node_paths=PackedStringArray("camera")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,14 +53,14 @@ script = ExtResource("5_a2cmo")
 camera = NodePath("../../Camera3D")
 camera_shape = SubResource("SphereShape3D_a2cmo")
 
-[node name="Crosshair" parent="HUD" node_paths=PackedStringArray("camera_controller") instance=ExtResource("5_8cdle")]
+[node name="Crosshair" parent="HUD" unique_id=1465267177 node_paths=PackedStringArray("camera_controller") instance=ExtResource("5_8cdle")]
 layout_mode = 1
 camera_controller = NodePath("../../Camera3D/CameraController")
 
-[node name="GameMenu" parent="HUD" instance=ExtResource("4_ayhuy")]
+[node name="GameMenu" parent="HUD" unique_id=39645310 instance=ExtResource("4_ayhuy")]
 layout_mode = 1
 
-[node name="DebugMenus" type="Control" parent="HUD"]
+[node name="DebugMenus" type="Control" parent="HUD" unique_id=2056253058]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,16 +69,16 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="DebugEngineInfo" parent="HUD/DebugMenus" instance=ExtResource("4_sr5u4")]
+[node name="DebugEngineInfo" parent="HUD/DebugMenus" unique_id=1286817329 instance=ExtResource("4_sr5u4")]
 layout_mode = 0
 
-[node name="DebugPlatformInfo" parent="HUD/DebugMenus" instance=ExtResource("5_ayhuy")]
+[node name="DebugPlatformInfo" parent="HUD/DebugMenus" unique_id=499663264 instance=ExtResource("5_ayhuy")]
 layout_mode = 0
 
-[node name="DebugNetworking" parent="HUD/DebugMenus" instance=ExtResource("10_f7o80")]
+[node name="DebugNetworking" parent="HUD/DebugMenus" unique_id=890970954 instance=ExtResource("10_f7o80")]
 layout_mode = 0
 
-[node name="DebugCharacter" parent="HUD/DebugMenus" instance=ExtResource("6_34n3o")]
+[node name="DebugCharacter" parent="HUD/DebugMenus" unique_id=551342178 instance=ExtResource("6_34n3o")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
