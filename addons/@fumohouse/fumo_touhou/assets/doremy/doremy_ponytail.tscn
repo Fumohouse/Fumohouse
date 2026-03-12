@@ -101,7 +101,7 @@ shader_parameter/dissolve_emission_energy = 4.0
 script = ExtResource("2_wous2")
 mesh = NodePath("doremy_ponytail")
 
-[node name="doremy_ponytail" parent="." index="0" unique_id=325476327]
+[node name="doremy_ponytail" parent="." index="0" unique_id=1138698009]
 surface_material_override/0 = SubResource("ShaderMaterial_sgosx")
 surface_material_override/1 = SubResource("ShaderMaterial_o7jw8")
 surface_material_override/2 = SubResource("ShaderMaterial_7ngod")

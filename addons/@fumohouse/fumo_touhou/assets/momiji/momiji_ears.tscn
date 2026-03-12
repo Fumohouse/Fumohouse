@@ -43,5 +43,5 @@ shader_parameter/dissolve_emission_energy = 4.0
 script = ExtResource("2_dbbnd")
 mesh = NodePath("momiji_ears")
 
-[node name="momiji_ears" parent="." index="0" unique_id=1311003819]
+[node name="momiji_ears" parent="." index="0" unique_id=562963479]
 surface_material_override/0 = SubResource("ShaderMaterial_ajn2h")

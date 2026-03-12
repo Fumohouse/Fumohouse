@@ -43,5 +43,5 @@ shader_parameter/dissolve_emission_energy = 4.0
 script = ExtResource("2_kdiw6")
 mesh = NodePath("shoe_1")
 
-[node name="shoe_1" parent="." index="0" unique_id=1327207510]
+[node name="shoe_1" parent="." index="0" unique_id=2101941371]
 surface_material_override/0 = SubResource("ShaderMaterial_km05w")

@@ -43,5 +43,5 @@ shader_parameter/dissolve_emission_energy = 4.0
 script = ExtResource("2_vvgbk")
 mesh = NodePath("doremy_hair_back")
 
-[node name="doremy_hair_back" parent="." index="0" unique_id=1775457883]
+[node name="doremy_hair_back" parent="." index="0" unique_id=1346481210]
 surface_material_override/0 = SubResource("ShaderMaterial_xf1wf")

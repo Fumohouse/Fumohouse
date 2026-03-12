@@ -218,7 +218,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2, -24)
 curve = SubResource("Curve3D_b1etj")
 
 [node name="Rotating" type="PathFollow3D" parent="Map/Interactables/Path3D" unique_id=187044654]
-transform = Transform3D(0.07919971, -0.24202019, -0.9670331, 0, 0.9700809, -0.24278268, 0.996859, 0.019228322, 0.07683006, 0, 0, 0)
+transform = Transform3D(0.07919971, -0.2420202, -0.9670331, 0, 0.9700809, -0.2427827, 0.996859, 0.019228324, 0.07683006, 0, 0, 0)
 rotation_mode = 2
 script = ExtResource("6_fia5t")
 speed = 4.0

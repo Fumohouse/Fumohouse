@@ -43,5 +43,5 @@ shader_parameter/dissolve_emission_energy = 4.0
 script = ExtResource("2_2kbqt")
 mesh = NodePath("sock_1")
 
-[node name="sock_1" parent="." index="0" unique_id=1273466691]
+[node name="sock_1" parent="." index="0" unique_id=1440959053]
 surface_material_override/0 = SubResource("ShaderMaterial_pgymm")

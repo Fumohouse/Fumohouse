@@ -43,5 +43,5 @@ shader_parameter/dissolve_emission_energy = 4.0
 script = ExtResource("2_xicpv")
 mesh = NodePath("momiji_hair_back")
 
-[node name="momiji_hair_back" parent="." index="0" unique_id=1694467360]
+[node name="momiji_hair_back" parent="." index="0" unique_id=1505125436]
 surface_material_override/0 = SubResource("ShaderMaterial_bwq33")
