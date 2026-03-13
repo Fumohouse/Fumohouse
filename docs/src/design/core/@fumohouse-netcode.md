@@ -52,12 +52,14 @@ Identifier allocation:
 | `0x42` |                                          | `CHRSYN`: Character state sync        |
 | `0x43` | `CHRAPR`: Character appearance request   | Remote appearance change              |
 | `0x44` | `CHRMOVE`: Character movement request    | `CHRMOVED`: Character movement update |
+| `0x50` | `CHATREQ`: Chat message request          | `CHATTED`: Chat broadcast             |
+| `0x51` |                                          | `CHATACK`: Chat acknowledgment/NACK   |
 
 Reserved for future use:
 
 | Byte prefix    | Reserved by | Purpose                             |
 |----------------|-------------|-------------------------------------|
-| `0x05`--`0x7F` | Fumohouse   | First-party critical components     |
+| `0x00`--`0x7F` | Fumohouse   | First-party critical components     |
 | `0xF0`--`0xF3` | Fumohouse   | First-party non-critical components |
 
 ## Networking logic

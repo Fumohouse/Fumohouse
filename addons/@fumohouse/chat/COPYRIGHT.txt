@@ -1,0 +1,22 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Fumohouse Chat System
+Upstream-Contact: voided_etc <contact@seki.pw>
+Source: https://git.seki.pw/Fumohouse/Fumohouse/src/branch/main/addons/@fumohouse/chat
+
+Files: *
+Comment: Fumohouse source code
+Copyright: 2025-present, voided_etc & co.
+ 2025-present, Fumohouse contributors
+License: MPL-2.0
+
+Files:
+ */assets/*
+Comment: Fumohouse assets
+Copyright: 2021-present, voided_etc & co.
+ 2025-present, Fumohouse contributors
+License: CC-BY-SA-4.0
+
+Files: resources/emojibase/*
+Comment: Emoji data derived from Emojibase
+Copyright: 2017-2019, Miles Johnson
+License: Expat

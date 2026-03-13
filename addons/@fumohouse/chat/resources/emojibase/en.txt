@@ -1,0 +1,1949 @@
+👎️	thumbs down	-1,no,thumbsdown	-1,bad,dislike,down,good,hand,no,nope,thumb,thumbs
+👍️	thumbs up	+1,thumbsup,yes	+1,good,hand,like,thumb,up,yes
+💯	hundred points	100	100,a+,agree,clearly,definitely,faithful,fleek,full,hundred,keep,perfect,point,score,true,truth,yup
+🔢	input numbers	1234	1234,input,numbers
+🥇	1st place medal	1st,first_place_medal	1st,first,gold,medal,place
+🥈	2nd place medal	2nd,second_place_medal	2nd,medal,place,second,silver
+🥉	3rd place medal	3rd,third_place_medal	3rd,bronze,medal,place,third
+🎱	pool 8 ball	8ball,billiards	8,8ball,ball,billiard,eight,game,pool
+🅰️	A button (blood type)	a,a_blood	blood,button,type
+🆎	AB button (blood type)	ab,ab_blood	ab,blood,button,type
+🧮	abacus	abacus	calculation,calculator
+🔤	input latin letters	abc	abc,alphabet,input,latin,letters
+🔡	input latin lowercase	abcd	abcd,input,latin,letters,lowercase
+🉑	Japanese "acceptable" button	accept,ja_acceptable	acceptable,button,ideograph,japanese
+🪗	accordion	accordion	box,concertina,instrument,music,squeeze,squeezebox
+🩹	adhesive bandage	adhesive_bandage,bandaid	adhesive,bandage
+🎟️	admission tickets	admission_tickets,tickets	admission,ticket,tickets
+🧑	person	adult	adult
+🚡	aerial tramway	aerial_tramway	aerial,cable,car,gondola,ropeway,tramway
+🇦🇫	flag: Afghanistan	afghanistan,flag_af	AF,flag
+✈️	airplane	airplane	aeroplane,fly,flying,jet,plane,travel
+🛬	airplane arrival	airplane_arriving	aeroplane,airplane,arrival,arrivals,arriving,landing,plane
+🛫	airplane departure	airplane_departure	aeroplane,airplane,check-in,departure,departures,plane
+🇦🇽	flag: Åland Islands	aland_islands,flag_ax	AX,flag
+⏰️	alarm clock	alarm_clock	alarm,clock,hours,hrs,late,time,waiting
+🇦🇱	flag: Albania	albania,flag_al	AL,flag
+⚗️	alembic	alembic	chemistry,tool
+🇩🇿	flag: Algeria	algeria,flag_dz	DZ,flag
+👽️	alien	alien	creature,extraterrestrial,face,fairy,fairytale,fantasy,monster,space,tale,ufo
+👾	alien monster	alien_monster,space_invader	alien,creature,extraterrestrial,face,fairy,fairytale,fantasy,game,gamer,games,monster,pixelated,space,tale,ufo
+🙆	person gesturing OK	all_good,person_gesturing_ok	exercise,gesture,gesturing,hand,ok,omg,person
+🚑️	ambulance	ambulance	emergency,vehicle
+🇦🇸	flag: American Samoa	american_samoa,flag_as	AS,flag
+🏺	amphora	amphora	aquarius,cooking,drink,jug,tool,weapon,zodiac
+🫀	anatomical heart	anatomical_heart	anatomical,beat,cardiology,heart,heartbeat,organ,pulse,real,red
+⚓️	anchor	anchor	ship,tool
+🇦🇩	flag: Andorra	andorra,flag_ad	AD,flag
+📱	mobile phone	android,iphone,mobile_phone	cell,communication,mobile,phone,telephone
+👼	baby angel	angel	angel,baby,church,face,fairy,fairytale,fantasy,tale
+💢	anger symbol	anger	anger,angry,comic,mad,symbol,upset
+🇦🇴	flag: Angola	angola,flag_ao	AO,flag
+😠	angry face	angry,angry_face	anger,angry,blame,face,feels,frustrated,mad,maddening,rage,shade,unhappy,upset
+👿	angry face with horns	angry_imp,imp	angry,demon,devil,evil,face,fairy,fairytale,fantasy,horns,imp,mischievous,purple,shade,tale
+🇦🇮	flag: Anguilla	anguilla,flag_ai	AI,flag
+😧	anguished face	anguished,anguished_face	anguished,face,forgot,scared,scary,stressed,surprise,unhappy,what,wow
+🐜	ant	ant	animal,garden,insect
+🇦🇶	flag: Antarctica	antarctica,flag_aq	AQ,flag
+📶	antenna bars	antenna_bars,signal_strength	antenna,bar,bars,cell,communication,mobile,phone,signal,telephone
+🇦🇬	flag: Antigua & Barbuda	antigua_barbuda,flag_ag	AG,flag
+😰	anxious face with sweat	anxious,anxious_face,cold_sweat	anxious,blue,cold,eek,face,mouth,nervous,open,rushed,scared,sweat,yikes
+🍎	red apple	apple,red_apple	apple,diet,food,fruit,health,red,ripe
+♒️	Aquarius	aquarius	aquarius,bearer,horoscope,water,zodiac
+🇦🇷	flag: Argentina	argentina,flag_ar	AR,flag
+♈️	Aries	aries	aries,horoscope,ram,zodiac
+🇦🇲	flag: Armenia	armenia,flag_am	AM,flag
+◀️	reverse button	arrow_backward,reverse	arrow,button,left,reverse,triangle
+⏬️	fast down button	arrow_double_down,fast_down	arrow,button,double,down,fast
+⏫️	fast up button	arrow_double_up,fast_up	arrow,button,double,fast,up
+⬇️	down arrow	arrow_down	arrow,cardinal,direction,down,south
+🔽	downwards button	arrow_down_small,down	arrow,button,down,downwards,red
+▶️	play button	arrow_forward,play	arrow,button,play,right,triangle
+⤵️	right arrow curving down	arrow_heading_down	arrow,curving,down,right
+⤴️	right arrow curving up	arrow_heading_up	arrow,curving,right,up
+⬅️	left arrow	arrow_left	arrow,cardinal,direction,left,west
+↩️	right arrow curving left	arrow_left_hook,leftwards_arrow_with_hook	arrow,curving,left,right
+↙️	down-left arrow	arrow_lower_left	arrow,direction,down-left,intercardinal,southwest
+↘️	down-right arrow	arrow_lower_right	arrow,direction,down-right,intercardinal,southeast
+➡️	right arrow	arrow_right	arrow,cardinal,direction,east,right
+↪️	left arrow curving right	arrow_right_hook,rightwards_arrow_with_hook	arrow,curving,left,right
+⬆️	up arrow	arrow_up	arrow,cardinal,direction,north,up
+↕️	up-down arrow	arrow_up_down	arrow,up-down
+🔼	upwards button	arrow_up_small,up	arrow,button,red,up,upwards
+↖️	up-left arrow	arrow_upper_left	arrow,direction,intercardinal,northwest,up-left
+↗️	up-right arrow	arrow_upper_right	arrow,direction,intercardinal,northeast,up-right
+🔃	clockwise vertical arrows	arrows_clockwise,clockwise	arrow,arrows,clockwise,refresh,reload,vertical
+🔄	counterclockwise arrows button	arrows_counterclockwise,counterclockwise	again,anticlockwise,arrow,arrows,button,counterclockwise,deja,refresh,rewindershins,vu
+🎨	artist palette	art,palette	art,artist,artsy,arty,colorful,creative,entertainment,museum,painter,painting,palette
+🚛	articulated lorry	articulated_lorry	articulated,car,drive,lorry,move,semi,truck,vehicle
+🧑‍🎨	artist	artist	palette
+🇦🇼	flag: Aruba	aruba,flag_aw	AW,flag
+🇦🇨	flag: Ascension Island	ascension_island,flag_ac	AC,flag
+*️⃣	keycap: *	asterisk	keycap
+😲	astonished face	astonished,astonished_face	astonished,cost,face,no,omg,shocked,totally,way
+🧑‍🚀	astronaut	astronaut	rocket,space
+👟	running shoe	athletic_shoe,sneaker	athletic,clothes,clothing,fast,kick,running,shoe,shoes,shopping,sneaker,tennis
+🏧	ATM sign	atm	atm,automated,bank,cash,money,sign,teller
+⚛️	atom symbol	atom,atom_symbol	atheist,atom,symbol
+🇦🇺	flag: Australia	australia,flag_au	AU,flag
+🇦🇹	flag: Austria	austria,flag_at	AT,flag
+🛺	auto rickshaw	auto_rickshaw	auto,rickshaw,tuk
+🥑	avocado	avocado	food,fruit
+🪓	axe	axe	ax,chop,hatchet,split,wood
+🇦🇿	flag: Azerbaijan	azerbaijan,flag_az	AZ,flag
+🅱️	B button (blood type)	b,b_blood	b,blood,button,type
+👶	baby	baby	babies,children,goo,infant,newborn,pregnant,young
+🍼	baby bottle	baby_bottle	babies,baby,birth,born,bottle,drink,infant,milk,newborn
+🐤	baby chick	baby_chick	animal,baby,bird,chick,ornithology
+🚼️	baby symbol	baby_symbol	baby,changing,symbol
+🔙	BACK arrow	back	arrow,back
+🎒	backpack	backpack,school_satchel	backpacking,bag,bookbag,education,rucksack,satchel,school
+🥓	bacon	bacon	breakfast,food,meat
+🦡	badger	badger	animal,honey,pester
+🏸	badminton	badminton	birdie,game,racquet,shuttlecock
+🥯	bagel	bagel	bakery,bread,breakfast,schmear
+🛄	baggage claim	baggage_claim	arrived,baggage,bags,case,checked,claim,journey,packing,plane,ready,travel,trip
+🥖	baguette bread	baguette_bread	baguette,bread,food,french
+🇧🇸	flag: Bahamas	bahamas,flag_bs	BS,flag
+🇧🇭	flag: Bahrain	bahrain,flag_bh	BH,flag
+🧑‍🦲	person: bald	bald	adult,bald,person
+🧑‍🩰	ballet dancer	ballet_dancer	ballet,dancer
+🩰	ballet shoes	ballet_shoes	ballet,dance,shoes
+🎈	balloon	balloon	birthday,celebrate,celebration
+🗳️	ballot box with ballot	ballot_box	ballot,box
+☑️	check box with check	ballot_box_with_check	ballot,box,check,checked,done,off,tick,✓
+🎍	pine decoration	bamboo	bamboo,celebration,decoration,japanese,pine,plant
+🍌	banana	banana	fruit,potassium
+‼️	double exclamation mark	bangbang,double_exclamation	!,!!,bangbang,double,exclamation,mark,punctuation
+🇧🇩	flag: Bangladesh	bangladesh,flag_bd	BD,flag
+🪕	banjo	banjo	music,stringed
+🏦	bank	bank	building
+📊	bar chart	bar_chart	bar,chart,data,graph
+🇧🇧	flag: Barbados	barbados,flag_bb	BB,flag
+💈	barber pole	barber,barber_pole	barber,cut,fresh,haircut,pole,shave
+⚾️	baseball	baseball	ball,sport
+🧺	basket	basket	farming,laundry,picnic
+🏀	basketball	basketball	ball,hoop,sport
+🦇	bat	bat	animal,vampire
+🛀	person taking bath	bath,person_taking_bath	bath,bathtub,person,taking,tub
+🚻	restroom	bathroom,restroom	bathroom,lavatory,toilet,wc
+🛁	bathtub	bathtub	bath
+🔋	battery	battery	battery
+🏖️	beach with umbrella	beach,beach_with_umbrella	beach,umbrella
+⛱️	umbrella on ground	beach_umbrella,umbrella_on_ground	ground,rain,sun,umbrella
+😁	beaming face with smiling eyes	beaming_face,grin	beaming,eye,eyes,face,grin,grinning,happy,nice,smile,smiling,teeth
+🫘	beans	beans	food,kidney,legume,small
+🐻	bear	bear,bear_face	animal,face,grizzly,growl,honey
+💓	beating heart	beating_heart,heartbeat	143,beating,cardio,emotion,heart,heartbeat,ily,love,pulsating,pulse
+🦫	beaver	beaver	animal,dam,teeth
+🛏️	bed	bed	hotel,sleep
+🐝	honeybee	bee	animal,bee,bumblebee,honey,insect,nature,spring
+🍺	beer mug	beer	alcohol,ale,bar,beer,booze,drink,drinking,drinks,mug,octoberfest,oktoberfest,pint,stein,summer
+🍻	clinking beer mugs	beers	alcohol,bar,beer,booze,bottoms,cheers,clink,clinking,drinking,drinks,mugs
+🪲	beetle	beetle	animal,bug,insect
+🔰	Japanese symbol for beginner	beginner	beginner,chevron,green,japanese,leaf,symbol,tool,yellow
+🇧🇾	flag: Belarus	belarus,flag_by	BY,flag
+🇧🇪	flag: Belgium	belgium,flag_be	BE,flag
+🇧🇿	flag: Belize	belize,flag_bz	BZ,flag
+🔔	bell	bell	break,church,sound
+🫑	bell pepper	bell_pepper	bell,capsicum,food,pepper,vegetable
+🛎️	bellhop bell	bellhop	bell,bellhop,hotel
+🇧🇯	flag: Benin	benin,flag_bj	BJ,flag
+🍱	bento box	bento,bento_box	bento,box,food
+🇧🇲	flag: Bermuda	bermuda,flag_bm	BM,flag
+🧃	beverage box	beverage_box,juice_box	beverage,box,juice,straw,sweet
+🇧🇹	flag: Bhutan	bhutan,flag_bt	BT,flag
+🚲️	bicycle	bicycle,bike	bike,class,cycle,cycling,cyclist,gang,ride,spin,spinning
+🚴	person biking	bicyclist,biking,person_biking	bicycle,bicyclist,bike,biking,cycle,cyclist,person,riding,sport
+👙	bikini	bikini	bathing,beach,clothing,pool,suit,swim
+🧢	billed cap	billed_cap	baseball,bent,billed,cap,dad,hat
+☣️	biohazard	biohazard	sign
+🐦️	bird	bird,bird_face	animal,ornithology
+🎂	birthday cake	birthday,birthday_cake	bday,birthday,cake,celebration,dessert,happy,pastry,sweet
+🦬	bison	bison	animal,buffalo,herd,wisent
+🫦	biting lip	biting_lip	anxious,bite,biting,fear,flirt,flirting,kiss,lip,lipstick,nervous,sexy,uncomfortable,worried,worry
+🐦‍⬛	black bird	black_bird	animal,beak,bird,black,caw,corvid,crow,ornithology,raven,rook
+🐈‍⬛	black cat	black_cat	animal,black,cat,feline,halloween,meow,unlucky
+⚫️	black circle	black_circle	black,circle,geometric
+🏴	black flag	black_flag	black,flag,waving
+🖤	black heart	black_heart	black,evil,heart,wicked
+🃏	joker	black_joker	card,game,wildcard
+⬛️	black large square	black_large_square	black,geometric,large,square
+◾️	black medium-small square	black_medium_small_square	black,geometric,medium-small,square
+◼️	black medium square	black_medium_square	black,geometric,medium,square
+✒️	black nib	black_nib	black,nib,pen
+▪️	black small square	black_small_square	black,geometric,small,square
+🔲	black square button	black_square_button	black,button,geometric,square
+👱	person: blond hair	blond_haired	blond,blond-haired,human,person
+🌼	blossom	blossom	buttercup,dandelion,flower,plant
+🐡	blowfish	blowfish	animal,fish
+😘	face blowing a kiss	blowing_a_kiss,kissing_heart	adorbs,bae,blowing,face,flirt,heart,ily,kiss,love,lover,miss,muah,romantic,smooch,xoxo,you
+📘	blue book	blue_book	blue,book,education,fantasy,library,reading
+🚙	sport utility vehicle	blue_car,suv	car,drive,recreational,sport,sportutility,utility,vehicle
+🔵	blue circle	blue_circle	blue,circle,geometric
+💙	blue heart	blue_heart	143,blue,emotion,heart,ily,love,romance
+🟦	blue square	blue_square	blue,square
+🫐	blueberries	blueberries	berries,berry,bilberry,blue,blueberry,food,fruit
+😊	smiling face with smiling eyes	blush,smiling_face_with_closed_eyes	blush,eye,eyes,face,glad,satisfied,smile,smiling
+🐗	boar	boar	animal,pig
+🧋	bubble tea	boba_drink,bubble_tea	boba,bubble,food,milk,pearl,tea
+🇧🇴	flag: Bolivia	bolivia,flag_bo	BO,flag
+💣️	bomb	bomb	boom,comic,dangerous,explosion,hot
+🦴	bone	bone	bones,dog,skeleton,wishbone
+📖	open book	book,open_book	book,education,fantasy,knowledge,library,novels,open,reading
+🔖	bookmark	bookmark	mark
+📑	bookmark tabs	bookmark_tabs	bookmark,mark,marker,tabs
+📚️	books	books	book,education,fantasy,knowledge,library,novels,reading,school,study
+💥	collision	boom,collision	bomb,boom,collide,comic,explode
+🪃	boomerang	boomerang	rebound,repercussion,weapon
+👢	woman's boot	boot	boot,clothes,clothing,dress,shoe,shoes,shopping,woman,woman's
+🇧🇦	flag: Bosnia & Herzegovina	bosnia_herzegovina,flag_ba	BA,flag
+🇧🇼	flag: Botswana	botswana,flag_bw	BW,flag
+💐	bouquet	bouquet	anniversary,birthday,date,flower,love,plant,romance
+🇧🇻	flag: Bouvet Island	bouvet_island,flag_bv	BV,flag
+🙇	person bowing	bow,person_bowing	apology,ask,beg,bow,bowing,favor,forgive,gesture,meditate,meditation,person,pity,regret,sorry
+🏹	bow and arrow	bow_and_arrow	archer,archery,arrow,bow,sagittarius,tool,weapon,zodiac
+🥣	bowl with spoon	bowl_with_spoon	bowl,breakfast,cereal,congee,oatmeal,porridge,spoon
+🎳	bowling	bowling	ball,game,sport,strike
+🥊	boxing glove	boxing_glove	boxing,glove
+👦	boy	boy	bright-eyed,child,grandson,kid,son,young,younger
+🧠	brain	brain	intelligent,smart
+🇧🇷	flag: Brazil	brazil,flag_br	BR,flag
+🍞	bread	bread	carbs,food,grain,loaf,restaurant,toast,wheat
+🤱	breast-feeding	breast_feeding	baby,breast,feeding,mom,mother,nursing,woman
+🧱	brick	bricks	bricks,clay,mortar,wall
+🌉	bridge at night	bridge_at_night	at,bridge,night
+💼	briefcase	briefcase	office
+🩲	briefs	briefs	bathing,one-piece,suit,swimsuit,underwear
+🔆	bright button	bright_button,high_brightness	bright,brightness,button,light
+🇮🇴	flag: British Indian Ocean Territory	british_indian_ocean_territory,flag_io	IO,flag
+🇻🇬	flag: British Virgin Islands	british_virgin_islands,flag_vg	VG,flag
+🥦	broccoli	broccoli	cabbage,wild
+⛓️‍💥	broken chain	broken_chain	break,breaking,broken,chain,cuffs,freedom
+💔	broken heart	broken_heart	break,broken,crushed,emotion,heart,heartbroken,lonely,sad
+🧹	broom	broom	cleaning,sweeping,witch
+🟤	brown circle	brown_circle	brown,circle
+🤎	brown heart	brown_heart	143,brown,heart
+🍄‍🟫	brown mushroom	brown_mushroom	food,fungi,fungus,mushroom,nature,pizza,portobello,shiitake,shroom,spore,sprout,toppings,truffle,vegetable,vegetarian,veggie
+🟫	brown square	brown_square	brown,square
+🇧🇳	flag: Brunei	brunei,flag_bn	BN,flag
+🫧	bubbles	bubbles	bubble,burp,clean,floating,pearl,soap,underwater
+🪣	bucket	bucket	cask,pail,vat
+🐛	bug	bug	animal,garden,insect
+🏗️	building construction	building_construction,construction_site	building,construction,crane
+💡	light bulb	bulb,light_bulb	bulb,comic,electric,idea,light
+🇧🇬	flag: Bulgaria	bulgaria,flag_bg	BG,flag
+🚅	bullet train	bullettrain_front	bullet,high-speed,nose,railway,shinkansen,speed,train,travel
+🚄	high-speed train	bullettrain_side	high-speed,railway,shinkansen,speed,train
+🎯	bullseye	bullseye,dart,direct_hit	bull,dart,direct,entertainment,game,hit,target
+🇧🇫	flag: Burkina Faso	burkina_faso,flag_bf	BF,flag
+🇲🇲	flag: Myanmar (Burma)	burma,flag_mm,myanmar	MM,flag
+🌯	burrito	burrito	mexican,wrap
+🇧🇮	flag: Burundi	burundi,flag_bi	BI,flag
+🚌	bus	bus	school,vehicle
+🚏	bus stop	busstop	bus,busstop,stop
+👤	bust in silhouette	bust_in_silhouette	bust,mysterious,shadow,silhouette
+👥	busts in silhouette	busts_in_silhouette	bff,bust,busts,everyone,friend,friends,people,silhouette
+🧈	butter	butter	dairy
+🦋	butterfly	butterfly	insect,pretty
+🌵	cactus	cactus	desert,drought,nature,plant
+🍰	shortcake	cake,shortcake	cake,dessert,pastry,slice,sweet
+📆	tear-off calendar	calendar	calendar,tear-off
+🗓️	spiral calendar	calendar_spiral	calendar,pad,spiral
+🤙	call me hand	call_me_hand	call,hand,hang,loose,me,shaka
+📲	mobile phone with arrow	calling,mobile_phone_arrow	arrow,build,call,cell,communication,mobile,phone,receive,telephone
+🇰🇭	flag: Cambodia	cambodia,flag_kh	KH,flag
+🐫	two-hump camel	camel	animal,bactrian,camel,desert,hump,two,two-hump
+📷️	camera	camera	photo,selfie,snap,tbt,trip,video
+📸	camera with flash	camera_with_flash	camera,flash,video
+🇨🇲	flag: Cameroon	cameroon,flag_cm	CM,flag
+🏕️	camping	camping	camping
+🇨🇦	flag: Canada	canada,flag_ca	CA,flag
+🇮🇨	flag: Canary Islands	canary_islands,flag_ic	IC,flag
+♋️	Cancer	cancer	cancer,crab,horoscope,zodiac
+🕯️	candle	candle	light
+🍬	candy	candy	cavities,dessert,halloween,restaurant,sweet,tooth,wrapper
+🥫	canned food	canned_food	can,canned,food
+🛶	canoe	canoe	boat
+🇨🇻	flag: Cape Verde	cape_verde,flag_cv	CV,flag
+🔠	input latin uppercase	capital_abcd	abcd,input,latin,letters,uppercase
+♑️	Capricorn	capricorn	capricorn,goat,horoscope,zodiac
+🚗	automobile	car,red_car	car,driving,vehicle
+🗃️	card file box	card_file_box	box,card,file
+📇	card index	card_index	card,index,old,rolodex,school
+🗂️	card index dividers	card_index_dividers	card,dividers,index
+🇧🇶	flag: Caribbean Netherlands	caribbean_netherlands,flag_bq	BQ,flag
+🎠	carousel horse	carousel_horse	carousel,entertainment,horse
+🎏	carp streamer	carp_streamer,flags	carp,celebration,streamer
+🪚	carpentry saw	carpentry_saw	carpenter,carpentry,cut,lumber,saw,tool,trim
+🥕	carrot	carrot	food,vegetable
+🤸	person cartwheeling	cartwheeling,person_cartwheel	active,cartwheel,cartwheeling,excited,flip,gymnastics,happy,person,somersault
+🏰	castle	castle,european_castle	building,european
+🐈️	cat	cat	animal,animals,cats,kitten,pet
+🐱	cat face	cat_face	animal,cat,face,kitten,kitty,pet
+🇰🇾	flag: Cayman Islands	cayman_islands,flag_ky	KY,flag
+💿️	optical disk	cd,optical_disk	blu-ray,cd,computer,disk,dvd,optical
+🤬	face with symbols on mouth	censored,face_with_symbols_on_mouth	censor,cursing,cussing,face,mad,mouth,pissed,swearing,symbols
+🇨🇫	flag: Central African Republic	central_african_republic,flag_cf	CF,flag
+🇪🇦	flag: Ceuta & Melilla	ceuta_melilla,flag_ea	EA,flag
+🇹🇩	flag: Chad	chad,flag_td	TD,flag
+⛓️	chains	chains	chain
+🪑	chair	chair	seat,sit
+🍾	bottle with popping cork	champagne	bar,bottle,cork,drink,popping
+💹	chart increasing with yen	chart	bank,chart,currency,graph,growth,increasing,market,money,rise,trend,upward,yen
+📉	chart decreasing	chart_decreasing,chart_with_downwards_trend	chart,data,decreasing,down,downward,graph,negative,trend
+📈	chart increasing	chart_increasing,chart_with_upwards_trend	chart,data,graph,growth,increasing,right,trend,up,upward
+✔️	check mark	check_mark,heavy_check_mark	check,checked,checkmark,done,heavy,mark,tick,✓
+✅️	check mark button	check_mark_button,white_check_mark	button,check,checked,checkmark,complete,completed,done,fixed,mark,tick,✓
+🏁	chequered flag	checkered_flag	checkered,chequered,finish,flag,flags,game,race,racing,sport,win
+🧀	cheese wedge	cheese	cheese,wedge
+🍒	cherries	cherries	berries,cherry,fruit,red
+🌸	cherry blossom	cherry_blossom	blossom,cherry,flower,plant,spring,springtime
+♟️	chess pawn	chess_pawn	chess,dupe,expendable,pawn
+🌰	chestnut	chestnut	almond,plant
+🐔	chicken	chicken,chicken_face	animal,bird,ornithology
+🧒	child	child	bright-eyed,grandchild,kid,young,younger
+🚸	children crossing	children_crossing	child,children,crossing,pedestrian,traffic
+🇨🇱	flag: Chile	chile,flag_cl	CL,flag
+🇨🇳	flag: China	china,flag_cn	CN,flag
+🐿️	chipmunk	chipmunk	animal,squirrel
+🍫	chocolate bar	chocolate_bar	bar,candy,chocolate,dessert,halloween,sweet,tooth
+🥢	chopsticks	chopsticks	hashi,jeotgarak,kuaizi
+🇨🇽	flag: Christmas Island	christmas_island,flag_cx	CX,flag
+🎄	Christmas tree	christmas_tree	celebration,christmas,tree
+⛪️	church	church	bless,chapel,christian,cross,religion
+🚬	cigarette	cigarette,smoking	smoking
+🎦	cinema	cinema	camera,film,movie
+🎪	circus tent	circus_tent	circus,tent
+🌆	cityscape at dusk	city_dusk	at,building,city,cityscape,dusk,evening,landscape,sun,sunset
+🌇	sunset	city_sunrise,city_sunset	building,dusk,sun
+🏙️	cityscape	cityscape	city
+🆑	CL button	cl	button,cl
+🗜️	clamp	clamp,compression	compress,tool,vice
+👏	clapping hands	clap,clapping_hands	applause,approval,awesome,clap,congrats,congratulations,excited,good,great,hand,homie,job,nice,prayed,well,yay
+🎬️	clapper board	clapper	action,board,clapper,movie
+🏛️	classical building	classical_building	building,classical
+🧗	person climbing	climbing,person_climbing	climb,climber,climbing,mountain,person,rock,scale,up
+🥂	clinking glasses	clinking_glasses	celebrate,clink,clinking,drink,glass,glasses
+📋️	clipboard	clipboard	do,list,notes
+🇨🇵	flag: Clipperton Island	clipperton_island,flag_cp	CP,flag
+🕰️	mantelpiece clock	clock	clock,mantelpiece,time
+🕐️	one o'clock	clock1	1,1:00,clock,one,o'clock,time
+🕙️	ten o'clock	clock10	0,10,10:00,clock,o'clock,ten
+🕥️	ten-thirty	clock1030	10,10:30,30,clock,ten,thirty,time
+🕚️	eleven o'clock	clock11	11,11:00,clock,eleven,o'clock,time
+🕦️	eleven-thirty	clock1130	11,11:30,30,clock,eleven,thirty,time
+🕛️	twelve o'clock	clock12	12,12:00,clock,o'clock,time,twelve
+🕧️	twelve-thirty	clock1230	12,12:30,30,clock,thirty,time,twelve
+🕜️	one-thirty	clock130	1,1:30,30,clock,one,thirty,time
+🕑️	two o'clock	clock2	2,2:00,clock,o'clock,time,two
+🕝️	two-thirty	clock230	2,2:30,30,clock,thirty,time,two
+🕒️	three o'clock	clock3	3,3:00,clock,o'clock,three,time
+🕞️	three-thirty	clock330	3,30,3:30,clock,thirty,three,time
+🕓️	four o'clock	clock4	4,4:00,clock,four,o'clock,time
+🕟️	four-thirty	clock430	30,4,4:30,clock,four,thirty,time
+🕔️	five o'clock	clock5	5,5:00,clock,five,o'clock,time
+🕠️	five-thirty	clock530	30,5,5:30,clock,five,thirty,time
+🕕️	six o'clock	clock6	6,6:00,clock,o'clock,six,time
+🕡️	six-thirty	clock630	30,6,6:30,clock,six,thirty
+🕖️	seven o'clock	clock7	0,7,7:00,clock,o'clock,seven
+🕢️	seven-thirty	clock730	30,7,7:30,clock,seven,thirty
+🕗️	eight o'clock	clock8	8,8:00,clock,eight,o'clock,time
+🕣️	eight-thirty	clock830	30,8,8:30,clock,eight,thirty,time
+🕘️	nine o'clock	clock9	9,9:00,clock,nine,o'clock,time
+🕤️	nine-thirty	clock930	30,9,9:30,clock,nine,thirty,time
+📕	closed book	closed_book	book,closed,education
+🔐	locked with key	closed_lock_with_key,locked_with_key	bike,closed,key,lock,locked,secure
+🌂	closed umbrella	closed_umbrella	closed,clothing,rain,umbrella
+☁️	cloud	cloud	weather
+🌩️	cloud with lightning	cloud_with_lightning,lightning	cloud,lightning,weather
+🌧️	cloud with rain	cloud_with_rain,rainy	cloud,rain,weather
+🌨️	cloud with snow	cloud_with_snow,snowy	cloud,cold,snow,weather
+🌥️	sun behind large cloud	cloudy,sun_behind_large_cloud	behind,cloud,sun,weather
+🤡	clown face	clown,clown_face	clown,face
+♣️	club suit	clubs	card,club,clubs,game,suit
+👝	clutch bag	clutch_bag,pouch	bag,clothes,clothing,clutch,dress,handbag,pouch,purse
+🧥	coat	coat	brr,bundle,cold,jacket,up
+🪳	cockroach	cockroach	animal,insect,pest,roach
+🍸️	cocktail glass	cocktail	alcohol,bar,booze,club,cocktail,drink,drinking,drinks,glass,mad,martini,men
+🥥	coconut	coconut	colada,palm,piña
+🇨🇨	flag: Cocos (Keeling) Islands	cocos_islands,flag_cc	CC,flag
+☕️	hot beverage	coffee	beverage,cafe,caffeine,chai,coffee,drink,hot,morning,steaming,tea
+⚰️	coffin	coffin	dead,death,vampire
+🪙	coin	coin	dollar,euro,gold,metal,money,rich,silver,treasure
+🥶	cold face	cold,cold_face	blue,blue-faced,cold,face,freezing,frostbite,icicles,subzero,teeth
+🇨🇴	flag: Colombia	colombia,flag_co	CO,flag
+☄️	comet	comet	space
+🇰🇲	flag: Comoros	comoros,flag_km	KM,flag
+🧭	compass	compass	direction,magnetic,navigation,orienteering
+🖥️	desktop computer	computer,desktop_computer	computer,desktop,monitor
+💽	computer disk	computer_disk,minidisc	computer,disk,minidisk,optical
+🖱️	computer mouse	computer_mouse	computer,mouse
+🎊	confetti ball	confetti_ball	ball,celebrate,celebration,confetti,party,woohoo
+😖	confounded face	confounded,confounded_face	annoyed,confounded,confused,cringe,distraught,face,feels,frustrated,mad,sad
+😕	confused face	confused,confused_face	befuddled,confused,confusing,dunno,face,frown,hm,meh,not,sad,sorry,sure
+🇨🇬	flag: Congo - Brazzaville	congo_brazzaville,flag_cg	CG,flag
+🇨🇩	flag: Congo - Kinshasa	congo_kinshasa,flag_cd	CD,flag
+㊗️	Japanese "congratulations" button	congratulations,ja_congratulations	button,congratulations,ideograph,japanese
+🚧	construction	construction	barrier
+👷	construction worker	construction_worker	build,construction,fix,hardhat,hat,man,person,rebuild,remodel,repair,work,worker
+🎛️	control knobs	control_knobs	control,knobs,music
+🎮️	video game	controller,video_game	controller,entertainment,game,video
+🏪	convenience store	convenience_store	24,building,convenience,hours,store
+🧑‍🍳	cook	cook	chef
+🇨🇰	flag: Cook Islands	cook_islands,flag_ck	CK,flag
+🍚	cooked rice	cooked_rice,rice	cooked,food,rice
+🍪	cookie	cookie	chip,chocolate,dessert,sweet
+🍳	cooking	cooking,fried_egg	breakfast,easy,egg,fry,frying,over,pan,restaurant,side,sunny,up
+🆒	COOL button	cool	button,cool
+👮	police officer	cop,police_officer	apprehend,arrest,citation,cop,law,officer,over,police,pulled,undercover
+©️	copyright	copyright	c
+🪸	coral	coral	change,climate,ocean,reef,sea
+🌽	ear of corn	corn,ear_of_corn	corn,crops,ear,farm,maize,maze
+🇨🇷	flag: Costa Rica	costa_rica,flag_cr	CR,flag
+🇨🇮	flag: Côte d'Ivoire	cote_divoire,flag_ci	CI,flag
+🛋️	couch and lamp	couch_and_lamp	couch,hotel,lamp
+👫	woman and man holding hands	couple	bae,bestie,bff,couple,dating,flirt,friends,hand,hold,man,twins,woman
+💏	kiss	couple_kiss,couplekiss	anniversary,babe,bae,couple,date,dating,heart,love,mwah,person,romance,together,xoxo
+💑	couple with heart	couple_with_heart	anniversary,babe,bae,couple,dating,heart,kiss,love,person,relationship,romance,together,you
+👨‍❤️‍👨	couple with heart: man, man	couple_with_heart_mm	anniversary,babe,bae,couple,dating,heart,kiss,love,man,person,relationship,romance,together,you
+👩‍❤️‍👨	couple with heart: woman, man	couple_with_heart_mw,couple_with_heart_wm	anniversary,babe,bae,couple,dating,heart,kiss,love,man,person,relationship,romance,together,woman,you
+👩‍❤️‍👩	couple with heart: woman, woman	couple_with_heart_ww	anniversary,babe,bae,couple,dating,heart,kiss,love,person,relationship,romance,together,woman,you
+🐄	cow	cow	animal,animals,farm,milk,moo
+🐮	cow face	cow_face	animal,cow,face,farm,milk,moo
+🤠	cowboy hat face	cowboy,cowboy_face	cowboy,cowgirl,face,hat
+🦀	crab	crab	cancer,zodiac
+🖍️	crayon	crayon	crayon
+💳️	credit card	credit_card	bank,card,cash,charge,credit,money,pay
+🌙	crescent moon	crescent_moon	crescent,moon,ramadan,space
+🦗	cricket	cricket	animal,bug,grasshopper,insect,orthoptera
+🏏	cricket game	cricket_game	ball,bat,cricket,game
+🇭🇷	flag: Croatia	croatia,flag_hr	HR,flag
+🐊	crocodile	crocodile	animal,zoo
+🥐	croissant	croissant	bread,breakfast,crescent,food,french,roll
+❌️	cross mark	cross_mark,x	cancel,cross,mark,multiplication,multiply,x,×
+❎️	cross mark button	cross_mark_button,negative_squared_cross_mark	button,cross,mark,multiplication,multiply,square,x,×
+🎌	crossed flags	crossed_flags	celebration,cross,crossed,flags,japanese
+⚔️	crossed swords	crossed_swords	crossed,swords,weapon
+👑	crown	crown	clothing,family,king,medieval,queen,royal,royalty,win
+🛳️	passenger ship	cruise_ship,passenger_ship	passenger,ship
+🩼	crutch	crutch	aid,cane,disability,help,hurt,injured,mobility,stick
+😢	crying face	cry,crying_face	awful,cry,crying,face,feels,miss,sad,tear,triste,unhappy
+😿	crying cat	crying_cat	animal,cat,cry,crying,face,sad,tear
+🔮	crystal ball	crystal_ball	ball,crystal,fairy,fairytale,fantasy,fortune,future,magic,tale,tool
+🇨🇺	flag: Cuba	cuba,flag_cu	CU,flag
+🥒	cucumber	cucumber	food,pickle,vegetable
+🥤	cup with straw	cup_with_straw	cup,drink,juice,malt,soda,soft,straw,water
+🧁	cupcake	cupcake	bakery,dessert,sprinkles,sugar,sweet,treat
+💘	heart with arrow	cupid,heart_with_arrow	143,adorbs,arrow,cupid,date,emotion,heart,ily,love,romance,valentine
+🇨🇼	flag: Curaçao	curacao,flag_cw	CW,flag
+🥌	curling stone	curling_stone	curling,game,rock,stone
+🦱	curly hair	curly_hair	afro,curly,hair,ringlets
+🧑‍🦱	person: curly hair	curly_haired	adult,curly hair,person
+➰️	curly loop	curly_loop	curl,curly,loop
+💱	currency exchange	currency_exchange	bank,currency,exchange,money
+🍛	curry rice	curry,curry_rice	curry,food,rice
+🍮	custard	custard	dessert,pudding,sweet
+🛃	customs	customs	packing
+🥩	cut of meat	cut_of_meat	chop,cut,lambchop,meat,porkchop,red,steak
+🌀	cyclone	cyclone	dizzy,hurricane,twister,typhoon,weather
+🇨🇾	flag: Cyprus	cyprus,flag_cy	CY,flag
+🇨🇿	flag: Czechia	czech_republic,czechia,flag_cz	CZ,flag
+🗡️	dagger	dagger	knife,weapon
+💃	woman dancing	dancer,woman_dancing	dance,dancer,dancing,elegant,festive,flair,flamenco,groove,let's,salsa,tango,woman
+👯	people with bunny ears	dancers,people_with_bunny_ears_partying	bestie,bff,bunny,counterpart,dancer,double,ear,identical,pair,party,partying,people,soulmate,twin,twinsies
+🍡	dango	dango	dessert,japanese,skewer,stick,sweet
+💨	dashing away	dash,dashing_away	away,cloud,comic,dash,dashing,fart,fast,go,gone,gotta,running,smoke
+📅	calendar	date	date
+🧏‍♂️	deaf man	deaf_man	accessibility,deaf,ear,gesture,hear,man
+🧏	deaf person	deaf_person	accessibility,deaf,ear,gesture,hear,person
+🧏‍♀️	deaf woman	deaf_woman	accessibility,deaf,ear,gesture,hear,woman
+🌳	deciduous tree	deciduous_tree	deciduous,forest,green,habitat,shedding,tree
+🦌	deer	deer	animal
+🚚	delivery truck	delivery_truck,truck	car,delivery,drive,truck,vehicle
+🇩🇰	flag: Denmark	denmark,flag_dk	DK,flag
+🏬	department store	department_store	building,department,store
+🏚️	derelict house	derelict_house,house_abandoned	derelict,home,house
+🏜️	desert	desert	desert
+🏝️	desert island	desert_island,island	desert,island
+🕵️	detective	detective	sleuth,spy
+💠	diamond with a dot	diamond_shape_with_a_dot_inside,diamond_with_a_dot	comic,diamond,dot,geometric
+♦️	diamond suit	diamonds	card,diamond,game,suit
+🇩🇬	flag: Diego Garcia	diego_garcia,flag_dg	DG,flag
+🔅	dim button	dim_button,low_brightness	brightness,button,dim,low
+😞	disappointed face	disappointed,disappointed_face	awful,blame,dejected,disappointed,face,fail,losing,sad,unhappy
+😥	sad but relieved face	disappointed_relieved,sad_relieved_face	anxious,call,close,complicated,disappointed,face,not,relieved,sad,sweat,time,whew
+🪩	mirror ball	disco,disco_ball,mirror_ball	ball,dance,disco,glitter,mirror,party
+🥸	disguised face	disguised,disguised_face	disguise,eyebrow,face,glasses,incognito,moustache,mustache,nose,person,spy,tache,tash
+🫪	distorted face	distorted_face	anxiety,bloated,panic,shocked,surprised,vulnerable
+➗️	divide	divide,division	division,heavy,math,sign,÷
+🤿	diving mask	diving_mask	diving,mask,scuba,snorkeling
+🪔	diya lamp	diya_lamp	diya,lamp,light,oil
+💫	dizzy	dizzy	comic,shining,shooting,star,stars
+😵‍💫	face with spiral eyes	dizzy_eyes	confused,dizzy,eyes,face,hypnotized,omg,smiley,spiral,trouble,whoa,woah,woozy
+😵	face with crossed-out eyes	dizzy_face,knocked_out	crossed-out,dead,dizzy,eyes,face,feels,knocked,out,sick,tired
+🇩🇯	flag: Djibouti	djibouti,flag_dj	DJ,flag
+🧬	dna	dna,double_helix	biologist,evolution,gene,genetics,life
+🚯	no littering	do_not_litter,no_littering	forbidden,litter,littering,no,not,prohibited
+🦤	dodo	dodo	animal,bird,extinction,large,ornithology
+🐕️	dog	dog	animal,animals,dogs,pet
+🐶	dog face	dog_face	adorbs,animal,dog,face,pet,puppies,puppy
+💵	dollar banknote	dollar	bank,banknote,bill,currency,dollar,money,note
+🎎	Japanese dolls	dolls	celebration,doll,dolls,festival,japanese
+🐬	dolphin	dolphin	animal,beach,flipper,ocean
+🇩🇲	flag: Dominica	dominica,flag_dm	DM,flag
+🇩🇴	flag: Dominican Republic	dominican_republic,flag_do	DO,flag
+🫏	donkey	donkey	animal,ass,burro,hinny,mammal,mule,stubborn
+🚪	door	door	back,closet,front
+🫥	dotted line face	dotted_line_face	depressed,disappear,dotted,face,hidden,hide,introvert,invisible,line,meh,whatever,wtv
+➿️	double curly loop	double_curly_loop,loop	curl,curly,double,loop
+🍩	doughnut	doughnut	breakfast,dessert,donut,food,sweet
+🕊️	dove	dove	bird,fly,ornithology,peace
+😓	downcast face with sweat	downcast_face,sweat	close,cold,downcast,face,feels,headache,nervous,sad,scared,sweat,yikes
+🐉	dragon	dragon	animal,fairy,fairytale,knights,tale
+🐲	dragon face	dragon_face	animal,dragon,face,fairy,fairytale,tale
+👗	dress	dress	clothes,clothing,dressed,fancy,shopping
+🐪	camel	dromedary_camel	animal,desert,dromedary,hump,one
+🤤	drooling face	drooling,drooling_face	drooling,face
+🩸	drop of blood	drop_of_blood	bleed,blood,donation,drop,injury,medicine,menstruation
+💧	droplet	droplet	cold,comic,drop,nature,sad,sweat,tear,water,weather
+🥁	drum	drum	drumsticks,music
+🦆	duck	duck	animal,bird,ornithology
+🥟	dumpling	dumpling	empanada,gyōza,jiaozi,pierogi,potsticker
+📀	dvd	dvd	blu-ray,cd,computer,disk,optical
+📧	e-mail	e-mail,email	email,letter,mail
+🦅	eagle	eagle	animal,bird,ornithology
+👂️	ear	ear	body,ears,hear,hearing,listen,listening,sound
+🌾	sheaf of rice	ear_of_rice,sheaf_of_rice	ear,grain,grains,plant,rice,sheaf
+🦻	ear with hearing aid	ear_with_hearing_aid,hearing_aid	accessibility,aid,ear,hard,hearing
+🌍️	globe showing Europe-Africa	earth_africa,earth_europe	africa,earth,europe,europe-africa,globe,showing,world
+🌎️	globe showing Americas	earth_americas	americas,earth,globe,showing,world
+🌏️	globe showing Asia-Australia	earth_asia	asia,asia-australia,australia,earth,globe,showing,world
+🇪🇨	flag: Ecuador	ecuador,flag_ec	EC,flag
+🥚	egg	egg	breakfast,food
+🍆	eggplant	eggplant	aubergine,vegetable
+🇪🇬	flag: Egypt	egypt,flag_eg	EG,flag
+8️⃣	keycap: 8	eight	8,eight,keycap
+✴️	eight-pointed star	eight_pointed_black_star	*,eight-pointed,star
+✳️	eight-spoked asterisk	eight_spoked_asterisk	*,asterisk,eight-spoked
+⏏️	eject button	eject	button,eject
+🇸🇻	flag: El Salvador	el_salvador,flag_sv	SV,flag
+🔌	electric plug	electric_plug	electric,electricity,plug
+🐘	elephant	elephant	animal
+🛗	elevator	elevator	accessibility,hoist,lift
+🧝	elf	elf	elves,enchantment,fantasy,folklore,magic,magical,myth
+🪹	empty nest	empty_nest,nest	branch,empty,home,nest,nesting
+🔚	END arrow	end	arrow,end
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	flag: England	england,flag_gbeng	flag,gbeng
+✉️	envelope	envelope	e-mail,email,letter
+📩	envelope with arrow	envelope_with_arrow	arrow,communication,down,e-mail,email,envelope,letter,mail,outgoing,send,sent
+🇬🇶	flag: Equatorial Guinea	equatorial_guinea,flag_gq	GQ,flag
+🇪🇷	flag: Eritrea	eritrea,flag_er	ER,flag
+🇪🇪	flag: Estonia	estonia,flag_ee	EE,flag
+🇸🇿	flag: Eswatini	eswatini,flag_sz,swaziland	SZ,flag
+🇪🇹	flag: Ethiopia	ethiopia,flag_et	ET,flag
+💶	euro banknote	euro	100,bank,banknote,bill,currency,euro,money,note,rich
+🏤	post office	european_post_office	building,european,office,post
+🇪🇺	flag: European Union	european_union,flag_eu	EU,flag
+🌲	evergreen tree	evergreen_tree	christmas,evergreen,forest,pine,tree
+🐑	ewe	ewe,sheep	animal,baa,farm,female,fluffy,lamb,sheep,wool
+❗️	red exclamation mark	exclamation	!,exclamation,mark,punctuation,red
+⁉️	exclamation question mark	exclamation_question,interrobang	!,!?,?,exclamation,interrobang,mark,punctuation,question
+😮‍💨	face exhaling	exhale,exhaling	blow,blowing,exhale,exhaling,exhausted,face,gasp,groan,relief,sigh,smiley,smoke,whisper,whistle
+🤯	exploding head	exploding_head	blown,explode,exploding,head,mind,mindblown,no,shocked,way
+😑	expressionless face	expressionless,expressionless_face	awkward,dead,expressionless,face,fine,inexpressive,jealous,meh,not,oh,omg,straight,uh,unhappy,unimpressed,whatever
+👁️	eye	eye	1,body,one
+👁️‍🗨️	eye in speech bubble	eye_in_speech_bubble	balloon,bubble,eye,speech,witness
+👓️	glasses	eyeglasses,glasses	clothing,eye,eyeglasses,eyewear
+👀	eyes	eyes	body,eye,face,googly,look,looking,omg,peep,see,seeing
+🥹	face holding back tears	face_holding_back_tears,watery_eyes	admiration,aww,back,cry,embarrassed,face,feelings,grateful,gratitude,holding,joy,please,proud,resist,sad,tears
+🤮	face vomiting	face_vomiting,vomiting	barf,ew,face,gross,puke,sick,spew,throw,up,vomit,vomiting
+🫤	face with diagonal mouth	face_with_diagonal_mouth	confused,confusion,diagonal,disappointed,doubt,doubtful,face,frustrated,frustration,meh,mouth,skeptical,unsure,whatever,wtv
+🫩	face with bags under eyes	face_with_eye_bags	bags,bored,exhausted,eyes,face,fatigued,late,sleepy,tired,weary
+🤭	face with hand over mouth	face_with_hand_over_mouth,hand_over_mouth	face,giggle,giggling,hand,mouth,oops,realization,secret,shock,sudden,surprise,whoops
+🤕	face with head-bandage	face_with_head_bandage	bandage,face,head-bandage,hurt,injury,ouch
+🧐	face with monocle	face_with_monocle	classy,face,fancy,monocle,rich,stuffy,wealthy
+🫢	face with open eyes and hand over mouth	face_with_open_eyes_hand_over_mouth,gasp	amazement,awe,disbelief,embarrass,eyes,face,gasp,hand,mouth,omg,open,over,quiet,scared,shock,surprise
+😮	face with open mouth	face_with_open_mouth,open_mouth	believe,face,forgot,mouth,omg,open,shocked,surprised,sympathy,unbelievable,unreal,whoa,wow,you
+🫣	face with peeking eye	face_with_peeking_eye,peek	captivated,embarrass,eye,face,hide,hiding,peek,peeking,peep,scared,shy,stare
+🤨	face with raised eyebrow	face_with_raised_eyebrow,raised_eyebrow	disapproval,disbelief,distrust,emoji,eyebrow,face,hmm,mild,raised,skeptic,skeptical,skepticism,surprise,what
+🤒	face with thermometer	face_with_thermometer	face,ill,sick,thermometer
+😛	face with tongue	face_with_tongue,stuck_out_tongue	awesome,cool,face,nice,party,stuck-out,sweet,tongue
+🤦	person facepalming	facepalm,person_facepalming	again,bewilder,disbelief,exasperation,facepalm,no,not,oh,omg,person,shock,smh
+🏭️	factory	factory	building
+🧑‍🏭	factory worker	factory_worker	assembly,factory,industrial,worker
+🧚	fairy	fairy	fairytale,fantasy,myth,person,pixie,tale,wings
+🧆	falafel	falafel	chickpea,meatball
+🇫🇰	flag: Falkland Islands	falkland_islands,flag_fk	FK,flag
+🍂	fallen leaf	fallen_leaf	autumn,fall,fallen,falling,leaf
+👪️	family	family	child
+🧑‍🧒	family: adult, child	family_aa,family_ac	adult,child,family
+🧑‍🧑‍🧒	family: adult, adult, child	family_aac	adult,child,family
+🧑‍🧑‍🧒‍🧒	family: adult, adult, child, child	family_aacc	adult,child,family
+🧑‍🧒‍🧒	family: adult, child, child	family_acc	adult,child,family
+👨‍👦	family: man, boy	family_mb	boy,child,family,man
+👨‍👦‍👦	family: man, boy, boy	family_mbb	boy,child,family,man
+👨‍👧	family: man, girl	family_mg	child,family,girl,man
+👨‍👧‍👦	family: man, girl, boy	family_mgb	boy,child,family,girl,man
+👨‍👧‍👧	family: man, girl, girl	family_mgg	child,family,girl,man
+👨‍👨‍👦	family: man, man, boy	family_mmb	boy,child,family,man
+👨‍👨‍👦‍👦	family: man, man, boy, boy	family_mmbb	boy,child,family,man
+👨‍👨‍👧	family: man, man, girl	family_mmg	child,family,girl,man
+👨‍👨‍👧‍👦	family: man, man, girl, boy	family_mmgb	boy,child,family,girl,man
+👨‍👨‍👧‍👧	family: man, man, girl, girl	family_mmgg	child,family,girl,man
+👨‍👩‍👦	family: man, woman, boy	family_mwb	boy,child,family,man,woman
+👨‍👩‍👦‍👦	family: man, woman, boy, boy	family_mwbb	boy,child,family,man,woman
+👨‍👩‍👧	family: man, woman, girl	family_mwg	child,family,girl,man,woman
+👨‍👩‍👧‍👦	family: man, woman, girl, boy	family_mwgb	boy,child,family,girl,man,woman
+👨‍👩‍👧‍👧	family: man, woman, girl, girl	family_mwgg	child,family,girl,man,woman
+👩‍👦	family: woman, boy	family_wb	boy,child,family,woman
+👩‍👦‍👦	family: woman, boy, boy	family_wbb	boy,child,family,woman
+👩‍👧	family: woman, girl	family_wg	child,family,girl,woman
+👩‍👧‍👦	family: woman, girl, boy	family_wgb	boy,child,family,girl,woman
+👩‍👧‍👧	family: woman, girl, girl	family_wgg	child,family,girl,woman
+👩‍👩‍👦	family: woman, woman, boy	family_wwb	boy,child,family,woman
+👩‍👩‍👦‍👦	family: woman, woman, boy, boy	family_wwbb	boy,child,family,woman
+👩‍👩‍👧	family: woman, woman, girl	family_wwg	child,family,girl,woman
+👩‍👩‍👧‍👦	family: woman, woman, girl, boy	family_wwgb	boy,child,family,girl,woman
+👩‍👩‍👧‍👧	family: woman, woman, girl, girl	family_wwgg	child,family,girl,woman
+🧑‍🌾	farmer	farmer	gardener,rancher
+🇫🇴	flag: Faroe Islands	faroe_islands,flag_fo	FO,flag
+⏩️	fast-forward button	fast_forward	arrow,button,double,fast,fast-forward,forward
+⏪️	fast reverse button	fast_reverse,rewind	arrow,button,double,fast,reverse,rewind
+📠	fax machine	fax,fax_machine	communication,fax,machine
+😨	fearful face	fearful,fearful_face	afraid,anxious,blame,face,fear,fearful,scared,worried
+🪶	feather	feather	bird,flight,light,plumage
+♀️	female sign	female,female_sign	female,sign,woman
+🤺	person fencing	fencer,fencing,person_fencing	fencer,fencing,person,sword
+🎡	ferris wheel	ferris_wheel	amusement,ferris,park,theme,wheel
+⛴️	ferry	ferry	boat,passenger
+🏑	field hockey	field_hockey	ball,field,game,hockey,stick
+🫯	fight cloud	fight_cloud	argument,brawl,debate,disagreement,fight,ruckus,wrestle
+🇫🇯	flag: Fiji	fiji,flag_fj	FJ,flag
+🗄️	file cabinet	file_cabinet	cabinet,file,filing,paper
+📁	file folder	file_folder	file,folder
+🎞️	film frames	film_frames	cinema,film,frames,movie
+📽️	film projector	film_projector	cinema,film,movie,projector,video
+🫆	fingerprint	fingerprint	clue,crime,detective,forensics,identity,mystery,print,safety,trace
+🤞	crossed fingers	fingers_crossed	cross,crossed,finger,fingers,hand,luck
+🇫🇮	flag: Finland	finland,flag_fi	FI,flag
+🔥	fire	fire	af,burn,flame,hot,lit,litaf,tool
+🚒	fire engine	fire_engine	engine,fire,truck
+🧯	fire extinguisher	fire_extinguisher	extinguish,extinguisher,fire,quench
+🧨	firecracker	firecracker	dynamite,explosive,fire,fireworks,light,pop,popping,spark
+🧑‍🚒	firefighter	firefighter	fire,firetruck
+🎆	fireworks	fireworks	boom,celebration,entertainment,yolo
+🌓	first quarter moon	first_quarter_moon	first,moon,quarter,space
+🌛	first quarter moon face	first_quarter_moon_with_face	face,first,moon,quarter,space
+🐟️	fish	fish	animal,dinner,fishes,fishing,pisces,zodiac
+🍥	fish cake with swirl	fish_cake	cake,fish,food,pastry,restaurant,swirl
+🎣	fishing pole	fishing_pole,fishing_pole_and_fish	entertainment,fish,fishing,pole,sport
+✊️	raised fist	fist	clenched,fist,hand,punch,raised,solidarity
+5️⃣	keycap: 5	five	5,five,keycap
+🇦🇪	flag: United Arab Emirates	flag_ae,united_arab_emirates	AE,flag
+🇧🇱	flag: St. Barthélemy	flag_bl,st_barthelemy	BL,flag
+🇨🇭	flag: Switzerland	flag_ch,switzerland	CH,flag
+🇨🇶	flag: Sark	flag_cq,sark	CQ,flag
+🇩🇪	flag: Germany	flag_de,germany	DE,flag
+🇪🇭	flag: Western Sahara	flag_eh,western_sahara	EH,flag
+🇪🇸	flag: Spain	flag_es,spain	ES,flag
+🇫🇲	flag: Micronesia	flag_fm,micronesia	FM,flag
+🇫🇷	flag: France	flag_fr,france	FR,flag
+🇬🇦	flag: Gabon	flag_ga,gabon	GA,flag
+🇬🇧	flag: United Kingdom	flag_gb,uk,united_kingdom	GB,flag
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	flag: Scotland	flag_gbsct,scotland	flag,gbsct
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	flag: Wales	flag_gbwls,wales	flag,gbwls
+🇬🇩	flag: Grenada	flag_gd,grenada	GD,flag
+🇬🇪	flag: Georgia	flag_ge,georgia	GE,flag
+🇬🇫	flag: French Guiana	flag_gf,french_guiana	GF,flag
+🇬🇬	flag: Guernsey	flag_gg,guernsey	GG,flag
+🇬🇭	flag: Ghana	flag_gh,ghana	GH,flag
+🇬🇮	flag: Gibraltar	flag_gi,gibraltar	GI,flag
+🇬🇱	flag: Greenland	flag_gl,greenland	GL,flag
+🇬🇲	flag: Gambia	flag_gm,gambia	GM,flag
+🇬🇳	flag: Guinea	flag_gn,guinea	GN,flag
+🇬🇵	flag: Guadeloupe	flag_gp,guadeloupe	GP,flag
+🇬🇷	flag: Greece	flag_gr,greece	GR,flag
+🇬🇸	flag: South Georgia & South Sandwich Islands	flag_gs,south_georgia_south_sandwich_islands	GS,flag
+🇬🇹	flag: Guatemala	flag_gt,guatemala	GT,flag
+🇬🇺	flag: Guam	flag_gu,guam	GU,flag
+🇬🇼	flag: Guinea-Bissau	flag_gw,guinea_bissau	GW,flag
+🇬🇾	flag: Guyana	flag_gy,guyana	GY,flag
+🇭🇰	flag: Hong Kong SAR China	flag_hk,hong_kong	HK,flag
+🇭🇲	flag: Heard & McDonald Islands	flag_hm,heard_mcdonald_islands	HM,flag
+🇭🇳	flag: Honduras	flag_hn,honduras	HN,flag
+🇭🇹	flag: Haiti	flag_ht,haiti	HT,flag
+🇭🇺	flag: Hungary	flag_hu,hungary	HU,flag
+🇮🇩	flag: Indonesia	flag_id,indonesia	ID,flag
+🇮🇪	flag: Ireland	flag_ie,ireland	IE,flag
+🇮🇱	flag: Israel	flag_il,israel	IL,flag
+🇮🇲	flag: Isle of Man	flag_im,isle_of_man	IM,flag
+🇮🇳	flag: India	flag_in,india	IN,flag
+🇮🇶	flag: Iraq	flag_iq,iraq	IQ,flag
+🇮🇷	flag: Iran	flag_ir,iran	IR,flag
+🇮🇸	flag: Iceland	flag_is,iceland	IS,flag
+🇮🇹	flag: Italy	flag_it,italy	IT,flag
+🇯🇪	flag: Jersey	flag_je,jersey	JE,flag
+🇯🇲	flag: Jamaica	flag_jm,jamaica	JM,flag
+🇯🇴	flag: Jordan	flag_jo,jordan	JO,flag
+🇯🇵	flag: Japan	flag_jp,japan	JP,flag
+🇰🇪	flag: Kenya	flag_ke,kenya	KE,flag
+🇰🇬	flag: Kyrgyzstan	flag_kg,kyrgyzstan	KG,flag
+🇰🇮	flag: Kiribati	flag_ki,kiribati	KI,flag
+🇰🇳	flag: St. Kitts & Nevis	flag_kn,st_kitts_nevis	KN,flag
+🇰🇵	flag: North Korea	flag_kp,north_korea	KP,flag
+🇰🇷	flag: South Korea	flag_kr,south_korea	KR,flag
+🇰🇼	flag: Kuwait	flag_kw,kuwait	KW,flag
+🇰🇿	flag: Kazakhstan	flag_kz,kazakhstan	KZ,flag
+🇱🇦	flag: Laos	flag_la,laos	LA,flag
+🇱🇧	flag: Lebanon	flag_lb,lebanon	LB,flag
+🇱🇨	flag: St. Lucia	flag_lc,st_lucia	LC,flag
+🇱🇮	flag: Liechtenstein	flag_li,liechtenstein	LI,flag
+🇱🇰	flag: Sri Lanka	flag_lk,sri_lanka	LK,flag
+🇱🇷	flag: Liberia	flag_lr,liberia	LR,flag
+🇱🇸	flag: Lesotho	flag_ls,lesotho	LS,flag
+🇱🇹	flag: Lithuania	flag_lt,lithuania	LT,flag
+🇱🇺	flag: Luxembourg	flag_lu,luxembourg	LU,flag
+🇱🇻	flag: Latvia	flag_lv,latvia	LV,flag
+🇱🇾	flag: Libya	flag_ly,libya	LY,flag
+🇲🇦	flag: Morocco	flag_ma,morocco	MA,flag
+🇲🇨	flag: Monaco	flag_mc,monaco	MC,flag
+🇲🇩	flag: Moldova	flag_md,moldova	MD,flag
+🇲🇪	flag: Montenegro	flag_me,montenegro	ME,flag
+🇲🇫	flag: St. Martin	flag_mf,st_martin	MF,flag
+🇲🇬	flag: Madagascar	flag_mg,madagascar	MG,flag
+🇲🇭	flag: Marshall Islands	flag_mh,marshall_islands	MH,flag
+🇲🇰	flag: North Macedonia	flag_mk,macedonia	MK,flag
+🇲🇱	flag: Mali	flag_ml,mali	ML,flag
+🇲🇳	flag: Mongolia	flag_mn,mongolia	MN,flag
+🇲🇴	flag: Macao SAR China	flag_mo,macao,macau	MO,flag
+🇲🇵	flag: Northern Mariana Islands	flag_mp,northern_mariana_islands	MP,flag
+🇲🇶	flag: Martinique	flag_mq,martinique	MQ,flag
+🇲🇷	flag: Mauritania	flag_mr,mauritania	MR,flag
+🇲🇸	flag: Montserrat	flag_ms,montserrat	MS,flag
+🇲🇹	flag: Malta	flag_mt,malta	MT,flag
+🇲🇺	flag: Mauritius	flag_mu,mauritius	MU,flag
+🇲🇻	flag: Maldives	flag_mv,maldives	MV,flag
+🇲🇼	flag: Malawi	flag_mw,malawi	MW,flag
+🇲🇽	flag: Mexico	flag_mx,mexico	MX,flag
+🇲🇾	flag: Malaysia	flag_my,malaysia	MY,flag
+🇲🇿	flag: Mozambique	flag_mz,mozambique	MZ,flag
+🇳🇦	flag: Namibia	flag_na,namibia	NA,flag
+🇳🇨	flag: New Caledonia	flag_nc,new_caledonia	NC,flag
+🇳🇪	flag: Niger	flag_ne,niger	NE,flag
+🇳🇫	flag: Norfolk Island	flag_nf,norfolk_island	NF,flag
+🇳🇬	flag: Nigeria	flag_ng,nigeria	NG,flag
+🇳🇮	flag: Nicaragua	flag_ni,nicaragua	NI,flag
+🇳🇱	flag: Netherlands	flag_nl,netherlands	NL,flag
+🇳🇴	flag: Norway	flag_no,norway	NO,flag
+🇳🇵	flag: Nepal	flag_np,nepal	NP,flag
+🇳🇷	flag: Nauru	flag_nr,nauru	NR,flag
+🇳🇺	flag: Niue	flag_nu,niue	NU,flag
+🇳🇿	flag: New Zealand	flag_nz,new_zealand	NZ,flag
+🇴🇲	flag: Oman	flag_om,oman	OM,flag
+🇵🇦	flag: Panama	flag_pa,panama	PA,flag
+🇵🇪	flag: Peru	flag_pe,peru	PE,flag
+🇵🇫	flag: French Polynesia	flag_pf,french_polynesia	PF,flag
+🇵🇬	flag: Papua New Guinea	flag_pg,papua_new_guinea	PG,flag
+🇵🇭	flag: Philippines	flag_ph,philippines	PH,flag
+🇵🇰	flag: Pakistan	flag_pk,pakistan	PK,flag
+🇵🇱	flag: Poland	flag_pl,poland	PL,flag
+🇵🇲	flag: St. Pierre & Miquelon	flag_pm,st_pierre_miquelon	PM,flag
+🇵🇳	flag: Pitcairn Islands	flag_pn,pitcairn_islands	PN,flag
+🇵🇷	flag: Puerto Rico	flag_pr,puerto_rico	PR,flag
+🇵🇸	flag: Palestinian Territories	flag_ps,palestinian_territories	PS,flag
+🇵🇹	flag: Portugal	flag_pt,portugal	PT,flag
+🇵🇼	flag: Palau	flag_pw,palau	PW,flag
+🇵🇾	flag: Paraguay	flag_py,paraguay	PY,flag
+🇶🇦	flag: Qatar	flag_qa,qatar	QA,flag
+🇷🇪	flag: Réunion	flag_re,reunion	RE,flag
+🇷🇴	flag: Romania	flag_ro,romania	RO,flag
+🇷🇸	flag: Serbia	flag_rs,serbia	RS,flag
+🇷🇺	flag: Russia	flag_ru,russia	RU,flag
+🇷🇼	flag: Rwanda	flag_rw,rwanda	RW,flag
+🇸🇦	flag: Saudi Arabia	flag_sa,saudi_arabia	SA,flag
+🇸🇧	flag: Solomon Islands	flag_sb,solomon_islands	SB,flag
+🇸🇨	flag: Seychelles	flag_sc,seychelles	SC,flag
+🇸🇩	flag: Sudan	flag_sd,sudan	SD,flag
+🇸🇪	flag: Sweden	flag_se,sweden	SE,flag
+🇸🇬	flag: Singapore	flag_sg,singapore	SG,flag
+🇸🇭	flag: St. Helena	flag_sh,st_helena	SH,flag
+🇸🇮	flag: Slovenia	flag_si,slovenia	SI,flag
+🇸🇯	flag: Svalbard & Jan Mayen	flag_sj,svalbard_jan_mayen	SJ,flag
+🇸🇰	flag: Slovakia	flag_sk,slovakia	SK,flag
+🇸🇱	flag: Sierra Leone	flag_sl,sierra_leone	SL,flag
+🇸🇲	flag: San Marino	flag_sm,san_marino	SM,flag
+🇸🇳	flag: Senegal	flag_sn,senegal	SN,flag
+🇸🇴	flag: Somalia	flag_so,somalia	SO,flag
+🇸🇷	flag: Suriname	flag_sr,suriname	SR,flag
+🇸🇸	flag: South Sudan	flag_ss,south_sudan	SS,flag
+🇸🇹	flag: São Tomé & Príncipe	flag_st,sao_tome_principe	ST,flag
+🇸🇽	flag: Sint Maarten	flag_sx,sint_maarten	SX,flag
+🇸🇾	flag: Syria	flag_sy,syria	SY,flag
+🇹🇦	flag: Tristan da Cunha	flag_ta,tristan_da_cunha	TA,flag
+🇹🇨	flag: Turks & Caicos Islands	flag_tc,turks_caicos_islands	TC,flag
+🇹🇫	flag: French Southern Territories	flag_tf,french_southern_territories	TF,flag
+🇹🇬	flag: Togo	flag_tg,togo	TG,flag
+🇹🇭	flag: Thailand	flag_th,thailand	TH,flag
+🇹🇯	flag: Tajikistan	flag_tj,tajikistan	TJ,flag
+🇹🇰	flag: Tokelau	flag_tk,tokelau	TK,flag
+🇹🇱	flag: Timor-Leste	flag_tl,timor_leste	TL,flag
+🇹🇲	flag: Turkmenistan	flag_tm,turkmenistan	TM,flag
+🇹🇳	flag: Tunisia	flag_tn,tunisia	TN,flag
+🇹🇴	flag: Tonga	flag_to,tonga	TO,flag
+🇹🇷	flag: Türkiye	flag_tr,turkey_tr	TR,flag
+🇹🇹	flag: Trinidad & Tobago	flag_tt,trinidad_tobago	TT,flag
+🇹🇻	flag: Tuvalu	flag_tv,tuvalu	TV,flag
+🇹🇼	flag: Taiwan	flag_tw,taiwan	TW,flag
+🇹🇿	flag: Tanzania	flag_tz,tanzania	TZ,flag
+🇺🇦	flag: Ukraine	flag_ua,ukraine	UA,flag
+🇺🇬	flag: Uganda	flag_ug,uganda	UG,flag
+🇺🇲	flag: U.S. Outlying Islands	flag_um,us_outlying_islands	UM,flag
+🇺🇳	flag: United Nations	flag_un,un,united_nations	UN,flag
+🇺🇸	flag: United States	flag_us,united_states,usa	US,flag
+🇺🇾	flag: Uruguay	flag_uy,uruguay	UY,flag
+🇺🇿	flag: Uzbekistan	flag_uz,uzbekistan	UZ,flag
+🇻🇦	flag: Vatican City	flag_va,vatican_city	VA,flag
+🇻🇨	flag: St. Vincent & Grenadines	flag_vc,st_vincent_grenadines	VC,flag
+🇻🇪	flag: Venezuela	flag_ve,venezuela	VE,flag
+🇻🇮	flag: U.S. Virgin Islands	flag_vi,us_virgin_islands	VI,flag
+🇻🇳	flag: Vietnam	flag_vn,vietnam	VN,flag
+🇻🇺	flag: Vanuatu	flag_vu,vanuatu	VU,flag
+🇼🇫	flag: Wallis & Futuna	flag_wf,wallis_futuna	WF,flag
+🇼🇸	flag: Samoa	flag_ws,samoa	WS,flag
+🇽🇰	flag: Kosovo	flag_xk,kosovo	XK,flag
+🇾🇪	flag: Yemen	flag_ye,yemen	YE,flag
+🇾🇹	flag: Mayotte	flag_yt,mayotte	YT,flag
+🇿🇦	flag: South Africa	flag_za,south_africa	ZA,flag
+🇿🇲	flag: Zambia	flag_zm,zambia	ZM,flag
+🇿🇼	flag: Zimbabwe	flag_zw,zimbabwe	ZW,flag
+🦩	flamingo	flamingo	animal,bird,flamboyant,ornithology,tropical
+🔦	flashlight	flashlight	electric,light,tool,torch
+🥿	flat shoe	flat_shoe,womans_flat_shoe	ballet,comfy,flat,flats,shoe,slip-on,slipper
+🫓	flatbread	flatbread	arepa,bread,food,gordita,lavash,naan,pita
+⚜️	fleur-de-lis	fleur-de-lis	knights
+💾	floppy disk	floppy_disk	computer,disk,floppy
+🎴	flower playing cards	flower_playing_cards	card,cards,flower,game,japanese,playing
+😳	flushed face	flushed,flushed_face	amazed,awkward,crazy,dazed,dead,disbelief,embarrassed,face,flushed,geez,heat,hot,impressed,jeez,what,wow
+🪈	flute	flute	band,fife,flautist,instrument,marching,music,orchestra,piccolo,pipe,recorder,woodwind
+🪰	fly	fly	animal,disease,insect,maggot,pest,rotting
+🥏	flying disc	flying_disc	disc,flying,ultimate
+🛸	flying saucer	flying_saucer	aliens,extra,flying,saucer,terrestrial,ufo
+🌫️	fog	fog	cloud,weather
+🌁	foggy	foggy	fog
+🙏	folded hands	folded_hands,pray	appreciate,ask,beg,blessed,bow,cmon,five,folded,gesture,hand,high,please,pray,thanks,thx
+🪭	folding hand fan	folding_fan	clack,clap,cool,cooling,dance,fan,flirt,flutter,folding,hand,hot,shy
+🫕	fondue	fondue	cheese,chocolate,food,melted,pot,ski
+🦶	foot	foot	ankle,feet,kick,stomp
+🏈	american football	football	american,ball,bowl,football,sport,super
+👣	footprints	footprints	barefoot,clothing,footprint,omw,print,walk
+🍴	fork and knife	fork_and_knife	breakfast,breaky,cooking,cutlery,delicious,dinner,eat,feed,food,fork,hungry,knife,lunch,restaurant,yum,yummy
+🍽️	fork and knife with plate	fork_knife_plate	cooking,dinner,eat,fork,knife,plate
+🥠	fortune cookie	fortune_cookie	cookie,fortune,prophecy
+⛲️	fountain	fountain	fountain
+🖋️	fountain pen	fountain_pen	fountain,pen
+4️⃣	keycap: 4	four	4,four,keycap
+🍀	four leaf clover	four_leaf_clover	4,clover,four,four-leaf,irish,leaf,lucky,plant
+🦊	fox	fox,fox_face	animal,face
+🖼️	framed picture	frame_with_picture,framed_picture	art,frame,framed,museum,painting,picture
+🆓	FREE button	free	button,free
+🍟	french fries	french_fries,fries	fast,food,french,fries
+🍤	fried shrimp	fried_shrimp	fried,prawn,shrimp,tempura
+🐸	frog	frog,frog_face	animal,face
+😦	frowning face with open mouth	frowning,frowning_face	caught,face,frown,frowning,guard,mouth,open,scared,scary,surprise,what,wow
+⛽️	fuel pump	fuelpump	diesel,fuel,fuelpump,gas,gasoline,pump,station
+🌕️	full moon	full_moon	full,moon,space
+🌝	full moon face	full_moon_with_face	bright,face,full,moon
+⚱️	funeral urn	funeral_urn	ashes,death,funeral,urn
+🎲	game die	game_die	dice,die,entertainment,game
+🧄	garlic	garlic	flavoring
+⚙️	gear	gear	cog,cogwheel,tool
+💎	gem stone	gem	diamond,engagement,gem,jewel,money,romance,stone,wedding
+♊️	Gemini	gemini	gemini,horoscope,twins,zodiac
+🧞	genie	genie	djinn,fantasy,jinn,lamp,myth,rub,wishes
+👻	ghost	ghost	boo,creature,excited,face,fairy,fairytale,fantasy,halloween,haunting,monster,scary,silly,tale
+🎁	wrapped gift	gift	birthday,bow,box,celebration,christmas,gift,present,surprise,wrapped
+💝	heart with ribbon	gift_heart,heart_with_ribbon	143,anniversary,emotion,heart,ily,kisses,ribbon,valentine,xoxo
+🫚	ginger root	ginger	beer,ginger,health,herb,natural,root,spice
+🦒	giraffe	giraffe	animal,spots
+👧	girl	girl	bright-eyed,child,daughter,granddaughter,kid,virgo,young,younger,zodiac
+🥛	glass of milk	glass_of_milk,milk	drink,glass,milk
+🌐	globe with meridians	globe_with_meridians	earth,globe,internet,meridians,web,world,worldwide
+🧤	gloves	gloves	hand
+🌟	glowing star	glowing_star,star2	glittery,glow,glowing,night,shining,sparkle,star,win
+🥅	goal net	goal_net	goal,net
+🐐	goat	goat	animal,capricorn,farm,milk,zodiac
+👺	goblin	goblin,japanese_goblin	angry,creature,face,fairy,fairytale,fantasy,mask,mean,monster,tale
+🥽	goggles	goggles	dive,eye,protection,scuba,swimming,welding
+⛳️	flag in hole	golf	flag,golf,hole,sport
+🏌️	person golfing	golfer,golfing,person_golfing	ball,birdie,caddy,driving,golf,golfing,green,person,pga,putt,range,tee
+🪿	goose	goose	animal,bird,duck,flock,fowl,gaggle,gander,geese,honk,ornithology,silly
+🦍	gorilla	gorilla	animal
+🎓️	graduation cap	graduation_cap,mortar_board	cap,celebration,clothing,education,graduation,hat,scholar
+🍇	grapes	grapes	dionysus,fruit,grape
+🩶	grey heart	gray_heart,grey_heart	143,emotion,gray,grey,heart,ily,love,silver,slate,special
+🍏	green apple	green_apple	apple,fruit,green
+📗	green book	green_book	book,education,fantasy,green,library,reading
+🟢	green circle	green_circle	circle,green
+💚	green heart	green_heart	143,emotion,green,heart,ily,love,romantic
+🥗	green salad	green_salad,salad	food,green,salad
+🟩	green square	green_square	green,square
+😬	grimacing face	grimacing,grimacing_face	awk,awkward,dentist,face,grimace,grimacing,grinning,smile,smiling
+😀	grinning face	grinning,grinning_face	cheerful,cheery,face,grin,grinning,happy,laugh,nice,smile,smiling,teeth
+😺	grinning cat	grinning_cat,smiley_cat	animal,cat,face,grinning,mouth,open,smile,smiling
+😸	grinning cat with smiling eyes	grinning_cat_with_closed_eyes,smile_cat	animal,cat,eye,eyes,face,grin,grinning,smile,smiling
+😃	grinning face with big eyes	grinning_face_with_big_eyes,smiley	awesome,big,eyes,face,grin,grinning,happy,mouth,open,smile,smiling,teeth,yay
+😄	grinning face with smiling eyes	grinning_face_with_closed_eyes,smile	eye,eyes,face,grin,grinning,happy,laugh,lol,mouth,open,smile,smiling
+😅	grinning face with sweat	grinning_face_with_sweat,sweat_smile	cold,dejected,excited,face,grinning,mouth,nervous,open,smile,smiling,stress,stressed,sweat
+💗	growing heart	growing_heart,heartpulse	143,emotion,excited,growing,heart,heartpulse,ily,kisses,muah,nervous,pulse,xoxo
+💂	guard	guard	buckingham,helmet,london,palace
+🦮	guide dog	guide_dog	accessibility,animal,blind,dog,guide
+🎸	guitar	guitar	instrument,music,strat
+🔫	water pistol	gun,pistol	gun,handgun,pistol,revolver,tool,water,weapon
+🪮	hair pick	hair_pick	afro,comb,groom,hair,pick
+💇	person getting haircut	haircut,person_getting_haircut	barber,beauty,chop,cosmetology,cut,groom,hair,haircut,parlor,person,shears,style
+🫈	hairy creature	hairy_creature	bigfoot,cryptid,forest,giant,hairy,sasquatch,woodwose,yeti
+😇	smiling face with halo	halo,innocent	angel,angelic,angels,blessed,face,fairy,fairytale,fantasy,halo,happy,innocent,peaceful,smile,smiling,spirit,tale
+🍔	hamburger	hamburger	burger,eat,fast,food,hungry
+🔨	hammer	hammer	home,improvement,repairs,tool
+⚒️	hammer and pick	hammer_and_pick	hammer,pick,tool
+🛠️	hammer and wrench	hammer_and_wrench	hammer,spanner,tool,wrench
+🪬	hamsa	hamsa	amulet,fatima,fortune,guide,hand,mary,miriam,palm,protect,protection
+🐹	hamster	hamster,hamster_face	animal,face,pet
+🫰	hand with index finger and thumb crossed	hand_with_index_finger_and_thumb_crossed	<3,crossed,expensive,finger,hand,heart,index,love,money,snap,thumb
+👜	handbag	handbag	bag,clothes,clothing,dress,lady,purse,shopping
+🤾	person playing handball	handball,person_playing_handball	athletics,ball,catch,chuck,handball,hurl,lob,person,pitch,playing,sport,throw,toss
+♿️	wheelchair symbol	handicapped,wheelchair	access,handicap,symbol,wheelchair
+🤝	handshake	handshake	agreement,deal,hand,meeting,shake
+🪉	harp	harp	cupid,instrument,love,music,orchestra
+#️⃣	keycap: #	hash,number_sign	keycap
+🐥	front-facing baby chick	hatched_chick	animal,baby,bird,chick,front-facing,newborn,ornithology
+🐣	hatching chick	hatching_chick	animal,baby,bird,chick,egg,hatching
+🙂‍↔️	head shaking horizontally	head_shaking_horizontally	head,horizontally,no,shake,shaking
+🙂‍↕️	head shaking vertically	head_shaking_vertically	head,nod,shaking,vertically,yes
+🎧️	headphone	headphones	earbud,sound
+🪦	headstone	headstone	cemetery,dead,grave,graveyard,memorial,rip,tomb,tombstone
+🧑‍⚕️	health worker	health_worker	doctor,health,healthcare,nurse,therapist,worker
+🙉	hear-no-evil monkey	hear_no_evil	animal,ears,evil,face,forbidden,gesture,hear,listen,monkey,no,not,prohibited,secret,shh,tmi
+❤️	red heart	heart,red_heart	emotion,heart,love,red
+💟	heart decoration	heart_decoration	143,decoration,emotion,heart,hearth,purple,white
+❣️	heart exclamation	heart_exclamation	exclamation,heart,heavy,mark,punctuation
+😍	smiling face with heart-eyes	heart_eyes,smiling_face_with_heart_eyes	143,bae,eye,face,feels,heart-eyes,hearts,ily,kisses,love,romance,romantic,smile,xoxo
+😻	smiling cat with heart-eyes	heart_eyes_cat,smiling_cat_with_heart_eyes	animal,cat,eye,face,heart,heart-eyes,love,smile,smiling
+🫶	heart hands	heart_hands	<3,hands,heart,love,you
+❤️‍🔥	heart on fire	heart_on_fire	burn,fire,heart,love,lust,sacred
+♥️	heart suit	hearts	card,emotion,game,heart,hearts,suit
+💲	heavy dollar sign	heavy_dollar_sign	billion,cash,charge,currency,dollar,heavy,million,money,pay,sign
+🟰	heavy equals sign	heavy_equals_sign	answer,equal,equality,equals,heavy,math,sign
+🦔	hedgehog	hedgehog	animal,spiny
+🚁	helicopter	helicopter	copter,roflcopter,travel,vehicle
+⛑️	rescue worker's helmet	helmet_with_cross,rescue_worker_helmet	aid,cross,face,hat,helmet,rescue,worker's
+🌿	herb	herb	leaf,plant
+🌺	hibiscus	hibiscus	flower,plant
+✋️	raised hand	high_five,raised_hand	5,five,hand,high,raised,stop
+👠	high-heeled shoe	high_heel	clothes,clothing,dress,fashion,heel,heels,high-heeled,shoe,shoes,shopping,stiletto,woman
+⚡️	high voltage	high_voltage,zap	danger,electric,electricity,high,lightning,nature,thunder,thunderbolt,voltage,zap
+🔊	speaker high volume	high_volume,loud_sound	high,loud,music,sound,speaker,volume
+🥾	hiking boot	hiking_boot	backpacking,boot,brown,camping,hiking,outdoors,shoe
+🛕	hindu temple	hindu_temple	hindu,temple
+🦛	hippopotamus	hippo	animal,hippo
+🏒	ice hockey	hockey	game,hockey,ice,puck,stick
+🕳️	hole	hole	hole
+⭕️	hollow red circle	hollow_red_circle,red_o	circle,heavy,hollow,large,o,red
+🏘️	houses	homes,houses	house
+🍯	honey pot	honey_pot	barrel,bear,food,honey,honeypot,jar,pot,sweet
+🪝	hook	hook	catch,crook,curve,ensnare,point,selling
+🥳	partying face	hooray,partying,partying_face	bday,birthday,celebrate,celebration,excited,face,happy,hat,hooray,horn,party,partying
+🐎	horse	horse,racehorse	animal,equestrian,farm,racehorse,racing
+🐴	horse face	horse_face	animal,dressage,equine,face,farm,horse,horses
+🏇	horse racing	horse_racing	horse,jockey,racehorse,racing,riding,sport
+🏥	hospital	hospital	building,doctor,medicine
+🥵	hot face	hot,hot_face	dying,face,feverish,heat,hot,panting,red-faced,stroke,sweating,tongue
+🌶️	hot pepper	hot_pepper	hot,pepper
+🌭	hot dog	hotdog	dog,frankfurter,hot,hotdog,sausage
+🏨	hotel	hotel	building
+♨️	hot springs	hotsprings	hot,hotsprings,springs,steaming
+⌛️	hourglass done	hourglass	done,hourglass,sand,time,timer
+⏳️	hourglass not done	hourglass_flowing_sand	done,flowing,hourglass,hours,not,sand,timer,waiting,yolo
+🏠️	house	house	building,country,heart,home,ranch,settle,simple,suburban,suburbia,where
+🏡	house with garden	house_with_garden	building,country,garden,heart,home,house,ranch,settle,simple,suburban,suburbia,where
+🤗	smiling face with open hands	hug,hugging,hugging_face	face,hands,hug,hugging,open,smiling
+😯	hushed face	hushed,hushed_face	epic,face,hushed,omg,stunned,surprised,whoa,woah
+🛖	hut	hut	home,house,roundhouse,shelter,yurt
+🪻	hyacinth	hyacinth	bloom,bluebonnet,flower,indigo,lavender,lilac,lupine,plant,purple,shrub,snapdragon,spring,violet
+🧊	ice	ice,ice_cube	cold,cube,iceberg
+🍨	ice cream	ice_cream	cream,dessert,food,ice,restaurant,sweet
+⛸️	ice skate	ice_skate	ice,skate,skating
+🍦	soft ice cream	icecream,soft_serve	cream,dessert,food,ice,icecream,restaurant,serve,soft,sweet
+🆔	ID button	id	button,id,identity
+🪪	identification card	id_card	card,credentials,document,id,identification,license,security
+🉐	Japanese "bargain" button	ideograph_advantage,ja_bargain	bargain,button,ideograph,japanese
+😶‍🌫️	face in clouds	in_clouds	absentminded,clouds,face,fog,head
+📥️	inbox tray	inbox_tray	box,email,inbox,letter,mail,receive,tray,zero
+📨	incoming envelope	incoming_envelope	delivering,e-mail,email,envelope,incoming,letter,mail,receive,sent
+♾️	infinity	infinity	forever,unbounded,universal
+ℹ️	information	info,information_source	i
+🏮	red paper lantern	izakaya_lantern,red_paper_lantern	bar,lantern,light,paper,red,restaurant
+🈸	Japanese "application" button	ja_application	application,button,ideograph,japanese
+🈹	Japanese "discount" button	ja_discount	button,discount,ideograph,japanese
+🈚️	Japanese "free of charge" button	ja_free_of_charge	button,charge,free,ideograph,japanese
+🈁	Japanese "here" button	ja_here,koko	button,here,japanese,katakana
+🈷️	Japanese "monthly amount" button	ja_monthly_amount	amount,button,ideograph,japanese,monthly
+🈵	Japanese "no vacancy" button	ja_no_vacancy	button,ideograph,japanese,no,vacancy
+🈶	Japanese "not free of charge" button	ja_not_free_of_carge	button,charge,free,ideograph,japanese,not
+🈺	Japanese "open for business" button	ja_open_for_business	business,button,ideograph,japanese,open
+🈴	Japanese "passing grade" button	ja_passing_grade	button,grade,ideograph,japanese,passing
+🈲	Japanese "prohibited" button	ja_prohibited	button,ideograph,japanese,prohibited
+🈯️	Japanese "reserved" button	ja_reserved	button,ideograph,japanese,reserved
+㊙️	Japanese "secret" button	ja_secret,secret	button,ideograph,japanese,secret
+🈂️	Japanese "service charge" button	ja_service_charge	button,charge,japanese,katakana,service
+🈳	Japanese "vacancy" button	ja_vacancy	button,ideograph,japanese,vacancy
+🎃	jack-o-lantern	jack_o_lantern	celebration,halloween,jack,lantern,pumpkin
+🗾	map of Japan	japan_map	japan,map
+🏯	Japanese castle	japanese_castle	building,castle,japanese
+👹	ogre	japanese_ogre,ogre	creature,devil,face,fairy,fairytale,fantasy,mask,monster,scary,tale
+🫙	jar	jar	condiment,container,empty,nothing,sauce,store
+👖	jeans	jeans	blue,casual,clothes,clothing,denim,dressed,pants,shopping,trousers,weekend
+🪼	jellyfish	jellyfish	animal,aquarium,burn,invertebrate,jelly,life,marine,ocean,ouch,plankton,sea,sting,stinger,tentacles
+🧩	puzzle piece	jigsaw,puzzle_piece	clue,interlocking,jigsaw,piece,puzzle
+🏴‍☠️	pirate flag	jolly_roger,pirate_flag	flag,jolly,pirate,plunder,roger,treasure
+😂	face with tears of joy	joy,lmao,tears_of_joy	crying,face,feels,funny,haha,happy,hehe,hilarious,joy,laugh,lmao,lol,rofl,roflmao,tear
+😹	cat with tears of joy	joy_cat,tears_of_joy_cat	animal,cat,face,joy,laugh,laughing,lol,tear,tears
+🕹️	joystick	joystick	game,video,videogame
+🧑‍⚖️	judge	judge	justice,law,scales
+🤹	person juggling	juggler,juggling,person_juggling	act,balance,balancing,handle,juggle,juggling,manage,multitask,person,skill
+🕋	kaaba	kaaba	hajj,islam,muslim,religion,umrah
+🦘	kangaroo	kangaroo	animal,joey,jump,marsupial
+🔑	key	key	keys,lock,major,password,unlock
+⌨️	keyboard	keyboard	computer
+🪯	khanda	khanda	deg,fateh,khalsa,religion,sikh,sikhism,tegh
+👘	kimono	kimono	clothing,comfortable
+💋	kiss mark	kiss	dating,emotion,heart,kiss,kissing,lips,mark,romance,sexy
+👨‍❤️‍💋‍👨	kiss: man, man	kiss_mm	anniversary,babe,bae,couple,date,dating,heart,kiss,love,man,mwah,person,romance,together,xoxo
+👩‍❤️‍💋‍👨	kiss: woman, man	kiss_mw,kiss_wm	anniversary,babe,bae,couple,date,dating,heart,kiss,love,man,mwah,person,romance,together,woman,xoxo
+👩‍❤️‍💋‍👩	kiss: woman, woman	kiss_ww	anniversary,babe,bae,couple,date,dating,heart,kiss,love,mwah,person,romance,together,woman,xoxo
+😗	kissing face	kissing,kissing_face	143,date,dating,face,flirt,ily,kiss,love,smooch,smooches,xoxo,you
+😽	kissing cat	kissing_cat	animal,cat,closed,eye,eyes,face,kiss,kissing
+😚	kissing face with closed eyes	kissing_closed_eyes,kissing_face_with_closed_eyes	143,bae,blush,closed,date,dating,eye,eyes,face,flirt,ily,kisses,kissing,smooches,xoxo
+😙	kissing face with smiling eyes	kissing_face_with_smiling_eyes,kissing_smiling_eyes	143,closed,date,dating,eye,eyes,face,flirt,ily,kiss,kisses,kissing,love,night,smile,smiling
+🪁	kite	kite	fly,soar
+🥝	kiwi fruit	kiwi	food,fruit,kiwi
+🧎	person kneeling	kneeling,person_kneeling	kneel,kneeling,knees,person
+🔪	kitchen knife	knife	chef,cooking,hocho,kitchen,knife,tool,weapon
+🪢	knot	knot	cord,rope,tangled,tie,twine,twist
+🐨	koala	koala,koala_face	animal,australia,bear,down,face,marsupial,under
+🥼	lab coat	lab_coat	clothes,coat,doctor,dr,experiment,jacket,lab,scientist,white
+🏷️	label	label	tag
+🥍	lacrosse	lacrosse	ball,goal,sports,stick
+🪜	ladder	ladder	climb,rung,step
+🐞	lady beetle	lady_beetle	animal,beetle,garden,insect,lady,ladybird,ladybug,nature
+🛘	landslide	landslide	avalanche,danger,disaster,earthquake,mountain,mudslide,rocks
+💻️	laptop	laptop	computer,office,pc,personal
+🔷	large blue diamond	large_blue_diamond	blue,diamond,geometric,large
+🔶	large orange diamond	large_orange_diamond	diamond,geometric,large,orange
+🌗	last quarter moon	last_quarter_moon	last,moon,quarter,space
+🌜️	last quarter moon face	last_quarter_moon_with_face	dreams,face,last,moon,quarter
+✝️	latin cross	latin_cross	christ,christian,cross,latin,religion
+😆	grinning squinting face	laughing,lol,satisfied,squinting_face	closed,eyes,face,grinning,haha,hahaha,happy,laugh,lol,mouth,open,rofl,smile,smiling,squinting
+🪾	leafless tree	leafless_tree	bare,barren,branches,dead,drought,leafless,tree,trunk,winter,wood
+🥬	leafy green	leafy_green	bok,burgers,cabbage,choy,green,kale,leafy,lettuce,salad
+🍃	leaf fluttering in wind	leaves	blow,flutter,fluttering,leaf,wind
+📒	ledger	ledger	notebook
+🤛	left-facing fist	left_facing_fist	fist,left-facing,leftwards
+🛅	left luggage	left_luggage	baggage,case,left,locker,luggage
+↔️	left-right arrow	left_right_arrow	arrow,left-right
+🗨️	left speech bubble	left_speech_bubble	balloon,bubble,dialog,left,speech
+🫲	leftwards hand	leftwards_hand	hand,handshake,hold,left,leftward,leftwards,reach,shake
+🫷	leftwards pushing hand	leftwards_pushing_hand	block,five,halt,hand,high,hold,leftward,leftwards,pause,push,pushing,refuse,slap,stop,wait
+🦵	leg	leg	bent,foot,kick,knee,limb
+🍋	lemon	lemon	citrus,fruit,sour
+♌️	Leo	leo	horoscope,leo,lion,zodiac
+🐆	leopard	leopard	animal,big,cat,predator,zoo
+🎚️	level slider	level_slider	level,music,slider
+🕴️	person in suit levitating	levitate,levitating,person_in_suit_levitating	business,levitating,person,suit
+♎️	Libra	libra	balance,horoscope,justice,libra,scales,zodiac
+🛟	ring buoy	lifebuoy,ring_buoy	buoy,float,life,lifesaver,preserver,rescue,ring,safety,save,saver,swim
+🩵	light blue heart	light_blue_heart	143,blue,cute,cyan,emotion,heart,ily,light,like,love,sky,special,teal
+🚈	light rail	light_rail	arrived,light,monorail,rail,railway
+🍋‍🟩	lime	lime	acidity,citrus,cocktail,fruit,garnish,key,margarita,mojito,refreshing,salsa,sour,tangy,tequila,tropical,zest
+🔗	link	link	links
+🦁	lion	lion,lion_face	alpha,animal,face,leo,mane,order,rawr,roar,safari,strong,zodiac
+👄	mouth	lips,mouth	beauty,body,kiss,kissing,lips,lipstick
+💄	lipstick	lipstick	cosmetics,date,makeup
+🚮	litter in bin sign	litter_bin,put_litter_in_its_place	bin,litter,litterbin,sign
+🦎	lizard	lizard	animal,reptile
+🦙	llama	llama	alpaca,animal,guanaco,vicuña,wool
+🦞	lobster	lobster	animal,bisque,claws,seafood
+🔒️	locked	lock,locked	closed,lock,private
+🔏	locked with pen	lock_with_ink_pen,locked_with_pen	ink,lock,locked,nib,pen,privacy
+🍭	lollipop	lollipop	candy,dessert,food,restaurant,sweet
+🪘	long drum	long_drum	beat,conga,drum,instrument,long,rhythm
+🧴	lotion bottle	lotion_bottle	bottle,lotion,moisturizer,shampoo,sunscreen
+🪷	lotus	lotus	beauty,buddhism,calm,flower,hinduism,peace,purity,serenity
+😭	loudly crying face	loudly_crying_face,sob	bawling,cry,crying,face,loudly,sad,sob,tear,tears,unhappy
+📢	loudspeaker	loudspeaker	address,communication,loud,public,sound
+🏩	love hotel	love_hotel	building,hotel,love
+💌	love letter	love_letter	heart,letter,love,mail,romance,valentine
+🤟	love-you gesture	love_you_gesture	fingers,gesture,hand,ily,love,love-you,three,you
+🪫	low battery	low_battery	battery,drained,electronic,energy,low,power
+🔈️	speaker low volume	low_volume,quiet_sound,speaker	low,soft,sound,speaker,volume
+🧳	luggage	luggage	bag,packing,roller,suitcase,travel
+🫁	lungs	lungs	breath,breathe,exhalation,inhalation,lung,organ,respiration
+🤥	lying face	lying,lying_face	face,liar,lie,lying,pinocchio
+Ⓜ️	circled M	m	circle,circled,m
+🔍️	magnifying glass tilted left	mag	glass,lab,left,left-pointing,magnifying,science,search,tilted,tool
+🔎	magnifying glass tilted right	mag_right	contact,glass,lab,magnifying,right,right-pointing,science,search,tilted,tool
+🧙	mage	mage	fantasy,magic,play,sorcerer,sorceress,sorcery,spell,summon,witch,wizard
+🪄	magic wand	magic_wand	magic,magician,wand,witch,wizard
+🧲	magnet	magnet	attraction,horseshoe,magnetic,negative,positive,shape,u
+🀄️	mahjong red dragon	mahjong	dragon,game,mahjong,red
+📫️	closed mailbox with raised flag	mailbox	closed,communication,flag,mail,mailbox,postbox,raised
+📪️	closed mailbox with lowered flag	mailbox_closed	closed,flag,lowered,mail,mailbox,postbox
+📬️	open mailbox with raised flag	mailbox_with_mail	flag,mail,mailbox,open,postbox,raised
+📭️	open mailbox with lowered flag	mailbox_with_no_mail	flag,lowered,mail,mailbox,open,postbox
+♂️	male sign	male,male_sign	male,man,sign
+🦣	mammoth	mammoth	animal,extinction,large,tusk,wooly
+👨	man	man	adult,bro
+👨‍🎨	man artist	man_artist	artist,man,palette
+👨‍🚀	man astronaut	man_astronaut	astronaut,man,rocket,space
+👨‍🦲	man: bald	man_bald	adult,bald,bro,man
+🧔‍♂️	man: beard	man_bearded	beard,bearded,man,whiskers
+🚴‍♂️	man biking	man_biking	bicycle,bicyclist,bike,biking,cycle,cyclist,man,riding,sport
+👱‍♂️	man: blond hair	man_blond_haired	blond,blond-haired,hair,man
+⛹️‍♂️	man bouncing ball	man_bouncing_ball	athletic,ball,basketball,bouncing,championship,dribble,man,net,player,throw
+🙇‍♂️	man bowing	man_bowing	apology,ask,beg,bow,bowing,favor,forgive,gesture,man,meditate,meditation,pity,regret,sorry
+🤸‍♂️	man cartwheeling	man_cartwheeling	active,cartwheel,cartwheeling,excited,flip,gymnastics,happy,man,somersault
+🧗‍♂️	man climbing	man_climbing	climb,climber,climbing,man,mountain,rock,scale,up
+👷‍♂️	man construction worker	man_construction_worker	build,construction,fix,hardhat,hat,man,rebuild,remodel,repair,work,worker
+👨‍🍳	man cook	man_cook	chef,cook,man
+👨‍🦱	man: curly hair	man_curly_haired	adult,bro,curly hair,man
+🕺	man dancing	man_dancing	dance,dancer,dancing,elegant,festive,flair,flamenco,groove,let's,man,salsa,tango
+🕵️‍♂️	man detective	man_detective	detective,man,sleuth,spy
+🧝‍♂️	man elf	man_elf	elf,elves,enchantment,fantasy,folklore,magic,magical,man,myth
+🤦‍♂️	man facepalming	man_facepalming	again,bewilder,disbelief,exasperation,facepalm,man,no,not,oh,omg,shock,smh
+👨‍🏭	man factory worker	man_factory_worker	assembly,factory,industrial,man,worker
+🧚‍♂️	man fairy	man_fairy	fairy,fairytale,fantasy,man,myth,oberon,person,pixie,puck,tale,wings
+👨‍🌾	man farmer	man_farmer	farmer,gardener,man,rancher
+👨‍🍼	man feeding baby	man_feeding_baby	baby,dad,father,feed,feeding,man,nanny,newborn,nursing
+👨‍🚒	man firefighter	man_firefighter	fire,firefighter,firetruck,man
+🙍‍♂️	man frowning	man_frowning	annoyed,disappointed,disgruntled,disturbed,frown,frowning,frustrated,gesture,irritated,man,upset
+🧞‍♂️	man genie	man_genie	djinn,fantasy,genie,jinn,lamp,man,myth,rub,wishes
+🙅‍♂️	man gesturing NO	man_gesturing_no	forbidden,gesture,hand,man,no,not,prohibit
+🙆‍♂️	man gesturing OK	man_gesturing_ok	exercise,gesture,gesturing,hand,man,ok,omg
+💇‍♂️	man getting haircut	man_getting_haircut	barber,beauty,chop,cosmetology,cut,groom,hair,haircut,man,parlor,person,shears,style
+💆‍♂️	man getting massage	man_getting_massage	face,getting,headache,man,massage,relax,relaxing,salon,soothe,spa,tension,therapy,treatment
+🏌️‍♂️	man golfing	man_golfing	ball,birdie,caddy,driving,golf,golfing,green,man,pga,putt,range,tee
+💂‍♂️	man guard	man_guard	buckingham,guard,helmet,london,man,palace
+👨‍⚕️	man health worker	man_health_worker	doctor,health,healthcare,man,nurse,therapist,worker
+🧘‍♂️	man in lotus position	man_in_lotus_position	cross,legged,legs,lotus,man,meditation,peace,position,relax,serenity,yoga,yogi,zen
+👨‍🦽	man in manual wheelchair	man_in_manual_wheelchair	accessibility,man,manual,wheelchair
+👨‍🦽‍➡️	man in manual wheelchair: facing right	man_in_manual_wheelchair_right	accessibility,facing,man,manual,right,wheelchair
+👨‍🦼	man in motorized wheelchair	man_in_motorized_wheelchair	accessibility,man,motorized,wheelchair
+👨‍🦼‍➡️	man in motorized wheelchair: facing right	man_in_motorized_wheelchair_right	accessibility,facing,man,motorized,right,wheelchair
+🧖‍♂️	man in steamy room	man_in_steamy_room	day,luxurious,man,pamper,relax,room,sauna,spa,steam,steambath,unwind
+🤵‍♂️	man in tuxedo	man_in_tuxedo	formal,groom,man,tuxedo,wedding
+👨‍⚖️	man judge	man_judge	judge,justice,law,man,scales
+🤹‍♂️	man juggling	man_juggling	act,balance,balancing,handle,juggle,juggling,man,manage,multitask,skill
+🧎‍♂️	man kneeling	man_kneeling	kneel,kneeling,knees,man
+🧎‍♂️‍➡️	man kneeling: facing right	man_kneeling_right	facing,kneel,kneeling,knees,man,right
+🏋️‍♂️	man lifting weights	man_lifting_weights	barbell,bodybuilder,deadlift,lifter,lifting,man,powerlifting,weight,weightlifter,weights,workout
+🧙‍♂️	man mage	man_mage	fantasy,mage,magic,man,play,sorcerer,sorceress,sorcery,spell,summon,witch,wizard
+👨‍🔧	man mechanic	man_mechanic	electrician,man,mechanic,plumber,tradesperson
+🚵‍♂️	man mountain biking	man_mountain_biking	bicycle,bicyclist,bike,biking,cycle,cyclist,man,mountain,riding,sport
+👨‍💼	man office worker	man_office_worker	architect,business,man,manager,office,white-collar,worker
+👨‍✈️	man pilot	man_pilot	man,pilot,plane
+🤾‍♂️	man playing handball	man_playing_handball	athletics,ball,catch,chuck,handball,hurl,lob,man,pitch,playing,sport,throw,toss
+🤽‍♂️	man playing water polo	man_playing_water_polo	man,playing,polo,sport,swimming,water,waterpolo
+👮‍♂️	man police officer	man_police_officer	apprehend,arrest,citation,cop,law,man,officer,over,police,pulled,undercover
+🙎‍♂️	man pouting	man_pouting	disappointed,downtrodden,frown,grimace,man,pouting,scowl,sulk,upset,whine
+🙋‍♂️	man raising hand	man_raising_hand	gesture,hand,here,know,man,me,pick,question,raise,raising
+👨‍🦰	man: red hair	man_red_haired	adult,bro,man,red hair
+🚣‍♂️	man rowing boat	man_rowing_boat	boat,canoe,cruise,fishing,lake,man,oar,paddle,raft,river,row,rowboat,rowing
+🏃‍♂️	man running	man_running	fast,hurry,man,marathon,move,quick,race,racing,run,rush,speed
+🏃‍♂️‍➡️	man running: facing right	man_running_right	facing,fast,hurry,man,marathon,move,quick,race,racing,right,run,rush,speed
+👨‍🔬	man scientist	man_scientist	biologist,chemist,engineer,man,mathematician,physicist,scientist
+🤷‍♂️	man shrugging	man_shrugging	doubt,dunno,guess,idk,ignorance,indifference,knows,man,maybe,shrug,shrugging,whatever,who
+👨‍🎤	man singer	man_singer	actor,entertainer,man,rock,rockstar,singer,star
+🧍‍♂️	man standing	man_standing	man,stand,standing
+👨‍🎓	man student	man_student	graduate,man,student
+🦸‍♂️	man superhero	man_superhero	good,hero,man,superhero,superpower
+🦹‍♂️	man supervillain	man_supervillain	bad,criminal,evil,man,superpower,supervillain,villain
+🏄‍♂️	man surfing	man_surfing	beach,man,ocean,sport,surf,surfer,surfing,swell,waves
+🏊‍♂️	man swimming	man_swimming	freestyle,man,sport,swim,swimmer,swimming,triathlon
+👨‍🏫	man teacher	man_teacher	instructor,lecturer,man,professor,teacher
+👨‍💻	man technologist	man_technologist	coder,computer,developer,inventor,man,software,technologist
+💁‍♂️	man tipping hand	man_tipping_hand	fetch,flick,flip,gossip,hand,man,sarcasm,sarcastic,sassy,seriously,tipping,whatever
+🧛‍♂️	man vampire	man_vampire	blood,fangs,halloween,man,scary,supernatural,teeth,undead,vampire
+🚶‍♂️	man walking	man_walking	amble,gait,hike,man,pace,pedestrian,stride,stroll,walk,walking
+🚶‍♂️‍➡️	man walking: facing right	man_walking_right	amble,facing,gait,hike,man,pace,pedestrian,right,stride,stroll,walk,walking
+👳‍♂️	man wearing turban	man_wearing_turban	man,turban,wearing
+👨‍🦳	man: white hair	man_white_haired	adult,bro,man,white hair
+👨‍🦯	man with white cane	man_with_probing_cane,man_with_white_cane	accessibility,blind,cane,man,probing,white
+👰‍♂️	man with veil	man_with_veil	man,veil,wedding
+👨‍🦯‍➡️	man with white cane: facing right	man_with_white_cane_right	accessibility,blind,cane,facing,man,probing,right,white
+🧟‍♂️	man zombie	man_zombie	apocalypse,dead,halloween,horror,man,scary,undead,walking,zombie
+🥭	mango	mango	food,fruit,tropical
+👞	man's shoe	mans_shoe	brown,clothes,clothing,feet,foot,kick,man,man's,shoe,shoes,shopping
+🦽	manual wheelchair	manual_wheelchair	accessibility,manual,wheelchair
+🍁	maple leaf	maple_leaf	falling,leaf,maple
+🪇	maracas	maracas	cha,dance,instrument,music,party,percussion,rattle,shake,shaker
+🥋	martial arts uniform	martial_arts_uniform	arts,judo,karate,martial,taekwondo,uniform
+😷	face with medical mask	mask,medical_mask	cold,dentist,dermatologist,doctor,dr,face,germs,mask,medical,medicine,sick
+💆	person getting massage	massage,person_getting_massage	face,getting,headache,massage,person,relax,relaxing,salon,soothe,spa,tension,therapy,treatment
+🧉	mate	mate	drink
+🍖	meat on bone	meat_on_bone	bone,meat
+🧑‍🔧	mechanic	mechanic	electrician,plumber,tradesperson
+🦾	mechanical arm	mechanical_arm	accessibility,arm,mechanical,prosthetic
+🦿	mechanical leg	mechanical_leg	accessibility,leg,mechanical,prosthetic
+⚕️	medical symbol	medical,medical_symbol	aesculapius,medical,medicine,staff,symbol
+🔉	speaker medium volume	medium_volumne,sound	medium,sound,speaker,volume
+📣	megaphone	mega,megaphone	cheering,sound
+🍈	melon	melon	cantaloupe,fruit
+🫠	melting face	melt,melting_face	disappear,dissolve,embarrassed,face,haha,heat,hot,liquid,lol,melt,melting,sarcasm,sarcastic
+📝	memo	memo	communication,media,notes,pencil
+👯‍♂️	men with bunny ears	men_with_bunny_ears_partying	bestie,bff,bunny,counterpart,dancer,double,ear,identical,men,pair,party,partying,people,soulmate,twin,twinsies
+🤼‍♂️	men wrestling	men_wrestling	combat,duel,grapple,men,ring,tournament,wrestle,wrestling
+❤️‍🩹	mending heart	mending_heart	healthier,heart,improving,mending,recovering,recuperating,well
+🕎	menorah	menorah	candelabrum,candlestick,hanukkah,jewish,judaism,religion
+🚹️	men's room	mens	bathroom,lavatory,man,men's,restroom,room,toilet,wc
+🧜‍♀️	mermaid	mermaid	creature,fairytale,folklore,merwoman,ocean,sea,siren,trident
+🧜‍♂️	merman	merman	creature,fairytale,folklore,neptune,ocean,poseidon,sea,siren,trident,triton
+🧜	merperson	merperson	creature,fairytale,folklore,ocean,sea,siren,trident
+🤘	sign of the horns	metal,sign_of_the_horns	finger,hand,horns,rock-on,sign
+🚇️	metro	metro	subway,travel
+🦠	microbe	microbe	amoeba,bacteria,science,virus
+🎤	microphone	microphone	karaoke,mic,music,sing,sound
+🔬	microscope	microscope	experiment,lab,science,tool
+🖕	middle finger	middle_finger	finger,hand,middle
+🪖	military helmet	military_helmet	army,helmet,military,soldier,war,warrior
+🎖️	military medal	military_medal	award,celebration,medal,military
+🌌	milky way	milky_way	milky,space,way
+🚐	minibus	minibus	bus,drive,van,vehicle
+➖️	minus	minus	-,heavy,math,sign,−
+🪞	mirror	mirror	makeup,reflection,reflector,speculum
+🗿	moai	moai,moyai	face,moyai,statue,stoneface,travel
+📴	mobile phone off	mobile_phone_off	cell,mobile,off,phone,telephone
+🤑	money-mouth face	money_mouth_face	face,money,money-mouth,mouth,paid
+💸	money with wings	money_with_wings	bank,banknote,bill,billion,cash,dollar,fly,million,money,note,pay,wings
+💰️	money bag	moneybag	bag,bank,bet,billion,cash,cost,dollar,gold,million,money,moneybag,paid,paying,pot,rich,win
+🐒	monkey	monkey	animal,banana
+🐵	monkey face	monkey_face	animal,banana,face,monkey
+🚝	monorail	monorail	vehicle
+🥮	moon cake	moon_cake	autumn,cake,festival,moon,yuèbǐng
+🎑	moon viewing ceremony	moon_ceremony,rice_scene	celebration,ceremony,moon,viewing
+🫎	moose	moose	alces,animal,antlers,elk,mammal
+🕌	mosque	mosque	islam,masjid,muslim,religion
+🦟	mosquito	mosquito	bite,disease,fever,insect,malaria,pest,virus
+🛵	motor scooter	motor_scooter	motor,scooter
+🛥️	motor boat	motorboat	boat,motor,motorboat
+🏍️	motorcycle	motorcycle	racing
+🦼	motorized wheelchair	motorized_wheelchair	accessibility,motorized,wheelchair
+🛣️	motorway	motorway	highway,road
+🗻	mount fuji	mount_fuji	fuji,mount,mountain,nature
+⛰️	mountain	mountain	mountain
+🚵	person mountain biking	mountain_bicyclist,mountain_biking,person_mountain_biking	bicycle,bicyclist,bike,biking,cycle,cyclist,mountain,person,riding,sport
+🚠	mountain cableway	mountain_cableway	cable,cableway,gondola,lift,mountain,ski
+🚞	mountain railway	mountain_railway	car,mountain,railway,trip
+🏔️	snow-capped mountain	mountain_snow	cold,mountain,snow,snow-capped
+🐁	mouse	mouse	animal,animals
+🐭	mouse face	mouse_face	animal,face,mouse
+🪤	mouse trap	mouse_trap	bait,cheese,lure,mouse,mousetrap,snare,trap
+🎥	movie camera	movie_camera	bollywood,camera,cinema,film,hollywood,movie,record
+🤶	Mrs. Claus	mrs_claus	celebration,christmas,claus,fairy,fantasy,holiday,merry,mother,mrs,santa,tale,xmas
+✖️	multiply	multiplication,multiply	cancel,multiplication,sign,x,×
+💪	flexed biceps	muscle,right_bicep	arm,beast,bench,biceps,bodybuilder,bro,curls,flex,gains,gym,jacked,muscle,press,ripped,strong,weightlift
+🍄	mushroom	mushroom	fungus,toadstool
+🎹	musical keyboard	musical_keyboard	instrument,keyboard,music,musical,piano
+🎵	musical note	musical_note	music,musical,note,sound
+🎶	musical notes	musical_notes,notes	music,musical,note,notes,sound
+🎼	musical score	musical_score	music,musical,note,score
+🔇	muted speaker	mute,no_sound	mute,muted,quiet,silent,sound,speaker
+🧑‍🎄	Mx Claus	mx_claus	celebration,christmas,claus,fairy,fantasy,holiday,merry,mx,santa,tale,xmas
+💅	nail polish	nail_care,nail_polish	bored,care,cosmetics,done,makeup,manicure,nail,polish,whatever
+📛	name badge	name_badge	badge,name
+🏞️	national park	national_park	national,park
+🤢	nauseated face	nauseated,nauseated_face	face,gross,nasty,nauseated,sick,vomit
+🧿	nazar amulet	nazar_amulet	amulet,bead,blue,charm,evil-eye,nazar,talisman
+👔	necktie	necktie	clothing,employed,serious,shirt,tie
+🤓	nerd face	nerd,nerd_face	brainy,clever,expert,face,geek,gifted,glasses,intelligent,nerd,smart
+🪺	nest with eggs	nest_with_eggs	bird,branch,egg,eggs,nest,nesting
+🪆	nesting dolls	nesting_dolls	babooshka,baboushka,babushka,doll,dolls,matryoshka,nesting,russia
+😐️	neutral face	neutral,neutral_face	awkward,blank,deadpan,expressionless,face,fine,jealous,meh,neutral,oh,shade,straight,unamused,unhappy,unimpressed,whatever
+🆕	NEW button	new	button,new
+🌑	new moon	new_moon	dark,moon,new,space
+🌚	new moon face	new_moon_with_face	face,moon,new,space
+📰	newspaper	newspaper	communication,news,paper
+⏭️	next track button	next_track	arrow,button,next,scene,track,triangle
+🆖	NG button	ng	button,ng
+🌃	night with stars	night_with_stars	night,star,stars
+9️⃣	keycap: 9	nine	9,keycap,nine
+🥷	ninja	ninja	assassin,fight,fighter,hidden,person,secret,skills,sly,soldier,stealth,war
+🔕	bell with slash	no_bell	bell,forbidden,mute,no,not,prohibited,quiet,silent,slash,sound
+🚳	no bicycles	no_bicycles	bicycle,bicycles,bike,forbidden,no,not,prohibited
+⛔️	no entry	no_entry	do,entry,fail,forbidden,no,not,pass,prohibited,traffic
+🚫	prohibited	no_entry_sign	entry,forbidden,no,not,smoke
+🙅	person gesturing NO	no_good,person_gesturing_no	forbidden,gesture,hand,no,not,person,prohibit
+🦲	bald	no_hair	chemotherapy,hair,hairless,no,shaven
+📵	no mobile phones	no_mobile_phones	cell,forbidden,mobile,no,not,phone,phones,prohibited,telephone
+😶	face without mouth	no_mouth	awkward,blank,expressionless,face,mouth,mouthless,mute,quiet,secret,silence,silent,speechless
+🔞	no one under eighteen	no_one_under_18,underage	18,age,eighteen,forbidden,no,not,one,prohibited,restriction,underage
+🚷	no pedestrians	no_pedestrians	forbidden,no,not,pedestrian,pedestrians,prohibited
+🚭️	no smoking	no_smoking	forbidden,no,not,prohibited,smoke,smoking
+🚱	non-potable water	non-potable_water	dry,non-drinking,non-potable,prohibited,water
+👃	nose	nose	body,noses,nosey,odor,smell,smells
+😤	face with steam from nose	nose_steam,triumph	anger,angry,face,feels,fume,fuming,furious,fury,mad,nose,steam,triumph,unhappy,won
+📓	notebook	notebook	notebook
+📔	notebook with decorative cover	notebook_with_decorative_cover	book,cover,decorated,decorative,education,notebook,school,writing
+🗒️	spiral notepad	notepad_spiral	note,notepad,pad,spiral
+🔩	nut and bolt	nut_and_bolt	bolt,home,improvement,nut,tool
+🅾️	O button (blood type)	o,o_blood	blood,button,o,type
+🌊	water wave	ocean,water_wave	nature,ocean,surf,surfer,surfing,water,wave
+🛑	stop sign	octagonal_sign,stop_sign	octagonal,sign,stop
+🐙	octopus	octopus	animal,creature,ocean
+🍢	oden	oden	food,kebab,restaurant,seafood,skewer,stick
+🏢	office building	office	building,city,cubical,job,office
+🧑‍💼	office worker	office_worker	architect,business,manager,office,white-collar,worker
+🛢️	oil drum	oil_drum	drum,oil
+🆗	OK button	ok	button,ok,okay
+👌	OK hand	ok_hand	awesome,bet,dope,fleek,fosho,got,gotcha,hand,legit,ok,okay,pinch,rad,sure,sweet,three
+🗝️	old key	old_key	clue,key,lock,old
+🧓	older person	older_adult	adult,elderly,grandparent,old,person,wise
+👴	old man	older_man	adult,bald,elderly,gramps,grandfather,grandpa,man,old,wise
+👵	old woman	older_woman	adult,elderly,grandma,grandmother,granny,lady,old,wise,woman
+🫒	olive	olive	food
+🕉️	om	om	hindu,religion
+🔛	ON! arrow	on	arrow,mark,on!
+🚘️	oncoming automobile	oncoming_automobile	automobile,car,cars,drove,oncoming,vehicle
+🚍️	oncoming bus	oncoming_bus	bus,cars,oncoming
+🚔️	oncoming police car	oncoming_police_car	car,oncoming,police
+🚖	oncoming taxi	oncoming_taxi	cab,cabbie,cars,drove,hail,oncoming,taxi,yellow
+1️⃣	keycap: 1	one	1,keycap,one
+🩱	one-piece swimsuit	one_piece_swimsuit	bathing,one-piece,suit,swimsuit
+🧅	onion	onion	flavoring
+📂	open file folder	open_file_folder	file,folder,open
+👐	open hands	open_hands	hand,hands,hug,jazz,open,swerve
+⛎️	Ophiuchus	ophiuchus	bearer,ophiuchus,serpent,snake,zodiac
+🍊	tangerine	orange,tangerine	c,citrus,fruit,nectarine,orange,vitamin
+📙	orange book	orange_book	book,education,fantasy,library,orange,reading
+🟠	orange circle	orange_circle	circle,orange
+🧡	orange heart	orange_heart	143,heart,orange
+🟧	orange square	orange_square	orange,square
+🦧	orangutan	orangutan	animal,ape,monkey
+🫍	orca	orca	marine,ocean,whale
+☦️	orthodox cross	orthodox_cross	christian,cross,orthodox,religion
+🦦	otter	otter	animal,fishing,playful
+📤️	outbox tray	outbox_tray	box,email,letter,mail,outbox,sent,tray
+🦉	owl	owl	animal,bird,ornithology,wise
+🐂	ox	ox	animal,animals,bull,farm,taurus,zodiac
+🦪	oyster	oyster	diving,pearl
+📦️	package	package	box,communication,delivery,parcel,shipping
+📄	page facing up	page_facing_up	document,facing,page,paper,up
+📃	page with curl	page_with_curl	curl,document,page,paper
+📟️	pager	pager	communication
+🖌️	paintbrush	paintbrush	painting
+🫳	palm down hand	palm_down	dismiss,down,drop,dropped,hand,palm,pick,shoo,up
+🌴	palm tree	palm_tree	beach,palm,plant,tree,tropical
+🫴	palm up hand	palm_up	beckon,catch,come,hand,hold,know,lift,me,offer,palm,tell
+🤲	palms up together	palms_up_together	cupped,dua,hands,palms,pray,prayer,together,up,wish
+🥞	pancakes	pancakes	breakfast,crêpe,food,hotcake,pancake
+🐼	panda	panda,panda_face	animal,bamboo,face
+📎	paperclip	paperclip	paperclip
+🖇️	linked paperclips	paperclips	link,linked,paperclip,paperclips
+🪂	parachute	parachute	hang-glide,parasail,skydive
+🅿️	P button	parking	button,p,parking
+🦜	parrot	parrot	animal,bird,ornithology,pirate,talk
+〽️	part alternation mark	part_alternation_mark	alternation,mark,part
+⛅️	sun behind cloud	partly_sunny,sun_behind_cloud	behind,cloud,cloudy,sun,weather
+🎉	party popper	party,party_popper,tada	awesome,birthday,celebrate,celebration,excited,hooray,party,popper,tada,woohoo
+🛂	passport control	passport_control	control,passport
+⏸️	pause button	pause	bar,button,double,pause,vertical
+🐾	paw prints	paw_prints	feet,paw,paws,print,prints
+🫛	pea pod	pea	beans,beanstalk,edamame,legume,pea,pod,soybean,vegetable,veggie
+☮️	peace symbol	peace,peace_symbol	healing,peace,peaceful,symbol
+🍑	peach	peach	fruit
+🦚	peacock	peacock	animal,bird,colorful,ornithology,ostentatious,peahen,pretty,proud
+🥜	peanuts	peanuts	food,nut,peanut,vegetable
+🍐	pear	pear	fruit
+🖊️	pen	pen	ballpoint
+✏️	pencil	pencil	pencil
+🐧	penguin	penguin,penguin_face	animal,antarctica,bird,ornithology
+😔	pensive face	pensive,pensive_face	awful,bored,dejected,died,disappointed,face,losing,lost,pensive,sad,sucks
+🧑‍🤝‍🧑	people holding hands	people_holding_hands	bae,bestie,bff,couple,dating,flirt,friends,hand,hold,people,twins
+🫂	people hugging	people_hugging	comfort,embrace,farewell,friendship,goodbye,hello,hug,hugging,love,people,thanks
+🤼	people wrestling	people_wrestling,wrestlers,wrestling	combat,duel,grapple,people,ring,tournament,wrestle,wrestling
+🎭️	performing arts	performing_arts	actor,actress,art,arts,entertainment,mask,performing,theater,theatre,thespian
+😣	persevering face	persevere,persevering_face	concentrate,concentration,face,focus,headache,persevere,persevering
+🧔	person: beard	person_bearded	beard,bearded,person,whiskers
+⛹️	person bouncing ball	person_bouncing_ball	athletic,ball,basketball,bouncing,championship,dribble,net,person,player,throw
+🧑‍🍼	person feeding baby	person_feeding_baby	baby,feed,feeding,nanny,newborn,nursing,parent
+🙍	person frowning	person_frowning	annoyed,disappointed,disgruntled,disturbed,frown,frowning,frustrated,gesture,irritated,person,upset
+🛌	person in bed	person_in_bed,sleeping_accommodation	bed,bedtime,good,goodnight,hotel,nap,night,person,sleep,tired,zzz
+🧘	person in lotus position	person_in_lotus_position	cross,legged,legs,lotus,meditation,peace,person,position,relax,serenity,yoga,yogi,zen
+🧑‍🦽	person in manual wheelchair	person_in_manual_wheelchair	accessibility,manual,person,wheelchair
+🧑‍🦽‍➡️	person in manual wheelchair: facing right	person_in_manual_wheelchair_right	accessibility,facing,manual,person,right,wheelchair
+🧑‍🦼	person in motorized wheelchair	person_in_motorized_wheelchair	accessibility,motorized,person,wheelchair
+🧑‍🦼‍➡️	person in motorized wheelchair: facing right	person_in_motorized_wheelchair_right	accessibility,facing,motorized,person,right,wheelchair
+🧖	person in steamy room	person_in_steamy_room	day,luxurious,pamper,person,relax,room,sauna,spa,steam,steambath,unwind
+🤵	person in tuxedo	person_in_tuxedo	formal,person,tuxedo,wedding
+🧎‍➡️	person kneeling: facing right	person_kneeling_right	facing,kneel,kneeling,knees,person,right
+🏋️	person lifting weights	person_lifting_weights,weight_lifter,weight_lifting	barbell,bodybuilder,deadlift,lifter,lifting,person,powerlifting,weight,weightlifter,weights,workout
+🤽	person playing water polo	person_playing_water_polo,water_polo	person,playing,polo,sport,swimming,water,waterpolo
+🙎	person pouting	person_pouting,pouting	disappointed,downtrodden,frown,grimace,person,pouting,scowl,sulk,upset,whine
+🙋	person raising hand	person_raising_hand	gesture,hand,here,know,me,person,pick,question,raise,raising
+🚣	person rowing boat	person_rowing_boat,rowboat	boat,canoe,cruise,fishing,lake,oar,paddle,person,raft,river,row,rowboat,rowing
+🏃	person running	person_running,running	fast,hurry,marathon,move,person,quick,race,racing,run,rush,speed
+🏃‍➡️	person running: facing right	person_running_right	facing,fast,hurry,marathon,move,person,quick,race,racing,right,run,rush,speed
+🤷	person shrugging	person_shrugging,shrug	doubt,dunno,guess,idk,ignorance,indifference,knows,maybe,person,shrug,shrugging,whatever,who
+⛷️	skier	person_skiing,skier,skiing	ski,snow
+🏂️	snowboarder	person_snowboarding,snowboarder,snowboarding	ski,snow,snowboard,sport
+🧍	person standing	person_standing,standing	person,stand,standing
+🏄️	person surfing	person_surfing,surfer,surfing	beach,ocean,person,sport,surf,surfer,surfing,swell,waves
+🏊️	person swimming	person_swimming,swimmer,swimming	freestyle,person,sport,swim,swimmer,swimming,triathlon
+💁	person tipping hand	person_tipping_hand	fetch,flick,flip,gossip,hand,person,sarcasm,sarcastic,sassy,seriously,tipping,whatever
+🚶	person walking	person_walking,walking	amble,gait,hike,man,pace,pedestrian,person,stride,stroll,walk,walking
+🚶‍➡️	person walking: facing right	person_walking_right	amble,facing,gait,hike,man,pace,pedestrian,person,right,stride,stroll,walk,walking
+👳	person wearing turban	person_wearing_turban	person,turban,wearing
+🫅	person with crown	person_with_crown,royalty	crown,monarch,noble,person,regal,royal,royalty
+🧑‍🦯	person with white cane	person_with_probing_cane,person_with_white_cane	accessibility,blind,cane,person,probing,white
+👲	person with skullcap	person_with_skullcap	cap,chinese,gua,guapi,hat,mao,person,pi,skullcap
+👰	person with veil	person_with_veil	person,veil,wedding
+🧑‍🦯‍➡️	person with white cane: facing right	person_with_white_cane_right	accessibility,blind,cane,facing,person,probing,right,white
+🧫	petri dish	petri_dish	bacteria,biologist,biology,culture,dish,lab,petri
+🐦‍🔥	phoenix	phoenix	ascend,ascension,emerge,fantasy,firebird,glory,immortal,rebirth,reincarnation,reinvent,renewal,revival,revive,rise,transform
+⛏️	pick	pick	hammer,mining,tool
+🛻	pickup truck	pickup_truck	automobile,car,flatbed,pick-up,pickup,transportation,truck
+🥧	pie	pie	apple,filling,fruit,meat,pastry,pumpkin,slice
+🐖	pig	pig	animal,bacon,farm,pork,sow
+🐷	pig face	pig_face	animal,bacon,face,farm,pig,pork
+🐽	pig nose	pig_nose	animal,face,farm,nose,pig,smell,snout
+💊	pill	pill	doctor,drugs,medicated,medicine,pills,sick,vitamin
+🧑‍✈️	pilot	pilot	plane
+🪅	piñata	pinata	candy,celebrate,celebration,cinco,de,festive,mayo,party,pinada,pinata
+🤌	pinched fingers	pinch,pinched_fingers	fingers,gesture,hand,hold,huh,interrogation,patience,pinched,relax,sarcastic,ugh,what,zip
+🤏	pinching hand	pinching_hand	amount,bit,fingers,hand,little,pinching,small,sort
+🍍	pineapple	pineapple	colada,fruit,pina,tropical
+🏓	ping pong	ping_pong	ball,bat,game,paddle,ping,pingpong,pong,table,tennis
+🩷	pink heart	pink_heart	143,adorable,cute,emotion,heart,ily,like,love,pink,special,sweet
+♓️	Pisces	pisces	fish,horoscope,pisces,zodiac
+🍕	pizza	pizza	cheese,food,hungry,pepperoni,slice
+🪧	placard	placard	card,demonstration,notice,picket,plaque,protest,sign
+🛐	place of worship	place_of_worship	place,pray,religion,worship
+⏯️	play or pause button	play_pause	arrow,button,pause,play,right,triangle
+🛝	playground slide	playground_slide,slide	amusement,park,play,playground,playing,slide,sliding,theme
+🥺	pleading face	pleading,pleading_face	begging,big,eyes,face,mercy,not,pleading,please,pretty,puppy,sad,why
+🪠	plunger	plunger	cup,force,plumber,poop,suction,toilet
+➕️	plus	plus	+
+👇️	backhand index pointing down	point_down	backhand,down,finger,hand,index,point,pointing
+🫵	index pointing at the viewer	point_forward	at,finger,hand,index,pointing,poke,viewer,you
+👈️	backhand index pointing left	point_left	backhand,finger,hand,index,left,point,pointing
+👉️	backhand index pointing right	point_right	backhand,finger,hand,index,point,pointing,right
+👆️	backhand index pointing up	point_up	backhand,finger,hand,index,point,pointing,up
+☝️	index pointing up	point_up_2	finger,hand,index,point,pointing,this,up
+🐻‍❄️	polar bear	polar_bear,polar_bear_face	animal,arctic,bear,polar,white
+🚓	police car	police_car	5–0,car,cops,patrol,police
+🐩	poodle	poodle	animal,dog,fluffy
+💩	pile of poo	poop,shit	bs,comic,doo,dung,face,fml,monster,pile,poo,poop,smelly,smh,stink,stinks,stinky,turd
+🍿	popcorn	popcorn	corn,movie,pop
+🏣	Japanese post office	post_office	building,japanese,office,post
+📯	postal horn	postal_horn	horn,post,postal
+📮	postbox	postbox	mail,mailbox
+🍲	pot of food	pot_of_food,stew	food,pot,soup,stew
+🚰	potable water	potable_water	drinking,potable,water
+🥔	potato	potato	food,vegetable
+🪴	potted plant	potted_plant	decor,grow,house,nurturing,plant,pot,potted
+🍗	poultry leg	poultry_leg	bone,chicken,drumstick,hungry,leg,poultry,turkey
+💷	pound banknote	pound	bank,banknote,bill,billion,cash,currency,money,note,pound,pounds
+🫗	pouring liquid	pour,pouring_liquid	accident,drink,empty,glass,liquid,oops,pour,pouring,spill,water
+😡	enraged face	pout,pouting_face,rage	anger,angry,enraged,face,feels,mad,maddening,pouting,rage,red,shade,unhappy,upset
+😾	pouting cat	pouting_cat	animal,cat,face,pouting
+📿	prayer beads	prayer_beads	beads,clothing,necklace,prayer,religion
+🫃	pregnant man	pregnant_man	belly,bloated,full,man,overeat,pregnant
+🫄	pregnant person	pregnant_person	belly,bloated,full,overeat,person,pregnant,stuffed
+🤰	pregnant woman	pregnant_woman	pregnant,woman
+🥨	pretzel	pretzel	convoluted,twisted
+⏮️	last track button	previous_track	arrow,button,last,previous,scene,track,triangle
+🤴	prince	prince	crown,fairy,fairytale,fantasy,king,royal,royalty,tale
+👸	princess	princess	crown,fairy,fairytale,fantasy,queen,royal,royalty,tale
+🖨️	printer	printer	computer
+🦯	white cane	probing_cane,white_cane	accessibility,blind,cane,probing,white
+👊	oncoming fist	punch	absolutely,agree,boom,bro,bruh,bump,clenched,correct,fist,hand,knuckle,oncoming,pound,punch,rock,ttyl
+🟣	purple circle	purple_circle	circle,purple
+💜	purple heart	purple_heart	143,bestest,emotion,heart,ily,love,purple
+🟪	purple square	purple_square	purple,square
+👛	purse	purse	clothes,clothing,coin,dress,fancy,handbag,shopping
+📌	pushpin	pushpin	collage,pin
+❓️	red question mark	question	?,mark,punctuation,question,red
+🐇	rabbit	rabbit	animal,bunny,pet
+🐰	rabbit face	rabbit_face	animal,bunny,face,pet,rabbit
+🦝	raccoon	raccoon	animal,curious,sly
+🏎️	racing car	racing_car	car,racing,zoom
+📻️	radio	radio	entertainment,tbt,video
+🔘	radio button	radio_button	button,geometric,radio
+☢️	radioactive	radioactive	sign
+🚃	railway car	railway_car	car,electric,railway,train,tram,travel,trolleybus
+🛤️	railway track	railway_track	railway,track,train
+🌈	rainbow	rainbow	gay,genderqueer,glbt,glbtq,lesbian,lgbt,lgbtq,lgbtqia,nature,pride,queer,rain,trans,transgender,weather
+🏳️‍🌈	rainbow flag	rainbow_flag	bisexual,flag,gay,genderqueer,glbt,glbtq,lesbian,lgbt,lgbtq,lgbtqia,pride,queer,rainbow,trans,transgender
+🤚	raised back of hand	raised_back_of_hand	back,backhand,hand,raised
+🖐️	hand with fingers splayed	raised_hand_with_fingers_splayed	finger,fingers,hand,raised,splayed,stop
+🙌	raising hands	raised_hands	celebration,gesture,hand,hands,hooray,praise,raised,raising
+🐏	ram	ram	animal,aries,horns,male,sheep,zodiac,zoo
+🍜	steaming bowl	ramen,steaming_bowl	bowl,chopsticks,food,noodle,pho,ramen,soup,steaming
+🐀	rat	rat	animal
+🪒	razor	razor	sharp,shave
+🧾	receipt	receipt	accounting,bookkeeping,evidence,invoice,proof
+⏺️	record button	record	button,circle,record
+♻️	recycling symbol	recycle,recycling_symbol	recycle,recycling,symbol
+🔴	red circle	red_circle	circle,geometric,red
+🧧	red envelope	red_envelope	envelope,gift,good,hóngbāo,lai,luck,money,red,see
+🦰	red hair	red_hair	ginger,hair,red,redhead
+🧑‍🦰	person: red hair	red_haired	adult,person,red hair
+🟥	red square	red_square	card,penalty,red,square
+🇦	regional indicator A	regional_indicator_a
+🇧	regional indicator B	regional_indicator_b
+🇨	regional indicator C	regional_indicator_c
+🇩	regional indicator D	regional_indicator_d
+🇪	regional indicator E	regional_indicator_e
+🇫	regional indicator F	regional_indicator_f
+🇬	regional indicator G	regional_indicator_g
+🇭	regional indicator H	regional_indicator_h
+🇮	regional indicator I	regional_indicator_i
+🇯	regional indicator J	regional_indicator_j
+🇰	regional indicator K	regional_indicator_k
+🇱	regional indicator L	regional_indicator_l
+🇲	regional indicator M	regional_indicator_m
+🇳	regional indicator N	regional_indicator_n
+🇴	regional indicator O	regional_indicator_o
+🇵	regional indicator P	regional_indicator_p
+🇶	regional indicator Q	regional_indicator_q
+🇷	regional indicator R	regional_indicator_r
+🇸	regional indicator S	regional_indicator_s
+🇹	regional indicator T	regional_indicator_t
+🇺	regional indicator U	regional_indicator_u
+🇻	regional indicator V	regional_indicator_v
+🇼	regional indicator W	regional_indicator_w
+🇽	regional indicator X	regional_indicator_x
+🇾	regional indicator Y	regional_indicator_y
+🇿	regional indicator Z	regional_indicator_z
+®️	registered	registered	r
+☺️	smiling face	relaxed,smiling_face	face,happy,outlined,relaxed,smile,smiling
+😌	relieved face	relieved,relieved_face	calm,face,peace,relief,relieved,zen
+🎗️	reminder ribbon	reminder_ribbon	celebration,reminder,ribbon
+🔁	repeat button	repeat	arrow,button,clockwise,repeat
+🔂	repeat single button	repeat_one	arrow,button,clockwise,once,repeat,single
+💞	revolving hearts	revolving_hearts	143,adorbs,anniversary,emotion,heart,hearts,revolving
+🦏	rhinoceros	rhino,rhinoceros	animal
+🎀	ribbon	ribbon	celebration
+🍙	rice ball	rice_ball	ball,food,japanese,rice
+🍘	rice cracker	rice_cracker	cracker,food,rice
+🗯️	right anger bubble	right_anger_bubble	anger,angry,balloon,bubble,mad,right
+🤜	right-facing fist	right_facing_fist	fist,right-facing,rightwards
+🫱	rightwards hand	rightwards_hand	hand,handshake,hold,reach,right,rightward,rightwards,shake
+🫸	rightwards pushing hand	rightwards_pushing_hand	block,five,halt,hand,high,hold,pause,push,pushing,refuse,rightward,rightwards,slap,stop,wait
+💍	ring	ring	diamond,engaged,engagement,married,romance,shiny,sparkling,wedding
+🪐	ringed planet	ringed_planet,saturn	planet,ringed,saturn,saturnine
+🤖	robot	robot,robot_face	face,monster
+🪨	rock	rock	boulder,heavy,solid,stone,tough
+🚀	rocket	rocket	launch,rockets,space,travel
+🤣	rolling on the floor laughing	rofl	crying,face,floor,funny,haha,happy,hehe,hilarious,joy,laugh,lmao,lol,rofl,roflmao,rolling,tear
+🧻	roll of paper	roll_of_paper,toilet_paper	paper,roll,toilet,towels
+🗞️	rolled-up newspaper	rolled_up_newspaper	news,newspaper,paper,rolled,rolled-up
+🎢	roller coaster	roller_coaster	amusement,coaster,park,roller,theme
+🛼	roller skate	roller_skate	blades,roller,skate,skates,sport
+🙄	face with rolling eyes	rolling_eyes	eyeroll,eyes,face,rolling,shade,ugh,whatever
+🐓	rooster	rooster	animal,bird,ornithology
+🫜	root vegetable	root_vegetable	beet,food,garden,radish,root,salad,turnip,vegetable,vegetarian
+🌹	rose	rose	beauty,elegant,flower,love,plant,red,valentine
+🏵️	rosette	rosette	plant
+🚨	police car light	rotating_light	alarm,alert,beacon,car,emergency,light,police,revolving,siren
+📍	round pushpin	round_pushpin	location,map,pin,pushpin,round
+🏉	rugby football	rugby_football	ball,football,rugby,sport
+🎽	running shirt	running_shirt,running_shirt_with_sash	athletics,running,sash,shirt
+🧷	safety pin	safety_pin	diaper,pin,punk,rock,safety
+🦺	safety vest	safety_vest	emergency,safety,vest
+♐️	Sagittarius	sagittarius	archer,horoscope,sagittarius,zodiac
+⛵️	sailboat	sailboat	boat,resort,sailing,sea,yacht
+🍶	sake	sake	bar,beverage,bottle,cup,drink,restaurant
+🧂	salt	salt	condiment,flavor,mad,salty,shaker,taste,upset
+🫡	saluting face	salute,saluting_face	face,good,luck,ma'am,ok,respect,salute,saluting,sir,troops,yes
+👡	woman's sandal	sandal	clothing,sandal,shoe,woman,woman's
+🥪	sandwich	sandwich	bread
+🎅	Santa Claus	santa	celebration,christmas,claus,fairy,fantasy,father,holiday,merry,santa,tale,xmas
+🥻	sari	sari	clothing,dress
+🛰️	satellite	satellite	space
+📡	satellite antenna	satellite_antenna	aliens,antenna,contact,dish,satellite,science
+🦕	sauropod	sauropod	brachiosaurus,brontosaurus,dinosaur,diplodocus
+😋	face savoring food	savoring_food,yum	delicious,eat,face,food,full,hungry,savor,smile,smiling,tasty,um,yum,yummy
+🎷	saxophone	saxophone	instrument,music,sax
+⚖️	balance scale	scales	balance,justice,libra,scale,scales,tool,weight,zodiac
+🧣	scarf	scarf	bundle,cold,neck,up
+🏫	school	school	building
+🧑‍🔬	scientist	scientist	biologist,chemist,engineer,mathematician,physicist
+✂️	scissors	scissors	cut,cutting,paper,tool
+🛴	kick scooter	scooter	kick,scooter
+🦂	scorpion	scorpion	scorpio,scorpius,zodiac
+♏️	Scorpio	scorpius	horoscope,scorpio,scorpion,scorpius,zodiac
+😱	face screaming in fear	scream,screaming_in_fear	epic,face,fear,fearful,munch,scared,scream,screamer,screaming,shocked,surprised,woah
+🙀	weary cat	scream_cat,weary_cat	animal,cat,face,oh,surprised,weary
+🪛	screwdriver	screwdriver	flathead,handy,screw,tool
+📜	scroll	scroll	paper
+🦭	seal	seal	animal,lion,ocean,sea
+💺	seat	seat	chair
+🙈	see-no-evil monkey	see_no_evil	embarrassed,evil,face,forbidden,forgot,gesture,hide,monkey,no,omg,prohibited,scared,secret,smh,watch
+🌱	seedling	seedling	plant,sapling,sprout,young
+🤳	selfie	selfie	camera,phone
+🐕‍🦺	service dog	service_dog	accessibility,animal,assistance,dog,service
+7️⃣	keycap: 7	seven	7,keycap,seven
+🪡	sewing needle	sewing_needle	embroidery,needle,sew,sewing,stitches,sutures,tailoring,thread
+🫨	shaking face	shaking,shaking_face	crazy,daze,earthquake,face,omg,panic,shaking,shock,surprise,vibrate,whoa,wow
+🥘	shallow pan of food	shallow_pan_of_food	casserole,food,paella,pan,shallow
+☘️	shamrock	shamrock	irish,plant
+🦈	shark	shark	animal,fish
+🍧	shaved ice	shaved_ice	dessert,ice,restaurant,shaved,sweet
+🐚	spiral shell	shell	animal,beach,conch,sea,shell,spiral
+🛡️	shield	shield	weapon
+⛩️	shinto shrine	shinto_shrine	religion,shinto,shrine
+🚢	ship	ship	boat,passenger,travel
+👕	t-shirt	shirt	blue,casual,clothes,clothing,collar,dressed,shirt,shopping,tshirt,weekend
+🌠	shooting star	shooting_star,stars	falling,night,shooting,space,star
+🛍️	shopping bags	shopping_bags	bag,bags,hotel,shopping
+🛒	shopping cart	shopping_cart	cart,shopping,trolley
+🩳	shorts	shorts	bathing,pants,suit,swimsuit,underwear
+🪏	shovel	shovel	bury,dig,garden,hole,plant,scoop,snow,spade
+🚿	shower	shower	water
+🦐	shrimp	shrimp	food,shellfish,small
+🔀	shuffle tracks button	shuffle,twisted_rightwards_arrows	arrow,button,crossed,shuffle,tracks
+🤫	shushing face	shush,shushing_face	face,quiet,shh,shush,shushing
+🧑‍🎤	singer	singer	actor,entertainer,rock,rockstar,star
+6️⃣	keycap: 6	six	6,keycap,six
+🔯	dotted six-pointed star	six_pointed_star	dotted,fortune,jewish,judaism,six-pointed,star
+🛹	skateboard	skateboard	board,skate,skater,wheels
+🎿	skis	ski	ski,snow,sport
+💀	skull	skull	body,dead,death,face,fairy,fairytale,i'm,lmao,monster,tale,yolo
+☠️	skull and crossbones	skull_and_crossbones	bone,crossbones,dead,death,face,monster,skull
+🦨	skunk	skunk	animal,stink
+🛷	sled	sled	luge,sledge,sleigh,snow,toboggan
+😴	sleeping face	sleeping,sleeping_face	bed,bedtime,face,good,goodnight,nap,night,sleep,sleeping,tired,whatever,yawn,zzz
+😪	sleepy face	sleepy,sleepy_face	crying,face,good,night,sad,sleep,sleeping,sleepy,tired
+🙁	slightly frowning face	slightly_frowning_face	face,frown,frowning,sad,slightly
+🙂	slightly smiling face	slightly_smiling_face	face,happy,slightly,smile,smiling
+🎰	slot machine	slot_machine	casino,gamble,gambling,game,machine,slot,slots
+🦥	sloth	sloth	lazy,slow
+🛩️	small airplane	small_airplane	aeroplane,airplane,plane,small
+🔹	small blue diamond	small_blue_diamond	blue,diamond,geometric,small
+🔸	small orange diamond	small_orange_diamond	diamond,geometric,orange,small
+🔺	red triangle pointed up	small_red_triangle	geometric,pointed,red,triangle,up
+🔻	red triangle pointed down	small_red_triangle_down	down,geometric,pointed,red,triangle
+🥰	smiling face with hearts	smiling_face_with_3_hearts	3,adore,crush,face,heart,hearts,ily,love,romance,smile,smiling,you
+😎	smiling face with sunglasses	smiling_face_with_sunglasses,sunglasses_cool,too_cool	awesome,beach,bright,bro,chilling,cool,face,rad,relaxed,shades,slay,smile,style,sunglasses,swag,win
+🥲	smiling face with tear	smiling_face_with_tear	face,glad,grateful,happy,joy,pain,proud,relieved,smile,smiley,smiling,tear,touched
+😈	smiling face with horns	smiling_imp	demon,devil,evil,face,fairy,fairytale,fantasy,horns,purple,shade,smile,smiling,tale
+😏	smirking face	smirk,smirking,smirking_face	boss,dapper,face,flirt,homie,kidding,leer,shade,slick,sly,smirk,smug,snicker,suave,suspicious,swag
+😼	cat with wry smile	smirk_cat,wry_smile_cat	animal,cat,face,ironic,smile,wry
+🐌	snail	snail	animal,escargot,garden,nature,slug
+🐍	snake	snake	animal,bearer,ophiuchus,serpent,zodiac
+🤧	sneezing face	sneezing,sneezing_face	face,fever,flu,gesundheit,sick,sneeze,sneezing
+❄️	snowflake	snowflake	cold,snow,weather
+⛄️	snowman without snow	snowman	cold,man,snow,snowman
+☃️	snowman	snowman2	cold,man,snow
+🧼	soap	soap	bar,bathing,clean,cleaning,lather,soapdish
+⚽️	soccer ball	soccer	ball,football,futbol,soccer,sport
+🧦	socks	socks	stocking
+🥎	softball	softball	ball,glove,sports,underarm
+🔜	SOON arrow	soon	arrow,brb,omw,soon
+🆘	SOS button	sos	button,help,sos
+♠️	spade suit	spades	card,game,spade,suit
+🍝	spaghetti	spaghetti	food,meatballs,pasta,restaurant
+❇️	sparkle	sparkle	*
+🎇	sparkler	sparkler	boom,celebration,fireworks,sparkle
+✨️	sparkles	sparkles	*,magic,sparkle,star
+💖	sparkling heart	sparkling_heart	143,emotion,excited,good,heart,ily,kisses,morning,night,sparkle,sparkling,xoxo
+🙊	speak-no-evil monkey	speak_no_evil	animal,evil,face,forbidden,gesture,monkey,no,not,oops,prohibited,quiet,secret,speak,stealth
+🗣️	speaking head	speaking_head	face,head,silhouette,speak,speaking
+💬	speech balloon	speech_balloon	balloon,bubble,comic,dialog,message,sms,speech,talk,text,typing
+🚤	speedboat	speedboat	billionaire,boat,lake,luxury,millionaire,summer,travel
+🕷️	spider	spider	animal,insect
+🕸️	spider web	spider_web	spider,web
+🫟	splatter	splatter	drip,holi,ink,liquid,mess,paint,spill,stain
+🧽	sponge	sponge	absorbing,cleaning,porous,soak
+🥄	spoon	spoon	eat,tableware
+🏅	sports medal	sports_medal	award,gold,medal,sports,winner
+🐳	spouting whale	spouting_whale	animal,beach,face,ocean,spouting,whale
+🦑	squid	squid	animal,food,mollusk
+🏟️	stadium	stadium	stadium
+⭐️	star	star	astronomy,medium,stars,white
+☪️	star and crescent	star_and_crescent	crescent,islam,muslim,ramadan,religion,star
+✡️	star of David	star_of_david	david,jew,jewish,judaism,religion,star
+🤩	star-struck	star_struck	excited,eyes,face,grinning,smile,star,starry-eyed,wow
+🚉	station	station	railway,train
+🗽	Statue of Liberty	statue_of_liberty	liberty,new,ny,nyc,statue,york
+🚂	locomotive	steam_locomotive	caboose,engine,railway,steam,train,trains,travel
+🩺	stethoscope	stethoscope	doctor,heart,medicine
+⏹️	stop button	stop	button,square,stop
+⏱️	stopwatch	stopwatch	clock,time
+⛈️	cloud with lightning and rain	stormy,thunder_cloud_and_rain	cloud,lightning,rain,thunder,thunderstorm
+📏	straight ruler	straight_ruler	angle,edge,math,ruler,straight,straightedge
+🍓	strawberry	strawberry	berry,fruit
+😝	squinting face with tongue	stuck_out_tongue_closed_eyes	closed,eye,eyes,face,gross,horrible,omg,squinting,stuck-out,taste,tongue,whatever,yolo
+😜	winking face with tongue	stuck_out_tongue_winking_eye	crazy,epic,eye,face,funny,joke,loopy,nutty,party,stuck-out,tongue,wacky,weirdo,wink,winking,yolo
+🧑‍🎓	student	student	graduate
+🎙️	studio microphone	studio_microphone	mic,microphone,music,studio
+🥙	stuffed flatbread	stuffed_flatbread	falafel,flatbread,food,gyro,kebab,stuffed
+☀️	sun	sun	bright,rays,space,sunny,weather
+🌦️	sun behind rain cloud	sun_and_rain,sun_behind_rain_cloud	behind,cloud,rain,sun,weather
+🌤️	sun behind small cloud	sun_behind_small_cloud,sunny	behind,cloud,sun,weather
+🌞	sun with face	sun_with_face	beach,bright,day,face,heat,shine,sun,sunny,sunshine,weather
+🌻	sunflower	sunflower	flower,outdoors,plant,sun
+🕶️	sunglasses	sunglasses	dark,eye,eyewear,glasses
+🌅	sunrise	sunrise	morning,nature,sun
+🌄	sunrise over mountains	sunrise_over_mountains	morning,mountains,over,sun,sunrise
+🦸	superhero	superhero	good,hero,superpower
+🦹	supervillain	supervillain	bad,criminal,evil,superpower,villain
+🍣	sushi	sushi	food
+🚟	suspension railway	suspension_railway	railway,suspension
+🦢	swan	swan	animal,bird,cygnet,duckling,ornithology,ugly
+💦	sweat droplets	sweat_drops	comic,drip,droplet,droplets,drops,splashing,squirt,sweat,water,wet,work,workout
+🍠	roasted sweet potato	sweet_potato	food,potato,roasted,sweet
+🔣	input symbols	symbols	%,&,input,symbols,♪,〒
+🕍	synagogue	synagogue	jew,jewish,judaism,religion,temple
+💉	syringe	syringe	doctor,flu,medicine,needle,shot,sick,tool,vaccination
+🦖	T-Rex	t-rex,trex	dinosaur,rex,t,t-rex,tyrannosaurus
+🌮	taco	taco	mexican
+🥡	takeout box	takeout_box	box,chopsticks,delivery,food,oyster,pail,takeout
+🫔	tamale	tamale	food,mexican,pamonha,wrapped
+🎋	tanabata tree	tanabata_tree	banner,celebration,japanese,tanabata,tree
+♉️	Taurus	taurus	bull,horoscope,ox,taurus,zodiac
+🚕	taxi	taxi	cab,cabbie,car,drive,vehicle,yellow
+🍵	teacup without handle	tea	beverage,cup,drink,handle,oolong,tea,teacup
+🧑‍🏫	teacher	teacher	instructor,lecturer,professor
+🫖	teapot	teapot	brew,drink,food,pot,tea
+🧑‍💻	technologist	technologist	coder,computer,developer,inventor,software
+🧸	teddy bear	teddy_bear	bear,plaything,plush,stuffed,teddy,toy
+☎️	telephone	telephone	phone
+📞	telephone receiver	telephone_receiver	communication,phone,receiver,telephone,voip
+🔭	telescope	telescope	contact,extraterrestrial,science,tool
+🔟	keycap: 10	ten	keycap
+🎾	tennis	tennis	ball,racquet,sport
+⛺️	tent	tent	camping
+🧪	test tube	test_tube	chemist,chemistry,experiment,lab,science,test,tube
+🌡️	thermometer	thermometer	weather
+🤔	thinking face	thinking,thinking_face,wtf	chin,consider,face,hmm,ponder,pondering,thinking,wondering
+🩴	thong sandal	thong_sandal	beach,flip,flop,sandal,sandals,shoe,thong,thongs,zōri
+💭	thought balloon	thought_balloon	balloon,bubble,cartoon,cloud,comic,daydream,decisions,dream,idea,invent,invention,realize,think,thoughts,wonder
+🧵	thread	thread	needle,sewing,spool,string
+3️⃣	keycap: 3	three	3,keycap,three
+🎫	ticket	ticket	admission,stub
+🐅	tiger	tiger	animal,big,cat,predator,zoo
+🐯	tiger face	tiger_face	animal,big,cat,face,predator,tiger
+⏲️	timer clock	timer_clock	clock,timer
+😫	tired face	tired,tired_face	cost,face,feels,nap,sad,sneeze,tired
+™️	trade mark	tm,trade_mark	mark,tm,trade,trademark
+🚽	toilet	toilet	bathroom
+🗼	Tokyo tower	tokyo_tower	tokyo,tower
+🍅	tomato	tomato	food,fruit,vegetable
+🏿	dark skin tone	tone_dark,tone5	6,dark,skin,tone,type
+🏻	light skin tone	tone_light,tone1	1–2,light,skin,tone,type
+🏽	medium skin tone	tone_medium,tone3	4,medium,skin,tone,type
+🏾	medium-dark skin tone	tone_medium_dark,tone4	5,medium-dark,skin,tone,type
+🏼	medium-light skin tone	tone_medium_light,tone2	3,medium-light,skin,tone,type
+👅	tongue	tongue	body,lick,slurp
+🧰	toolbox	toolbox	box,chest,mechanic,red,tool
+🦷	tooth	tooth	dentist,pearly,teeth,white
+🪥	toothbrush	toothbrush	bathroom,brush,clean,dental,hygiene,teeth,toiletry
+🔝	TOP arrow	top	arrow,homie,top,up
+🎩	top hat	top_hat,tophat	clothes,clothing,fancy,formal,hat,magic,top,tophat
+🌪️	tornado	tornado	cloud,weather,whirlwind
+🖲️	trackball	trackball	computer
+🚜	tractor	tractor	vehicle
+🚥	horizontal traffic light	traffic_light	horizontal,intersection,light,signal,stop,stoplight,traffic
+🚆	train	train	arrived,choo,railway
+🚊	tram	tram	trolleybus
+🚋	tram car	tram_car	bus,car,tram,trolley,trolleybus
+🏳️‍⚧️	transgender flag	transgender_flag	blue,flag,light,pink,transgender,white
+⚧️	transgender symbol	transgender_symbol	symbol,transgender
+🗑️	wastebasket	trashcan,wastebasket	can,garbage,trash,waste
+🪎	treasure chest	treasure_chest	gem,gold,jewels,loot,money,prize,silver,valuables,wealth
+🚩	triangular flag	triangular_flag,triangular_flag_on_post	construction,flag,golf,post,triangular
+📐	triangular ruler	triangular_ruler	angle,math,rule,ruler,set,slide,triangle,triangular
+🔱	trident emblem	trident	anchor,emblem,poseidon,ship,tool,trident
+🧌	troll	troll	fairy,fantasy,monster,tale,trolling
+🚎	trolleybus	trolleybus	bus,tram,trolley
+🪊	trombone	trombone	brass,instrument,jazz,music,sad,slide
+🏆️	trophy	trophy	champion,champs,prize,slay,sport,victory,win,winning
+🍹	tropical drink	tropical_drink	alcohol,bar,booze,club,cocktail,drink,drinking,drinks,drunk,mai,party,tai,tropical,tropics
+🐠	tropical fish	tropical_fish	animal,fish,fishes,tropical
+🎺	trumpet	trumpet	instrument,music
+🌷	tulip	tulip	blossom,flower,growth,plant
+🥃	tumbler glass	tumbler_glass,whisky	glass,liquor,scotch,shot,tumbler,whiskey,whisky
+🦃	turkey	turkey	bird,gobble,thanksgiving
+🐢	turtle	turtle	animal,terrapin,tortoise
+📺️	television	tv	tv,video
+2️⃣	keycap: 2	two	2,keycap,two
+💕	two hearts	two_hearts	143,anniversary,date,dating,emotion,heart,hearts,ily,kisses,love,loving,two,xoxo
+👬	men holding hands	two_men_holding_hands	bae,bestie,bff,boys,brothers,couple,dating,flirt,friends,hand,hold,men,twins
+👭	women holding hands	two_women_holding_hands	bae,bestie,bff,couple,dating,flirt,friends,girls,hand,hold,sisters,twins,women
+☂️	umbrella	umbrella	clothing,rain
+☔️	umbrella with rain drops	umbrella_with_rain	clothing,drop,drops,rain,umbrella,weather
+😒	unamused face	unamused,unamused_face	...,bored,face,fine,jealous,jel,jelly,pissed,smh,ugh,uhh,unamused,unhappy,weird,whatever
+🦄	unicorn	unicorn,unicorn_face	face
+🔓️	unlocked	unlock,unlocked	cracked,lock,open,unlock
+🆙	UP! button	up2	button,mark,up,up!
+🙃	upside-down face	upside_down_face	face,hehe,smile,upside-down
+✌️	victory hand	v,victory	hand,peace,v,victory
+🧛	vampire	vampire	blood,dracula,fangs,halloween,scary,supernatural,teeth,undead
+🚦	vertical traffic light	vertical_traffic_light	drove,intersection,light,signal,stop,stoplight,traffic,vertical
+📼	videocassette	vhs,videocassette	old,school,tape,vcr,vhs,video
+📳	vibration mode	vibration_mode	cell,communication,mobile,mode,phone,telephone,vibration
+📹️	video camera	video_camera	camcorder,camera,tbt,video
+🎻	violin	violin	instrument,music
+♍️	Virgo	virgo	horoscope,virgo,zodiac
+🌋	volcano	volcano	eruption,mountain,nature
+🏐	volleyball	volleyball	ball,game
+🆚	VS button	vs	button,versus,vs
+🖖	vulcan salute	vulcan	finger,hand,hands,salute,vulcan
+🧇	waffle	waffle	breakfast,indecisive,iron
+🌘	waning crescent moon	waning_crescent_moon	crescent,moon,space,waning
+🌖	waning gibbous moon	waning_gibbous_moon	gibbous,moon,space,waning
+⚠️	warning	warning	caution
+⌚️	watch	watch	clock,time
+🐃	water buffalo	water_buffalo	animal,buffalo,water,zoo
+🚾	water closet	water_closet,wc	bathroom,closet,lavatory,restroom,toilet,water,wc
+🍉	watermelon	watermelon	fruit
+👋	waving hand	wave,waving_hand	bye,cya,g2g,greetings,gtg,hand,hello,hey,hi,later,outtie,ttfn,ttyl,wave,yo,you
+〰️	wavy dash	wavy_dash	dash,punctuation,wavy
+🌒	waxing crescent moon	waxing_crescent_moon	crescent,dreams,moon,space,waxing
+🌔	waxing gibbous moon	waxing_gibbous_moon	gibbous,moon,space,waxing
+😩	weary face	weary,weary_face	crying,face,fail,feels,hungry,mad,nooo,sad,sleepy,tired,unhappy,weary
+💒	wedding	wedding	chapel,hitched,nuptials,romance
+🐋	whale	whale	animal,beach,ocean
+🛞	wheel	wheel	car,circle,tire,turn,vehicle
+☸️	wheel of dharma	wheel_of_dharma	buddhist,dharma,religion,wheel
+⚪️	white circle	white_circle	circle,geometric,white
+❕️	white exclamation mark	white_exclamation	!,exclamation,mark,outlined,punctuation,white
+🏳️	white flag	white_flag	flag,waving,white
+💮	white flower	white_flower	flower,white
+☹️	frowning face	white_frowning_face	face,frown,frowning,sad
+🦳	white hair	white_hair	gray,hair,old,white
+🧑‍🦳	person: white hair	white_haired	adult,person,white hair
+🤍	white heart	white_heart	143,heart,white
+⬜️	white large square	white_large_square	geometric,large,square,white
+◽️	white medium-small square	white_medium_small_square	geometric,medium-small,square,white
+◻️	white medium square	white_medium_square	geometric,medium,square,white
+❔️	white question mark	white_question	?,mark,outlined,punctuation,question,white
+▫️	white small square	white_small_square	geometric,small,square,white
+🔳	white square button	white_square_button	button,geometric,outlined,square,white
+🥀	wilted flower	wilted_flower	dying,flower,wilted
+🌬️	wind face	wind_blowing_face	blow,cloud,face,wind
+🎐	wind chime	wind_chime	bell,celebration,chime,wind
+🪟	window	window	air,frame,fresh,opening,transparent,view
+🍷	wine glass	wine_glass	alcohol,bar,beverage,booze,club,drink,drinking,drinks,glass,restaurant,wine
+🪽	wing	wing	angelic,ascend,aviation,bird,fly,flying,heavenly,mythology,soar
+😉	winking face	wink,winking_face	face,flirt,heartbreaker,sexy,slide,tease,wink,winking,winks
+🛜	wireless	wireless	broadband,computer,connectivity,hotspot,internet,network,router,smartphone,wi-fi,wifi,wlan
+🐺	wolf	wolf,wolf_face	animal,face
+👩	woman	woman	adult,lady
+👩‍🎨	woman artist	woman_artist	artist,palette,woman
+👩‍🚀	woman astronaut	woman_astronaut	astronaut,rocket,space,woman
+👩‍🦲	woman: bald	woman_bald	adult,bald,lady,woman
+🧔‍♀️	woman: beard	woman_bearded	beard,bearded,whiskers,woman
+🚴‍♀️	woman biking	woman_biking	bicycle,bicyclist,bike,biking,cycle,cyclist,riding,sport,woman
+👱‍♀️	woman: blond hair	woman_blond_haired	blond,blond-haired,blonde,hair,woman
+⛹️‍♀️	woman bouncing ball	woman_bouncing_ball	athletic,ball,basketball,bouncing,championship,dribble,net,player,throw,woman
+🙇‍♀️	woman bowing	woman_bowing	apology,ask,beg,bow,bowing,favor,forgive,gesture,meditate,meditation,pity,regret,sorry,woman
+🤸‍♀️	woman cartwheeling	woman_cartwheeling	active,cartwheel,cartwheeling,excited,flip,gymnastics,happy,somersault,woman
+🧗‍♀️	woman climbing	woman_climbing	climb,climber,climbing,mountain,rock,scale,up,woman
+👷‍♀️	woman construction worker	woman_construction_worker	build,construction,fix,hardhat,hat,man,rebuild,remodel,repair,woman,work,worker
+👩‍🍳	woman cook	woman_cook	chef,cook,woman
+👩‍🦱	woman: curly hair	woman_curly_haired	adult,curly hair,lady,woman
+🕵️‍♀️	woman detective	woman_detective	detective,sleuth,spy,woman
+🧝‍♀️	woman elf	woman_elf	elf,elves,enchantment,fantasy,folklore,magic,magical,myth,woman
+🤦‍♀️	woman facepalming	woman_facepalming	again,bewilder,disbelief,exasperation,facepalm,no,not,oh,omg,shock,smh,woman
+👩‍🏭	woman factory worker	woman_factory_worker	assembly,factory,industrial,woman,worker
+🧚‍♀️	woman fairy	woman_fairy	fairy,fairytale,fantasy,myth,person,pixie,tale,titania,wings,woman
+👩‍🌾	woman farmer	woman_farmer	farmer,gardener,rancher,woman
+👩‍🍼	woman feeding baby	woman_feeding_baby	baby,feed,feeding,mom,mother,nanny,newborn,nursing,woman
+👩‍🚒	woman firefighter	woman_firefighter	fire,firefighter,firetruck,woman
+🙍‍♀️	woman frowning	woman_frowning	annoyed,disappointed,disgruntled,disturbed,frown,frowning,frustrated,gesture,irritated,upset,woman
+🧞‍♀️	woman genie	woman_genie	djinn,fantasy,genie,jinn,lamp,myth,rub,wishes,woman
+🙅‍♀️	woman gesturing NO	woman_gesturing_no	forbidden,gesture,hand,no,not,prohibit,woman
+🙆‍♀️	woman gesturing OK	woman_gesturing_ok	exercise,gesture,gesturing,hand,ok,omg,woman
+💇‍♀️	woman getting haircut	woman_getting_haircut	barber,beauty,chop,cosmetology,cut,groom,hair,haircut,parlor,person,shears,style,woman
+💆‍♀️	woman getting massage	woman_getting_massage	face,getting,headache,massage,relax,relaxing,salon,soothe,spa,tension,therapy,treatment,woman
+🏌️‍♀️	woman golfing	woman_golfing	ball,birdie,caddy,driving,golf,golfing,green,pga,putt,range,tee,woman
+💂‍♀️	woman guard	woman_guard	buckingham,guard,helmet,london,palace,woman
+👩‍⚕️	woman health worker	woman_health_worker	doctor,health,healthcare,nurse,therapist,woman,worker
+🧘‍♀️	woman in lotus position	woman_in_lotus_position	cross,legged,legs,lotus,meditation,peace,position,relax,serenity,woman,yoga,yogi,zen
+👩‍🦽	woman in manual wheelchair	woman_in_manual_wheelchair	accessibility,manual,wheelchair,woman
+👩‍🦽‍➡️	woman in manual wheelchair: facing right	woman_in_manual_wheelchair_right	accessibility,facing,manual,right,wheelchair,woman
+👩‍🦼	woman in motorized wheelchair	woman_in_motorized_wheelchair	accessibility,motorized,wheelchair,woman
+👩‍🦼‍➡️	woman in motorized wheelchair: facing right	woman_in_motorized_wheelchair_right	accessibility,facing,motorized,right,wheelchair,woman
+🧖‍♀️	woman in steamy room	woman_in_steamy_room	day,luxurious,pamper,relax,room,sauna,spa,steam,steambath,unwind,woman
+🤵‍♀️	woman in tuxedo	woman_in_tuxedo	formal,tuxedo,wedding,woman
+👩‍⚖️	woman judge	woman_judge	judge,justice,law,scales,woman
+🤹‍♀️	woman juggling	woman_juggling	act,balance,balancing,handle,juggle,juggling,manage,multitask,skill,woman
+🧎‍♀️	woman kneeling	woman_kneeling	kneel,kneeling,knees,woman
+🧎‍♀️‍➡️	woman kneeling: facing right	woman_kneeling_right	facing,kneel,kneeling,knees,right,woman
+🏋️‍♀️	woman lifting weights	woman_lifting_weights	barbell,bodybuilder,deadlift,lifter,lifting,powerlifting,weight,weightlifter,weights,woman,workout
+🧙‍♀️	woman mage	woman_mage	fantasy,mage,magic,play,sorcerer,sorceress,sorcery,spell,summon,witch,wizard,woman
+👩‍🔧	woman mechanic	woman_mechanic	electrician,mechanic,plumber,tradesperson,woman
+🚵‍♀️	woman mountain biking	woman_mountain_biking	bicycle,bicyclist,bike,biking,cycle,cyclist,mountain,riding,sport,woman
+👩‍💼	woman office worker	woman_office_worker	architect,business,manager,office,white-collar,woman,worker
+👩‍✈️	woman pilot	woman_pilot	pilot,plane,woman
+🤾‍♀️	woman playing handball	woman_playing_handball	athletics,ball,catch,chuck,handball,hurl,lob,pitch,playing,sport,throw,toss,woman
+🤽‍♀️	woman playing water polo	woman_playing_water_polo	playing,polo,sport,swimming,water,waterpolo,woman
+👮‍♀️	woman police officer	woman_police_officer	apprehend,arrest,citation,cop,law,officer,over,police,pulled,undercover,woman
+🙎‍♀️	woman pouting	woman_pouting	disappointed,downtrodden,frown,grimace,pouting,scowl,sulk,upset,whine,woman
+🙋‍♀️	woman raising hand	woman_raising_hand	gesture,hand,here,know,me,pick,question,raise,raising,woman
+👩‍🦰	woman: red hair	woman_red_haired	adult,lady,red hair,woman
+🚣‍♀️	woman rowing boat	woman_rowing_boat	boat,canoe,cruise,fishing,lake,oar,paddle,raft,river,row,rowboat,rowing,woman
+🏃‍♀️	woman running	woman_running	fast,hurry,marathon,move,quick,race,racing,run,rush,speed,woman
+🏃‍♀️‍➡️	woman running: facing right	woman_running_right	facing,fast,hurry,marathon,move,quick,race,racing,right,run,rush,speed,woman
+👩‍🔬	woman scientist	woman_scientist	biologist,chemist,engineer,mathematician,physicist,scientist,woman
+🤷‍♀️	woman shrugging	woman_shrugging	doubt,dunno,guess,idk,ignorance,indifference,knows,maybe,shrug,shrugging,whatever,who,woman
+👩‍🎤	woman singer	woman_singer	actor,entertainer,rock,rockstar,singer,star,woman
+🧍‍♀️	woman standing	woman_standing	stand,standing,woman
+👩‍🎓	woman student	woman_student	graduate,student,woman
+🦸‍♀️	woman superhero	woman_superhero	good,hero,heroine,superhero,superpower,woman
+🦹‍♀️	woman supervillain	woman_supervillain	bad,criminal,evil,superpower,supervillain,villain,woman
+🏄‍♀️	woman surfing	woman_surfing	beach,ocean,person,sport,surf,surfer,surfing,swell,waves
+🏊‍♀️	woman swimming	woman_swimming	freestyle,man,sport,swim,swimmer,swimming,triathlon
+👩‍🏫	woman teacher	woman_teacher	instructor,lecturer,professor,teacher,woman
+👩‍💻	woman technologist	woman_technologist	coder,computer,developer,inventor,software,technologist,woman
+💁‍♀️	woman tipping hand	woman_tipping_hand	fetch,flick,flip,gossip,hand,sarcasm,sarcastic,sassy,seriously,tipping,whatever,woman
+🧛‍♀️	woman vampire	woman_vampire	blood,fangs,halloween,scary,supernatural,teeth,undead,vampire,woman
+🚶‍♀️	woman walking	woman_walking	amble,gait,hike,man,pace,pedestrian,stride,stroll,walk,walking,woman
+🚶‍♀️‍➡️	woman walking: facing right	woman_walking_right	amble,facing,gait,hike,man,pace,pedestrian,right,stride,stroll,walk,walking,woman
+👳‍♀️	woman wearing turban	woman_wearing_turban	turban,wearing,woman
+👩‍🦳	woman: white hair	woman_white_haired	adult,lady,white hair,woman
+🧕	woman with headscarf	woman_with_headscarf	bandana,head,headscarf,hijab,kerchief,mantilla,tichel,woman
+👩‍🦯	woman with white cane	woman_with_probing_cane,woman_with_white_cane	accessibility,blind,cane,probing,white,woman
+👰‍♀️	woman with veil	woman_with_veil	bride,veil,wedding,woman
+👩‍🦯‍➡️	woman with white cane: facing right	woman_with_white_cane_right	accessibility,blind,cane,facing,probing,right,white,woman
+🧟‍♀️	woman zombie	woman_zombie	apocalypse,dead,halloween,horror,scary,undead,walking,woman,zombie
+👚	woman's clothes	womans_clothes	blouse,clothes,clothing,collar,dress,dressed,lady,shirt,shopping,woman,woman's
+👒	woman's hat	womans_hat	clothes,clothing,garden,hat,hats,party,woman,woman's
+👯‍♀️	women with bunny ears	women_with_bunny_ears_partying	bestie,bff,bunny,counterpart,dancer,double,ear,identical,pair,party,partying,people,soulmate,twin,twinsies,women
+🤼‍♀️	women wrestling	women_wrestling	combat,duel,grapple,ring,tournament,women,wrestle,wrestling
+🚺️	women's room	womens	bathroom,lavatory,restroom,room,toilet,wc,woman,women's
+🪵	wood	wood	log,lumber,timber
+🥴	woozy face	woozy,woozy_face	dizzy,drunk,eyes,face,intoxicated,mouth,tipsy,uneven,wavy,woozy
+🗺️	world map	world_map	map,world
+🪱	worm	worm	animal,annelid,earthworm,parasite
+😟	worried face	worried,worried_face	anxious,butterflies,face,nerves,nervous,sad,stress,stressed,surprised,worried,worry
+🔧	wrench	wrench	home,improvement,spanner,tool
+✍️	writing hand	writing_hand	hand,write,writing
+🩻	x-ray	x-ray,xray	bones,doctor,medical,skeleton,skull,xray
+🧶	yarn	yarn	ball,crochet,knit
+🥱	yawning face	yawn,yawning,yawning_face	bedtime,bored,face,goodnight,nap,night,sleep,sleepy,tired,whatever,yawn,yawning,zzz
+🟡	yellow circle	yellow_circle	circle,yellow
+💛	yellow heart	yellow_heart	143,cardiac,emotion,heart,ily,love,yellow
+🟨	yellow square	yellow_square	card,penalty,square,yellow
+💴	yen banknote	yen	bank,banknote,bill,currency,money,note,yen
+☯️	yin yang	yin_yang	difficult,lives,religion,tao,taoist,total,yang,yin,yinyang
+🪀	yo-yo	yo_yo	fluctuate,toy
+🤪	zany face	zany,zany_face	crazy,eye,eyes,face,goofy,large,small,zany
+🦓	zebra	zebra	animal,stripe
+0️⃣	keycap: 0	zero	0,keycap,zero
+🤐	zipper-mouth face	zipper_mouth,zipper_mouth_face	face,keep,mouth,quiet,secret,shut,zip,zipper,zipper-mouth
+🧟	zombie	zombie	apocalypse,dead,halloween,horror,scary,undead,walking
+💤	ZZZ	zzz	comic,good,goodnight,night,sleep,sleeping,sleepy,tired,zzz

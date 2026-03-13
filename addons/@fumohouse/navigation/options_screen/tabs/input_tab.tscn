@@ -157,28 +157,35 @@ key = &"input/action/menu_back/bind"
 [node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Back" index="0" unique_id=23282165]
 text = "Game Menu / Back"
 
-[node name="Debug1" parent="MarginContainer/VBoxContainer/UI/Options" parent_id_path=PackedInt32Array(892564600, 852454493) index="1" unique_id=175227248 instance=ExtResource("4_0jmwj")]
+[node name="Chat" parent="MarginContainer/VBoxContainer/UI/Options" parent_id_path=PackedInt32Array(892564600, 852454493) index="1" unique_id=1330548014 instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/chat/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Chat" index="0" unique_id=23282165]
+text = "Open Chat"
+
+[node name="Debug1" parent="MarginContainer/VBoxContainer/UI/Options" parent_id_path=PackedInt32Array(892564600, 852454493) index="2" unique_id=175227248 instance=ExtResource("4_0jmwj")]
 layout_mode = 2
 key = &"input/action/debug_1/bind"
 
 [node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Debug1" index="0" unique_id=23282165]
 text = "Debug 1"
 
-[node name="Debug2" parent="MarginContainer/VBoxContainer/UI/Options" parent_id_path=PackedInt32Array(892564600, 852454493) index="2" unique_id=1091884839 instance=ExtResource("4_0jmwj")]
+[node name="Debug2" parent="MarginContainer/VBoxContainer/UI/Options" parent_id_path=PackedInt32Array(892564600, 852454493) index="3" unique_id=1091884839 instance=ExtResource("4_0jmwj")]
 layout_mode = 2
 key = &"input/action/debug_2/bind"
 
 [node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Debug2" index="0" unique_id=23282165]
 text = "Debug 2"
 
-[node name="Debug3" parent="MarginContainer/VBoxContainer/UI/Options" parent_id_path=PackedInt32Array(892564600, 852454493) index="3" unique_id=1749915513 instance=ExtResource("4_0jmwj")]
+[node name="Debug3" parent="MarginContainer/VBoxContainer/UI/Options" parent_id_path=PackedInt32Array(892564600, 852454493) index="4" unique_id=1749915513 instance=ExtResource("4_0jmwj")]
 layout_mode = 2
 key = &"input/action/debug_3/bind"
 
 [node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Debug3" index="0" unique_id=23282165]
 text = "Debug 3"
 
-[node name="Debug4" parent="MarginContainer/VBoxContainer/UI/Options" parent_id_path=PackedInt32Array(892564600, 852454493) index="4" unique_id=831706414 instance=ExtResource("4_0jmwj")]
+[node name="Debug4" parent="MarginContainer/VBoxContainer/UI/Options" parent_id_path=PackedInt32Array(892564600, 852454493) index="5" unique_id=831706414 instance=ExtResource("4_0jmwj")]
 layout_mode = 2
 key = &"input/action/debug_4/bind"
 
@@ -206,6 +213,7 @@ text = "Debug 4"
 [editable path="MarginContainer/VBoxContainer/Character/Options/Reset"]
 [editable path="MarginContainer/VBoxContainer/UI"]
 [editable path="MarginContainer/VBoxContainer/UI/Options/Back"]
+[editable path="MarginContainer/VBoxContainer/UI/Options/Chat"]
 [editable path="MarginContainer/VBoxContainer/UI/Options/Debug1"]
 [editable path="MarginContainer/VBoxContainer/UI/Options/Debug2"]
 [editable path="MarginContainer/VBoxContainer/UI/Options/Debug3"]

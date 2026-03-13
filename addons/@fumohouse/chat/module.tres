@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="ModuleManifest" format=3 uid="uid://tgjh3lucg7ah"]
+
+[ext_resource type="Script" uid="uid://bv6m4s88g0oi6" path="res://addons/@fumohouse/base/module_autoload.gd" id="1_6ewjo"]
+[ext_resource type="Script" uid="uid://cyriemmrcefgc" path="res://addons/@fumohouse/base/module_dependency.gd" id="2_var8f"]
+[ext_resource type="Script" uid="uid://c5kqgift21f1k" path="res://addons/@fumohouse/base/module_manifest.gd" id="3_c2acl"]
+
+[sub_resource type="Resource" id="Resource_var8f"]
+script = ExtResource("1_6ewjo")
+name = &"ChatManager"
+path = "uid://b42sv4ih5bbic"
+metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
+
+[sub_resource type="Resource" id="Resource_owki5"]
+script = ExtResource("1_6ewjo")
+name = &"EmojiDatabase"
+path = "uid://cjdj73cb6v1bh"
+metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
+
+[sub_resource type="Resource" id="Resource_wup5a"]
+script = ExtResource("1_6ewjo")
+name = &"_ChatSystemMessageHandler"
+path = "uid://cp27rl4gc7cfd"
+metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
+
+[sub_resource type="Resource" id="Resource_6ewjo"]
+script = ExtResource("2_var8f")
+name = &"@fumohouse/netcode"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[sub_resource type="Resource" id="Resource_c2acl"]
+script = ExtResource("2_var8f")
+name = &"@assets/fredoka"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[sub_resource type="Resource" id="Resource_j8uiy"]
+script = ExtResource("2_var8f")
+name = &"@assets/twemoji"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[sub_resource type="Resource" id="Resource_u3dtw"]
+script = ExtResource("2_var8f")
+name = &"@fumohouse/config"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[resource]
+script = ExtResource("3_c2acl")
+dependencies = Array[ExtResource("2_var8f")]([SubResource("Resource_6ewjo"), SubResource("Resource_c2acl"), SubResource("Resource_j8uiy"), SubResource("Resource_u3dtw")])
+autoloads = Array[ExtResource("1_6ewjo")]([SubResource("Resource_var8f"), SubResource("Resource_owki5"), SubResource("Resource_wup5a")])
+additional_files = PackedStringArray("resources/emojibase/*")

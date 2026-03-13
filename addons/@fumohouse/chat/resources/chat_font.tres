@@ -1,0 +1,9 @@
+[gd_resource type="FontVariation" format=3 uid="uid://dwajelmjg7rdt"]
+
+[ext_resource type="FontFile" uid="uid://dj71me3na0it7" path="res://addons/@assets/fredoka/Fredoka-VariableFont_wdth,wght.ttf" id="1_ufmcx"]
+[ext_resource type="FontFile" uid="uid://buvo8pli7unfw" path="res://addons/@assets/twemoji/Twemoji.ttf" id="2_tv61h"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("2_tv61h")])
+base_font = ExtResource("1_ufmcx")
+variation_embolden = 1.0

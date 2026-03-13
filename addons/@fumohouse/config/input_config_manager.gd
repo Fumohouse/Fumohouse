@@ -24,6 +24,7 @@ func _enter_tree():
 	add_action(&"reset_character", kb_event(KEY_F5, false, true))
 
 	add_action(&"menu_back", kb_event(KEY_ESCAPE))
+	add_action(&"chat", kb_event(KEY_ENTER))
 
 	add_action(&"debug_1", kb_event(KEY_F1))
 	add_action(&"debug_2", kb_event(KEY_F2))

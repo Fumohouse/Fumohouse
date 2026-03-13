@@ -12,5 +12,8 @@ pkgs.mkShell {
     # Ordered dithering
     python312Packages.pillow
     python312Packages.numpy
+
+    # Emojibase
+    python312Packages.polib
   ];
 }

@@ -1,0 +1,10 @@
+[gd_resource type="FontVariation" format=3 uid="uid://c50ag78h68eet"]
+
+[ext_resource type="FontFile" uid="uid://dj71me3na0it7" path="res://addons/@assets/fredoka/Fredoka-VariableFont_wdth,wght.ttf" id="1_urplu"]
+[ext_resource type="FontFile" uid="uid://buvo8pli7unfw" path="res://addons/@assets/twemoji/Twemoji.ttf" id="2_pfpe2"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("2_pfpe2")])
+base_font = ExtResource("1_urplu")
+variation_embolden = 1.75
+variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)

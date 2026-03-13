@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://31d03pclahet" path="res://addons/@fumohouse/world/nodes/water_overlay.gd" id="5_a2cmo"]
 [ext_resource type="PackedScene" uid="uid://doaikbfuqcjah" path="res://addons/@fumohouse/debug/overlays/debug_platform_info.tscn" id="5_ayhuy"]
 [ext_resource type="PackedScene" uid="uid://dcjefyuix0jjw" path="res://addons/@fumohouse/character/debug_character.tscn" id="6_34n3o"]
+[ext_resource type="PackedScene" uid="uid://birp3jvhcnk3i" path="res://addons/@fumohouse/chat/ui/chat.tscn" id="7_ayntj"]
 [ext_resource type="PackedScene" uid="uid://c7u8sulgtcigq" path="res://addons/@fumohouse/netcode/debug_networking.tscn" id="10_f7o80"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a2cmo"]
@@ -56,6 +57,9 @@ camera_shape = SubResource("SphereShape3D_a2cmo")
 [node name="Crosshair" parent="HUD" unique_id=1465267177 node_paths=PackedStringArray("camera_controller") instance=ExtResource("5_8cdle")]
 layout_mode = 1
 camera_controller = NodePath("../../Camera3D/CameraController")
+
+[node name="Chat" parent="HUD" unique_id=861335082 instance=ExtResource("7_ayntj")]
+layout_mode = 0
 
 [node name="GameMenu" parent="HUD" unique_id=39645310 instance=ExtResource("4_ayhuy")]
 layout_mode = 1

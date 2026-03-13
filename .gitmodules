@@ -1,0 +1,6 @@
+[submodule "misc/emojibase"]
+	path = misc/emojibase
+	url = https://github.com/milesj/emojibase.git
+[submodule "addons/@assets"]
+	path = addons/@assets
+	url = https://git.seki.pw/Fumohouse/assets.git

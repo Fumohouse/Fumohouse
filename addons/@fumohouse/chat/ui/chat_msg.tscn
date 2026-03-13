@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cyyx2ifh74fr6"]
+
+[ext_resource type="FontVariation" uid="uid://dwajelmjg7rdt" path="res://addons/@fumohouse/chat/resources/chat_font.tres" id="1_2xsbm"]
+[ext_resource type="FontVariation" uid="uid://npu7643ai3p8" path="res://addons/@fumohouse/chat/resources/chat_font_bold.tres" id="2_377jw"]
+[ext_resource type="FontVariation" uid="uid://c50ag78h68eet" path="res://addons/@fumohouse/chat/resources/chat_font_bold_italic.tres" id="3_lvqxt"]
+[ext_resource type="FontVariation" uid="uid://b5r6swi3nkiq2" path="res://addons/@fumohouse/chat/resources/chat_font_italic.tres" id="4_wujvq"]
+
+[node name="ChatMsg" type="RichTextLabel" unique_id=389642066]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_2xsbm")
+theme_override_fonts/bold_font = ExtResource("2_377jw")
+theme_override_fonts/bold_italics_font = ExtResource("3_lvqxt")
+theme_override_fonts/italics_font = ExtResource("4_wujvq")
+theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/bold_font_size = 14
+theme_override_font_sizes/bold_italics_font_size = 14
+theme_override_font_sizes/italics_font_size = 14
+theme_override_font_sizes/mono_font_size = 14
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
