@@ -82,11 +82,12 @@ func _process(delta: float):
 	if not focus_node:
 		mode = CameraMode.MODE_FLOATING
 
-		var direction := Input.get_vector(
-			"move_left", "move_right", "move_forward", "move_backward"
-		)
-		var speed := move_speed_fast if Input.is_action_pressed("move_run") else move_speed
-		camera.position += speed * delta * (camera.basis * Vector3(direction.x, 0, direction.y))
+		if CommonUtils.do_game_input(self):
+			var direction := Input.get_vector(
+				"move_left", "move_right", "move_forward", "move_backward"
+			)
+			var speed := move_speed_fast if Input.is_action_pressed("move_run") else move_speed
+			camera.position += speed * delta * (camera.basis * Vector3(direction.x, 0, direction.y))
 
 		_process_first_person()
 	elif focus_distance == 0.0:
