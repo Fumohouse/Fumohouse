@@ -13,11 +13,11 @@ enum LogType {
 }
 
 const LOG_SCOPE := "Logger"
-const LOG_DIR := "user://logs"
 
 ## The minimum level to log.
 var log_level: LogType
 
+var _log_dir := "user://logs"
 var _os_logger := FumohouseLogger.new()
 var _log_file: FileAccess = null
 var _max_old_logs: int = 4
@@ -26,6 +26,8 @@ var _max_old_logs: int = 4
 func _enter_tree():
 	OS.add_logger(_os_logger)
 	log_level = LogType.DEBUG if OS.is_debug_build() else LogType.INFO
+	if DisplayServer.get_name() == "headless" and not OS.is_debug_build():
+		_log_dir = OS.get_executable_path().get_base_dir().path_join("logs")
 
 	if OS.has_feature("dedicated_server"):
 		_max_old_logs = -1
@@ -89,9 +91,9 @@ func _log(msg: String, scope := "", type: LogType = LogType.INFO):
 
 
 func _init_log_file():
-	if DirAccess.dir_exists_absolute(LOG_DIR):
+	if DirAccess.dir_exists_absolute(_log_dir):
 		# Rotate logs
-		var dir := DirAccess.open(LOG_DIR)
+		var dir := DirAccess.open(_log_dir)
 		if not dir:
 			error("Failed to open log directory.", LOG_SCOPE)
 			return
@@ -107,13 +109,13 @@ func _init_log_file():
 		if _max_old_logs >= 0 and files.size() > _max_old_logs:
 			files.sort()
 			for file in files.slice(0, files.size() - _max_old_logs):
-				DirAccess.remove_absolute(LOG_DIR.path_join(file))
+				DirAccess.remove_absolute(_log_dir.path_join(file))
 	else:
-		if DirAccess.make_dir_absolute(LOG_DIR) != OK:
+		if DirAccess.make_dir_absolute(_log_dir) != OK:
 			error("Failed to create log directory.", LOG_SCOPE)
 			return
 
-	var file_path := LOG_DIR.path_join(
+	var file_path := _log_dir.path_join(
 		(
 			"%s_%d.log"
 			% [Time.get_datetime_string_from_system().replace(":", "-"), OS.get_process_id()]
