@@ -7,12 +7,14 @@ const LOG_SCOPE := "Exporter"
 
 ## Exports the given [param modules] as PCKs. The resulting PCKs will be placed
 ## in [param out_path] as [code]modules/@scope/name.pck[/code].
-static func export(modules: PackedStringArray, platform: String, out_path: String):
+static func export(
+	modules: PackedStringArray, platform: String, out_path: String, dedicated_server := false
+):
 	var temp_dir_hnd := DirAccess.create_temp("fumohouse_export")
 	var temp_dir := temp_dir_hnd.get_current_dir()
 
 	var zip_path := temp_dir.path_join("master.zip")
-	if _export_master_zip(platform, zip_path) != OK:
+	if _export_master_zip(platform, zip_path, dedicated_server) != OK:
 		return
 
 	# Trim output and convert to PCK
@@ -32,7 +34,7 @@ static func export(modules: PackedStringArray, platform: String, out_path: Strin
 ## Exports the base package ([code]@fumohouse/base[/code] and the Godot
 ## executable). The resulting executable and PCK will be placed in
 ## [param out_path].
-static func export_base_package(platform: String, out_path: String):
+static func export_base_package(platform: String, out_path: String, dedicated_server := false):
 	var files := _scan_resources("res://addons/@fumohouse/base")
 
 	# Construct export configuration, leaving most things default
@@ -41,6 +43,7 @@ static func export_base_package(platform: String, out_path: String):
 	export_cfg.set_value("preset.0", "name", platform)
 	export_cfg.set_value("preset.0", "platform", platform)
 	export_cfg.set_value("preset.0", "runnable", false)
+	export_cfg.set_value("preset.0", "dedicated_server", dedicated_server)
 	export_cfg.set_value("preset.0", "export_filter", "resources")
 	export_cfg.set_value("preset.0", "export_files", files)
 	export_cfg.set_value(
@@ -93,7 +96,7 @@ static func export_base_package(platform: String, out_path: String):
 
 ## Export everything in the project to a temporary ZIP file. The files can then
 ## be used to create individual module PCKs.
-static func _export_master_zip(platform: String, zip_path: String) -> Error:
+static func _export_master_zip(platform: String, zip_path: String, dedicated_server: bool) -> Error:
 	var include_filter: PackedStringArray = ["*/COPYRIGHT.txt", "*/plugin.cfg"]
 	Modules.scan_modules()
 	for module in Modules.get_modules():
@@ -104,6 +107,7 @@ static func _export_master_zip(platform: String, zip_path: String) -> Error:
 	export_cfg.set_value("preset.0", "name", platform)
 	export_cfg.set_value("preset.0", "platform", platform)
 	export_cfg.set_value("preset.0", "runnable", false)
+	export_cfg.set_value("preset.0", "dedicated_server", dedicated_server)
 	export_cfg.set_value("preset.0", "export_filter", "all_resources")
 	export_cfg.set_value("preset.0", "include_filter", ", ".join(include_filter))
 	export_cfg.set_value("preset.0", "exclude_filter", "")

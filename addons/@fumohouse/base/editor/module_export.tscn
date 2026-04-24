@@ -34,6 +34,11 @@ popup/item_1/id = 1
 popup/item_2/text = "macOS"
 popup/item_2/id = 2
 
+[node name="DedicatedServer" type="CheckBox" parent="VBoxContainer" unique_id=1438862766]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Export as dedicated server"
+
 [node name="ExportPath" type="LineEdit" parent="VBoxContainer" unique_id=1786787758]
 unique_name_in_owner = true
 layout_mode = 2
