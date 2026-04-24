@@ -9,7 +9,7 @@ signal world_changed(world: WorldManifest)
 signal status_update(msg: String, failure: bool)
 
 const LOG_SCOPE := "WorldManager"
-const _DEFAULT_WORLD := "@fumohouse/fumohouse"
+const DEFAULT_WORLD := "@fumohouse/fumohouse"
 
 ## Callback to get the main scene when leaving. Should return a [Node].
 var get_main_scene: Callable = func(): return null
@@ -115,14 +115,16 @@ func start_singleplayer(id: String):
 
 
 ## Start a multiplayer server using the given world.
-func start_multiplayer_server(id: String) -> Error:
+func start_multiplayer_server(
+	id: String, port := 50103, bind_address := "*", password := "", max_players := 20
+) -> Error:
 	_nm.get_negotiation_payload = func(): return id.to_utf8_buffer()
-	# TODO: server configuration
-	var err := await _nm.serve(50103)
+	var err := await _nm.serve(port, bind_address, password, max_players)
 	if err != OK:
 		return err
 	var world := await load_world(id)
 	if not world:
+		_nm.close_server()
 		return ERR_FILE_NOT_FOUND
 	return OK
 
@@ -164,7 +166,7 @@ func get_title_world() -> WorldManifest:
 	var worlds := get_worlds()
 
 	for world in worlds:
-		if world.name == _DEFAULT_WORLD:
+		if world.name == DEFAULT_WORLD:
 			return world
 
 	return worlds[0] if worlds.size() > 0 else null

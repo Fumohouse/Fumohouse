@@ -97,6 +97,11 @@ var time: int:
 	get:
 		return Time.get_ticks_usec() + _clock_offset
 
+## The maximum number of connections to support at any time.
+var max_players: int:
+	get:
+		return _max_players
+
 ## Getter for custom payload for [code]HELLOS[/code]. If non-empty, this
 ## function is called when the server sends [code]HELLOS[/code] and its output
 ## is injected into the packet payload. Function should take no arguments and
@@ -119,6 +124,7 @@ var _is_quitting := false
 ## used to authenticate with the server depending on what authentication method
 ## is requested.
 var _auth := ""
+var _max_players := 20
 
 var _packets_received := 0
 var _packets_sent := 0
@@ -167,7 +173,7 @@ func _ready():
 
 ## Start a multiplayer session as the server. If provided, require players to
 ## enter [param password] to join.
-func serve(port: int, password := "") -> Error:
+func serve(port: int, bind_address := "*", password := "", max_players := 20) -> Error:
 	if _peer and _peer.get_connection_status() != MultiplayerPeer.CONNECTION_DISCONNECTED:
 		send_status_update("Server is already running", true, false)
 		return ERR_ALREADY_EXISTS
@@ -185,9 +191,10 @@ func serve(port: int, password := "") -> Error:
 	var tls := TLSOptions.server(key, cert)
 
 	_auth = password
+	_max_players = max_players
 
 	_peer = WebSocketMultiplayerPeer.new()
-	var err := _peer.create_server(port, "*", tls)
+	var err := _peer.create_server(port, bind_address, tls)
 	if err != OK:
 		send_status_update("Failed to start server", true, false)
 		return err
@@ -417,6 +424,11 @@ func _on_peer_connected(id: int):
 	Log.info(
 		"New peer %d @ %s:%d" % [id, _peer.get_peer_address(id), _peer.get_peer_port(id)], LOG_SCOPE
 	)
+
+	if _peers.size() >= _max_players:
+		Log.info("Rejecting peer %d due to player limit" % id, LOG_SCOPE)
+		disconnect_with_reason(id, "Server is full", false)
+		return
 
 	_peers[id] = PeerData.new()
 

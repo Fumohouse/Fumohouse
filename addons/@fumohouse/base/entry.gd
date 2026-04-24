@@ -11,4 +11,12 @@ func _ready():
 		return
 
 	Modules.prepare_module(_MAIN_MODULE)
-	(func(): get_tree().change_scene_to_file(mod.entry_scene)).call_deferred()
+
+	if DisplayServer.get_name() == "headless":
+		Log.info("Headless mode detected. Using CLI...")
+		var script: GDScript = load(mod.entry_script)
+		var script_node: Node = script.new()
+		# Don't set it as the scene, so that CLI state can persist if a world is loaded
+		get_tree().root.add_child.call_deferred(script_node)
+	else:
+		(func(): get_tree().change_scene_to_file(mod.entry_scene)).call_deferred()

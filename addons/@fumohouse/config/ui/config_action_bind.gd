@@ -79,6 +79,10 @@ func _on_toggled(is_pressed: bool):
 
 
 func _display_event(event: InputEvent):
+	# keyboard_get_keycode_from_physical not supported
+	if DisplayServer.get_name() == "headless":
+		return "???"
+
 	if event is InputEventKey:
 		var ek := event as InputEventKey
 

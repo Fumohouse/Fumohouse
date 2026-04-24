@@ -9,8 +9,11 @@ extends Resource
 ## [code]@fumohouse/base[/code].
 @export var dependencies: Array[ModuleDependency] = []
 
-## The scene to use when using this module as an entry point.
+## The scene to use when using this module as an entry point in graphical mode.
 @export_file("*.tscn") var entry_scene := ""
+## The script to load when using this module as an entry point in headless or
+## dedicated server mode.
+@export_file("*.gd") var entry_script := ""
 
 ## The scenes/scripts to automatically load as singletons.
 @export var autoloads: Array[ModuleAutoload] = []
