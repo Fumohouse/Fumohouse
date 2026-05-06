@@ -1,7 +1,6 @@
 [book]
 authors = ["voided_etc & co."]
 language = "en"
-multilingual = false
 src = "src"
 title = "Fumohouse Book"
 
@@ -11,3 +10,4 @@ create-missing = false
 [output.html]
 smart-punctuation = true
 additional-css = ["custom.css"]
+hash-files = false

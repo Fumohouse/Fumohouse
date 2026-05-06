@@ -4,7 +4,7 @@
 
 # Development
 
-- [Getting started]()
+- [Getting Started](development.md)
 - [Contributing](contributing/index.md)
   - [Common Guidelines](contributing/common-guidelines.md)
   - [Guidelines for Code](contributing/code-guidelines.md)
