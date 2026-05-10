@@ -47,7 +47,7 @@ func _ready():
 func send_chat(content: String) -> int:
 	if not _nm.is_active:
 		Log.info("[Local] %s" % [content], LOG_SCOPE)
-		chat.emit("Player", 1, content)
+		chat.emit("Player", 0, content)
 		return -1
 
 	if _nm.is_server:

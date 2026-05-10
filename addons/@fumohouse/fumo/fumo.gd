@@ -14,6 +14,9 @@ const _FACE_MAT: ShaderMaterial = preload("./resources/face_material.tres")
 ## Camera distance from the fumo to fully fade out the character.
 @export var camera_fade_end := 0.25
 
+## Multiplayer peer ID, or [code]0[/code] for the singleplayer player.
+var peer := -1
+
 var face_material: ShaderMaterial
 var skin_material: ShaderMaterial
 
