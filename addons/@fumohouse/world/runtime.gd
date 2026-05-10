@@ -16,6 +16,7 @@ const SCREENSHOT_PATH := "user://screenshots"
 
 @onready var _nm := NetworkManager.get_singleton()
 @onready var _cm := ChatManager.get_singleton()
+@onready var _toggleable: Control = %Toggleable
 @onready var _chat: Chat = %Chat
 @onready var _player_list: Control = %PlayerList
 @onready var _chat_button: Button = %ChatButton
@@ -37,6 +38,10 @@ func _ready():
 func _input(event: InputEvent):
 	if event.is_action_pressed(&"player_list"):
 		_players_button.button_pressed = not _players_button.button_pressed
+		get_viewport().set_input_as_handled()
+
+	if event.is_action_pressed(&"toggle_hud"):
+		_toggleable.visible = not _toggleable.visible
 		get_viewport().set_input_as_handled()
 
 	if event.is_action_pressed(&"screenshot"):
