@@ -2,8 +2,9 @@
 
 [ext_resource type="FontFile" uid="uid://dj71me3na0it7" path="res://addons/@assets/fredoka/Fredoka-VariableFont_wdth,wght.ttf" id="1_7pyyj"]
 [ext_resource type="FontFile" uid="uid://buvo8pli7unfw" path="res://addons/@assets/twemoji/Twemoji.ttf" id="2_dsexk"]
+[ext_resource type="FontFile" uid="uid://cjlrmyanet41a" path="res://addons/@assets/noto/NotoSansJP-Bold.ttf" id="2_wsgy6"]
 
 [resource]
-fallbacks = Array[Font]([ExtResource("2_dsexk")])
+fallbacks = Array[Font]([ExtResource("2_wsgy6"), ExtResource("2_dsexk")])
 base_font = ExtResource("1_7pyyj")
 variation_embolden = 1.75

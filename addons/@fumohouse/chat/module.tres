@@ -32,6 +32,11 @@ script = ExtResource("2_var8f")
 name = &"@assets/fredoka"
 metadata/_custom_type_script = "uid://cyriemmrcefgc"
 
+[sub_resource type="Resource" id="Resource_r3xre"]
+script = ExtResource("2_var8f")
+name = &"@assets/noto"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
 [sub_resource type="Resource" id="Resource_j8uiy"]
 script = ExtResource("2_var8f")
 name = &"@assets/twemoji"
@@ -44,6 +49,6 @@ metadata/_custom_type_script = "uid://cyriemmrcefgc"
 
 [resource]
 script = ExtResource("3_c2acl")
-dependencies = Array[ExtResource("2_var8f")]([SubResource("Resource_6ewjo"), SubResource("Resource_c2acl"), SubResource("Resource_j8uiy"), SubResource("Resource_u3dtw")])
+dependencies = Array[ExtResource("2_var8f")]([SubResource("Resource_6ewjo"), SubResource("Resource_c2acl"), SubResource("Resource_r3xre"), SubResource("Resource_j8uiy"), SubResource("Resource_u3dtw")])
 autoloads = Array[ExtResource("1_6ewjo")]([SubResource("Resource_var8f"), SubResource("Resource_owki5"), SubResource("Resource_wup5a")])
 additional_files = PackedStringArray("resources/emojibase/*")
