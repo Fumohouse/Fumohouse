@@ -43,6 +43,9 @@ func _on_server_peer_connected(peer: int):
 
 
 func _on_server_peer_disconnected(peer: int):
+	if _nm.get_peer_state(peer) < NetworkManager.PeerState.JOINED:
+		return
+
 	var psp := PeerState.new()
 	psp.peer = peer
 	psp.identity = _nm.get_peer_identity(peer)

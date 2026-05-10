@@ -16,4 +16,7 @@ func _on_server_peer_joined(peer: int):
 
 
 func _on_server_peer_disconnected(peer: int):
+	if _nm.get_peer_state(peer) < NetworkManager.PeerState.JOINED:
+		return
+
 	_cm.send_system_message("", 0, "%s left" % _nm.get_peer_identity(peer))
