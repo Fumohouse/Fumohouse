@@ -19,6 +19,13 @@ const LOG_SCOPE := "Billboard"
 ## will not work without [member accept_mouse_input].
 @export var accept_keyboard_input := true
 
+@export_subgroup("Anchor")
+
+## Relative anchor point on the texture for the X axis.
+@export_range(0.0, 1.0) var anchor_x := 0.5
+## Relative anchor point on the texture for the Y axis.
+@export_range(0.0, 1.0) var anchor_y := 0.5
+
 ## Whether this sprite is currently consuming keyboard input.
 var is_focused := false
 
@@ -27,6 +34,8 @@ var _orig_size := Vector2.ZERO
 
 
 func _ready():
+	centered = false
+
 	_viewport = SubViewport.new()
 	_viewport.name = "Viewport"
 	_viewport.disable_3d = true
@@ -78,8 +87,10 @@ func _process(delta: float):
 	_viewport.size_2d_override = Vector2i(_orig_size)
 	_viewport.canvas_transform = Transform2D.IDENTITY.scaled(viewport_size / _orig_size)
 
+	offset = Vector2(-viewport_size.x * anchor_x, -viewport_size.y * (1.0 - anchor_y))
+
 	# Must adjust the pixel size in order to update texture size, etc.
-	pixel_size = target_pixel_size * _orig_size.x / screen_size.x
+	pixel_size = target_pixel_size * _orig_size.x / viewport_size.x
 
 
 func _unhandled_mouse(event: InputEventMouse):
