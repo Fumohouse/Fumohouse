@@ -65,6 +65,12 @@ func _push_chat(
 	if pending:
 		lbl.pop()
 
+	if peer == -1:
+		# Only allow for local system messages
+		lbl.meta_clicked.connect(_on_chat_meta_clicked)
+	elif lbl.meta_clicked.is_connected(_on_chat_meta_clicked):
+		lbl.meta_clicked.disconnect(_on_chat_meta_clicked)
+
 	return lbl
 
 
@@ -85,3 +91,9 @@ func _add_label() -> RichTextLabel:
 	# ?
 	set_deferred.call_deferred(&"scroll_vertical", get_v_scroll_bar().max_value)
 	return lbl
+
+
+func _on_chat_meta_clicked(meta: String):
+	if meta.begins_with("user://"):
+		var real_path := ProjectSettings.globalize_path(meta)
+		OS.shell_open(real_path)

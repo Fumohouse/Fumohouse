@@ -26,11 +26,12 @@ func _enter_tree():
 	add_action(&"menu_back", kb_event(KEY_ESCAPE))
 	add_action(&"chat", kb_event(KEY_ENTER))
 	add_action(&"player_list", kb_event(KEY_TAB, true))
+	add_action(&"screenshot", kb_event(KEY_F2))
 
-	add_action(&"debug_1", kb_event(KEY_F1))
-	add_action(&"debug_2", kb_event(KEY_F2))
-	add_action(&"debug_3", kb_event(KEY_F3))
-	add_action(&"debug_4", kb_event(KEY_F4))
+	add_action(&"debug_1", kb_event(KEY_F1, false, true))
+	add_action(&"debug_2", kb_event(KEY_F2, false, true))
+	add_action(&"debug_3", kb_event(KEY_F3, false, true))
+	add_action(&"debug_4", kb_event(KEY_F4, false, true))
 
 
 ## Add a new action that will be added to [InputMap] and registered as a

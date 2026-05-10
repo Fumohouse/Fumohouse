@@ -6,12 +6,16 @@ extends Node3D
 const DebugCharacter := preload("res://addons/@fumohouse/character/debug_character.gd")
 const Chat := preload("res://addons/@fumohouse/chat/ui/chat.gd")
 
+const LOG_SCOPE := "WorldRuntime"
+const SCREENSHOT_PATH := "user://screenshots"
+
 ## Camera to use for the local character.
 @export var camera: CameraController
 ## Debug overlay to bind to the local character.
 @export var debug_character: DebugCharacter
 
 @onready var _nm := NetworkManager.get_singleton()
+@onready var _cm := ChatManager.get_singleton()
 @onready var _chat: Chat = %Chat
 @onready var _player_list: Control = %PlayerList
 @onready var _chat_button: Button = %ChatButton
@@ -33,6 +37,32 @@ func _ready():
 func _input(event: InputEvent):
 	if event.is_action_pressed(&"player_list"):
 		_players_button.button_pressed = not _players_button.button_pressed
+		get_viewport().set_input_as_handled()
+
+	if event.is_action_pressed(&"screenshot"):
+		var img: Image = get_viewport().get_texture().get_image()
+		var err := DirAccess.make_dir_absolute(SCREENSHOT_PATH)
+		if err != OK and err != ERR_ALREADY_EXISTS:
+			var msg := "Failed to create screenshot directory %s (%d)" % [error_string(err), err]
+			_cm.send_local_message("", msg)
+			Log.error(msg, LOG_SCOPE)
+			return
+
+		var file_name := Time.get_datetime_string_from_system().replace(":", "-") + ".png"
+		err = img.save_png(SCREENSHOT_PATH.path_join(file_name))
+		if err == OK:
+			_cm.send_local_message(
+				"",
+				(
+					"Screenshot saved as [url=%s]%s[/url]"
+					% [SCREENSHOT_PATH.path_join(file_name), file_name]
+				)
+			)
+		else:
+			var msg := "Failed to save screenshot: %s (%d)" % [error_string(err), err]
+			_cm.send_local_message("", msg)
+			Log.error(msg, LOG_SCOPE)
+
 		get_viewport().set_input_as_handled()
 
 

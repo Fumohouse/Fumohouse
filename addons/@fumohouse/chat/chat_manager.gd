@@ -66,6 +66,12 @@ func send_chat(content: String) -> int:
 	return req.msg_id
 
 
+## Send a chat message shown only locally.
+func send_local_message(sender: String, content: String):
+	chat.emit(sender, -1, content)
+	Log.info("[Local] %s" % content, LOG_SCOPE)
+
+
 ## Broadcast a message with given [param content] to the given [param peer] (or
 ## broadcast if [code]0[/code]). Server-side only. If not in a multiplayer
 ## session, [signal chat] is fired directly.
