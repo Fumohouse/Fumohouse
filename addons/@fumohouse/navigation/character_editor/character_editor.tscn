@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://4gntby41idbe" path="res://addons/@fumohouse/fumo/character_editor/character_editor_presets.tscn" id="5_gyx0o"]
 [ext_resource type="PackedScene" uid="uid://bofgx233q1y7y" path="res://addons/@fumohouse/fumo/character_editor/character_editor_parts.tscn" id="5_rkn1g"]
 [ext_resource type="PackedScene" uid="uid://cv38xmsx2u3bh" path="res://addons/@fumohouse/fumo/character_editor/character_editor_part_options.tscn" id="7_i2yxw"]
+[ext_resource type="PackedScene" uid="uid://rjt5qv0q8qty" path="res://addons/@fumohouse/fumo/character_editor/character_editor_other.tscn" id="8_e8jtm"]
 
 [node name="CharacterEditorScreen" unique_id=6144290 node_paths=PackedStringArray("tabs", "tab_content") instance=ExtResource("1_nwhkr")]
 tabs = NodePath("TopBar/Tabs")
@@ -21,24 +22,29 @@ theme_override_constants/separation = 16
 script = ExtResource("2_nwhkr")
 
 [node name="Presets" type="Button" parent="TopBar/Tabs" index="0" unique_id=63287037]
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "Presets"
 
 [node name="Face" type="Button" parent="TopBar/Tabs" index="1" unique_id=1750245751]
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "Face"
 
 [node name="Parts" type="Button" parent="TopBar/Tabs" index="2" unique_id=921596658]
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "Parts"
 
 [node name="PartOptions" type="Button" parent="TopBar/Tabs" index="3" unique_id=734189071]
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "Part Options"
+
+[node name="Other" type="Button" parent="TopBar/Tabs" index="4" unique_id=1730031336]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "Other"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer" parent_id_path=PackedInt32Array(1118290265) index="0" unique_id=1759893896]
 layout_mode = 2
@@ -63,5 +69,9 @@ visible = false
 layout_mode = 1
 
 [node name="PartOptions" parent="Contents/MarginContainer/HBoxContainer/TabContent" index="3" unique_id=442900435 instance=ExtResource("7_i2yxw")]
+visible = false
+layout_mode = 1
+
+[node name="Other" parent="Contents/MarginContainer/HBoxContainer/TabContent" index="4" unique_id=491372255 instance=ExtResource("8_e8jtm")]
 visible = false
 layout_mode = 1

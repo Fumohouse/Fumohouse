@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://rjt5qv0q8qty"]
+
+[ext_resource type="Script" uid="uid://cqif4akr177o3" path="res://addons/@fumohouse/fumo/character_editor/character_editor_other.gd" id="1_soyb4"]
+
+[node name="Other" type="ScrollContainer" unique_id=491372255]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_soyb4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1411827863]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="VoicePitch" type="VBoxContainer" parent="VBoxContainer" unique_id=465200670]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Slider" type="HBoxContainer" parent="VBoxContainer/VoicePitch" unique_id=342858535]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="PitchLabel" type="Label" parent="VBoxContainer/VoicePitch/Slider" unique_id=1384327768]
+layout_mode = 2
+text = "Voice Pitch"
+
+[node name="PitchSlider" type="HSlider" parent="VBoxContainer/VoicePitch/Slider" unique_id=733336552]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.7
+max_value = 2.0
+step = 0.05
+value = 1.25
+
+[node name="PitchValue" type="Label" parent="VBoxContainer/VoicePitch/Slider" unique_id=524488911]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1.25"
+
+[node name="Presets" type="HBoxContainer" parent="VBoxContainer/VoicePitch" unique_id=334421993]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="LowPitch" type="Button" parent="VBoxContainer/VoicePitch/Presets" unique_id=1808649731]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Low"
+
+[node name="BasePitch" type="Button" parent="VBoxContainer/VoicePitch/Presets" unique_id=1868356150]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Base"
+
+[node name="HighPitch" type="Button" parent="VBoxContainer/VoicePitch/Presets" unique_id=1207131988]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "High"

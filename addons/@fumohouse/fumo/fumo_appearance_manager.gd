@@ -6,6 +6,8 @@ extends AppearanceManager
 @export var fumo: Fumo
 ## The rig (parent of the armature) of [member fumo].
 @export var rig: Node3D
+## The voicebox to configure the pitch of.
+@export var voicebox: Voicebox3D
 
 ## The character collider.
 @export var collider: CollisionShape3D
@@ -48,6 +50,7 @@ func get_appearance_scale() -> float:
 func _load_custom():
 	_load_face()
 	_load_scale()
+	_load_voice_pitch()
 
 
 func _load_face():
@@ -116,6 +119,10 @@ func _load_scale():
 
 	if fumo.camera:
 		fumo.camera.camera_offset = base_camera_offset * act_scale
+
+
+func _load_voice_pitch():
+	voicebox.pitch = appearance.config.get(&"voice_pitch", 1.25)
 
 
 func _on_fumo_camera_updated(new_camera: CameraController):

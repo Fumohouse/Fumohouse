@@ -37,9 +37,19 @@ script = ExtResource("2_wcwlm")
 name = &"@fumohouse/character_appearance"
 metadata/_custom_type_script = "uid://cyriemmrcefgc"
 
+[sub_resource type="Resource" id="Resource_vjnuw"]
+script = ExtResource("2_wcwlm")
+name = &"@fumohouse/chat"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
+[sub_resource type="Resource" id="Resource_gbm2g"]
+script = ExtResource("2_wcwlm")
+name = &"@fumohouse/tts"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
 [resource]
 script = ExtResource("3_bvh68")
-dependencies = Array[ExtResource("2_wcwlm")]([SubResource("Resource_fji1f"), SubResource("Resource_4mx1m"), SubResource("Resource_ryamt")])
+dependencies = Array[ExtResource("2_wcwlm")]([SubResource("Resource_fji1f"), SubResource("Resource_4mx1m"), SubResource("Resource_ryamt"), SubResource("Resource_vjnuw"), SubResource("Resource_gbm2g")])
 autoloads = Array[ExtResource("1_fji1f")]([SubResource("Resource_chw3y"), SubResource("Resource_xkmxm"), SubResource("Resource_0g7ck")])
 additional_files = PackedStringArray()
 metadata/_custom_type_script = "uid://c5kqgift21f1k"

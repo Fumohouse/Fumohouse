@@ -4,7 +4,7 @@ Upstream-Contact: voided_etc <contact@seki.pw>
 Source: https://git.seki.pw/Fumohouse/Fumohouse/src/branch/main/addons/@fumohouse/fumo_touhou
 
 Files: *
-Comment: Fumohouse character models
+Comment: Touhou fumo assets
  .
  Touhou characters are (c) Team Shanghai Alice, used according to Touhou fanwork
  guidelines: https://touhou-project.news/guideline/
@@ -17,6 +17,11 @@ Copyright: 2021-present, voided_etc & co.
  2025-present, Fumohouse contributors
  1997-present, Team Shanghai Alice
 License: CC-BY-SA-4.0
+
+Files: assets/tts/marisa.wav
+Comment: AquesTalkPlayer Marisa TTS samples
+Copyright: 2022-present, AQUEST
+License: AquesTalkPlayer
 
 Files: assets/shanghai/*
 Comment: Shanghai Doll
@@ -33,3 +38,26 @@ Files: assets/doremy/*
 Comment: Doremy Sweet
 Copyright: 2023-2025, voided_etc
 License: CC-BY-SA-4.0
+
+################################
+# AquesTalkPlayer License Text #
+################################
+
+License: AquesTalkPlayer
+ ライセンス
+ .
+ 使用
+     「AquesTalkPlayer」は、個人が非営利で使用する場合に限り無償で使用できます。
+     商用利用など上記以外の使用には「使用ライセンス(商用コンテンツ向け)」を購入し、 ライセンスキーを設定した上で使用してください。
+     ここでの「個人が非営利」とは、直接間接を問わず営利を目的としない場合に限ります。 また、個人であっても個人事業、会社や大学での使用はこれに含まれません。詳細については、「個人利用規定」を参照してください。
+     また、サーバーに配置してネット経由で第三者に使用させるなど、ダウンロードした本人以外に使用させることを禁止します。
+ .
+ 再配布
+     ダウンロードしたパッケージ全部または一部を無断で再配布することを禁止します。必要に応じて当社サイトからダウンロードしてください。
+ .
+ 免責
+     「AquesTalkPlayer」の使用に関し、当社は一切の保証をせず責任も負いません。
+ .
+ その他
+     本ライセンス内容は、予告なしに変更することがあります。
+     本ライセンス内容に定められていない事項については、著作権法及び関連法規に従うものとします。

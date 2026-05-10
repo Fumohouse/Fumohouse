@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://da56yi37wr7xg"]
+
+[ext_resource type="Script" uid="uid://bqy8wlt4ux6g7" path="res://addons/@fumohouse/fumo/chat_bubbles/chat_bubbles.gd" id="1_3cucg"]
+
+[node name="ChatBubbles" type="Sprite3D" unique_id=334909105]
+script = ExtResource("1_3cucg")
+anchor_y = 1.0
+metadata/_custom_type_script = "uid://ccc2egf38uchc"
+
+[node name="Chats" type="VBoxContainer" parent="." unique_id=1815120445]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 500)
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 2
