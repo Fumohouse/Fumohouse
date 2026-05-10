@@ -29,6 +29,11 @@ func _process(delta: float):
 		_set_alpha(1.0)
 
 
+func refresh():
+	_set_alpha(1.0)
+	_inactive_time = 0.0
+
+
 func _set_alpha(alpha: float):
 	_background.modulate.a = alpha
 	_chat_box.modulate.a = alpha

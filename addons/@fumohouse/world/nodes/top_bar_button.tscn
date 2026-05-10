@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://nvievajiiemt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t57rx"]
+bg_color = Color(0, 0, 0, 0.6862745)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obwdw"]
+bg_color = Color(0, 0, 0, 0.8627451)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhukt"]
+bg_color = Color(0, 0, 0, 0.74509805)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0xmo"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="TopBarButton" type="Button" unique_id=1909994780]
+custom_minimum_size = Vector2(28, 28)
+offset_right = 28.0
+offset_bottom = 28.0
+focus_mode = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_t57rx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_obwdw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jhukt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_s0xmo")

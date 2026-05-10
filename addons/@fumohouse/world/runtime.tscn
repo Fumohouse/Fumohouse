@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://doaikbfuqcjah" path="res://addons/@fumohouse/debug/overlays/debug_platform_info.tscn" id="5_ayhuy"]
 [ext_resource type="PackedScene" uid="uid://dcjefyuix0jjw" path="res://addons/@fumohouse/character/debug_character.tscn" id="6_34n3o"]
 [ext_resource type="PackedScene" uid="uid://birp3jvhcnk3i" path="res://addons/@fumohouse/chat/ui/chat.tscn" id="7_ayntj"]
+[ext_resource type="PackedScene" uid="uid://nvievajiiemt" path="res://addons/@fumohouse/world/nodes/top_bar_button.tscn" id="7_onbec"]
+[ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@fumohouse/base/assets/textures/logo.png" id="7_wmsu3"]
+[ext_resource type="PackedScene" uid="uid://bp28su81srko4" path="res://addons/@fumohouse/world/nodes/player_list.tscn" id="10_60ksn"]
 [ext_resource type="PackedScene" uid="uid://c7u8sulgtcigq" path="res://addons/@fumohouse/netcode/debug_networking.tscn" id="10_f7o80"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a2cmo"]
@@ -58,8 +61,92 @@ camera_shape = SubResource("SphereShape3D_a2cmo")
 layout_mode = 1
 camera_controller = NodePath("../../Camera3D/CameraController")
 
-[node name="Chat" parent="HUD" unique_id=861335082 instance=ExtResource("7_ayntj")]
-layout_mode = 0
+[node name="BarUI" type="VBoxContainer" parent="HUD" unique_id=1773395253]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="TopBar" type="MarginContainer" parent="HUD/BarUI" unique_id=124963496]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/BarUI/TopBar" unique_id=1545763649]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MenuButton" parent="HUD/BarUI/TopBar/HBoxContainer" unique_id=1909994780 instance=ExtResource("7_onbec")]
+layout_mode = 2
+tooltip_text = "Game Menu"
+
+[node name="TextureRect" type="TextureRect" parent="HUD/BarUI/TopBar/HBoxContainer/MenuButton" unique_id=467611312]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_wmsu3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ChatButton" parent="HUD/BarUI/TopBar/HBoxContainer" unique_id=232980168 instance=ExtResource("7_onbec")]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Chat"
+toggle_mode = true
+button_pressed = true
+text = ""
+
+[node name="Spacer" type="Control" parent="HUD/BarUI/TopBar/HBoxContainer" unique_id=1889888649]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="PlayersButton" parent="HUD/BarUI/TopBar/HBoxContainer" unique_id=889598 instance=ExtResource("7_onbec")]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Player List"
+toggle_mode = true
+button_pressed = true
+text = ""
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/BarUI" unique_id=253300963]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="Contents" type="Control" parent="HUD/BarUI/MarginContainer" unique_id=714267133]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Chat" parent="HUD/BarUI/MarginContainer/Contents" unique_id=861335082 instance=ExtResource("7_ayntj")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="PlayerList" parent="HUD/BarUI/MarginContainer/Contents" unique_id=1290974110 instance=ExtResource("10_60ksn")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
 
 [node name="GameMenu" parent="HUD" unique_id=39645310 instance=ExtResource("4_ayhuy")]
 layout_mode = 1
@@ -74,15 +161,19 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="DebugEngineInfo" parent="HUD/DebugMenus" unique_id=1286817329 instance=ExtResource("4_sr5u4")]
+visible = false
 layout_mode = 0
 
 [node name="DebugPlatformInfo" parent="HUD/DebugMenus" unique_id=499663264 instance=ExtResource("5_ayhuy")]
+visible = false
 layout_mode = 0
 
 [node name="DebugNetworking" parent="HUD/DebugMenus" unique_id=890970954 instance=ExtResource("10_f7o80")]
+visible = false
 layout_mode = 0
 
 [node name="DebugCharacter" parent="HUD/DebugMenus" unique_id=551342178 instance=ExtResource("6_34n3o")]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -91,4 +182,5 @@ offset_left = -328.0
 offset_right = 0.0
 grow_horizontal = 0
 
+[connection signal="pressed" from="HUD/BarUI/TopBar/HBoxContainer/MenuButton" to="HUD/GameMenu" method="nav_transition" binds= [true]]
 [connection signal="opened" from="HUD/GameMenu" to="Camera3D/CameraController" method="handle_popup"]

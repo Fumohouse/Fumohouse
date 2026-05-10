@@ -27,7 +27,7 @@ func _input(event: InputEvent):
 		# https://forum.godotengine.org/t/how-to-click-out-of-line-edit/22591/5
 		if event is InputEventMouseButton and not get_global_rect().has_point(event.position):
 			release_focus()
-	else:
+	elif is_visible_in_tree():
 		if event.is_action_pressed(&"chat"):
 			grab_focus()
 			get_viewport().set_input_as_handled()

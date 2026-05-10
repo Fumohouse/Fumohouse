@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cs5p5rc5uptlw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7r5fq"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hu7il"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.5019608)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkea4"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.2509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_engfy"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Button" type="Button" unique_id=72708761]
+focus_mode = 3
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_7r5fq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hu7il")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bkea4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_engfy")
+text = "voided_etc"
+alignment = 0
