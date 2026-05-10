@@ -28,6 +28,7 @@ func _enter_tree():
 
 	add_audio_bus(&"Master")
 	add_audio_bus(&"Music")
+	add_audio_bus(&"TTS")
 
 
 func add_audio_bus(bus: StringName):
