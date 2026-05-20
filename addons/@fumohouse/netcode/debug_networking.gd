@@ -39,9 +39,9 @@ func _process(delta: float):
 		else:
 			var res := ""
 			for peer in _nm.get_peers():
-				res += "%s - %dms\n" % [_nm.get_peer_identity(peer), _nm.get_peer_rtt(peer)]
+				res += "%s - %.2fms\n" % [_nm.get_peer_identity(peer), _nm.get_peer_rtt(peer)]
 			_tbl.set_val(&"ping", res.strip_edges())
 	else:
-		_tbl.set_val(&"ping", "%dms" % _nm.get_peer_rtt(1))
+		_tbl.set_val(&"ping", "%.2fms" % _nm.get_peer_rtt(1))
 
 	_tbl.set_val(&"time", "%.2fs" % (_nm.time / 1e6))

@@ -387,7 +387,7 @@ func get_peer_identity(peer: int) -> String:
 
 
 ## Get last round-trip ping time to this peer, or -1 if the peer does not exist.
-func get_peer_rtt(peer: int) -> int:
+func get_peer_rtt(peer: int) -> float:
 	var data: PeerData = _peers.get(peer)
 	if not data:
 		return -1
