@@ -154,7 +154,8 @@ func _mount_paks(path: String):
 			_mount_paks(full_path)
 		elif file_name.ends_with(".pck"):
 			Log.info("Loading PCK %s..." % [full_path], LOG_SCOPE)
-			if not ProjectSettings.load_resource_pack(full_path, false):
+			# NOTE: Must replace files. https://github.com/godotengine/godot/issues/114726
+			if not ProjectSettings.load_resource_pack(full_path):
 				Log.error("Failed to load PCK.", LOG_SCOPE)
 				return
 
