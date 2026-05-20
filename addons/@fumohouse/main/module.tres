@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://cyriemmrcefgc"
 [sub_resource type="Resource" id="Resource_ikpyo"]
 script = ExtResource("1_u056h")
 name = &"@fumohouse/common"
-metadata/_custom_type_script = ExtResource("1_u056h")
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
 
 [sub_resource type="Resource" id="Resource_n7scs"]
 script = ExtResource("1_u056h")
@@ -34,9 +34,14 @@ script = ExtResource("1_u056h")
 name = &"@fumohouse/mainline_contrib"
 metadata/_custom_type_script = "uid://cyriemmrcefgc"
 
+[sub_resource type="Resource" id="Resource_du5l7"]
+script = ExtResource("1_u056h")
+name = &"@fumohouse/commands"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
 [resource]
 script = ExtResource("1_n5nu5")
-dependencies = Array[ExtResource("1_u056h")]([SubResource("Resource_k1pyv"), SubResource("Resource_ikpyo"), SubResource("Resource_n7scs"), SubResource("Resource_huq3x"), SubResource("Resource_cmul5"), SubResource("Resource_yci67")])
+dependencies = Array[ExtResource("1_u056h")]([SubResource("Resource_k1pyv"), SubResource("Resource_ikpyo"), SubResource("Resource_n7scs"), SubResource("Resource_huq3x"), SubResource("Resource_cmul5"), SubResource("Resource_yci67"), SubResource("Resource_du5l7")])
 entry_scene = "uid://r3htqql86m4u"
 entry_script = "uid://6g6ko77aed6k"
 additional_files = PackedStringArray()

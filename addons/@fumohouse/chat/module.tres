@@ -22,6 +22,12 @@ name = &"_ChatSystemMessageHandler"
 path = "uid://cp27rl4gc7cfd"
 metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
 
+[sub_resource type="Resource" id="Resource_v4uey"]
+script = ExtResource("1_6ewjo")
+name = &"_SayCommand"
+path = "uid://c13j7gtroqtrv"
+metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
+
 [sub_resource type="Resource" id="Resource_6ewjo"]
 script = ExtResource("2_var8f")
 name = &"@fumohouse/netcode"
@@ -47,8 +53,13 @@ script = ExtResource("2_var8f")
 name = &"@fumohouse/config"
 metadata/_custom_type_script = "uid://cyriemmrcefgc"
 
+[sub_resource type="Resource" id="Resource_i5kbq"]
+script = ExtResource("2_var8f")
+name = &"@fumohouse/commands"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
 [resource]
 script = ExtResource("3_c2acl")
-dependencies = Array[ExtResource("2_var8f")]([SubResource("Resource_6ewjo"), SubResource("Resource_c2acl"), SubResource("Resource_r3xre"), SubResource("Resource_j8uiy"), SubResource("Resource_u3dtw")])
-autoloads = Array[ExtResource("1_6ewjo")]([SubResource("Resource_var8f"), SubResource("Resource_owki5"), SubResource("Resource_wup5a")])
+dependencies = Array[ExtResource("2_var8f")]([SubResource("Resource_6ewjo"), SubResource("Resource_c2acl"), SubResource("Resource_r3xre"), SubResource("Resource_j8uiy"), SubResource("Resource_u3dtw"), SubResource("Resource_i5kbq")])
+autoloads = Array[ExtResource("1_6ewjo")]([SubResource("Resource_var8f"), SubResource("Resource_owki5"), SubResource("Resource_wup5a"), SubResource("Resource_v4uey")])
 additional_files = PackedStringArray("resources/emojibase/*")

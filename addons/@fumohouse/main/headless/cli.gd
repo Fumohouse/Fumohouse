@@ -5,6 +5,8 @@ const ServerConfig := preload("server_config.gd")
 
 var _input_thread: Thread
 
+@onready var _commands := CommandRegistry.get_singleton()
+
 
 func _ready():
 	var dir := "." if OS.is_debug_build() else OS.get_executable_path().get_base_dir()
@@ -81,12 +83,15 @@ func _stupid_ascii_art(dir: String):
 func _process_input():
 	while true:
 		var line := OS.read_string_from_stdin().strip_edges()
-		var cmd := line.substr(0, line.find(" "))
-		var rest := line.substr(cmd.length() + 1)
-		var args := rest.split(" ")
+		(
+			(func():
+				var res: Command.CommandResult = _commands.run(line)
+				if res and not res.output.is_empty():
+					Log.info(res.output))
+			. call_deferred()
+		)
 
-		if cmd == "stop":
-			QuitManager.get_singleton().quit.call_deferred()
+		# HACK
+		var command: Command = _commands.get_command(line)
+		if command and command.name == &"quit":
 			break
-		elif cmd == "say":
-			ChatManager.get_singleton().send_system_message.call_deferred("Server", 0, rest)

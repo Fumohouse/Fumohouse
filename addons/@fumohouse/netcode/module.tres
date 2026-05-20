@@ -28,6 +28,12 @@ name = &"_NetcodeHeartbeatHandler"
 path = "uid://nly8ukbtqfge"
 metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
 
+[sub_resource type="Resource" id="Resource_s7y8v"]
+script = ExtResource("1_r1wpg")
+name = &"_PingCommand"
+path = "uid://cehr47k4yxkau"
+metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
+
 [sub_resource type="Resource" id="Resource_2fykn"]
 script = ExtResource("2_mbdd6")
 name = &"@fumohouse/common"
@@ -38,8 +44,13 @@ script = ExtResource("2_mbdd6")
 name = &"@fumohouse/debug"
 metadata/_custom_type_script = "uid://cyriemmrcefgc"
 
+[sub_resource type="Resource" id="Resource_6f5yu"]
+script = ExtResource("2_mbdd6")
+name = &"@fumohouse/commands"
+metadata/_custom_type_script = "uid://cyriemmrcefgc"
+
 [resource]
 script = ExtResource("3_u0lc1")
-dependencies = Array[ExtResource("2_mbdd6")]([SubResource("Resource_2fykn"), SubResource("Resource_46aui")])
-autoloads = Array[ExtResource("1_r1wpg")]([SubResource("Resource_mbdd6"), SubResource("Resource_r1wpg"), SubResource("Resource_u0lc1"), SubResource("Resource_rtv7g")])
+dependencies = Array[ExtResource("2_mbdd6")]([SubResource("Resource_2fykn"), SubResource("Resource_46aui"), SubResource("Resource_6f5yu")])
+autoloads = Array[ExtResource("1_r1wpg")]([SubResource("Resource_mbdd6"), SubResource("Resource_r1wpg"), SubResource("Resource_u0lc1"), SubResource("Resource_rtv7g"), SubResource("Resource_s7y8v")])
 additional_files = PackedStringArray()
