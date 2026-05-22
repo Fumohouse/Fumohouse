@@ -92,6 +92,8 @@ func _spawn_character(
 ) -> Node3D:
 	peer = _get_real_id(peer)
 	var fumo: Fumo = _CHARACTER_SCENE.instantiate()
+	if _nm.is_active:
+		fumo.name = _nm.local_identity if peer == 0 else _nm.get_peer_identity(peer)
 	fumo.peer = peer
 	if _nm.is_active:
 		if _nm.is_server:
@@ -123,11 +125,8 @@ func _spawn_character(
 	fumo.appearance_manager.appearance = appearance
 	# Loaded on ready
 
-	if _nm.is_active:
-		fumo.name = _nm.local_identity if peer == 0 else _nm.get_peer_identity(peer)
-
 	if peer in _characters:
-		_characters[peer].queue_free()
+		_characters[peer].free()
 	_characters[peer] = fumo
 
 	add_child(fumo)
