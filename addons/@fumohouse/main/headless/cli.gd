@@ -24,9 +24,6 @@ func _ready():
 		config.save_config(ini)
 		ini.save(config_path)
 
-	_input_thread = Thread.new()
-	_input_thread.start(_process_input)
-
 	var err := await WorldManager.get_singleton().start_multiplayer_server(
 		config.world, config.port, config.address, config.password, config.max_players
 	)
@@ -34,6 +31,10 @@ func _ready():
 	if err != OK:
 		Log.info("Failed to start server: %s (%d)" % [error_string(err), err], LOG_SCOPE)
 		QuitManager.get_singleton().quit()
+		return
+
+	_input_thread = Thread.new()
+	_input_thread.start(_process_input)
 
 
 func _exit_tree():
