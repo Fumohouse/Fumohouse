@@ -32,7 +32,7 @@ func _gui_input(event: InputEvent):
 
 
 func _unhandled_input(event: InputEvent):
-	if not action.is_empty() and event.is_action_pressed(action):
+	if not action.is_empty() and event.is_action_pressed(action, false, true):
 		set_window_visible(not visible)
 		get_viewport().set_input_as_handled()
 

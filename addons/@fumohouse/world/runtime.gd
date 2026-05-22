@@ -36,15 +36,15 @@ func _ready():
 
 
 func _input(event: InputEvent):
-	if event.is_action_pressed(&"player_list"):
+	if event.is_action_pressed(&"player_list", false, true):
 		_players_button.button_pressed = not _players_button.button_pressed
 		get_viewport().set_input_as_handled()
 
-	if event.is_action_pressed(&"toggle_hud"):
+	if event.is_action_pressed(&"toggle_hud", false, true):
 		_toggleable.visible = not _toggleable.visible
 		get_viewport().set_input_as_handled()
 
-	if event.is_action_pressed(&"screenshot"):
+	if event.is_action_pressed(&"screenshot", false, true):
 		var img: Image = get_viewport().get_texture().get_image()
 		var err := DirAccess.make_dir_absolute(SCREENSHOT_PATH)
 		if err != OK and err != ERR_ALREADY_EXISTS:

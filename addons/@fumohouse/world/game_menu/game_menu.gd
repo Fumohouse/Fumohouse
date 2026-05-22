@@ -50,7 +50,7 @@ func _ready():
 
 
 func _unhandled_input(event: InputEvent):
-	if event.is_action_pressed(&"menu_back") and not _is_visible:
+	if event.is_action_pressed(&"menu_back", false, true) and not _is_visible:
 		nav_transition(true)
 		get_viewport().set_input_as_handled()
 		return

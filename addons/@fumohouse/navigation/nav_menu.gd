@@ -27,7 +27,7 @@ func _ready():
 
 
 func _unhandled_input(event: InputEvent):
-	if not inhibit_back and Input.is_action_pressed("menu_back"):
+	if not inhibit_back and Input.is_action_pressed("menu_back", true):
 		var focus: Control = get_viewport().gui_get_focus_owner()
 		if focus and focus.has_meta("block_dismiss") and focus.get_meta("block_dismiss") == true:
 			return
