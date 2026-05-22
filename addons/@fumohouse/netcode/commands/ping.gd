@@ -11,7 +11,7 @@ func _run(args: PackedStringArray, rest: String) -> CommandResult:
 	var nm := NetworkManager.get_singleton()
 
 	for peer in nm.get_peers():
-		lines.push_back("%s - %.2fms\n" % [nm.get_peer_identity(peer), nm.get_peer_rtt(peer)])
+		lines.push_back("%s - %.2fms" % [nm.get_peer_identity(peer), nm.get_peer_rtt(peer)])
 
 	var res := CommandResult.new()
 	res.output = "\n".join(lines)
