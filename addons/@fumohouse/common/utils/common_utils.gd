@@ -57,3 +57,18 @@ static func get_aabb(node: Node3D, exclude: Array[Node] = [], do_transform := fa
 		bounds = node.transform * bounds
 
 	return bounds
+
+
+## Sanitize BBCode brackets within [param input].
+static func sanitize_bbcode(input: String) -> String:
+	var out := ""
+	# Don't use replace (will replace the [lb] and [rb])
+	for c in input:
+		if c == "[":
+			out += "[lb]"
+		elif c == "]":
+			out += "[rb]"
+		else:
+			out += c
+
+	return out

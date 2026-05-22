@@ -55,7 +55,7 @@ func _push_chat(
 
 	if not sender.is_empty():
 		lbl.push_color(Color.from_hsv((peer % 360) / 360.0, 0.5, 1.0))
-		lbl.append_text("[%s]" % sender)
+		lbl.append_text("[lb]%s[rb]" % CommonUtils.sanitize_bbcode(sender))
 		lbl.pop()
 		lbl.append_text(" ")
 

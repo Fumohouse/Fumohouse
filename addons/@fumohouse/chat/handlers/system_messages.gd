@@ -11,7 +11,9 @@ func _ready():
 
 
 func _on_server_peer_joined(peer: int):
-	_cm.send_system_message("", 0, "%s joined" % _nm.get_peer_identity(peer))
+	_cm.send_system_message(
+		"", 0, "%s joined" % CommonUtils.sanitize_bbcode(_nm.get_peer_identity(peer))
+	)
 	_cm.send_system_message("", peer, "Welcome to Fumohouse!")
 
 
@@ -19,4 +21,6 @@ func _on_server_peer_disconnected(peer: int):
 	if _nm.get_peer_state(peer) < NetworkManager.PeerState.JOINED:
 		return
 
-	_cm.send_system_message("", 0, "%s left" % _nm.get_peer_identity(peer))
+	_cm.send_system_message(
+		"", 0, "%s left" % CommonUtils.sanitize_bbcode(_nm.get_peer_identity(peer))
+	)
