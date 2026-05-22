@@ -17,11 +17,15 @@ func _ready():
 
 
 func _update_position():
-	var aabb := CommonUtils.get_aabb(target, [self])
-	# stupid
+	# this is stupid
+	for i in 2:
+		await get_tree().process_frame
+
+	# this is less stupid
+	var aabb := CommonUtils.get_aabb(target, [self], true)
+	var local_aabb: AABB = (
+		get_parent().global_transform.affine_inverse() * target.get_parent().global_transform * aabb
+	)
 	position.y = (
-		(target.global_position - get_parent().global_position).length()
-		+ aabb.position.y
-		+ aabb.size.y
-		+ margin
+		local_aabb.position.y + local_aabb.size.y + margin / get_parent().global_basis.get_scale().y
 	)

@@ -353,13 +353,11 @@ use_external_skeleton = true
 external_skeleton = NodePath("../../Rig/Armature/Skeleton3D")
 
 [node name="Nametag" parent="Appearance/Torso" index="0" unique_id=1334871704 node_paths=PackedStringArray("fumo", "appearance_manager", "target") instance=ExtResource("3_sgryk")]
-transform = Transform3D(1, -1.882614e-08, 1.9636479e-08, 1.9636484e-08, 0.9991127, -0.042118005, -1.8826139e-08, 0.042118005, 0.9991127, 3.9885474e-08, -0.83657944, -0.050869778)
 fumo = NodePath("../../..")
 appearance_manager = NodePath("../..")
 target = NodePath("../../Head")
 
 [node name="ChatBubbles" parent="Appearance/Torso" index="1" unique_id=334909105 node_paths=PackedStringArray("fumo", "voicebox", "appearance_manager", "target") instance=ExtResource("5_oqyim")]
-transform = Transform3D(1, -1.9580435e-08, 2.0326578e-08, 2.0648166e-08, 0.9985448, -0.053931057, -1.9241003e-08, 0.053931057, 0.9985448, -4.458447e-08, 3.3717318, 0.09538275)
 fumo = NodePath("../../..")
 voicebox = NodePath("../../Head/Voicebox3D")
 appearance_manager = NodePath("../..")
@@ -371,7 +369,7 @@ shape = SubResource("BoxShape3D_xnl8h")
 
 [node name="Rig" parent="." index="2" unique_id=8431624 instance=ExtResource("2_6pbm6")]
 
-[node name="Skeleton3D" parent="Rig/Armature" parent_id_path=PackedInt32Array(8431624, 1747809616) index="0" unique_id=1801548885]
+[node name="Skeleton3D" parent="Rig/Armature" parent_id_path=PackedInt32Array(8431624, 2008269821) index="0" unique_id=2062695228]
 bones/0/position = Vector3(-2.4415677e-08, 0.9055685, 0.015589586)
 bones/0/rotation = Quaternion(-0.021063676, -9.617788e-09, -9.61779e-09, 0.99977815)
 bones/1/position = Vector3(0.20190851, 1.0273482, 0.03863787)
@@ -384,22 +382,22 @@ bones/6/rotation = Quaternion(0.99348205, 0.07610068, 0.07937632, -0.030025514)
 bones/8/position = Vector3(-0.21390305, 0.18679196, 0.01592017)
 bones/8/rotation = Quaternion(0.99398017, -0.073023796, -0.07616751, -0.029488051)
 
-[node name="HeadModel" parent="Rig/Armature/Skeleton3D" index="0" unique_id=1904065596]
+[node name="HeadModel" parent="Rig/Armature/Skeleton3D" index="0" unique_id=2130808810]
 surface_material_override/0 = SubResource("ShaderMaterial_icnyf")
 
-[node name="LArmModel" parent="Rig/Armature/Skeleton3D" index="1" unique_id=2013967158]
+[node name="LArmModel" parent="Rig/Armature/Skeleton3D" index="1" unique_id=602417207]
 surface_material_override/0 = SubResource("ShaderMaterial_icnyf")
 
-[node name="LLegModel" parent="Rig/Armature/Skeleton3D" index="2" unique_id=1354668632]
+[node name="LLegModel" parent="Rig/Armature/Skeleton3D" index="2" unique_id=345823641]
 surface_material_override/0 = SubResource("ShaderMaterial_icnyf")
 
-[node name="RArmModel" parent="Rig/Armature/Skeleton3D" index="3" unique_id=1182842114]
+[node name="RArmModel" parent="Rig/Armature/Skeleton3D" index="3" unique_id=1744334923]
 surface_material_override/0 = SubResource("ShaderMaterial_icnyf")
 
-[node name="RLegModel" parent="Rig/Armature/Skeleton3D" index="4" unique_id=513236248]
+[node name="RLegModel" parent="Rig/Armature/Skeleton3D" index="4" unique_id=155428848]
 surface_material_override/0 = SubResource("ShaderMaterial_icnyf")
 
-[node name="TorsoModel" parent="Rig/Armature/Skeleton3D" index="5" unique_id=566423187]
+[node name="TorsoModel" parent="Rig/Armature/Skeleton3D" index="5" unique_id=881307909]
 surface_material_override/0 = SubResource("ShaderMaterial_icnyf")
 
 [node name="TorsoAttachment" type="BoneAttachment3D" parent="Rig/Armature/Skeleton3D" index="6" unique_id=84639422]
@@ -418,7 +416,7 @@ explosiveness = 0.5
 process_material = SubResource("ParticleProcessMaterial_5tkov")
 draw_pass_1 = SubResource("PlaneMesh_sv13b")
 
-[node name="AnimationTree" type="AnimationTree" parent="Rig/Armature" parent_id_path=PackedInt32Array(8431624, 1747809616) index="1" unique_id=1342839185]
+[node name="AnimationTree" type="AnimationTree" parent="Rig/Armature" parent_id_path=PackedInt32Array(8431624, 2008269821) index="1" unique_id=1342839185]
 unique_name_in_owner = true
 root_node = NodePath("%AnimationTree/../..")
 tree_root = SubResource("AnimationNodeBlendTree_mgvk1")
@@ -446,7 +444,7 @@ parameters/dead/current_state = ""
 parameters/dead/transition_request = ""
 parameters/dead/current_index = -1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Rig/Armature" parent_id_path=PackedInt32Array(8431624, 1747809616) index="2" unique_id=603692781]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rig/Armature" parent_id_path=PackedInt32Array(8431624, 2008269821) index="2" unique_id=603692781]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_ji0op")
 

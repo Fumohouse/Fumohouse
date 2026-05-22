@@ -35,7 +35,7 @@ static func wait_for_ui_update(node: Node):
 		await node.get_tree().process_frame
 
 
-## Get the [AABB] in world space of the given [param node]. Optionally exclude
+## Get the [AABB] in local space of the given [param node]. Optionally exclude
 ## nodes from the interior search.
 ## https://www.reddit.com/r/godot/comments/18bfn0n/comment/mcvw7cl/
 static func get_aabb(node: Node3D, exclude: Array[Node] = [], do_transform := false) -> AABB:
