@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cdxg2w1khoiq4" path="res://addons/@fumohouse/base/assets/textures/faces_bg.svg" id="3_lqqwp"]
 [ext_resource type="PackedScene" uid="uid://cce2lc4hx05ok" path="res://addons/@fumohouse/main/ui/play_screen/play_screen.tscn" id="4_3w01d"]
 [ext_resource type="PackedScene" uid="uid://c55ax8y8twfnj" path="res://addons/@fumohouse/navigation/options_screen/options_screen.tscn" id="4_eq6r0"]
+[ext_resource type="Texture2D" uid="uid://sk4bundkcsf6" path="res://addons/@fumohouse/main/assets/textures/CDMP8.svg" id="4_utajb"]
 [ext_resource type="PackedScene" uid="uid://bdohqbssyckea" path="res://addons/@fumohouse/navigation/character_editor/character_editor.tscn" id="5_eq6r0"]
 [ext_resource type="Script" uid="uid://beubs5pgskp1y" path="res://addons/@fumohouse/main/ui/main_screen.gd" id="5_qhi0j"]
 [ext_resource type="PackedScene" uid="uid://b1rxl7pcre3s7" path="res://addons/@fumohouse/main/ui/info_screen_main/info_screen_main.tscn" id="5_utajb"]
@@ -70,6 +71,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.313726)
+
+[node name="Patch" type="TextureRect" parent="Background" index="2" unique_id=2119553366]
+modulate = Color(1, 1, 1, 0.15686275)
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_utajb")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="PlayScreen" parent="Screens" parent_id_path=PackedInt32Array(381545900) index="0" unique_id=396151904 instance=ExtResource("4_3w01d")]
 visible = false
