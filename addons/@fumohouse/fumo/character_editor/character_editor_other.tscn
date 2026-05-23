@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://rjt5qv0q8qty"]
 
 [ext_resource type="Script" uid="uid://cqif4akr177o3" path="res://addons/@fumohouse/fumo/character_editor/character_editor_other.gd" id="1_soyb4"]
+[ext_resource type="Script" uid="uid://tkik3eno86eh" path="res://addons/@fumohouse/common/nodes/basic_color_picker_button.gd" id="2_3tkhi"]
 
 [node name="Other" type="ScrollContainer" unique_id=491372255]
 anchors_preset = 15
@@ -14,6 +15,21 @@ script = ExtResource("1_soyb4")
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
+
+[node name="RigColor" type="HBoxContainer" parent="VBoxContainer" unique_id=1615222437]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="VBoxContainer/RigColor" unique_id=69070357]
+layout_mode = 2
+text = "Rig Color"
+
+[node name="RigColorPicker" type="ColorPickerButton" parent="VBoxContainer/RigColor" unique_id=1386944798]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+script = ExtResource("2_3tkhi")
+metadata/_custom_type_script = "uid://tkik3eno86eh"
 
 [node name="VoicePitch" type="VBoxContainer" parent="VBoxContainer" unique_id=465200670]
 layout_mode = 2

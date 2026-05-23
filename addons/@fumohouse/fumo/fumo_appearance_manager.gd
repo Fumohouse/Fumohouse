@@ -50,6 +50,7 @@ func get_appearance_scale() -> float:
 func _load_custom():
 	_load_face()
 	_load_scale()
+	_load_rig_color()
 	_load_voice_pitch()
 
 
@@ -119,6 +120,12 @@ func _load_scale():
 
 	if fumo.camera:
 		fumo.camera.camera_offset = base_camera_offset * act_scale
+
+
+func _load_rig_color():
+	var color: Color = appearance.config.get(&"rig_color", Color(0.988, 0.918, 0.831))
+	fumo.face_material.set_shader_parameter(&"skin_color", color)
+	fumo.skin_material.set_shader_parameter(&"albedo", color)
 
 
 func _load_voice_pitch():
