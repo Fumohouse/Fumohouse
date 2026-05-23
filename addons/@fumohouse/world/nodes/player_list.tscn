@@ -18,7 +18,7 @@ corner_radius_bottom_left = 8
 
 [node name="PlayerList" type="PanelContainer" unique_id=1290974110]
 clip_children = 1
-custom_minimum_size = Vector2(150, 200)
+custom_minimum_size = Vector2(180, 250)
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6d7j")
 script = ExtResource("1_nysmw")
 

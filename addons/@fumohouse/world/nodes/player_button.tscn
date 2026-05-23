@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cs5p5rc5uptlw"]
 
+[ext_resource type="Script" uid="uid://b0yqjjtg1biy2" path="res://addons/@fumohouse/common/nodes/auto_font_size.gd" id="1_j2ad7"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7r5fq"]
 content_margin_left = 12.0
 content_margin_top = 8.0
@@ -34,6 +36,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="Button" type="Button" unique_id=72708761]
+custom_minimum_size = Vector2(0, 32)
 focus_mode = 3
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_7r5fq")
@@ -42,3 +45,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_bkea4")
 theme_override_styles/focus = SubResource("StyleBoxFlat_engfy")
 text = "voided_etc"
 alignment = 0
+text_overrun_behavior = 5
+clip_text = true
+script = ExtResource("1_j2ad7")
+horizontal_alignment_property = &"alignment"
+max_size = 16
+padding = 36.0
