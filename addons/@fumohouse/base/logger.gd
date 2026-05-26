@@ -61,16 +61,11 @@ func error(msg: String, scope := ""):
 	_os_logger.override_scope = ""
 
 
-func _log(msg: String, scope := "", type: LogType = LogType.INFO):
+func _log(msg: String, scope := "", type: LogType = LogType.INFO, do_print := true):
 	if type < log_level:
 		return
 
 	var body := ""
-
-	if OS.is_debug_build():
-		body += "[%d] " % OS.get_process_id()
-
-	body += "%s > " % Time.get_datetime_string_from_system()
 	if not scope.is_empty():
 		body += "[%s] " % scope
 	body += "[%s] " % LogType.keys()[type]
@@ -81,11 +76,13 @@ func _log(msg: String, scope := "", type: LogType = LogType.INFO):
 	else:
 		body += msg.substr(0, line_idx) + "\n" + msg.substr(line_idx + 1).indent("    ")
 
-	_os_logger.disable = true
-	print(body)
-	_os_logger.disable = false
+	if do_print:
+		_os_logger.disable = true
+		print(body)
+		_os_logger.disable = false
 	if _log_file:
-		_log_file.store_line(body)
+		var file_body := "%s > " % Time.get_datetime_string_from_system() + body
+		_log_file.store_line(file_body)
 		_log_file.flush()
 	log.emit(msg, scope, type, body)
 
@@ -219,7 +216,10 @@ class FumohouseLogger:
 
 		var scope := "Godot" if override_scope.is_empty() else override_scope
 		Log._log(
-			msg, scope, LogType.WARN if error_type == Logger.ERROR_TYPE_WARNING else LogType.ERROR
+			msg.strip_edges(),
+			scope,
+			LogType.WARN if error_type == Logger.ERROR_TYPE_WARNING else LogType.ERROR,
+			false
 		)
 
 	func _log_message(message: String, error: bool):
@@ -227,4 +227,4 @@ class FumohouseLogger:
 			return
 
 		var scope := "Godot" if override_scope.is_empty() else override_scope
-		Log._log(message, scope, LogType.WARN if error else LogType.INFO)
+		Log._log(message.strip_edges(), scope, LogType.WARN if error else LogType.INFO, false)
