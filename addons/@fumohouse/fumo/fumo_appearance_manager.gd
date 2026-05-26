@@ -2,6 +2,8 @@ class_name FumoAppearanceManager
 extends AppearanceManager
 ## The appearance manager for fumo models.
 
+const _STAND_UP_WAIT := 0.5
+
 ## The fumo to manage the appearance of.
 @export var fumo: Fumo
 ## The rig (parent of the armature) of [member fumo].
@@ -45,6 +47,15 @@ func get_appearance_scale() -> float:
 
 	var scale: Variant = appearance.config.get(&"scale")
 	return scale if scale is float else 1.0
+
+
+func load_appearance():
+	# Changing scale while sitting causes problems
+	if fumo.state.is_ragdoll:
+		fumo.state.set_ragdoll(false)
+		await get_tree().create_timer(_STAND_UP_WAIT).timeout
+
+	super()
 
 
 func _load_custom():
