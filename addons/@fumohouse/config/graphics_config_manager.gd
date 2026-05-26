@@ -149,6 +149,8 @@ func _enter_tree():
 		func(value: DisplayServer.VSyncMode): DisplayServer.window_set_vsync_mode(value)
 	)
 
+	cm.add_opt(&"graphics/max_fps", 0, func(value: int): Engine.max_fps = value)
+
 	cm.add_opt(
 		&"graphics/ui_scale",
 		1.0,

@@ -10,7 +10,10 @@ func _ready():
 
 
 func _set_value(value: Variant):
-	btn.select(value)
+	for i in btn.get_item_count():
+		if btn.get_item_id(i) == value:
+			btn.select(i)
+			return
 
 
 func _get_value():

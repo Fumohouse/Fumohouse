@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dx1sp5c0awg1f" path="res://addons/@fumohouse/navigation/options_screen/options_tab.tscn" id="1_ejtek"]
 [ext_resource type="PackedScene" uid="uid://3pgovqemhie4" path="res://addons/@fumohouse/navigation/options_screen/options_group.tscn" id="2_lqpwh"]
 [ext_resource type="PackedScene" uid="uid://owbmfk1mfsb7" path="res://addons/@fumohouse/config/ui/config_option_button.tscn" id="3_0p1jq"]
+[ext_resource type="Script" uid="uid://c0hiwahmp38n2" path="res://addons/@fumohouse/navigation/options_screen/tabs/config_max_fps.gd" id="4_35r8i"]
 [ext_resource type="PackedScene" uid="uid://dkc1c5664nsdq" path="res://addons/@fumohouse/config/ui/config_range.tscn" id="4_lqpwh"]
 [ext_resource type="PackedScene" uid="uid://bg87aw2lxnk7r" path="res://addons/@fumohouse/config/ui/config_button.tscn" id="5_0p1jq"]
 
@@ -66,7 +67,31 @@ popup/item_2/id = 2
 popup/item_3/text = "Mailbox"
 popup/item_3/id = 3
 
-[node name="FOV" parent="MarginContainer/VBoxContainer/General/Options" parent_id_path=PackedInt32Array(1625240470, 852454493) index="3" unique_id=62524002 instance=ExtResource("4_lqpwh")]
+[node name="MaxFPS" parent="MarginContainer/VBoxContainer/General/Options" parent_id_path=PackedInt32Array(1625240470, 852454493) index="3" unique_id=484871160 instance=ExtResource("3_0p1jq")]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+script = ExtResource("4_35r8i")
+key = &"graphics/max_fps"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/General/Options/MaxFPS" index="0" unique_id=23282165]
+text = "Max FPS"
+
+[node name="OptionButtonOffset" parent="MarginContainer/VBoxContainer/General/Options/MaxFPS" index="3" unique_id=1802035358]
+item_count = 6
+popup/item_0/text = "Unlimited / VSync"
+popup/item_0/id = 0
+popup/item_1/text = "30"
+popup/item_1/id = 30
+popup/item_2/text = "60"
+popup/item_2/id = 60
+popup/item_3/text = "120"
+popup/item_3/id = 120
+popup/item_4/text = "240"
+popup/item_4/id = 240
+popup/item_5/text = "480"
+popup/item_5/id = 480
+
+[node name="FOV" parent="MarginContainer/VBoxContainer/General/Options" parent_id_path=PackedInt32Array(1625240470, 852454493) index="4" unique_id=62524002 instance=ExtResource("4_lqpwh")]
 layout_mode = 2
 key = &"graphics/fov"
 
@@ -82,7 +107,7 @@ max_value = 120.0
 step = 5.0
 value = 50.0
 
-[node name="UIScale" parent="MarginContainer/VBoxContainer/General/Options" parent_id_path=PackedInt32Array(1625240470, 852454493) index="4" unique_id=1050365417 instance=ExtResource("4_lqpwh")]
+[node name="UIScale" parent="MarginContainer/VBoxContainer/General/Options" parent_id_path=PackedInt32Array(1625240470, 852454493) index="5" unique_id=1050365417 instance=ExtResource("4_lqpwh")]
 layout_mode = 2
 on_release = true
 key = &"graphics/ui_scale"
@@ -417,6 +442,7 @@ step = 0.1
 [editable path="MarginContainer/VBoxContainer/General/Options/RenderingMethod"]
 [editable path="MarginContainer/VBoxContainer/General/Options/WindowMode"]
 [editable path="MarginContainer/VBoxContainer/General/Options/VSyncMode"]
+[editable path="MarginContainer/VBoxContainer/General/Options/MaxFPS"]
 [editable path="MarginContainer/VBoxContainer/General/Options/FOV"]
 [editable path="MarginContainer/VBoxContainer/General/Options/FOV/LabeledSlider"]
 [editable path="MarginContainer/VBoxContainer/General/Options/UIScale"]
