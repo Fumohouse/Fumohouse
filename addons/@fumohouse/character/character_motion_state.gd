@@ -142,6 +142,12 @@ func add_processor(processor: CharacterMotionProcessor):
 	processor._initialize()
 
 
+## Clear the motion processors. Must be called when the character is freed to
+## avoid a circular dependency memory leak.
+func clear_processors():
+	_motion_processors.clear()
+
+
 ## Perform the given motion, with behavior defined by [member multiplayer_mode].
 ## Call during physics process. On server, [param motion] is ignored.
 func update(motion: Motion, delta: float):

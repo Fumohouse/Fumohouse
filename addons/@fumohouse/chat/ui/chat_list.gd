@@ -23,6 +23,13 @@ func _ready():
 		_pool.push_back(_CHAT_SCENE.instantiate())
 
 
+func _notification(what: int):
+	match what:
+		NOTIFICATION_PREDELETE:
+			for node in _pool:
+				node.free()
+
+
 func _on_chat(sender: String, peer: int, content: String):
 	_push_chat(_add_label(), sender, peer, content)
 

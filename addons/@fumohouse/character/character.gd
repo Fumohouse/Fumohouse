@@ -37,6 +37,12 @@ func _ready():
 	_update_camera()
 
 
+func _notification(what: int):
+	match what:
+		NOTIFICATION_PREDELETE:
+			state.clear_processors()
+
+
 func _physics_process(delta: float):
 	if disabled:
 		return
