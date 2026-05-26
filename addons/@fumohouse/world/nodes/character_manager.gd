@@ -41,6 +41,7 @@ func _process(delta: float):
 		local_char
 		and CommonUtils.do_game_input(self)
 		and Input.is_action_just_pressed("reset_character")
+		and not local_char.state.is_dead()
 	):
 		if _nm.is_active:
 			var delete := CharacterDelete.new()
@@ -59,15 +60,13 @@ func _process(delta: float):
 
 	# Fall limit handling
 	if _nm.is_active:
-		if not _nm.is_server:
-			pass
+		if _nm.is_server:
+			for peer in _characters:
+				if _characters[peer].global_position.y >= _FALL_LIMIT:
+					continue
 
-		for peer in _characters:
-			if _characters[peer].global_position.y >= _FALL_LIMIT:
-				continue
-
-			var appearance: Appearance = _characters[peer].appearance_manager.appearance
-			_delete_character(peer, true, func(): _spawn_character(peer, appearance))
+				var appearance: Appearance = _characters[peer].appearance_manager.appearance
+				_delete_character(peer, true, func(): _spawn_character(peer, appearance))
 	elif local_char and local_char.global_position.y < _FALL_LIMIT:
 		_delete_character(0, true, func(): _spawn_character(0))
 

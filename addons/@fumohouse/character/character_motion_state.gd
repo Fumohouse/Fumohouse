@@ -224,7 +224,7 @@ func motion_update(motion: Motion, delta: float, is_replay := false, persist_sta
 	ctx.is_replay = is_replay
 
 	# Persist death
-	if queue_dead or is_state(CharacterState.DEAD):
+	if is_dead():
 		ctx.set_state(CharacterState.DEAD)
 		queue_dead = false
 
@@ -295,13 +295,16 @@ func is_state(state: CharacterState) -> bool:
 
 ## Get whether this character is dead.
 func is_dead() -> bool:
-	return is_state(CharacterState.DEAD)
+	return queue_dead or is_state(CharacterState.DEAD)
 
 
 ## Kill this character. Free its [member node] after [param timeout_s]
 ## (seconds). If [param callback] is not empty, it is called after the node is
-## freed.
+## freed. If this character is already dying, the call does nothing.
 func die(timeout_s: float, callback := Callable()):
+	if is_dead():
+		return
+
 	queue_dead = true
 	set_ragdoll(false)
 
