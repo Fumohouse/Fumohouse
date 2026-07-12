@@ -78,9 +78,12 @@ static func export_base_package(platform: String, out_path: String, dedicated_se
 		exe_name = "Fumohouse"
 
 	# Run export command to ZIP
+	var output: Array = []
 	var exit_code: int = OS.execute(
 		OS.get_executable_path(),
-		["--headless", "--export-release", platform, out_path.path_join(exe_name)]
+		["--headless", "--export-release", platform, out_path.path_join(exe_name)],
+		output,
+		true
 	)
 
 	# Restore project settings
@@ -89,6 +92,11 @@ static func export_base_package(platform: String, out_path: String, dedicated_se
 
 	if exit_code != 0:
 		Log.error("Godot exited with error code %d." % [exit_code], LOG_SCOPE)
+		Log.info("stdout:")
+		Log.info(output[0])
+		if output.size() >= 2:
+			Log.info("stderr:")
+			Log.info(output[1])
 		return FAILED
 
 	return OK
@@ -140,20 +148,7 @@ static func _export_module_from_zip(
 	var zip_module_prefix := "addons".path_join(module) + "/"
 
 	var add_file := func(archive_path: String):
-		var temp_file_path := temp_dir.path_join("extract").path_join(archive_path)
-		DirAccess.make_dir_recursive_absolute(temp_file_path.get_base_dir())
-
-		var temp_file := FileAccess.open(temp_file_path, FileAccess.WRITE)
-		if not temp_file:
-			Log.error("Failed to open temporary file: %s." % [temp_file_path], LOG_SCOPE)
-			return
-
-		# FIXME: This is braindead
-		var buf: PackedByteArray = zip.read_file(archive_path)
-		temp_file.store_buffer(buf)
-		temp_file.close()
-
-		pak.add_file(archive_path, temp_file_path)
+		pak.add_file_from_buffer(archive_path, zip.read_file(archive_path))
 
 	# Trim contents
 	for file in zip_contents:
