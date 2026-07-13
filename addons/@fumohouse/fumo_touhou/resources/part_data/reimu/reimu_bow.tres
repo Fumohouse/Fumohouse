@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SinglePart" format=3 uid="uid://cx2onv7op0a4m"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_thl46"]
+
+[resource]
+script = ExtResource("1_thl46")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_bow.tscn"
+transform = Transform3D(1, 9.93313e-10, -4.571064e-10, -9.878376e-10, 0.9999301, 0.011826491, 4.6882187e-10, -0.011826491, 0.9999301, 3.9007542e-10, -1.9600732, 0.054918952)
+bone = "Head"
+display_name = "Reimu Bow"
+id = &"reimu_bow"
+scope = 1

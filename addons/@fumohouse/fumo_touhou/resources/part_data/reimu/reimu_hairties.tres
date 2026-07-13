@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SinglePart" format=3 uid="uid://xnwktusm8xlr"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_h70ka"]
+
+[resource]
+script = ExtResource("1_h70ka")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_hairties.tscn"
+bone = "Head"
+display_name = "Reimu Hair Ties"
+id = &"reimu_hairties"
+scope = 1

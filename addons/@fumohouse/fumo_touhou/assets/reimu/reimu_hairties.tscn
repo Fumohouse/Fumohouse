@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cwlrlprwbq68"]
+
+[ext_resource type="PackedScene" uid="uid://r5ib8n1m38dl" path="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_hairtie.glb" id="1_l8qk1"]
+
+[node name="reimu_hairties" type="Node3D" unique_id=533474996]
+
+[node name="reimu_lhairtie" parent="." unique_id=233133724 instance=ExtResource("1_l8qk1")]
+transform = Transform3D(-0.7071067, 9.933157e-10, -0.7071067, 0.008362623, 0.99993014, -0.008362621, 0.7070573, -0.011826535, -0.7070573, -0.633678, 0.14875817, -0.15346694)
+
+[node name="reimu_rhairtie" parent="." unique_id=1456431171 instance=ExtResource("1_l8qk1")]
+transform = Transform3D(-0.7071067, 9.933157e-10, 0.7071067, -0.008362621, 0.99993014, -0.008362623, -0.7070573, -0.011826535, -0.7070573, 0.63367784, 0.14875817, -0.15346694)

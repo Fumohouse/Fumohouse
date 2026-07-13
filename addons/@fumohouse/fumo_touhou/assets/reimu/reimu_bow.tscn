@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c463gmq5cfe66"]
+
+[ext_resource type="PackedScene" uid="uid://dmvsxqsy15eeg" path="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_bow_1.glb" id="1_bjhlx"]
+[ext_resource type="PackedScene" uid="uid://bn2he3411kvo6" path="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_bow_2.glb" id="2_j3qr8"]
+
+[node name="reimu_bow" type="Node3D" unique_id=1981642941]
+transform = Transform3D(1, 9.933157e-10, -4.5710954e-10, -9.878376e-10, 0.99993014, 0.011826491, 4.688218e-10, -0.011826491, 0.99993014, 0, 0, 0)
+
+[node name="reimu_bow_1" parent="." unique_id=214259270 instance=ExtResource("1_bjhlx")]
+transform = Transform3D(1.0621237e-07, 1, -1.3224752e-08, -0.9694666, 1.06212376e-07, 0.24522297, 0.24522297, -1.3224757e-08, 0.9694666, 0.031457126, 3.2190528, 0.620754)
+
+[node name="reimu_bow_2" parent="." unique_id=1037760403 instance=ExtResource("2_j3qr8")]
+transform = Transform3D(0.98219556, -0.06119307, -0.1776157, -0.17827077, -0.005373004, -0.98396677, 0.05925762, 0.9981115, -0.016186275, -6.8843365e-06, 2.6035645, 0.73524094)

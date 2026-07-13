@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cscu7aoll60bk"]
+
+[ext_resource type="PackedScene" uid="uid://cau03o3f8pe0j" path="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_lsleeve.glb" id="1_p4j2x"]
+[ext_resource type="PackedScene" uid="uid://cb82r8qeaguc0" path="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_smallbow.glb" id="2_4mqi2"]
+
+[node name="reimu_lsleeve" type="Node3D" unique_id=1957565207]
+
+[node name="reimu_lsleeve" parent="." unique_id=1859510256 instance=ExtResource("1_p4j2x")]
+transform = Transform3D(0.64478064, 0.0016813057, -0.76436603, 0.0026075542, -0.9999964, 3.607376e-08, -0.76436347, -0.0019931179, -0.6447827, -0.00595057, 0.562811, 0.007909894)
+
+[node name="reimu_ltbow" parent="." unique_id=1174169501 instance=ExtResource("2_4mqi2")]
+transform = Transform3D(-1.294959, -0.003376778, -1.5351306, -0.005237043, 2.0083642, 1.1120326e-07, 1.5351257, 0.00400312, -1.2949631, -0.10564244, 0.3733176, 0.10507703)
+
+[node name="reimu_llbow" parent="." unique_id=929789234 instance=ExtResource("2_4mqi2")]
+transform = Transform3D(-1.294959, -0.003376778, -1.5351306, -0.005237043, 2.0083642, 1.1120326e-07, 1.5351257, 0.00400312, -1.2949631, -0.15536797, 0.79978687, 0.13410914)

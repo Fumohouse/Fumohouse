@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://byif2bph4x8qp"]
+
+[ext_resource type="PackedScene" uid="uid://dgldwnakhlheo" path="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_ponytail.glb" id="1_u70cb"]
+[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="2_rlgd3"]
+
+[node name="reimu_ponytail" unique_id=1314728005 node_paths=PackedStringArray("mesh") instance=ExtResource("1_u70cb")]
+script = ExtResource("2_rlgd3")
+mesh = NodePath("reimu_ponytail")

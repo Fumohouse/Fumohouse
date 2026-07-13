@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MultiPart" format=3 uid="uid://ce7ivy0w8c8y2"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_1s47d"]
+[ext_resource type="Script" uid="uid://dgvlk6ce324r2" path="res://addons/@fumohouse/character_appearance/multi_part.gd" id="2_73r22"]
+
+[sub_resource type="Resource" id="Resource_1s47d"]
+script = ExtResource("1_1s47d")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_lsleeve.tscn"
+bone = "LArm"
+id = &"reimu_lsleeve"
+
+[sub_resource type="Resource" id="Resource_73r22"]
+script = ExtResource("1_1s47d")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_outfit_torso.tscn"
+id = &"reimu_outfit_torso"
+
+[sub_resource type="Resource" id="Resource_cqp7i"]
+script = ExtResource("1_1s47d")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_rsleeve.tscn"
+bone = "RArm"
+id = &"reimu_rsleeve"
+
+[resource]
+script = ExtResource("2_73r22")
+parts = Array[ExtResource("1_1s47d")]([SubResource("Resource_1s47d"), SubResource("Resource_73r22"), SubResource("Resource_cqp7i")])
+display_name = "Reimu Outfit"
+id = &"reimu_outfit"
+scope = 2
+metadata/_custom_type_script = "uid://dgvlk6ce324r2"

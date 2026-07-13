@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dkdfemk0imy04"]
+
+[ext_resource type="PackedScene" uid="uid://c7oe3fjworq6y" path="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_hair_front.glb" id="1_5mpv3"]
+[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="2_tjcak"]
+
+[node name="reimu_hair_front" unique_id=205749956 node_paths=PackedStringArray("mesh") instance=ExtResource("1_5mpv3")]
+script = ExtResource("2_tjcak")
+mesh = NodePath("reimu_hair_front")

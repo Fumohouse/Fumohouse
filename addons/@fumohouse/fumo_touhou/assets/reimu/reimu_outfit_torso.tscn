@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c2wt5a6k0j32e"]
+
+[ext_resource type="PackedScene" uid="uid://dm1vddp3xibqe" path="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_collar.glb" id="1_mkbln"]
+[ext_resource type="PackedScene" uid="uid://u2ubdg7a2nvn" path="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_dress.glb" id="2_konye"]
+[ext_resource type="PackedScene" uid="uid://qve7ty37qt68" path="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_dress_frills.glb" id="3_ndsl2"]
+[ext_resource type="PackedScene" uid="uid://b5tm7jj8r8a5a" path="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_dress_under.glb" id="4_jq6g5"]
+[ext_resource type="PackedScene" uid="uid://xmgk6201af3v" path="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_tie.glb" id="5_xiwnq"]
+
+[node name="reimu_outfit_torso" type="Node3D" unique_id=1855289569]
+
+[node name="reimu_collar" parent="." unique_id=346575777 instance=ExtResource("1_mkbln")]
+transform = Transform3D(1, -1.882614e-08, 1.9636479e-08, 1.9636484e-08, 0.9991127, -0.04211796, -1.8826139e-08, 0.04211796, 0.9991127, 3.1738594e-09, 1.1117244, 0.03126168)
+
+[node name="reimu_dress" parent="." unique_id=769981650 instance=ExtResource("2_konye")]
+transform = Transform3D(1, -1.882614e-08, 1.9636479e-08, 1.9636484e-08, 0.9991127, -0.04211796, -1.8826139e-08, 0.04211796, 0.9991127, 1.27830315e-08, 0.60176075, 0.009763975)
+
+[node name="reimu_dress_frills" parent="." unique_id=2140658804 instance=ExtResource("3_ndsl2")]
+transform = Transform3D(1, -1.882614e-08, 1.9636479e-08, 1.9636484e-08, 0.9991127, -0.04211796, -1.8826139e-08, 0.04211796, 0.9991127, 3.785163e-08, -0.7286424, -0.046319656)
+
+[node name="reimu_dress_under" parent="." unique_id=44485141 instance=ExtResource("4_jq6g5")]
+transform = Transform3D(1.02, -1.9202663e-08, 2.0029209e-08, 2.0029214e-08, 1.019095, -0.04296032, -1.920266e-08, 0.04296032, 1.019095, 1.27830315e-08, 0.60176075, 0.009763975)
+
+[node name="reimu_tie" parent="." unique_id=746089093 instance=ExtResource("5_xiwnq")]
+transform = Transform3D(1, -1.9636479e-08, -1.8826151e-08, 1.9636477e-08, 0.04211804, 0.9991127, -1.8826139e-08, -0.9991127, 0.04211804, 0.0041670087, 0.87585235, -0.20437314)
