@@ -18,7 +18,13 @@ func _ready():
 
 
 func _process(delta: float):
-	if get_global_rect().has_point(get_viewport().get_mouse_position()) or _chat_box.is_editing():
+	if (
+		CommonUtils.do_game_input(self)
+		and (
+			get_global_rect().has_point(get_viewport().get_mouse_position())
+			or _chat_box.is_editing()
+		)
+	):
 		_inactive_time = lerpf(_inactive_time, 0.0, CommonUtils.lerp_weight(delta, 1e-3))
 	else:
 		_inactive_time += delta
