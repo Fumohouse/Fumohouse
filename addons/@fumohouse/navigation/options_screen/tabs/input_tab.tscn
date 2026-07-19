@@ -68,19 +68,54 @@ key = &"input/action/camera_rotate/bind"
 [node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/Rotate" index="0" unique_id=23282165]
 text = "Look (3rd Person)"
 
-[node name="ZoomIn" parent="MarginContainer/VBoxContainer/Camera/Options" parent_id_path=PackedInt32Array(882110831, 852454493) index="4" unique_id=312447435 instance=ExtResource("4_0jmwj")]
+[node name="RotateUp" parent="MarginContainer/VBoxContainer/Camera/Options" parent_id_path=PackedInt32Array(882110831, 852454493) index="4" unique_id=1330548014 instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/camera_rotate_up/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/RotateUp" index="0" unique_id=23282165]
+text = "Look Up"
+
+[node name="RotateDown" parent="MarginContainer/VBoxContainer/Camera/Options" parent_id_path=PackedInt32Array(882110831, 852454493) index="5" unique_id=574527648 instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/camera_rotate_down/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/RotateDown" index="0" unique_id=23282165]
+text = "Look Down"
+
+[node name="RotateLeft" parent="MarginContainer/VBoxContainer/Camera/Options" parent_id_path=PackedInt32Array(882110831, 852454493) index="6" unique_id=27869642 instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/camera_rotate_left/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/RotateLeft" index="0" unique_id=23282165]
+text = "Look Left"
+
+[node name="RotateRight" parent="MarginContainer/VBoxContainer/Camera/Options" parent_id_path=PackedInt32Array(882110831, 852454493) index="7" unique_id=421150385 instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/camera_rotate_right/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/RotateRight" index="0" unique_id=23282165]
+text = "Look Right"
+
+[node name="ZoomIn" parent="MarginContainer/VBoxContainer/Camera/Options" parent_id_path=PackedInt32Array(882110831, 852454493) index="8" unique_id=312447435 instance=ExtResource("4_0jmwj")]
 layout_mode = 2
 key = &"input/action/camera_zoom_in/bind"
 
 [node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/ZoomIn" index="0" unique_id=23282165]
 text = "Zoom In"
 
-[node name="ZoomOut" parent="MarginContainer/VBoxContainer/Camera/Options" parent_id_path=PackedInt32Array(882110831, 852454493) index="5" unique_id=288777684 instance=ExtResource("4_0jmwj")]
+[node name="ZoomOut" parent="MarginContainer/VBoxContainer/Camera/Options" parent_id_path=PackedInt32Array(882110831, 852454493) index="9" unique_id=288777684 instance=ExtResource("4_0jmwj")]
 layout_mode = 2
 key = &"input/action/camera_zoom_out/bind"
 
 [node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/ZoomOut" index="0" unique_id=23282165]
 text = "Zoom Out"
+
+[node name="SwitchPerspective" parent="MarginContainer/VBoxContainer/Camera/Options" parent_id_path=PackedInt32Array(882110831, 852454493) index="10" unique_id=976250520 instance=ExtResource("4_0jmwj")]
+layout_mode = 2
+key = &"input/action/camera_perspective/bind"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/SwitchPerspective" index="0" unique_id=23282165]
+text = "Switch Perspective"
 
 [node name="Character" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(527047334) index="1" unique_id=2057590920 instance=ExtResource("2_bey3n")]
 layout_mode = 2
@@ -157,7 +192,7 @@ key = &"input/action/menu_back/bind"
 [node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Back" index="0" unique_id=23282165]
 text = "Game Menu / Back"
 
-[node name="Chat" parent="MarginContainer/VBoxContainer/UI/Options" parent_id_path=PackedInt32Array(892564600, 852454493) index="1" unique_id=1330548014 instance=ExtResource("4_0jmwj")]
+[node name="Chat" parent="MarginContainer/VBoxContainer/UI/Options" parent_id_path=PackedInt32Array(892564600, 852454493) index="1" unique_id=2133834554 instance=ExtResource("4_0jmwj")]
 layout_mode = 2
 key = &"input/action/chat/bind"
 
@@ -221,8 +256,13 @@ text = "Debug 4"
 [editable path="MarginContainer/VBoxContainer/Camera/Options/SensZoom"]
 [editable path="MarginContainer/VBoxContainer/Camera/Options/SensZoom/LabeledSlider"]
 [editable path="MarginContainer/VBoxContainer/Camera/Options/Rotate"]
+[editable path="MarginContainer/VBoxContainer/Camera/Options/RotateUp"]
+[editable path="MarginContainer/VBoxContainer/Camera/Options/RotateDown"]
+[editable path="MarginContainer/VBoxContainer/Camera/Options/RotateLeft"]
+[editable path="MarginContainer/VBoxContainer/Camera/Options/RotateRight"]
 [editable path="MarginContainer/VBoxContainer/Camera/Options/ZoomIn"]
 [editable path="MarginContainer/VBoxContainer/Camera/Options/ZoomOut"]
+[editable path="MarginContainer/VBoxContainer/Camera/Options/SwitchPerspective"]
 [editable path="MarginContainer/VBoxContainer/Character"]
 [editable path="MarginContainer/VBoxContainer/Character/Options/MoveForward"]
 [editable path="MarginContainer/VBoxContainer/Character/Options/MoveBackward"]
