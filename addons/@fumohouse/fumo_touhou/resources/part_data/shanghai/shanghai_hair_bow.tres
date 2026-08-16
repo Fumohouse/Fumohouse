@@ -4,9 +4,12 @@
 
 [resource]
 script = ExtResource("1_f7dfm")
-scene_path = "res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_hair_bow.glb"
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_hair_bow.tscn"
 transform = Transform3D(-1, 1.2303325e-06, -3.9017485e-07, 1.882147e-07, 0.43806088, 0.89894533, 1.276922e-06, 0.89894533, -0.43806088, 0.00047779438, 1.4750688, 0.5256418)
 bone = "Head"
 display_name = "Shanghai Hair Bow"
 id = &"shanghai_hair_bow"
 scope = 1
+default_config = Dictionary[StringName, Variant]({
+&"color": Color(0.90588236, 0, 0.12156863, 1)
+})

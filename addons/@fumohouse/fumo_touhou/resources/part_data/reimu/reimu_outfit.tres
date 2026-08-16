@@ -26,4 +26,8 @@ parts = Array[ExtResource("1_1s47d")]([SubResource("Resource_1s47d"), SubResourc
 display_name = "Reimu Outfit"
 id = &"reimu_outfit"
 scope = 2
+default_config = Dictionary[StringName, Variant]({
+&"color": Color(1, 0.27450982, 0.16470589, 1),
+&"tie_color": Color(0.8980392, 1, 0.25490198, 1)
+})
 metadata/_custom_type_script = "uid://dgvlk6ce324r2"

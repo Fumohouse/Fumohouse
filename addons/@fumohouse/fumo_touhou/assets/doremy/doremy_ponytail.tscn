@@ -38,6 +38,7 @@ shader_parameter/dissolve = 0.0
 shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o7jw8"]
 resource_local_to_scene = true
@@ -67,6 +68,7 @@ shader_parameter/dissolve = 0.0
 shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ngod"]
 resource_local_to_scene = true
@@ -96,10 +98,11 @@ shader_parameter/dissolve = 0.0
 shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
 
-[node name="doremy_ponytail" unique_id=1834088008 node_paths=PackedStringArray("mesh") instance=ExtResource("1_dgba2")]
+[node name="doremy_ponytail" unique_id=1834088008 node_paths=PackedStringArray("meshes") instance=ExtResource("1_dgba2")]
 script = ExtResource("2_wous2")
-mesh = NodePath("doremy_ponytail")
+meshes = [NodePath("doremy_ponytail")]
 
 [node name="doremy_ponytail" parent="." index="0" unique_id=1892740082]
 surface_material_override/0 = SubResource("ShaderMaterial_sgosx")

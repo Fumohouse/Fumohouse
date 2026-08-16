@@ -38,10 +38,11 @@ shader_parameter/dissolve = 0.0
 shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
 
-[node name="doremy_hair_front" unique_id=980326918 node_paths=PackedStringArray("mesh") instance=ExtResource("1_tl75x")]
+[node name="doremy_hair_front" unique_id=980326918 node_paths=PackedStringArray("meshes") instance=ExtResource("1_tl75x")]
 script = ExtResource("2_umms5")
-mesh = NodePath("doremy_hair_front")
+meshes = [NodePath("doremy_hair_front")]
 
 [node name="doremy_hair_front" parent="." index="0" unique_id=960714269]
 surface_material_override/0 = SubResource("ShaderMaterial_12gmk")

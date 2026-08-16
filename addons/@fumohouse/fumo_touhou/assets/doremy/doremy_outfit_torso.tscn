@@ -1,16 +1,1485 @@
 [gd_scene format=3 uid="uid://btp7d65d0142y"]
 
+[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="1_1ohqh"]
 [ext_resource type="PackedScene" uid="uid://bjeyt6an6kbm2" path="res://addons/@fumohouse/fumo_touhou/assets/doremy/doremy_dress_inner.glb" id="1_umi0u"]
 [ext_resource type="PackedScene" uid="uid://b1m687nodpa4u" path="res://addons/@fumohouse/fumo_touhou/assets/doremy/doremy_dress_lower.glb" id="2_drrly"]
 [ext_resource type="PackedScene" uid="uid://rsryq5th1rh" path="res://addons/@fumohouse/fumo_touhou/assets/doremy/doremy_dress_under.glb" id="3_kskwm"]
 [ext_resource type="PackedScene" uid="uid://be8a3sxl868u7" path="res://addons/@fumohouse/fumo_touhou/assets/doremy/doremy_dress_upper.glb" id="4_v3f8e"]
 [ext_resource type="PackedScene" uid="uid://dp5m5v0k74aas" path="res://addons/@fumohouse/fumo_touhou/assets/doremy/doremy_pom_white.glb" id="5_pct0q"]
 [ext_resource type="PackedScene" uid="uid://dvon74whv26xi" path="res://addons/@fumohouse/fumo_touhou/assets/doremy/doremy_pom_black.glb" id="6_4sund"]
+[ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="6_2871o"]
+[ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="7_0jaof"]
 
-[node name="doremy_outfit_torso" type="Node3D" unique_id=832704041]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yrlyc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
+noise = SubResource("FastNoiseLite_yrlyc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_14jva"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_x1kjk")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_47n5b"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cwmgr"]
+noise = SubResource("FastNoiseLite_47n5b")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cijuh"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_cwmgr")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1ohqh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2871o"]
+noise = SubResource("FastNoiseLite_1ohqh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_47n5b"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cwmgr"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5872g"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ws3l7"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_src63"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0wp7b"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fs56m"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mroq7"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wc4y1"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kuxbd"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5872g"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ws3l7"]
+noise = SubResource("FastNoiseLite_5872g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ohqh"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2871o"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0jaof"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkcl4"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l13yn"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ik5n2"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4bap3"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvva2"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ukxtp"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wrmey"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_brsaa"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4gah3"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sfc7r"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p8xks"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mrwcx"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gh1iv"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_scre8"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lji2k"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ublws"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uvgyk"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ac2y4"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8l6oc"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kqft8"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k62u8"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_ws3l7")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5f22i"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ypiu"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rqsol"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7pku"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ygxbt"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sm4p2"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t1ma8"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fr4j1"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6rfhk"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c0lc2"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fs18h"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4phg"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_2871o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("7_0jaof")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_2871o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[node name="doremy_outfit_torso" type="Node3D" unique_id=832704041 node_paths=PackedStringArray("meshes")]
+script = ExtResource("1_1ohqh")
+meshes = [NodePath("doremy_dress_upper/doremy_dress_upper"), NodePath("doremy_dress_lower/doremy_dress_lower"), NodePath("doremy_pom_inner_1/doremy_pom_black"), NodePath("doremy_pom_inner_2/doremy_pom_black"), NodePath("doremy_pom_inner_3/doremy_pom_black"), NodePath("doremy_pom_inner_4/doremy_pom_black"), NodePath("doremy_pom_inner_5/doremy_pom_black"), NodePath("doremy_pom_inner_6/doremy_pom_black"), NodePath("doremy_pom_inner_7/doremy_pom_black"), NodePath("doremy_pom_inner_8/doremy_pom_black"), NodePath("doremy_pom_inner_9/doremy_pom_black"), NodePath("doremy_pom_inner_10/doremy_pom_black"), NodePath("doremy_pom_inner_11/doremy_pom_black"), NodePath("doremy_pom_inner_12/doremy_pom_black"), NodePath("doremy_pom_inner_13/doremy_pom_black"), NodePath("doremy_pom_inner_14/doremy_pom_black"), NodePath("doremy_pom_inner_15/doremy_pom_black"), NodePath("doremy_pom_inner_16/doremy_pom_black"), NodePath("doremy_pom_inner_17/doremy_pom_black"), NodePath("doremy_pom_inner_18/doremy_pom_black"), NodePath("doremy_pom_inner_19/doremy_pom_black"), NodePath("doremy_pom_inner_20/doremy_pom_black"), NodePath("doremy_pom_inner_21/doremy_pom_black"), NodePath("doremy_pom_inner_22/doremy_pom_black"), NodePath("doremy_pom_inner_23/doremy_pom_black"), NodePath("doremy_pom_inner_24/doremy_pom_black"), NodePath("doremy_dress_under/doremy_dress_under"), NodePath("doremy_dress_inner/doremy_dress_inner"), NodePath("doremy_pom_upper_1/doremy_pom_white"), NodePath("doremy_pom_upper_2/doremy_pom_white"), NodePath("doremy_pom_upper_3/doremy_pom_white"), NodePath("doremy_pom_upper_4/doremy_pom_white"), NodePath("doremy_pom_upper_5/doremy_pom_white"), NodePath("doremy_pom_upper_6/doremy_pom_white"), NodePath("doremy_pom_upper_7/doremy_pom_white"), NodePath("doremy_pom_upper_8/doremy_pom_white"), NodePath("doremy_pom_upper_9/doremy_pom_white"), NodePath("doremy_pom_upper_10/doremy_pom_white"), NodePath("doremy_pom_lower_1/doremy_pom_white"), NodePath("doremy_pom_lower_2/doremy_pom_white"), NodePath("doremy_pom_lower_3/doremy_pom_white"), NodePath("doremy_pom_lower_4/doremy_pom_white"), NodePath("doremy_pom_lower_5/doremy_pom_white"), NodePath("doremy_pom_lower_6/doremy_pom_white"), NodePath("doremy_pom_lower_7/doremy_pom_white"), NodePath("doremy_pom_lower_8/doremy_pom_white"), NodePath("doremy_pom_lower_9/doremy_pom_white"), NodePath("doremy_pom_lower_10/doremy_pom_white"), NodePath("doremy_pom_lower_11/doremy_pom_white"), NodePath("doremy_pom_lower_12/doremy_pom_white")]
+attributes = ["color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color1", "color2"]
 
 [node name="doremy_dress_inner" parent="." unique_id=1881744956 instance=ExtResource("1_umi0u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.517, -0.01)
+
+[node name="doremy_dress_inner" parent="doremy_dress_inner" index="0" unique_id=954938975]
+surface_material_override/0 = SubResource("ShaderMaterial_14jva")
 
 [node name="doremy_dress_lower" parent="." unique_id=1011415459 instance=ExtResource("2_drrly")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9541425e-07, 0.873685, -0.014439677)
@@ -18,143 +1487,335 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9541425e-07, 0.873685, -0.0
 [node name="doremy_dress_under" parent="." unique_id=921986820 instance=ExtResource("3_kskwm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2312116e-08, 1.0164223, 0.0049652364)
 
+[node name="doremy_dress_under" parent="doremy_dress_under" index="0" unique_id=971228980]
+surface_material_override/0 = SubResource("ShaderMaterial_cijuh")
+
 [node name="doremy_dress_upper" parent="." unique_id=1671736345 instance=ExtResource("4_v3f8e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9587047e-08, 1.8022951, -0.033626243)
 
 [node name="doremy_pom_upper_1" parent="." unique_id=1516357180 instance=ExtResource("5_pct0q")]
 transform = Transform3D(0.048350643, -0.006611553, -0.06808181, 0.013623481, 0.08263357, 0.0016504817, 0.06703168, -0.012025418, 0.048772663, 0.4322201, 1.6507571, -0.2158412)
 
+[node name="doremy_pom_white" parent="doremy_pom_upper_1" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_47n5b")
+
 [node name="doremy_pom_upper_2" parent="." unique_id=700491862 instance=ExtResource("5_pct0q")]
 transform = Transform3D(0.07353587, -0.0028119977, -0.040014986, 0.0036411982, 0.083682224, 0.0008108079, 0.03994807, -0.0024512047, 0.073585145, 0.24793284, 1.6023072, -0.37985858)
+
+[node name="doremy_pom_white" parent="doremy_pom_upper_2" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_cwmgr")
 
 [node name="doremy_pom_upper_3" parent="." unique_id=1148844732 instance=ExtResource("5_pct0q")]
 transform = Transform3D(0.083762705, -3.5595313e-05, -0.0006641634, 4.1507556e-05, 0.083762, 0.0007456761, 0.00066382, -0.00074598176, 0.083759375, 0.004007463, 1.589978, -0.44319317)
 
+[node name="doremy_pom_white" parent="doremy_pom_upper_3" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_5872g")
+
 [node name="doremy_pom_upper_4" parent="." unique_id=434102962 instance=ExtResource("5_pct0q")]
 transform = Transform3D(0.07422894, 0.002672845, 0.038724024, -0.00343356, 0.08369105, 0.000805089, -0.038663995, -0.0023007388, 0.07427268, -0.24099664, 1.6014665, -0.38376424)
+
+[node name="doremy_pom_white" parent="doremy_pom_upper_4" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_ws3l7")
 
 [node name="doremy_pom_upper_5" parent="." unique_id=1961533905 instance=ExtResource("5_pct0q")]
 transform = Transform3D(0.048705515, 0.0065817996, 0.067831285, -0.013430184, 0.08266577, 0.0016221781, -0.066813424, -0.01181868, 0.049121443, -0.42721605, 1.6488733, -0.22194451)
 
+[node name="doremy_pom_white" parent="doremy_pom_upper_5" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_src63")
+
 [node name="doremy_pom_upper_6" parent="." unique_id=1151424767 instance=ExtResource("5_pct0q")]
 transform = Transform3D(-0.06819713, -0.01200449, -0.047134593, -0.013430177, 0.082665764, -0.0016221772, 0.04674835, 0.006236449, -0.06922663, -0.42721605, 1.6488732, 0.15469202)
+
+[node name="doremy_pom_white" parent="doremy_pom_upper_6" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_0wp7b")
 
 [node name="doremy_pom_upper_7" parent="." unique_id=779622742 instance=ExtResource("5_pct0q")]
 transform = Transform3D(-0.057945248, -0.0029584963, -0.060417116, -0.003433561, 0.08369105, -0.0008050888, 0.060391977, 0.0019195863, -0.058015138, -0.24099664, 1.6014665, 0.31651178)
 
+[node name="doremy_pom_white" parent="doremy_pom_upper_7" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_fs56m")
+
 [node name="doremy_pom_upper_8" parent="." unique_id=1559813623 instance=ExtResource("5_pct0q")]
 transform = Transform3D(-0.018554268, -0.00071796397, -0.08168142, 4.1506115e-05, 0.083762, -0.0007456801, 0.08168455, -0.00020564385, -0.018553171, 0.0040074657, 1.589978, 0.37594065)
+
+[node name="doremy_pom_white" parent="doremy_pom_upper_8" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_mroq7")
 
 [node name="doremy_pom_upper_9" parent="." unique_id=618398541 instance=ExtResource("5_pct0q")]
 transform = Transform3D(0.0205116, -0.0016792413, -0.08119781, 0.0036411986, 0.083682224, -0.0008108079, 0.08113351, -0.003331049, 0.020564245, 0.24793284, 1.6023072, 0.31260613)
 
+[node name="doremy_pom_white" parent="doremy_pom_upper_9" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_wc4y1")
+
 [node name="doremy_pom_upper_10" parent="." unique_id=1198998611 instance=ExtResource("5_pct0q")]
 transform = Transform3D(0.05808386, -0.010762273, -0.05938913, 0.013623483, 0.08263357, -0.0016504817, 0.05879878, -0.008514506, 0.059049446, 0.4322201, 1.6507571, 0.14858872)
+
+[node name="doremy_pom_white" parent="doremy_pom_upper_10" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_kuxbd")
 
 [node name="doremy_pom_inner_1" parent="." unique_id=1968001126 instance=ExtResource("6_4sund")]
 transform = Transform3D(0.03589945, 0, -0.076397315, 0, 0.084411606, 0, 0.076397315, 0, 0.03589945, 0.4692109, 1.2821732, -0.12349867)
 
+[node name="doremy_pom_black" parent="doremy_pom_inner_1" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_1ohqh")
+
 [node name="doremy_pom_inner_2" parent="." unique_id=696370111 instance=ExtResource("6_4sund")]
 transform = Transform3D(0.07194755, 0, -0.044146016, 0, 0.084411606, 0, 0.044146016, 0, 0.07194755, 0.32944545, 1.2821732, -0.26340383)
+
+[node name="doremy_pom_black" parent="doremy_pom_inner_2" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_2871o")
 
 [node name="doremy_pom_inner_3" parent="." unique_id=2073751941 instance=ExtResource("6_4sund")]
 transform = Transform3D(0.08342687, 0, -0.012856002, 0, 0.084411606, 0, 0.012856002, 0, 0.08342687, 0.101738244, 1.2821732, -0.3396508)
 
+[node name="doremy_pom_black" parent="doremy_pom_inner_3" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_0jaof")
+
 [node name="doremy_pom_inner_4" parent="." unique_id=1198192420 instance=ExtResource("6_4sund")]
 transform = Transform3D(0.082670525, 0, 0.017055895, 0, 0.084411606, 0, -0.017055895, 0, 0.082670525, -0.15358472, 1.2821732, -0.3303064)
+
+[node name="doremy_pom_black" parent="doremy_pom_inner_4" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_lkcl4")
 
 [node name="doremy_pom_inner_5" parent="." unique_id=1027404844 instance=ExtResource("6_4sund")]
 transform = Transform3D(0.068549834, 0, 0.04925689, 0, 0.084411606, 0, -0.04925689, 0, 0.068549834, -0.36645293, 1.2821732, -0.23790845)
 
+[node name="doremy_pom_black" parent="doremy_pom_inner_5" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_l13yn")
+
 [node name="doremy_pom_inner_6" parent="." unique_id=1364104071 instance=ExtResource("6_4sund")]
 transform = Transform3D(0.02864311, 0, 0.07940335, 0, 0.084411606, 0, -0.07940335, 0, 0.02864311, -0.4823481, 1.2821732, -0.089190364)
+
+[node name="doremy_pom_black" parent="doremy_pom_inner_6" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_ik5n2")
 
 [node name="doremy_pom_inner_7" parent="." unique_id=653760679 instance=ExtResource("6_4sund")]
 transform = Transform3D(-0.03330964, 0, 0.077561505, 0, 0.084411606, 0, -0.077561505, 0, -0.03330964, -0.4762431, 1.2821732, 0.07742715)
 
+[node name="doremy_pom_black" parent="doremy_pom_inner_7" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_4bap3")
+
 [node name="doremy_pom_inner_8" parent="." unique_id=1026578507 instance=ExtResource("6_4sund")]
 transform = Transform3D(-0.07009228, 0, 0.047036074, 0, 0.084411606, 0, -0.047036074, 0, -0.07009228, -0.34905308, 1.2821732, 0.22214104)
+
+[node name="doremy_pom_black" parent="doremy_pom_inner_8" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_kvva2")
 
 [node name="doremy_pom_inner_9" parent="." unique_id=932961211 instance=ExtResource("6_4sund")]
 transform = Transform3D(-0.0830547, 0, 0.015074394, 0, 0.084411606, 0, -0.015074394, 0, -0.0830547, -0.12965018, 1.2821732, 0.30749345)
 
+[node name="doremy_pom_black" parent="doremy_pom_inner_9" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_ukxtp")
+
 [node name="doremy_pom_inner_10" parent="." unique_id=172862368 instance=ExtResource("6_4sund")]
 transform = Transform3D(-0.08310876, 0, -0.014773548, 0, 0.084411606, 0, 0.014773548, 0, -0.08310876, 0.125768, 1.2821732, 0.3081816)
+
+[node name="doremy_pom_black" parent="doremy_pom_inner_10" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_wrmey")
 
 [node name="doremy_pom_inner_11" parent="." unique_id=1895556802 instance=ExtResource("6_4sund")]
 transform = Transform3D(-0.06517309, 0, -0.053645007, 0, 0.084411606, 0, 0.053645007, 0, -0.06517309, 0.3857517, 1.2821732, 0.19648765)
 
+[node name="doremy_pom_black" parent="doremy_pom_inner_11" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_brsaa")
+
 [node name="doremy_pom_inner_12" parent="." unique_id=1072590272 instance=ExtResource("6_4sund")]
 transform = Transform3D(-0.02396235, 0, -0.08093903, 0, 0.084411606, 0, 0.08093903, 0, -0.02396235, 0.4902837, 1.2821732, 0.043405768)
+
+[node name="doremy_pom_black" parent="doremy_pom_inner_12" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_4gah3")
 
 [node name="doremy_pom_inner_13" parent="." unique_id=1052972173 instance=ExtResource("6_4sund")]
 transform = Transform3D(0.032921374, 0, -0.10024715, 0, 0.10551451, 0, 0.10024715, 0, 0.032921374, 0.68167704, 0.9750468, -0.1247934)
 
+[node name="doremy_pom_black" parent="doremy_pom_inner_13" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_sfc7r")
+
 [node name="doremy_pom_inner_14" parent="." unique_id=1415202804 instance=ExtResource("6_4sund")]
 transform = Transform3D(0.084114306, 0, -0.06370318, 0, 0.10551451, 0, 0.06370318, 0, 0.084114306, 0.5145559, 0.9750468, -0.35172048)
+
+[node name="doremy_pom_black" parent="doremy_pom_inner_14" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_p8xks")
 
 [node name="doremy_pom_inner_15" parent="." unique_id=1890647058 instance=ExtResource("6_4sund")]
 transform = Transform3D(0.10322715, 0, -0.021851012, 0, 0.10551451, 0, 0.021851012, 0, 0.10322715, 0.2035582, 0.9750468, -0.48897484)
 
+[node name="doremy_pom_black" parent="doremy_pom_inner_15" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_mrwcx")
+
 [node name="doremy_pom_inner_16" parent="." unique_id=507659972 instance=ExtResource("6_4sund")]
 transform = Transform3D(0.10391524, 0, 0.018301131, 0, 0.10551451, 0, -0.018301131, 0, 0.10391524, -0.16543081, 0.9750468, -0.49623248)
+
+[node name="doremy_pom_black" parent="doremy_pom_inner_16" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_gh1iv")
 
 [node name="doremy_pom_inner_17" parent="." unique_id=145984863 instance=ExtResource("6_4sund")]
 transform = Transform3D(0.08675093, 0, 0.0600632, 0, 0.10551451, 0, -0.0600632, 0, 0.08675093, -0.4864326, 0.9750468, -0.3706691)
 
+[node name="doremy_pom_black" parent="doremy_pom_inner_17" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_scre8")
+
 [node name="doremy_pom_inner_18" parent="." unique_id=1104642660 instance=ExtResource("6_4sund")]
 transform = Transform3D(0.03883265, 0, 0.09810881, 0, 0.10551451, 0, -0.09810881, 0, 0.03883265, -0.6719457, 0.9750468, -0.15067738)
+
+[node name="doremy_pom_black" parent="doremy_pom_inner_18" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_lji2k")
 
 [node name="doremy_pom_inner_19" parent="." unique_id=1415213078 instance=ExtResource("6_4sund")]
 transform = Transform3D(-0.035531987, 0, 0.09935186, 0, 0.10551451, 0, -0.09935186, 0, -0.035531987, -0.67928827, 0.9750468, 0.10369454)
 
+[node name="doremy_pom_black" parent="doremy_pom_inner_19" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_ublws")
+
 [node name="doremy_pom_inner_20" parent="." unique_id=828631792 instance=ExtResource("6_4sund")]
 transform = Transform3D(-0.08477713, 0, 0.062818386, 0, 0.10551451, 0, -0.062818386, 0, -0.08477713, -0.50516874, 0.9750468, 0.32835189)
+
+[node name="doremy_pom_black" parent="doremy_pom_inner_20" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_uvgyk")
 
 [node name="doremy_pom_inner_21" parent="." unique_id=1966620428 instance=ExtResource("6_4sund")]
 transform = Transform3D(-0.10346582, 0, 0.020691412, 0, 0.10551451, 0, -0.020691412, 0, -0.10346582, -0.19156055, 0.9750468, 0.46263343)
 
+[node name="doremy_pom_black" parent="doremy_pom_inner_21" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_ac2y4")
+
 [node name="doremy_pom_inner_22" parent="." unique_id=2060412976 instance=ExtResource("6_4sund")]
 transform = Transform3D(-0.10370565, 0, -0.019453768, 0, 0.10551451, 0, 0.019453768, 0, -0.10370565, 0.17753294, 0.9750468, 0.4652596)
+
+[node name="doremy_pom_black" parent="doremy_pom_inner_22" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_8l6oc")
 
 [node name="doremy_pom_inner_23" parent="." unique_id=1388792534 instance=ExtResource("6_4sund")]
 transform = Transform3D(-0.08743928, 0, -0.0590566, 0, 0.10551451, 0, 0.0590566, 0, -0.08743928, 0.47783124, 0.9750468, 0.34735942)
 
+[node name="doremy_pom_black" parent="doremy_pom_inner_23" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_kqft8")
+
 [node name="doremy_pom_inner_24" parent="." unique_id=1217433988 instance=ExtResource("6_4sund")]
 transform = Transform3D(-0.041690327, 0, -0.096929, 0, 0.10551451, 0, 0.096929, 0, -0.041690327, 0.66893804, 0.9750468, 0.12944455)
+
+[node name="doremy_pom_black" parent="doremy_pom_inner_24" index="0" unique_id=509277539]
+surface_material_override/0 = SubResource("ShaderMaterial_k62u8")
 
 [node name="doremy_pom_lower_1" parent="." unique_id=866145448 instance=ExtResource("5_pct0q")]
 transform = Transform3D(0.033808388, 0, -0.11327692, 0, 0.11821449, 0, 0.11327692, 0, 0.033808388, 0.81532484, 0.6885596, -0.15555632)
 
+[node name="doremy_pom_white" parent="doremy_pom_lower_1" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_5f22i")
+
 [node name="doremy_pom_lower_2" parent="." unique_id=1319414621 instance=ExtResource("5_pct0q")]
 transform = Transform3D(0.08938157, 0, -0.077366665, 0, 0.11821449, 0, 0.077366665, 0, 0.08938157, 0.6230916, 0.6885596, -0.44142076)
+
+[node name="doremy_pom_white" parent="doremy_pom_lower_2" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_3ypiu")
 
 [node name="doremy_pom_lower_3" parent="." unique_id=291581229 instance=ExtResource("5_pct0q")]
 transform = Transform3D(0.11479506, 0, -0.028226975, 0, 0.11821449, 0, 0.028226975, 0, 0.11479506, 0.25290725, 0.6885596, -0.62567246)
 
+[node name="doremy_pom_white" parent="doremy_pom_lower_3" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_rqsol")
+
 [node name="doremy_pom_lower_4" parent="." unique_id=48557633 instance=ExtResource("5_pct0q")]
 transform = Transform3D(0.116032474, 0, 0.022608126, 0, 0.11821449, 0, -0.022608126, 0, 0.116032474, -0.20266859, 0.6885596, -0.6366234)
+
+[node name="doremy_pom_white" parent="doremy_pom_lower_4" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_p7pku")
 
 [node name="doremy_pom_lower_5" parent="." unique_id=1765939671 instance=ExtResource("5_pct0q")]
 transform = Transform3D(0.09359141, 0, 0.07221713, 0, 0.11821449, 0, -0.07221713, 0, 0.09359141, -0.58905697, 0.6885596, -0.4689882)
 
+[node name="doremy_pom_white" parent="doremy_pom_lower_5" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_ygxbt")
+
 [node name="doremy_pom_lower_6" parent="." unique_id=1895277772 instance=ExtResource("5_pct0q")]
 transform = Transform3D(0.04138338, 0, 0.11073426, 0, 0.11821449, 0, -0.11073426, 0, 0.04138338, -0.8033845, 0.6885596, -0.19068608)
+
+[node name="doremy_pom_white" parent="doremy_pom_lower_6" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_sm4p2")
 
 [node name="doremy_pom_lower_7" parent="." unique_id=858747803 instance=ExtResource("5_pct0q")]
 transform = Transform3D(-0.03426506, 0, 0.113139614, 0, 0.11821449, 0, -0.113139614, 0, -0.03426506, -0.81507164, 0.6885596, 0.12376327)
 
+[node name="doremy_pom_white" parent="doremy_pom_lower_7" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_t1ma8")
+
 [node name="doremy_pom_lower_8" parent="." unique_id=1570300498 instance=ExtResource("5_pct0q")]
 transform = Transform3D(-0.091162324, 0, 0.0752602, 0, 0.11821449, 0, -0.0752602, 0, -0.091162324, -0.61649615, 0.6885596, 0.40700006)
+
+[node name="doremy_pom_white" parent="doremy_pom_lower_8" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_fr4j1")
 
 [node name="doremy_pom_lower_9" parent="." unique_id=814818238 instance=ExtResource("5_pct0q")]
 transform = Transform3D(-0.115029775, 0, 0.027254643, 0, 0.11821449, 0, -0.027254643, 0, -0.115029775, -0.24113403, 0.6885596, 0.586911)
 
+[node name="doremy_pom_white" parent="doremy_pom_lower_9" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_6rfhk")
+
 [node name="doremy_pom_lower_10" parent="." unique_id=733857147 instance=ExtResource("5_pct0q")]
 transform = Transform3D(-0.11571454, 0, -0.024182854, 0, 0.11821449, 0, 0.024182854, 0, -0.11571454, 0.21423508, 0.6885596, 0.59281456)
+
+[node name="doremy_pom_white" parent="doremy_pom_lower_10" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_c0lc2")
 
 [node name="doremy_pom_lower_11" parent="." unique_id=611466589 instance=ExtResource("5_pct0q")]
 transform = Transform3D(-0.09513087, 0, -0.07017679, 0, 0.11821449, 0, 0.07017679, 0, -0.09513087, 0.58181894, 0.6885596, 0.4342107)
 
+[node name="doremy_pom_white" parent="doremy_pom_lower_11" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_fs18h")
+
 [node name="doremy_pom_lower_12" parent="." unique_id=1427315760 instance=ExtResource("5_pct0q")]
 transform = Transform3D(-0.04242623, 0, -0.110338934, 0, 0.11821449, 0, 0.110338934, 0, -0.04242623, 0.8031569, 0.6885596, 0.15884916)
+
+[node name="doremy_pom_white" parent="doremy_pom_lower_12" index="0" unique_id=2137959283]
+surface_material_override/0 = SubResource("ShaderMaterial_j4phg")
+
+[editable path="doremy_dress_inner"]
+[editable path="doremy_dress_lower"]
+[editable path="doremy_dress_under"]
+[editable path="doremy_dress_upper"]
+[editable path="doremy_pom_upper_1"]
+[editable path="doremy_pom_upper_2"]
+[editable path="doremy_pom_upper_3"]
+[editable path="doremy_pom_upper_4"]
+[editable path="doremy_pom_upper_5"]
+[editable path="doremy_pom_upper_6"]
+[editable path="doremy_pom_upper_7"]
+[editable path="doremy_pom_upper_8"]
+[editable path="doremy_pom_upper_9"]
+[editable path="doremy_pom_upper_10"]
+[editable path="doremy_pom_inner_1"]
+[editable path="doremy_pom_inner_2"]
+[editable path="doremy_pom_inner_3"]
+[editable path="doremy_pom_inner_4"]
+[editable path="doremy_pom_inner_5"]
+[editable path="doremy_pom_inner_6"]
+[editable path="doremy_pom_inner_7"]
+[editable path="doremy_pom_inner_8"]
+[editable path="doremy_pom_inner_9"]
+[editable path="doremy_pom_inner_10"]
+[editable path="doremy_pom_inner_11"]
+[editable path="doremy_pom_inner_12"]
+[editable path="doremy_pom_inner_13"]
+[editable path="doremy_pom_inner_14"]
+[editable path="doremy_pom_inner_15"]
+[editable path="doremy_pom_inner_16"]
+[editable path="doremy_pom_inner_17"]
+[editable path="doremy_pom_inner_18"]
+[editable path="doremy_pom_inner_19"]
+[editable path="doremy_pom_inner_20"]
+[editable path="doremy_pom_inner_21"]
+[editable path="doremy_pom_inner_22"]
+[editable path="doremy_pom_inner_23"]
+[editable path="doremy_pom_inner_24"]
+[editable path="doremy_pom_lower_1"]
+[editable path="doremy_pom_lower_2"]
+[editable path="doremy_pom_lower_3"]
+[editable path="doremy_pom_lower_4"]
+[editable path="doremy_pom_lower_5"]
+[editable path="doremy_pom_lower_6"]
+[editable path="doremy_pom_lower_7"]
+[editable path="doremy_pom_lower_8"]
+[editable path="doremy_pom_lower_9"]
+[editable path="doremy_pom_lower_10"]
+[editable path="doremy_pom_lower_11"]
+[editable path="doremy_pom_lower_12"]

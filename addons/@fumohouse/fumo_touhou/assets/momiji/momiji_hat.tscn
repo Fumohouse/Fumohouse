@@ -1,20 +1,20 @@
-[gd_scene format=3 uid="uid://caswtxfadle3"]
+[gd_scene format=3 uid="uid://bdiewjxihx6he"]
 
-[ext_resource type="PackedScene" uid="uid://dtw5x5ygkwbx" path="res://addons/@fumohouse/fumo_touhou/assets/generic/sock_1.glb" id="1_610ao"]
-[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="2_2kbqt"]
-[ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="2_otm0g"]
-[ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="3_2kbqt"]
+[ext_resource type="PackedScene" uid="uid://ciwrwd5xsast7" path="res://addons/@fumohouse/fumo_touhou/assets/momiji/momiji_hat.glb" id="1_867cm"]
+[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="2_gqcty"]
+[ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="2_rl3xg"]
+[ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="3_gqcty"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yrlyc"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
 noise = SubResource("FastNoiseLite_yrlyc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgymm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pxq1c"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("2_otm0g")
-shader_parameter/albedo = Color(1, 1, 1, 1)
+shader = ExtResource("2_rl3xg")
+shader_parameter/albedo = Color(0.90588033, 0, 0.019608034, 1)
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
@@ -30,7 +30,7 @@ shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/dither_texture = ExtResource("3_2kbqt")
+shader_parameter/dither_texture = ExtResource("3_gqcty")
 shader_parameter/dither_scale = 8.0
 shader_parameter/alpha = 1.0
 shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_x1kjk")
@@ -40,9 +40,9 @@ shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
 shader_parameter/recolor = Color(1, 1, 1, 1)
 
-[node name="sock_1" unique_id=2104914056 node_paths=PackedStringArray("meshes") instance=ExtResource("1_610ao")]
-script = ExtResource("2_2kbqt")
-meshes = [NodePath("sock_1")]
+[node name="momiji_hat" unique_id=1538301216 node_paths=PackedStringArray("meshes") instance=ExtResource("1_867cm")]
+script = ExtResource("2_gqcty")
+meshes = [NodePath("momiji_hat")]
 
-[node name="sock_1" parent="." index="0" unique_id=1351818560]
-surface_material_override/0 = SubResource("ShaderMaterial_pgymm")
+[node name="momiji_hat" parent="." index="0" unique_id=515376964]
+surface_material_override/0 = SubResource("ShaderMaterial_pxq1c")

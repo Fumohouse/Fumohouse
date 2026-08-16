@@ -1,20 +1,20 @@
-[gd_scene format=3 uid="uid://dmsorrgcoh6y2"]
+[gd_scene format=3 uid="uid://bks7qlmm3cslp"]
 
-[ext_resource type="PackedScene" uid="uid://kynyjrvv3v1p" path="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_hair_back.glb" id="1_0kvns"]
-[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="2_iswy7"]
-[ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="3_dchs7"]
-[ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="4_s03pj"]
+[ext_resource type="PackedScene" uid="uid://btadp12p1030e" path="res://addons/@fumohouse/fumo_touhou/assets/doremy/doremy_sleeve.glb" id="1_s00qm"]
+[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="2_iig7p"]
+[ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="2_lbumo"]
+[ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="3_iig7p"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yrlyc"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
 noise = SubResource("FastNoiseLite_yrlyc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oucsx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xj223"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("3_dchs7")
-shader_parameter/albedo = Color(0.21666023, 0.16167378, 0.13904859, 1)
+shader = ExtResource("2_lbumo")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.9
@@ -30,7 +30,7 @@ shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/dither_texture = ExtResource("4_s03pj")
+shader_parameter/dither_texture = ExtResource("3_iig7p")
 shader_parameter/dither_scale = 8.0
 shader_parameter/alpha = 1.0
 shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_x1kjk")
@@ -40,9 +40,10 @@ shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
 shader_parameter/recolor = Color(1, 1, 1, 1)
 
-[node name="reimu_hair_back" unique_id=1903958414 node_paths=PackedStringArray("meshes") instance=ExtResource("1_0kvns")]
-script = ExtResource("2_iswy7")
-meshes = [NodePath("reimu_hair_back")]
+[node name="doremy_sleeve" unique_id=1637369755 node_paths=PackedStringArray("meshes") instance=ExtResource("1_s00qm")]
+script = ExtResource("2_iig7p")
+meshes = [NodePath("doremy_sleeve")]
+attributes = ["color1"]
 
-[node name="reimu_hair_back" parent="." index="0" unique_id=1611548057]
-surface_material_override/0 = SubResource("ShaderMaterial_oucsx")
+[node name="doremy_sleeve" parent="." index="0" unique_id=239543712]
+surface_material_override/0 = SubResource("ShaderMaterial_xj223")

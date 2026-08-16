@@ -36,3 +36,4 @@ shader_parameter/dissolve = 0.0
 shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)

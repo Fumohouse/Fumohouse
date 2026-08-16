@@ -35,7 +35,7 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
-import_script/path="uid://wxptj8nsyt1u"
+import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
@@ -44,7 +44,7 @@ _subresources={
 "doremy_pattern": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://addons/@fumohouse/fumo_touhou/assets/doremy/doremy_pattern_material.tres",
-"use_external/path": "uid://pv0n8ildi84j"
+"use_external/path": "uid://r256kkjiyjxg"
 }
 }
 }

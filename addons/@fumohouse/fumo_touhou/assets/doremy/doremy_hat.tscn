@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://c78w6o5ky5bou"]
+
+[ext_resource type="PackedScene" uid="uid://bmsx6w83tye1q" path="res://addons/@fumohouse/fumo_touhou/assets/doremy/doremy_hat.glb" id="1_x8dc7"]
+[ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="2_byqxp"]
+[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="2_w5kmx"]
+[ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="3_w5kmx"]
+[ext_resource type="Texture2D" uid="uid://c7x1f0m2fvj1y" path="res://addons/@fumohouse/fumo_touhou/assets/doremy/doremy_pattern.png" id="4_d1iuw"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yrlyc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
+noise = SubResource("FastNoiseLite_yrlyc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_byqxp"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_byqxp")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("3_w5kmx")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_x1kjk")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_84ppg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_16e0s"]
+noise = SubResource("FastNoiseLite_84ppg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5kmx"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_byqxp")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.8
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("3_w5kmx")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_16e0s")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(0.16862746, 0.16862746, 0.16862746, 1)
+shader_parameter/texture_recolor_mask = ExtResource("4_d1iuw")
+
+[node name="doremy_hat" unique_id=1522479153 node_paths=PackedStringArray("meshes") instance=ExtResource("1_x8dc7")]
+script = ExtResource("2_w5kmx")
+meshes = [NodePath("doremy_hat")]
+material_index = 1
+
+[node name="doremy_hat" parent="." index="0" unique_id=1586025792]
+surface_material_override/0 = SubResource("ShaderMaterial_byqxp")
+surface_material_override/1 = SubResource("ShaderMaterial_w5kmx")

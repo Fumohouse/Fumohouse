@@ -38,10 +38,11 @@ shader_parameter/dissolve = 0.0
 shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
 
-[node name="shoe_1" unique_id=164445087 node_paths=PackedStringArray("mesh") instance=ExtResource("1_15rbq")]
+[node name="shoe_1" unique_id=164445087 node_paths=PackedStringArray("meshes") instance=ExtResource("1_15rbq")]
 script = ExtResource("2_kdiw6")
-mesh = NodePath("shoe_1")
+meshes = [NodePath("shoe_1")]
 
 [node name="shoe_1" parent="." index="0" unique_id=1265338424]
 surface_material_override/0 = SubResource("ShaderMaterial_km05w")

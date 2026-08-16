@@ -1,20 +1,20 @@
-[gd_scene format=3 uid="uid://caswtxfadle3"]
+[gd_scene format=3 uid="uid://dg3utycbfwaty"]
 
-[ext_resource type="PackedScene" uid="uid://dtw5x5ygkwbx" path="res://addons/@fumohouse/fumo_touhou/assets/generic/sock_1.glb" id="1_610ao"]
-[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="2_2kbqt"]
-[ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="2_otm0g"]
-[ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="3_2kbqt"]
+[ext_resource type="PackedScene" uid="uid://cksci8s8bnnx2" path="res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_hair_bow.glb" id="1_lb53l"]
+[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="2_454gn"]
+[ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="2_kbbqq"]
+[ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="3_454gn"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yrlyc"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
 noise = SubResource("FastNoiseLite_yrlyc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgymm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7phj"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("2_otm0g")
-shader_parameter/albedo = Color(1, 1, 1, 1)
+shader = ExtResource("2_kbbqq")
+shader_parameter/albedo = Color(0.9063318, 0, 0.12125601, 1)
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
@@ -30,7 +30,7 @@ shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/dither_texture = ExtResource("3_2kbqt")
+shader_parameter/dither_texture = ExtResource("3_454gn")
 shader_parameter/dither_scale = 8.0
 shader_parameter/alpha = 1.0
 shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_x1kjk")
@@ -40,9 +40,9 @@ shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
 shader_parameter/recolor = Color(1, 1, 1, 1)
 
-[node name="sock_1" unique_id=2104914056 node_paths=PackedStringArray("meshes") instance=ExtResource("1_610ao")]
-script = ExtResource("2_2kbqt")
-meshes = [NodePath("sock_1")]
+[node name="shanghai_hair_bow" unique_id=696550874 node_paths=PackedStringArray("meshes") instance=ExtResource("1_lb53l")]
+script = ExtResource("2_454gn")
+meshes = [NodePath("shanghai_hair_bow")]
 
-[node name="sock_1" parent="." index="0" unique_id=1351818560]
-surface_material_override/0 = SubResource("ShaderMaterial_pgymm")
+[node name="shanghai_hair_bow" parent="." index="0" unique_id=1189277698]
+surface_material_override/0 = SubResource("ShaderMaterial_n7phj")

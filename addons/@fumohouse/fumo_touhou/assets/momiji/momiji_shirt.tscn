@@ -1,16 +1,19 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://dbgp7oe51b7hq"]
+[gd_scene format=3 uid="uid://dfloe42udjwu4"]
 
-[ext_resource type="Shader" uid="uid://dfrcte1oco71p" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material_backface.gdshader" id="1_0du5a"]
-[ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="2_yau3p"]
+[ext_resource type="PackedScene" uid="uid://bqwq8um7bi4i1" path="res://addons/@fumohouse/fumo_touhou/assets/momiji/momiji_shirt.glb" id="1_wi4i1"]
+[ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="2_kjju4"]
+[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="2_shtl5"]
+[ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="3_shtl5"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yrlyc"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
 noise = SubResource("FastNoiseLite_yrlyc")
 
-[resource]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6jhbe"]
+resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("1_0du5a")
+shader = ExtResource("2_kjju4")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 1.0
@@ -19,7 +22,7 @@ shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy = 1.0
+shader_parameter/emission_energy = 0.0
 shader_parameter/normal_scale = 1.0
 shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/ao_light_affect = 0.0
@@ -27,7 +30,7 @@ shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/dither_texture = ExtResource("2_yau3p")
+shader_parameter/dither_texture = ExtResource("3_shtl5")
 shader_parameter/dither_scale = 8.0
 shader_parameter/alpha = 1.0
 shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_x1kjk")
@@ -36,3 +39,10 @@ shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
 shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[node name="momiji_shirt" unique_id=1737431727 node_paths=PackedStringArray("meshes") instance=ExtResource("1_wi4i1")]
+script = ExtResource("2_shtl5")
+meshes = [NodePath("momiji_shirt")]
+
+[node name="momiji_shirt" parent="." index="0" unique_id=1379916755]
+surface_material_override/0 = SubResource("ShaderMaterial_6jhbe")

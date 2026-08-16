@@ -10,3 +10,6 @@ bone = "Head"
 display_name = "Reimu Bow"
 id = &"reimu_bow"
 scope = 1
+default_config = Dictionary[StringName, Variant]({
+&"color": Color(1, 0.27450982, 0.16470589, 1)
+})

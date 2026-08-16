@@ -38,10 +38,11 @@ shader_parameter/dissolve = 0.0
 shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
 
-[node name="momiji_ears" unique_id=710254077 node_paths=PackedStringArray("mesh") instance=ExtResource("1_tin5w")]
+[node name="momiji_ears" unique_id=710254077 node_paths=PackedStringArray("meshes") instance=ExtResource("1_tin5w")]
 script = ExtResource("2_dbbnd")
-mesh = NodePath("momiji_ears")
+meshes = [NodePath("momiji_ears")]
 
 [node name="momiji_ears" parent="." index="0" unique_id=902129465]
 surface_material_override/0 = SubResource("ShaderMaterial_ajn2h")

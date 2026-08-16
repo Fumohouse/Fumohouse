@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://5nrjxxnjssjy"]
+
+[ext_resource type="PackedScene" uid="uid://dgf2ccve7j76p" path="res://addons/@fumohouse/fumo_touhou/assets/momiji/momiji_skirt.glb" id="1_36p3s"]
+[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="2_c7vgv"]
+
+[node name="momiji_skirt" unique_id=2018681608 node_paths=PackedStringArray("meshes") instance=ExtResource("1_36p3s")]
+script = ExtResource("2_c7vgv")
+meshes = [NodePath("momiji_skirt")]

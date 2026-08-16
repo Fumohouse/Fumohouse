@@ -38,10 +38,11 @@ shader_parameter/dissolve = 0.0
 shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
 
-[node name="doremy_hair_back" unique_id=1136826406 node_paths=PackedStringArray("mesh") instance=ExtResource("1_came5")]
+[node name="doremy_hair_back" unique_id=1136826406 node_paths=PackedStringArray("meshes") instance=ExtResource("1_came5")]
 script = ExtResource("2_vvgbk")
-mesh = NodePath("doremy_hair_back")
+meshes = [NodePath("doremy_hair_back")]
 
 [node name="doremy_hair_back" parent="." index="0" unique_id=956398395]
 surface_material_override/0 = SubResource("ShaderMaterial_xf1wf")
