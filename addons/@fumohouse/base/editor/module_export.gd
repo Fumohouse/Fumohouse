@@ -27,7 +27,7 @@ func _refresh():
 
 	Modules.scan_modules()
 	for module in Modules.get_modules():
-		if module.name == "@fumohouse/base":
+		if module.name == &"@fumohouse/base":
 			continue
 
 		var checkbox := CheckBox.new()
