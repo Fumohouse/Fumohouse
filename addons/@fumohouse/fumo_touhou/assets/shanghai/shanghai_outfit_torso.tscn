@@ -16,7 +16,7 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
 noise = SubResource("FastNoiseLite_yrlyc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqi4r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w8sdu"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_22cqy")
@@ -60,8 +60,8 @@ transform = Transform3D(-1, 7.724033e-07, -5.6724485e-07, -5.26307e-07, 0.052006
 [node name="shanghai_bow" parent="." unique_id=535440425 instance=ExtResource("3_22cqy")]
 transform = Transform3D(0.03575067, -3.030332e-09, 9.4002e-10, 1.061015e-09, 0.0025318547, 0.034914132, -9.189108e-09, -0.011497317, 0.0076885344, 0.00041390315, 0.97956645, -0.21951316)
 
-[node name="shanghai_bow" parent="shanghai_bow" index="0" unique_id=1035318328]
-surface_material_override/0 = SubResource("ShaderMaterial_gqi4r")
+[node name="shanghai_bow" parent="shanghai_bow" index="0" unique_id=60226272]
+surface_material_override/0 = SubResource("ShaderMaterial_w8sdu")
 
 [node name="shanghai_collar" parent="." unique_id=974269981 instance=ExtResource("4_vul3k")]
 transform = Transform3D(1, -1.882614e-08, 1.9636479e-08, 1.9636484e-08, 0.9991127, -0.04211796, -1.8826139e-08, 0.04211796, 0.9991127, -0.007450992, 0.7762084, -0.04817607)

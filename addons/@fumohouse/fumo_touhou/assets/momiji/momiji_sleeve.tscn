@@ -10,7 +10,7 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
 noise = SubResource("FastNoiseLite_yrlyc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvhbf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k4yod"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_k4yod")
@@ -44,5 +44,5 @@ shader_parameter/recolor = Color(1, 1, 1, 1)
 script = ExtResource("2_uecxu")
 meshes = [NodePath("momiji_sleeve")]
 
-[node name="momiji_sleeve" parent="." index="0" unique_id=491310776]
-surface_material_override/0 = SubResource("ShaderMaterial_cvhbf")
+[node name="momiji_sleeve" parent="." index="0" unique_id=197878860]
+surface_material_override/0 = SubResource("ShaderMaterial_k4yod")

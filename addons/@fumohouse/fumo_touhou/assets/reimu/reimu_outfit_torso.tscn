@@ -16,7 +16,7 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
 noise = SubResource("FastNoiseLite_yrlyc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ra2p0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uri6x"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_uri6x")
@@ -47,7 +47,7 @@ shader_parameter/dissolve_emission_energy = 4.0
 shader_parameter/recolor = Color(1, 0.27450982, 0.16470589, 1)
 shader_parameter/texture_recolor_mask = ExtResource("5_xqkqv")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8y13"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xqkqv"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_uri6x")
@@ -83,7 +83,7 @@ shader_parameter/texture_recolor_mask = ExtResource("5_xqkqv")
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n4muy"]
 noise = SubResource("FastNoiseLite_3xuym")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ugaiq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ra2p0"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_uri6x")
@@ -118,7 +118,7 @@ shader_parameter/recolor = Color(1, 1, 1, 1)
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3xuym"]
 noise = SubResource("FastNoiseLite_scsms")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0v3yf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8y13"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("8_ra2p0")
@@ -153,7 +153,7 @@ shader_parameter/recolor = Color(1, 1, 1, 1)
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0v3yf"]
 noise = SubResource("FastNoiseLite_ugaiq")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ubjex"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_scsms"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("8_ra2p0")
@@ -191,32 +191,32 @@ attributes = ["tie_color", "color"]
 [node name="reimu_collar" parent="." unique_id=346575777 instance=ExtResource("1_mkbln")]
 transform = Transform3D(1, -1.882614e-08, 1.9636479e-08, 1.9636484e-08, 0.9991127, -0.04211796, -1.8826139e-08, 0.04211796, 0.9991127, 3.1738594e-09, 1.1117244, 0.03126168)
 
-[node name="reimu_collar" parent="reimu_collar" index="0" unique_id=2092279874]
-surface_material_override/0 = SubResource("ShaderMaterial_ra2p0")
+[node name="reimu_collar" parent="reimu_collar" index="0" unique_id=1655334096]
+surface_material_override/0 = SubResource("ShaderMaterial_uri6x")
 
 [node name="reimu_dress" parent="." unique_id=769981650 instance=ExtResource("2_konye")]
 transform = Transform3D(1, -1.882614e-08, 1.9636479e-08, 1.9636484e-08, 0.9991127, -0.04211796, -1.8826139e-08, 0.04211796, 0.9991127, 1.27830315e-08, 0.60176075, 0.009763975)
 
-[node name="reimu_dress" parent="reimu_dress" index="0" unique_id=402841356]
-surface_material_override/0 = SubResource("ShaderMaterial_i8y13")
+[node name="reimu_dress" parent="reimu_dress" index="0" unique_id=123174640]
+surface_material_override/0 = SubResource("ShaderMaterial_xqkqv")
 
 [node name="reimu_dress_frills" parent="." unique_id=2140658804 instance=ExtResource("3_ndsl2")]
 transform = Transform3D(1, -1.882614e-08, 1.9636479e-08, 1.9636484e-08, 0.9991127, -0.04211796, -1.8826139e-08, 0.04211796, 0.9991127, 3.785163e-08, -0.7286424, -0.046319656)
 
-[node name="reimu_dress_frills" parent="reimu_dress_frills" index="0" unique_id=1950898003]
-surface_material_override/0 = SubResource("ShaderMaterial_ugaiq")
+[node name="reimu_dress_frills" parent="reimu_dress_frills" index="0" unique_id=783655691]
+surface_material_override/0 = SubResource("ShaderMaterial_ra2p0")
 
 [node name="reimu_dress_under" parent="." unique_id=44485141 instance=ExtResource("4_jq6g5")]
 transform = Transform3D(1.02, -1.9202663e-08, 2.0029209e-08, 2.0029214e-08, 1.019095, -0.04296032, -1.920266e-08, 0.04296032, 1.019095, 1.27830315e-08, 0.60176075, 0.009763975)
 
-[node name="reimu_dress_under" parent="reimu_dress_under" index="0" unique_id=1221438541]
-surface_material_override/0 = SubResource("ShaderMaterial_0v3yf")
+[node name="reimu_dress_under" parent="reimu_dress_under" index="0" unique_id=1284868677]
+surface_material_override/0 = SubResource("ShaderMaterial_i8y13")
 
 [node name="reimu_tie" parent="." unique_id=746089093 instance=ExtResource("5_xiwnq")]
 transform = Transform3D(1, -1.9636479e-08, -1.8826151e-08, 1.9636477e-08, 0.04211804, 0.9991127, -1.8826139e-08, -0.9991127, 0.04211804, 0.0041670087, 0.87585235, -0.20437314)
 
-[node name="reimu_tie" parent="reimu_tie" index="0" unique_id=223739668]
-surface_material_override/0 = SubResource("ShaderMaterial_ubjex")
+[node name="reimu_tie" parent="reimu_tie" index="0" unique_id=1292053778]
+surface_material_override/0 = SubResource("ShaderMaterial_scsms")
 
 [editable path="reimu_collar"]
 [editable path="reimu_dress"]

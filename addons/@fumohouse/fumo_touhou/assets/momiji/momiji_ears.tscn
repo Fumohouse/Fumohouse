@@ -44,5 +44,5 @@ shader_parameter/recolor = Color(1, 1, 1, 1)
 script = ExtResource("2_dbbnd")
 meshes = [NodePath("momiji_ears")]
 
-[node name="momiji_ears" parent="." index="0" unique_id=902129465]
+[node name="momiji_ears" parent="." index="0" unique_id=1358853231]
 surface_material_override/0 = SubResource("ShaderMaterial_ajn2h")

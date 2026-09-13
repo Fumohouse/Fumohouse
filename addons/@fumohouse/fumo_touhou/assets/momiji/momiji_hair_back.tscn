@@ -44,5 +44,5 @@ shader_parameter/recolor = Color(1, 1, 1, 1)
 script = ExtResource("2_xicpv")
 meshes = [NodePath("momiji_hair_back")]
 
-[node name="momiji_hair_back" parent="." index="0" unique_id=745003958]
+[node name="momiji_hair_back" parent="." index="0" unique_id=570751372]
 surface_material_override/0 = SubResource("ShaderMaterial_bwq33")

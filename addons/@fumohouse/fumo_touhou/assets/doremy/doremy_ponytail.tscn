@@ -104,7 +104,7 @@ shader_parameter/recolor = Color(1, 1, 1, 1)
 script = ExtResource("2_wous2")
 meshes = [NodePath("doremy_ponytail")]
 
-[node name="doremy_ponytail" parent="." index="0" unique_id=1892740082]
+[node name="doremy_ponytail" parent="." index="0" unique_id=610801324]
 surface_material_override/0 = SubResource("ShaderMaterial_sgosx")
 surface_material_override/1 = SubResource("ShaderMaterial_o7jw8")
 surface_material_override/2 = SubResource("ShaderMaterial_7ngod")

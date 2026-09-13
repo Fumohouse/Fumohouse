@@ -44,5 +44,5 @@ shader_parameter/recolor = Color(1, 1, 1, 1)
 script = ExtResource("2_umms5")
 meshes = [NodePath("doremy_hair_front")]
 
-[node name="doremy_hair_front" parent="." index="0" unique_id=960714269]
+[node name="doremy_hair_front" parent="." index="0" unique_id=2096321186]
 surface_material_override/0 = SubResource("ShaderMaterial_12gmk")

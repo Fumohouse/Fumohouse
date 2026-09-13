@@ -44,5 +44,5 @@ shader_parameter/recolor = Color(1, 1, 1, 1)
 script = ExtResource("2_2kbqt")
 meshes = [NodePath("sock_1")]
 
-[node name="sock_1" parent="." index="0" unique_id=1351818560]
+[node name="sock_1" parent="." index="0" unique_id=993583062]
 surface_material_override/0 = SubResource("ShaderMaterial_pgymm")

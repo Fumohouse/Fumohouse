@@ -10,7 +10,7 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
 noise = SubResource("FastNoiseLite_yrlyc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bqj7s"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jw2nd"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_jw2nd")
@@ -45,5 +45,5 @@ script = ExtResource("2_vate6")
 meshes = [NodePath("doremy_pom_white")]
 attributes = ["color2"]
 
-[node name="doremy_pom_white" parent="." index="0" unique_id=2137959283]
-surface_material_override/0 = SubResource("ShaderMaterial_bqj7s")
+[node name="doremy_pom_white" parent="." index="0" unique_id=835665940]
+surface_material_override/0 = SubResource("ShaderMaterial_jw2nd")

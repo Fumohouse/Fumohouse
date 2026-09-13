@@ -44,5 +44,5 @@ shader_parameter/recolor = Color(1, 1, 1, 1)
 script = ExtResource("2_a3xrs")
 meshes = [NodePath("shanghai_hair")]
 
-[node name="shanghai_hair" parent="." index="0" unique_id=1346447013]
+[node name="shanghai_hair" parent="." index="0" unique_id=459048890]
 surface_material_override/0 = SubResource("ShaderMaterial_mpuun")

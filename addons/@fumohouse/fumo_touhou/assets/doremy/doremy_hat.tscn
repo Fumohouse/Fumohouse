@@ -82,6 +82,6 @@ script = ExtResource("2_w5kmx")
 meshes = [NodePath("doremy_hat")]
 material_index = 1
 
-[node name="doremy_hat" parent="." index="0" unique_id=1586025792]
+[node name="doremy_hat" parent="." index="0" unique_id=749028498]
 surface_material_override/0 = SubResource("ShaderMaterial_byqxp")
 surface_material_override/1 = SubResource("ShaderMaterial_w5kmx")

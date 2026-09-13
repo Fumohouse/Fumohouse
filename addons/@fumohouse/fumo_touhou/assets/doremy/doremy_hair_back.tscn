@@ -44,5 +44,5 @@ shader_parameter/recolor = Color(1, 1, 1, 1)
 script = ExtResource("2_vvgbk")
 meshes = [NodePath("doremy_hair_back")]
 
-[node name="doremy_hair_back" parent="." index="0" unique_id=956398395]
+[node name="doremy_hair_back" parent="." index="0" unique_id=636276888]
 surface_material_override/0 = SubResource("ShaderMaterial_xf1wf")

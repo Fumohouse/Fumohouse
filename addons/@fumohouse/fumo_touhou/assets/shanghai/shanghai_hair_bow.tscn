@@ -10,7 +10,7 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
 noise = SubResource("FastNoiseLite_yrlyc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7phj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbbqq"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_kbbqq")
@@ -44,5 +44,5 @@ shader_parameter/recolor = Color(1, 1, 1, 1)
 script = ExtResource("2_454gn")
 meshes = [NodePath("shanghai_hair_bow")]
 
-[node name="shanghai_hair_bow" parent="." index="0" unique_id=1189277698]
-surface_material_override/0 = SubResource("ShaderMaterial_n7phj")
+[node name="shanghai_hair_bow" parent="." index="0" unique_id=1285218383]
+surface_material_override/0 = SubResource("ShaderMaterial_kbbqq")
