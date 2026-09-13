@@ -57,10 +57,18 @@ static func run(argd: Dictionary[StringName, String], argv: PackedStringArray) -
 	Log.info("Platform: %s" % platform_name, LOG_SCOPE)
 	Log.info("Server mode: %s" % server, LOG_SCOPE)
 
-	Log.info("Exporting base package...", LOG_SCOPE)
-	ModuleExporter.export_base_package(platform_name, out_path, server)
+	var do_base_package := "no-base-package" not in argd
+	var do_modules := "no-modules" not in argd
 
-	Log.info("Exporting modules %s..." % ", ".join(modules), LOG_SCOPE)
-	ModuleExporter.export(modules, platform_name, out_path, server)
+	if do_base_package:
+		Log.info("Exporting base package...", LOG_SCOPE)
+		ModuleExporter.export_base_package(platform_name, out_path, server)
+
+	if do_modules:
+		Log.info("Exporting modules %s..." % ", ".join(modules), LOG_SCOPE)
+		ModuleExporter.export(modules, platform_name, out_path, server)
+
+	Log.info("Generating manifest...", LOG_SCOPE)
+	ModuleExporter.export_manifest(out_path, do_base_package, do_modules)
 
 	return 0
