@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b0udmharl0p74" path="res://addons/@fumohouse/music/music_controller.gd" id="1_my832"]
 [ext_resource type="PackedScene" uid="uid://cmqn140kecnvi" path="res://addons/@fumohouse/common/nodes/marquee.tscn" id="1_y1la7"]
 [ext_resource type="Script" uid="uid://rbt8vx8w4w21" path="res://addons/@fumohouse/music/music_visualizer.gd" id="2_7lyuo"]
+[ext_resource type="Script" uid="uid://geyexabvu4v" path="res://addons/@fumohouse/common/nodes/button_sound.gd" id="4_1u30v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_my832"]
 content_margin_left = 0.0
@@ -63,6 +64,7 @@ layout_mode = 2
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 20
 text = ""
+script = ExtResource("4_1u30v")
 
 [node name="Play" type="Button" parent="Layout/VBoxContainer/Controls" unique_id=1692187609]
 unique_name_in_owner = true
@@ -70,6 +72,7 @@ layout_mode = 2
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 20
 text = ""
+script = ExtResource("4_1u30v")
 
 [node name="Next" type="Button" parent="Layout/VBoxContainer/Controls" unique_id=912946107]
 unique_name_in_owner = true
@@ -77,5 +80,6 @@ layout_mode = 2
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 20
 text = ""
+script = ExtResource("4_1u30v")
 
 [editable path="Layout/VBoxContainer/Marquee"]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://62pkyk82rvkj"]
 
 [ext_resource type="Script" uid="uid://d3r42veqqkgya" path="res://addons/@fumohouse/navigation/options_screen/restart_prompt.gd" id="1_orkif"]
+[ext_resource type="Script" uid="uid://geyexabvu4v" path="res://addons/@fumohouse/common/nodes/button_sound.gd" id="2_cf3kk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvtl1"]
 content_margin_left = 32.0
@@ -41,6 +42,7 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 14
 text = "Not now"
+script = ExtResource("2_cf3kk")
 
 [node name="Restart" type="Button" parent="HBoxContainer" unique_id=667991329]
 unique_name_in_owner = true
@@ -49,3 +51,4 @@ size_flags_vertical = 4
 theme_type_variation = &"ButtonAccent"
 theme_override_font_sizes/font_size = 14
 text = "Restart"
+script = ExtResource("2_cf3kk")

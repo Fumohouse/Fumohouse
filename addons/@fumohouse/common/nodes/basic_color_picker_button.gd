@@ -1,9 +1,10 @@
 class_name BasicColorPickerButton
-extends ColorPickerButton
+extends ColorPickerButtonSound
 ## A [ColorPickerButton] with sensible default picker configuration.
 
 
 func _ready():
+	super()
 	var picker: ColorPicker = get_picker()
 
 	picker.color_mode = ColorPicker.MODE_HSV

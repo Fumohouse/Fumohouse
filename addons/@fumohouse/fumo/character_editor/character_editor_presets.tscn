@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://4gntby41idbe"]
 
 [ext_resource type="Script" uid="uid://b8twh8hujumqe" path="res://addons/@fumohouse/fumo/character_editor/character_editor_presets.gd" id="1_oycch"]
+[ext_resource type="Script" uid="uid://geyexabvu4v" path="res://addons/@fumohouse/common/nodes/button_sound.gd" id="2_4idsx"]
+[ext_resource type="Script" uid="uid://d3lo7e26yybux" path="res://addons/@fumohouse/common/nodes/sound_text_input.gd" id="2_5q3xh"]
 
 [node name="Presets" type="VBoxContainer" unique_id=583077682]
 anchors_preset = 15
@@ -17,6 +19,7 @@ custom_minimum_size = Vector2(0, 41)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Search…"
+script = ExtResource("2_5q3xh")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1293885574]
 layout_mode = 2
@@ -28,3 +31,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 4
+
+[node name="ButtonSound" type="Button" parent="." unique_id=1547564541]
+layout_mode = 2
+script = ExtResource("2_4idsx")
+metadata/_custom_type_script = "uid://geyexabvu4v"

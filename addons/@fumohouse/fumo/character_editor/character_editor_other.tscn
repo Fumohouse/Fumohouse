@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cqif4akr177o3" path="res://addons/@fumohouse/fumo/character_editor/character_editor_other.gd" id="1_soyb4"]
 [ext_resource type="Script" uid="uid://tkik3eno86eh" path="res://addons/@fumohouse/common/nodes/basic_color_picker_button.gd" id="2_3tkhi"]
+[ext_resource type="Script" uid="uid://geyexabvu4v" path="res://addons/@fumohouse/common/nodes/button_sound.gd" id="3_jvfgn"]
+[ext_resource type="Script" uid="uid://bahuv64lou7sl" path="res://addons/@fumohouse/common/nodes/button_slider_sound.gd" id="3_sjqbc"]
 
 [node name="Other" type="ScrollContainer" unique_id=491372255]
 anchors_preset = 15
@@ -51,6 +53,7 @@ min_value = 0.7
 max_value = 2.0
 step = 0.05
 value = 1.25
+script = ExtResource("3_sjqbc")
 
 [node name="PitchValue" type="Label" parent="VBoxContainer/VoicePitch/Slider" unique_id=524488911]
 unique_name_in_owner = true
@@ -66,15 +69,18 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Low"
+script = ExtResource("3_jvfgn")
 
 [node name="BasePitch" type="Button" parent="VBoxContainer/VoicePitch/Presets" unique_id=1868356150]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Base"
+script = ExtResource("3_jvfgn")
 
 [node name="HighPitch" type="Button" parent="VBoxContainer/VoicePitch/Presets" unique_id=1207131988]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "High"
+script = ExtResource("3_jvfgn")

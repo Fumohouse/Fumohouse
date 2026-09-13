@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://3pgovqemhie4" path="res://addons/@fumohouse/navigation/options_screen/options_group.tscn" id="2_bey3n"]
 [ext_resource type="PackedScene" uid="uid://dkc1c5664nsdq" path="res://addons/@fumohouse/config/ui/config_range.tscn" id="3_0jmwj"]
 [ext_resource type="PackedScene" uid="uid://d3trtaukoxstd" path="res://addons/@fumohouse/config/ui/config_action_bind.tscn" id="4_0jmwj"]
+[ext_resource type="Script" uid="uid://geyexabvu4v" path="res://addons/@fumohouse/common/nodes/button_sound.gd" id="4_5h762"]
 
 [node name="Input" unique_id=607858920 instance=ExtResource("1_gv0pu")]
 
@@ -19,6 +20,9 @@ key = &"input/sens/camera/first_person"
 
 [node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/Sens1P" index="0" unique_id=23282165]
 text = "Look Sensitivity (1st Person)"
+
+[node name="Revert" parent="MarginContainer/VBoxContainer/Camera/Options/Sens1P" index="2" unique_id=1300946587]
+script = ExtResource("4_5h762")
 
 [node name="LabeledSlider" parent="MarginContainer/VBoxContainer/Camera/Options/Sens1P" index="3" unique_id=2136755568]
 format_string = "%.1f°/px"
@@ -36,6 +40,9 @@ key = &"input/sens/camera/third_person"
 [node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/Sens3P" index="0" unique_id=23282165]
 text = "Look Sensitivity (3rd Person)"
 
+[node name="Revert" parent="MarginContainer/VBoxContainer/Camera/Options/Sens3P" index="2" unique_id=1300946587]
+script = ExtResource("4_5h762")
+
 [node name="LabeledSlider" parent="MarginContainer/VBoxContainer/Camera/Options/Sens3P" index="3" unique_id=2136755568]
 format_string = "%.1f°/px"
 
@@ -51,6 +58,9 @@ key = &"input/sens/camera/zoom"
 
 [node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/SensZoom" index="0" unique_id=23282165]
 text = "Zoom Sensitivity"
+
+[node name="Revert" parent="MarginContainer/VBoxContainer/Camera/Options/SensZoom" index="2" unique_id=1300946587]
+script = ExtResource("4_5h762")
 
 [node name="LabeledSlider" parent="MarginContainer/VBoxContainer/Camera/Options/SensZoom" index="3" unique_id=2136755568]
 format_string = "%.1fm/tick"
@@ -68,6 +78,12 @@ key = &"input/action/camera_rotate/bind"
 [node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/Rotate" index="0" unique_id=23282165]
 text = "Look (3rd Person)"
 
+[node name="Revert" parent="MarginContainer/VBoxContainer/Camera/Options/Rotate" index="2" unique_id=1300946587]
+script = ExtResource("4_5h762")
+
+[node name="Button" parent="MarginContainer/VBoxContainer/Camera/Options/Rotate" index="3" unique_id=776302766]
+script = ExtResource("4_5h762")
+
 [node name="ZoomIn" parent="MarginContainer/VBoxContainer/Camera/Options" parent_id_path=PackedInt32Array(882110831, 852454493) index="4" unique_id=312447435 instance=ExtResource("4_0jmwj")]
 layout_mode = 2
 key = &"input/action/camera_zoom_in/bind"
@@ -75,12 +91,24 @@ key = &"input/action/camera_zoom_in/bind"
 [node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/ZoomIn" index="0" unique_id=23282165]
 text = "Zoom In"
 
+[node name="Revert" parent="MarginContainer/VBoxContainer/Camera/Options/ZoomIn" index="2" unique_id=1300946587]
+script = ExtResource("4_5h762")
+
+[node name="Button" parent="MarginContainer/VBoxContainer/Camera/Options/ZoomIn" index="3" unique_id=776302766]
+script = ExtResource("4_5h762")
+
 [node name="ZoomOut" parent="MarginContainer/VBoxContainer/Camera/Options" parent_id_path=PackedInt32Array(882110831, 852454493) index="5" unique_id=288777684 instance=ExtResource("4_0jmwj")]
 layout_mode = 2
 key = &"input/action/camera_zoom_out/bind"
 
 [node name="Label" parent="MarginContainer/VBoxContainer/Camera/Options/ZoomOut" index="0" unique_id=23282165]
 text = "Zoom Out"
+
+[node name="Revert" parent="MarginContainer/VBoxContainer/Camera/Options/ZoomOut" index="2" unique_id=1300946587]
+script = ExtResource("4_5h762")
+
+[node name="Button" parent="MarginContainer/VBoxContainer/Camera/Options/ZoomOut" index="3" unique_id=776302766]
+script = ExtResource("4_5h762")
 
 [node name="Character" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(527047334) index="1" unique_id=2057590920 instance=ExtResource("2_bey3n")]
 layout_mode = 2
@@ -185,12 +213,21 @@ key = &"input/action/screenshot/bind"
 [node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Screenshot" index="0" unique_id=23282165]
 text = "Screenshot"
 
+[node name="Button" parent="MarginContainer/VBoxContainer/UI/Options/Screenshot" index="3" unique_id=776302766]
+script = ExtResource("4_5h762")
+
 [node name="Debug1" parent="MarginContainer/VBoxContainer/UI/Options" parent_id_path=PackedInt32Array(892564600, 852454493) index="5" unique_id=175227248 instance=ExtResource("4_0jmwj")]
 layout_mode = 2
 key = &"input/action/debug_1/bind"
 
 [node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Debug1" index="0" unique_id=23282165]
 text = "Debug 1"
+
+[node name="Revert" parent="MarginContainer/VBoxContainer/UI/Options/Debug1" index="2" unique_id=1300946587]
+script = ExtResource("4_5h762")
+
+[node name="Button" parent="MarginContainer/VBoxContainer/UI/Options/Debug1" index="3" unique_id=776302766]
+script = ExtResource("4_5h762")
 
 [node name="Debug2" parent="MarginContainer/VBoxContainer/UI/Options" parent_id_path=PackedInt32Array(892564600, 852454493) index="6" unique_id=1091884839 instance=ExtResource("4_0jmwj")]
 layout_mode = 2
@@ -199,6 +236,12 @@ key = &"input/action/debug_2/bind"
 [node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Debug2" index="0" unique_id=23282165]
 text = "Debug 2"
 
+[node name="Revert" parent="MarginContainer/VBoxContainer/UI/Options/Debug2" index="2" unique_id=1300946587]
+script = ExtResource("4_5h762")
+
+[node name="Button" parent="MarginContainer/VBoxContainer/UI/Options/Debug2" index="3" unique_id=776302766]
+script = ExtResource("4_5h762")
+
 [node name="Debug3" parent="MarginContainer/VBoxContainer/UI/Options" parent_id_path=PackedInt32Array(892564600, 852454493) index="7" unique_id=1749915513 instance=ExtResource("4_0jmwj")]
 layout_mode = 2
 key = &"input/action/debug_3/bind"
@@ -206,12 +249,24 @@ key = &"input/action/debug_3/bind"
 [node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Debug3" index="0" unique_id=23282165]
 text = "Debug 3"
 
+[node name="Revert" parent="MarginContainer/VBoxContainer/UI/Options/Debug3" index="2" unique_id=1300946587]
+script = ExtResource("4_5h762")
+
+[node name="Button" parent="MarginContainer/VBoxContainer/UI/Options/Debug3" index="3" unique_id=776302766]
+script = ExtResource("4_5h762")
+
 [node name="Debug4" parent="MarginContainer/VBoxContainer/UI/Options" parent_id_path=PackedInt32Array(892564600, 852454493) index="8" unique_id=831706414 instance=ExtResource("4_0jmwj")]
 layout_mode = 2
 key = &"input/action/debug_4/bind"
 
 [node name="Label" parent="MarginContainer/VBoxContainer/UI/Options/Debug4" index="0" unique_id=23282165]
 text = "Debug 4"
+
+[node name="Revert" parent="MarginContainer/VBoxContainer/UI/Options/Debug4" index="2" unique_id=1300946587]
+script = ExtResource("4_5h762")
+
+[node name="Button" parent="MarginContainer/VBoxContainer/UI/Options/Debug4" index="3" unique_id=776302766]
+script = ExtResource("4_5h762")
 
 [editable path="MarginContainer/VBoxContainer/Camera"]
 [editable path="MarginContainer/VBoxContainer/Camera/Options/Sens1P"]

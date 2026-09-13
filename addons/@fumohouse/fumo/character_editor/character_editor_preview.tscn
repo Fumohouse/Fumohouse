@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dvryl7jn8lghl" path="res://addons/@fumohouse/fumo/character_editor/character_editor_preview.gd" id="1_eik25"]
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="2_5hlcs"]
 [ext_resource type="PackedScene" uid="uid://d4hwbq0e54jt4" path="res://addons/@fumohouse/fumo/character_editor/components/character_viewport.tscn" id="3_6ouxl"]
+[ext_resource type="Script" uid="uid://geyexabvu4v" path="res://addons/@fumohouse/common/nodes/button_sound.gd" id="3_8hsev"]
+[ext_resource type="Script" uid="uid://d3lo7e26yybux" path="res://addons/@fumohouse/common/nodes/sound_text_input.gd" id="3_cgjno"]
+[ext_resource type="Script" uid="uid://bahuv64lou7sl" path="res://addons/@fumohouse/common/nodes/button_slider_sound.gd" id="5_01bcw"]
 
 [node name="CharacterEditorPreview" type="VBoxContainer" unique_id=48173606]
 custom_minimum_size = Vector2(292, 0)
@@ -20,6 +23,7 @@ size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_5hlcs")
 theme_override_font_sizes/font_size = 20
 text = "Character"
+script = ExtResource("3_cgjno")
 
 [node name="ApplyButton" type="Button" parent="HBoxContainer" unique_id=1103452475]
 unique_name_in_owner = true
@@ -27,6 +31,7 @@ custom_minimum_size = Vector2(41, 41)
 layout_mode = 2
 tooltip_text = "Apply"
 text = ""
+script = ExtResource("3_8hsev")
 
 [node name="CharacterViewport" parent="." unique_id=483515585 instance=ExtResource("3_6ouxl")]
 unique_name_in_owner = true
@@ -58,6 +63,7 @@ min_value = 0.5
 max_value = 3.0
 step = 0.05
 value = 1.0
+script = ExtResource("5_01bcw")
 
 [node name="ScalePresets" type="HBoxContainer" parent="Scale" unique_id=1881618208]
 unique_name_in_owner = true
@@ -68,6 +74,7 @@ custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Doll"
+script = ExtResource("3_8hsev")
 metadata/scale_preset = 0.5
 
 [node name="Shinmy" type="Button" parent="Scale/ScalePresets" unique_id=1772189074]
@@ -76,6 +83,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 14
 text = "Shinmy"
+script = ExtResource("3_8hsev")
 metadata/scale_preset = 0.75
 
 [node name="Base" type="Button" parent="Scale/ScalePresets" unique_id=1452114837]
@@ -84,6 +92,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 15
 text = "Base"
+script = ExtResource("3_8hsev")
 metadata/scale_preset = 1.0
 
 [node name="Deka" type="Button" parent="Scale/ScalePresets" unique_id=17943551]
@@ -92,4 +101,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 15
 text = "Deka"
+script = ExtResource("3_8hsev")
 metadata/scale_preset = 2.0

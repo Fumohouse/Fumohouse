@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dile6cj36yd5k" path="res://addons/@fumohouse/navigation/character_editor/nav_character.gd" id="1_p3kp7"]
 [ext_resource type="PackedScene" uid="uid://d4hwbq0e54jt4" path="res://addons/@fumohouse/fumo/character_editor/components/character_viewport.tscn" id="2_vu4gi"]
+[ext_resource type="Script" uid="uid://geyexabvu4v" path="res://addons/@fumohouse/common/nodes/button_sound.gd" id="3_af1q0"]
 
 [node name="NavCharacter" type="VBoxContainer" unique_id=1386682874]
 offset_right = 240.0
@@ -19,3 +20,4 @@ custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Edit"
+script = ExtResource("3_af1q0")

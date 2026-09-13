@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/navigation/screen_base_layout.tscn" id="1_5m4yv"]
 [ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="3_0eq8h"]
+[ext_resource type="Script" uid="uid://geyexabvu4v" path="res://addons/@fumohouse/common/nodes/button_sound.gd" id="3_o08p7"]
 [ext_resource type="PackedScene" uid="uid://c246gir0epl0y" path="res://addons/@fumohouse/navigation/options_screen/tabs/graphics_tab.tscn" id="4_gb75b"]
 [ext_resource type="PackedScene" uid="uid://d2u1fw2dlkujn" path="res://addons/@fumohouse/navigation/options_screen/tabs/audio_tab.tscn" id="5_3c6qe"]
 [ext_resource type="PackedScene" uid="uid://r0g4ywp4thny" path="res://addons/@fumohouse/navigation/options_screen/tabs/input_tab.tscn" id="6_hp4et"]
@@ -23,16 +24,19 @@ script = ExtResource("3_0eq8h")
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Graphics"
+script = ExtResource("3_o08p7")
 
 [node name="Audio" type="Button" parent="TopBar/Tabs" index="1" unique_id=1159720865]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Audio"
+script = ExtResource("3_o08p7")
 
 [node name="Input" type="Button" parent="TopBar/Tabs" index="2" unique_id=2146394009]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Input"
+script = ExtResource("3_o08p7")
 
 [node name="TabContent" type="Control" parent="Contents/MarginContainer" parent_id_path=PackedInt32Array(1118290265) index="0" unique_id=746992218]
 layout_mode = 2

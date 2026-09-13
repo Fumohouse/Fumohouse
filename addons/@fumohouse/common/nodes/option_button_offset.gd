@@ -1,6 +1,6 @@
 @tool
 class_name OptionButtonOffset
-extends OptionButton
+extends OptionButtonSound
 ## An [OptionButton] variant that allows adjusting the offset of its
 ## [PopupMenu].
 
@@ -9,6 +9,7 @@ extends OptionButton
 
 
 func _ready():
+	super()
 	pressed.connect(_on_pressed)
 
 
