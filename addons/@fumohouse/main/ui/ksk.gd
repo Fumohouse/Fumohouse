@@ -1,4 +1,4 @@
-extends ButtonSound
+extends Button
 
 const TRANSITION_DURATION := 0.3
 
@@ -9,7 +9,6 @@ var _tween: Tween
 
 
 func _ready():
-	super()
 	_logo.mouse_entered.connect(_on_mouse_entered)
 	_logo.mouse_exited.connect(_on_mouse_exited)
 	pressed.connect(_on_pressed)

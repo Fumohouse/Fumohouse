@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/navigation/screen_base_layout.tscn" id="1_nwhkr"]
 [ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="2_nwhkr"]
-[ext_resource type="Script" uid="uid://geyexabvu4v" path="res://addons/@fumohouse/common/nodes/button_sound.gd" id="3_7jbsa"]
 [ext_resource type="PackedScene" uid="uid://b8w13u5smtchn" path="res://addons/@fumohouse/fumo/character_editor/character_editor_preview.tscn" id="3_87xhq"]
 [ext_resource type="PackedScene" uid="uid://di250xjjyop8p" path="res://addons/@fumohouse/fumo/character_editor/character_editor_face.tscn" id="5_0e4lx"]
 [ext_resource type="PackedScene" uid="uid://4gntby41idbe" path="res://addons/@fumohouse/fumo/character_editor/character_editor_presets.tscn" id="5_gyx0o"]
@@ -26,31 +25,26 @@ script = ExtResource("2_nwhkr")
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "Presets"
-script = ExtResource("3_7jbsa")
 
 [node name="Face" type="Button" parent="TopBar/Tabs" index="1" unique_id=1750245751]
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "Face"
-script = ExtResource("3_7jbsa")
 
 [node name="Parts" type="Button" parent="TopBar/Tabs" index="2" unique_id=921596658]
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "Parts"
-script = ExtResource("3_7jbsa")
 
 [node name="PartOptions" type="Button" parent="TopBar/Tabs" index="3" unique_id=734189071]
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "Part Options"
-script = ExtResource("3_7jbsa")
 
 [node name="Other" type="Button" parent="TopBar/Tabs" index="4" unique_id=1730031336]
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "Other"
-script = ExtResource("3_7jbsa")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer" parent_id_path=PackedInt32Array(1118290265) index="0" unique_id=1759893896]
 layout_mode = 2

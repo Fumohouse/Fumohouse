@@ -1,4 +1,4 @@
-extends ButtonSound
+extends Button
 
 const MenuUtils := preload("../menu_utils.gd")
 const EXPAND := 20.0
@@ -7,7 +7,6 @@ var orig_width: float
 
 
 func _ready():
-	super()
 	orig_width = size.x
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)

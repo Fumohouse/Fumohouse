@@ -52,14 +52,14 @@ text = "TTS Volume"
 [node name="LabeledSlider" parent="MarginContainer/VBoxContainer/Buses/Options/TTS" index="3" unique_id=2136755568]
 format_string = "%d%%"
 
-[node name="UI" parent="MarginContainer/VBoxContainer/Buses/Options" parent_id_path=PackedInt32Array(1851120764, 852454493) index="3" unique_id=911415086 instance=ExtResource("4_bue28")]
+[node name="UI Volume" parent="MarginContainer/VBoxContainer/Buses/Options" parent_id_path=PackedInt32Array(1851120764, 852454493) index="3" unique_id=871564183 instance=ExtResource("4_bue28")]
 layout_mode = 2
 key = &"audio/bus/UI/volume"
 
-[node name="Label" parent="MarginContainer/VBoxContainer/Buses/Options/UI" index="0" unique_id=23282165]
+[node name="Label" parent="MarginContainer/VBoxContainer/Buses/Options/UI Volume" index="0" unique_id=23282165]
 text = "UI Volume"
 
-[node name="LabeledSlider" parent="MarginContainer/VBoxContainer/Buses/Options/UI" index="3" unique_id=2136755568]
+[node name="LabeledSlider" parent="MarginContainer/VBoxContainer/Buses/Options/UI Volume" index="3" unique_id=2136755568]
 format_string = "%d%%"
 
 [editable path="MarginContainer/VBoxContainer/Devices"]
@@ -70,5 +70,5 @@ format_string = "%d%%"
 [editable path="MarginContainer/VBoxContainer/Buses/Options/Music/LabeledSlider"]
 [editable path="MarginContainer/VBoxContainer/Buses/Options/TTS"]
 [editable path="MarginContainer/VBoxContainer/Buses/Options/TTS/LabeledSlider"]
-[editable path="MarginContainer/VBoxContainer/Buses/Options/UI"]
-[editable path="MarginContainer/VBoxContainer/Buses/Options/UI/LabeledSlider"]
+[editable path="MarginContainer/VBoxContainer/Buses/Options/UI Volume"]
+[editable path="MarginContainer/VBoxContainer/Buses/Options/UI Volume/LabeledSlider"]

@@ -3,9 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://dw61lmvhlgmsl" path="res://addons/@fumohouse/config/ui/config_bound_control.tscn" id="1_87ym0"]
 [ext_resource type="Script" uid="uid://bhwf13gcw3ha" path="res://addons/@fumohouse/config/ui/config_range.gd" id="2_6bikv"]
 [ext_resource type="PackedScene" uid="uid://cal3353l6slus" path="res://addons/@fumohouse/common/nodes/labeled_slider.tscn" id="2_hi0iy"]
-[ext_resource type="Script" uid="uid://bahuv64lou7sl" path="res://addons/@fumohouse/common/nodes/button_slider_sound.gd" id="4_6bikv"]
-
-[sub_resource type="AudioStream" id="AudioStream_6bikv"]
 
 [node name="ConfigBoundControl" unique_id=1309379929 node_paths=PackedStringArray("input", "revert_button") instance=ExtResource("1_87ym0")]
 script = ExtResource("2_6bikv")
@@ -14,9 +11,5 @@ revert_button = NodePath("Revert")
 
 [node name="LabeledSlider" parent="." index="3" unique_id=2136755568 instance=ExtResource("2_hi0iy")]
 layout_mode = 2
-
-[node name="Slider" parent="LabeledSlider" index="0" unique_id=1329728360]
-script = ExtResource("4_6bikv")
-audio_player = SubResource("AudioStream_6bikv")
 
 [editable path="LabeledSlider"]

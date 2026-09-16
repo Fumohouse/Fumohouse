@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://dmk1xv60inwsy" path="res://addons/@fumohouse/navigation/screen_base_layout.tscn" id="1_nsrxb"]
 [ext_resource type="Script" uid="uid://b5fwq4smi6qwq" path="res://addons/@fumohouse/navigation/info_screen/info_screen_base.gd" id="2_vjnau"]
 [ext_resource type="Script" uid="uid://d0jgu558ioq1e" path="res://addons/@fumohouse/common/nodes/radio_button_container.gd" id="3_8gbe8"]
-[ext_resource type="Script" uid="uid://geyexabvu4v" path="res://addons/@fumohouse/common/nodes/button_sound.gd" id="4_8gbe8"]
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="4_vjnau"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8gbe8"]
@@ -27,13 +26,11 @@ script = ExtResource("3_8gbe8")
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Info"
-script = ExtResource("4_8gbe8")
 
 [node name="Copyright" type="Button" parent="TopBar/Tabs" index="1" unique_id=812060683]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Copyright"
-script = ExtResource("4_8gbe8")
 
 [node name="TabContent" type="Control" parent="Contents/MarginContainer" parent_id_path=PackedInt32Array(1118290265) index="0" unique_id=550515763]
 layout_mode = 2

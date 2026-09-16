@@ -4,7 +4,14 @@
 [ext_resource type="Script" uid="uid://c5kqgift21f1k" path="res://addons/@fumohouse/base/module_manifest.gd" id="1_cmvt8"]
 [ext_resource type="Script" uid="uid://bv6m4s88g0oi6" path="res://addons/@fumohouse/base/module_autoload.gd" id="1_umvoo"]
 
+[sub_resource type="Resource" id="Resource_umvoo"]
+script = ExtResource("1_umvoo")
+name = &"_UISounds"
+path = "uid://ggg4yp4n445g"
+metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
+
 [resource]
 script = ExtResource("1_cmvt8")
+autoloads = Array[ExtResource("1_umvoo")]([SubResource("Resource_umvoo")])
 additional_files = PackedStringArray()
 metadata/_custom_type_script = "uid://c5kqgift21f1k"

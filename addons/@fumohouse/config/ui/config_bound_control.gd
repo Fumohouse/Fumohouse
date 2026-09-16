@@ -7,7 +7,7 @@ extends Control
 ## The [Control] that the user interacts with to change the option.
 @export var input: Control
 
-## The [Button] that reverts the option to default when clicked. Automatically
+## The [Button] that revers the option to default when clicked. Automatically
 ## hidden when the option has the default value.
 @export var revert_button: Button
 

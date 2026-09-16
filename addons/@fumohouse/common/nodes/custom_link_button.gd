@@ -1,5 +1,5 @@
 class_name CustomLinkButton
-extends ButtonSound
+extends Button
 ## A [Button] that opens a link and can have arbitrary content.
 
 ## The link.
@@ -7,7 +7,6 @@ extends ButtonSound
 
 
 func _ready():
-	super()
 	pressed.connect(_on_pressed)
 
 

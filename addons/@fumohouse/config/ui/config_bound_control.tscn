@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://dw61lmvhlgmsl"]
 
-[ext_resource type="Script" uid="uid://geyexabvu4v" path="res://addons/@fumohouse/common/nodes/button_sound.gd" id="1_fk5kp"]
-
 [node name="ConfigBoundControl" type="HBoxContainer" unique_id=1433753072]
 custom_minimum_size = Vector2(300, 36)
 
@@ -18,4 +16,3 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_type_variation = &"FlatButton"
 text = ""
-script = ExtResource("1_fk5kp")

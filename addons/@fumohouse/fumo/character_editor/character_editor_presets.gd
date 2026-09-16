@@ -5,12 +5,12 @@ extends Control
 @onready var _grid: GridContainer = %Grid
 @onready var _search_edit: LineEdit = %SearchEdit
 
-@onready var _button_sound_script: GDScript = $ButtonSound.get_script()
 
 func _ready():
 	_update_presets()
 	_search_edit.text_changed.connect(_filter_presets)
-	
+
+
 func _stage_appearance(appearance: Appearance):
 	_fumo_appearances.staging = appearance.duplicate(true)
 	_fumo_appearances.staging_changed.emit()
@@ -21,11 +21,9 @@ func _update_presets():
 		var button := Button.new()
 		button.text = appearance.display_name
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		
-		button.set_script(_button_sound_script)
-		
 		button.pressed.connect(_stage_appearance.bind(appearance))
 		_grid.add_child(button)
+
 
 func _filter_presets(query: String):
 	for button: Button in _grid.get_children():

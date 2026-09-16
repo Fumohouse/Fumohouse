@@ -3,7 +3,6 @@
 [ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="1_fcqrd"]
 [ext_resource type="Script" uid="uid://4yetmdtp0nam" path="res://addons/@fumohouse/main/ui/play_screen/world_card.gd" id="1_lx25b"]
 [ext_resource type="FontFile" uid="uid://dy1lesqssmhwm" path="res://addons/@fumohouse/base/assets/fonts/overpass_mono/overpass-mono-regular.woff2" id="2_lx25b"]
-[ext_resource type="Script" uid="uid://geyexabvu4v" path="res://addons/@fumohouse/common/nodes/button_sound.gd" id="4_ppidy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ppidy"]
 font = ExtResource("1_fcqrd")
@@ -138,7 +137,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ppidy")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_8sedn")
 theme_override_styles/focus = SubResource("StyleBoxFlat_a8r8r")
 text = ""
-script = ExtResource("4_ppidy")
 
 [node name="SingleplayerButton" type="Button" parent="MarginContainer/Layout/Buttons" unique_id=53039121]
 unique_name_in_owner = true
@@ -152,4 +150,3 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ppidy")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_8sedn")
 theme_override_styles/focus = SubResource("StyleBoxFlat_a8r8r")
 text = ""
-script = ExtResource("4_ppidy")
