@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://7cgstjcju2ks" path="res://addons/@fumohouse/character_appearance/editor/blender_transform.gd" id="1_ubocm"]
 [ext_resource type="Script" uid="uid://bipeyc2dvgswc" path="res://addons/@fumohouse/character_appearance/editor/appearance_saver.gd" id="3_35rx5"]
-[ext_resource type="Script" uid="uid://geyexabvu4v" path="res://addons/@fumohouse/common/nodes/button_sound.gd" id="3_xes3f"]
 
 [node name="Character Appearance" type="VBoxContainer" unique_id=1684288027]
 anchors_preset = 15
@@ -28,4 +27,3 @@ placeholder_text = "Save Folder"
 [node name="Save" type="Button" parent="AppearanceSaver" unique_id=1709015386]
 layout_mode = 2
 text = "Save Appearance Data to .tres"
-script = ExtResource("3_xes3f")

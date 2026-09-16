@@ -1,5 +1,4 @@
-class_name SliderSoundTts
-
+class_name SliderSoundTTS
 extends Slider
 
 
@@ -15,36 +14,40 @@ var recent_press = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_audio_player_press = AudioStreamPlayer.new()
-	_audio_player_press.stream = AudioStreamOggVorbis.load_from_file("res://addons/@fumohouse/common/assets/sounds/select.ogg")
+	_audio_player_press.stream = load("res://addons/@fumohouse/common/assets/sounds/select.ogg")
 	_audio_player_press.bus = &"UI"
 	
-	drag_started.connect(button_pressed)
-	mouse_entered.connect(hover)
+	drag_started.connect(_on_button_pressed)
+	mouse_entered.connect(_on_hover)
 	add_child(_audio_player_press)
 
 	_audio_player_hover = AudioStreamPlayer.new()
-	_audio_player_hover.stream = AudioStreamOggVorbis.load_from_file("res://addons/@fumohouse/common/assets/sounds/hover.ogg")
+	_audio_player_hover.stream = load("res://addons/@fumohouse/common/assets/sounds/hover.ogg")
 	_audio_player_hover.bus = &"UI"
 	add_child(_audio_player_hover)
 	
 	_audio_player_tts = AudioStreamPlayer.new()
-	_audio_player_tts.stream = AudioStreamWAV.load_from_file("res://addons/@fumohouse/fumo_touhou/assets/tts/marisa.wav")
+	_audio_player_tts.stream = load("res://addons/@fumohouse/fumo_touhou/assets/tts/marisa.wav")
 	_audio_player_tts.stream.data = _audio_player_tts.stream.data.slice(0,8192)
 	_audio_player_tts.bus = &"UI"
 	add_child(_audio_player_tts)
 
-func playSample():
+
+func _play_sample():
 	_audio_player_tts.pitch_scale = self.value
 	_audio_player_tts.play()
 
-func button_pressed():
-	playSample()
+
+func _on_button_pressed():
+	_play_sample()
 	recent_press = 1
 
-func hover():
+
+func _on_hover():
 	_audio_player_hover.play()
+
 
 func _value_changed(new_value: float) -> void:
 	if recent_press != 1:
-		playSample()
+		_play_sample()
 	recent_press = 0
