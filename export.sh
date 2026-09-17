@@ -1,2 +1,2 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 godot4 --editor --headless -- --export= "$@"
