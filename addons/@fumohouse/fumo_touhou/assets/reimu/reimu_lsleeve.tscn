@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://cscu7aoll60bk"]
+
+[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="1_g06cv"]
+[ext_resource type="PackedScene" uid="uid://cau03o3f8pe0j" path="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_lsleeve.glb" id="1_p4j2x"]
+[ext_resource type="PackedScene" uid="uid://cb82r8qeaguc0" path="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_smallbow.glb" id="2_4mqi2"]
+[ext_resource type="Shader" uid="uid://dfrcte1oco71p" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material_backface.gdshader" id="3_p1puc"]
+[ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="4_at27u"]
+[ext_resource type="Texture2D" uid="uid://dvmuspl0iorvg" path="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_mat.png" id="5_o1ynh"]
+[ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="5_p1puc"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yrlyc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
+noise = SubResource("FastNoiseLite_yrlyc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vr66i"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_p1puc")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("5_p1puc")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_x1kjk")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 0.27450982, 0.16470589, 1)
+shader_parameter/texture_recolor_mask = ExtResource("5_o1ynh")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f8hsw"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q4j2o"]
+noise = SubResource("FastNoiseLite_f8hsw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tb3b8"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_at27u")
+shader_parameter/albedo = Color(1, 0.27450982, 0.16470599, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("5_p1puc")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_q4j2o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vyngk"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_at27u")
+shader_parameter/albedo = Color(1, 0.27450982, 0.16470599, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("5_p1puc")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_q4j2o")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[node name="reimu_lsleeve" type="Node3D" unique_id=1957565207 node_paths=PackedStringArray("meshes")]
+script = ExtResource("1_g06cv")
+meshes = [NodePath("reimu_lsleeve/reimu_lsleeve"), NodePath("reimu_ltbow/reimu_llbow"), NodePath("reimu_llbow/reimu_llbow")]
+
+[node name="reimu_lsleeve" parent="." unique_id=1859510256 instance=ExtResource("1_p4j2x")]
+transform = Transform3D(0.64478064, 0.0016813057, -0.76436603, 0.0026075542, -0.9999964, 3.607376e-08, -0.76436347, -0.0019931179, -0.6447827, -0.00595057, 0.562811, 0.007909894)
+
+[node name="reimu_lsleeve" parent="reimu_lsleeve" index="0" unique_id=1380347277]
+surface_material_override/0 = SubResource("ShaderMaterial_vr66i")
+
+[node name="reimu_ltbow" parent="." unique_id=1174169501 instance=ExtResource("2_4mqi2")]
+transform = Transform3D(-1.294959, -0.003376778, -1.5351306, -0.005237043, 2.0083642, 1.1120326e-07, 1.5351257, 0.00400312, -1.2949631, -0.10564244, 0.3733176, 0.10507703)
+
+[node name="reimu_llbow" parent="reimu_ltbow" index="0" unique_id=1557480647]
+surface_material_override/0 = SubResource("ShaderMaterial_tb3b8")
+
+[node name="reimu_llbow" parent="." unique_id=929789234 instance=ExtResource("2_4mqi2")]
+transform = Transform3D(-1.294959, -0.003376778, -1.5351306, -0.005237043, 2.0083642, 1.1120326e-07, 1.5351257, 0.00400312, -1.2949631, -0.15536797, 0.79978687, 0.13410914)
+
+[node name="reimu_llbow" parent="reimu_llbow" index="0" unique_id=1557480647]
+surface_material_override/0 = SubResource("ShaderMaterial_vyngk")
+
+[editable path="reimu_lsleeve"]
+[editable path="reimu_ltbow"]
+[editable path="reimu_llbow"]

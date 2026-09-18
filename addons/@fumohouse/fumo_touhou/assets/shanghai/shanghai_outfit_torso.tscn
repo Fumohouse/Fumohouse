@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://crleb8m46bw3c"]
+
+[ext_resource type="PackedScene" uid="uid://dqssnhubbok73" path="res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_apron.glb" id="1_w5del"]
+[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="1_w8sdu"]
+[ext_resource type="PackedScene" uid="uid://b1slqxiq7nke1" path="res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_back_bow.glb" id="2_w8sdu"]
+[ext_resource type="PackedScene" uid="uid://bpaojc0e0vkef" path="res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_bow.glb" id="3_22cqy"]
+[ext_resource type="PackedScene" uid="uid://cpg4gf8pj3wc0" path="res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_collar.glb" id="4_vul3k"]
+[ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="5_22cqy"]
+[ext_resource type="PackedScene" uid="uid://gk7lpvn3176t" path="res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_dress_inner.glb" id="5_gqi4r"]
+[ext_resource type="PackedScene" uid="uid://dtn1jfr4hwmnh" path="res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_dress_outer.glb" id="6_sce14"]
+[ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="6_vul3k"]
+[ext_resource type="PackedScene" uid="uid://cnutdiwlhhmh3" path="res://addons/@fumohouse/fumo_touhou/assets/shanghai/shanghai_dress_under.glb" id="7_6u86a"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yrlyc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
+noise = SubResource("FastNoiseLite_yrlyc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w8sdu"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("5_22cqy")
+shader_parameter/albedo = Color(0.9063318, 0, 0.12125601, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("6_vul3k")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_x1kjk")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[node name="shanghai_outfit_torso" type="Node3D" unique_id=1283853655 node_paths=PackedStringArray("meshes")]
+script = ExtResource("1_w8sdu")
+meshes = [NodePath("shanghai_bow/shanghai_bow")]
+attributes = ["bow_color"]
+
+[node name="shanghai_apron" parent="." unique_id=37957541 instance=ExtResource("1_w5del")]
+transform = Transform3D(1, -2.2396404e-07, 1.2956447e-07, 2.9678189e-08, 0.59673035, 0.8024419, -2.5703318e-07, -0.8024419, 0.59673035, -3.1418487e-05, 0.21614075, -0.35926428)
+
+[node name="shanghai_back_bow" parent="." unique_id=259506577 instance=ExtResource("2_w8sdu")]
+transform = Transform3D(-1, 7.724033e-07, -5.6724485e-07, -5.26307e-07, 0.052006863, 0.9986468, 8.0085874e-07, 0.9986468, -0.052006863, -3.2658843e-08, 0.25722635, 0.40269247)
+
+[node name="shanghai_bow" parent="." unique_id=535440425 instance=ExtResource("3_22cqy")]
+transform = Transform3D(0.03575067, -3.030332e-09, 9.4002e-10, 1.061015e-09, 0.0025318547, 0.034914132, -9.189108e-09, -0.011497317, 0.0076885344, 0.00041390315, 0.97956645, -0.21951316)
+
+[node name="shanghai_bow" parent="shanghai_bow" index="0" unique_id=60226272]
+surface_material_override/0 = SubResource("ShaderMaterial_w8sdu")
+
+[node name="shanghai_collar" parent="." unique_id=974269981 instance=ExtResource("4_vul3k")]
+transform = Transform3D(1, -1.882614e-08, 1.9636479e-08, 1.9636484e-08, 0.9991127, -0.04211796, -1.8826139e-08, 0.04211796, 0.9991127, -0.007450992, 0.7762084, -0.04817607)
+
+[node name="shanghai_dress_inner" parent="." unique_id=1691831537 instance=ExtResource("5_gqi4r")]
+transform = Transform3D(1, -1.882614e-08, 2.5805505e-07, 2.9678189e-08, 0.9991127, -0.04211796, -2.5703318e-07, 0.04211796, 0.9991127, -1.4843696e-08, -0.15187222, -0.012347031)
+
+[node name="shanghai_dress_outer" parent="." unique_id=1457175330 instance=ExtResource("6_sce14")]
+transform = Transform3D(1, -1.882614e-08, 2.5805505e-07, 2.9678189e-08, 0.9991127, -0.04211796, -2.5703318e-07, 0.04211796, 0.9991127, 4.932982e-09, 0.73528516, 0.021168124)
+
+[node name="shanghai_dress_under" parent="." unique_id=2120004244 instance=ExtResource("7_6u86a")]
+transform = Transform3D(1, -1.882614e-08, 1.9636479e-08, 1.9636484e-08, 0.9991127, -0.04211796, -1.8826139e-08, 0.04211796, 0.9991127, -5.4065304e-06, 0.64916635, 0.008076701)
+
+[editable path="shanghai_bow"]

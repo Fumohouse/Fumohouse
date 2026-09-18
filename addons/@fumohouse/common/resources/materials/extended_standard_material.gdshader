@@ -1,4 +1,4 @@
-// NOTE: Shader automatically converted from Godot Engine 4.4.beta1's StandardMaterial3D.
+// NOTE: Shader automatically converted from Godot Engine 4.7.stable's StandardMaterial3D.
 
 // For approximate parity with glTF imported materials, Emission, AO, and Normal Map
 // are turned on before StandardMaterial3D conversion to shader.
@@ -7,6 +7,7 @@ shader_type spatial;
 
 #include "dither_common.gdshaderinc"
 #include "dissolve_common.gdshaderinc"
+#include "recolor_common.gdshaderinc"
 
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
 
@@ -41,6 +42,7 @@ uniform vec3 uv2_offset;
 
 DITHER_UNIFORMS
 DISSOLVE_UNIFORMS
+RECOLOR_UNIFORMS
 
 void vertex() {
 	UV = UV * uv1_scale.xy + uv1_offset.xy;
@@ -78,4 +80,5 @@ void fragment() {
 	AO_LIGHT_AFFECT = ao_light_affect;
 
 	DISSOLVE_FRAGMENT
+	RECOLOR_FRAGMENT
 }

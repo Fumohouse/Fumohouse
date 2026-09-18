@@ -104,7 +104,9 @@ func nav_transition(vis: bool) -> Tween:
 	_tween = tween
 	_is_visible = vis
 
-	if not vis:
+	if vis:
+		_continue_button.grab_focus()
+	else:
 		await tween.finished
 		_blur_background.hide()
 

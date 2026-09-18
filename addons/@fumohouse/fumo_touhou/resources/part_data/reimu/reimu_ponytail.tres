@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SinglePart" format=3 uid="uid://blk2prejht7bt"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_b0g1b"]
+
+[resource]
+script = ExtResource("1_b0g1b")
+scene_path = "res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_ponytail.tscn"
+transform = Transform3D(5.533284e-07, 1, 1.5145291e-07, 0.99993014, -5.5149854e-07, -0.011826535, -0.011826535, 1.579863e-07, -0.99993014, -0.0007709237, 0.73312616, 0.74378675)
+bone = "Head"
+display_name = "Reimu Ponytail"
+id = &"reimu_ponytail"
+scope = 8
+default_config = Dictionary[StringName, Variant]({
+&"color": Color(0.21568628, 0.16078432, 0.13725491, 1)
+})

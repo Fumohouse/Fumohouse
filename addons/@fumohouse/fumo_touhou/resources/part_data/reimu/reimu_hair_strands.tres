@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SinglePart" format=3 uid="uid://cqrqrof2f6gay"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_qk0il"]
+
+[resource]
+script = ExtResource("1_qk0il")
+scene_path = "uid://js2otbw1bx2u"
+transform = Transform3D(0.9666374, 0.067377076, 0.24712849, -0.071086384, 0.9974515, 0.0061076996, -0.24608718, -0.023471404, 0.96896344, 0.01426425, -0.046966195, -0.14484194)
+bone = "Head"
+display_name = "Reimu Hair (Strands)"
+id = &"reimu_hair_strands"
+scope = 8
+default_config = Dictionary[StringName, Variant]({
+&"color": Color(0.21568628, 0.16078432, 0.13725491, 1)
+})

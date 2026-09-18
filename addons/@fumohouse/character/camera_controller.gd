@@ -6,6 +6,8 @@ extends Node3D
 signal mode_changed(new_mode: CameraMode)
 
 const CAMERA_MAX_X_ROT = PI / 2 - 1e-2
+const KEYBIND_SENS_MULTIPLIER_THIRD_PERSON := 3.0
+const KEYBIND_SENS_MULTIPLIER_FIRST_PERSON := 6.0
 
 enum CameraMode {
 	## The camera takes the perspective of the [member focus_node].
@@ -22,11 +24,21 @@ enum CameraMode {
 ## The vertical offset of the camera's focal point from [member focus_node].
 @export var camera_offset := 2.5
 
+## Whether to accept inputs.
+@export var do_input := true
+
 ## The minimum distance the camera can be from [member focus_node].
 @export_range(0.0, 200.0) var min_focus_distance := 0.0
 
 ## The maximum distance the camera can be from [member focus_node].
 @export_range(0.0, 200.0) var max_focus_distance := 50.0
+
+## The distance to use for "far" perspective when toggling. The toggle cycles
+## [member focus_stops] stops.
+@export_range(0.0, 200.0) var far_focus_distance := 20.0
+
+## Number of stops that cycling perspective will go through.
+@export_range(2, 10) var focus_stops := 4
 
 ## The target distance between the camera and [member focus_node].
 @export_range(0.0, 200.0) var focus_distance := 5.0
@@ -101,12 +113,34 @@ func _process(delta: float):
 		mode = CameraMode.MODE_THIRD_PERSON
 		_process_third_person()
 
+	# Rotation by keybind
+	if do_input and CommonUtils.do_game_input(self):
+		var rot_delta: Vector2 = Input.get_vector(
+			&"camera_rotate_left",
+			&"camera_rotate_right",
+			&"camera_rotate_down",
+			&"camera_rotate_up"
+		)
+		rot_delta *= (
+			_sens_first_person if mode == CameraMode.MODE_FIRST_PERSON else _sens_third_person
+		)
+		rot_delta *= (
+			KEYBIND_SENS_MULTIPLIER_FIRST_PERSON
+			if mode == CameraMode.MODE_FIRST_PERSON
+			else KEYBIND_SENS_MULTIPLIER_THIRD_PERSON
+		)
+		if mode == CameraMode.MODE_FIRST_PERSON:
+			rot_delta.y *= -1.0
+		else:
+			rot_delta.x *= -1.0
+		_rotate(rot_delta)
+
 	if old_mode != mode:
 		mode_changed.emit(mode)
 
 
 func _unhandled_input(event: InputEvent):
-	if not CommonUtils.do_game_input(self):
+	if not do_input or not CommonUtils.do_game_input(self):
 		return
 
 	var handle_input := false
@@ -116,10 +150,18 @@ func _unhandled_input(event: InputEvent):
 		handle_input = true
 
 		# Hardcode a few gestures (mainly for macOS)
-		if event.is_action_pressed("camera_zoom_in"):
+		if event.is_action_pressed(&"camera_zoom_in"):
 			focus_distance = maxf(focus_distance - _zoom_sens, min_focus_distance)
-		elif event.is_action_pressed("camera_zoom_out"):
+		elif event.is_action_pressed(&"camera_zoom_out"):
 			focus_distance = minf(focus_distance + _zoom_sens, max_focus_distance)
+		elif event.is_action_pressed(&"camera_perspective"):
+			if focus_distance >= far_focus_distance:
+				focus_distance = 0.0
+			else:
+				var focus_stop := far_focus_distance / focus_stops
+				focus_distance = (
+					minf(focus_stops, roundf(focus_distance / focus_stop) + 1.0) * focus_stop
+				)
 		elif event is InputEventPanGesture:
 			var epg := event as InputEventPanGesture
 			# Value given in pixels. Roughly convert to scroll ticks to preserve
@@ -149,10 +191,7 @@ func _unhandled_input(event: InputEvent):
 			* (_sens_first_person if mode == CameraMode.MODE_FIRST_PERSON else _sens_third_person)
 		)
 
-		camera_rotation = Vector2(
-			clampf(camera_rotation.x - rot_delta.y, -CAMERA_MAX_X_ROT, CAMERA_MAX_X_ROT),
-			fmod(camera_rotation.y - rot_delta.x, TAU)
-		)
+		_rotate(rot_delta)
 
 		handle_input = true
 
@@ -221,6 +260,13 @@ func _process_third_person():
 		pos = (result["position"] as Vector3) + (result["normal"] as Vector3) * HIT_MARGIN
 
 	camera.global_transform = Transform3D(Basis.IDENTITY, pos).looking_at(focal_point, Vector3.UP)
+
+
+func _rotate(rot_delta: Vector2):
+	camera_rotation = Vector2(
+		clampf(camera_rotation.x - rot_delta.y, -CAMERA_MAX_X_ROT, CAMERA_MAX_X_ROT),
+		fmod(camera_rotation.y - rot_delta.x, TAU)
+	)
 
 
 func _on_config_value_changed(key: StringName):

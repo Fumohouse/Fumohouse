@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Appearance" format=3 uid="uid://dwgmbf1x503j"]
+
+[ext_resource type="Script" uid="uid://ckfcdw3j0qb6k" path="res://addons/@fumohouse/character_appearance/appearance.gd" id="1_y3vb3"]
+
+[resource]
+script = ExtResource("1_y3vb3")
+display_name = "Reimu"
+config = Dictionary[StringName, Variant]({
+&"eyebrows": &"straight",
+&"eyes": &"straight",
+&"eyes_color": Color(0.5647059, 0.0627451, 0.15686275, 1),
+&"mouth": &"straight",
+&"scale": 1.0
+})
+attached_parts = Dictionary[StringName, Variant]({
+&"reimu_bow": null,
+&"reimu_hair_back": null,
+&"reimu_hair_front": null,
+&"reimu_hair_strands": null,
+&"reimu_hairties": null,
+&"reimu_outfit": null,
+&"reimu_ponytail": null,
+&"shoes_1": {
+&"color": Color(0.07058824, 0.07058824, 0.07058824, 1)
+}
+})
+metadata/_custom_type_script = "uid://ckfcdw3j0qb6k"

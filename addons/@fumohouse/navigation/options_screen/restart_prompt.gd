@@ -36,6 +36,8 @@ func nav_transition(vis: bool):
 		await tween.finished
 		hide()
 
+	return null
+
 
 func _target_y(vis: bool):
 	if vis:

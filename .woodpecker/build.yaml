@@ -1,0 +1,27 @@
+when:
+  - event: tag
+
+matrix:
+  PLATFORM:
+    - linux
+    - windows
+    - macos
+
+steps:
+  - name: build
+    image: git.seki.pw/fumohouse/godot-export:v4.7.2
+    commands:
+      - mkdir out
+      - ./export.sh --platform ${PLATFORM} --out out
+      - mkdir out-server
+      - ./export.sh --platform ${PLATFORM} --out out-server --server
+  - name: upload
+    image: curlimages/curl:8.21.0
+    commands:
+      - ./upload.sh https://git.seki.pw out fumohouse fumohouse-${PLATFORM} ${CI_COMMIT_TAG}
+      - ./upload.sh https://git.seki.pw out-server fumohouse fumohouse-${PLATFORM}-server ${CI_COMMIT_TAG}
+    environment:
+      FORGEJO_USER:
+        from_secret: forgejo_user
+      FORGEJO_PASSWORD:
+        from_secret: forgejo_password

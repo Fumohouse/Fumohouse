@@ -38,10 +38,11 @@ shader_parameter/dissolve = 0.0
 shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
 
-[node name="sock_1" unique_id=2104914056 node_paths=PackedStringArray("mesh") instance=ExtResource("1_610ao")]
+[node name="sock_1" unique_id=2104914056 node_paths=PackedStringArray("meshes") instance=ExtResource("1_610ao")]
 script = ExtResource("2_2kbqt")
-mesh = NodePath("sock_1")
+meshes = [NodePath("sock_1")]
 
-[node name="sock_1" parent="." index="0" unique_id=1440959053]
+[node name="sock_1" parent="." index="0" unique_id=993583062]
 surface_material_override/0 = SubResource("ShaderMaterial_pgymm")

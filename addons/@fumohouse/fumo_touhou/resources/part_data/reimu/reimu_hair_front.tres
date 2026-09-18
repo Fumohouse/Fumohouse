@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SinglePart" format=3 uid="uid://3qsn2jyp6gct"]
+
+[ext_resource type="Script" uid="uid://ut6vknqtmfru" path="res://addons/@fumohouse/character_appearance/single_part.gd" id="1_xt74s"]
+
+[resource]
+script = ExtResource("1_xt74s")
+scene_path = "uid://dkdfemk0imy04"
+transform = Transform3D(0.8337646, 0.16834722, 0.5258287, -0.2064101, 0.97836465, 0.014058644, -0.5120855, -0.120257944, 0.85047436, 0.0008174215, 0.91575694, -0.24214709)
+bone = "Head"
+display_name = "Reimu Hair (Front)"
+id = &"reimu_hair_front"
+scope = 6
+default_config = Dictionary[StringName, Variant]({
+&"color": Color(0.21568628, 0.16078432, 0.13725491, 1)
+})

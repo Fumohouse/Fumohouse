@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7f1ws2drl5rc"
-path.s3tc="res://.godot/imported/doremy_dress_upper_doremy_pattern.png-7142769fb6b0795c5dc98cbe0e8e5a5e.s3tc.ctex"
-path.etc2="res://.godot/imported/doremy_dress_upper_doremy_pattern.png-7142769fb6b0795c5dc98cbe0e8e5a5e.etc2.ctex"
+uid="uid://dvmuspl0iorvg"
+path.s3tc="res://.godot/imported/reimu_mat.png-9f2f579df00009edb137668b23fe7284.s3tc.ctex"
+path.etc2="res://.godot/imported/reimu_mat.png-9f2f579df00009edb137668b23fe7284.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "6f1c24af2fbcf23242a3cb9267368e2d"
+"md5": "f26d55611992af6d2b0807bf0da3c0e7"
 }
 
 [deps]
 
-source_file="res://addons/@fumohouse/fumo_touhou/assets/doremy/doremy_dress_upper_doremy_pattern.png"
-dest_files=["res://.godot/imported/doremy_dress_upper_doremy_pattern.png-7142769fb6b0795c5dc98cbe0e8e5a5e.s3tc.ctex", "res://.godot/imported/doremy_dress_upper_doremy_pattern.png-7142769fb6b0795c5dc98cbe0e8e5a5e.etc2.ctex"]
+source_file="res://addons/@fumohouse/fumo_touhou/assets/reimu/reimu_mat.png"
+dest_files=["res://.godot/imported/reimu_mat.png-9f2f579df00009edb137668b23fe7284.s3tc.ctex", "res://.godot/imported/reimu_mat.png-9f2f579df00009edb137668b23fe7284.etc2.ctex"]
 
 [params]
 
@@ -28,7 +28,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

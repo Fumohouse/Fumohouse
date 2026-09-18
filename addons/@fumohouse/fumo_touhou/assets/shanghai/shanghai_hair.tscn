@@ -38,10 +38,11 @@ shader_parameter/dissolve = 0.0
 shader_parameter/dissolve_border = 0.05
 shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
 shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
 
-[node name="shanghai_hair" unique_id=1536551072 node_paths=PackedStringArray("mesh") instance=ExtResource("1_f1uww")]
+[node name="shanghai_hair" unique_id=1536551072 node_paths=PackedStringArray("meshes") instance=ExtResource("1_f1uww")]
 script = ExtResource("2_a3xrs")
-mesh = NodePath("shanghai_hair")
+meshes = [NodePath("shanghai_hair")]
 
-[node name="shanghai_hair" parent="." index="0" unique_id=1628342079]
+[node name="shanghai_hair" parent="." index="0" unique_id=459048890]
 surface_material_override/0 = SubResource("ShaderMaterial_mpuun")

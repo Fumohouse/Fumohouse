@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bbe0tydi4d5xg"]
+
+[ext_resource type="PackedScene" uid="uid://dvon74whv26xi" path="res://addons/@fumohouse/fumo_touhou/assets/doremy/doremy_pom_black.glb" id="1_k6osj"]
+[ext_resource type="Script" uid="uid://bwxcm0h8mwwyr" path="res://addons/@fumohouse/character_appearance/customization/color_customizer.gd" id="2_j43jc"]
+[ext_resource type="Shader" uid="uid://btl1ddde6ufsx" path="res://addons/@fumohouse/common/resources/materials/extended_standard_material.gdshader" id="2_mbkgs"]
+[ext_resource type="Texture2D" uid="uid://dijuh3nuwwu6c" path="res://addons/@fumohouse/common/assets/textures/ordered_dither.png" id="3_j43jc"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yrlyc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1kjk"]
+noise = SubResource("FastNoiseLite_yrlyc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mbkgs"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_mbkgs")
+shader_parameter/albedo = Color(0.16862735, 0.16862737, 0.16862744, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/dither_texture = ExtResource("3_j43jc")
+shader_parameter/dither_scale = 8.0
+shader_parameter/alpha = 1.0
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_x1kjk")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_border = 0.05
+shader_parameter/dissolve_emission = Color(0.2, 0.613333, 1, 1)
+shader_parameter/dissolve_emission_energy = 4.0
+shader_parameter/recolor = Color(1, 1, 1, 1)
+
+[node name="doremy_pom_black_colorable" unique_id=65297164 node_paths=PackedStringArray("meshes") instance=ExtResource("1_k6osj")]
+script = ExtResource("2_j43jc")
+meshes = [NodePath("doremy_pom_black")]
+attributes = ["color1"]
+
+[node name="doremy_pom_black" parent="." index="0" unique_id=2060083351]
+surface_material_override/0 = SubResource("ShaderMaterial_mbkgs")

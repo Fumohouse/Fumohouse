@@ -25,6 +25,7 @@ static func export(
 		return
 
 	for module in modules:
+		Log.info("Exporting module %s..." % module, LOG_SCOPE)
 		var name_split: PackedStringArray = module.split("/")
 		var out_dir := out_path.path_join("modules").path_join(name_split[0])
 		DirAccess.make_dir_recursive_absolute(out_dir)
@@ -78,9 +79,12 @@ static func export_base_package(platform: String, out_path: String, dedicated_se
 		exe_name = "Fumohouse"
 
 	# Run export command to ZIP
+	var output: Array = []
 	var exit_code: int = OS.execute(
 		OS.get_executable_path(),
-		["--headless", "--export-release", platform, out_path.path_join(exe_name)]
+		["--headless", "--export-release", platform, out_path.path_join(exe_name)],
+		output,
+		true
 	)
 
 	# Restore project settings
@@ -89,9 +93,97 @@ static func export_base_package(platform: String, out_path: String, dedicated_se
 
 	if exit_code != 0:
 		Log.error("Godot exited with error code %d." % [exit_code], LOG_SCOPE)
+		Log.info("stdout:")
+		Log.info(output[0])
+		if output.size() >= 2:
+			Log.info("stderr:")
+			Log.info(output[1])
 		return FAILED
 
 	return OK
+
+
+## Export a manifest containing file information from the given
+## [param out_path].
+static func export_manifest(out_path: String, base_package := true, modules := true):
+	var manifest: Dictionary = generate_manifest(out_path, base_package, modules)
+	var json := JSON.new()
+
+	var file := FileAccess.open(out_path.path_join("manifest.json"), FileAccess.WRITE)
+	if not file:
+		Log.error("Failed to open manifest file.", LOG_SCOPE)
+	file.store_string(json.stringify(manifest))
+
+
+## Generate a manifest containing file information from the given
+## [param out_path]. [param base_package] and [param modules] control whether
+## the manifest contains that item.
+static func generate_manifest(
+	out_path: String, base_package := true, modules := true
+) -> Dictionary:
+	var res := {}
+
+	# Breaks module abstraction but ok for release purposes
+	res["name"] = DistConfig.get_build_string()
+
+	if base_package:
+		var dir := DirAccess.open(out_path)
+		if not dir:
+			Log.error("Failed to read output directory.", LOG_SCOPE)
+			return {}
+
+		var bp_info := {}
+		res["base_package"] = bp_info
+
+		dir.list_dir_begin()
+		var file_name: String = dir.get_next()
+		while not file_name.is_empty():
+			if not dir.current_is_dir():
+				var full_path := out_path.path_join(file_name)
+				bp_info[file_name] = {
+					"size": FileAccess.get_size(full_path), "sha256": BaseUtils.hash_file(full_path)
+				}
+
+			file_name = dir.get_next()
+
+	if modules:
+		var modules_path := out_path.path_join("modules")
+		var dir := DirAccess.open(modules_path)
+		if not dir:
+			Log.error("Failed to read modules directory.", LOG_SCOPE)
+			return {}
+
+		var mod_info := {}
+		res["modules"] = mod_info
+
+		dir.list_dir_begin()
+		var scope: String = dir.get_next()
+		while not scope.is_empty():
+			if not dir.current_is_dir():
+				scope = dir.get_next()
+				continue
+
+			var scope_path := modules_path.path_join(scope)
+			var scope_dir := DirAccess.open(scope_path)
+			if not scope_dir:
+				Log.error("Failed to read scope directory %s." % scope_path, LOG_SCOPE)
+				return {}
+
+			scope_dir.list_dir_begin()
+			var module: String = scope_dir.get_next()
+			while not module.is_empty():
+				if not scope_dir.current_is_dir():
+					var full_path := scope_path.path_join(module)
+					mod_info["%s/%s" % [scope, module.trim_suffix(".pck")]] = {
+						"size": FileAccess.get_size(full_path),
+						"sha256": BaseUtils.hash_file(full_path)
+					}
+
+				module = scope_dir.get_next()
+
+			scope = dir.get_next()
+
+	return res
 
 
 ## Export everything in the project to a temporary ZIP file. The files can then
@@ -140,20 +232,7 @@ static func _export_module_from_zip(
 	var zip_module_prefix := "addons".path_join(module) + "/"
 
 	var add_file := func(archive_path: String):
-		var temp_file_path := temp_dir.path_join("extract").path_join(archive_path)
-		DirAccess.make_dir_recursive_absolute(temp_file_path.get_base_dir())
-
-		var temp_file := FileAccess.open(temp_file_path, FileAccess.WRITE)
-		if not temp_file:
-			Log.error("Failed to open temporary file: %s." % [temp_file_path], LOG_SCOPE)
-			return
-
-		# FIXME: This is braindead
-		var buf: PackedByteArray = zip.read_file(archive_path)
-		temp_file.store_buffer(buf)
-		temp_file.close()
-
-		pak.add_file(archive_path, temp_file_path)
+		pak.add_file_from_buffer(archive_path, zip.read_file(archive_path))
 
 	# Trim contents
 	for file in zip_contents:

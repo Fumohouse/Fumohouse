@@ -4,8 +4,11 @@
 
 [resource]
 script = ExtResource("1_u3uvr")
-scene_path = "res://addons/@fumohouse/fumo_touhou/assets/momiji/momiji_skirt.glb"
+scene_path = "uid://5nrjxxnjssjy"
 transform = Transform3D(1, -1.882614e-08, 1.9636479e-08, 1.9636484e-08, 0.9991127, -0.042118005, -1.8826139e-08, 0.042118005, 0.9991127, 5.026164e-08, 0.10941756, -0.026069272)
 display_name = "Momiji Skirt"
 id = &"momiji_skirt"
 scope = 4
+default_config = Dictionary[StringName, Variant]({
+&"color": Color(0.90588236, 0.1882353, 0.003921569, 1)
+})

@@ -16,6 +16,7 @@ const NavCharacter := preload(
 @onready var _top_bar: Control = $NonNavigation/TopBar
 @onready var _version_label: Control = $NonNavigation/VersionLabel
 
+@onready var _play_button: Button = %PlayButton
 @onready var _music_button: Button = %MusicButton
 
 
@@ -40,6 +41,8 @@ func nav_show():
 	_music_controller.nav_show()
 	_nav_character.nav_show()
 
+	_play_button.grab_focus()
+
 
 func nav_transition(vis: bool):
 	var tween := MenuUtils.common_tween(self, vis)
@@ -56,7 +59,9 @@ func nav_transition(vis: bool):
 	)
 
 	_main_buttons.nav_transition(vis)
-	if not vis:
+	if vis:
+		_play_button.grab_focus()
+	else:
 		_music_controller.nav_transition(false)
 	_nav_character.nav_transition(vis)
 
