@@ -31,6 +31,7 @@ func _enter_tree():
 	add_audio_bus(&"TTS")
 	add_audio_bus(&"UI")
 
+
 func add_audio_bus(bus: StringName):
 	var idx := AudioServer.get_bus_index(bus)
 	if idx < 0:

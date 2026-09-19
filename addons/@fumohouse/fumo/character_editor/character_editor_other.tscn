@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cqif4akr177o3" path="res://addons/@fumohouse/fumo/character_editor/character_editor_other.gd" id="1_soyb4"]
 [ext_resource type="Script" uid="uid://tkik3eno86eh" path="res://addons/@fumohouse/common/nodes/basic_color_picker_button.gd" id="2_3tkhi"]
-[ext_resource type="Script" uid="uid://dfn2wgxo5djp8" path="res://addons/@fumohouse/fumo/slider_sound_tts.gd" id="3_sjqbc"]
+[ext_resource type="Script" uid="uid://dfn2wgxo5djp8" path="res://addons/@fumohouse/fumo/character_editor/components/slider_sound_tts.gd" id="3_sjqbc"]
 
 [node name="Other" type="ScrollContainer" unique_id=491372255]
 anchors_preset = 15

@@ -24,7 +24,7 @@ func play_3d(player: AudioStreamPlayer3D, id: StringName):
 	player.stop()
 
 
-func play_menu(player: AudioStreamPlayer, id: StringName):
+func play(player: AudioStreamPlayer, id: StringName):
 	if player.stream != audio:
 		player.stream = audio
 
