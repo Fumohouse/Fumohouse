@@ -4,16 +4,15 @@
 
 # Development
 
-- [Getting Started](development.md)
-- [Contributing](contributing/index.md)
-  - [Common Guidelines](contributing/common-guidelines.md)
-  - [Guidelines for Code](contributing/code-guidelines.md)
-  - [Guidelines for Assets](contributing/assets-guidelines.md)
-    - [Guidelines for Characters](contributing/character-guidelines.md)
-- [Implementation notes](devnotes/index.md)
-  - [Blender tips](devnotes/blender-tips.md)
-  - [Rig export/import procedure](devnotes/rig-export.md)
-  - [Character export/import procedure](devnotes/character-export.md)
+- [Contribution Guidelines](contribution-guidelines/index.md)
+  - [Guidelines for Code](contribution-guidelines/code-guidelines.md)
+  - [Guidelines for Assets](contribution-guidelines/assets-guidelines.md)
+    - [Guidelines for Characters](contribution-guidelines/character-guidelines.md)
+- [Developer Guide](developer-guide/index.md)
+  - [Development environment](developer-guide/environment.md)
+  - [Blender tips](developer-guide/blender-tips.md)
+  - [Rig export/import procedure](developer-guide/rig-export.md)
+  - [Character export/import procedure](developer-guide/character-export.md)
 
 # Design
 

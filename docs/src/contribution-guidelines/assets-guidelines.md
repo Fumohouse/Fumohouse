@@ -1,6 +1,6 @@
 # Guidelines for Assets
 
-Make sure you have read the [common guidelines](./common-guidelines.md) first.
+Make sure you have read the [common guidelines](./index.md) first.
 
 ## Third-party copyright
 
@@ -30,10 +30,10 @@ Properties currently approved for use:
 These guidelines place the following important restrictions on assets (among
 others that should be self-evident):
 
-* No commercial use (i.e., by a company)
-* No for-revenue use (i.e., cannot make money)
-* No political or religious messaging
-* No depictions of drugs or alcohol use
+- No commercial use (i.e., by a company)
+- No for-revenue use (i.e., cannot make money)
+- No political or religious messaging
+- No depictions of drugs or alcohol use
 
 > **Warning**
 >
@@ -91,41 +91,6 @@ any external assets or existing Fumohouse assets used in your submission.
 > used, then character copyright does not apply). Otherwise, *both* third-party
 > copyright restrictions and the CC license apply. This distinction is mostly
 > important for downstream users of Fumohouse assets.
-
-## Your copyright
-
-You retain the copyright over your work unless it is released into the public
-domain. Fumohouse does not claim copyright over your work; it only uses it under
-the provided license.
-
-## Copyright declaration
-
-If you use any outside works in your submission, including those in the public
-domain, you must declare it in your submission documentation. You must not
-infringe others' copyright in your submission. If you believe your usage to be
-fair use, please note it in your declaration.
-
-## Credit
-
-By default, we will credit your contribution as long as it is in the game. You
-may request not to be credited or to be credited under a pen name, which will
-also be used for copyright purposes.
-
-## Retraction by you
-
-If you wish to have your contribution removed, let us know and we will do so on
-a *best effort* basis. It may not be possible to remove your contribution in a
-timely manner, or at all. Even after removal, your contribution will remain in
-publicly available Git history permanently, and the CC license still applies.
-
-## Retraction by us
-
-We avoid removing contributions as much as possible. However, it may be
-necessary to do so in the following situations:
-
-- If there were serious errors in your submission
-- If you commit a severe rule violation
-- If a rightsholder revokes the license to use the content you submitted
 
 ## Conventions
 
