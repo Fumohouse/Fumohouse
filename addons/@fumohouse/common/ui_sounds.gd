@@ -6,6 +6,7 @@ var _audio_player_select: AudioStreamPlayer
 var _audio_player_hover: AudioStreamPlayer
 var _audio_player_type: AudioStreamPlayer
 var _audio_player_colour_changed: AudioStreamPlayer
+var _audio_player_colour_closed: AudioStreamPlayer
 
 var _current_slider: Slider
 var _slider_debounce: Timer
@@ -34,9 +35,16 @@ func _ready() -> void:
 		"res://addons/@fumohouse/common/assets/sounds/colour_changed.ogg"
 	)
 	_audio_player_colour_changed.bus = &"UI"
-	_audio_player_colour_changed.volume_linear = 0.3
+	_audio_player_colour_changed.volume_linear = 0.5
 	_audio_player_colour_changed.pitch_scale = 1.5
 	add_child(_audio_player_colour_changed)
+
+	_audio_player_colour_closed = AudioStreamPlayer.new()
+	_audio_player_colour_closed.stream = load(
+		"res://addons/@fumohouse/common/assets/sounds/colour_closed.ogg"
+	)
+	_audio_player_colour_closed.bus = &"UI"
+	add_child(_audio_player_colour_closed)
 
 	_slider_debounce = Timer.new()
 	_slider_debounce.one_shot = true
@@ -89,7 +97,7 @@ func _attach_line_edit(textbox: LineEdit):
 
 
 func _attach_colour_picker_button(colour_picker_button: ColorPickerButton):
-	colour_picker_button.popup_closed.connect(_audio_player_type.play)
+	colour_picker_button.popup_closed.connect(_audio_player_colour_closed.play)
 
 
 func _attach_colour_picker(colour_picker: ColorPicker):
