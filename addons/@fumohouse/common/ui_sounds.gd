@@ -3,9 +3,9 @@ extends Node
 var _audio_player_select: AudioStreamPlayer
 var _audio_player_hover: AudioStreamPlayer
 var _audio_player_type: AudioStreamPlayer
-var _audio_player_tactile: AudioStreamPlayer
+var _audio_player_colour_changed: AudioStreamPlayer
 
-var scroll_pressed: bool
+var _current_slider: Slider
 
 func _ready() -> void:
 	
@@ -26,89 +26,75 @@ func _ready() -> void:
 	_audio_player_type.bus = &"UI"
 	add_child(_audio_player_type)
 	
-	_audio_player_tactile = AudioStreamPlayer.new()
-	_audio_player_tactile.stream = load("res://addons/@fumohouse/common/assets/sounds/tactile_soft.ogg")
-	_audio_player_tactile.bus = &"UI"
-	_audio_player_tactile.volume_linear = 0.3
-	_audio_player_tactile.pitch_scale = 1.5
-	add_child(_audio_player_tactile)
+	_audio_player_colour_changed = AudioStreamPlayer.new()
+	_audio_player_colour_changed.stream = load("res://addons/@fumohouse/common/assets/sounds/colour_changed.ogg")
+	_audio_player_colour_changed.bus = &"UI"
+	_audio_player_colour_changed.volume_linear = 0.3
+	_audio_player_colour_changed.pitch_scale = 1.5
+	add_child(_audio_player_colour_changed)
 
 
-func _play_select():
-	_audio_player_select.play()
-
-
-func _play_text_select(arg):
-	_audio_player_select.play()
-
-
-func _play_hover():
-	_audio_player_hover.play()
-	
-	
-func _play_scroll_hover(value):
-	if scroll_pressed:
+func _on_slider_hover(value):
+	if _current_slider:
 		_audio_player_hover.play()
 
 
-func _scroll_input(event):
-	if event is InputEventMouseButton:
-		if event.pressed:
-			scroll_pressed = true
-		else:
-			scroll_pressed = false
+func _on_drag_started(slider: Slider):
+	_current_slider = slider
 
 
-func _play_type(event):
+func _on_drag_ended(pls):
+	_current_slider = null
+
+
+func _on_textbox_gui_input(event):
 	if event is InputEventKey and event.pressed:
 		_audio_player_type.play()
 
 
-func _play_exit():
-	_audio_player_type.play()
-
-
-func _play_tactile_arg(arg):
-	_audio_player_tactile.play()
-
-
 func _attach_button(button: Button):
-	button.pressed.connect(_play_select)
-	button.mouse_entered.connect(_play_hover)
+	button.pressed.connect(_audio_player_select.play)
+	button.mouse_entered.connect(_audio_player_hover.play)
 
 
 func _attach_slider(slider: Slider):
-	slider.mouse_entered.connect(_play_hover)
-	slider.drag_started.connect(_play_select)
-	slider.gui_input.connect(_scroll_input)
-	slider.value_changed.connect(_play_scroll_hover)
+	slider.mouse_entered.connect(_audio_player_hover.play)
+	slider.drag_started.connect(_audio_player_select.play)
+	#slider.gui_input.connect(_scroll_input)
+	slider.value_changed.connect(_on_slider_hover)
+	
+	slider.drag_started.connect(_on_drag_started.bind(slider))
+	slider.drag_ended.connect(_on_drag_ended)
 
 
 func _attach_line_edit(textbox: LineEdit):
-	textbox.text_submitted.connect(_play_text_select)
-	textbox.mouse_entered.connect(_play_hover)
-	textbox.gui_input.connect(_play_type)
+	textbox.text_submitted.connect(_audio_player_select.play)
+	textbox.mouse_entered.connect(_audio_player_hover.play)
+	textbox.gui_input.connect(_on_textbox_gui_input)
 
 
 func _attach_colour_picker_button(colour_picker_button: ColorPickerButton):
-	colour_picker_button.popup_closed.connect(_play_exit)
+	colour_picker_button.popup_closed.connect(_audio_player_type.play)
 
 
 func _attach_colour_picker(colour_picker: ColorPicker):
-	colour_picker.color_changed.connect(_play_tactile_arg)
+	colour_picker.color_changed.connect(
+		func (value):
+			_audio_player_colour_changed.play()
+	)
 
 
 func _on_node_added(node: Node):
 	if node.is_in_group("ui_sounds_exclude"):
 		return
-	if node.is_class("ColorPickerButton"):
+	if node is ColorPickerButton:
 		_attach_button(node)
 		_attach_colour_picker_button(node)
-	elif node.is_class("ColorPicker"):
+	elif node is ColorPicker:
 		_attach_colour_picker(node)
-	elif node.is_class("LineEdit"):
+	elif node is LineEdit:
 		_attach_line_edit(node)
-	elif node.is_class("Slider"):
+	elif node is Slider:
 		_attach_slider(node)
-	elif node.is_class("Button"):
+	elif node is Button:
 		_attach_button(node)

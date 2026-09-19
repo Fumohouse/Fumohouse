@@ -47,7 +47,7 @@ enabled=PackedStringArray("res://addons/@assets/fredoka/plugin.cfg", "res://addo
 
 ladder="An Area climbable by a Character. Forward direction is -Z. To view the forward direction, enable \"Use Local Space\" (hotkey: T) in the editor."
 water="An Area that is water. A Character can swim in it."
-ui_sounds_exclude="excludes from having default ui sounds"
+ui_sounds_exclude="Excludes this control from having the default UI sounds."
 
 [gui]
 

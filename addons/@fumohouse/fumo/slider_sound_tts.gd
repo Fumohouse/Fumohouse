@@ -1,53 +1,46 @@
-class_name SliderSoundTTS
 extends Slider
-
-
-@export var audio_player: AudioStream
 
 var _audio_player_press: AudioStreamPlayer
 var _audio_player_hover: AudioStreamPlayer
 var _audio_player_tts: AudioStreamPlayer
+var soundfont: SoundFont = load("res://addons/@fumohouse/fumo_touhou/resources/tts/marisa.tres")
 
-#if this is set to 0 all sliders will trigger on startup
-var recent_press = 1
+# If this is set to 0 the slider will trigger sound on startup
+var _recent_press := false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_audio_player_press = AudioStreamPlayer.new()
 	_audio_player_press.stream = load("res://addons/@fumohouse/common/assets/sounds/select.ogg")
 	_audio_player_press.bus = &"UI"
-	
-	drag_started.connect(_on_button_pressed)
-	mouse_entered.connect(_on_hover)
 	add_child(_audio_player_press)
-
+	
 	_audio_player_hover = AudioStreamPlayer.new()
 	_audio_player_hover.stream = load("res://addons/@fumohouse/common/assets/sounds/hover.ogg")
 	_audio_player_hover.bus = &"UI"
 	add_child(_audio_player_hover)
 	
 	_audio_player_tts = AudioStreamPlayer.new()
-	_audio_player_tts.stream = load("res://addons/@fumohouse/fumo_touhou/assets/tts/marisa.wav")
-	_audio_player_tts.stream.data = _audio_player_tts.stream.data.slice(0,8192)
 	_audio_player_tts.bus = &"UI"
 	add_child(_audio_player_tts)
+	
+	drag_started.connect(_on_drag_started)
+	drag_ended.connect(_on_drag_ended)
+	mouse_entered.connect(_audio_player_hover.play)
 
 
 func _play_sample():
-	_audio_player_tts.pitch_scale = self.value
-	_audio_player_tts.play()
+	_audio_player_tts.pitch_scale = value
+	soundfont.play_menu(_audio_player_tts,&"a_la")
 
 
-func _on_button_pressed():
+func _on_drag_started():
 	_play_sample()
-	recent_press = 1
+	_recent_press = true
 
 
-func _on_hover():
-	_audio_player_hover.play()
+func _on_drag_ended(value_changed):
+	_recent_press = false
 
 
 func _value_changed(new_value: float) -> void:
-	if recent_press != 1:
-		_play_sample()
-	recent_press = 0
+	_play_sample()
