@@ -2,22 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6ig560ulowt2"
-path.s3tc="res://.godot/imported/ordered_dither.png-23a69f8f801305ddacc1ea3ffe32a2db.s3tc.ctex"
-path.etc2="res://.godot/imported/ordered_dither.png-23a69f8f801305ddacc1ea3ffe32a2db.etc2.ctex"
+uid="uid://dijuh3nuwwu6c"
+path="res://.godot/imported/ordered_dither.png-23a69f8f801305ddacc1ea3ffe32a2db.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://addons/@fumohouse/common/assets/textures/ordered_dither.png"
-dest_files=["res://.godot/imported/ordered_dither.png-23a69f8f801305ddacc1ea3ffe32a2db.s3tc.ctex", "res://.godot/imported/ordered_dither.png-23a69f8f801305ddacc1ea3ffe32a2db.etc2.ctex"]
+dest_files=["res://.godot/imported/ordered_dither.png-23a69f8f801305ddacc1ea3ffe32a2db.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
