@@ -69,11 +69,11 @@ func _on_drag_started(slider: Slider):
 	_slider_debounce.stop()
 
 
-func _on_drag_ended(pls):
+func _on_drag_ended(_value_changed: bool):
 	_current_slider = null
 
 
-func _on_textbox_gui_input(event):
+func _on_textbox_gui_input(event: InputEvent):
 	if event is InputEventKey and event.pressed:
 		_audio_player_type.play()
 
