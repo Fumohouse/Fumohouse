@@ -46,7 +46,7 @@ layout_mode = 2
 [node name="Label" parent="Layout/VBoxContainer/Marquee" index="0" unique_id=982448821]
 theme_override_font_sizes/font_size = 14
 
-[node name="SeekBar" type="HSlider" parent="Layout/VBoxContainer" unique_id=59714017]
+[node name="SeekBar" type="HSlider" parent="Layout/VBoxContainer" unique_id=59714017 groups=["ui_sounds_exclude"]]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0

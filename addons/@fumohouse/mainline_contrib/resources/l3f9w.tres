@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MainlineContributor" format=3 uid="uid://bmmt4kb56okq"]
+
+[ext_resource type="Script" uid="uid://c51ldeir31dos" path="res://addons/@fumohouse/mainline_contrib/mainline_contributor.gd" id="1_yuha0"]
+
+[resource]
+script = ExtResource("1_yuha0")
+name = "l3f9w"
+category = &"contributor"
+role = "Sounds & Scripting"
+description = "• UI sounds"
+metadata/_custom_type_script = "uid://c51ldeir31dos"

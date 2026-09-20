@@ -24,6 +24,19 @@ func play_3d(player: AudioStreamPlayer3D, id: StringName):
 	player.stop()
 
 
+func play(player: AudioStreamPlayer, id: StringName):
+	if player.stream != audio:
+		player.stream = audio
+
+	var sample: SoundFontSample = samples.get(id, null)
+	if not sample:
+		return
+
+	player.play(sample.start)
+	await player.get_tree().create_timer(sample.duration / player.pitch_scale).timeout
+	player.stop()
+
+
 ## Load samples from JSON. For development use.
 func load_from_json(json: String):
 	var parse := JSON.new()
