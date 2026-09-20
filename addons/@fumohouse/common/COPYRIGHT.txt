@@ -1,0 +1,26 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Fumohouse Common Components
+Upstream-Contact: voided_etc <contact@seki.pw>
+Source: https://git.seki.pw/Fumohouse/Fumohouse/src/branch/main/addons/@fumohouse/common
+
+Files: *
+Comment: Fumohouse source code
+Copyright: 2025-present, voided_etc & co.
+ 2025-present, Fumohouse contributors
+License: MPL-2.0
+
+Files:
+ */assets/*
+Comment: Fumohouse assets
+Copyright: 2021-present, voided_etc & co.
+License: CC-BY-SA-4.0
+
+Files:
+ assets/sounds/type.ogg
+ assets/sounds/hover.ogg
+ assets/sounds/select.ogg
+ assets/sounds/colour_closed.ogg
+ assets/sounds/colour_changed.ogg
+Comment: UI sound effects
+Copyright: 2026-present, l3f9w
+License: CC-BY-4.0
