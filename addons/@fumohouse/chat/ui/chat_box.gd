@@ -16,7 +16,7 @@ func _ready():
 
 
 func _gui_input(event: InputEvent):
-	if CommonUtils.do_game_input(self) and event.is_action_pressed(&"menu_back", false, true):
+	if event.is_action_pressed(&"menu_back", false, true):
 		clear()
 		release_focus()
 		accept_event()
