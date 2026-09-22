@@ -5,8 +5,8 @@ extends Object
 const STAGE_COLOR := "#a51a21"
 const STAGE_NAME := "Developer Preview"
 const STAGE_ABBREV := "DEV"
-const VERSION := "2026.05.21"
-const VERSION_NUM := 20260521
+const VERSION := "2026.09.22"
+const VERSION_NUM := 20260922
 
 
 ## Get the version name.
