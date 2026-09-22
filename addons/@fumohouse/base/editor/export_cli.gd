@@ -41,6 +41,7 @@ static func run(argd: Dictionary[StringName, String], argv: PackedStringArray) -
 	if exclude.size() == 1 and exclude[0] == "":
 		exclude = []
 
+	Modules.scan_modules()
 	for mod in Modules.get_modules():
 		if mod.name == &"@fumohouse/base":
 			continue

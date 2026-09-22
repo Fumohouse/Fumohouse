@@ -3,8 +3,9 @@ extends Node
 ## A singleton for managing modules.
 
 const LOG_SCOPE := "Modules"
+const PAK_DIR := "user://modules/"
+const MODULES_DIR := "res://addons/"
 
-const _MODULES_DIR := "res://addons/"
 const _MANIFEST_NAME := "module.tres"
 
 var _modules: Dictionary[StringName, ModuleManifest] = {}
@@ -12,18 +13,18 @@ var _autoloads: Dictionary[StringName, Object] = {}
 
 
 func _enter_tree():
-	if not OS.is_debug_build():
-		_mount_paks(OS.get_executable_path().get_base_dir().path_join("modules"))
-
-	scan_modules()
-
 	if not Engine.is_editor_hint():
 		# This step must run before _ready of the main scene, otherwise everything
 		# will explode
 		var scene_path: String = get_tree().current_scene.scene_file_path
-		var scene_path_split: PackedStringArray = scene_path.trim_prefix(_MODULES_DIR).split("/")
+		var scene_path_split: PackedStringArray = scene_path.trim_prefix(MODULES_DIR).split("/")
 		var scene_module: String = "/".join(scene_path_split.slice(0, 2))
 		Log.info("Detected main scene in module '%s'!" % scene_module, LOG_SCOPE)
+
+		if scene_module == "@fumohouse/base":
+			_index_module("res://addons/@fumohouse/base")
+		else:
+			scan_modules()
 
 		prepare_module(scene_module)
 
@@ -48,12 +49,18 @@ func get_module(name: StringName) -> ModuleManifest:
 ## [param from]. Includes any [member ModuleManifest.auto_load] modules
 ## and their dependencies at the end of the list.
 func walk_dependencies(from: StringName) -> Array[StringName]:
-	var out: Array[StringName] = ["@fumohouse/base"]
+	var out: Array[StringName] = []
+	if from != &"@fumohouse/base":
+		out.push_back(&"@fumohouse/base")
 	_walk_dependencies_internal(from, out)
 
-	for module_name in _modules:
-		if _modules[module_name].always_load:
-			_walk_dependencies_internal(module_name, out)
+	# Ensure that during entry point within the base package, no other modules
+	# are prematurely loaded. Allows for a full replacement of the non-base
+	# modules without a game restart or autoload reinitialization.
+	if from != &"@fumohouse/base":
+		for module_name in _modules:
+			if _modules[module_name].always_load:
+				_walk_dependencies_internal(module_name, out)
 
 	return out
 
@@ -83,7 +90,7 @@ func _index_module(path: String):
 	manifest.author = cfg.get_value("plugin", "author", "")
 	manifest.version = cfg.get_value("plugin", "version", "")
 
-	var module_name := StringName(path.substr(_MODULES_DIR.length()))
+	var module_name := StringName(path.substr(MODULES_DIR.length()))
 
 	if module_name == &"@fumohouse/base":
 		var copyright := CopyrightFile.new()
@@ -104,7 +111,7 @@ func scan_modules():
 	Log.info("Scanning for modules...", LOG_SCOPE)
 	_modules.clear()
 
-	var mods_dir := DirAccess.open(_MODULES_DIR)
+	var mods_dir := DirAccess.open(MODULES_DIR)
 	if not mods_dir:
 		Log.error("Failed to open modules directory.", LOG_SCOPE)
 		return
@@ -117,7 +124,7 @@ func scan_modules():
 			mod_file = mods_dir.get_next()
 			continue
 
-		var scope_path: String = _MODULES_DIR.path_join(mod_file)
+		var scope_path: String = MODULES_DIR.path_join(mod_file)
 		var scope_dir := DirAccess.open(scope_path)
 		if not scope_dir:
 			Log.error("Failed to open scope directory '%s'." % mod_file, LOG_SCOPE)
@@ -138,7 +145,7 @@ func scan_modules():
 		mod_file = mods_dir.get_next()
 
 
-func _mount_paks(path: String):
+func mount_paks(path := PAK_DIR):
 	var dir := DirAccess.open(path)
 	if not dir:
 		Log.error("Failed to read directory: %s." % [path], LOG_SCOPE)
@@ -151,7 +158,7 @@ func _mount_paks(path: String):
 		var full_path := path.path_join(file_name)
 
 		if dir.current_is_dir():
-			_mount_paks(full_path)
+			mount_paks(full_path)
 		elif file_name.ends_with(".pck"):
 			Log.info("Loading PCK %s..." % [full_path], LOG_SCOPE)
 			# NOTE: Must replace files. https://github.com/godotengine/godot/issues/114726

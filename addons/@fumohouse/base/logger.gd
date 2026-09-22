@@ -125,24 +125,7 @@ func _init_log_file():
 
 	_log_file.store_line("Fumohouse - https://fumo.house")
 
-	var ver_info: Dictionary = Engine.get_version_info()
-	(
-		_log_file
-		. store_line(
-			(
-				"Godot Engine v%d.%d.%d.%s.%s.%s"
-				% [
-					ver_info["major"],
-					ver_info["minor"],
-					ver_info["patch"],
-					ver_info["status"],
-					ver_info["build"],
-					ver_info["hash"].substr(0, 8),
-				]
-			)
-		)
-	)
-
+	_log_file.store_line("Godot Engine v%s" % BaseUtils.get_engine_version_string())
 	_log_file.store_line("OS: %s (%s)" % [OS.get_name(), Engine.get_architecture_name()])
 
 	(

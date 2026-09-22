@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cdxg2w1khoiq4" path="res://addons/@fumohouse/base/assets/textures/faces_bg.svg" id="1_22jt8"]
 [ext_resource type="Script" uid="uid://spyhbkpjedk3" path="res://addons/@fumohouse/base/entry.gd" id="1_dmho8"]
 [ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@fumohouse/base/assets/textures/logo.png" id="2_dmho8"]
+[ext_resource type="Script" uid="uid://dqh8ymbiesqyk" path="res://addons/@fumohouse/base/utils/updater.gd" id="2_gqfmo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gqfmo"]
 font_size = 48
@@ -15,6 +16,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dmho8")
+
+[node name="Updater" type="Node" parent="." unique_id=2101521256]
+unique_name_in_owner = true
+script = ExtResource("2_gqfmo")
 
 [node name="Background" type="TextureRect" parent="." unique_id=451677283]
 layout_mode = 1

@@ -39,25 +39,8 @@ func _ready():
 	build_contents.meta_clicked.connect(_on_meta_clicked)
 	build_contents.meta_underlined = false
 
-	var ver_info: Dictionary = Engine.get_version_info()
 	_tbl.add_entry(&"godot_ver")
-	(
-		_tbl
-		. set_val(
-			&"godot_ver",
-			(
-				"[b]Godot[/b] %d.%d.%d.%s.%s [%s]"
-				% [
-					ver_info["major"],
-					ver_info["minor"],
-					ver_info["patch"],
-					ver_info["status"],
-					ver_info["build"],
-					ver_info["hash"].substr(0, 8),
-				]
-			)
-		)
-	)
+	_tbl.set_val(&"godot_ver", "[b]Godot[/b] %s" % BaseUtils.get_engine_version_string())
 
 	_tbl.add_entry(&"os_name", "OS")
 	(

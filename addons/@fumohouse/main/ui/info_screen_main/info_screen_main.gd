@@ -6,14 +6,11 @@ extends "res://addons/@fumohouse/navigation/info_screen/info_screen_base.gd"
 func _ready():
 	super()
 
-	var engine_ver_info: Dictionary = Engine.get_version_info()
 	_version_label.text = (
-		"[b]Version:[/b] %s\n[b]Godot version:[/b] %d.%d.%d"
+		"[b]Version:[/b] %s\n[b]Godot version:[/b] %s"
 		% [
 			DistConfig.get_build_string(),
-			engine_ver_info["major"],
-			engine_ver_info["minor"],
-			engine_ver_info["patch"]
+			BaseUtils.get_engine_version_string(),
 		]
 	)
 

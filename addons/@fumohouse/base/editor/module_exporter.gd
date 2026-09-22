@@ -125,6 +125,7 @@ static func generate_manifest(
 
 	# Breaks module abstraction but ok for release purposes
 	res["name"] = DistConfig.get_build_string()
+	res["godot_version"] = BaseUtils.get_engine_version_string()
 
 	if base_package:
 		var dir := DirAccess.open(out_path)
@@ -138,8 +139,19 @@ static func generate_manifest(
 		dir.list_dir_begin()
 		var file_name: String = dir.get_next()
 		while not file_name.is_empty():
-			if not dir.current_is_dir():
-				var full_path := out_path.path_join(file_name)
+			var full_path := out_path.path_join(file_name)
+			if dir.current_is_dir():
+				if file_name.ends_with(".app"):
+					bp_info[file_name] = {"size": -1, "sha256": BaseUtils.hash_dir(full_path)}
+					var pck_location := file_name.path_join(
+						"Contents/Resources/%s.pck" % file_name.get_basename()
+					)
+					var pck_full_path := out_path.path_join(pck_location)
+					bp_info[pck_location] = {
+						"size": FileAccess.get_size(pck_full_path),
+						"sha256": BaseUtils.hash_file(pck_full_path)
+					}
+			else:
 				bp_info[file_name] = {
 					"size": FileAccess.get_size(full_path), "sha256": BaseUtils.hash_file(full_path)
 				}
