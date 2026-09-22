@@ -192,7 +192,7 @@ func get_latest_version() -> String:
 
 	var data: Array = JSON.parse_string(res.body.get_string_from_utf8())
 	data.sort_custom(
-		func(a: Dictionary, b: Dictionary): return a.get("id", -1.0) < b.get("id", -1.0)
+		func(a: Dictionary, b: Dictionary): return a.get("id", -1.0) > b.get("id", -1.0)
 	)
 	for pkg in data:
 		if pkg.get("name") == package_name:

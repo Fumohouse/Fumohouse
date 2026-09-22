@@ -29,10 +29,10 @@ static func get_main_pck_path() -> String:
 			# Executable is in Fumohouse.app/Contents/MacOS/Fumohouse
 			# PCK is in Fumohouse.app/Contents/Resources/Fumohouse.pck
 			return exec.get_base_dir().get_base_dir().path_join(
-				"Resources/%s.pck" % exec.get_basename()
+				"Resources/%s.pck" % exec.get_file().get_basename()
 			)
 
-	return exec.get_base_dir().path_join(exec.get_basename() + ".pck")
+	return exec.get_base_dir().path_join(exec.get_file().get_basename() + ".pck")
 
 
 ## Find the SHA256 hash of the given file [param path].
