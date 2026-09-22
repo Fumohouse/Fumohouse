@@ -11,6 +11,8 @@ var _audio_player_colour_closed: AudioStreamPlayer
 var _current_slider: Slider
 var _slider_debounce: Timer
 
+var _attached: Dictionary[Node, bool] = {}
+
 
 func _ready() -> void:
 	get_tree().node_added.connect(_on_node_added)
@@ -160,10 +162,14 @@ func _on_node_added(node: Node):
 		_attach_slider(node)
 	elif node is Button:
 		_attach_button(node)
+	else:
+		return
+
+	_attached[node] = true
 
 
 func _on_node_removed(node: Node):
-	if node.is_in_group("ui_sounds_exclude"):
+	if node.is_in_group("ui_sounds_exclude") or node not in _attached:
 		return
 	if node is ColorPickerButton:
 		_detach_button(node)
@@ -183,3 +189,7 @@ func _on_node_removed(node: Node):
 		_detach_slider(node)
 	elif node is Button:
 		_detach_button(node)
+	else:
+		return
+
+	_attached.erase(node)

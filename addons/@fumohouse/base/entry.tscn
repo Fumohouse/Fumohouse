@@ -2,11 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://cdxg2w1khoiq4" path="res://addons/@fumohouse/base/assets/textures/faces_bg.svg" id="1_22jt8"]
 [ext_resource type="Script" uid="uid://spyhbkpjedk3" path="res://addons/@fumohouse/base/entry.gd" id="1_dmho8"]
-[ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@fumohouse/base/assets/textures/logo.png" id="2_dmho8"]
 [ext_resource type="Script" uid="uid://dqh8ymbiesqyk" path="res://addons/@fumohouse/base/utils/updater.gd" id="2_gqfmo"]
+[ext_resource type="PackedScene" uid="uid://mblpyhk74fiu" path="res://addons/@fumohouse/base/logo.tscn" id="4_gqfmo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gqfmo"]
-font_size = 48
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_nqxwr"]
+font_size = 24
 
 [node name="Entry" type="Control" unique_id=1728008584]
 layout_mode = 3
@@ -49,16 +52,54 @@ offset_right = 128.0
 offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 8
 
-[node name="Logo" type="TextureRect" parent="VBoxContainer" unique_id=415047644]
-custom_minimum_size = Vector2(256, 256)
+[node name="Logo Container" type="Control" parent="VBoxContainer" unique_id=858993226]
+custom_minimum_size = Vector2(600, 200)
 layout_mode = 2
-texture = ExtResource("2_dmho8")
-expand_mode = 1
-stretch_mode = 5
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=298419947]
+[node name="Logo" parent="VBoxContainer/Logo Container" unique_id=2094886986 instance=ExtResource("4_gqfmo")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -299.0
+offset_top = -100.0
+offset_right = -74.999985
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5, 2.5)
+size_flags_horizontal = 4
+
+[node name="Message" type="Label" parent="VBoxContainer" unique_id=298419947]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Please wait…"
 label_settings = SubResource("LabelSettings_gqfmo")
 horizontal_alignment = 1
+
+[node name="Version" type="Label" parent="VBoxContainer" unique_id=1435049240]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_nqxwr")
+horizontal_alignment = 1
+
+[node name="Continue" type="Button" parent="." unique_id=1184559187]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -149.0
+offset_right = 110.0
+offset_bottom = -104.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Continue Anyway"

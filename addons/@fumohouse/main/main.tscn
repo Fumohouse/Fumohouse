@@ -9,11 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://bdohqbssyckea" path="res://addons/@fumohouse/navigation/character_editor/character_editor.tscn" id="5_eq6r0"]
 [ext_resource type="Script" uid="uid://beubs5pgskp1y" path="res://addons/@fumohouse/main/ui/main_screen.gd" id="5_qhi0j"]
 [ext_resource type="PackedScene" uid="uid://b1rxl7pcre3s7" path="res://addons/@fumohouse/main/ui/info_screen_main/info_screen_main.tscn" id="5_utajb"]
-[ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@fumohouse/base/assets/textures/logo.png" id="6_utajb"]
-[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="7_vrsnp"]
 [ext_resource type="PackedScene" uid="uid://cxuayqoo84sm7" path="res://addons/@fumohouse/main/ui/version_label.tscn" id="8_skxed"]
 [ext_resource type="Script" uid="uid://c8kh3mwukbfrf" path="res://addons/@fumohouse/main/ui/ksk.gd" id="9_lruml"]
 [ext_resource type="Shader" uid="uid://y5gx0jvj3y86" path="res://addons/@fumohouse/main/ui/ksk.gdshader" id="10_k0qk0"]
+[ext_resource type="PackedScene" uid="uid://mblpyhk74fiu" path="res://addons/@fumohouse/base/logo.tscn" id="10_qhi0j"]
 [ext_resource type="Texture2D" uid="uid://c7ifohxj3gwa4" path="res://addons/@fumohouse/base/assets/textures/ksk.svg" id="11_o5r1j"]
 [ext_resource type="PackedScene" uid="uid://chha350wco1td" path="res://addons/@fumohouse/main/ui/main_menu_icon_button.tscn" id="12_rjxf4"]
 [ext_resource type="PackedScene" uid="uid://1iygih3bhie5" path="res://addons/@fumohouse/main/ui/main_menu_bar_button.tscn" id="13_vcadt"]
@@ -124,24 +123,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Logo" type="HBoxContainer" parent="Screens/MainScreen/NonNavigation" index="0" unique_id=176478960]
+[node name="Logo" parent="Screens/MainScreen/NonNavigation" index="0" unique_id=2094886986 instance=ExtResource("10_qhi0j")]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 48.0
-offset_right = 88.0
-offset_bottom = 88.0
-
-[node name="TextureRect" type="TextureRect" parent="Screens/MainScreen/NonNavigation/Logo" index="0" unique_id=74099467]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-texture = ExtResource("6_utajb")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Screens/MainScreen/NonNavigation/Logo" index="1" unique_id=1888381621]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("7_vrsnp")
-theme_override_font_sizes/font_size = 24
-text = "Fumohouse"
+offset_right = 272.0
+offset_bottom = 128.0
 
 [node name="VersionLabel" parent="Screens/MainScreen/NonNavigation" index="1" unique_id=1445019150 instance=ExtResource("8_skxed")]
 layout_mode = 1

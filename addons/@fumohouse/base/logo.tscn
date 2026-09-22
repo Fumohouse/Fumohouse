@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://mblpyhk74fiu"]
+
+[ext_resource type="Texture2D" uid="uid://cly828ija347l" path="res://addons/@fumohouse/base/assets/textures/logo.png" id="1_t771h"]
+[ext_resource type="FontFile" uid="uid://b84oqonqechq2" path="res://addons/@fumohouse/base/assets/fonts/clarity_city/ClarityCity-Bold.woff2" id="2_no6in"]
+
+[node name="Logo" type="HBoxContainer" unique_id=2094886986]
+offset_right = 224.0
+offset_bottom = 80.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1098545976]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("1_t771h")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=1888234067]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_no6in")
+theme_override_font_sizes/font_size = 24
+text = "Fumohouse"

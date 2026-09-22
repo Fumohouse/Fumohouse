@@ -6,8 +6,8 @@ extends Node
 signal got_version(version: String, version_name: String)
 ## Emitted when the updater determines whether the base package is valid or not.
 signal bp_validated(success: bool)
-## Emitted when the updater queues a module for download.
-signal got_download(mod: String, ref_hash: String, actual_hash: String)
+## Emitted when the updater determines which modules will be downloaded.
+signal got_downloads(modules: PackedStringArray)
 ## Emitted when a module starts downloading.
 signal download_start(mod: String)
 ## Emitted when a module finishes downloading.
@@ -125,10 +125,11 @@ func start() -> bool:
 				)
 			)
 			to_download[mod] = url
-			got_download.emit(mod, ref_hash, actual_hash)
+
+	got_downloads.emit(to_download.keys())
 
 	# Download modules
-	if to_download.size() == 0:
+	if to_download.is_empty():
 		Log.info("All modules are up-to-date.", LOG_SCOPE)
 		return true
 
@@ -140,14 +141,24 @@ func start() -> bool:
 	var i := 0
 	for mod in to_download:
 		if i >= DL_CONCURRENCY:
-			await extract_complete
+			var res: Array = await download_complete
+			if not res[1]:
+				return false
+			res = await extract_complete
+			if not res[1]:
+				return false
 
 		download(mod, to_download[mod])
 		i += 1
 
 	i = 0
 	while i < min(to_download.size(), DL_CONCURRENCY):
-		await extract_complete
+		var res: Array = await download_complete
+		if not res[1]:
+			return false
+		res = await extract_complete
+		if not res[1]:
+			return false
 		i += 1
 
 	# Verifying
