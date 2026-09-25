@@ -20,6 +20,19 @@ static func get_engine_version_string() -> String:
 	)
 
 
+## Get the directory containing the Godot executable. On macOS, returns the
+## directory containing the .app.
+static func get_exec_dir() -> String:
+	match OS.get_name():
+		"macOS":
+			# Executable is in Fumohouse.app/Contents/MacOS/Fumohouse
+			return (
+				OS.get_executable_path().get_base_dir().get_base_dir().get_base_dir().get_base_dir()
+			)
+
+	return OS.get_executable_path().get_base_dir()
+
+
 ## Get the location of the main PCK file. Implementation depends on platform.
 static func get_main_pck_path() -> String:
 	var exec := OS.get_executable_path()

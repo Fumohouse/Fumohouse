@@ -18,7 +18,32 @@ var _can_continue := true
 func _ready():
 	_continue.pressed.connect(_start_main)
 
-	if not OS.is_debug_build() and _updater.is_supported:
+	var is_debug := OS.is_debug_build()
+	var exec_dir: String = BaseUtils.get_exec_dir()
+
+	var override_modules_path: String = exec_dir.path_join("modules")
+	var disable_updater_path_1: String = exec_dir.path_join("disable_updates")
+	var disable_updater_path_2 := "user://disable_updates"
+
+	if not is_debug and DirAccess.dir_exists_absolute(override_modules_path):
+		(
+			Log
+			. info(
+				"Detected modules directory adjacent to Fumohouse. Skipping updater and using these modules instead...",
+				LOG_SCOPE
+			)
+		)
+		_start_main(override_modules_path)
+	elif (
+		not is_debug
+		and (
+			FileAccess.file_exists(disable_updater_path_1)
+			or FileAccess.file_exists(disable_updater_path_2)
+		)
+	):
+		Log.info("Updater disabled by disable_updates file. Starting...", LOG_SCOPE)
+		_start_main()
+	elif not is_debug and _updater.is_supported:
 		_message.text = "Checking for updates…"
 		_updater.got_version.connect(
 			func(version: String, version_name: String):
@@ -74,9 +99,9 @@ func _ready():
 		_start_main()
 
 
-func _start_main():
+func _start_main(pak_path := Modules.PAK_DIR):
 	if not OS.is_debug_build():
-		Modules.mount_paks()
+		Modules.mount_paks(pak_path)
 	Modules.scan_modules()
 
 	var mod: ModuleManifest = Modules.get_module(_MAIN_MODULE)
