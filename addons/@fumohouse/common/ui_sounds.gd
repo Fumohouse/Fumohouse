@@ -76,9 +76,8 @@ func _on_drag_ended(_value_changed: bool):
 	_current_slider = null
 
 
-func _on_textbox_gui_input(event: InputEvent):
-	if event is InputEventKey and event.pressed:
-		_audio_player_type.play()
+func _on_textbox_text_changed(_new_text: String):
+	_audio_player_type.play()
 
 
 func _on_textbox_submitted(_text: String):
@@ -94,30 +93,16 @@ func _attach_button(button: Button):
 	button.mouse_entered.connect(_audio_player_hover.play)
 
 
+func _detach_button(button: Button):
+	button.pressed.disconnect(_audio_player_select.play)
+	button.mouse_entered.disconnect(_audio_player_hover.play)
+
+
 func _attach_slider(slider: Slider):
 	slider.mouse_entered.connect(_audio_player_hover.play)
 	slider.drag_started.connect(_on_drag_started.bind(slider))
 	slider.drag_ended.connect(_on_drag_ended)
 	slider.value_changed.connect(_on_slider_value_changed.bind(slider))
-
-
-func _attach_line_edit(textbox: LineEdit):
-	textbox.text_submitted.connect(_on_textbox_submitted)
-	textbox.mouse_entered.connect(_audio_player_hover.play)
-	textbox.gui_input.connect(_on_textbox_gui_input)
-
-
-func _attach_colour_picker_button(colour_picker_button: ColorPickerButton):
-	colour_picker_button.popup_closed.connect(_audio_player_colour_closed.play)
-
-
-func _attach_colour_picker(colour_picker: ColorPicker):
-	colour_picker.color_changed.connect(_on_colour_picker_changed)
-
-
-func _detach_button(button: Button):
-	button.pressed.disconnect(_audio_player_select.play)
-	button.mouse_entered.disconnect(_audio_player_hover.play)
 
 
 func _detach_slider(slider: Slider):
@@ -127,14 +112,29 @@ func _detach_slider(slider: Slider):
 	slider.value_changed.disconnect(_on_slider_value_changed.bind(slider))
 
 
+func _attach_line_edit(textbox: LineEdit):
+	textbox.text_submitted.connect(_on_textbox_submitted)
+	textbox.mouse_entered.connect(_audio_player_hover.play)
+	# text_changed does not get emitted when text is set programmatically
+	textbox.text_changed.connect(_on_textbox_text_changed)
+
+
 func _detach_line_edit(textbox: LineEdit):
 	textbox.text_submitted.disconnect(_on_textbox_submitted)
 	textbox.mouse_entered.disconnect(_audio_player_hover.play)
-	textbox.gui_input.disconnect(_on_textbox_gui_input)
+	textbox.text_changed.disconnect(_on_textbox_text_changed)
+
+
+func _attach_colour_picker_button(colour_picker_button: ColorPickerButton):
+	colour_picker_button.popup_closed.connect(_audio_player_colour_closed.play)
 
 
 func _detach_colour_picker_button(colour_picker_button: ColorPickerButton):
 	colour_picker_button.popup_closed.disconnect(_audio_player_colour_closed.play)
+
+
+func _attach_colour_picker(colour_picker: ColorPicker):
+	colour_picker.color_changed.connect(_on_colour_picker_changed)
 
 
 func _detach_colour_picker(colour_picker: ColorPicker):
@@ -179,17 +179,8 @@ func _on_node_removed(node: Node):
 	elif node is LineEdit:
 		_detach_line_edit(node)
 	elif node is Slider:
-		# Ignore color picker sliders
-		var parent: Node = node.get_parent()
-		while parent:
-			if parent is ColorPicker:
-				return
-			parent = parent.get_parent()
-
 		_detach_slider(node)
 	elif node is Button:
 		_detach_button(node)
-	else:
-		return
 
 	_attached.erase(node)
