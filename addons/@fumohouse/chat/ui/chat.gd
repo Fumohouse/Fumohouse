@@ -35,6 +35,25 @@ func _process(delta: float):
 		_set_alpha(1.0)
 
 
+func _gui_input(event: InputEvent):
+	# Consume all scroll events that exit the interior scroll container, which
+	# happens if there is no scroll bar or if it reaches the top/bottom.
+	var emb := event as InputEventMouseButton
+	if (
+		emb
+		and (
+			emb.button_index
+			in [
+				MouseButton.MOUSE_BUTTON_WHEEL_DOWN,
+				MouseButton.MOUSE_BUTTON_WHEEL_UP,
+				MouseButton.MOUSE_BUTTON_WHEEL_LEFT,
+				MouseButton.MOUSE_BUTTON_WHEEL_RIGHT
+			]
+		)
+	):
+		accept_event()
+
+
 func refresh():
 	_set_alpha(1.0)
 	_inactive_time = 0.0
