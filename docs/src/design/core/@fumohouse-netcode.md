@@ -54,6 +54,7 @@ Identifier allocation:
 | `0x44` | `CHRMOVE`: Character movement request    | `CHRMOVED`: Character movement update |
 | `0x50` | `CHATREQ`: Chat message request          | `CHATTED`: Chat broadcast             |
 | `0x51` |                                          | `CHATACK`: Chat acknowledgment/NACK   |
+| `0x52` | `CHATTYPE`: Chat typing request          | `CHATTYPE`: Chat typing notification  |
 
 Reserved for future use:
 

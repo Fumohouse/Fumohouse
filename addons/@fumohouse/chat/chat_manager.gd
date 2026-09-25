@@ -8,6 +8,8 @@ signal chat(sender: String, peer: int, content: String)
 signal chat_req(id: int, content: String)
 ## Fired whenever a requested chat message is acknowledged by the server.
 signal chat_ack(id: int, status: ChatStatus)
+## Fired whenever a [param peer] starts or stops [param typing].
+signal chat_typing(peer: int, typing: bool)
 
 enum ChatStatus {
 	## Chat message was accepted and sent to recipients.
@@ -18,8 +20,8 @@ const LOG_SCOPE := "Chat"
 
 const ChatBroadcast := preload("./packets/chat_broadcast.gd")
 const ChatRequest := preload("./packets/chat_request.gd")
-
 const ChatAck := preload("./packets/chat_ack.gd")
+const ChatType := preload("./packets/chat_type.gd")
 
 var _next_msg_id := 0
 
@@ -34,11 +36,13 @@ static func get_singleton() -> ChatManager:
 func _ready():
 	_nmr.register_packet(ChatBroadcast.ID, ChatBroadcast.new, ChatRequest.new)
 	_nmr.register_packet(ChatAck.ID, ChatAck.new)
+	_nmr.register_packet(ChatType.ID, ChatType.new, ChatType.new)
 
 	_nmr.register_packet_handler(
 		ChatBroadcast.ID, _on_chat_request_server, _on_chat_broadcast_client
 	)
 	_nmr.register_packet_handler(ChatAck.ID, Callable(), _on_chat_ack_client)
+	_nmr.register_packet_handler(ChatType.ID, _on_chat_type_server, _on_chat_type_client)
 
 
 ## Request to send a chat message with given [param content]. If not in a
@@ -90,6 +94,22 @@ func send_system_message(sender: String, peer: int, content: String):
 	_nm.send_packet(peer, brd)
 
 
+## Send whether the player is typing to the server.
+func send_typing(status: bool):
+	if not _nm.is_active:
+		return
+
+	var req := ChatType.new()
+	req.status = status
+
+	if _nm.is_server:
+		req.peer = 1
+		_nm.send_packet(0, req)
+		return
+
+	_nm.send_packet(1, req)
+
+
 func _on_chat_request_server(peer: int, packet: ChatRequest):
 	# TODO: other logic (e.g., filtering and rate limiting)
 	var ack := ChatAck.new()
@@ -121,3 +141,14 @@ func _on_chat_broadcast_client(packet: ChatBroadcast):
 func _on_chat_ack_client(packet: ChatAck):
 	chat_ack.emit(packet.msg_id, packet.status)
 	Log.info("[ACK#%d] %d" % [packet.msg_id, packet.status], LOG_SCOPE)
+
+
+func _on_chat_type_server(peer: int, packet: ChatType):
+	chat_typing.emit(peer, packet.status)
+
+	packet.peer = peer  # prevent spoof
+	_nm.send_packet(0, packet)
+
+
+func _on_chat_type_client(packet: ChatType):
+	chat_typing.emit(packet.peer, packet.status)

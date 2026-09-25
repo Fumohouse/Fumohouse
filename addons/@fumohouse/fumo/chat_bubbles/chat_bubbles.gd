@@ -11,6 +11,7 @@ const _CHAT_BUBBLE := preload("chat_bubble.tscn")
 var _in_flight_msg: Dictionary[int, String] = {}
 
 @onready var _chats: Control = %Chats
+@onready var _typing_indicator: Control = %TypingIndicator
 @onready var _nm := NetworkManager.get_singleton()
 @onready var _cm := ChatManager.get_singleton()
 
@@ -22,6 +23,7 @@ func _ready():
 		_cm.chat_ack.connect(_on_chat_ack)
 	else:
 		_cm.chat.connect(_on_chat)
+		_cm.chat_typing.connect(_on_typing)
 
 
 func _on_chat_req(id: int, content: String):
@@ -44,10 +46,18 @@ func _on_chat(_sender: String, peer: int, content: String):
 	_read(content)
 
 
+func _on_typing(peer: int, typing: bool):
+	if peer != fumo.peer:
+		return
+
+	_typing_indicator.visible = typing
+
+
 func _read(msg: String):
 	var bubble: ChatBubble = _CHAT_BUBBLE.instantiate()
 	bubble.voicebox = voicebox
 	_chats.add_child(bubble)
+	_chats.move_child(bubble, -2)  # before typing indicator
 	await voicebox.read(msg, bubble.on_token)
 	await get_tree().create_timer(timeout).timeout
 	bubble.queue_free()

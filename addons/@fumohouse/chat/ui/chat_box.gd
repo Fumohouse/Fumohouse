@@ -10,6 +10,7 @@ var _last_text_size := 0
 func _ready():
 	text_changed.connect(_on_changed)
 	text_submitted.connect(_on_submit)
+	editing_toggled.connect(_on_editing)
 
 	_update_placeholder.call_deferred()
 	_config.value_changed.connect(_on_config_value_changed)
@@ -61,6 +62,10 @@ func _on_submit(new_text: String):
 
 	clear()
 	release_focus()
+
+
+func _on_editing(editing: bool):
+	_chat.send_typing(editing)
 
 
 func _update_placeholder():
