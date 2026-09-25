@@ -15,9 +15,12 @@ vec3 fresnel(vec3 color_reflected, vec3 color_refracted, float bias, float scale
 
 // Converts depth (e.g. from a depth texture) to a linear value in view space.
 // https://docs.godotengine.org/en/stable/tutorials/shaders/advanced_postprocessing.html
-// TODO: Only works on Vulkan. ndc.z is in range [-1.0, 1.0] on OpenGL.
 float linear_depth(mat4 inv_projection_matrix, vec2 screen_uv, float depth) {
+#if CURRENT_RENDERER == RENDERER_COMPATIBILITY
+	vec3 ndc = vec3(screen_uv, depth) * 2.0 - 1.0;
+#else
 	vec3 ndc = vec3(screen_uv * 2.0 - 1.0, depth);
+#endif
 	vec4 view = inv_projection_matrix * vec4(ndc, 1.0);
 	view.xyz /= view.w;
 	return -view.z;
