@@ -87,7 +87,7 @@ func _on_favorite_button_pressed():
 	var info: Dictionary = {
 		"note": _note.text if not _note.text.is_empty() else "Fumohouse Server",
 		"address": _address.text if not _address.text.is_empty() else "127.0.0.1",
-		"port": floori(_port.value),
+		"port": int(_port.value),
 		"username": _username.text,
 		"password": _password.text,
 	}
