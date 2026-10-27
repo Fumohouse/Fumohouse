@@ -30,7 +30,7 @@ func _ready():
 	_description.text = "Join as '{0}'".format([info["username"]])
 
 	_join_button.pressed.connect(_on_join_button_pressed)
-	_edit_button.pressed.connect(func(): edit_pressed.emit())
+	_edit_button.pressed.connect(edit_pressed.emit)
 	_delete_button.pressed.connect(_on_delete_button_pressed)
 
 
