@@ -123,7 +123,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_8sedn")
 theme_override_styles/focus = SubResource("StyleBoxFlat_a8r8r")
 text = ""
 
-[node name="EditButton" type="Button" parent="MarginContainer/Layout/Buttons" unique_id=616417905]
+[node name="CopyButton" type="Button" parent="MarginContainer/Layout/Buttons" unique_id=616417905]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2

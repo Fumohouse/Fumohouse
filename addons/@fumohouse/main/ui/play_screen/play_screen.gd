@@ -60,7 +60,7 @@ func _refresh_favorites():
 	for favorite in favorites:
 		var card: FavoriteCard = _FAVORITE_CARD_SCENE.instantiate()
 		card.info = favorite
-		card.edit_pressed.connect(_on_edit_pressed.bind(card.info))
+		card.copy_pressed.connect(_on_copy_pressed.bind(card.info))
 
 		_favorite_list.add_child(card)
 
@@ -98,7 +98,7 @@ func _on_favorite_button_pressed():
 	_cm.set_opt(&"favorites/servers", favorites)
 
 
-func _on_edit_pressed(info: Dictionary):
+func _on_copy_pressed(info: Dictionary):
 	_name.text = info["name"]
 	_address.text = info["address"]
 	_port.value = info["port"]

@@ -1,7 +1,7 @@
 extends PanelContainer
 
-## Emitted when pressing the Edit button.
-signal edit_pressed
+## Emitted when pressing the Copy button.
+signal copy_pressed
 
 ## Information about the server to display, loaded on ready.
 var info: Dictionary
@@ -12,7 +12,7 @@ var info: Dictionary
 @onready var _name: Label = %Name
 @onready var _description: RichTextLabel = %Description
 @onready var _join_button: Button = %JoinButton
-@onready var _edit_button: Button = %EditButton
+@onready var _copy_button: Button = %CopyButton
 @onready var _delete_button: Button = %DeleteButton
 
 
@@ -30,7 +30,7 @@ func _ready():
 	_description.text = "Join as '{0}'".format([info["username"]])
 
 	_join_button.pressed.connect(_on_join_button_pressed)
-	_edit_button.pressed.connect(edit_pressed.emit)
+	_copy_button.pressed.connect(copy_pressed.emit)
 	_delete_button.pressed.connect(_on_delete_button_pressed)
 
 
