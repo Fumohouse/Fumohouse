@@ -15,7 +15,7 @@ const StatusPopup := preload("res://addons/@fumohouse/navigation/components/stat
 @onready var _world_list: Control = %WorldList
 @onready var _favorite_list: Control = %FavoriteList
 
-@onready var _note: LineEdit = %Note
+@onready var _name: LineEdit = %Name
 @onready var _address: LineEdit = %Address
 @onready var _port: SpinBox = %Port
 @onready var _username: LineEdit = %Username
@@ -85,7 +85,7 @@ func _on_favorite_button_pressed():
 		return
 
 	var info: Dictionary = {
-		"note": _note.text if not _note.text.is_empty() else "Fumohouse Server",
+		"name": _name.text if not _name.text.is_empty() else "Fumohouse Server",
 		"address": _address.text if not _address.text.is_empty() else "127.0.0.1",
 		"port": int(_port.value),
 		"username": _username.text,
@@ -99,7 +99,7 @@ func _on_favorite_button_pressed():
 
 
 func _on_edit_pressed(info: Dictionary):
-	_note.text = info["note"]
+	_name.text = info["name"]
 	_address.text = info["address"]
 	_port.value = info["port"]
 	_username.text = info["username"]

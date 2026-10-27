@@ -9,7 +9,7 @@ var info: Dictionary
 @onready var _cm := ConfigManager.get_singleton()
 @onready var _wm := WorldManager.get_singleton()
 
-@onready var _note: Label = %Note
+@onready var _name: Label = %Name
 @onready var _description: RichTextLabel = %Description
 @onready var _join_button: Button = %JoinButton
 @onready var _edit_button: Button = %EditButton
@@ -18,7 +18,7 @@ var info: Dictionary
 
 func _ready():
 	if (
-		info["note"] is not String
+		info["name"] is not String
 		or info["address"] is not String
 		or info["port"] is not int
 		or info["username"] is not String
@@ -26,7 +26,7 @@ func _ready():
 	):
 		return
 
-	_note.text = info["note"]
+	_name.text = info["name"]
 	_description.text = "Join as '{0}'".format([info["username"]])
 
 	_join_button.pressed.connect(_on_join_button_pressed)
