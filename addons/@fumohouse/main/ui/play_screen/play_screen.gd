@@ -55,7 +55,7 @@ func _refresh_favorites():
 	for favoritecard in _favorite_list.get_children():
 		favoritecard.queue_free()
 
-	var favorites: Array[Dictionary] = _cm.get_opt(&"favorites/servers")
+	var favorites: Array[Dictionary] = _cm.get_opt(&"multiplayer/favorites")
 
 	for favorite in favorites:
 		var card: FavoriteCard = _FAVORITE_CARD_SCENE.instantiate()
@@ -93,9 +93,9 @@ func _on_favorite_button_pressed():
 	}
 
 	# Need to dupe as set_opt() doesn't work well with reference types
-	var favorites: Array[Dictionary] = _cm.get_opt(&"favorites/servers").duplicate()
+	var favorites: Array[Dictionary] = _cm.get_opt(&"multiplayer/favorites").duplicate()
 	favorites.append(info)
-	_cm.set_opt(&"favorites/servers", favorites)
+	_cm.set_opt(&"multiplayer/favorites", favorites)
 
 
 func _on_copy_pressed(info: Dictionary):
@@ -107,7 +107,7 @@ func _on_copy_pressed(info: Dictionary):
 
 
 func _on_config_change(key: StringName):
-	if key != &"favorites/servers":
+	if key != &"multiplayer/favorites":
 		return
 
 	_refresh_favorites()

@@ -30,7 +30,7 @@ metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
 
 [sub_resource type="Resource" id="Resource_xfjm0"]
 script = ExtResource("1_6cgqi")
-name = &"FavoritesConfigManager"
+name = &"MultiplayerConfigManager"
 path = "uid://b2bl2udu781dq"
 metadata/_custom_type_script = "uid://bv6m4s88g0oi6"
 

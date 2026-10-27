@@ -48,6 +48,6 @@ func _on_join_button_pressed():
 
 func _on_delete_button_pressed():
 	# Need to dupe as set_opt() doesn't work well with reference types
-	var favorites: Array[Dictionary] = _cm.get_opt(&"favorites/servers").duplicate()
+	var favorites: Array[Dictionary] = _cm.get_opt(&"multiplayer/favorites").duplicate()
 	favorites.remove_at(get_index())
-	_cm.set_opt(&"favorites/servers", favorites)
+	_cm.set_opt(&"multiplayer/favorites", favorites)
