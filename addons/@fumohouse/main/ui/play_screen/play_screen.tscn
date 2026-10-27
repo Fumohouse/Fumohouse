@@ -70,6 +70,7 @@ layout_mode = 2
 [node name="QuickConnect" type="HBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer" index="2" unique_id=1229792211]
 custom_minimum_size = Vector2(0, 37)
 layout_mode = 2
+theme_override_constants/separation = 8
 alignment = 2
 
 [node name="Form" type="HBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect" index="0" unique_id=1616664846]
@@ -116,11 +117,7 @@ layout_mode = 2
 placeholder_text = "Password"
 secret = true
 
-[node name="Gutter" type="Control" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect" index="1" unique_id=164939293]
-custom_minimum_size = Vector2(8, 0)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect" index="2" unique_id=1983283367]
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect" index="1" unique_id=1983283367]
 layout_mode = 2
 
 [node name="JoinButton" type="Button" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect/VBoxContainer" index="0" unique_id=267027543]
