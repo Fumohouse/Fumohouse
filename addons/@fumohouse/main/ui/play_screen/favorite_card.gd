@@ -35,7 +35,7 @@ func _ready():
 
 
 ## Enables/disables the join button.
-func allow_join(state: bool = true):
+func allow_join(state := true):
 	_join_button.disabled = not state
 
 

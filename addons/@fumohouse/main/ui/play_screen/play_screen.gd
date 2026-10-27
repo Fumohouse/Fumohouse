@@ -65,7 +65,7 @@ func _refresh_favorites():
 		_favorite_list.add_child(card)
 
 
-func _allow_join(state: bool = true):
+func _allow_join(state := true):
 	_join_button.disabled = not state
 
 	for favorite: FavoriteCard in _favorite_list.get_children():
