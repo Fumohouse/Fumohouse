@@ -11,3 +11,7 @@ func _enter_tree():
 
 	cm.add_opt(&"multiplayer/username", "Fumo")
 	cm.add_opt(&"multiplayer/favorites", [] as Array[ServerManifest])
+
+	var connect_default := ServerManifest.new()
+	connect_default.name = ""
+	cm.add_opt(&"multiplayer/quick_connect", connect_default)

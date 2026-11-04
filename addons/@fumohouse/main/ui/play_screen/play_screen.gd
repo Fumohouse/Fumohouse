@@ -28,7 +28,7 @@ const StatusPopup := preload("res://addons/@fumohouse/navigation/components/stat
 func _ready():
 	super()
 
-	_join_button.pressed.connect(_on_join_button_pressed.bind(null))
+	_join_button.pressed.connect(_on_join_button_pressed)
 	_favorite_button.pressed.connect(_on_favorite_button_pressed)
 	_wm.status_update.connect(_on_status_update)
 	_nm.status_update.connect(_on_status_update)
@@ -36,6 +36,7 @@ func _ready():
 
 	_refresh_worlds()
 	_refresh_favorites()
+	_update_quickconnect(_cm.get_opt(&"multiplayer/quick_connect"))
 
 	_username.text = _cm.get_opt(&"multiplayer/username")
 
@@ -63,10 +64,17 @@ func _refresh_favorites():
 	for favorite in favorites:
 		var card: FavoriteCard = _FAVORITE_CARD_SCENE.instantiate()
 		card.info = favorite
-		card.copy_pressed.connect(_on_copy_pressed.bind(card.info))
-		card.join_pressed.connect(_on_join_button_pressed.bind(card.info))
+		card.copy_pressed.connect(_update_quickconnect.bind(card.info))
+		card.join_pressed.connect(_join_server.bind(card.info))
 
 		_favorite_list.add_child(card)
+
+
+func _update_quickconnect(info: ServerManifest):
+	_name.text = info.name
+	_address.text = info.address
+	_port.value = info.port
+	_password.text = info.password
 
 
 ## Creates a [ServerManifest] from Quick Connect fields.
@@ -89,16 +97,20 @@ func _allow_join(state := true):
 		favorite.allow_join(state)
 
 
-func _on_join_button_pressed(info: ServerManifest):
+func _join_server(info: ServerManifest, is_quickconnect := false):
 	if _username.text.is_empty():
 		return
 
 	_cm.set_opt(&"multiplayer/username", _username.text)
 
-	if info == null:
-		info = _as_manifest()
+	if is_quickconnect:
+		_cm.set_opt(&"multiplayer/quick_connect", info)
 
 	_wm.join_multiplayer_server(info.address, info.port, _username.text, info.password)
+
+
+func _on_join_button_pressed():
+	_join_server(_as_manifest(), true)
 
 
 func _on_favorite_button_pressed():
@@ -108,13 +120,6 @@ func _on_favorite_button_pressed():
 	var favorites: Array[ServerManifest] = _cm.get_opt(&"multiplayer/favorites").duplicate()
 	favorites.append(info)
 	_cm.set_opt(&"multiplayer/favorites", favorites)
-
-
-func _on_copy_pressed(info: ServerManifest):
-	_name.text = info.name
-	_address.text = info.address
-	_port.value = info.port
-	_password.text = info.password
 
 
 func _on_config_change(key: StringName):
