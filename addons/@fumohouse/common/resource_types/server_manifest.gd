@@ -6,7 +6,5 @@ extends Resource
 @export var address: String = "127.0.0.1"
 ## The port of the server.
 @export var port: int = 50103
-## Username to join as.
-@export var username: String
 ## The server password.
 @export var password: String

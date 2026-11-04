@@ -37,6 +37,8 @@ func _ready():
 	_refresh_worlds()
 	_refresh_favorites()
 
+	_username.text = _cm.get_opt(&"multiplayer/username")
+
 
 func _refresh_worlds():
 	var worlds: Array[WorldManifest] = _wm.get_worlds()
@@ -77,21 +79,19 @@ func _on_join_button_pressed():
 	if _username.text.is_empty():
 		return
 
+	_cm.set_opt(&"multiplayer/username", _username.text)
+
 	var address: String = "127.0.0.1" if _address.text.is_empty() else _address.text
 	_wm.join_multiplayer_server(address, _port.value, _username.text, _password.text)
 
 
 func _on_favorite_button_pressed():
-	if _username.text.is_empty():
-		return
-
 	var info := ServerManifest.new()
 	if not _name.text.is_empty():
 		info.name = _name.text
 	if not _address.text.is_empty():
 		info.address = _address.text
 	info.port = int(_port.value)
-	info.username = _username.text
 	info.password = _password.text
 
 	# Need to dupe as set_opt() doesn't work well with reference types
@@ -104,7 +104,6 @@ func _on_copy_pressed(info: ServerManifest):
 	_name.text = info.name
 	_address.text = info.address
 	_port.value = info.port
-	_username.text = info.username
 	_password.text = info.password
 
 

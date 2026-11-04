@@ -20,7 +20,6 @@ var info: ServerManifest
 
 func _ready():
 	_name.text = info.name
-	_description.text = "Join as '{0}'".format([info.username])
 
 	_join_button.pressed.connect(_on_join_button_pressed)
 	_copy_button.pressed.connect(copy_pressed.emit)
@@ -33,10 +32,11 @@ func allow_join(state := true):
 
 
 func _on_join_button_pressed():
-	if info.username.is_empty():
+	var username = _cm.get_opt(&"multiplayer/username")
+	if username.is_empty():
 		return
 
-	_wm.join_multiplayer_server(info.address, info.port, info.username, info.password)
+	_wm.join_multiplayer_server(info.address, info.port, username, info.password)
 
 
 func _on_delete_button_pressed():
