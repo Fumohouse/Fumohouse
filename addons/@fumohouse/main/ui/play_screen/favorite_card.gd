@@ -3,8 +3,10 @@ extends PanelContainer
 ## Emitted when pressing the Copy button.
 signal copy_pressed
 
+const ServerManifest := preload("res://addons/@fumohouse/common/resource_types/server_manifest.gd")
+
 ## Information about the server to display, loaded on ready.
-var info: Dictionary
+var info: ServerManifest
 
 @onready var _cm := ConfigManager.get_singleton()
 @onready var _wm := WorldManager.get_singleton()
@@ -17,17 +19,8 @@ var info: Dictionary
 
 
 func _ready():
-	if (
-		info["name"] is not String
-		or info["address"] is not String
-		or info["port"] is not int
-		or info["username"] is not String
-		or info["password"] is not String
-	):
-		return
-
-	_name.text = info["name"]
-	_description.text = "Join as '{0}'".format([info["username"]])
+	_name.text = info.name
+	_description.text = "Join as '{0}'".format([info.username])
 
 	_join_button.pressed.connect(_on_join_button_pressed)
 	_copy_button.pressed.connect(copy_pressed.emit)
@@ -40,14 +33,14 @@ func allow_join(state := true):
 
 
 func _on_join_button_pressed():
-	if info["username"].is_empty():
+	if info.username.is_empty():
 		return
 
-	_wm.join_multiplayer_server(info["address"], info["port"], info["username"], info["password"])
+	_wm.join_multiplayer_server(info.address, info.port, info.username, info.password)
 
 
 func _on_delete_button_pressed():
 	# Need to dupe as set_opt() doesn't work well with reference types
-	var favorites: Array[Dictionary] = _cm.get_opt(&"multiplayer/favorites").duplicate()
+	var favorites: Array[ServerManifest] = _cm.get_opt(&"multiplayer/favorites").duplicate()
 	favorites.remove_at(get_index())
 	_cm.set_opt(&"multiplayer/favorites", favorites)

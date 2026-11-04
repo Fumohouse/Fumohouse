@@ -5,6 +5,7 @@ const _WORLD_CARD_SCENE = preload("world_card.tscn")
 const FavoriteCard = preload("favorite_card.gd")
 const _FAVORITE_CARD_SCENE = preload("favorite_card.tscn")
 
+const ServerManifest := preload("res://addons/@fumohouse/common/resource_types/server_manifest.gd")
 const StatusPopup := preload("res://addons/@fumohouse/navigation/components/status_popup.gd")
 
 @onready var _wm := WorldManager.get_singleton()
@@ -55,7 +56,7 @@ func _refresh_favorites():
 	for favoritecard in _favorite_list.get_children():
 		favoritecard.queue_free()
 
-	var favorites: Array[Dictionary] = _cm.get_opt(&"multiplayer/favorites")
+	var favorites: Array[ServerManifest] = _cm.get_opt(&"multiplayer/favorites")
 
 	for favorite in favorites:
 		var card: FavoriteCard = _FAVORITE_CARD_SCENE.instantiate()
@@ -84,26 +85,27 @@ func _on_favorite_button_pressed():
 	if _username.text.is_empty():
 		return
 
-	var info: Dictionary = {
-		"name": _name.text if not _name.text.is_empty() else "Fumohouse Server",
-		"address": _address.text if not _address.text.is_empty() else "127.0.0.1",
-		"port": int(_port.value),
-		"username": _username.text,
-		"password": _password.text,
-	}
+	var info := ServerManifest.new()
+	if not _name.text.is_empty():
+		info.name = _name.text
+	if not _address.text.is_empty():
+		info.address = _address.text
+	info.port = int(_port.value)
+	info.username = _username.text
+	info.password = _password.text
 
 	# Need to dupe as set_opt() doesn't work well with reference types
-	var favorites: Array[Dictionary] = _cm.get_opt(&"multiplayer/favorites").duplicate()
+	var favorites: Array[ServerManifest] = _cm.get_opt(&"multiplayer/favorites").duplicate()
 	favorites.append(info)
 	_cm.set_opt(&"multiplayer/favorites", favorites)
 
 
-func _on_copy_pressed(info: Dictionary):
-	_name.text = info["name"]
-	_address.text = info["address"]
-	_port.value = info["port"]
-	_username.text = info["username"]
-	_password.text = info["password"]
+func _on_copy_pressed(info: ServerManifest):
+	_name.text = info.name
+	_address.text = info.address
+	_port.value = info.port
+	_username.text = info.username
+	_password.text = info.password
 
 
 func _on_config_change(key: StringName):
