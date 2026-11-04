@@ -2,6 +2,8 @@ extends PanelContainer
 
 ## Emitted when pressing the Copy button.
 signal copy_pressed
+## Emitted when pressing the Join button.
+signal join_pressed
 
 const ServerManifest := preload("res://addons/@fumohouse/common/resource_types/server_manifest.gd")
 
@@ -21,7 +23,7 @@ var info: ServerManifest
 func _ready():
 	_name.text = info.name
 
-	_join_button.pressed.connect(_on_join_button_pressed)
+	_join_button.pressed.connect(join_pressed.emit)
 	_copy_button.pressed.connect(copy_pressed.emit)
 	_delete_button.pressed.connect(_on_delete_button_pressed)
 
@@ -29,14 +31,6 @@ func _ready():
 ## Enables/disables the join button.
 func allow_join(state := true):
 	_join_button.disabled = not state
-
-
-func _on_join_button_pressed():
-	var username = _cm.get_opt(&"multiplayer/username")
-	if username.is_empty():
-		return
-
-	_wm.join_multiplayer_server(info.address, info.port, username, info.password)
 
 
 func _on_delete_button_pressed():

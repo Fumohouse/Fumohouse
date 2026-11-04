@@ -28,7 +28,7 @@ const StatusPopup := preload("res://addons/@fumohouse/navigation/components/stat
 func _ready():
 	super()
 
-	_join_button.pressed.connect(_on_join_button_pressed)
+	_join_button.pressed.connect(_on_join_button_pressed.bind(null))
 	_favorite_button.pressed.connect(_on_favorite_button_pressed)
 	_wm.status_update.connect(_on_status_update)
 	_nm.status_update.connect(_on_status_update)
@@ -64,8 +64,22 @@ func _refresh_favorites():
 		var card: FavoriteCard = _FAVORITE_CARD_SCENE.instantiate()
 		card.info = favorite
 		card.copy_pressed.connect(_on_copy_pressed.bind(card.info))
+		card.join_pressed.connect(_on_join_button_pressed.bind(card.info))
 
 		_favorite_list.add_child(card)
+
+
+## Creates a [ServerManifest] from Quick Connect fields.
+func _as_manifest() -> ServerManifest:
+	var info := ServerManifest.new()
+	if not _name.text.is_empty():
+		info.name = _name.text
+	if not _address.text.is_empty():
+		info.address = _address.text
+	info.port = int(_port.value)
+	info.password = _password.text
+
+	return info
 
 
 func _allow_join(state := true):
@@ -75,24 +89,20 @@ func _allow_join(state := true):
 		favorite.allow_join(state)
 
 
-func _on_join_button_pressed():
+func _on_join_button_pressed(info: ServerManifest):
 	if _username.text.is_empty():
 		return
 
 	_cm.set_opt(&"multiplayer/username", _username.text)
 
-	var address: String = "127.0.0.1" if _address.text.is_empty() else _address.text
-	_wm.join_multiplayer_server(address, _port.value, _username.text, _password.text)
+	if info == null:
+		info = _as_manifest()
+
+	_wm.join_multiplayer_server(info.address, info.port, _username.text, info.password)
 
 
 func _on_favorite_button_pressed():
-	var info := ServerManifest.new()
-	if not _name.text.is_empty():
-		info.name = _name.text
-	if not _address.text.is_empty():
-		info.address = _address.text
-	info.port = int(_port.value)
-	info.password = _password.text
+	var info := _as_manifest()
 
 	# Need to dupe as set_opt() doesn't work well with reference types
 	var favorites: Array[ServerManifest] = _cm.get_opt(&"multiplayer/favorites").duplicate()
