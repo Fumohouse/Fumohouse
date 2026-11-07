@@ -34,6 +34,12 @@ func _ready():
 	_nm.status_update.connect(_on_status_update)
 	_cm.value_changed.connect(_on_config_change)
 
+	_name.focus_exited.connect(_on_quickconnect_focus_exit)
+	_address.focus_exited.connect(_on_quickconnect_focus_exit)
+	_port.focus_exited.connect(_on_quickconnect_focus_exit)
+	_username.focus_exited.connect(_on_quickconnect_focus_exit)
+	_password.focus_exited.connect(_on_quickconnect_focus_exit)
+
 	_refresh_worlds()
 	_refresh_favorites()
 	_update_quickconnect(_cm.get_opt(&"multiplayer/quick_connect"))
@@ -97,20 +103,17 @@ func _allow_join(state := true):
 		favorite.allow_join(state)
 
 
-func _join_server(info: ServerManifest, is_quickconnect := false):
+func _join_server(info: ServerManifest):
 	if _username.text.is_empty():
 		return
 
 	_cm.set_opt(&"multiplayer/username", _username.text)
 
-	if is_quickconnect:
-		_cm.set_opt(&"multiplayer/quick_connect", info)
-
 	_wm.join_multiplayer_server(info.address, info.port, _username.text, info.password)
 
 
 func _on_join_button_pressed():
-	_join_server(_as_manifest(), true)
+	_join_server(_as_manifest())
 
 
 func _on_favorite_button_pressed():
@@ -120,6 +123,11 @@ func _on_favorite_button_pressed():
 	var favorites: Array[ServerManifest] = _cm.get_opt(&"multiplayer/favorites").duplicate()
 	favorites.append(info)
 	_cm.set_opt(&"multiplayer/favorites", favorites)
+
+
+func _on_quickconnect_focus_exit():
+	_cm.set_opt(&"multiplayer/username", _username.text)
+	_cm.set_opt(&"multiplayer/quick_connect", _as_manifest())
 
 
 func _on_config_change(key: StringName):
