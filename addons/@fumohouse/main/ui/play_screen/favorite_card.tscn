@@ -85,13 +85,10 @@ theme_override_constants/margin_bottom = 12
 [node name="Layout" type="HBoxContainer" parent="MarginContainer" unique_id=2098911323]
 layout_mode = 2
 
-[node name="Info" type="VBoxContainer" parent="MarginContainer/Layout" unique_id=471452823]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Name" type="Label" parent="MarginContainer/Layout/Info" unique_id=1711687270]
+[node name="Name" type="Label" parent="MarginContainer/Layout" unique_id=1711687270]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "Fumohouse Server"
 label_settings = SubResource("LabelSettings_ppidy")
