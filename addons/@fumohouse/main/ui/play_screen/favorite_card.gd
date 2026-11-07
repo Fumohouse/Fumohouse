@@ -14,7 +14,6 @@ var info: ServerManifest
 @onready var _wm := WorldManager.get_singleton()
 
 @onready var _name: Label = %Name
-@onready var _description: RichTextLabel = %Description
 @onready var _join_button: Button = %JoinButton
 @onready var _copy_button: Button = %CopyButton
 @onready var _delete_button: Button = %DeleteButton
