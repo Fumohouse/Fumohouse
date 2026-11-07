@@ -9,7 +9,7 @@ const ServerManifest := preload("res://addons/@fumohouse/common/resource_types/s
 func _enter_tree():
 	var cm := ConfigManager.get_singleton()
 
-	cm.add_opt(&"multiplayer/username", "Fumo")
+	cm.add_opt(&"multiplayer/username", "")
 	cm.add_opt(&"multiplayer/favorites", [] as Array[ServerManifest])
 
 	var connect_default := ServerManifest.new()
