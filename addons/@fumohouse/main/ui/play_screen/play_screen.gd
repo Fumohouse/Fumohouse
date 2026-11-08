@@ -107,8 +107,6 @@ func _join_server(info: ServerManifest):
 	if _username.text.is_empty():
 		return
 
-	_cm.set_opt(&"multiplayer/username", _username.text)
-
 	_wm.join_multiplayer_server(info.address, info.port, _username.text, info.password)
 
 
