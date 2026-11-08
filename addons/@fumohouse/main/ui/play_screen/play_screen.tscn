@@ -45,42 +45,92 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
-[node name="Multiplayer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs" index="1" unique_id=1242335067]
+[node name="Multiplayer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs" index="1" unique_id=788354015]
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer" index="0" unique_id=2027764533]
+[node name="Favorites" type="ScrollContainer" parent="Contents/MarginContainer/Tabs/Multiplayer" index="0" unique_id=1330761758]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="Address" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer/HBoxContainer" index="0" unique_id=691063151]
+[node name="FavoriteList" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer/Favorites" index="0" unique_id=1239497085]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSeparator" type="HSeparator" parent="Contents/MarginContainer/Tabs/Multiplayer" index="1" unique_id=927471830]
+layout_mode = 2
+
+[node name="QuickConnect" type="HBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer" index="2" unique_id=1229792211]
+custom_minimum_size = Vector2(0, 37)
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="Form" type="HBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect" index="0" unique_id=1616664846]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect/Form" index="0" unique_id=552358946]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect/Form/VBoxContainer2" index="0" unique_id=1281173872]
+layout_mode = 2
+
+[node name="Address" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect/Form/VBoxContainer2/HBoxContainer" index="0" unique_id=396419014]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 placeholder_text = "Address"
 
-[node name="Port" type="SpinBox" parent="Contents/MarginContainer/Tabs/Multiplayer/HBoxContainer" index="1" unique_id=757647173]
+[node name="Port" type="SpinBox" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect/Form/VBoxContainer2/HBoxContainer" index="1" unique_id=555434578]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 65535.0
 value = 50103.0
 
-[node name="Username" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer" index="1" unique_id=555655640]
+[node name="Name" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect/Form/VBoxContainer2" index="1" unique_id=894619363]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Only used for favorites, optional when joining"
+placeholder_text = "Name (only visible to you)"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect/Form" index="1" unique_id=986811301]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Username" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect/Form/VBoxContainer" index="0" unique_id=1136630718]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Username"
 
-[node name="Password" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer" index="2" unique_id=331042693]
+[node name="Password" type="LineEdit" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect/Form/VBoxContainer" index="1" unique_id=1751570663]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Password"
 secret = true
 
-[node name="JoinButton" type="Button" parent="Contents/MarginContainer/Tabs/Multiplayer" index="3" unique_id=1557578714]
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect" index="1" unique_id=1983283367]
+layout_mode = 2
+
+[node name="JoinButton" type="Button" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect/VBoxContainer" index="0" unique_id=267027543]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "Join"
+
+[node name="FavoriteButton" type="Button" parent="Contents/MarginContainer/Tabs/Multiplayer/QuickConnect/VBoxContainer" index="1" unique_id=1734818658]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Favorite"
 
 [node name="StatusPopup" parent="." index="2" unique_id=1606265617 instance=ExtResource("4_6sdiv")]
 unique_name_in_owner = true

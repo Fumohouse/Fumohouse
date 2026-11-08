@@ -7,5 +7,6 @@ script = ExtResource("1_kop3k")
 name = "sticker"
 category = &"contributor"
 role = "Programmer"
-description = "• Fumo character selection and customization"
+description = "• Fumo character selection and customization
+• Multiplayer favorite servers list"
 metadata/_custom_type_script = "uid://c51ldeir31dos"
